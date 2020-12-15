@@ -35,10 +35,10 @@ class NgxThreeClassGenerator {
     const configFile = ts.findConfigFile(
       __dirname,
       ts.sys.fileExists,
-      'tsconfig.json'
+      'tsconfig.generate.json'
     );
     if (!configFile) {
-      throw new Error("can't find tsconfig.json");
+      throw new Error("can't find tsconfig.lib.json");
     }
 
     const { config, error } = ts.parseConfigFileTextToJson(
