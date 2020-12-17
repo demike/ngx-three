@@ -1,43 +1,35 @@
 import { GridHelper } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
 import { LineSegments } from "three";
+import { ThLineSegments } from "./ThLineSegments";
 
 @Component({
   selector: "th-gridHelper",
   inputs: ["type"],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThGridHelper) },
   ],
 })
-export class ThGridHelper extends GridHelper {
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self()
-    args: ThArgs<
-      [
-        size: number,
-        divisions: number,
-        color1: Color | string | number,
-        color2: Color | string | number
-      ]
-    >
-  ) {
-    super(...args.args);
-    parent.add(this);
+export class ThGridHelper<
+  TARGS extends any[] = [
+    size: number,
+    divisions: number,
+    color1: Color | string | number,
+    color2: Color | string | number
+  ]
+> extends ThLineSegments<TARGS> {
+  protected obj!: GridHelper;
+  protected getObjectType(): Type<GridHelper> {
+    return GridHelper;
   }
-  public set args(
-    ar: [
-      size: number,
-      divisions: number,
-      color1: Color | string | number,
-      color2: Color | string | number
-    ]
-  ) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

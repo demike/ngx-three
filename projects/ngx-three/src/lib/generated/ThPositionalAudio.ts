@@ -1,28 +1,30 @@
 import { PositionalAudio } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { AudioListener } from "three";
 import { Audio } from "three";
+import { ThAudio } from "./ThAudio";
 
 @Component({
   selector: "th-positionalAudio",
   inputs: ["panner"],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThPositionalAudio) },
   ],
 })
-export class ThPositionalAudio extends PositionalAudio {
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self() args: ThArgs<[listener: AudioListener]>
-  ) {
-    super(...args.args);
-    parent.add(this);
+export class ThPositionalAudio<
+  TARGS extends any[] = [listener: AudioListener]
+> extends ThAudio<PannerNode, TARGS> {
+  protected obj!: PositionalAudio;
+  protected getObjectType(): Type<PositionalAudio> {
+    return PositionalAudio;
   }
-  public set args(ar: [listener: AudioListener]) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

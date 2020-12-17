@@ -1,15 +1,17 @@
 import { HemisphereLightProbe } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
 import { LightProbe } from "three";
+import { ThLightProbe } from "./ThLightProbe";
 
 @Component({
   selector: "th-hemisphereLightProbe",
   inputs: ["isHemisphereLightProbe"],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: ThObject3D,
@@ -17,28 +19,19 @@ import { LightProbe } from "three";
     },
   ],
 })
-export class ThHemisphereLightProbe extends HemisphereLightProbe {
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self()
-    args: ThArgs<
-      [
-        skyColor: Color | string | number,
-        groundColor: Color | string | number,
-        intensity: number
-      ]
-    >
-  ) {
-    super(...args.args);
-    parent.add(this);
+export class ThHemisphereLightProbe<
+  TARGS extends any[] = [
+    skyColor: Color | string | number,
+    groundColor: Color | string | number,
+    intensity: number
+  ]
+> extends ThLightProbe<TARGS> {
+  protected obj!: HemisphereLightProbe;
+  protected getObjectType(): Type<HemisphereLightProbe> {
+    return HemisphereLightProbe;
   }
-  public set args(
-    ar: [
-      skyColor: Color | string | number,
-      groundColor: Color | string | number,
-      intensity: number
-    ]
-  ) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

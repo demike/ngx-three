@@ -1,28 +1,30 @@
 import { AmbientLightProbe } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
 import { LightProbe } from "three";
+import { ThLightProbe } from "./ThLightProbe";
 
 @Component({
   selector: "th-ambientLightProbe",
   inputs: ["isAmbientLightProbe"],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThAmbientLightProbe) },
   ],
 })
-export class ThAmbientLightProbe extends AmbientLightProbe {
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self() args: ThArgs<[color: Color | string | number, intensity: number]>
-  ) {
-    super(...args.args);
-    parent.add(this);
+export class ThAmbientLightProbe<
+  TARGS extends any[] = [color: Color | string | number, intensity: number]
+> extends ThLightProbe<TARGS> {
+  protected obj!: AmbientLightProbe;
+  protected getObjectType(): Type<AmbientLightProbe> {
+    return AmbientLightProbe;
   }
-  public set args(ar: [color: Color | string | number, intensity: number]) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

@@ -1,12 +1,13 @@
 import { Light } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
 import { Input } from "@angular/core";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
 import { LightShadow } from "three";
 import { Object3D } from "three";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-light",
@@ -27,22 +28,23 @@ import { Object3D } from "three";
     "shadowMapHeight",
   ],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLight) }],
 })
-export class ThLight extends Light {
-  @Input("color")
-  public set __color(test: any) {
-    this.color = test;
+export class ThLight<
+  TARGS extends any[] = [hex: number | string, intensity: number]
+> extends ThObject3D<TARGS> {
+  protected obj!: Light;
+  protected getObjectType(): Type<Light> {
+    return Light;
   }
 
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self() args: ThArgs<[hex: number | string, intensity: number]>
-  ) {
-    super(...args.args);
-    parent.add(this);
+  @Input("color")
+  public set color(value: any) {
+    this.obj.color = value;
   }
-  public set args(ar: [hex: number | string, intensity: number]) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

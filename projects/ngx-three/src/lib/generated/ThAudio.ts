@@ -1,11 +1,12 @@
 import { Audio } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Object3D } from "three";
 import { AudioListener } from "three";
 import { AudioContext } from "three";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-audio",
@@ -30,19 +31,19 @@ import { AudioContext } from "three";
     "filters",
   ],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThAudio) }],
 })
 export class ThAudio<
-  NodeType extends AudioNode = GainNode
-> extends Audio<NodeType> {
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self() args: ThArgs<[listener: AudioListener]>
-  ) {
-    super(...args.args);
-    parent.add(this);
+  NodeType extends AudioNode = GainNode,
+  TARGS extends any[] = [listener: AudioListener]
+> extends ThObject3D<TARGS> {
+  protected obj!: Audio;
+  protected getObjectType(): Type<Audio> {
+    return Audio;
   }
-  public set args(ar: [listener: AudioListener]) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

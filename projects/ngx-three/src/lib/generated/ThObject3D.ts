@@ -1,110 +1,76 @@
-import { Object3D } from "three";
-import { Component } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { ThArgs } from "../ThArgs";
-import { Input } from "@angular/core";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
-import { Vector3 } from "three";
-import { Euler } from "three";
-import { Quaternion } from "three";
-import { Matrix4 } from "three";
-import { Matrix3 } from "three";
-import { Layers } from "three";
-import { WebGLRenderer } from "three";
-import { Scene } from "three";
-import { Camera } from "three";
-import { Geometry } from "three";
-import { Material } from "three";
-import { Group } from "three";
-import { Raycaster } from "three";
-import { EventDispatcher } from "three";
-import { BufferGeometry } from "three";
-import { Intersection } from "three";
-import { AnimationClip } from "three";
 
-@Component({
-  selector: "th-object3D",
-  inputs: [
-    "id",
-    "uuid",
-    "name",
-    "type",
-    "parent",
-    "children",
-    "matrixAutoUpdate",
-    "matrixWorldNeedsUpdate",
-    "visible",
-    "castShadow",
-    "receiveShadow",
-    "frustumCulled",
-    "renderOrder",
-    "animations",
-    "userData",
-    "customDepthMaterial",
-    "customDistanceMaterial",
-    "isObject3D",
-    "onBeforeRender",
-    "onAfterRender",
-    "DefaultMatrixAutoUpdate",
-  ],
-  template: "",
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThObject3D) },
-  ],
-})
-export class ThObject3D extends Object3D {
-  @Input("up")
-  public set __up(test: any) {
-    this.up = test;
-  }
-
-  @Input("position")
-  public set __position(test: any) {
-    this.position = test;
-  }
-
-  @Input("rotation")
-  public set __rotation(test: any) {
-    this.rotation = test;
-  }
-
-  @Input("quaternion")
-  public set __quaternion(test: any) {
-    this.quaternion = test;
-  }
-
-  @Input("scale")
-  public set __scale(test: any) {
-    this.scale = test;
-  }
-
-  @Input("modelViewMatrix")
-  public set __modelViewMatrix(test: any) {
-    this.modelViewMatrix = test;
-  }
-
-  @Input("normalMatrix")
-  public set __normalMatrix(test: any) {
-    this.normalMatrix = test;
-  }
-
-  @Input("matrix")
-  public set __matrix(test: any) {
-    this.matrix = test;
-  }
-
-  @Input("matrixWorld")
-  public set __matrixWorld(test: any) {
-    this.matrixWorld = test;
-  }
-
-  @Input("layers")
-  public set __layers(test: any) {
-    this.layers = test;
-  }
-
-  @Input("DefaultUp")
-  public set __DefaultUp(test: any) {
-    this.DefaultUp = test;
-  }
-}
+        import { Object3D } from 'three';
+        import { Component, ChangeDetectionStrategy } from '@angular/core';
+        import { ThObject3D } from './ThObject3D';
+        import { ThArgs } from '../ThArgs';
+        import { Input } from '@angular/core';import { SkipSelf, Self, Optional, forwardRef, Type } from '@angular/core';import { Vector3 } from 'three';import { Euler } from 'three';import { Quaternion } from 'three';import { Matrix4 } from 'three';import { Matrix3 } from 'three';import { Layers } from 'three';import { WebGLRenderer } from 'three';import { Scene } from 'three';import { Camera } from 'three';import { Geometry } from 'three';import { Material } from 'three';import { Group } from 'three';import { Raycaster } from 'three';import { EventDispatcher } from 'three';import { BufferGeometry } from 'three';import { Intersection } from 'three';import { AnimationClip } from 'three';import { ThWrapperBase } from '../ThWrapperBase'import { ThEventDispatcher } from './ThEventDispatcher';
+    
+        @Component({
+          selector: "th-object3D",
+          inputs: ["id","uuid","name","type","parent","children","matrixAutoUpdate","matrixWorldNeedsUpdate","visible","castShadow","receiveShadow","frustumCulled","renderOrder","animations","userData","customDepthMaterial","customDistanceMaterial","isObject3D","onBeforeRender","onAfterRender","DefaultMatrixAutoUpdate",],
+          template: "",
+          changeDetection: ChangeDetectionStrategy.OnPush,
+          providers: [{provide: ThObject3D, useExisting: forwardRef(() => ThObject3D)}]
+        })
+        export class ThObject3D<TARGS extends any[] = []> extends ThWrapperBase<TARGS>  extends ThEventDispatcher<TARGS> {
+          protected obj!: Object3D;
+          protected getObjectType(): Type<Object3D> { return Object3D};
+          
+      @Input("up")
+      public set up( value: any ) {
+        this.obj.up = value;
+      }
+      
+      @Input("position")
+      public set position( value: any ) {
+        this.obj.position = value;
+      }
+      
+      @Input("rotation")
+      public set rotation( value: any ) {
+        this.obj.rotation = value;
+      }
+      
+      @Input("quaternion")
+      public set quaternion( value: any ) {
+        this.obj.quaternion = value;
+      }
+      
+      @Input("scale")
+      public set scale( value: any ) {
+        this.obj.scale = value;
+      }
+      
+      @Input("modelViewMatrix")
+      public set modelViewMatrix( value: any ) {
+        this.obj.modelViewMatrix = value;
+      }
+      
+      @Input("normalMatrix")
+      public set normalMatrix( value: any ) {
+        this.obj.normalMatrix = value;
+      }
+      
+      @Input("matrix")
+      public set matrix( value: any ) {
+        this.obj.matrix = value;
+      }
+      
+      @Input("matrixWorld")
+      public set matrixWorld( value: any ) {
+        this.obj.matrixWorld = value;
+      }
+      
+      @Input("layers")
+      public set layers( value: any ) {
+        this.obj.layers = value;
+      }
+      
+      @Input("DefaultUp")
+      public set DefaultUp( value: any ) {
+        this.obj.DefaultUp = value;
+      }
+      
+          
+        }
+        

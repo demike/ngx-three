@@ -1,34 +1,36 @@
 import { PlaneHelper } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
 import { Input } from "@angular/core";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Plane } from "three";
 import { LineSegments } from "three";
+import { ThLineSegments } from "./ThLineSegments";
 
 @Component({
   selector: "th-planeHelper",
   inputs: ["type", "size"],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThPlaneHelper) },
   ],
 })
-export class ThPlaneHelper extends PlaneHelper {
-  @Input("plane")
-  public set __plane(test: any) {
-    this.plane = test;
+export class ThPlaneHelper<
+  TARGS extends any[] = [plane: Plane, size: number, hex: number]
+> extends ThLineSegments<TARGS> {
+  protected obj!: PlaneHelper;
+  protected getObjectType(): Type<PlaneHelper> {
+    return PlaneHelper;
   }
 
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self() args: ThArgs<[plane: Plane, size: number, hex: number]>
-  ) {
-    super(...args.args);
-    parent.add(this);
+  @Input("plane")
+  public set plane(value: any) {
+    this.obj.plane = value;
   }
-  public set args(ar: [plane: Plane, size: number, hex: number]) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

@@ -1,35 +1,36 @@
 import { CubeCamera } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { WebGLCubeRenderTarget } from "three";
 import { Scene } from "three";
 import { WebGLRenderer } from "three";
 import { Object3D } from "three";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-cubeCamera",
   inputs: ["type", "renderTarget"],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThCubeCamera) },
   ],
 })
-export class ThCubeCamera extends CubeCamera {
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self()
-    args: ThArgs<
-      [near: number, far: number, renderTarget: WebGLCubeRenderTarget]
-    >
-  ) {
-    super(...args.args);
-    parent.add(this);
+export class ThCubeCamera<
+  TARGS extends any[] = [
+    near: number,
+    far: number,
+    renderTarget: WebGLCubeRenderTarget
+  ]
+> extends ThObject3D<TARGS> {
+  protected obj!: CubeCamera;
+  protected getObjectType(): Type<CubeCamera> {
+    return CubeCamera;
   }
-  public set args(
-    ar: [near: number, far: number, renderTarget: WebGLCubeRenderTarget]
-  ) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

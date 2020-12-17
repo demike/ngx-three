@@ -1,37 +1,39 @@
 import { SpotLightHelper } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
 import { Input } from "@angular/core";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Light } from "three";
 import { Color } from "three";
 import { Matrix4 } from "three";
 import { Object3D } from "three";
 import { LineSegments } from "three";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-spotLightHelper",
   inputs: ["light", "matrixAutoUpdate", "color", "cone"],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThSpotLightHelper) },
   ],
 })
-export class ThSpotLightHelper extends SpotLightHelper {
-  @Input("matrix")
-  public set __matrix(test: any) {
-    this.matrix = test;
+export class ThSpotLightHelper<
+  TARGS extends any[] = [light: Light, color: Color | string | number]
+> extends ThObject3D<TARGS> {
+  protected obj!: SpotLightHelper;
+  protected getObjectType(): Type<SpotLightHelper> {
+    return SpotLightHelper;
   }
 
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self() args: ThArgs<[light: Light, color: Color | string | number]>
-  ) {
-    super(...args.args);
-    parent.add(this);
+  @Input("matrix")
+  public set matrix(value: any) {
+    this.obj.matrix = value;
   }
-  public set args(ar: [light: Light, color: Color | string | number]) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

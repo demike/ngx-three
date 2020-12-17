@@ -1,27 +1,29 @@
 import { AxesHelper } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { LineSegments } from "three";
+import { ThLineSegments } from "./ThLineSegments";
 
 @Component({
   selector: "th-axesHelper",
   inputs: ["type"],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThAxesHelper) },
   ],
 })
-export class ThAxesHelper extends AxesHelper {
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self() args: ThArgs<[size: number]>
-  ) {
-    super(...args.args);
-    parent.add(this);
+export class ThAxesHelper<
+  TARGS extends any[] = [size: number]
+> extends ThLineSegments<TARGS> {
+  protected obj!: AxesHelper;
+  protected getObjectType(): Type<AxesHelper> {
+    return AxesHelper;
   }
-  public set args(ar: [size: number]) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

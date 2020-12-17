@@ -1,9 +1,10 @@
 import { PerspectiveCamera } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Camera } from "three";
+import { ThCamera } from "./ThCamera";
 
 @Component({
   selector: "th-perspectiveCamera",
@@ -21,22 +22,20 @@ import { Camera } from "three";
     "filmOffset",
   ],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThPerspectiveCamera) },
   ],
 })
-export class ThPerspectiveCamera extends PerspectiveCamera {
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self()
-    args: ThArgs<[fov: number, aspect: number, near: number, far: number]>
-  ) {
-    super(...args.args);
-    parent.add(this);
+export class ThPerspectiveCamera<
+  TARGS extends any[] = [fov: number, aspect: number, near: number, far: number]
+> extends ThCamera<TARGS> {
+  protected obj!: PerspectiveCamera;
+  protected getObjectType(): Type<PerspectiveCamera> {
+    return PerspectiveCamera;
   }
-  public set args(
-    ar: [fov: number, aspect: number, near: number, far: number]
-  ) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

@@ -7,36 +7,38 @@ export class NgxThreeClass {
   public content: string;
   public readonly className: string;
   private classDecl: ts.ClassDeclaration;
-  public readonly baseClassName: string;
+  public readonly wrappedClassName: string;
   private imports: string[] = [];
+  private constructorArgs = '[]';
 
   constructor(
     private classSymbol: ts.Symbol,
     private typeChecker: ts.TypeChecker
   ) {
     this.classDecl = this.classSymbol.declarations[0] as ts.ClassDeclaration;
-    this.baseClassName = this.classSymbol.escapedName as string;
+    this.wrappedClassName = this.classSymbol.escapedName as string;
 
-    this.className = 'Th' + this.baseClassName;
+    this.className = 'Th' + this.wrappedClassName;
     this.content = '';
   }
 
   generate() {
     const inputs = this.generateInputs(this.classDecl);
-    const directiveName = 'th-' + pascalToCamelCase(this.baseClassName);
+    const directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);
 
     if (inputs.members.length > 0) {
       this.imports.push("import { Input } from '@angular/core';");
     }
     this.imports.push(
-      "import { SkipSelf, Self, forwardRef } from '@angular/core';"
+      "import { SkipSelf, Self, Optional, forwardRef, Type } from '@angular/core';"
     );
     const constr = this.generateConstructor(this.classDecl);
     this.generateBaseClassImports();
+    const classHeader = this.generateClassHeader();
 
     const ngxClassDeclarationString = `
-        import { ${this.baseClassName} } from 'three';
-        import { Component } from '@angular/core';
+        import { ${this.wrappedClassName} } from 'three';
+        import { Component, ChangeDetectionStrategy } from '@angular/core';
         import { ThObject3D } from './ThObject3D';
         import { ThArgs } from '../ThArgs';
         ${this.imports.join('')}
@@ -45,11 +47,16 @@ export class NgxThreeClass {
           selector: "${directiveName}",
           inputs: ${inputs.inputNames},
           template: "",
+          changeDetection: ChangeDetectionStrategy.OnPush,
           providers: [{provide: ThObject3D, useExisting: forwardRef(() => ${
             this.className
           })}]
         })
-        ${this.generateClassHeader()} {
+        ${classHeader} {
+          protected obj!: ${this.wrappedClassName};
+          protected getObjectType(): Type<${this.wrappedClassName}> { return ${
+      this.wrappedClassName
+    }};
           ${inputs.members}
           ${constr}
         }
@@ -72,20 +79,36 @@ export class NgxThreeClass {
   }
 
   private generateClassHeader() {
-    let header = '';
-    if (!this.classDecl.typeParameters) {
-      return `export class ${this.className} extends ${this.baseClassName}`;
+    let header = `export class ${this.className}<`;
+    if (this.classDecl.typeParameters) {
+      header = `${header}${this.classDecl.typeParameters
+        .map((param) => param.getText())
+        .join(',')},`;
+    }
+    header += `TARGS extends any[] = ${this.constructorArgs}>`;
+
+    let baseClassName = 'Object3D';
+    if (this.wrappedClassName === 'Object3D') {
+      this.imports.push("import { ThWrapperBase } from '../ThWrapperBase'");
+      header = `${header} extends ThWrapperBase<TARGS>`;
     }
 
-    return `export class ${
-      this.className
-    }<${this.classDecl.typeParameters
-      .map((param) => param.getText())
-      .join(',')}> extends ${
-      this.baseClassName
-    }<${this.classDecl.typeParameters
-      .map((param) => param.name.escapedText)
-      .join(',')}>`;
+    if (this.classDecl.heritageClauses) {
+      // if we have a base class and we are not Object3D
+      let clause = this.classDecl.heritageClauses[0].getText();
+      baseClassName = clause.replace('extends ', '').split('<')[0];
+      this.imports.push(
+        `import { Th${baseClassName} } from './Th${baseClassName}';`
+      );
+      header = `${header}  ${clause.replace('extends ', 'extends Th')}`;
+    }
+
+    if (header.endsWith('>')) {
+      header = header.slice(0, -1);
+      header += ',TARGS>';
+    } else {
+      header += '<TARGS>';
+    }
 
     return header;
   }
@@ -126,9 +149,9 @@ export class NgxThreeClass {
 
   private generateSetterInput(memberName: string, memberType: ts.Type) {
     let str = `
-      @Input("${memberName}")
-      public set __${memberName}( test: any ) {
-        this.${memberName} = test;
+      @Input()
+      public set ${memberName}( value: any ) {
+        this.obj.${memberName} = value;
       }
       `;
     return str;
@@ -156,7 +179,7 @@ export class NgxThreeClass {
 
     const file = this.classDecl.getSourceFile();
 
-    let constructorArgs = constructSignatures
+    this.constructorArgs = constructSignatures
       .map(
         (sig) =>
           `[${sig.parameters
@@ -171,11 +194,9 @@ export class NgxThreeClass {
       .join('|');
 
     let constr = `
-      constructor(@SkipSelf() parent: ThObject3D, @Self() args: ThArgs<${constructorArgs}>) {
-        super(...args.args);
-        parent.add(this);
+      constructor(@SkipSelf() parent: ThObject3D) {
+        super(parent);
       }
-      public set args(ar: ${constructorArgs}) { /* nothing to do */} 
       `;
     return constr;
   }

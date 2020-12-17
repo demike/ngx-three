@@ -1,9 +1,10 @@
 import { OrthographicCamera } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Camera } from "three";
+import { ThCamera } from "./ThCamera";
 
 @Component({
   selector: "th-orthographicCamera",
@@ -20,6 +21,7 @@ import { Camera } from "three";
     "far",
   ],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: ThObject3D,
@@ -27,34 +29,22 @@ import { Camera } from "three";
     },
   ],
 })
-export class ThOrthographicCamera extends OrthographicCamera {
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self()
-    args: ThArgs<
-      [
-        left: number,
-        right: number,
-        top: number,
-        bottom: number,
-        near: number,
-        far: number
-      ]
-    >
-  ) {
-    super(...args.args);
-    parent.add(this);
+export class ThOrthographicCamera<
+  TARGS extends any[] = [
+    left: number,
+    right: number,
+    top: number,
+    bottom: number,
+    near: number,
+    far: number
+  ]
+> extends ThCamera<TARGS> {
+  protected obj!: OrthographicCamera;
+  protected getObjectType(): Type<OrthographicCamera> {
+    return OrthographicCamera;
   }
-  public set args(
-    ar: [
-      left: number,
-      right: number,
-      top: number,
-      bottom: number,
-      near: number,
-      far: number
-    ]
-  ) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

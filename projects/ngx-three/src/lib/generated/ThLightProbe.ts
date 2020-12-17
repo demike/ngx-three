@@ -1,34 +1,36 @@
 import { LightProbe } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
 import { Input } from "@angular/core";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { SphericalHarmonics3 } from "three";
 import { Light } from "three";
+import { ThLight } from "./ThLight";
 
 @Component({
   selector: "th-lightProbe",
   inputs: ["type", "isLightProbe"],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThLightProbe) },
   ],
 })
-export class ThLightProbe extends LightProbe {
-  @Input("sh")
-  public set __sh(test: any) {
-    this.sh = test;
+export class ThLightProbe<
+  TARGS extends any[] = [sh: SphericalHarmonics3, intensity: number]
+> extends ThLight<TARGS> {
+  protected obj!: LightProbe;
+  protected getObjectType(): Type<LightProbe> {
+    return LightProbe;
   }
 
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self() args: ThArgs<[sh: SphericalHarmonics3, intensity: number]>
-  ) {
-    super(...args.args);
-    parent.add(this);
+  @Input("sh")
+  public set sh(value: any) {
+    this.obj.sh = value;
   }
-  public set args(ar: [sh: SphericalHarmonics3, intensity: number]) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

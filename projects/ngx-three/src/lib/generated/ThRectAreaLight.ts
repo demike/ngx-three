@@ -1,43 +1,35 @@
 import { RectAreaLight } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Light } from "three";
 import { Color } from "three";
+import { ThLight } from "./ThLight";
 
 @Component({
   selector: "th-rectAreaLight",
   inputs: ["type", "width", "height", "intensity", "isRectAreaLight"],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThRectAreaLight) },
   ],
 })
-export class ThRectAreaLight extends RectAreaLight {
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self()
-    args: ThArgs<
-      [
-        color: Color | string | number,
-        intensity: number,
-        width: number,
-        height: number
-      ]
-    >
-  ) {
-    super(...args.args);
-    parent.add(this);
+export class ThRectAreaLight<
+  TARGS extends any[] = [
+    color: Color | string | number,
+    intensity: number,
+    width: number,
+    height: number
+  ]
+> extends ThLight<TARGS> {
+  protected obj!: RectAreaLight;
+  protected getObjectType(): Type<RectAreaLight> {
+    return RectAreaLight;
   }
-  public set args(
-    ar: [
-      color: Color | string | number,
-      intensity: number,
-      width: number,
-      height: number
-    ]
-  ) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }

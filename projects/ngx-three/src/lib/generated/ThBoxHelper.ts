@@ -1,29 +1,31 @@
 import { BoxHelper } from "three";
-import { Component } from "@angular/core";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { ThArgs } from "../ThArgs";
-import { SkipSelf, Self, forwardRef } from "@angular/core";
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Object3D } from "three";
 import { Color } from "three";
 import { LineSegments } from "three";
+import { ThLineSegments } from "./ThLineSegments";
 
 @Component({
   selector: "th-boxHelper",
   inputs: ["type"],
   template: "",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThBoxHelper) },
   ],
 })
-export class ThBoxHelper extends BoxHelper {
-  constructor(
-    @SkipSelf() parent: ThObject3D,
-    @Self() args: ThArgs<[object: Object3D, color: Color | string | number]>
-  ) {
-    super(...args.args);
-    parent.add(this);
+export class ThBoxHelper<
+  TARGS extends any[] = [object: Object3D, color: Color | string | number]
+> extends ThLineSegments<TARGS> {
+  protected obj!: BoxHelper;
+  protected getObjectType(): Type<BoxHelper> {
+    return BoxHelper;
   }
-  public set args(ar: [object: Object3D, color: Color | string | number]) {
-    /* nothing to do */
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
   }
 }
