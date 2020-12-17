@@ -1,7 +1,7 @@
 import { LightProbe } from "three";
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { ThArgs } from "../ThArgs";
+import { applyValue } from "../util";
 import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { SphericalHarmonics3 } from "three";
@@ -25,9 +25,11 @@ export class ThLightProbe<
     return LightProbe;
   }
 
-  @Input("sh")
-  public set sh(value: any) {
-    this.obj.sh = value;
+  @Input()
+  public set sh(value: SphericalHarmonics3 | [coefficients: Vector3[]]) {
+    if (this.obj) {
+      this.obj.sh = applyValue<SphericalHarmonics3>(this.obj.sh, value);
+    }
   }
 
   constructor(@SkipSelf() parent: ThObject3D) {

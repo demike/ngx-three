@@ -1,7 +1,7 @@
 import { Bone } from "three";
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { ThArgs } from "../ThArgs";
+import { applyValue } from "../util";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Object3D } from "three";
 import { ThObject3D } from "./ThObject3D";

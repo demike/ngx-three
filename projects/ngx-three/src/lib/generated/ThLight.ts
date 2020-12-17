@@ -1,7 +1,7 @@
 import { Light } from "three";
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { ThArgs } from "../ThArgs";
+import { applyValue } from "../util";
 import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
@@ -39,9 +39,11 @@ export class ThLight<
     return Light;
   }
 
-  @Input("color")
-  public set color(value: any) {
-    this.obj.color = value;
+  @Input()
+  public set color(value: Color | [color: Color | string | number]) {
+    if (this.obj) {
+      this.obj.color = applyValue<Color>(this.obj.color, value);
+    }
   }
 
   constructor(@SkipSelf() parent: ThObject3D) {

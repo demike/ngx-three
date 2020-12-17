@@ -1,7 +1,7 @@
 import { PlaneHelper } from "three";
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { ThArgs } from "../ThArgs";
+import { applyValue } from "../util";
 import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Plane } from "three";
@@ -25,9 +25,11 @@ export class ThPlaneHelper<
     return PlaneHelper;
   }
 
-  @Input("plane")
-  public set plane(value: any) {
-    this.obj.plane = value;
+  @Input()
+  public set plane(value: Plane | [normal: Vector3, constant: number]) {
+    if (this.obj) {
+      this.obj.plane = applyValue<Plane>(this.obj.plane, value);
+    }
   }
 
   constructor(@SkipSelf() parent: ThObject3D) {

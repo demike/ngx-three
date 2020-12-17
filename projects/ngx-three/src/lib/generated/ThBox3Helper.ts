@@ -1,7 +1,7 @@
 import { Box3Helper } from "three";
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { ThArgs } from "../ThArgs";
+import { applyValue } from "../util";
 import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Box3 } from "three";
@@ -26,9 +26,11 @@ export class ThBox3Helper<
     return Box3Helper;
   }
 
-  @Input("box")
-  public set box(value: any) {
-    this.obj.box = value;
+  @Input()
+  public set box(value: Box3 | [min: Vector3, max: Vector3]) {
+    if (this.obj) {
+      this.obj.box = applyValue<Box3>(this.obj.box, value);
+    }
   }
 
   constructor(@SkipSelf() parent: ThObject3D) {

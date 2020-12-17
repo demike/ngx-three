@@ -1,7 +1,7 @@
 import { HemisphereLight } from "three";
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { ThArgs } from "../ThArgs";
+import { applyValue } from "../util";
 import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
@@ -30,14 +30,17 @@ export class ThHemisphereLight<
     return HemisphereLight;
   }
 
-  @Input("position")
-  public set position(value: any) {
-    this.obj.position = value;
+  @Input()
+  public set position(value: Vector3 | [x: number, y: number, z: number]) {
+    if (this.obj) {
+      this.obj.position = applyValue<Vector3>(this.obj.position, value);
+    }
   }
-
-  @Input("groundColor")
-  public set groundColor(value: any) {
-    this.obj.groundColor = value;
+  @Input()
+  public set groundColor(value: Color | [color: Color | string | number]) {
+    if (this.obj) {
+      this.obj.groundColor = applyValue<Color>(this.obj.groundColor, value);
+    }
   }
 
   constructor(@SkipSelf() parent: ThObject3D) {

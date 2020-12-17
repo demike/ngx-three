@@ -1,7 +1,7 @@
 import { Sprite } from "three";
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { ThArgs } from "../ThArgs";
+import { applyValue } from "../util";
 import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Vector2 } from "three";
@@ -27,9 +27,11 @@ export class ThSprite<
     return Sprite;
   }
 
-  @Input("center")
-  public set center(value: any) {
-    this.obj.center = value;
+  @Input()
+  public set center(value: Vector2 | [x: number, y: number]) {
+    if (this.obj) {
+      this.obj.center = applyValue<Vector2>(this.obj.center, value);
+    }
   }
 
   constructor(@SkipSelf() parent: ThObject3D) {

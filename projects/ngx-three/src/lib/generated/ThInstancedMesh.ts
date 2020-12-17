@@ -1,7 +1,7 @@
 import { InstancedMesh } from "three";
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { ThArgs } from "../ThArgs";
+import { applyValue } from "../util";
 import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Geometry } from "three";
@@ -36,9 +36,18 @@ export class ThInstancedMesh<
     return InstancedMesh;
   }
 
-  @Input("instanceMatrix")
-  public set instanceMatrix(value: any) {
-    this.obj.instanceMatrix = value;
+  @Input()
+  public set instanceMatrix(
+    value:
+      | BufferAttribute
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
+  ) {
+    if (this.obj) {
+      this.obj.instanceMatrix = applyValue<BufferAttribute>(
+        this.obj.instanceMatrix,
+        value
+      );
+    }
   }
 
   constructor(@SkipSelf() parent: ThObject3D) {

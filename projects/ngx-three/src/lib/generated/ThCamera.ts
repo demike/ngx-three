@@ -1,7 +1,7 @@
 import { Camera } from "three";
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { ThArgs } from "../ThArgs";
+import { applyValue } from "../util";
 import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Matrix4 } from "three";
@@ -22,18 +22,94 @@ export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
     return Camera;
   }
 
-  @Input("matrixWorldInverse")
-  public set matrixWorldInverse(value: any) {
-    this.obj.matrixWorldInverse = value;
+  @Input()
+  public set matrixWorldInverse(
+    value:
+      | Matrix4
+      | [
+          n11: number,
+          n12: number,
+          n13: number,
+          n14: number,
+          n21: number,
+          n22: number,
+          n23: number,
+          n24: number,
+          n31: number,
+          n32: number,
+          n33: number,
+          n34: number,
+          n41: number,
+          n42: number,
+          n43: number,
+          n44: number
+        ]
+  ) {
+    if (this.obj) {
+      this.obj.matrixWorldInverse = applyValue<Matrix4>(
+        this.obj.matrixWorldInverse,
+        value
+      );
+    }
   }
-
-  @Input("projectionMatrix")
-  public set projectionMatrix(value: any) {
-    this.obj.projectionMatrix = value;
+  @Input()
+  public set projectionMatrix(
+    value:
+      | Matrix4
+      | [
+          n11: number,
+          n12: number,
+          n13: number,
+          n14: number,
+          n21: number,
+          n22: number,
+          n23: number,
+          n24: number,
+          n31: number,
+          n32: number,
+          n33: number,
+          n34: number,
+          n41: number,
+          n42: number,
+          n43: number,
+          n44: number
+        ]
+  ) {
+    if (this.obj) {
+      this.obj.projectionMatrix = applyValue<Matrix4>(
+        this.obj.projectionMatrix,
+        value
+      );
+    }
   }
-
-  @Input("projectionMatrixInverse")
-  public set projectionMatrixInverse(value: any) {
-    this.obj.projectionMatrixInverse = value;
+  @Input()
+  public set projectionMatrixInverse(
+    value:
+      | Matrix4
+      | [
+          n11: number,
+          n12: number,
+          n13: number,
+          n14: number,
+          n21: number,
+          n22: number,
+          n23: number,
+          n24: number,
+          n31: number,
+          n32: number,
+          n33: number,
+          n34: number,
+          n41: number,
+          n42: number,
+          n43: number,
+          n44: number
+        ]
+  ) {
+    if (this.obj) {
+      this.obj.projectionMatrixInverse = applyValue<Matrix4>(
+        this.obj.projectionMatrixInverse,
+        value
+      );
+    }
   }
 }

@@ -40,7 +40,7 @@ export class NgxThreeClass {
         import { ${this.wrappedClassName} } from 'three';
         import { Component, ChangeDetectionStrategy } from '@angular/core';
         import { ThObject3D } from './ThObject3D';
-        import { ThArgs } from '../ThArgs';
+        import { applyValue } from '../util';
         ${this.imports.join('')}
     
         @Component({
@@ -128,6 +128,7 @@ export class NgxThreeClass {
             console.log('got setter');
             members += this.generateSetterInput(
               (member.name as ts.Identifier).escapedText as string,
+              member as ts.PropertyDeclaration,
               type
             );
           } else {
@@ -147,13 +148,53 @@ export class NgxThreeClass {
     return { members, inputNames };
   }
 
-  private generateSetterInput(memberName: string, memberType: ts.Type) {
+  private generateSetterInput(
+    memberName: string,
+    member: ts.PropertyDeclaration,
+    memberType: ts.Type
+  ) {
+    if (
+      member.modifiers?.find(
+        (m) =>
+          m.kind === ts.SyntaxKind.PrivateKeyword ||
+          m.kind === ts.SyntaxKind.ProtectedKeyword
+      )
+    ) {
+      // it's private or protected --> do not expose
+      return;
+    }
+
+    const isReadonly = member.modifiers?.find(
+      (m) => m.kind === ts.SyntaxKind.ReadonlyKeyword
+    );
+    const setter = memberType.getProperty('set')?.declarations[0];
+
+    if (isReadonly && !setter) {
+      // can't set it
+      return;
+    }
+
     let str = `
-      @Input()
-      public set ${memberName}( value: any ) {
-        this.obj.${memberName} = value;
+    @Input()
+    public set ${memberName}( value: ${memberType.symbol.escapedName}`;
+
+    if (isReadonly) {
+    } else if (setter && ts.isMethodDeclaration(setter)) {
+      // has a setter
+      str += `| [${setter.parameters.map((p) => p.getText()).join(',')}]) {
+        if(this.obj) {
+         this.obj.${memberName} = applyValue<${
+        memberType.symbol.escapedName
+      }>(this.obj.${memberName}, value);
+        }
+      }`;
+    } else {
+      // no setter just set it
+      str += `) {
+        if(this.obj) { this.obj.${memberName} = value;}
       }
       `;
+    }
     return str;
   }
 
