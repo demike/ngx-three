@@ -1,17 +1,16 @@
-import { LineLoop } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Line } from "three";
 import { Geometry } from "three";
 import { Material } from "three";
 import { BufferGeometry } from "three";
 import { ThLine } from "./ThLine";
+import { LineLoop } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { ThObject3D } from "./ThObject3D";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-lineLoop",
-  inputs: ["type", "isLineLoop"],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

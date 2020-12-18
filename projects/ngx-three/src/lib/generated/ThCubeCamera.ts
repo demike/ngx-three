@@ -1,17 +1,15 @@
-import { CubeCamera } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { WebGLCubeRenderTarget } from "three";
 import { Scene } from "three";
 import { WebGLRenderer } from "three";
 import { Object3D } from "three";
 import { ThObject3D } from "./ThObject3D";
+import { CubeCamera } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-cubeCamera",
-  inputs: ["type", "renderTarget"],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

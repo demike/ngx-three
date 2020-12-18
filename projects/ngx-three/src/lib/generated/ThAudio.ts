@@ -1,35 +1,14 @@
-import { Audio } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Object3D } from "three";
 import { AudioListener } from "three";
 import { AudioContext } from "three";
 import { ThObject3D } from "./ThObject3D";
+import { Audio } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-audio",
-  inputs: [
-    "type",
-    "listener",
-    "context",
-    "gain",
-    "autoplay",
-    "buffer",
-    "detune",
-    "loop",
-    "loopStart",
-    "loopEnd",
-    "offset",
-    "duration",
-    "playbackRate",
-    "isPlaying",
-    "hasPlaybackControl",
-    "sourceType",
-    "source",
-    "filters",
-  ],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThAudio) }],

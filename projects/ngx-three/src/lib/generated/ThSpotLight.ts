@@ -1,8 +1,3 @@
-import { SpotLight } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
-import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
 import { Vector3 } from "three";
@@ -10,21 +5,13 @@ import { Object3D } from "three";
 import { SpotLightShadow } from "three";
 import { Light } from "three";
 import { ThLight } from "./ThLight";
+import { SpotLight } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { ThObject3D } from "./ThObject3D";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-spotLight",
-  inputs: [
-    "type",
-    "target",
-    "intensity",
-    "distance",
-    "angle",
-    "decay",
-    "shadow",
-    "power",
-    "penumbra",
-    "isSpotLight",
-  ],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
@@ -44,13 +31,6 @@ export class ThSpotLight<
   protected obj!: SpotLight;
   protected getObjectType(): Type<SpotLight> {
     return SpotLight;
-  }
-
-  @Input()
-  public set position(value: Vector3 | [x: number, y: number, z: number]) {
-    if (this.obj) {
-      this.obj.position = applyValue<Vector3>(this.obj.position, value);
-    }
   }
 
   constructor(@SkipSelf() parent: ThObject3D) {

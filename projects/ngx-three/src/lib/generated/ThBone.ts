@@ -1,14 +1,12 @@
-import { Bone } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Object3D } from "three";
 import { ThObject3D } from "./ThObject3D";
+import { Bone } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-bone",
-  inputs: ["isBone", "type"],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThBone) }],

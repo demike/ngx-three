@@ -1,15 +1,13 @@
-import { AudioListener } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Object3D } from "three";
 import { AudioContext } from "three";
 import { ThObject3D } from "./ThObject3D";
+import { AudioListener } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-audioListener",
-  inputs: ["type", "context", "gain", "filter", "timeDelta"],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

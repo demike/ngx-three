@@ -1,26 +1,13 @@
+import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
+import { Camera } from "three";
+import { ThCamera } from "./ThCamera";
 import { PerspectiveCamera } from "three";
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
 import { applyValue } from "../util";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Camera } from "three";
-import { ThCamera } from "./ThCamera";
 
 @Component({
   selector: "th-perspectiveCamera",
-  inputs: [
-    "type",
-    "isPerspectiveCamera",
-    "zoom",
-    "fov",
-    "aspect",
-    "near",
-    "far",
-    "focus",
-    "view",
-    "filmGauge",
-    "filmOffset",
-  ],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

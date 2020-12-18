@@ -1,7 +1,3 @@
-import { Scene } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { IFog } from "three";
 import { Material } from "three";
@@ -13,20 +9,12 @@ import { Camera } from "three";
 import { WebGLRenderTarget } from "three";
 import { WebGLCubeRenderTarget } from "three";
 import { ThObject3D } from "./ThObject3D";
+import { Scene } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-scene",
-  inputs: [
-    "type",
-    "fog",
-    "overrideMaterial",
-    "autoUpdate",
-    "background",
-    "environment",
-    "isScene",
-    "onBeforeRender",
-    "onAfterRender",
-  ],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }],

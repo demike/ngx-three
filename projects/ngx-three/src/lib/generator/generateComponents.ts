@@ -2,6 +2,7 @@ import { readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import * as ts from 'typescript';
 import { NgxThreeClass } from './NgxThreeClass';
+import { NgxThreeModuleGen } from './NgxThreeModuleGen';
 
 class NgxThreeClassGenerator {
   public readonly baseOutPath = join(__dirname, '../generated');
@@ -17,6 +18,8 @@ class NgxThreeClassGenerator {
       this.ngxThreeClassMap.set(cls.className, cls);
       this.writeClassToFile(cls);
     });
+
+    this.generateNgxModule(Array.from(this.ngxThreeClassMap.keys()));
   }
 
   private generateNgxThreeClass(classSymbol: ts.Symbol): NgxThreeClass {
@@ -24,6 +27,16 @@ class NgxThreeClassGenerator {
     ngxClass.generate();
 
     return ngxClass;
+  }
+
+  private generateNgxModule(classNames: string[]) {
+    const ngxModule = new NgxThreeModuleGen();
+    ngxModule.generate(classNames);
+
+    writeFileSync(
+      join(this.baseOutPath, 'ngx-three-generated.module.ts'),
+      ngxModule.content
+    );
   }
 
   private writeClassToFile(cls: NgxThreeClass) {

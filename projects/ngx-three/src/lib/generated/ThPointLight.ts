@@ -1,16 +1,15 @@
-import { PointLight } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
 import { Light } from "three";
 import { PointLightShadow } from "three";
 import { ThLight } from "./ThLight";
+import { PointLight } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { ThObject3D } from "./ThObject3D";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-pointLight",
-  inputs: ["type", "intensity", "distance", "decay", "shadow", "power"],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

@@ -1,8 +1,3 @@
-import { InstancedMesh } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
-import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Geometry } from "three";
 import { BufferGeometry } from "three";
@@ -12,10 +7,13 @@ import { Mesh } from "three";
 import { Matrix4 } from "three";
 import { Color } from "three";
 import { ThMesh } from "./ThMesh";
+import { InstancedMesh } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { ThObject3D } from "./ThObject3D";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-instancedMesh",
-  inputs: ["count", "instanceColor", "isInstancedMesh"],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
@@ -34,20 +32,6 @@ export class ThInstancedMesh<
   protected obj!: InstancedMesh;
   protected getObjectType(): Type<InstancedMesh> {
     return InstancedMesh;
-  }
-
-  @Input()
-  public set instanceMatrix(
-    value:
-      | BufferAttribute
-      | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
-  ) {
-    if (this.obj) {
-      this.obj.instanceMatrix = applyValue<BufferAttribute>(
-        this.obj.instanceMatrix,
-        value
-      );
-    }
   }
 
   constructor(@SkipSelf() parent: ThObject3D) {

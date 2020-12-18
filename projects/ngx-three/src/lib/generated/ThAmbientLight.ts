@@ -1,15 +1,14 @@
-import { AmbientLight } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
 import { Light } from "three";
 import { ThLight } from "./ThLight";
+import { AmbientLight } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { ThObject3D } from "./ThObject3D";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-ambientLight",
-  inputs: ["type", "isAmbientLight"],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

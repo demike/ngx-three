@@ -1,15 +1,14 @@
-import { StereoCamera } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { PerspectiveCamera } from "three";
 import { Camera } from "three";
 import { ThCamera } from "./ThCamera";
+import { StereoCamera } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { ThObject3D } from "./ThObject3D";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-stereoCamera",
-  inputs: ["type", "aspect", "eyeSep", "cameraL", "cameraR"],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

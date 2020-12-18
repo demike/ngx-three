@@ -1,27 +1,13 @@
-import { ImmediateRenderObject } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Object3D } from "three";
 import { Material } from "three";
 import { ThObject3D } from "./ThObject3D";
+import { ImmediateRenderObject } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-immediateRenderObject",
-  inputs: [
-    "isImmediateRenderObject",
-    "material",
-    "hasPositions",
-    "hasNormals",
-    "hasColors",
-    "hasUvs",
-    "positionArray",
-    "normalArray",
-    "colorArray",
-    "uvArray",
-    "count",
-  ],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

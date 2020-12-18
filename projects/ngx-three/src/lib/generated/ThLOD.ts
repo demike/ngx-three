@@ -1,17 +1,15 @@
-import { LOD } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Object3D } from "three";
 import { Raycaster } from "three";
 import { Camera } from "three";
 import { Intersection } from "three";
 import { ThObject3D } from "./ThObject3D";
+import { LOD } from "three";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { applyValue } from "../util";
 
 @Component({
   selector: "th-lOD",
-  inputs: ["type", "levels", "autoUpdate", "isLOD", "objects"],
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLOD) }],
