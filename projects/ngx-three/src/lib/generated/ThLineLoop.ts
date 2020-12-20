@@ -22,12 +22,8 @@ export class ThLineLoop<
   TMaterial extends Material | Material[] = Material | Material[],
   TARGS extends any[] = [geometry: TGeometry, material: TMaterial]
 > extends ThLine<TGeometry, TMaterial, TARGS> {
-  protected obj!: LineLoop;
-  protected getObjectType(): Type<LineLoop> {
+  protected obj!: LineLoop<TGeometry, TMaterial>;
+  protected getObjectType(): Type<LineLoop<TGeometry, TMaterial>> {
     return LineLoop;
-  }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
   }
 }

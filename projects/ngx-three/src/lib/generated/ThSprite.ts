@@ -23,8 +23,4 @@ export class ThSprite<
   protected getObjectType(): Type<Sprite> {
     return Sprite;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

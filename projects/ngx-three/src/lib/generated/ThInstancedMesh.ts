@@ -29,12 +29,8 @@ export class ThInstancedMesh<
     count: number
   ]
 > extends ThMesh<TGeometry, TMaterial, TARGS> {
-  protected obj!: InstancedMesh;
-  protected getObjectType(): Type<InstancedMesh> {
+  protected obj!: InstancedMesh<TGeometry, TMaterial>;
+  protected getObjectType(): Type<InstancedMesh<TGeometry, TMaterial>> {
     return InstancedMesh;
-  }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
   }
 }

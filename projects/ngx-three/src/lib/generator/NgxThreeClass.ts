@@ -12,6 +12,7 @@ export class NgxThreeClass {
   public readonly wrappedClassName: string;
   private imports: Set<string> = new Set<string>();
   private constructorArgs = '[]';
+  private wrappedClassGenericTypeNames = ''; // i.e.: "<T,U>"
 
   constructor(
     private classSymbol: ts.Symbol,
@@ -60,10 +61,12 @@ export class NgxThreeClass {
           })}]
         })
         ${classHeader} {
-          protected obj!: ${this.wrappedClassName};
-          protected getObjectType(): Type<${this.wrappedClassName}> { return ${
-      this.wrappedClassName
-    }};
+          protected obj!: ${this.wrappedClassName}${
+      this.wrappedClassGenericTypeNames
+    };
+          protected getObjectType(): Type<${this.wrappedClassName}${
+      this.wrappedClassGenericTypeNames
+    }> { return ${this.wrappedClassName}};
           ${inputs}
           ${constr}
         }
@@ -91,6 +94,9 @@ export class NgxThreeClass {
       header = `${header}${this.classDecl.typeParameters
         .map((param) => param.getText())
         .join(',')},`;
+      this.wrappedClassGenericTypeNames = `<${this.classDecl.typeParameters
+        .map((param) => param.name.getText())
+        .join(',')}>`;
     }
     header += `TARGS extends any[] = ${this.constructorArgs}>`;
 
@@ -205,6 +211,14 @@ export class NgxThreeClass {
     );
     let constructSignatures = constructorType.getConstructSignatures();
 
+    if (this.className === 'ThObject3D') {
+      return `
+      constructor(@SkipSelf() parent: ThObject3D) {
+        super(parent);
+      }
+      `;
+    }
+
     if (
       constructSignatures.length === 0 ||
       (constructSignatures.length === 1 &&
@@ -229,12 +243,7 @@ export class NgxThreeClass {
       )
       .join('|');
 
-    let constr = `
-      constructor(@SkipSelf() parent: ThObject3D) {
-        super(parent);
-      }
-      `;
-    return constr;
+    return '';
   }
 
   private generateBaseClassImports() {

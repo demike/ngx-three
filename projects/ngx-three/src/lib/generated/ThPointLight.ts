@@ -28,8 +28,4 @@ export class ThPointLight<
   protected getObjectType(): Type<PointLight> {
     return PointLight;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

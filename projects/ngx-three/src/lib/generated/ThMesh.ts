@@ -21,12 +21,8 @@ export class ThMesh<
   TMaterial extends Material | Material[] = Material | Material[],
   TARGS extends any[] = [geometry: TGeometry, material: TMaterial]
 > extends ThObject3D<TARGS> {
-  protected obj!: Mesh;
-  protected getObjectType(): Type<Mesh> {
+  protected obj!: Mesh<TGeometry, TMaterial>;
+  protected getObjectType(): Type<Mesh<TGeometry, TMaterial>> {
     return Mesh;
-  }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
   }
 }

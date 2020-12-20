@@ -27,8 +27,4 @@ export class ThRectAreaLight<
   protected getObjectType(): Type<RectAreaLight> {
     return RectAreaLight;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

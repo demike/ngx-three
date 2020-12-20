@@ -28,12 +28,8 @@ export class ThSkinnedMesh<
     useVertexTexture: boolean
   ]
 > extends ThMesh<TGeometry, TMaterial, TARGS> {
-  protected obj!: SkinnedMesh;
-  protected getObjectType(): Type<SkinnedMesh> {
+  protected obj!: SkinnedMesh<TGeometry, TMaterial>;
+  protected getObjectType(): Type<SkinnedMesh<TGeometry, TMaterial>> {
     return SkinnedMesh;
-  }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
   }
 }

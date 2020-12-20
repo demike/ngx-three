@@ -34,4 +34,8 @@ export class ThObject3D<TARGS extends any[] = []> extends ThWrapperBase<TARGS> {
   protected getObjectType(): Type<Object3D> {
     return Object3D;
   }
+
+  constructor(@SkipSelf() parent: ThObject3D) {
+    super(parent);
+  }
 }

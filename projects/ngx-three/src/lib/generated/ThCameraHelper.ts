@@ -29,8 +29,4 @@ export class ThCameraHelper<
   protected getObjectType(): Type<CameraHelper> {
     return CameraHelper;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

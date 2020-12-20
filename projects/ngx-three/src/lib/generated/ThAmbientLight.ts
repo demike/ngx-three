@@ -22,8 +22,4 @@ export class ThAmbientLight<
   protected getObjectType(): Type<AmbientLight> {
     return AmbientLight;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

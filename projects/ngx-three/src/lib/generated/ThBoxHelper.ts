@@ -30,8 +30,4 @@ export class ThBoxHelper<
   protected getObjectType(): Type<BoxHelper> {
     return BoxHelper;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

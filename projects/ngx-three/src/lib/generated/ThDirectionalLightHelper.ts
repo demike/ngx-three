@@ -31,8 +31,4 @@ export class ThDirectionalLightHelper<
   protected getObjectType(): Type<DirectionalLightHelper> {
     return DirectionalLightHelper;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

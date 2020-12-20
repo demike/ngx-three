@@ -21,8 +21,4 @@ export class ThArrayCamera<
   protected getObjectType(): Type<ArrayCamera> {
     return ArrayCamera;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

@@ -31,8 +31,4 @@ export class ThArrowHelper<
   protected getObjectType(): Type<ArrowHelper> {
     return ArrowHelper;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

@@ -22,12 +22,8 @@ export class ThLineSegments<
   TMaterial extends Material | Material[] = Material | Material[],
   TARGS extends any[] = [geometry: TGeometry, material: TMaterial]
 > extends ThLine<TGeometry, TMaterial, TARGS> {
-  protected obj!: LineSegments;
-  protected getObjectType(): Type<LineSegments> {
+  protected obj!: LineSegments<TGeometry, TMaterial>;
+  protected getObjectType(): Type<LineSegments<TGeometry, TMaterial>> {
     return LineSegments;
-  }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
   }
 }

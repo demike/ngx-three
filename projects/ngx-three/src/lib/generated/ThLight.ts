@@ -20,8 +20,4 @@ export class ThLight<
   protected getObjectType(): Type<Light> {
     return Light;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

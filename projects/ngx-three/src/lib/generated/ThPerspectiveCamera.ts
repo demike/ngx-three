@@ -21,8 +21,4 @@ export class ThPerspectiveCamera<
   protected getObjectType(): Type<PerspectiveCamera> {
     return PerspectiveCamera;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

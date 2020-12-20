@@ -21,12 +21,8 @@ export class ThPoints<
   TMaterial extends Material | Material[] = Material | Material[],
   TARGS extends any[] = [geometry: TGeometry, material: TMaterial]
 > extends ThObject3D<TARGS> {
-  protected obj!: Points;
-  protected getObjectType(): Type<Points> {
+  protected obj!: Points<TGeometry, TMaterial>;
+  protected getObjectType(): Type<Points<TGeometry, TMaterial>> {
     return Points;
-  }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
   }
 }

@@ -36,8 +36,4 @@ export class ThPolarGridHelper<
   protected getObjectType(): Type<PolarGridHelper> {
     return PolarGridHelper;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

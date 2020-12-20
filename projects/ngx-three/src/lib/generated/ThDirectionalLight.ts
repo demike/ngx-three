@@ -25,8 +25,4 @@ export class ThDirectionalLight<
   protected getObjectType(): Type<DirectionalLight> {
     return DirectionalLight;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

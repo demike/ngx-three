@@ -29,8 +29,4 @@ export class ThPlaneHelper<
   protected getObjectType(): Type<PlaneHelper> {
     return PlaneHelper;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

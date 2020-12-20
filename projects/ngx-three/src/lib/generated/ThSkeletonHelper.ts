@@ -31,8 +31,4 @@ export class ThSkeletonHelper<
   protected getObjectType(): Type<SkeletonHelper> {
     return SkeletonHelper;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

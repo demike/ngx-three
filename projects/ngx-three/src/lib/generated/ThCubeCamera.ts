@@ -27,8 +27,4 @@ export class ThCubeCamera<
   protected getObjectType(): Type<CubeCamera> {
     return CubeCamera;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

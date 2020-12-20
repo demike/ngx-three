@@ -34,8 +34,4 @@ export class ThGridHelper<
   protected getObjectType(): Type<GridHelper> {
     return GridHelper;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

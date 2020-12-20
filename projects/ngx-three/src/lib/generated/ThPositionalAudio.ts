@@ -22,8 +22,4 @@ export class ThPositionalAudio<
   protected getObjectType(): Type<PositionalAudio> {
     return PositionalAudio;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

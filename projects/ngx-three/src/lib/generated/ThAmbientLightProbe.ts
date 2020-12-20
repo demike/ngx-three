@@ -22,8 +22,4 @@ export class ThAmbientLightProbe<
   protected getObjectType(): Type<AmbientLightProbe> {
     return AmbientLightProbe;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

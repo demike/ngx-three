@@ -24,8 +24,4 @@ export class ThImmediateRenderObject<
   protected getObjectType(): Type<ImmediateRenderObject> {
     return ImmediateRenderObject;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

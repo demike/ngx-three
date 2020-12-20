@@ -22,8 +22,4 @@ export class ThLightProbe<
   protected getObjectType(): Type<LightProbe> {
     return LightProbe;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

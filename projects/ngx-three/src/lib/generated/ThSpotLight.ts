@@ -32,8 +32,4 @@ export class ThSpotLight<
   protected getObjectType(): Type<SpotLight> {
     return SpotLight;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

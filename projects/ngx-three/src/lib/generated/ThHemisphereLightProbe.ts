@@ -29,8 +29,4 @@ export class ThHemisphereLightProbe<
   protected getObjectType(): Type<HemisphereLightProbe> {
     return HemisphereLightProbe;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

@@ -31,8 +31,4 @@ export class ThHemisphereLightHelper<
   protected getObjectType(): Type<HemisphereLightHelper> {
     return HemisphereLightHelper;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

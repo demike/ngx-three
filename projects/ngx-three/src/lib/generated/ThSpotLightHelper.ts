@@ -24,8 +24,4 @@ export class ThSpotLightHelper<
   protected getObjectType(): Type<SpotLightHelper> {
     return SpotLightHelper;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

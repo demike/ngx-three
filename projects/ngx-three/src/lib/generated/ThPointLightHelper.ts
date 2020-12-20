@@ -27,8 +27,4 @@ export class ThPointLightHelper<
   protected getObjectType(): Type<PointLightHelper> {
     return PointLightHelper;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

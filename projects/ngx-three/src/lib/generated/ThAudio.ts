@@ -17,12 +17,8 @@ export class ThAudio<
   NodeType extends AudioNode = GainNode,
   TARGS extends any[] = [listener: AudioListener]
 > extends ThObject3D<TARGS> {
-  protected obj!: Audio;
-  protected getObjectType(): Type<Audio> {
+  protected obj!: Audio<NodeType>;
+  protected getObjectType(): Type<Audio<NodeType>> {
     return Audio;
-  }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
   }
 }

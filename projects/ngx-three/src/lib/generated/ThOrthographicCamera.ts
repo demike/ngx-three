@@ -31,8 +31,4 @@ export class ThOrthographicCamera<
   protected getObjectType(): Type<OrthographicCamera> {
     return OrthographicCamera;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

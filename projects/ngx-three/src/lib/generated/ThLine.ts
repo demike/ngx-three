@@ -21,12 +21,8 @@ export class ThLine<
   TMaterial extends Material | Material[] = Material | Material[],
   TARGS extends any[] = [geometry: TGeometry, material: TMaterial, mode: number]
 > extends ThObject3D<TARGS> {
-  protected obj!: Line;
-  protected getObjectType(): Type<Line> {
+  protected obj!: Line<TGeometry, TMaterial>;
+  protected getObjectType(): Type<Line<TGeometry, TMaterial>> {
     return Line;
-  }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
   }
 }

@@ -28,8 +28,4 @@ export class ThAxesHelper<
   protected getObjectType(): Type<AxesHelper> {
     return AxesHelper;
   }
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }
