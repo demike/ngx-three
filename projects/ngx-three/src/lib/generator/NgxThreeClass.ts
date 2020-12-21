@@ -35,7 +35,8 @@ export class NgxThreeClass {
     this.imports.add(
       "import { SkipSelf, Self, Optional, forwardRef, Type } from '@angular/core';"
     );
-    const constr = this.generateConstructor(this.classDecl);
+    const constr = this.generateConstructor();
+    this.generateConstructorArsg();
     this.generateBaseClassImports();
     const classHeader = this.generateClassHeader();
 
@@ -203,14 +204,7 @@ export class NgxThreeClass {
     return str;
   }
 
-  private generateConstructor(classDeclaration: ts.ClassDeclaration) {
-    const symbol = ((this.classDecl as unknown) as ts.Type).symbol;
-    let constructorType = this.typeChecker.getTypeOfSymbolAtLocation(
-      symbol,
-      symbol.valueDeclaration
-    );
-    let constructSignatures = constructorType.getConstructSignatures();
-
+  private generateConstructor() {
     if (this.className === 'ThObject3D') {
       return `
       constructor(@SkipSelf() parent: ThObject3D) {
@@ -219,15 +213,24 @@ export class NgxThreeClass {
       `;
     }
 
+    return '';
+  }
+
+  private generateConstructorArsg() {
+    const symbol = ((this.classDecl as unknown) as ts.Type).symbol;
+    let constructorType = this.typeChecker.getTypeOfSymbolAtLocation(
+      symbol,
+      symbol.valueDeclaration
+    );
+    let constructSignatures = constructorType.getConstructSignatures();
+
     if (
       constructSignatures.length === 0 ||
       (constructSignatures.length === 1 &&
         constructSignatures[0].parameters.length === 0)
     ) {
-      return '';
+      return;
     }
-
-    const file = this.classDecl.getSourceFile();
 
     this.constructorArgs = constructSignatures
       .map(
@@ -242,8 +245,6 @@ export class NgxThreeClass {
             .join(',')}]`
       )
       .join('|');
-
-    return '';
   }
 
   private generateBaseClassImports() {
