@@ -1,5 +1,3 @@
-import * as prettier from 'prettier';
-
 export class NgxThreeModuleGen {
   public content: string = '';
   public generate(classes: string[]) {
@@ -15,13 +13,5 @@ export class NgxThreeModuleGen {
         })
         export class NgxThreeGeneratedModule {}
                 `;
-
-    try {
-      this.content = prettier.format(this.content, {
-        parser: 'babel-ts',
-      });
-    } catch (e) {
-      console.log(e);
-    }
   }
 }

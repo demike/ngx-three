@@ -18,7 +18,7 @@ class NgxThreeClassGenerator {
     threeTypes.forEach((type) => {
       const cls = this.generateNgxThreeClass(type);
       this.ngxThreeClassMap.set(cls.className, cls);
-      this.writeClassToFile(cls);
+      this.writeFile(cls.className, cls.content);
     });
 
     this.generateNgxModule(Array.from(this.ngxThreeClassMap.keys()));
@@ -52,10 +52,6 @@ class NgxThreeClassGenerator {
       console.log(e);
     }
     writeFileSync(join(this.baseOutPath, fileName + '.ts'), content);
-  }
-
-  private writeClassToFile(cls: NgxThreeClass) {
-    this.writeFile(cls.className, cls.content);
   }
 
   private getInterfacePropertyNames(interfaceName: string) {
