@@ -3,6 +3,8 @@ import { join } from 'path';
 import * as ts from 'typescript';
 import { NgxThreeClass } from './NgxThreeClass';
 import { NgxThreeModuleGen } from './NgxThreeModuleGen';
+import * as prettier from 'prettier';
+import { ImportOrganizer } from './ImportOrganizer';
 
 class NgxThreeClassGenerator {
   public readonly baseOutPath = join(__dirname, '../generated');
@@ -33,14 +35,27 @@ class NgxThreeClassGenerator {
     const ngxModule = new NgxThreeModuleGen();
     ngxModule.generate(classNames);
 
-    writeFileSync(
-      join(this.baseOutPath, 'ngx-three-generated.module.ts'),
-      ngxModule.content
-    );
+    this.writeFile('ngx-three-generated.module', ngxModule.content);
+  }
+
+  private writeFile(fileName: string, content: string) {
+    try {
+      const organizer = new ImportOrganizer();
+      content = organizer.organizeImports(
+        this.baseOutPath + fileName + '.ts',
+        content
+      );
+      content = prettier.format(content, {
+        parser: 'babel-ts',
+      });
+    } catch (e) {
+      console.log(e);
+    }
+    writeFileSync(join(this.baseOutPath, fileName + '.ts'), content);
   }
 
   private writeClassToFile(cls: NgxThreeClass) {
-    writeFileSync(join(this.baseOutPath, cls.className + '.ts'), cls.content);
+    this.writeFile(cls.className, cls.content);
   }
 
   private getInterfacePropertyNames(interfaceName: string) {

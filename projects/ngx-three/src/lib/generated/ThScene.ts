@@ -1,18 +1,23 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { IFog } from "three";
-import { Material } from "three";
-import { Object3D } from "three";
-import { Color } from "three";
-import { Texture } from "three";
-import { WebGLRenderer } from "three";
-import { Camera } from "three";
-import { WebGLRenderTarget } from "three";
-import { WebGLCubeRenderTarget } from "three";
-import { ThObject3D } from "./ThObject3D";
-import { Scene } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import {
+  Camera,
+  Color,
+  IFog,
+  Material,
+  Scene,
+  Texture,
+  WebGLCubeRenderTarget,
+  WebGLRenderer,
+  WebGLRenderTarget,
+} from "three";
 import { applyValue } from "../util";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-scene",

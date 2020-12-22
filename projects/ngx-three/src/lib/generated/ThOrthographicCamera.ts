@@ -1,11 +1,13 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Camera } from "three";
-import { ThCamera } from "./ThCamera";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
 import { OrthographicCamera } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { ThCamera } from "./ThCamera";
 import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 
 @Component({
   selector: "th-orthographicCamera",

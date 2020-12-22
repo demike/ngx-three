@@ -1,14 +1,19 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { DirectionalLight } from "three";
-import { Color } from "three";
-import { Line } from "three";
-import { Matrix4 } from "three";
-import { Object3D } from "three";
-import { ThObject3D } from "./ThObject3D";
-import { DirectionalLightHelper } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import {
+  Color,
+  DirectionalLight,
+  DirectionalLightHelper,
+  Line,
+  Matrix4,
+} from "three";
 import { applyValue } from "../util";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-directionalLightHelper",

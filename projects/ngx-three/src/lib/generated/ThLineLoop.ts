@@ -1,14 +1,13 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Line } from "three";
-import { Geometry } from "three";
-import { Material } from "three";
-import { BufferGeometry } from "three";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import { BufferGeometry, Geometry, LineLoop, Material } from "three";
 import { ThLine } from "./ThLine";
-import { LineLoop } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 
 @Component({
   selector: "th-lineLoop",

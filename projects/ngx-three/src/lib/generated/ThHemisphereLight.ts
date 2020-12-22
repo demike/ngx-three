@@ -1,13 +1,14 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Color } from "three";
-import { Vector3 } from "three";
-import { Light } from "three";
-import { ThLight } from "./ThLight";
-import { HemisphereLight } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import { Color, HemisphereLight, Vector3 } from "three";
 import { applyValue } from "../util";
+import { ThLight } from "./ThLight";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-hemisphereLight",

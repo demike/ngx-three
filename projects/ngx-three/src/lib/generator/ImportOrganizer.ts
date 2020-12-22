@@ -1,0 +1,77 @@
+import * as ts from 'typescript';
+
+class LanguageServiceHostImpl implements ts.LanguageServiceHost {
+  public name: string;
+  public content: string;
+  public options: ts.CompilerOptions;
+  public getDefaultLibFileName = ts.getDefaultLibFileName;
+  /**
+   * Create a service host instance.
+   *
+   * @param {string} name path to file
+   * @param {string} content file content
+   */
+  constructor(name: string, content: string) {
+    const tsconfig = ts.findConfigFile(name, ts.sys.fileExists);
+
+    const compilerOptions = tsconfig
+      ? ts.convertCompilerOptionsFromJson(
+          ts.readConfigFile(tsconfig, ts.sys.readFile).config.compilerOptions,
+          '..'
+        ).options
+      : ts.getDefaultCompilerOptions();
+
+    this.name = name;
+    this.content = content;
+    this.options = compilerOptions;
+  }
+
+  getNewLine() {
+    return '\n';
+  }
+
+  getCurrentDirectory() {
+    return process.cwd();
+  }
+
+  getCompilationSettings() {
+    return this.options;
+  }
+
+  getScriptFileNames() {
+    return [this.name];
+  }
+
+  getScriptVersion() {
+    return ts.version;
+  }
+
+  getScriptSnapshot() {
+    return ts.ScriptSnapshot.fromString(this.content);
+  }
+}
+
+const applyChanges = (input: string, changes: readonly ts.TextChange[]) =>
+  changes.reduceRight((text, change) => {
+    const head = text.slice(0, change.span.start);
+    const tail = text.slice(change.span.start + change.span.length);
+
+    return `${head}${change.newText}${tail}`;
+  }, input);
+
+export class ImportOrganizer {
+  organizeImports(fileName: string, content: string) {
+    let ls = ts.createLanguageService(
+      new LanguageServiceHostImpl(fileName, content)
+    );
+    const fileChanges = ls.organizeImports(
+      { type: 'file', fileName },
+      {},
+      undefined
+    );
+
+    return fileChanges.length > 0
+      ? applyChanges(content, fileChanges[0].textChanges)
+      : content;
+  }
+}

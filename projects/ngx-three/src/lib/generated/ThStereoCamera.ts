@@ -1,12 +1,13 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { PerspectiveCamera } from "three";
-import { Camera } from "three";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import { PerspectiveCamera, StereoCamera } from "three";
 import { ThCamera } from "./ThCamera";
-import { StereoCamera } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 
 @Component({
   selector: "th-stereoCamera",

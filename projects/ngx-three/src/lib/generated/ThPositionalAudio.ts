@@ -1,12 +1,13 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { AudioListener } from "three";
-import { Audio } from "three";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import { AudioListener, PositionalAudio } from "three";
 import { ThAudio } from "./ThAudio";
-import { PositionalAudio } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 
 @Component({
   selector: "th-positionalAudio",

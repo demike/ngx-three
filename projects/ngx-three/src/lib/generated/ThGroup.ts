@@ -1,10 +1,12 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Object3D } from "three";
-import { ThObject3D } from "./ThObject3D";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
 import { Group } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { applyValue } from "../util";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-group",

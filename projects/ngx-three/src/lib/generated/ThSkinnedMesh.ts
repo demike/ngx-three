@@ -1,16 +1,21 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Geometry } from "three";
-import { Material } from "three";
-import { Matrix4 } from "three";
-import { Skeleton } from "three";
-import { Mesh } from "three";
-import { BufferGeometry } from "three";
-import { ThMesh } from "./ThMesh";
-import { SkinnedMesh } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import {
+  BufferGeometry,
+  Geometry,
+  Material,
+  Matrix4,
+  Skeleton,
+  SkinnedMesh,
+} from "three";
 import { applyValue } from "../util";
+import { ThMesh } from "./ThMesh";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-skinnedMesh",

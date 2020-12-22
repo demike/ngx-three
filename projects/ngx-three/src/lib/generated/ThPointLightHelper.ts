@@ -1,13 +1,13 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { PointLight } from "three";
-import { Color } from "three";
-import { Matrix4 } from "three";
-import { Object3D } from "three";
-import { ThObject3D } from "./ThObject3D";
-import { PointLightHelper } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import { Color, Matrix4, PointLight, PointLightHelper } from "three";
 import { applyValue } from "../util";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-pointLightHelper",

@@ -1,11 +1,12 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Object3D } from "three";
-import { AudioContext } from "three";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import { AudioContext, AudioListener } from "three";
 import { ThObject3D } from "./ThObject3D";
-import { AudioListener } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { applyValue } from "../util";
 
 @Component({
   selector: "th-audioListener",

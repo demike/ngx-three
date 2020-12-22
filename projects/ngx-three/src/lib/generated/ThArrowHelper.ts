@@ -1,14 +1,12 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Vector3 } from "three";
-import { Line } from "three";
-import { Mesh } from "three";
-import { Color } from "three";
-import { Object3D } from "three";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import { ArrowHelper, Color, Line, Mesh, Vector3 } from "three";
 import { ThObject3D } from "./ThObject3D";
-import { ArrowHelper } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { applyValue } from "../util";
 
 @Component({
   selector: "th-arrowHelper",

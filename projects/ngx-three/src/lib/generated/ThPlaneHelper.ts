@@ -1,15 +1,14 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Plane } from "three";
-import { LineSegments } from "three";
-import { ThLineSegments } from "./ThLineSegments";
-import { Geometry } from "three";
-import { BufferGeometry } from "three";
-import { Material } from "three";
-import { PlaneHelper } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import { BufferGeometry, Geometry, Material, Plane, PlaneHelper } from "three";
 import { applyValue } from "../util";
+import { ThLineSegments } from "./ThLineSegments";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-planeHelper",

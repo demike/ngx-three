@@ -1,13 +1,12 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Object3D } from "three";
-import { Raycaster } from "three";
-import { Camera } from "three";
-import { Intersection } from "three";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import { LOD, Object3D } from "three";
 import { ThObject3D } from "./ThObject3D";
-import { LOD } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { applyValue } from "../util";
 
 @Component({
   selector: "th-lOD",

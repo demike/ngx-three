@@ -1,17 +1,22 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Object3D } from "three";
-import { Matrix4 } from "three";
-import { Bone } from "three";
-import { LineSegments } from "three";
-import { ThLineSegments } from "./ThLineSegments";
-import { Geometry } from "three";
-import { BufferGeometry } from "three";
-import { Material } from "three";
-import { SkeletonHelper } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import {
+  Bone,
+  BufferGeometry,
+  Geometry,
+  Material,
+  Matrix4,
+  Object3D,
+  SkeletonHelper,
+} from "three";
 import { applyValue } from "../util";
+import { ThLineSegments } from "./ThLineSegments";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-skeletonHelper",

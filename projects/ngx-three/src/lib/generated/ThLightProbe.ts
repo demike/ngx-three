@@ -1,12 +1,14 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { SphericalHarmonics3 } from "three";
-import { Light } from "three";
-import { ThLight } from "./ThLight";
-import { LightProbe } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import { LightProbe, SphericalHarmonics3 } from "three";
 import { applyValue } from "../util";
+import { ThLight } from "./ThLight";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-lightProbe",

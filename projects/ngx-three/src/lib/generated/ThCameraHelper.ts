@@ -1,15 +1,19 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Camera } from "three";
-import { LineSegments } from "three";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import {
+  BufferGeometry,
+  Camera,
+  CameraHelper,
+  Geometry,
+  Material,
+} from "three";
 import { ThLineSegments } from "./ThLineSegments";
-import { Geometry } from "three";
-import { BufferGeometry } from "three";
-import { Material } from "three";
-import { CameraHelper } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 
 @Component({
   selector: "th-cameraHelper",

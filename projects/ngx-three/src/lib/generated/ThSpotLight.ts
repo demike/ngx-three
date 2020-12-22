@@ -1,15 +1,14 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Color } from "three";
-import { Vector3 } from "three";
-import { Object3D } from "three";
-import { SpotLightShadow } from "three";
-import { Light } from "three";
-import { ThLight } from "./ThLight";
-import { SpotLight } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
-import { ThObject3D } from "./ThObject3D";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import { Color, Object3D, SpotLight, SpotLightShadow, Vector3 } from "three";
 import { applyValue } from "../util";
+import { ThLight } from "./ThLight";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-spotLight",

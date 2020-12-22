@@ -1,16 +1,20 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Object3D } from "three";
-import { Color } from "three";
-import { LineSegments } from "three";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import {
+  BoxHelper,
+  BufferGeometry,
+  Color,
+  Geometry,
+  Material,
+  Object3D,
+} from "three";
 import { ThLineSegments } from "./ThLineSegments";
-import { Geometry } from "three";
-import { BufferGeometry } from "three";
-import { Material } from "three";
-import { BoxHelper } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { ThObject3D } from "./ThObject3D";
-import { applyValue } from "../util";
 
 @Component({
   selector: "th-boxHelper",

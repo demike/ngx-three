@@ -1,15 +1,13 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Vector2 } from "three";
-import { Raycaster } from "three";
-import { Object3D } from "three";
-import { Intersection } from "three";
-import { SpriteMaterial } from "three";
-import { BufferGeometry } from "three";
-import { ThObject3D } from "./ThObject3D";
-import { Sprite } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from "@angular/core";
+import { BufferGeometry, Sprite, SpriteMaterial, Vector2 } from "three";
 import { applyValue } from "../util";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
   selector: "th-sprite",

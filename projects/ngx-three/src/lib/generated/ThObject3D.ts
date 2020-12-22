@@ -1,25 +1,26 @@
-import { Input } from "@angular/core";
-import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
-import { Vector3 } from "three";
-import { Euler } from "three";
-import { Quaternion } from "three";
-import { Matrix4 } from "three";
-import { Matrix3 } from "three";
-import { Layers } from "three";
-import { WebGLRenderer } from "three";
-import { Scene } from "three";
-import { Camera } from "three";
-import { Geometry } from "three";
-import { Material } from "three";
-import { Group } from "three";
-import { Raycaster } from "three";
-import { EventDispatcher } from "three";
-import { BufferGeometry } from "three";
-import { Intersection } from "three";
-import { AnimationClip } from "three";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  SkipSelf,
+  Type,
+} from "@angular/core";
+import {
+  AnimationClip,
+  BufferGeometry,
+  Camera,
+  Geometry,
+  Group,
+  Layers,
+  Material,
+  Matrix4,
+  Object3D,
+  Scene,
+  Vector3,
+  WebGLRenderer,
+} from "three";
 import { ThWrapperBase } from "../ThWrapperBase";
-import { Object3D } from "three";
-import { Component, ChangeDetectionStrategy } from "@angular/core";
 import { applyValue } from "../util";
 
 @Component({

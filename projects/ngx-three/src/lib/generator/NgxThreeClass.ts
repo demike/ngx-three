@@ -1,6 +1,3 @@
-import { identifierModuleUrl } from '@angular/compiler';
-import * as prettier from 'prettier';
-import { MeshLambertMaterial, ParametricBufferGeometry } from 'three';
 import * as ts from 'typescript';
 
 const INGORED_MEMBERS = ['parent'];
@@ -76,19 +73,6 @@ export class NgxThreeClass {
         `;
 
     this.content = ngxClassDeclarationString;
-
-    try {
-      /*
-      const languageService = ts.createLanguageService(
-        new ServiceHost(__filename, this.content)
-      );
-      */
-      this.content = prettier.format(ngxClassDeclarationString, {
-        parser: 'babel-ts',
-      });
-    } catch (e) {
-      console.log(e);
-    }
   }
 
   private generateClassHeader() {
