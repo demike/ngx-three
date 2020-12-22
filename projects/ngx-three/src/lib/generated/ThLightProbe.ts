@@ -5,7 +5,7 @@ import {
   Input,
   Type,
 } from "@angular/core";
-import { LightProbe, SphericalHarmonics3 } from "three";
+import { LightProbe, SphericalHarmonics3, Vector3 } from "three";
 import { applyValue } from "../util";
 import { ThLight } from "./ThLight";
 import { ThObject3D } from "./ThObject3D";

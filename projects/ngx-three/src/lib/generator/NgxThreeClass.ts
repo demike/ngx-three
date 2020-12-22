@@ -36,7 +36,7 @@ export class NgxThreeClass {
     );
     const constr = this.generateConstructor();
     this.generateConstructorArgs();
-    this.generateBaseClassImports();
+    this.addImportsFrom(this.classDecl);
     const classHeader = this.generateClassHeader();
 
     this.imports.add(`import { ${this.wrappedClassName} } from 'three';`);
@@ -192,6 +192,8 @@ export class NgxThreeClass {
       return str;
     }
 
+    // add the imports from member file name (might be used for setter parameters)
+    this.addImportsFrom(setters[0]);
     for (let setter of setters) {
       str += `| [${setter.parameters.map((p) => p.getText()).join(',')}]`;
     }
@@ -285,8 +287,8 @@ export class NgxThreeClass {
       .join('|');
   }
 
-  private generateBaseClassImports() {
-    const srcFile = this.classDecl.getSourceFile();
+  private addImportsFrom(classNode: ts.Node) {
+    const srcFile = classNode.getSourceFile();
 
     if (srcFile.fileName.search('node_modules/three/') >= 0) {
       srcFile.statements

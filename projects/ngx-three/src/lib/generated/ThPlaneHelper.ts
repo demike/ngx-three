@@ -5,7 +5,14 @@ import {
   Input,
   Type,
 } from "@angular/core";
-import { BufferGeometry, Geometry, Material, Plane, PlaneHelper } from "three";
+import {
+  BufferGeometry,
+  Geometry,
+  Material,
+  Plane,
+  PlaneHelper,
+  Vector3,
+} from "three";
 import { applyValue } from "../util";
 import { ThLineSegments } from "./ThLineSegments";
 import { ThObject3D } from "./ThObject3D";

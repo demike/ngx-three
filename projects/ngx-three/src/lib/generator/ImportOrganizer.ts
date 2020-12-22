@@ -61,14 +61,10 @@ const applyChanges = (input: string, changes: readonly ts.TextChange[]) =>
 
 export class ImportOrganizer {
   organizeImports(fileName: string, content: string) {
-    let ls = ts.createLanguageService(
-      new LanguageServiceHostImpl(fileName, content)
-    );
-    const fileChanges = ls.organizeImports(
-      { type: 'file', fileName },
-      {},
-      undefined
-    );
+    let host = new LanguageServiceHostImpl(fileName, content);
+    let ls = ts.createLanguageService(host);
+
+    const fileChanges = ls.organizeImports({ type: 'file', fileName }, {}, {});
 
     return fileChanges.length > 0
       ? applyChanges(content, fileChanges[0].textChanges)

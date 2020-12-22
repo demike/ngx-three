@@ -12,6 +12,7 @@ import {
   Color,
   Geometry,
   Material,
+  Vector3,
 } from "three";
 import { applyValue } from "../util";
 import { ThLineSegments } from "./ThLineSegments";
