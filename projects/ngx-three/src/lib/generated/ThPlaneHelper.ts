@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Plane } from "three";
 import { LineSegments } from "three";
@@ -28,5 +29,25 @@ export class ThPlaneHelper<
   protected obj!: PlaneHelper;
   protected getObjectType(): Type<PlaneHelper> {
     return PlaneHelper;
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
+  }
+
+  @Input()
+  public set plane(value: Plane | [normal: Vector3, constant: number]) {
+    if (this.obj) {
+      this.obj.plane = applyValue<Plane>(this.obj.plane, value);
+    }
+  }
+  @Input()
+  public set size(value: number) {
+    if (this.obj) {
+      this.obj.size = value;
+    }
   }
 }

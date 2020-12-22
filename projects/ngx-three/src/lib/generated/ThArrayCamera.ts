@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { PerspectiveCamera } from "three";
 import { ThPerspectiveCamera } from "./ThPerspectiveCamera";
@@ -20,5 +21,12 @@ export class ThArrayCamera<
   protected obj!: ArrayCamera;
   protected getObjectType(): Type<ArrayCamera> {
     return ArrayCamera;
+  }
+
+  @Input()
+  public set cameras(value: PerspectiveCamera[]) {
+    if (this.obj) {
+      this.obj.cameras = value;
+    }
   }
 }

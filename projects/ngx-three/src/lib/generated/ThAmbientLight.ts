@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
 import { Light } from "three";
@@ -21,5 +22,12 @@ export class ThAmbientLight<
   protected obj!: AmbientLight;
   protected getObjectType(): Type<AmbientLight> {
     return AmbientLight;
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
   }
 }

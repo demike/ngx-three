@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Object3D } from "three";
 import { Material } from "three";
@@ -23,5 +24,75 @@ export class ThImmediateRenderObject<
   protected obj!: ImmediateRenderObject;
   protected getObjectType(): Type<ImmediateRenderObject> {
     return ImmediateRenderObject;
+  }
+
+  @Input()
+  public set material(value: Material) {
+    if (this.obj) {
+      this.obj.material = value;
+    }
+  }
+
+  @Input()
+  public set hasPositions(value: boolean) {
+    if (this.obj) {
+      this.obj.hasPositions = value;
+    }
+  }
+
+  @Input()
+  public set hasNormals(value: boolean) {
+    if (this.obj) {
+      this.obj.hasNormals = value;
+    }
+  }
+
+  @Input()
+  public set hasColors(value: boolean) {
+    if (this.obj) {
+      this.obj.hasColors = value;
+    }
+  }
+
+  @Input()
+  public set hasUvs(value: boolean) {
+    if (this.obj) {
+      this.obj.hasUvs = value;
+    }
+  }
+
+  @Input()
+  public set positionArray(value: null | Float32Array) {
+    if (this.obj) {
+      this.obj.positionArray = value;
+    }
+  }
+
+  @Input()
+  public set normalArray(value: null | Float32Array) {
+    if (this.obj) {
+      this.obj.normalArray = value;
+    }
+  }
+
+  @Input()
+  public set colorArray(value: null | Float32Array) {
+    if (this.obj) {
+      this.obj.colorArray = value;
+    }
+  }
+
+  @Input()
+  public set uvArray(value: null | Float32Array) {
+    if (this.obj) {
+      this.obj.uvArray = value;
+    }
+  }
+
+  @Input()
+  public set count(value: number) {
+    if (this.obj) {
+      this.obj.count = value;
+    }
   }
 }

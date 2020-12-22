@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
 import { Vector3 } from "three";
@@ -26,5 +27,25 @@ export class ThHemisphereLight<
   protected obj!: HemisphereLight;
   protected getObjectType(): Type<HemisphereLight> {
     return HemisphereLight;
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
+  }
+
+  @Input()
+  public set position(value: Vector3 | [x: number, y: number, z: number]) {
+    if (this.obj) {
+      this.obj.position = applyValue<Vector3>(this.obj.position, value);
+    }
+  }
+  @Input()
+  public set groundColor(value: Color | [color: Color | string | number]) {
+    if (this.obj) {
+      this.obj.groundColor = applyValue<Color>(this.obj.groundColor, value);
+    }
   }
 }

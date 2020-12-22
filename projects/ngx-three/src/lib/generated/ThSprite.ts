@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Vector2 } from "three";
 import { Raycaster } from "three";
@@ -22,5 +23,33 @@ export class ThSprite<
   protected obj!: Sprite;
   protected getObjectType(): Type<Sprite> {
     return Sprite;
+  }
+
+  @Input()
+  public set type(value: "Sprite") {
+    if (this.obj) {
+      this.obj.type = value;
+    }
+  }
+
+  @Input()
+  public set geometry(value: BufferGeometry) {
+    if (this.obj) {
+      this.obj.geometry = value;
+    }
+  }
+
+  @Input()
+  public set material(value: SpriteMaterial) {
+    if (this.obj) {
+      this.obj.material = value;
+    }
+  }
+
+  @Input()
+  public set center(value: Vector2 | [x: number, y: number]) {
+    if (this.obj) {
+      this.obj.center = applyValue<Vector2>(this.obj.center, value);
+    }
   }
 }

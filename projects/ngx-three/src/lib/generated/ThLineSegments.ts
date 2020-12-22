@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Geometry } from "three";
 import { Material } from "three";
@@ -25,5 +26,12 @@ export class ThLineSegments<
   protected obj!: LineSegments<TGeometry, TMaterial>;
   protected getObjectType(): Type<LineSegments<TGeometry, TMaterial>> {
     return LineSegments;
+  }
+
+  @Input()
+  public set type(value: "LineSegments" | string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
   }
 }

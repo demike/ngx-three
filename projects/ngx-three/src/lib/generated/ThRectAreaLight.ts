@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Light } from "three";
 import { Color } from "three";
@@ -26,5 +27,33 @@ export class ThRectAreaLight<
   protected obj!: RectAreaLight;
   protected getObjectType(): Type<RectAreaLight> {
     return RectAreaLight;
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
+  }
+
+  @Input()
+  public set width(value: number) {
+    if (this.obj) {
+      this.obj.width = value;
+    }
+  }
+
+  @Input()
+  public set height(value: number) {
+    if (this.obj) {
+      this.obj.height = value;
+    }
+  }
+
+  @Input()
+  public set intensity(value: number) {
+    if (this.obj) {
+      this.obj.intensity = value;
+    }
   }
 }

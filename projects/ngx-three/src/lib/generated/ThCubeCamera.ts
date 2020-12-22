@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { WebGLCubeRenderTarget } from "three";
 import { Scene } from "three";
@@ -26,5 +27,19 @@ export class ThCubeCamera<
   protected obj!: CubeCamera;
   protected getObjectType(): Type<CubeCamera> {
     return CubeCamera;
+  }
+
+  @Input()
+  public set type(value: "CubeCamera") {
+    if (this.obj) {
+      this.obj.type = value;
+    }
+  }
+
+  @Input()
+  public set renderTarget(value: WebGLCubeRenderTarget) {
+    if (this.obj) {
+      this.obj.renderTarget = value;
+    }
   }
 }

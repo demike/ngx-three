@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { LineSegments } from "three";
 import { ThLineSegments } from "./ThLineSegments";
@@ -27,5 +28,12 @@ export class ThAxesHelper<
   protected obj!: AxesHelper;
   protected getObjectType(): Type<AxesHelper> {
     return AxesHelper;
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
   }
 }

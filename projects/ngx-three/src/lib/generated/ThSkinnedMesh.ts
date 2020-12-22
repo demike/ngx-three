@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Geometry } from "three";
 import { Material } from "three";
@@ -31,5 +32,76 @@ export class ThSkinnedMesh<
   protected obj!: SkinnedMesh<TGeometry, TMaterial>;
   protected getObjectType(): Type<SkinnedMesh<TGeometry, TMaterial>> {
     return SkinnedMesh;
+  }
+
+  @Input()
+  public set bindMode(value: string) {
+    if (this.obj) {
+      this.obj.bindMode = value;
+    }
+  }
+
+  @Input()
+  public set bindMatrix(
+    value:
+      | Matrix4
+      | [
+          n11: number,
+          n12: number,
+          n13: number,
+          n14: number,
+          n21: number,
+          n22: number,
+          n23: number,
+          n24: number,
+          n31: number,
+          n32: number,
+          n33: number,
+          n34: number,
+          n41: number,
+          n42: number,
+          n43: number,
+          n44: number
+        ]
+  ) {
+    if (this.obj) {
+      this.obj.bindMatrix = applyValue<Matrix4>(this.obj.bindMatrix, value);
+    }
+  }
+  @Input()
+  public set bindMatrixInverse(
+    value:
+      | Matrix4
+      | [
+          n11: number,
+          n12: number,
+          n13: number,
+          n14: number,
+          n21: number,
+          n22: number,
+          n23: number,
+          n24: number,
+          n31: number,
+          n32: number,
+          n33: number,
+          n34: number,
+          n41: number,
+          n42: number,
+          n43: number,
+          n44: number
+        ]
+  ) {
+    if (this.obj) {
+      this.obj.bindMatrixInverse = applyValue<Matrix4>(
+        this.obj.bindMatrixInverse,
+        value
+      );
+    }
+  }
+  @Input()
+  public set skeleton(value: Skeleton) {
+    if (this.obj) {
+      this.obj.skeleton = value;
+    }
   }
 }

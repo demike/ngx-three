@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Geometry } from "three";
 import { Material } from "three";
@@ -24,5 +25,40 @@ export class ThLine<
   protected obj!: Line<TGeometry, TMaterial>;
   protected getObjectType(): Type<Line<TGeometry, TMaterial>> {
     return Line;
+  }
+
+  @Input()
+  public set geometry(value: TGeometry) {
+    if (this.obj) {
+      this.obj.geometry = value;
+    }
+  }
+
+  @Input()
+  public set material(value: TMaterial) {
+    if (this.obj) {
+      this.obj.material = value;
+    }
+  }
+
+  @Input()
+  public set type(value: "Line" | "LineLoop" | "LineSegments" | string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
+  }
+
+  @Input()
+  public set morphTargetInfluences(value: number[]) {
+    if (this.obj) {
+      this.obj.morphTargetInfluences = value;
+    }
+  }
+
+  @Input()
+  public set morphTargetDictionary(value: { [key: string]: number }) {
+    if (this.obj) {
+      this.obj.morphTargetDictionary = value;
+    }
   }
 }

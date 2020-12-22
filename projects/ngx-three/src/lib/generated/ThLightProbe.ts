@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { SphericalHarmonics3 } from "three";
 import { Light } from "three";
@@ -21,5 +22,19 @@ export class ThLightProbe<
   protected obj!: LightProbe;
   protected getObjectType(): Type<LightProbe> {
     return LightProbe;
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
+  }
+
+  @Input()
+  public set sh(value: SphericalHarmonics3 | [coefficients: Vector3[]]) {
+    if (this.obj) {
+      this.obj.sh = applyValue<SphericalHarmonics3>(this.obj.sh, value);
+    }
   }
 }

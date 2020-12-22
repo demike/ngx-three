@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
 import { LineSegments } from "three";
@@ -33,5 +34,12 @@ export class ThGridHelper<
   protected obj!: GridHelper;
   protected getObjectType(): Type<GridHelper> {
     return GridHelper;
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
   }
 }

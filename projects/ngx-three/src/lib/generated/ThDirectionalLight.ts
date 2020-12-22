@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Color } from "three";
 import { Object3D } from "three";
@@ -24,5 +25,39 @@ export class ThDirectionalLight<
   protected obj!: DirectionalLight;
   protected getObjectType(): Type<DirectionalLight> {
     return DirectionalLight;
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
+  }
+
+  @Input()
+  public set position(value: Vector3 | [x: number, y: number, z: number]) {
+    if (this.obj) {
+      this.obj.position = applyValue<Vector3>(this.obj.position, value);
+    }
+  }
+  @Input()
+  public set target(value: Object3D) {
+    if (this.obj) {
+      this.obj.target = value;
+    }
+  }
+
+  @Input()
+  public set intensity(value: number) {
+    if (this.obj) {
+      this.obj.intensity = value;
+    }
+  }
+
+  @Input()
+  public set shadow(value: DirectionalLightShadow) {
+    if (this.obj) {
+      this.obj.shadow = value;
+    }
   }
 }

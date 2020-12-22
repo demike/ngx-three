@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Camera } from "three";
 import { LineSegments } from "three";
@@ -28,5 +29,26 @@ export class ThCameraHelper<
   protected obj!: CameraHelper;
   protected getObjectType(): Type<CameraHelper> {
     return CameraHelper;
+  }
+
+  @Input()
+  public set camera(value: Camera) {
+    if (this.obj) {
+      this.obj.camera = value;
+    }
+  }
+
+  @Input()
+  public set pointMap(value: { [id: string]: number[] }) {
+    if (this.obj) {
+      this.obj.pointMap = value;
+    }
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
   }
 }

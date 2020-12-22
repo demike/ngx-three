@@ -3,6 +3,8 @@ import * as prettier from 'prettier';
 import { MeshLambertMaterial, ParametricBufferGeometry } from 'three';
 import * as ts from 'typescript';
 
+const INGORED_MEMBERS = ['parent'];
+
 const pascalToCamelCase = (s: string) => `${s[0].toLowerCase()}${s.slice(1)}`;
 
 export class NgxThreeClass {
@@ -26,7 +28,7 @@ export class NgxThreeClass {
   }
 
   generate() {
-    const inputs = this.generateInputs(this.classDecl);
+    const inputs = this.generateMembers(this.classDecl);
     const directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);
 
     if (inputs.length > 0) {
@@ -36,7 +38,7 @@ export class NgxThreeClass {
       "import { SkipSelf, Self, Optional, forwardRef, Type } from '@angular/core';"
     );
     const constr = this.generateConstructor();
-    this.generateConstructorArsg();
+    this.generateConstructorArgs();
     this.generateBaseClassImports();
     const classHeader = this.generateClassHeader();
 
@@ -132,20 +134,40 @@ export class NgxThreeClass {
     return header;
   }
 
-  private generateInputs(classDeclaration: ts.ClassDeclaration): string {
+  private generateMembers(classDeclaration: ts.ClassDeclaration): string {
     let members = '';
+
     for (let member of classDeclaration.members) {
-      if (
-        ts.isPropertyDeclaration(member) &&
-        member.type &&
-        (member.type?.flags & ts.TypeFlags.NonPrimitive) ===
-          ts.TypeFlags.NonPrimitive
-      ) {
-        const type = this.typeChecker!.getTypeAtLocation(
-          (member as ts.PropertyDeclaration).type!
+      if (ts.isPropertyDeclaration(member) && member.type) {
+        let memberName = (member.name as ts.Identifier).escapedText as string;
+        if (
+          INGORED_MEMBERS.find((m) => m === memberName) ||
+          member.modifiers?.find(
+            (m) =>
+              m.kind === ts.SyntaxKind.PrivateKeyword ||
+              m.kind === ts.SyntaxKind.ProtectedKeyword
+          )
+        ) {
+          // it's private or protected, or in the ingore list --> do not expose
+          continue;
+        }
+
+        const type = this.typeChecker!.getTypeAtLocation(member.type);
+        const isReadonly = member.modifiers?.find(
+          (m) => m.kind === ts.SyntaxKind.ReadonlyKeyword
         );
-        members += this.generateSetterInput(
-          (member.name as ts.Identifier).escapedText as string,
+
+        if (!isReadonly) {
+          // generate the setter
+          members += this.generateSetterInput(
+            memberName,
+            member as ts.PropertyDeclaration,
+            type
+          );
+        }
+        // gerate the getter
+        members += this.generateGetter(
+          memberName,
           member as ts.PropertyDeclaration,
           type
         );
@@ -159,49 +181,81 @@ export class NgxThreeClass {
     member: ts.PropertyDeclaration,
     memberType: ts.Type
   ) {
-    if (
-      member.modifiers?.find(
-        (m) =>
-          m.kind === ts.SyntaxKind.PrivateKeyword ||
-          m.kind === ts.SyntaxKind.ProtectedKeyword
-      )
-    ) {
-      // it's private or protected --> do not expose
-      return;
-    }
-
     const isReadonly = member.modifiers?.find(
       (m) => m.kind === ts.SyntaxKind.ReadonlyKeyword
     );
-    const setter = memberType.getProperty('set')?.declarations[0];
 
-    if (isReadonly && !setter) {
-      // can't set it
-      return;
+    const isStatic = member.modifiers?.find(
+      (m) => m.kind === ts.SyntaxKind.StaticKeyword
+    );
+
+    if (isReadonly || isStatic) {
+      return '';
     }
+
+    const setters = this.getSettersOfMember(member);
 
     let str = `
     @Input()
-    public set ${memberName}( value: ${memberType.symbol.escapedName}`;
+    public set ${memberName}( value: ${member.type?.getText()}`;
 
-    if (isReadonly) {
-    } else if (setter && ts.isMethodDeclaration(setter)) {
-      // has a setter
-      str += `| [${setter.parameters.map((p) => p.getText()).join(',')}]) {
-        if(this.obj) {
-         this.obj.${memberName} = applyValue<${
-        memberType.symbol.escapedName
-      }>(this.obj.${memberName}, value);
-        }
-      }`;
-    } else {
+    if (setters.length === 0) {
       // no setter just set it
       str += `) {
-        if(this.obj) { this.obj.${memberName} = value;}
-      }
-      `;
+          if(this.obj) { this.obj.${memberName} = value;}
+        }
+          `;
+      return str;
     }
+
+    for (let setter of setters) {
+      str += `| [${setter.parameters.map((p) => p.getText()).join(',')}]`;
+    }
+
+    str += `) {
+      if(this.obj) {
+       this.obj.${memberName} = applyValue<${member.type?.getText()}>(this.obj.${memberName}, value);
+      }
+    }`;
+
     return str;
+  }
+
+  private getSettersOfMember(member: ts.PropertyDeclaration) {
+    let setters: ts.MethodDeclaration[] = [];
+    if (!member.type) {
+      return setters;
+    }
+
+    const tNodes: ts.Node[] = [];
+
+    if (ts.isUnionTypeNode(member.type)) {
+      tNodes.push(...member.type.types);
+    } else {
+      tNodes.push(member.type);
+      const type = this.typeChecker!.getTypeAtLocation(member.type).getProperty(
+        'set'
+      )?.declarations[0];
+    }
+
+    for (let tNode of tNodes) {
+      const decl = this.typeChecker!.getTypeAtLocation(tNode).getProperty('set')
+        ?.declarations[0];
+      if (decl && ts.isMethodDeclaration(decl)) {
+        setters.push(decl);
+      }
+    }
+
+    return setters;
+  }
+
+  public generateGetter(
+    memberName: string,
+    member: ts.PropertyDeclaration,
+    memberType: ts.Type
+  ) {
+    // TODO implement me
+    return ''; // return `public get${memberName}(): ${member.type?.getText()} { return this.obj?.${memberName}; }`;
   }
 
   private generateConstructor() {
@@ -216,7 +270,7 @@ export class NgxThreeClass {
     return '';
   }
 
-  private generateConstructorArsg() {
+  private generateConstructorArgs() {
     const symbol = ((this.classDecl as unknown) as ts.Type).symbol;
     let constructorType = this.typeChecker.getTypeOfSymbolAtLocation(
       symbol,

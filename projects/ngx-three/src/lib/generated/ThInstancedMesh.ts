@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Geometry } from "three";
 import { BufferGeometry } from "three";
@@ -32,5 +33,40 @@ export class ThInstancedMesh<
   protected obj!: InstancedMesh<TGeometry, TMaterial>;
   protected getObjectType(): Type<InstancedMesh<TGeometry, TMaterial>> {
     return InstancedMesh;
+  }
+
+  @Input()
+  public set count(value: number) {
+    if (this.obj) {
+      this.obj.count = value;
+    }
+  }
+
+  @Input()
+  public set instanceColor(
+    value:
+      | null
+      | BufferAttribute
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
+  ) {
+    if (this.obj) {
+      this.obj.instanceColor = applyValue<null | BufferAttribute>(
+        this.obj.instanceColor,
+        value
+      );
+    }
+  }
+  @Input()
+  public set instanceMatrix(
+    value:
+      | BufferAttribute
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
+  ) {
+    if (this.obj) {
+      this.obj.instanceMatrix = applyValue<BufferAttribute>(
+        this.obj.instanceMatrix,
+        value
+      );
+    }
   }
 }

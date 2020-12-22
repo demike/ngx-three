@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Box3 } from "three";
 import { Color } from "three";
@@ -29,5 +30,19 @@ export class ThBox3Helper<
   protected obj!: Box3Helper;
   protected getObjectType(): Type<Box3Helper> {
     return Box3Helper;
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
+  }
+
+  @Input()
+  public set box(value: Box3 | [min: Vector3, max: Vector3]) {
+    if (this.obj) {
+      this.obj.box = applyValue<Box3>(this.obj.box, value);
+    }
   }
 }

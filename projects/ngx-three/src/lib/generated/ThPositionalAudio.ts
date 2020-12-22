@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { AudioListener } from "three";
 import { Audio } from "three";
@@ -21,5 +22,12 @@ export class ThPositionalAudio<
   protected obj!: PositionalAudio;
   protected getObjectType(): Type<PositionalAudio> {
     return PositionalAudio;
+  }
+
+  @Input()
+  public set panner(value: PannerNode) {
+    if (this.obj) {
+      this.obj.panner = value;
+    }
   }
 }

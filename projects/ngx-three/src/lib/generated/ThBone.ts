@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Object3D } from "three";
 import { ThObject3D } from "./ThObject3D";
@@ -15,5 +16,12 @@ export class ThBone<TARGS extends any[] = []> extends ThObject3D<TARGS> {
   protected obj!: Bone;
   protected getObjectType(): Type<Bone> {
     return Bone;
+  }
+
+  @Input()
+  public set type(value: "Bone") {
+    if (this.obj) {
+      this.obj.type = value;
+    }
   }
 }

@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { LineSegments } from "three";
 import { Color } from "three";
@@ -35,5 +36,12 @@ export class ThPolarGridHelper<
   protected obj!: PolarGridHelper;
   protected getObjectType(): Type<PolarGridHelper> {
     return PolarGridHelper;
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
   }
 }

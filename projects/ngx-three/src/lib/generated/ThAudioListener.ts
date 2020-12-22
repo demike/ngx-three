@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Object3D } from "three";
 import { AudioContext } from "three";
@@ -20,5 +21,40 @@ export class ThAudioListener<
   protected obj!: AudioListener;
   protected getObjectType(): Type<AudioListener> {
     return AudioListener;
+  }
+
+  @Input()
+  public set type(value: "AudioListener") {
+    if (this.obj) {
+      this.obj.type = value;
+    }
+  }
+
+  @Input()
+  public set context(value: AudioContext) {
+    if (this.obj) {
+      this.obj.context = value;
+    }
+  }
+
+  @Input()
+  public set gain(value: GainNode) {
+    if (this.obj) {
+      this.obj.gain = value;
+    }
+  }
+
+  @Input()
+  public set filter(value: null | any) {
+    if (this.obj) {
+      this.obj.filter = value;
+    }
+  }
+
+  @Input()
+  public set timeDelta(value: number) {
+    if (this.obj) {
+      this.obj.timeDelta = value;
+    }
   }
 }

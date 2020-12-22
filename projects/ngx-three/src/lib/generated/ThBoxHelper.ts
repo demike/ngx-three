@@ -1,3 +1,4 @@
+import { Input } from "@angular/core";
 import { SkipSelf, Self, Optional, forwardRef, Type } from "@angular/core";
 import { Object3D } from "three";
 import { Color } from "three";
@@ -29,5 +30,12 @@ export class ThBoxHelper<
   protected obj!: BoxHelper;
   protected getObjectType(): Type<BoxHelper> {
     return BoxHelper;
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this.obj) {
+      this.obj.type = value;
+    }
   }
 }

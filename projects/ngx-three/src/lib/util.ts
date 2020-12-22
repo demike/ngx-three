@@ -3,6 +3,10 @@ export interface ThSettable {
   copy?(value: any): this;
 }
 
+export function isSettable(obj: any): obj is ThSettable {
+  return obj && obj.set; // && obj.copy;
+}
+
 /**
  * tries to apply the new value to the target.
  * if the new value is 'setter arguments' then it uses set on the target.
@@ -11,24 +15,34 @@ export interface ThSettable {
  * if newValue is undefined the old target is returned
  * @param target the target for the new value
  * @param newValue
+ * @returns the new target(value)
  */
-export function applyValue<T extends ThSettable>(
-  target: T,
-  newValue?: any[] | T
-): T {
-  if (newValue === undefined) {
-    return target as T;
+export function applyValue<T>(target: T, newValue?: any[] | T): T {
+  if (isSettable(target)) {
+    if (newValue == undefined) {
+      return target as T;
+    }
+
+    if (Array.isArray(newValue)) {
+      target.set(...newValue);
+      return target as T;
+    }
+
+    if (target.copy && newValue) {
+      target.copy(newValue);
+      return target as T;
+    }
+
+    // just set the value
+    if (newValue !== undefined) {
+      target.set(newValue);
+      return target;
+    }
+  } else {
+    // apply the value
+    return newValue as T;
   }
 
-  if (Array.isArray(newValue)) {
-    target.set(newValue);
-    return target as T;
-  }
-
-  if (target.copy) {
-    target.copy(newValue);
-    return target as T;
-  }
-
-  return newValue as T;
+  // nothing to do
+  return target;
 }
