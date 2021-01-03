@@ -32,7 +32,7 @@ export class ThPlaneHelper<
   Material | Material[],
   TARGS
 > {
-  protected obj!: PlaneHelper;
+  public obj!: PlaneHelper;
   protected getObjectType(): Type<PlaneHelper> {
     return PlaneHelper;
   }

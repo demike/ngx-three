@@ -26,7 +26,7 @@ export class ThHemisphereLightProbe<
     intensity: number
   ]
 > extends ThLightProbe<TARGS> {
-  protected obj!: HemisphereLightProbe;
+  public obj!: HemisphereLightProbe;
   protected getObjectType(): Type<HemisphereLightProbe> {
     return HemisphereLightProbe;
   }

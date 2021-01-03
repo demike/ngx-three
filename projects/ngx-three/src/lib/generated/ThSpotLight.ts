@@ -28,7 +28,7 @@ export class ThSpotLight<
     decay: number
   ]
 > extends ThLight<TARGS> {
-  protected obj!: SpotLight;
+  public obj!: SpotLight;
   protected getObjectType(): Type<SpotLight> {
     return SpotLight;
   }

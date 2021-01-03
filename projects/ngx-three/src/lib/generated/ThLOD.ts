@@ -15,7 +15,7 @@ import { ThObject3D } from "./ThObject3D";
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLOD) }],
 })
 export class ThLOD<TARGS extends any[] = []> extends ThObject3D<TARGS> {
-  protected obj!: LOD;
+  public obj!: LOD;
   protected getObjectType(): Type<LOD> {
     return LOD;
   }

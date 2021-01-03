@@ -18,7 +18,7 @@ import { ThObject3D } from "./ThObject3D";
 export class ThLight<
   TARGS extends any[] = [hex: number | string, intensity: number]
 > extends ThObject3D<TARGS> {
-  protected obj!: Light;
+  public obj!: Light;
   protected getObjectType(): Type<Light> {
     return Light;
   }

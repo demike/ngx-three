@@ -37,7 +37,7 @@ export class ThPolarGridHelper<
   Material | Material[],
   TARGS
 > {
-  protected obj!: PolarGridHelper;
+  public obj!: PolarGridHelper;
   protected getObjectType(): Type<PolarGridHelper> {
     return PolarGridHelper;
   }

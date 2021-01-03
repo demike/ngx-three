@@ -5,34 +5,37 @@ import {
   Input,
   SkipSelf,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   AnimationClip,
   BufferGeometry,
   Camera,
+  Euler,
   Geometry,
   Group,
   Layers,
   Material,
+  Matrix3,
   Matrix4,
   Object3D,
+  Quaternion,
   Scene,
   Vector3,
   WebGLRenderer,
-} from "three";
-import { ThWrapperBase } from "../ThWrapperBase";
-import { applyValue } from "../util";
+} from 'three';
+import { ThWrapperBase } from '../ThWrapperBase';
+import { applyValue } from '../util';
 
 @Component({
-  selector: "th-object3D",
-  template: "",
+  selector: 'th-object3D',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThObject3D) },
   ],
 })
 export class ThObject3D<TARGS extends any[] = []> extends ThWrapperBase<TARGS> {
-  protected obj!: Object3D;
+  public obj!: Object3D;
   protected getObjectType(): Type<Object3D> {
     return Object3D;
   }
@@ -76,6 +79,81 @@ export class ThObject3D<TARGS extends any[] = []> extends ThWrapperBase<TARGS> {
   public set up(value: Vector3 | [x: number, y: number, z: number]) {
     if (this.obj) {
       this.obj.up = applyValue<Vector3>(this.obj.up, value);
+    }
+  }
+  @Input()
+  public set position(value: Vector3 | [x: number, y: number, z: number]) {
+    if (this.obj) {
+      applyValue<Vector3>(this.obj.position, value);
+    }
+  }
+  @Input()
+  public set rotation(
+    value: Euler | [x: number, y: number, z: number, order?: string]
+  ) {
+    if (this.obj) {
+      applyValue<Euler>(this.obj.rotation, value);
+    }
+  }
+  @Input()
+  public set quaternion(
+    value: Quaternion | [x: number, y: number, z: number, w: number]
+  ) {
+    if (this.obj) {
+      applyValue<Quaternion>(this.obj.quaternion, value);
+    }
+  }
+  @Input()
+  public set scale(value: Vector3 | [x: number, y: number, z: number]) {
+    if (this.obj) {
+      applyValue<Vector3>(this.obj.scale, value);
+    }
+  }
+  @Input()
+  public set modelViewMatrix(
+    value:
+      | Matrix4
+      | [
+          n11: number,
+          n12: number,
+          n13: number,
+          n14: number,
+          n21: number,
+          n22: number,
+          n23: number,
+          n24: number,
+          n31: number,
+          n32: number,
+          n33: number,
+          n34: number,
+          n41: number,
+          n42: number,
+          n43: number,
+          n44: number
+        ]
+  ) {
+    if (this.obj) {
+      applyValue<Matrix4>(this.obj.modelViewMatrix, value);
+    }
+  }
+  @Input()
+  public set normalMatrix(
+    value:
+      | Matrix3
+      | [
+          n11: number,
+          n12: number,
+          n13: number,
+          n21: number,
+          n22: number,
+          n23: number,
+          n31: number,
+          n32: number,
+          n33: number
+        ]
+  ) {
+    if (this.obj) {
+      applyValue<Matrix3>(this.obj.normalMatrix, value);
     }
   }
   @Input()

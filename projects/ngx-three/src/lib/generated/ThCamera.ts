@@ -16,7 +16,7 @@ import { ThObject3D } from "./ThObject3D";
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
 })
 export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
-  protected obj!: Camera;
+  public obj!: Camera;
   protected getObjectType(): Type<Camera> {
     return Camera;
   }

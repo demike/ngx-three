@@ -20,7 +20,7 @@ import { ThPerspectiveCamera } from "./ThPerspectiveCamera";
 export class ThArrayCamera<
   TARGS extends any[] = [cameras: PerspectiveCamera[]]
 > extends ThPerspectiveCamera<TARGS> {
-  protected obj!: ArrayCamera;
+  public obj!: ArrayCamera;
   protected getObjectType(): Type<ArrayCamera> {
     return ArrayCamera;
   }

@@ -25,7 +25,7 @@ export class ThRectAreaLight<
     height: number
   ]
 > extends ThLight<TARGS> {
-  protected obj!: RectAreaLight;
+  public obj!: RectAreaLight;
   protected getObjectType(): Type<RectAreaLight> {
     return RectAreaLight;
   }

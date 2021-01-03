@@ -20,7 +20,7 @@ import { ThObject3D } from "./ThObject3D";
 export class ThPositionalAudio<
   TARGS extends any[] = [listener: AudioListener]
 > extends ThAudio<PannerNode, TARGS> {
-  protected obj!: PositionalAudio;
+  public obj!: PositionalAudio;
   protected getObjectType(): Type<PositionalAudio> {
     return PositionalAudio;
   }

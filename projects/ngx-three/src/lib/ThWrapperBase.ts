@@ -1,17 +1,20 @@
 import {
   Component,
+  Input,
   OnChanges,
   OnInit,
   SimpleChanges,
   Type,
 } from '@angular/core';
-import { Object3D } from 'three';
+import { Object3D, Vector3 } from 'three';
 @Component({
   selector: 'abs-th-wrapper',
   template: '',
 })
-export class ThWrapperBase<T> implements OnChanges, OnInit {
-  protected obj?: Object3D;
+export class ThWrapperBase<T extends any[]> implements OnChanges, OnInit {
+  public obj?: Object3D;
+
+  @Input()
   public args?: T;
 
   constructor(protected parent: ThWrapperBase<any>) {
@@ -34,7 +37,11 @@ export class ThWrapperBase<T> implements OnChanges, OnInit {
       return;
     }
 
-    this.createObject(changes['args']?.currentValue);
+    if (changes['obj']?.currentValue) {
+      this.obj = changes['obj']?.currentValue;
+    } else {
+      this.createObject(changes['args']?.currentValue);
+    }
 
     for (let key in changes) {
       (this as any)[key] = changes[key].currentValue;
@@ -43,5 +50,18 @@ export class ThWrapperBase<T> implements OnChanges, OnInit {
 
   protected getObjectType(): Type<Object3D> {
     throw new Error('derive me');
+  }
+
+  // object 3d methods
+  @Input()
+  public set lookAt(vector: Vector3 | [x: number, y?: number, z?: number]) {
+    if (!this.obj) {
+      return;
+    }
+    if (Array.isArray(vector)) {
+      this.obj.lookAt(...vector);
+    } else {
+      this.obj.lookAt(vector);
+    }
   }
 }

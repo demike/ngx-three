@@ -33,7 +33,7 @@ export class ThSkeletonHelper<
   Material | Material[],
   TARGS
 > {
-  protected obj!: SkeletonHelper;
+  public obj!: SkeletonHelper;
   protected getObjectType(): Type<SkeletonHelper> {
     return SkeletonHelper;
   }

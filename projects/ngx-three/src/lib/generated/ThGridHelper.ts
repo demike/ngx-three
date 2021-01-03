@@ -29,7 +29,7 @@ export class ThGridHelper<
   Material | Material[],
   TARGS
 > {
-  protected obj!: GridHelper;
+  public obj!: GridHelper;
   protected getObjectType(): Type<GridHelper> {
     return GridHelper;
   }

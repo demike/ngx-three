@@ -33,7 +33,7 @@ export class ThHemisphereLightHelper<
     color: Color | number | string
   ]
 > extends ThObject3D<TARGS> {
-  protected obj!: HemisphereLightHelper;
+  public obj!: HemisphereLightHelper;
   protected getObjectType(): Type<HemisphereLightHelper> {
     return HemisphereLightHelper;
   }

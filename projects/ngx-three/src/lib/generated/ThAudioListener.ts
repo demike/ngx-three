@@ -19,7 +19,7 @@ import { ThObject3D } from "./ThObject3D";
 export class ThAudioListener<
   TARGS extends any[] = []
 > extends ThObject3D<TARGS> {
-  protected obj!: AudioListener;
+  public obj!: AudioListener;
   protected getObjectType(): Type<AudioListener> {
     return AudioListener;
   }

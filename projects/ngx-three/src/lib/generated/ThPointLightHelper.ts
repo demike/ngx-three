@@ -24,7 +24,7 @@ export class ThPointLightHelper<
     color: Color | string | number
   ]
 > extends ThObject3D<TARGS> {
-  protected obj!: PointLightHelper;
+  public obj!: PointLightHelper;
   protected getObjectType(): Type<PointLightHelper> {
     return PointLightHelper;
   }

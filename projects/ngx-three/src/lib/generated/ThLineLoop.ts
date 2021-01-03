@@ -22,7 +22,7 @@ export class ThLineLoop<
   TMaterial extends Material | Material[] = Material | Material[],
   TARGS extends any[] = [geometry: TGeometry, material: TMaterial]
 > extends ThLine<TGeometry, TMaterial, TARGS> {
-  protected obj!: LineLoop<TGeometry, TMaterial>;
+  public obj!: LineLoop<TGeometry, TMaterial>;
   protected getObjectType(): Type<LineLoop<TGeometry, TMaterial>> {
     return LineLoop;
   }

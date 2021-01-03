@@ -33,7 +33,7 @@ export class ThBox3Helper<
   Material | Material[],
   TARGS
 > {
-  protected obj!: Box3Helper;
+  public obj!: Box3Helper;
   protected getObjectType(): Type<Box3Helper> {
     return Box3Helper;
   }

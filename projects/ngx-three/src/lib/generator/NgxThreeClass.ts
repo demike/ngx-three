@@ -61,7 +61,7 @@ export class NgxThreeClass {
           })}]
         })
         ${classHeader} {
-          protected obj!: ${this.wrappedClassName}${
+          public obj!: ${this.wrappedClassName}${
       this.wrappedClassGenericTypeNames
     };
           protected getObjectType(): Type<${this.wrappedClassName}${
@@ -141,14 +141,12 @@ export class NgxThreeClass {
           (m) => m.kind === ts.SyntaxKind.ReadonlyKeyword
         );
 
-        if (!isReadonly) {
-          // generate the setter
-          members += this.generateSetterInput(
-            memberName,
-            member as ts.PropertyDeclaration,
-            type
-          );
-        }
+        // generate the setter
+        members += this.generateSetterInput(
+          memberName,
+          member as ts.PropertyDeclaration,
+          type
+        );
         // gerate the getter
         members += this.generateGetter(
           memberName,
@@ -173,11 +171,15 @@ export class NgxThreeClass {
       (m) => m.kind === ts.SyntaxKind.StaticKeyword
     );
 
-    if (isReadonly || isStatic) {
+    if (isStatic) {
       return '';
     }
 
     const setters = this.getSettersOfMember(member);
+
+    if (setters.length === 0 && isReadonly) {
+      return '';
+    }
 
     let str = `
     @Input()
@@ -198,11 +200,19 @@ export class NgxThreeClass {
       str += `| [${setter.parameters.map((p) => p.getText()).join(',')}]`;
     }
 
-    str += `) {
+    if (!isReadonly) {
+      str += `) {
       if(this.obj) {
        this.obj.${memberName} = applyValue<${member.type?.getText()}>(this.obj.${memberName}, value);
       }
     }`;
+    } else {
+      str += `) {
+        if(this.obj) {
+         applyValue<${member.type?.getText()}>(this.obj.${memberName}, value);
+        }
+      }`;
+    }
 
     return str;
   }

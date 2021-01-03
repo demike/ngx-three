@@ -24,7 +24,7 @@ export class ThAxesHelper<
   Material | Material[],
   TARGS
 > {
-  protected obj!: AxesHelper;
+  public obj!: AxesHelper;
   protected getObjectType(): Type<AxesHelper> {
     return AxesHelper;
   }

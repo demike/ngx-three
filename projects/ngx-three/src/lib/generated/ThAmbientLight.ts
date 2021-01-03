@@ -20,7 +20,7 @@ import { ThObject3D } from "./ThObject3D";
 export class ThAmbientLight<
   TARGS extends any[] = [color: Color | string | number, intensity: number]
 > extends ThLight<TARGS> {
-  protected obj!: AmbientLight;
+  public obj!: AmbientLight;
   protected getObjectType(): Type<AmbientLight> {
     return AmbientLight;
   }

@@ -30,7 +30,7 @@ export class ThCameraHelper<
   Material | Material[],
   TARGS
 > {
-  protected obj!: CameraHelper;
+  public obj!: CameraHelper;
   protected getObjectType(): Type<CameraHelper> {
     return CameraHelper;
   }

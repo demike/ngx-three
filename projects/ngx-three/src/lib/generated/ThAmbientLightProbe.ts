@@ -19,7 +19,7 @@ import { ThObject3D } from "./ThObject3D";
 export class ThAmbientLightProbe<
   TARGS extends any[] = [color: Color | string | number, intensity: number]
 > extends ThLightProbe<TARGS> {
-  protected obj!: AmbientLightProbe;
+  public obj!: AmbientLightProbe;
   protected getObjectType(): Type<AmbientLightProbe> {
     return AmbientLightProbe;
   }

@@ -1,0 +1,10 @@
+:host {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}
+
+canvas {
+  flex: 1;
+  outline: none;
+}

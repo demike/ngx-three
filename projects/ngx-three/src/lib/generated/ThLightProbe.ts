@@ -21,7 +21,7 @@ import { ThObject3D } from "./ThObject3D";
 export class ThLightProbe<
   TARGS extends any[] = [sh: SphericalHarmonics3, intensity: number]
 > extends ThLight<TARGS> {
-  protected obj!: LightProbe;
+  public obj!: LightProbe;
   protected getObjectType(): Type<LightProbe> {
     return LightProbe;
   }
