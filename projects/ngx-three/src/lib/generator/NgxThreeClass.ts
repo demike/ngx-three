@@ -9,9 +9,10 @@ export class NgxThreeClass {
   public readonly className: string;
   private classDecl: ts.ClassDeclaration;
   public readonly wrappedClassName: string;
-  private imports: Set<string> = new Set<string>();
+  protected imports: Set<string> = new Set<string>();
   private constructorArgs = '[]';
   private wrappedClassGenericTypeNames = ''; // i.e.: "<T,U>"
+  private inputs: string = '';
 
   constructor(
     private classSymbol: ts.Symbol,
@@ -25,10 +26,10 @@ export class NgxThreeClass {
   }
 
   generate() {
-    const inputs = this.generateMembers(this.classDecl);
+    this.inputs = this.generateMembers(this.classDecl);
     const directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);
 
-    if (inputs.length > 0) {
+    if (this.inputs.length > 0) {
       this.imports.add("import { Input } from '@angular/core';");
     }
     this.imports.add(
@@ -44,9 +45,6 @@ export class NgxThreeClass {
       "import { Component, ChangeDetectionStrategy } from '@angular/core';"
     );
 
-    if (this.className != 'ThObject3D') {
-      this.imports.add("import { ThObject3D } from './ThObject3D';");
-    }
     this.imports.add("import { applyValue } from '../util';");
 
     const ngxClassDeclarationString = `  
@@ -56,23 +54,25 @@ export class NgxThreeClass {
           selector: "${directiveName}",
           template: "",
           changeDetection: ChangeDetectionStrategy.OnPush,
-          providers: [{provide: ThObject3D, useExisting: forwardRef(() => ${
-            this.className
-          })}]
+          providers: ${this.generateProvidersArray()}
         })
         ${classHeader} {
           public obj!: ${this.wrappedClassName}${
       this.wrappedClassGenericTypeNames
     };
-          protected getObjectType(): Type<${this.wrappedClassName}${
+          protected getType(): Type<${this.wrappedClassName}${
       this.wrappedClassGenericTypeNames
     }> { return ${this.wrappedClassName}};
-          ${inputs}
+          ${this.inputs}
           ${constr}
         }
         `;
 
     this.content = ngxClassDeclarationString;
+  }
+
+  protected generateProvidersArray() {
+    return `[{provide: ThObject3D, useExisting: forwardRef(() => ${this.className})}]`;
   }
 
   private generateClassHeader() {

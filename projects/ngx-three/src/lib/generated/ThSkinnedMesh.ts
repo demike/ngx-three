@@ -35,7 +35,7 @@ export class ThSkinnedMesh<
   ]
 > extends ThMesh<TGeometry, TMaterial, TARGS> {
   public obj!: SkinnedMesh<TGeometry, TMaterial>;
-  protected getObjectType(): Type<SkinnedMesh<TGeometry, TMaterial>> {
+  protected getType(): Type<SkinnedMesh<TGeometry, TMaterial>> {
     return SkinnedMesh;
   }
 

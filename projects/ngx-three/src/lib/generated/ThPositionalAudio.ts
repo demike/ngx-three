@@ -21,7 +21,7 @@ export class ThPositionalAudio<
   TARGS extends any[] = [listener: AudioListener]
 > extends ThAudio<PannerNode, TARGS> {
   public obj!: PositionalAudio;
-  protected getObjectType(): Type<PositionalAudio> {
+  protected getType(): Type<PositionalAudio> {
     return PositionalAudio;
   }
 

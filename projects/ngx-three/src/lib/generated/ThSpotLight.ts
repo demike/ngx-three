@@ -29,7 +29,7 @@ export class ThSpotLight<
   ]
 > extends ThLight<TARGS> {
   public obj!: SpotLight;
-  protected getObjectType(): Type<SpotLight> {
+  protected getType(): Type<SpotLight> {
     return SpotLight;
   }
 

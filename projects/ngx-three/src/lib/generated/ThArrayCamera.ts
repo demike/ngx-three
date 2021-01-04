@@ -21,7 +21,7 @@ export class ThArrayCamera<
   TARGS extends any[] = [cameras: PerspectiveCamera[]]
 > extends ThPerspectiveCamera<TARGS> {
   public obj!: ArrayCamera;
-  protected getObjectType(): Type<ArrayCamera> {
+  protected getType(): Type<ArrayCamera> {
     return ArrayCamera;
   }
 

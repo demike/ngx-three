@@ -33,7 +33,7 @@ export class ThPlaneHelper<
   TARGS
 > {
   public obj!: PlaneHelper;
-  protected getObjectType(): Type<PlaneHelper> {
+  protected getType(): Type<PlaneHelper> {
     return PlaneHelper;
   }
 

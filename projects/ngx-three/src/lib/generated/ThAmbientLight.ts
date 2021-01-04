@@ -21,7 +21,7 @@ export class ThAmbientLight<
   TARGS extends any[] = [color: Color | string | number, intensity: number]
 > extends ThLight<TARGS> {
   public obj!: AmbientLight;
-  protected getObjectType(): Type<AmbientLight> {
+  protected getType(): Type<AmbientLight> {
     return AmbientLight;
   }
 

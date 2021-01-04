@@ -30,7 +30,7 @@ export class ThGridHelper<
   TARGS
 > {
   public obj!: GridHelper;
-  protected getObjectType(): Type<GridHelper> {
+  protected getType(): Type<GridHelper> {
     return GridHelper;
   }
 

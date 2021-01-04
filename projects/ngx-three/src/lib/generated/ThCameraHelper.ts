@@ -31,7 +31,7 @@ export class ThCameraHelper<
   TARGS
 > {
   public obj!: CameraHelper;
-  protected getObjectType(): Type<CameraHelper> {
+  protected getType(): Type<CameraHelper> {
     return CameraHelper;
   }
 

@@ -27,7 +27,7 @@ import { ThObject3D } from "./ThObject3D";
 })
 export class ThScene<TARGS extends any[] = []> extends ThObject3D<TARGS> {
   public obj!: Scene;
-  protected getObjectType(): Type<Scene> {
+  protected getType(): Type<Scene> {
     return Scene;
   }
 

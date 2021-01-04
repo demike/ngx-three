@@ -27,7 +27,7 @@ export class ThWrapperBase<T extends any[]> implements OnChanges, OnInit {
   }
 
   protected createObject(args?: Iterable<any>) {
-    this.obj = new (this.getObjectType())(...(args ?? []));
+    this.obj = new (this.getType())(...(args ?? []));
     this.parent.obj?.add(this.obj);
   }
 
@@ -48,7 +48,7 @@ export class ThWrapperBase<T extends any[]> implements OnChanges, OnInit {
     }
   }
 
-  protected getObjectType(): Type<Object3D> {
+  protected getType(): Type<Object3D> {
     throw new Error('derive me');
   }
 

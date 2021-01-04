@@ -20,7 +20,7 @@ export class ThPoints<
   TARGS extends any[] = [geometry: TGeometry, material: TMaterial]
 > extends ThObject3D<TARGS> {
   public obj!: Points<TGeometry, TMaterial>;
-  protected getObjectType(): Type<Points<TGeometry, TMaterial>> {
+  protected getType(): Type<Points<TGeometry, TMaterial>> {
     return Points;
   }
 

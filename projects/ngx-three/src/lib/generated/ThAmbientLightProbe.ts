@@ -20,7 +20,7 @@ export class ThAmbientLightProbe<
   TARGS extends any[] = [color: Color | string | number, intensity: number]
 > extends ThLightProbe<TARGS> {
   public obj!: AmbientLightProbe;
-  protected getObjectType(): Type<AmbientLightProbe> {
+  protected getType(): Type<AmbientLightProbe> {
     return AmbientLightProbe;
   }
 }

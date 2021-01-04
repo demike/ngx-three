@@ -20,7 +20,7 @@ export class ThLine<
   TARGS extends any[] = [geometry: TGeometry, material: TMaterial, mode: number]
 > extends ThObject3D<TARGS> {
   public obj!: Line<TGeometry, TMaterial>;
-  protected getObjectType(): Type<Line<TGeometry, TMaterial>> {
+  protected getType(): Type<Line<TGeometry, TMaterial>> {
     return Line;
   }
 

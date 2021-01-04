@@ -23,7 +23,7 @@ export class ThImmediateRenderObject<
   TARGS extends any[] = [material: Material]
 > extends ThObject3D<TARGS> {
   public obj!: ImmediateRenderObject;
-  protected getObjectType(): Type<ImmediateRenderObject> {
+  protected getType(): Type<ImmediateRenderObject> {
     return ImmediateRenderObject;
   }
 

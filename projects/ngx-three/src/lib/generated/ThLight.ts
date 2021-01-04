@@ -19,7 +19,7 @@ export class ThLight<
   TARGS extends any[] = [hex: number | string, intensity: number]
 > extends ThObject3D<TARGS> {
   public obj!: Light;
-  protected getObjectType(): Type<Light> {
+  protected getType(): Type<Light> {
     return Light;
   }
 

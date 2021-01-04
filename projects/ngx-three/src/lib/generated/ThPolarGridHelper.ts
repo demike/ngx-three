@@ -38,7 +38,7 @@ export class ThPolarGridHelper<
   TARGS
 > {
   public obj!: PolarGridHelper;
-  protected getObjectType(): Type<PolarGridHelper> {
+  protected getType(): Type<PolarGridHelper> {
     return PolarGridHelper;
   }
 

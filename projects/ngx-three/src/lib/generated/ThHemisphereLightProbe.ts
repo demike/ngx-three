@@ -27,7 +27,7 @@ export class ThHemisphereLightProbe<
   ]
 > extends ThLightProbe<TARGS> {
   public obj!: HemisphereLightProbe;
-  protected getObjectType(): Type<HemisphereLightProbe> {
+  protected getType(): Type<HemisphereLightProbe> {
     return HemisphereLightProbe;
   }
 }

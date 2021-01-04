@@ -34,7 +34,7 @@ export class ThSkeletonHelper<
   TARGS
 > {
   public obj!: SkeletonHelper;
-  protected getObjectType(): Type<SkeletonHelper> {
+  protected getType(): Type<SkeletonHelper> {
     return SkeletonHelper;
   }
 

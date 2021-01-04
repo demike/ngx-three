@@ -26,7 +26,7 @@ export class ThPointLight<
   ]
 > extends ThLight<TARGS> {
   public obj!: PointLight;
-  protected getObjectType(): Type<PointLight> {
+  protected getType(): Type<PointLight> {
     return PointLight;
   }
 

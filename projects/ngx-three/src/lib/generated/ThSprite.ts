@@ -19,7 +19,7 @@ export class ThSprite<
   TARGS extends any[] = [material: SpriteMaterial]
 > extends ThObject3D<TARGS> {
   public obj!: Sprite;
-  protected getObjectType(): Type<Sprite> {
+  protected getType(): Type<Sprite> {
     return Sprite;
   }
 

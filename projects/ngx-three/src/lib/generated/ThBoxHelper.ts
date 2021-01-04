@@ -32,7 +32,7 @@ export class ThBoxHelper<
   TARGS
 > {
   public obj!: BoxHelper;
-  protected getObjectType(): Type<BoxHelper> {
+  protected getType(): Type<BoxHelper> {
     return BoxHelper;
   }
 

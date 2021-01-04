@@ -17,7 +17,7 @@ import { ThObject3D } from "./ThObject3D";
 })
 export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
   public obj!: Camera;
-  protected getObjectType(): Type<Camera> {
+  protected getType(): Type<Camera> {
     return Camera;
   }
 

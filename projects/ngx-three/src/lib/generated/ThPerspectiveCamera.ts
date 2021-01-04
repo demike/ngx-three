@@ -4,30 +4,29 @@ import {
   forwardRef,
   Input,
   Type,
-} from '@angular/core';
-import { PerspectiveCamera } from 'three';
-import { ThCamera } from './ThCamera';
-import { ThObject3D } from './ThObject3D';
+} from "@angular/core";
+import { PerspectiveCamera } from "three";
+import { ThCamera } from "./ThCamera";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
-  selector: 'th-perspectiveCamera',
-  template: '',
+  selector: "th-perspectiveCamera",
+  template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThPerspectiveCamera) },
-    { provide: ThCamera, useExisting: forwardRef(() => ThPerspectiveCamera) },
   ],
 })
 export class ThPerspectiveCamera<
   TARGS extends any[] = [fov: number, aspect: number, near: number, far: number]
 > extends ThCamera<TARGS> {
   public obj!: PerspectiveCamera;
-  protected getObjectType(): Type<PerspectiveCamera> {
+  protected getType(): Type<PerspectiveCamera> {
     return PerspectiveCamera;
   }
 
   @Input()
-  public set type(value: 'PerspectiveCamera') {
+  public set type(value: "PerspectiveCamera") {
     if (this.obj) {
       this.obj.type = value;
     }

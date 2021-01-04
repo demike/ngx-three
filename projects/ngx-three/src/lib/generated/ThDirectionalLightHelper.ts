@@ -34,7 +34,7 @@ export class ThDirectionalLightHelper<
   ]
 > extends ThObject3D<TARGS> {
   public obj!: DirectionalLightHelper;
-  protected getObjectType(): Type<DirectionalLightHelper> {
+  protected getType(): Type<DirectionalLightHelper> {
     return DirectionalLightHelper;
   }
 

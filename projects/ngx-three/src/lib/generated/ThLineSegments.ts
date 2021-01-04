@@ -23,7 +23,7 @@ export class ThLineSegments<
   TARGS extends any[] = [geometry: TGeometry, material: TMaterial]
 > extends ThLine<TGeometry, TMaterial, TARGS> {
   public obj!: LineSegments<TGeometry, TMaterial>;
-  protected getObjectType(): Type<LineSegments<TGeometry, TMaterial>> {
+  protected getType(): Type<LineSegments<TGeometry, TMaterial>> {
     return LineSegments;
   }
 

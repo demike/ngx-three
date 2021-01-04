@@ -5,10 +5,11 @@ import { NgxThreeClass } from './NgxThreeClass';
 import { NgxThreeModuleGen } from './NgxThreeModuleGen';
 import * as prettier from 'prettier';
 import { ImportOrganizer } from './ImportOrganizer';
+import { NgxThreeObject } from './NgxThreeObject';
 
 class NgxThreeClassGenerator {
   public readonly baseOutPath = join(__dirname, '../generated');
-  public readonly ngxThreeClassMap = new Map<string, NgxThreeClass>();
+  public readonly ngxThreeClassMap = new Map<string, NgxThreeObject>();
   private typeChecker?: ts.TypeChecker;
 
   constructor() {}
@@ -24,8 +25,8 @@ class NgxThreeClassGenerator {
     this.generateNgxModule(Array.from(this.ngxThreeClassMap.keys()));
   }
 
-  private generateNgxThreeClass(classSymbol: ts.Symbol): NgxThreeClass {
-    const ngxClass = new NgxThreeClass(classSymbol, this.typeChecker!);
+  private generateNgxThreeClass(classSymbol: ts.Symbol): NgxThreeObject {
+    const ngxClass = new NgxThreeObject(classSymbol, this.typeChecker!);
     ngxClass.generate();
 
     return ngxClass;

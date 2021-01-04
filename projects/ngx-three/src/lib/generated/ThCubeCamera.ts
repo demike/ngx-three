@@ -24,7 +24,7 @@ export class ThCubeCamera<
   ]
 > extends ThObject3D<TARGS> {
   public obj!: CubeCamera;
-  protected getObjectType(): Type<CubeCamera> {
+  protected getType(): Type<CubeCamera> {
     return CubeCamera;
   }
 

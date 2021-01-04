@@ -19,7 +19,7 @@ export class ThAudio<
   TARGS extends any[] = [listener: AudioListener]
 > extends ThObject3D<TARGS> {
   public obj!: Audio<NodeType>;
-  protected getObjectType(): Type<Audio<NodeType>> {
+  protected getType(): Type<Audio<NodeType>> {
     return Audio;
   }
 

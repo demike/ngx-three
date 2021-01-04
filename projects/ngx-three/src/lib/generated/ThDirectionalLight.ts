@@ -4,21 +4,21 @@ import {
   forwardRef,
   Input,
   Type,
-} from '@angular/core';
+} from "@angular/core";
 import {
   Color,
   DirectionalLight,
   DirectionalLightShadow,
   Object3D,
   Vector3,
-} from 'three';
-import { applyValue } from '../util';
-import { ThLight } from './ThLight';
-import { ThObject3D } from './ThObject3D';
+} from "three";
+import { applyValue } from "../util";
+import { ThLight } from "./ThLight";
+import { ThObject3D } from "./ThObject3D";
 
 @Component({
-  selector: 'th-directionalLight',
-  template: '',
+  selector: "th-directionalLight",
+  template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThDirectionalLight) },
@@ -28,7 +28,7 @@ export class ThDirectionalLight<
   TARGS extends any[] = [color: Color | string | number, intensity: number]
 > extends ThLight<TARGS> {
   public obj!: DirectionalLight;
-  protected getObjectType(): Type<DirectionalLight> {
+  protected getType(): Type<DirectionalLight> {
     return DirectionalLight;
   }
 

@@ -34,7 +34,7 @@ export class ThBox3Helper<
   TARGS
 > {
   public obj!: Box3Helper;
-  protected getObjectType(): Type<Box3Helper> {
+  protected getType(): Type<Box3Helper> {
     return Box3Helper;
   }
 

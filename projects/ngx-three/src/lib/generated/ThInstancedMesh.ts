@@ -34,7 +34,7 @@ export class ThInstancedMesh<
   ]
 > extends ThMesh<TGeometry, TMaterial, TARGS> {
   public obj!: InstancedMesh<TGeometry, TMaterial>;
-  protected getObjectType(): Type<InstancedMesh<TGeometry, TMaterial>> {
+  protected getType(): Type<InstancedMesh<TGeometry, TMaterial>> {
     return InstancedMesh;
   }
 
