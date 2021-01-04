@@ -4,20 +4,21 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { OrthographicCamera } from "three";
-import { ThCamera } from "./ThCamera";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { OrthographicCamera } from 'three';
+import { ThCamera } from './ThCamera';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-orthographicCamera",
-  template: "",
+  selector: 'th-orthographicCamera',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: ThObject3D,
       useExisting: forwardRef(() => ThOrthographicCamera),
     },
+    { provide: ThCamera, useExisting: forwardRef(() => ThOrthographicCamera) },
   ],
 })
 export class ThOrthographicCamera<
@@ -36,7 +37,7 @@ export class ThOrthographicCamera<
   }
 
   @Input()
-  public set type(value: "OrthographicCamera") {
+  public set type(value: 'OrthographicCamera') {
     if (this.obj) {
       this.obj.type = value;
     }

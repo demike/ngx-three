@@ -11,13 +11,13 @@ import { Object3D, Vector3 } from 'three';
   selector: 'abs-th-wrapper',
   template: '',
 })
-export class ThWrapperBase<T extends any[]> implements OnChanges, OnInit {
+export class ThObjectBase<T extends any[]> implements OnChanges, OnInit {
   public obj?: Object3D;
 
   @Input()
   public args?: T;
 
-  constructor(protected parent: ThWrapperBase<any>) {
+  constructor(protected parent: ThObjectBase<any>) {
     console.log('in wrapper');
   }
   ngOnInit(): void {

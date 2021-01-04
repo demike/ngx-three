@@ -23,7 +23,7 @@ import {
   Vector3,
   WebGLRenderer,
 } from "three";
-import { ThWrapperBase } from "../ThWrapperBase";
+import { ThObjectBase } from "../ThObjectBase";
 import { applyValue } from "../util";
 
 @Component({
@@ -34,7 +34,7 @@ import { applyValue } from "../util";
     { provide: ThObject3D, useExisting: forwardRef(() => ThObject3D) },
   ],
 })
-export class ThObject3D<TARGS extends any[] = []> extends ThWrapperBase<TARGS> {
+export class ThObject3D<TARGS extends any[] = []> extends ThObjectBase<TARGS> {
   public obj!: Object3D;
   protected getType(): Type<Object3D> {
     return Object3D;

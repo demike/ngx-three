@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NgxThreeGeneratedModule } from './generated/ngx-three-generated.module';
 import { ThCanvas } from './ThCanvas';
-import { ThWrapperBase } from './ThWrapperBase';
+import { ThObjectBase } from './ThObjectBase';
 
 @NgModule({
   declarations: [ThCanvas],

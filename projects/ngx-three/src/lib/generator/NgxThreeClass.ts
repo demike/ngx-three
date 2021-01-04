@@ -4,12 +4,13 @@ const INGORED_MEMBERS = ['parent'];
 
 const pascalToCamelCase = (s: string) => `${s[0].toLowerCase()}${s.slice(1)}`;
 
-export class NgxThreeClass {
+export abstract class NgxThreeClass {
   public content: string;
   public readonly className: string;
   private classDecl: ts.ClassDeclaration;
   public readonly wrappedClassName: string;
   protected imports: Set<string> = new Set<string>();
+
   private constructorArgs = '[]';
   private wrappedClassGenericTypeNames = ''; // i.e.: "<T,U>"
   private inputs: string = '';
@@ -71,9 +72,18 @@ export class NgxThreeClass {
     this.content = ngxClassDeclarationString;
   }
 
-  protected generateProvidersArray() {
-    return `[{provide: ThObject3D, useExisting: forwardRef(() => ${this.className})}]`;
-  }
+  protected abstract generateConstructor(): string;
+  protected abstract generateProvidersArray(): string;
+
+  /**
+   * the name of the base class name all three js classes are derived from i.e.: "Object3D"
+   */
+  protected abstract getBaseClassName(): string;
+
+  /**
+   * get wrapper base class name i.e.: "ThObjectBase"
+   */
+  public abstract getWrapperBaseClassName(): string;
 
   private generateClassHeader() {
     let header = `export class ${this.className}<`;
@@ -87,10 +97,13 @@ export class NgxThreeClass {
     }
     header += `TARGS extends any[] = ${this.constructorArgs}>`;
 
-    let baseClassName = 'Object3D';
-    if (this.wrappedClassName === 'Object3D') {
-      this.imports.add("import { ThWrapperBase } from '../ThWrapperBase';");
-      header = `${header} extends ThWrapperBase<TARGS>`;
+    let baseClassName = this.getBaseClassName();
+    let wrapperBaseClassName = this.getWrapperBaseClassName();
+    if (this.wrappedClassName === baseClassName) {
+      this.imports.add(
+        `import { ${wrapperBaseClassName} } from '../${wrapperBaseClassName}';`
+      );
+      header = `${header} extends ${wrapperBaseClassName}<TARGS>`;
       return header;
     }
 
@@ -252,18 +265,6 @@ export class NgxThreeClass {
   ) {
     // TODO implement me
     return ''; // return `public get${memberName}(): ${member.type?.getText()} { return this.obj?.${memberName}; }`;
-  }
-
-  private generateConstructor() {
-    if (this.className === 'ThObject3D') {
-      return `
-      constructor(@SkipSelf() parent: ThObject3D) {
-        super(parent);
-      }
-      `;
-    }
-
-    return '';
   }
 
   private generateConstructorArgs() {
