@@ -6,6 +6,7 @@ import {
   Type,
 } from "@angular/core";
 import { ArrayCamera, PerspectiveCamera } from "three";
+import { ThCamera } from "./ThCamera";
 import { ThObject3D } from "./ThObject3D";
 import { ThPerspectiveCamera } from "./ThPerspectiveCamera";
 
@@ -15,6 +16,7 @@ import { ThPerspectiveCamera } from "./ThPerspectiveCamera";
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThArrayCamera) },
+    { provide: ThCamera, useExisting: forwardRef(() => ThArrayCamera) },
   ],
 })
 export class ThArrayCamera<

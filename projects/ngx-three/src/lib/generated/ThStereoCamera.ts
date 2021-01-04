@@ -15,6 +15,7 @@ import { ThObject3D } from "./ThObject3D";
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThStereoCamera) },
+    { provide: ThCamera, useExisting: forwardRef(() => ThStereoCamera) },
   ],
 })
 export class ThStereoCamera<TARGS extends any[] = []> extends ThCamera<TARGS> {

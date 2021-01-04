@@ -7,7 +7,7 @@ const pascalToCamelCase = (s: string) => `${s[0].toLowerCase()}${s.slice(1)}`;
 export abstract class NgxThreeClass {
   public content: string;
   public readonly className: string;
-  private classDecl: ts.ClassDeclaration;
+  protected classDecl: ts.ClassDeclaration;
   public readonly wrappedClassName: string;
   protected imports: Set<string> = new Set<string>();
 
@@ -16,8 +16,8 @@ export abstract class NgxThreeClass {
   private inputs: string = '';
 
   constructor(
-    private classSymbol: ts.Symbol,
-    private typeChecker: ts.TypeChecker
+    protected classSymbol: ts.Symbol,
+    protected typeChecker: ts.TypeChecker
   ) {
     this.classDecl = this.classSymbol.declarations[0] as ts.ClassDeclaration;
     this.wrappedClassName = this.classSymbol.escapedName as string;
@@ -29,6 +29,7 @@ export abstract class NgxThreeClass {
   generate() {
     this.inputs = this.generateMembers(this.classDecl);
     const directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);
+    const providersArray = this.generateProvidersArray();
 
     if (this.inputs.length > 0) {
       this.imports.add("import { Input } from '@angular/core';");
@@ -55,7 +56,7 @@ export abstract class NgxThreeClass {
           selector: "${directiveName}",
           template: "",
           changeDetection: ChangeDetectionStrategy.OnPush,
-          providers: ${this.generateProvidersArray()}
+          providers: ${providersArray}
         })
         ${classHeader} {
           public obj!: ${this.wrappedClassName}${
