@@ -1,9 +1,15 @@
 import * as ts from 'typescript';
+import { ParameterDeclaration } from 'typescript';
 
 const INGORED_MEMBERS = ['parent'];
 
 const pascalToCamelCase = (s: string) => `${s[0].toLowerCase()}${s.slice(1)}`;
 
+/**
+ * abstract base class generator
+ *
+ * generates an angular wrapper class for a defined three.js class
+ */
 export abstract class NgxThreeClass {
   public content: string;
   public readonly className: string;
@@ -27,6 +33,12 @@ export abstract class NgxThreeClass {
   }
 
   generate() {
+    if (this.className !== 'Th' + this.getBaseClassName()) {
+      this.imports.add(
+        `import { Th${this.getBaseClassName()} } from './Th${this.getBaseClassName()}';`
+      );
+    }
+
     this.inputs = this.generateMembers(this.classDecl);
     const directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);
     const providersArray = this.generateProvidersArray();
@@ -73,6 +85,9 @@ export abstract class NgxThreeClass {
     this.content = ngxClassDeclarationString;
   }
 
+  /**
+   * implement this method for custom constructor
+   */
   protected abstract generateConstructor(): string;
   protected abstract generateProvidersArray(): string;
 
@@ -288,11 +303,8 @@ export abstract class NgxThreeClass {
       .map(
         (sig) =>
           `[${sig.parameters
-            .map(
-              (param) =>
-                `${param.escapedName}: ${this.getTypeNameOfNode(
-                  param.declarations[0]
-                )}`
+            .map((param) =>
+              (param.declarations[0] as ParameterDeclaration).getText()
             )
             .join(',')}]`
       )
@@ -311,6 +323,15 @@ export abstract class NgxThreeClass {
           return str;
         })
         .forEach((el) => this.imports.add(el));
+
+      let symbol = this.typeChecker.getSymbolAtLocation(srcFile);
+      let exports = this.typeChecker.getExportsOfModule(symbol!);
+      exports
+        .filter((exp) => exp.escapedName != this.wrappedClassName)
+        .forEach((exp) => {
+          this.imports.add(`import { ${exp.escapedName} } from 'three';`);
+        });
+      console.log(exports);
     } else {
       // TODO: non-three class
     }
@@ -318,10 +339,20 @@ export abstract class NgxThreeClass {
 
   private getTypeNameOfNode(decl: ts.Node) {
     if (ts.isParameter(decl) && decl.type) {
+      let tt = decl.getText();
+      console.log(tt);
       if (ts.isTypeReferenceNode(decl.type)) {
-        return (decl.type.typeName as ts.Identifier)?.escapedText;
+        let t = (decl.type.typeName as ts.Identifier)?.escapedText;
+        if (t === 'Curve') {
+          console.log(t);
+        }
+        return t;
       }
-      return decl.type?.getText();
+      let t = decl.type?.getText();
+      if (t === 'Curve') {
+        console.log(t);
+      }
+      return t;
     }
 
     return 'any';

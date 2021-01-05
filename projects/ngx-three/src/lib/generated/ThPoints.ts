@@ -17,7 +17,7 @@ import { ThObject3D } from "./ThObject3D";
 export class ThPoints<
   TGeometry extends Geometry | BufferGeometry = Geometry | BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
-  TARGS extends any[] = [geometry: TGeometry, material: TMaterial]
+  TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]
 > extends ThObject3D<TARGS> {
   public obj!: Points<TGeometry, TMaterial>;
   protected getType(): Type<Points<TGeometry, TMaterial>> {

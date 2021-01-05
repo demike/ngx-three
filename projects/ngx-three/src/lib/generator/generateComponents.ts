@@ -6,33 +6,52 @@ import { NgxThreeModuleGen } from './NgxThreeModuleGen';
 import * as prettier from 'prettier';
 import { ImportOrganizer } from './ImportOrganizer';
 import { NgxThreeObject } from './NgxThreeObject';
+import { Type } from '@angular/core';
+import { NgxThreeMaterial } from './NgxThreeMaterial';
+import { NgxThreeBufferGeometry, NgxThreeGeometry } from './NgxThreeGeometry';
 
 class NgxThreeClassGenerator {
   public readonly baseOutPath = join(__dirname, '../generated');
-  public readonly ngxThreeClassMap = new Map<string, NgxThreeObject>();
+  public readonly ngxThreeClassMap = new Map<string, NgxThreeClass>();
   private typeChecker?: ts.TypeChecker;
 
   constructor() {}
 
-  generate(exportTypeName: string) {
+  generateObjects() {
+    this.generate('NgxThreeObjects', NgxThreeObject);
+  }
+
+  generateMaterials() {
+    this.generate('NgxThreeMaterials', NgxThreeMaterial);
+  }
+
+  generateGeometries() {
+    this.generate('NgxThreeGeometries', NgxThreeGeometry);
+    this.generate('NgxThreeBufferGeometries', NgxThreeBufferGeometry);
+  }
+
+  protected generate(exportTypeName: string, generator: Type<NgxThreeClass>) {
     const threeTypes = this.getInterfacePropertyNames(exportTypeName);
     threeTypes.forEach((type) => {
-      const cls = this.generateNgxThreeClass(type);
+      const cls = this.generateNgxThreeClass(type, generator);
       this.ngxThreeClassMap.set(cls.className, cls);
       this.writeFile(cls.className, cls.content);
     });
 
-    this.generateNgxModule(Array.from(this.ngxThreeClassMap.keys()));
+    // this.generateNgxModule(Array.from(this.ngxThreeClassMap.keys()));
   }
 
-  private generateNgxThreeClass(classSymbol: ts.Symbol): NgxThreeObject {
-    const ngxClass = new NgxThreeObject(classSymbol, this.typeChecker!);
+  private generateNgxThreeClass(
+    classSymbol: ts.Symbol,
+    generator: Type<NgxThreeClass>
+  ): NgxThreeClass {
+    const ngxClass = new generator(classSymbol, this.typeChecker!);
     ngxClass.generate();
 
     return ngxClass;
   }
 
-  private generateNgxModule(classNames: string[]) {
+  public generateNgxModule(classNames: string[]) {
     const ngxModule = new NgxThreeModuleGen();
     ngxModule.generate(classNames);
 
@@ -125,8 +144,10 @@ class NgxThreeClassGenerator {
 }
 
 // ---------------------------------------------------
-const exportTypeName = 'NgxThreeComponents';
 
 const generator = new NgxThreeClassGenerator();
 
-generator.generate(exportTypeName);
+generator.generateObjects();
+generator.generateMaterials();
+generator.generateGeometries();
+generator.generateNgxModule(Array.from(generator.ngxThreeClassMap.keys()));

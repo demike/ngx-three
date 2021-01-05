@@ -25,7 +25,7 @@ import { ThObject3D } from "./ThObject3D";
   ],
 })
 export class ThDirectionalLight<
-  TARGS extends any[] = [color: Color | string | number, intensity: number]
+  TARGS extends any[] = [color?: Color | string | number, intensity?: number]
 > extends ThLight<TARGS> {
   public obj!: DirectionalLight;
   protected getType(): Type<DirectionalLight> {

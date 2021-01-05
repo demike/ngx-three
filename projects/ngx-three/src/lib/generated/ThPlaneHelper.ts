@@ -26,7 +26,7 @@ import { ThObject3D } from "./ThObject3D";
   ],
 })
 export class ThPlaneHelper<
-  TARGS extends any[] = [plane: Plane, size: number, hex: number]
+  TARGS extends any[] = [plane: Plane, size?: number, hex?: number]
 > extends ThLineSegments<
   Geometry | BufferGeometry,
   Material | Material[],

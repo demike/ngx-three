@@ -19,7 +19,12 @@ import { ThObject3D } from "./ThObject3D";
   ],
 })
 export class ThPerspectiveCamera<
-  TARGS extends any[] = [fov: number, aspect: number, near: number, far: number]
+  TARGS extends any[] = [
+    fov?: number,
+    aspect?: number,
+    near?: number,
+    far?: number
+  ]
 > extends ThCamera<TARGS> {
   public obj!: PerspectiveCamera;
   protected getType(): Type<PerspectiveCamera> {

@@ -16,7 +16,7 @@ import { ThObject3D } from "./ThObject3D";
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSprite) }],
 })
 export class ThSprite<
-  TARGS extends any[] = [material: SpriteMaterial]
+  TARGS extends any[] = [material?: SpriteMaterial]
 > extends ThObject3D<TARGS> {
   public obj!: Sprite;
   protected getType(): Type<Sprite> {

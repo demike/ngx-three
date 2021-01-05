@@ -27,7 +27,7 @@ import { ThObject3D } from "./ThObject3D";
   ],
 })
 export class ThBox3Helper<
-  TARGS extends any[] = [box: Box3, color: Color]
+  TARGS extends any[] = [box: Box3, color?: Color]
 > extends ThLineSegments<
   Geometry | BufferGeometry,
   Material | Material[],

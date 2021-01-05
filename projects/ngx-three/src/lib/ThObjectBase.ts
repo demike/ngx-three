@@ -1,55 +1,21 @@
-import {
-  Component,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  Type,
-} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Object3D, Vector3 } from 'three';
+import { ThWrapperBase } from './ThWrapperBase';
 @Component({
-  selector: 'abs-th-wrapper',
+  selector: 'abs-th-object',
   template: '',
 })
-export class ThObjectBase<T extends any[]> implements OnChanges, OnInit {
-  public obj?: Object3D;
-
-  @Input()
-  public args?: T;
-
+export class ThObjectBase<ARGS extends any[]> extends ThWrapperBase<
+  Object3D,
+  ARGS
+> {
   constructor(protected parent: ThObjectBase<any>) {
-    console.log('in wrapper');
-  }
-  ngOnInit(): void {
-    if (!this.obj) {
-      this.createObject();
-    }
+    super();
   }
 
-  protected createObject(args?: Iterable<any>) {
-    this.obj = new (this.getType())(...(args ?? []));
-    this.parent.obj?.add(this.obj);
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log('on changes');
-    if (this.obj) {
-      return;
-    }
-
-    if (changes['obj']?.currentValue) {
-      this.obj = changes['obj']?.currentValue;
-    } else {
-      this.createObject(changes['args']?.currentValue);
-    }
-
-    for (let key in changes) {
-      (this as any)[key] = changes[key].currentValue;
-    }
-  }
-
-  protected getType(): Type<Object3D> {
-    throw new Error('derive me');
+  protected createThreeInstance(args?: Iterable<any>) {
+    super.createThreeInstance(args);
+    this.parent.obj?.add(this.obj!);
   }
 
   // object 3d methods

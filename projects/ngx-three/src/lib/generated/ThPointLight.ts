@@ -19,10 +19,10 @@ import { ThObject3D } from "./ThObject3D";
 })
 export class ThPointLight<
   TARGS extends any[] = [
-    color: Color | string | number,
-    intensity: number,
-    distance: number,
-    decay: number
+    color?: Color | string | number,
+    intensity?: number,
+    distance?: number,
+    decay?: number
   ]
 > extends ThLight<TARGS> {
   public obj!: PointLight;

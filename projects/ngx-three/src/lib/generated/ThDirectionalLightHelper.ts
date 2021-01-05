@@ -29,8 +29,8 @@ import { ThObject3D } from "./ThObject3D";
 export class ThDirectionalLightHelper<
   TARGS extends any[] = [
     light: DirectionalLight,
-    size: number,
-    color: Color | string | number
+    size?: number,
+    color?: Color | string | number
   ]
 > extends ThObject3D<TARGS> {
   public obj!: DirectionalLightHelper;

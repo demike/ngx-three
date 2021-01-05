@@ -19,10 +19,10 @@ import { ThObject3D } from "./ThObject3D";
 })
 export class ThGridHelper<
   TARGS extends any[] = [
-    size: number,
-    divisions: number,
-    color1: Color | string | number,
-    color2: Color | string | number
+    size?: number,
+    divisions?: number,
+    color1?: Color | string | number,
+    color2?: Color | string | number
   ]
 > extends ThLineSegments<
   Geometry | BufferGeometry,

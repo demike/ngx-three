@@ -19,11 +19,11 @@ import { ThObject3D } from "./ThObject3D";
 export class ThArrowHelper<
   TARGS extends any[] = [
     dir: Vector3,
-    origin: Vector3,
-    length: number,
-    color: Color | string | number,
-    headLength: number,
-    headWidth: number
+    origin?: Vector3,
+    length?: number,
+    color?: Color | string | number,
+    headLength?: number,
+    headWidth?: number
   ]
 > extends ThObject3D<TARGS> {
   public obj!: ArrowHelper;

@@ -17,7 +17,11 @@ import { ThObject3D } from "./ThObject3D";
 export class ThLine<
   TGeometry extends Geometry | BufferGeometry = Geometry | BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
-  TARGS extends any[] = [geometry: TGeometry, material: TMaterial, mode: number]
+  TARGS extends any[] = [
+    geometry?: TGeometry,
+    material?: TMaterial,
+    mode?: number
+  ]
 > extends ThObject3D<TARGS> {
   public obj!: Line<TGeometry, TMaterial>;
   protected getType(): Type<Line<TGeometry, TMaterial>> {

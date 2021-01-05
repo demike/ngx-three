@@ -20,9 +20,9 @@ import { ThObject3D } from "./ThObject3D";
 })
 export class ThHemisphereLight<
   TARGS extends any[] = [
-    skyColor: Color | string | number,
-    groundColor: Color | string | number,
-    intensity: number
+    skyColor?: Color | string | number,
+    groundColor?: Color | string | number,
+    intensity?: number
   ]
 > extends ThLight<TARGS> {
   public obj!: HemisphereLight;

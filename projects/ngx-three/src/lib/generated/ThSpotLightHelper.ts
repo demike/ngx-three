@@ -18,7 +18,7 @@ import { ThObject3D } from "./ThObject3D";
   ],
 })
 export class ThSpotLightHelper<
-  TARGS extends any[] = [light: Light, color: Color | string | number]
+  TARGS extends any[] = [light: Light, color?: Color | string | number]
 > extends ThObject3D<TARGS> {
   public obj!: SpotLightHelper;
   protected getType(): Type<SpotLightHelper> {

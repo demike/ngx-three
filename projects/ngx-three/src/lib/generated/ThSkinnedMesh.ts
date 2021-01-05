@@ -29,9 +29,9 @@ export class ThSkinnedMesh<
   TGeometry extends Geometry | BufferGeometry = Geometry | BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   TARGS extends any[] = [
-    geometry: TGeometry,
-    material: TMaterial,
-    useVertexTexture: boolean
+    geometry?: TGeometry,
+    material?: TMaterial,
+    useVertexTexture?: boolean
   ]
 > extends ThMesh<TGeometry, TMaterial, TARGS> {
   public obj!: SkinnedMesh<TGeometry, TMaterial>;

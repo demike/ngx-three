@@ -30,7 +30,7 @@ export class ThHemisphereLightHelper<
   TARGS extends any[] = [
     light: HemisphereLight,
     size: number,
-    color: Color | number | string
+    color?: Color | number | string
   ]
 > extends ThObject3D<TARGS> {
   public obj!: HemisphereLightHelper;

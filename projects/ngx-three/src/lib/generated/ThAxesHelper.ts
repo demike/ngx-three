@@ -18,7 +18,7 @@ import { ThObject3D } from "./ThObject3D";
   ],
 })
 export class ThAxesHelper<
-  TARGS extends any[] = [size: number]
+  TARGS extends any[] = [size?: number]
 > extends ThLineSegments<
   Geometry | BufferGeometry,
   Material | Material[],

@@ -20,8 +20,8 @@ import { ThObject3D } from "./ThObject3D";
 export class ThPointLightHelper<
   TARGS extends any[] = [
     light: PointLight,
-    sphereSize: number,
-    color: Color | string | number
+    sphereSize?: number,
+    color?: Color | string | number
   ]
 > extends ThObject3D<TARGS> {
   public obj!: PointLightHelper;

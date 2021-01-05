@@ -16,7 +16,7 @@ import { ThObject3D } from "./ThObject3D";
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLight) }],
 })
 export class ThLight<
-  TARGS extends any[] = [hex: number | string, intensity: number]
+  TARGS extends any[] = [hex?: number | string, intensity?: number]
 > extends ThObject3D<TARGS> {
   public obj!: Light;
   protected getType(): Type<Light> {

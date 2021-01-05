@@ -50,8 +50,10 @@ export interface ThreeFiberComponents
   extends OmitByValue<__ThreeFiberComponents, never> {}
 */
 
+export { OmitByValue };
+
 // TODO fix these types
-type __ngxThreeComponents = {
+type __ngxThreeObjects = {
   [P in keyof InterestingThreeExports]: Three[P] extends new (
     ...args: any
   ) => any
@@ -70,7 +72,44 @@ type __ngxThreeComponents = {
     : never;
 };
 
-export { OmitByValue };
+export interface NgxThreeObjects
+  extends OmitByValue<__ngxThreeObjects, never> {}
 
-export interface NgxThreeComponents
-  extends OmitByValue<__ngxThreeComponents, never> {}
+type __ngxThreeMaterials = {
+  [P in keyof InterestingThreeExports]: Three[P] extends new (
+    ...args: any
+  ) => any
+    ? InstanceType<Three[P]> extends InstanceType<Three['Material']>
+      ? InstanceType<Three[P]>
+      : never
+    : never;
+};
+
+export interface NgxThreeMaterials
+  extends OmitByValue<__ngxThreeMaterials, never> {}
+
+type __ngxThreeGeometries = {
+  [P in keyof InterestingThreeExports]: Three[P] extends new (
+    ...args: any
+  ) => any
+    ? InstanceType<Three[P]> extends InstanceType<Three['Geometry']>
+      ? InstanceType<Three[P]>
+      : never
+    : never;
+};
+
+export interface NgxThreeGeometries
+  extends OmitByValue<__ngxThreeGeometries, never> {}
+
+type __ngxThreeBufferGeometries = {
+  [P in keyof InterestingThreeExports]: Three[P] extends new (
+    ...args: any
+  ) => any
+    ? InstanceType<Three[P]> extends InstanceType<Three['BufferGeometry']>
+      ? InstanceType<Three[P]>
+      : never
+    : never;
+};
+
+export interface NgxThreeBufferGeometries
+  extends OmitByValue<__ngxThreeBufferGeometries, never> {}

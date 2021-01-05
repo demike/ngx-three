@@ -1,6 +1,9 @@
 import { InterfaceType, isInterfaceDeclaration } from 'typescript';
 import { NgxThreeClass } from './NgxThreeClass';
 
+/**
+ * An angular wrapper class generator for three.js Object3D based classes
+ */
 export class NgxThreeObject extends NgxThreeClass {
   protected generateConstructor() {
     if (this.className === 'ThObject3D') {
@@ -45,13 +48,6 @@ export class NgxThreeObject extends NgxThreeClass {
       }
     }
     return false;
-  }
-
-  generate() {
-    if (this.className != 'ThObject3D') {
-      this.imports.add("import { ThObject3D } from './ThObject3D';");
-    }
-    super.generate();
   }
 
   public getBaseClassName(): string {
