@@ -9,12 +9,19 @@
    -->
 
     <th-object3D
-      [scale]="[200, 200, 200]"
       loadGLTF
-      url="assets/BoomBox.glb"
+      url="assets/DamagedHelmet.glb"
       [rotation]="this.rotation"
-      [position]="[0, 2, 0]"
-    ></th-object3D>
+      [position]="[0, 1, 0]"
+    >
+      <th-object3D
+        loadGLTF
+        url="assets/BoomBox.glb"
+        [scale]="[100, 100, 100]"
+        [rotation]="this.rotation"
+        [position]="[0, 0, -3]"
+      ></th-object3D>
+    </th-object3D>
 
     <th-gridHelper [args]="[10, 10]"></th-gridHelper>
     <th-pointLight [position]="[10, 10, 10]"></th-pointLight>

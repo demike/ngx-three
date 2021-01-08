@@ -1,9 +1,9 @@
 import {
-  ChangeDetectorRef,
   Directive,
   EventEmitter,
   Host,
   Input,
+  NgZone,
   Output,
 } from '@angular/core';
 import { Object3D } from 'three';
@@ -25,17 +25,14 @@ export class ThLoader<T = any> {
   ) => Promise<Object3D>;
 
   @Input()
-  url?: string; //may be an url  // TODO: allow loading of multiple urls;
+  url?: string;
 
   protected proxy?: LazyObject3DProxy;
 
   protected onLoaded$?: EventEmitter<T>;
   protected onProgress$?: EventEmitter<ProgressEvent>;
 
-  constructor(
-    @Host() protected host: ThObject3D<any>,
-    @Host() protected cdref: ChangeDetectorRef
-  ) {
+  constructor(@Host() protected host: ThObject3D<any>, protected zone: NgZone) {
     this.proxy = createLazyObject3DProxy();
     host.obj = this.proxy;
   }
@@ -59,7 +56,8 @@ export class ThLoader<T = any> {
   }
 
   protected async loadAsync() {
-    if (!this.loaderFn) {
+    const loaderFn = this.loaderFn;
+    if (!loaderFn) {
       throw new Error('Missing loader Function ( @Input() loaderFn )');
     }
 
@@ -80,7 +78,9 @@ export class ThLoader<T = any> {
         }
       : undefined;
 
-    const object = await this.loaderFn(this.url, onProgress, onLoaded);
+    const object = await this.zone.runOutsideAngular(() => {
+      return loaderFn(this.url, onProgress, onLoaded);
+    });
 
     this.proxy.applyToObject3D(object);
     this.host.obj = object;

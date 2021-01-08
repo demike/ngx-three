@@ -1,12 +1,13 @@
-import { Component, OnInit, SkipSelf } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  SkipSelf,
+} from '@angular/core';
 import { ThMesh } from 'projects/ngx-three/src/lib/generated/ThMesh';
 import { ThObject3D } from 'projects/ngx-three/src/lib/generated/ThObject3D';
 import * as THREE from 'three';
 import { BoxBufferGeometry, MeshStandardMaterial } from 'three';
-
-export function createProviders() {
-  return [];
-}
 
 @Component({
   template: '',
@@ -30,7 +31,7 @@ export class Box extends ThMesh {
   selector: 'app-simple-example',
   templateUrl: './simple-example.component.html',
   styleUrls: ['./simple-example.component.scss'],
-  providers: createProviders(),
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SimpleExampleComponent implements OnInit {
   public THREE = THREE;
