@@ -73,7 +73,7 @@ export class ThLoader<T = any> {
         }
       : undefined;
 
-    let loaderResult: T | undefined = undefined;
+    let loaderResult: T | undefined;
     const onLoaded = this.onLoaded$
       ? (result: T) => {
           loaderResult = result;
@@ -85,8 +85,6 @@ export class ThLoader<T = any> {
     this.proxy.applyToObject3D(object);
     this.host.obj = object;
     this.host.parent.obj?.add(object);
-    object.updateMatrix();
-    object.matrixAutoUpdate = true;
     this.proxy = undefined;
     // this.cdref.detectChanges();
 

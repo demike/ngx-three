@@ -11,6 +11,10 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
         return true;
       case 'applyToObject3D':
         return this.applyToObject3D;
+      case 'add':
+        return this.add;
+      case 'remove':
+        return this.remove;
       default: {
         let value = this.memberMap.get(p as keyof Object3D);
         if (value === undefined) {
@@ -29,12 +33,12 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
     return true;
   }
 
-  add(...object: Object3D[]): this {
+  add = (...object: Object3D[]): this => {
     this.children.push(...object);
     return this;
-  }
+  };
 
-  remove(...object: Object3D[]): this {
+  remove = (...object: Object3D[]): this => {
     for (let obj of object) {
       let index = this.children.indexOf(obj);
       if (index >= 0) {
@@ -42,7 +46,7 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
       }
     }
     return this;
-  }
+  };
 
   applyToObject3D = (real: Object3D) => {
     this.memberMap.forEach((value, key) => {
