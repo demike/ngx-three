@@ -64,9 +64,12 @@ export class ThEngineService implements OnDestroy {
 
   public requestAnimationFrame() {
     if (this.frameId === undefined) {
-      this.frameId = requestAnimationFrame(() => {
-        this.render();
-      });
+      this.ngZone.runOutsideAngular(
+        () =>
+          (this.frameId = requestAnimationFrame(() => {
+            this.render();
+          }))
+      );
     }
   }
 
@@ -90,9 +93,7 @@ export class ThEngineService implements OnDestroy {
     this.frameId = undefined;
 
     // TODO: conditional rendere loop
-    this.frameId = requestAnimationFrame(() => {
-      this.render();
-    });
+    this.requestAnimationFrame();
 
     if (!this.renderer) {
       this.initRenderer();
@@ -100,6 +101,8 @@ export class ThEngineService implements OnDestroy {
     if (!this.renderer) {
       return;
     }
+
+    const renderer = this.renderer;
 
     for (let view of this.views) {
       if (view.viewPort) {
@@ -115,17 +118,24 @@ export class ThEngineService implements OnDestroy {
         }
       }
 
-      if (!view.camera || !view.scene) {
-        continue;
+      const camera = view.camera;
+      const scene = view.scene;
+
+      if (!camera || !scene) {
+        return;
       }
 
-      this.onRender.emit({
-        renderer: this.renderer,
-        scene: view.scene,
-        camera: view.camera,
-      });
+      if (this.onRender.observers.length) {
+        this.ngZone.run(() =>
+          this.onRender.emit({
+            renderer,
+            scene,
+            camera,
+          })
+        );
+      }
 
-      this.renderer.render(view.scene.obj!, view.camera.obj!);
+      this.renderer.render(scene.obj, camera.obj);
     }
   }
 

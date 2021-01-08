@@ -4,6 +4,7 @@ import {
   Host,
   Input,
   NgZone,
+  OnInit,
   Output,
 } from '@angular/core';
 import { Object3D } from 'three';
@@ -16,7 +17,7 @@ import {
 @Directive({
   selector: '[load]',
 })
-export class ThLoader<T = any> {
+export class ThLoader<T = any> implements OnInit {
   @Input()
   public loaderFn?: (
     input?: string,
@@ -39,6 +40,7 @@ export class ThLoader<T = any> {
 
   ngOnInit(): void {
     this.loadAsync();
+    //this.zone.runOutsideAngular(() => );
   }
 
   @Output() get onLoaded() {
@@ -86,7 +88,6 @@ export class ThLoader<T = any> {
     this.host.obj = object;
     this.host.parent.obj?.add(object);
     this.proxy = undefined;
-    // this.cdref.detectChanges();
 
     if (this.onLoaded$ && loaderResult !== undefined) {
       this.onLoaded$?.next(loaderResult);
