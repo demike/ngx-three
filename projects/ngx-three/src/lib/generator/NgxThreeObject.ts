@@ -18,6 +18,10 @@ export class NgxThreeObject extends NgxThreeClass {
   }
 
   protected generateProvidersArray() {
+    if (this.wrappedClassName === this.getBaseClassName()) {
+      return '[]';
+    }
+
     let arr = `[{provide: ThObject3D, useExisting: forwardRef(() => ${this.className})}`;
     if (
       this.hasBaseClass('Camera', (this.classDecl as unknown) as InterfaceType)

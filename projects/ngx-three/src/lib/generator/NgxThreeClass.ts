@@ -336,27 +336,6 @@ export abstract class NgxThreeClass {
     }
   }
 
-  private getTypeNameOfNode(decl: ts.Node) {
-    if (ts.isParameter(decl) && decl.type) {
-      let tt = decl.getText();
-      console.log(tt);
-      if (ts.isTypeReferenceNode(decl.type)) {
-        let t = (decl.type.typeName as ts.Identifier)?.escapedText;
-        if (t === 'Curve') {
-          console.log(t);
-        }
-        return t;
-      }
-      let t = decl.type?.getText();
-      if (t === 'Curve') {
-        console.log(t);
-      }
-      return t;
-    }
-
-    return 'any';
-  }
-
   /**
    * get the default values for the generic base class
    */

@@ -30,10 +30,6 @@ class NgxThreeClassGenerator {
     this.generate('NgxThreeBufferGeometries', NgxThreeBufferGeometry);
   }
 
-  generateLoaders() {
-    this.generate('NgxThreeLoaders', NgxThreeMaterial);
-  }
-
   generateControls() {
     this.generate('NgxControls', NgxThreeMaterial);
   }
@@ -159,6 +155,5 @@ const generator = new NgxThreeClassGenerator();
 generator.generateObjects();
 generator.generateMaterials();
 generator.generateGeometries();
-generator.generateLoaders();
 generator.generateControls();
 generator.generateNgxModule(Array.from(generator.ngxThreeClassMap.keys()));

@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   SkipSelf,
   Type,
@@ -24,9 +23,7 @@ import { ThObject3D } from "./ThObject3D";
   selector: "th-material",
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThMaterial) },
-  ],
+  providers: [],
 })
 export class ThMaterial<
   TARGS extends any[] = []

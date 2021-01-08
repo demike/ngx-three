@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   SkipSelf,
   Type,
@@ -28,9 +27,7 @@ import { ThObject3D } from "./ThObject3D";
   selector: "th-geometry",
   template: "",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThGeometry) },
-  ],
+  providers: [],
 })
 export class ThGeometry<
   TARGS extends any[] = []

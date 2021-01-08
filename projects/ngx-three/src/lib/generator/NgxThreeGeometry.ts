@@ -25,6 +25,9 @@ export class NgxThreeGeometry extends NgxThreeClass {
   }
 
   protected generateProvidersArray() {
+    if (this.className === 'ThGeometry') {
+      return '[]';
+    }
     return `[{provide: ThGeometry, useExisting: forwardRef(() => ${this.className})}]`;
   }
 

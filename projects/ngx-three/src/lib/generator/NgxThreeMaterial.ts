@@ -23,6 +23,9 @@ export class NgxThreeMaterial extends NgxThreeClass {
   }
 
   protected generateProvidersArray() {
+    if (this.wrappedClassName === this.getBaseClassName()) {
+      return '[]';
+    }
     return `[{provide: ThMaterial, useExisting: forwardRef(() => ${this.className})}]`;
   }
 
