@@ -1,12 +1,12 @@
 <th-canvas (onRender)="this.onBeforeRender()">
   <th-scene>
-    <th-mesh></th-mesh>
     <th-ambientLight> </th-ambientLight>
     <th-box
       [position]="[0, 0, 0]"
       [material]="material"
       [rotation]="rotation"
     ></th-box>
+
     <th-box3Helper
       [args]="[box, color]"
       [material]="material"

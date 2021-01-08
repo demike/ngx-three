@@ -15,11 +15,9 @@ export function createProviders() {
 export class Box extends ThMesh {
   constructor(@SkipSelf() parent: ThObject3D) {
     super(parent);
-    console.log('in wrapper');
   }
   public ngOnInit() {
     super.ngOnInit();
-    console.log('hohoho');
     this.obj.material = new MeshStandardMaterial({
       color: 'green',
     });

@@ -1,0 +1,28 @@
+<th-canvas (onRender)="this.onBeforeRender()">
+  <th-scene>
+    <th-ambientLight> </th-ambientLight>
+    <!-- <th-box
+      [position]="[5, 5, 5]"
+      [material]="material"
+      [rotation]="rotation"
+    ></th-box>
+   -->
+
+    <th-object3D
+      [scale]="[200, 200, 200]"
+      loadGLTF
+      url="assets/BoomBox.glb"
+      [rotation]="this.rotation"
+      [position]="[0, 2, 0]"
+    ></th-object3D>
+
+    <th-gridHelper [args]="[10, 10]"></th-gridHelper>
+    <th-pointLight [position]="[10, 10, 10]"></th-pointLight>
+
+    <th-perspectiveCamera
+      [args]="[45, 2, 0.1, 100]"
+      [position]="[10, 10, 10]"
+      [lookAt]="[0, 0, 0]"
+    ></th-perspectiveCamera>
+  </th-scene>
+</th-canvas>

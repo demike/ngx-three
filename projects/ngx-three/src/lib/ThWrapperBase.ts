@@ -6,6 +6,7 @@ import {
   SimpleChanges,
   Type,
 } from '@angular/core';
+import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
 
 @Component({
   selector: 'abs-th-wrapper',
@@ -32,14 +33,18 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log('on changes');
-    if (this.obj) {
+    // console.log('on changes');
+    if (this.obj && !isLazyObject3dProxy(this.obj as any)) {
+      //the object is already set and it is no proxy
+
+      // TODO: request animation frame
+
       return;
     }
 
     if (changes['obj']?.currentValue) {
       this.obj = changes['obj']?.currentValue;
-    } else {
+    } else if (!this.obj) {
       this.createThreeInstance(changes['args']?.currentValue);
     }
 

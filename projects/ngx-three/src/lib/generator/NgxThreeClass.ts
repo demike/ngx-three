@@ -331,7 +331,6 @@ export abstract class NgxThreeClass {
         .forEach((exp) => {
           this.imports.add(`import { ${exp.escapedName} } from 'three';`);
         });
-      console.log(exports);
     } else {
       // TODO: non-three class
     }

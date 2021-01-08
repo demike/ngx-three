@@ -9,7 +9,7 @@ export class ThObjectBase<ARGS extends any[]> extends ThWrapperBase<
   Object3D,
   ARGS
 > {
-  constructor(protected parent: ThObjectBase<any>) {
+  constructor(public parent: ThObjectBase<any>) {
     super();
   }
 

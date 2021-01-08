@@ -8,9 +8,10 @@ import {
   SimpleExampleComponent,
 } from './simple-example/simple-example.component';
 import { NgxThreeModule } from 'projects/ngx-three/src/public-api';
+import { LoaderExampleComponent } from './loader-example/loader-example.component';
 
 @NgModule({
-  declarations: [AppComponent, SimpleExampleComponent, Box],
+  declarations: [AppComponent, SimpleExampleComponent, Box, LoaderExampleComponent],
   imports: [BrowserModule, AppRoutingModule, NgxThreeModule],
   providers: [],
   bootstrap: [AppComponent],

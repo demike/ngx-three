@@ -30,6 +30,14 @@ class NgxThreeClassGenerator {
     this.generate('NgxThreeBufferGeometries', NgxThreeBufferGeometry);
   }
 
+  generateLoaders() {
+    this.generate('NgxThreeLoaders', NgxThreeMaterial);
+  }
+
+  generateControls() {
+    this.generate('NgxControls', NgxThreeMaterial);
+  }
+
   protected generate(exportTypeName: string, generator: Type<NgxThreeClass>) {
     const threeTypes = this.getInterfacePropertyNames(exportTypeName);
     threeTypes.forEach((type) => {
@@ -134,7 +142,8 @@ class NgxThreeClassGenerator {
               .getProperties()
               .map((symbol) => symbol.escapedName)
           );
-          return typeChecker.getTypeAtLocation(declaration).getProperties();
+          let type = typeChecker.getTypeAtLocation(declaration);
+          return type.getProperties();
           //   .map((symbol) => symbol.escapedName);
         }
       }
@@ -150,4 +159,6 @@ const generator = new NgxThreeClassGenerator();
 generator.generateObjects();
 generator.generateMaterials();
 generator.generateGeometries();
+generator.generateLoaders();
+generator.generateControls();
 generator.generateNgxModule(Array.from(generator.ngxThreeClassMap.keys()));

@@ -21,36 +21,9 @@ type InterestingThreeExports = OmitByValue<
   MissingInThreeRuntimeExports | THREE.BufferAttribute
 >;
 
-/*
-
-type __ThreeFiberComponents = {
-  [P in keyof InterestingThreeExports]: Three[P] extends new (
-    ...args: any
-  ) => any
-    ? InstanceType<Three[P]> extends InstanceType<Three["Object3D"]>
-      ? FC<ReactThreeFiber.Object3DNode<InstanceType<Three[P]>, Three[P]>>
-      : InstanceType<Three[P]> extends InstanceType<Three['Geometry']>
-      ? FC<ReactThreeFiber.GeometryNode<InstanceType<Three[P]>, Three[P]>>
-      : InstanceType<Three[P]> extends InstanceType<Three['BufferGeometry']>
-      ? FC<ReactThreeFiber.BufferGeometryNode<InstanceType<Three[P]>, Three[P]>>
-      : InstanceType<Three[P]> extends InstanceType<Three['Material']>
-      ? FC<
-          ReactThreeFiber.MaterialNode<
-            InstanceType<Three[P]>,
-            Required<ConstructorParameters<Three[P]>>
-          >
-        >
-      : FC<ReactThreeFiber.Node<InstanceType<Three[P]>, Three[P]>>
-    : never;
-};
-
 export { OmitByValue };
 
-export interface ThreeFiberComponents
-  extends OmitByValue<__ThreeFiberComponents, never> {}
-*/
-
-export { OmitByValue };
+// 3D objects
 
 // TODO fix these types
 type __ngxThreeObjects = {
@@ -85,6 +58,8 @@ type __ngxThreeMaterials = {
     : never;
 };
 
+// materials
+
 export interface NgxThreeMaterials
   extends OmitByValue<__ngxThreeMaterials, never> {}
 
@@ -98,6 +73,7 @@ type __ngxThreeGeometries = {
     : never;
 };
 
+// geometries
 export interface NgxThreeGeometries
   extends OmitByValue<__ngxThreeGeometries, never> {}
 
@@ -113,3 +89,11 @@ type __ngxThreeBufferGeometries = {
 
 export interface NgxThreeBufferGeometries
   extends OmitByValue<__ngxThreeBufferGeometries, never> {}
+
+// controls
+
+type Controls = typeof import('./control_types');
+type __ngxControls = {
+  [P in keyof Controls]: InstanceType<Controls[P]>;
+};
+export interface NgxThreeLoaders extends Controls {}
