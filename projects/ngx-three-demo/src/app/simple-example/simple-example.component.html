@@ -2,9 +2,11 @@
   <th-scene>
     <th-ambientLight> </th-ambientLight>
     <th-box
+      (onClick)="selected = !selected"
       [position]="[0, 0, 0]"
       [material]="material"
       [rotation]="rotation"
+      [scale]="selected ? [2, 2, 2] : [1, 1, 1]"
     ></th-box>
 
     <th-box3Helper

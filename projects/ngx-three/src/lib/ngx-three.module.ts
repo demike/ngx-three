@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { RaycasterEventDirective } from './events/raycaster.events.directive';
 import { NgxThreeGeneratedModule } from './generated/ngx-three-generated.module';
 import { ThGLTFLoader } from './loaders/ThGLTFLoader';
 import { ThLoader } from './loaders/ThLoader';
@@ -20,6 +21,7 @@ import { ThWrapperBase } from './ThWrapperBase';
     ThGLTFLoader,
     ThOBJLoader,
     ThOBJLoader2,
+    RaycasterEventDirective,
   ],
   imports: [NgxThreeGeneratedModule],
   exports: [
@@ -29,6 +31,7 @@ import { ThWrapperBase } from './ThWrapperBase';
     ThGLTFLoader,
     ThOBJLoader,
     ThOBJLoader2,
+    RaycasterEventDirective,
   ],
 })
 export class NgxThreeModule {}

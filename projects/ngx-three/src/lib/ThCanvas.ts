@@ -6,12 +6,14 @@ import {
   ContentChildren,
   ElementRef,
   forwardRef,
+  Inject,
   OnInit,
   Output,
   QueryList,
   ViewChild,
 } from '@angular/core';
 import { Object3D } from 'three';
+import { RaycasterService } from './events/raycaster.service';
 import { ThCamera } from './generated/ThCamera';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThScene } from './generated/ThScene';
@@ -27,19 +29,16 @@ import { ThView } from './ThView';
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
     ThEngineService,
+    forwardRef(() => RaycasterService),
   ],
 })
 export class ThCanvas implements OnInit, AfterViewInit {
-  @ViewChild('rendererCanvas', { static: true })
-  public rendererCanvas?: ElementRef<HTMLCanvasElement>;
-  public static cnt = 0;
-
-  private globalView: ThView = new ThView();
-  constructor(private engServ: ThEngineService) {
+  constructor(
+    private engServ: ThEngineService,
+    @Inject(forwardRef(() => RaycasterService))
+    protected raycaster: RaycasterService
+  ) {
     console.log('canvas ' + ThCanvas.cnt++);
-  }
-  ngAfterViewInit(): void {
-    this.engServ.requestAnimationFrame();
   }
 
   @Output()
@@ -47,18 +46,48 @@ export class ThCanvas implements OnInit, AfterViewInit {
     return this.engServ.onRender;
   }
 
-  public ngOnInit(): void {
-    this.engServ.setCanvas(this.rendererCanvas?.nativeElement!);
-    this.engServ.addView(this.globalView);
-  }
-
   public get obj() {
     return this;
   }
 
+  @ContentChild(ThScene)
+  public set scene(scene: ThScene) {
+    if (this.globalView) {
+      this.globalView.scene = scene;
+    }
+  }
+
+  @ContentChild(ThCamera)
+  public set camera(camera: ThCamera) {
+    if (this.globalView) {
+      this.globalView.camera = camera;
+    }
+  }
+
+  @ContentChildren(ThView)
+  public set views(viewList: QueryList<ThView>) {
+    viewList.forEach((v) => this.engServ.addView(v));
+  }
+  public static cnt = 0;
+  @ViewChild('rendererCanvas', { static: true })
+  public rendererCanvas?: ElementRef<HTMLCanvasElement>;
+
+  private globalView?: ThView;
+  ngAfterViewInit(): void {
+    this.engServ.requestAnimationFrame();
+  }
+
+  public ngOnInit(): void {
+    if (!this.rendererCanvas) {
+      throw new Error('Missing Canvas');
+    }
+    this.globalView = new ThView(this.raycaster, this.rendererCanvas);
+    this.engServ.setCanvas(this.rendererCanvas.nativeElement);
+    this.engServ.addView(this.globalView);
+  }
+
   /**
    * add a Scene
-   * @param scene
    */
   add(scene: Object3D) {
     // nothing to do here
@@ -66,24 +95,8 @@ export class ThCanvas implements OnInit, AfterViewInit {
 
   /**
    * remove a Scene
-   * @param scene
    */
   remove(scene: Object3D) {
     // norhing to do
-  }
-
-  @ContentChild(ThScene)
-  public set scene(scene: ThScene) {
-    this.globalView.scene = scene;
-  }
-
-  @ContentChild(ThCamera)
-  public set camera(camera: ThCamera) {
-    this.globalView.camera = camera;
-  }
-
-  @ContentChildren(ThView)
-  public set views(viewList: QueryList<ThView>) {
-    viewList.forEach((v) => this.engServ.addView(v));
   }
 }

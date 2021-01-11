@@ -4,6 +4,7 @@ import {
   OnInit,
   SkipSelf,
 } from '@angular/core';
+import { createObj3DProviderArray } from 'projects/ngx-three/src/lib/component.helpers';
 import { ThMesh } from 'projects/ngx-three/src/lib/generated/ThMesh';
 import { ThObject3D } from 'projects/ngx-three/src/lib/generated/ThObject3D';
 import * as THREE from 'three';
@@ -12,8 +13,9 @@ import { BoxBufferGeometry, MeshStandardMaterial } from 'three';
 @Component({
   template: '',
   selector: 'th-box',
+  providers: createObj3DProviderArray(Box),
 })
-export class Box extends ThMesh {
+export class Box extends ThMesh implements OnInit {
   constructor(@SkipSelf() parent: ThObject3D) {
     super(parent);
   }
@@ -34,23 +36,6 @@ export class Box extends ThMesh {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SimpleExampleComponent implements OnInit {
-  public THREE = THREE;
-
-  public box = new THREE.Box3(
-    new THREE.Vector3(0, 0, 0),
-    new THREE.Vector3(1.5, 1.5, 1.5)
-  );
-  public color = new THREE.Color(1, 0, 0);
-
-  public rotation: [x: number, y: number, z: number] = [0, 0, 0];
-
-  public onBeforeRender() {
-    // console.log('hohoho');
-    this.rotation = [0, this.rotation[2] + 0.01, this.rotation[2] + 0.01];
-  }
-
-  public material = new THREE.MeshStandardMaterial();
-
   constructor() {
     this.material.color.set('green');
 
@@ -64,6 +49,24 @@ export class SimpleExampleComponent implements OnInit {
         this.material.color.set('red');
       }
     }, 200);
+  }
+  public THREE = THREE;
+
+  public box = new THREE.Box3(
+    new THREE.Vector3(0, 0, 0),
+    new THREE.Vector3(1.5, 1.5, 1.5)
+  );
+  public color = new THREE.Color(1, 0, 0);
+
+  public rotation: [x: number, y: number, z: number] = [0, 0, 0];
+
+  public material = new THREE.MeshStandardMaterial();
+
+  public selected = false;
+
+  public onBeforeRender() {
+    // console.log('hohoho');
+    this.rotation = [0, this.rotation[2] + 0.01, this.rotation[2] + 0.01];
   }
 
   ngOnInit(): void {}
