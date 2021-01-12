@@ -181,9 +181,16 @@ export class ThMaterial<
   }
 
   @Input()
-  public set stencilMask(value: number) {
+  public set stencilWriteMask(value: number) {
     if (this.obj) {
-      this.obj.stencilMask = value;
+      this.obj.stencilWriteMask = value;
+    }
+  }
+
+  @Input()
+  public set stencilFuncMask(value: number) {
+    if (this.obj) {
+      this.obj.stencilFuncMask = value;
     }
   }
 

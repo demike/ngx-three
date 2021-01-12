@@ -33,7 +33,10 @@ export abstract class NgxThreeClass {
   }
 
   generate() {
-    if (this.className !== 'Th' + this.getBaseClassName()) {
+    if (
+      this.getBaseClassName().length > 0 &&
+      this.className !== 'Th' + this.getBaseClassName()
+    ) {
       this.imports.add(
         `import { Th${this.getBaseClassName()} } from './Th${this.getBaseClassName()}';`
       );
@@ -54,7 +57,11 @@ export abstract class NgxThreeClass {
     this.addImportsFrom(this.classDecl);
     const classHeader = this.generateClassHeader();
 
-    this.imports.add(`import { ${this.wrappedClassName} } from 'three';`);
+    this.imports.add(
+      `import { ${
+        this.wrappedClassName
+      } } from '${this.getWrappedClassImportPath()}';`
+    );
     this.imports.add(
       "import { Component, ChangeDetectionStrategy } from '@angular/core';"
     );
@@ -101,6 +108,10 @@ export abstract class NgxThreeClass {
    */
   public abstract getWrapperBaseClassName(): string;
 
+  protected getWrappedClassImportPath() {
+    return 'three';
+  }
+
   private generateClassHeader() {
     let header = `export class ${this.className}<`;
     if (this.classDecl.typeParameters) {
@@ -113,24 +124,25 @@ export abstract class NgxThreeClass {
     }
     header += `TARGS extends any[] = ${this.constructorArgs}>`;
 
-    let baseClassName = this.getBaseClassName();
-    let wrapperBaseClassName = this.getWrapperBaseClassName();
-    if (this.wrappedClassName === baseClassName) {
-      this.imports.add(
-        `import { ${wrapperBaseClassName} } from '../${wrapperBaseClassName}';`
-      );
-      header = `${header} extends ${wrapperBaseClassName}<TARGS>`;
-      return header;
-    }
-
+    let baseClassName = 'EventDispatcher';
     if (this.classDecl.heritageClauses) {
       // if we have a base class and we are not Object3D
-      let clause = this.classDecl.heritageClauses[0].getText();
+      const clause = this.classDecl.heritageClauses[0].getText();
       baseClassName = clause.replace('extends ', '').split('<')[0];
-      this.imports.add(
-        `import { Th${baseClassName} } from './Th${baseClassName}';`
-      );
-      header = `${header}  ${clause.replace('extends ', 'extends Th')}`;
+
+      if ('EventDispatcher' === baseClassName) {
+        const wrapperBaseClassName = this.getWrapperBaseClassName();
+        this.imports.add(
+          `import { ${wrapperBaseClassName} } from '../${wrapperBaseClassName}';`
+        );
+        header = `${header} extends ${wrapperBaseClassName}<TARGS>`;
+        return header;
+      } else {
+        this.imports.add(
+          `import { Th${baseClassName} } from './Th${baseClassName}';`
+        );
+        header = `${header}  ${clause.replace('extends ', 'extends Th')}`;
+      }
     }
 
     if (header.endsWith('>')) {

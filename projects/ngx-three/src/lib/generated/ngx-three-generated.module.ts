@@ -21,13 +21,17 @@ import { ThConeGeometry } from "./ThConeGeometry";
 import { ThCubeCamera } from "./ThCubeCamera";
 import { ThCylinderBufferGeometry } from "./ThCylinderBufferGeometry";
 import { ThCylinderGeometry } from "./ThCylinderGeometry";
+import { ThDeviceOrientationControls } from "./ThDeviceOrientationControls";
 import { ThDirectionalLight } from "./ThDirectionalLight";
 import { ThDirectionalLightHelper } from "./ThDirectionalLightHelper";
 import { ThDodecahedronBufferGeometry } from "./ThDodecahedronBufferGeometry";
 import { ThDodecahedronGeometry } from "./ThDodecahedronGeometry";
+import { ThDragControls } from "./ThDragControls";
 import { ThEdgesGeometry } from "./ThEdgesGeometry";
 import { ThExtrudeBufferGeometry } from "./ThExtrudeBufferGeometry";
 import { ThExtrudeGeometry } from "./ThExtrudeGeometry";
+import { ThFirstPersonControls } from "./ThFirstPersonControls";
+import { ThFlyControls } from "./ThFlyControls";
 import { ThGeometry } from "./ThGeometry";
 import { ThGridHelper } from "./ThGridHelper";
 import { ThGroup } from "./ThGroup";
@@ -49,6 +53,7 @@ import { ThLineDashedMaterial } from "./ThLineDashedMaterial";
 import { ThLineLoop } from "./ThLineLoop";
 import { ThLineSegments } from "./ThLineSegments";
 import { ThLOD } from "./ThLOD";
+import { ThMapControls } from "./ThMapControls";
 import { ThMaterial } from "./ThMaterial";
 import { ThMesh } from "./ThMesh";
 import { ThMeshBasicMaterial } from "./ThMeshBasicMaterial";
@@ -65,6 +70,7 @@ import { ThMultiMaterial } from "./ThMultiMaterial";
 import { ThObject3D } from "./ThObject3D";
 import { ThOctahedronBufferGeometry } from "./ThOctahedronBufferGeometry";
 import { ThOctahedronGeometry } from "./ThOctahedronGeometry";
+import { ThOrbitControls } from "./ThOrbitControls";
 import { ThOrthographicCamera } from "./ThOrthographicCamera";
 import { ThParametricBufferGeometry } from "./ThParametricBufferGeometry";
 import { ThParametricGeometry } from "./ThParametricGeometry";
@@ -72,6 +78,7 @@ import { ThPerspectiveCamera } from "./ThPerspectiveCamera";
 import { ThPlaneBufferGeometry } from "./ThPlaneBufferGeometry";
 import { ThPlaneGeometry } from "./ThPlaneGeometry";
 import { ThPlaneHelper } from "./ThPlaneHelper";
+import { ThPointerLockControls } from "./ThPointerLockControls";
 import { ThPointLight } from "./ThPointLight";
 import { ThPointLightHelper } from "./ThPointLightHelper";
 import { ThPoints } from "./ThPoints";
@@ -106,6 +113,8 @@ import { ThTorusBufferGeometry } from "./ThTorusBufferGeometry";
 import { ThTorusGeometry } from "./ThTorusGeometry";
 import { ThTorusKnotBufferGeometry } from "./ThTorusKnotBufferGeometry";
 import { ThTorusKnotGeometry } from "./ThTorusKnotGeometry";
+import { ThTrackballControls } from "./ThTrackballControls";
+import { ThTransformControls } from "./ThTransformControls";
 import { ThTubeBufferGeometry } from "./ThTubeBufferGeometry";
 import { ThTubeGeometry } from "./ThTubeGeometry";
 import { ThWireframeGeometry } from "./ThWireframeGeometry";
@@ -222,6 +231,15 @@ import { ThWireframeGeometry } from "./ThWireframeGeometry";
     ThWireframeGeometry,
     ThInstancedBufferGeometry,
     ThBufferGeometry,
+    ThDeviceOrientationControls,
+    ThDragControls,
+    ThFirstPersonControls,
+    ThFlyControls,
+    ThOrbitControls,
+    ThMapControls,
+    ThPointerLockControls,
+    ThTrackballControls,
+    ThTransformControls,
   ],
   exports: [
     ThScene,
@@ -334,6 +352,15 @@ import { ThWireframeGeometry } from "./ThWireframeGeometry";
     ThWireframeGeometry,
     ThInstancedBufferGeometry,
     ThBufferGeometry,
+    ThDeviceOrientationControls,
+    ThDragControls,
+    ThFirstPersonControls,
+    ThFlyControls,
+    ThOrbitControls,
+    ThMapControls,
+    ThPointerLockControls,
+    ThTrackballControls,
+    ThTransformControls,
   ],
 })
 export class NgxThreeGeneratedModule {}

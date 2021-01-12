@@ -35,7 +35,7 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     // console.log('on changes');
     if (this.obj && !isLazyObject3dProxy(this.obj as any)) {
-      //the object is already set and it is no proxy
+      // the object is already set and it is no proxy
 
       // TODO: request animation frame
 

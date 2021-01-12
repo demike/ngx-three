@@ -9,6 +9,7 @@ import { NgxThreeObject } from './NgxThreeObject';
 import { Type } from '@angular/core';
 import { NgxThreeMaterial } from './NgxThreeMaterial';
 import { NgxThreeBufferGeometry, NgxThreeGeometry } from './NgxThreeGeometry';
+import { NgxThreeControl } from './NgxThreeControl';
 
 class NgxThreeClassGenerator {
   public readonly baseOutPath = join(__dirname, '../generated');
@@ -31,7 +32,7 @@ class NgxThreeClassGenerator {
   }
 
   generateControls() {
-    this.generate('NgxControls', NgxThreeMaterial);
+    this.generate('NgxThreeControls', NgxThreeControl);
   }
 
   protected generate(exportTypeName: string, generator: Type<NgxThreeClass>) {

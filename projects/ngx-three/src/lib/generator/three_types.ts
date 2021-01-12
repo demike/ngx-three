@@ -96,4 +96,4 @@ type Controls = typeof import('./control_types');
 type __ngxControls = {
   [P in keyof Controls]: InstanceType<Controls[P]>;
 };
-export interface NgxThreeLoaders extends Controls {}
+export interface NgxThreeControls extends OmitByValue<__ngxControls, never> {}
