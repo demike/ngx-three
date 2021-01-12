@@ -35,10 +35,13 @@ class NgxThreeClassGenerator {
     this.generate('NgxThreeControls', NgxThreeControl);
   }
 
-  protected generate(exportTypeName: string, generator: Type<NgxThreeClass>) {
+  protected generate(
+    exportTypeName: string,
+    generatorType: Type<NgxThreeClass>
+  ) {
     const threeTypes = this.getInterfacePropertyNames(exportTypeName);
     threeTypes.forEach((type) => {
-      const cls = this.generateNgxThreeClass(type, generator);
+      const cls = this.generateNgxThreeClass(type, generatorType);
       this.ngxThreeClassMap.set(cls.className, cls);
       this.writeFile(cls.className, cls.content);
     });
@@ -48,9 +51,9 @@ class NgxThreeClassGenerator {
 
   private generateNgxThreeClass(
     classSymbol: ts.Symbol,
-    generator: Type<NgxThreeClass>
+    generatorType: Type<NgxThreeClass>
   ): NgxThreeClass {
-    const ngxClass = new generator(classSymbol, this.typeChecker!);
+    const ngxClass = new generatorType(classSymbol, this.typeChecker!);
     ngxClass.generate();
 
     return ngxClass;
@@ -140,7 +143,7 @@ class NgxThreeClassGenerator {
               .getProperties()
               .map((symbol) => symbol.escapedName)
           );
-          let type = typeChecker.getTypeAtLocation(declaration);
+          const type = typeChecker.getTypeAtLocation(declaration);
           return type.getProperties();
           //   .map((symbol) => symbol.escapedName);
         }

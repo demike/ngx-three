@@ -19,7 +19,7 @@ export abstract class NgxThreeClass {
 
   private constructorArgs = '[]';
   private wrappedClassGenericTypeNames = ''; // i.e.: "<T,U>"
-  private inputs: string = '';
+  private inputs = '';
 
   constructor(
     protected classSymbol: ts.Symbol,
@@ -68,9 +68,9 @@ export abstract class NgxThreeClass {
 
     this.imports.add("import { applyValue } from '../util';");
 
-    const ngxClassDeclarationString = `  
+    const ngxClassDeclarationString = `
         ${[...this.imports].join('')}
-    
+
         @Component({
           selector: "${directiveName}",
           template: "",
@@ -162,9 +162,9 @@ export abstract class NgxThreeClass {
   private generateMembers(classDeclaration: ts.ClassDeclaration): string {
     let members = '';
 
-    for (let member of classDeclaration.members) {
+    for (const member of classDeclaration.members) {
       if (ts.isPropertyDeclaration(member) && member.type) {
-        let memberName = (member.name as ts.Identifier).escapedText as string;
+        const memberName = (member.name as ts.Identifier).escapedText as string;
         if (
           INGORED_MEMBERS.find((m) => m === memberName) ||
           member.modifiers?.find(
@@ -237,7 +237,7 @@ export abstract class NgxThreeClass {
 
     // add the imports from member file name (might be used for setter parameters)
     this.addImportsFrom(setters[0]);
-    for (let setter of setters) {
+    for (const setter of setters) {
       str += `| [${setter.parameters.map((p) => p.getText()).join(',')}]`;
     }
 
@@ -259,7 +259,7 @@ export abstract class NgxThreeClass {
   }
 
   private getSettersOfMember(member: ts.PropertyDeclaration) {
-    let setters: ts.MethodDeclaration[] = [];
+    const setters: ts.MethodDeclaration[] = [];
     if (!member.type) {
       return setters;
     }
@@ -275,7 +275,7 @@ export abstract class NgxThreeClass {
       )?.declarations[0];
     }
 
-    for (let tNode of tNodes) {
+    for (const tNode of tNodes) {
       const decl = this.typeChecker!.getTypeAtLocation(tNode).getProperty('set')
         ?.declarations[0];
       if (decl && ts.isMethodDeclaration(decl)) {
@@ -297,11 +297,11 @@ export abstract class NgxThreeClass {
 
   private generateConstructorArgs() {
     const symbol = ((this.classDecl as unknown) as ts.Type).symbol;
-    let constructorType = this.typeChecker.getTypeOfSymbolAtLocation(
+    const constructorType = this.typeChecker.getTypeOfSymbolAtLocation(
       symbol,
       symbol.valueDeclaration
     );
-    let constructSignatures = constructorType.getConstructSignatures();
+    const constructSignatures = constructorType.getConstructSignatures();
 
     if (
       constructSignatures.length === 0 ||
@@ -336,8 +336,8 @@ export abstract class NgxThreeClass {
         })
         .forEach((el) => this.imports.add(el));
 
-      let symbol = this.typeChecker.getSymbolAtLocation(srcFile);
-      let exports = this.typeChecker.getExportsOfModule(symbol!);
+      const symbol = this.typeChecker.getSymbolAtLocation(srcFile);
+      const exports = this.typeChecker.getExportsOfModule(symbol!);
       exports
         .filter((exp) => exp.escapedName != this.wrappedClassName)
         .forEach((exp) => {
@@ -359,21 +359,21 @@ export abstract class NgxThreeClass {
       return [];
     }
 
-    for (let clause of node.heritageClauses) {
+    for (const clause of node.heritageClauses) {
       if (
         clause.token == ts.SyntaxKind.ExtendsKeyword &&
         clause.types.length == 1
       ) {
-        let classDecl: ts.Type = checker.getTypeAtLocation(
+        const classDecl: ts.Type = checker.getTypeAtLocation(
           clause.types[0].expression
         );
 
-        let s = classDecl.getSymbol();
+        const s = classDecl.getSymbol();
         if (!s || s.declarations.length === 0) {
           return [];
         }
 
-        let typeParams = (s.declarations[0] as ts.ClassDeclaration)
+        const typeParams = (s.declarations[0] as ts.ClassDeclaration)
           .typeParameters as ts.TypeParameterDeclaration[] | undefined;
         if (!typeParams) {
           return [];
