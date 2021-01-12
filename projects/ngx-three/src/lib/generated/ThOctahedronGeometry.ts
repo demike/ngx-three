@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { OctahedronGeometry } from "three";
-import { ThGeometry } from "./ThGeometry";
+} from '@angular/core';
+import { OctahedronGeometry } from 'three';
+import { ThGeometry } from './ThGeometry';
 
 @Component({
-  selector: "th-octahedronGeometry",
-  template: "",
+  selector: 'th-octahedronGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

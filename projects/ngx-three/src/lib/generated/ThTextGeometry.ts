@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { Font, TextGeometry, TextGeometryParameters } from "three";
-import { ThGeometry } from "./ThGeometry";
+} from '@angular/core';
+import { Font, TextGeometry, TextGeometryParameters } from 'three';
+import { ThGeometry } from './ThGeometry';
 
 @Component({
-  selector: "th-textGeometry",
-  template: "",
+  selector: 'th-textGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThGeometry, useExisting: forwardRef(() => ThTextGeometry) },

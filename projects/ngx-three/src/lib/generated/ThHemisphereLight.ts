@@ -4,15 +4,15 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { Color, HemisphereLight, Vector3 } from "three";
-import { applyValue } from "../util";
-import { ThLight } from "./ThLight";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { Color, HemisphereLight, Vector3 } from 'three';
+import { applyValue } from '../util';
+import { ThLight } from './ThLight';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-hemisphereLight",
-  template: "",
+  selector: 'th-hemisphereLight',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThHemisphereLight) },

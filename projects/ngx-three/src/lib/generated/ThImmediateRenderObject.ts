@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { ImmediateRenderObject, Material } from "three";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { ImmediateRenderObject, Material } from 'three';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-immediateRenderObject",
-  template: "",
+  selector: 'th-immediateRenderObject',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

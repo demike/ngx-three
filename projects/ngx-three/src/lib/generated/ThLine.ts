@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { BufferGeometry, Geometry, Line, Material } from "three";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { BufferGeometry, Geometry, Line, Material } from 'three';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-line",
-  template: "",
+  selector: 'th-line',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLine) }],
 })
@@ -39,7 +39,7 @@ export class ThLine<
   }
 
   @Input()
-  public set type(value: "Line" | "LineLoop" | "LineSegments" | string) {
+  public set type(value: 'Line' | 'LineLoop' | 'LineSegments' | string) {
     if (this.obj) {
       this.obj.type = value;
     }

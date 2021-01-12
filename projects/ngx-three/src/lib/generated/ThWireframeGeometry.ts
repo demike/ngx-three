@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { BufferGeometry, Geometry, WireframeGeometry } from "three";
-import { ThBufferGeometry } from "./ThBufferGeometry";
-import { ThGeometry } from "./ThGeometry";
+} from '@angular/core';
+import { BufferGeometry, Geometry, WireframeGeometry } from 'three';
+import { ThBufferGeometry } from './ThBufferGeometry';
+import { ThGeometry } from './ThGeometry';
 
 @Component({
-  selector: "th-wireframeGeometry",
-  template: "",
+  selector: 'th-wireframeGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThGeometry, useExisting: forwardRef(() => ThWireframeGeometry) },

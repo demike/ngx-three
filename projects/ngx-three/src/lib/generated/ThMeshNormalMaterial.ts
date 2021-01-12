@@ -4,20 +4,20 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   MeshNormalMaterial,
   MeshNormalMaterialParameters,
   NormalMapTypes,
   Texture,
   Vector2,
-} from "three";
-import { applyValue } from "../util";
-import { ThMaterial } from "./ThMaterial";
+} from 'three';
+import { applyValue } from '../util';
+import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: "th-meshNormalMaterial",
-  template: "",
+  selector: 'th-meshNormalMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

@@ -4,7 +4,7 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   BufferGeometry,
   Geometry,
@@ -12,14 +12,14 @@ import {
   Plane,
   PlaneHelper,
   Vector3,
-} from "three";
-import { applyValue } from "../util";
-import { ThLineSegments } from "./ThLineSegments";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { applyValue } from '../util';
+import { ThLineSegments } from './ThLineSegments';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-planeHelper",
-  template: "",
+  selector: 'th-planeHelper',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThPlaneHelper) },

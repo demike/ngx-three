@@ -4,19 +4,19 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   Color,
   PointsMaterial,
   PointsMaterialParameters,
   Texture,
-} from "three";
-import { applyValue } from "../util";
-import { ThMaterial } from "./ThMaterial";
+} from 'three';
+import { applyValue } from '../util';
+import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: "th-pointsMaterial",
-  template: "",
+  selector: 'th-pointsMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThPointsMaterial) },

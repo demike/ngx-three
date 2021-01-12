@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { BufferGeometry, Geometry, Material, Mesh } from "three";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { BufferGeometry, Geometry, Material, Mesh } from 'three';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-mesh",
-  template: "",
+  selector: 'th-mesh',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThMesh) }],
 })

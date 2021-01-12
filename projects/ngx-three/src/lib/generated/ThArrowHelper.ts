@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { ArrowHelper, Color, Line, Mesh, Vector3 } from "three";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { ArrowHelper, Color, Line, Mesh, Vector3 } from 'three';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-arrowHelper",
-  template: "",
+  selector: 'th-arrowHelper',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThArrowHelper) },

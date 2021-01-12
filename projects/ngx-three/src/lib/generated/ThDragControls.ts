@@ -5,16 +5,16 @@ import {
   Host,
   Input,
   Type,
-} from "@angular/core";
-import { Camera, Object3D } from "three";
-import { DragControls } from "three/examples/jsm/controls/DragControls";
-import { ThCanvas } from "../ThCanvas";
-import { ThControlBase } from "../ThControlBase";
-import { ThCamera } from "./ThCamera";
+} from '@angular/core';
+import { Camera, Object3D } from 'three';
+import { DragControls } from 'three/examples/jsm/controls/DragControls';
+import { ThCanvas } from '../ThCanvas';
+import { ThControlBase } from '../ThControlBase';
+import { ThCamera } from './ThCamera';
 
 @Component({
-  selector: "th-dragControls",
-  template: "",
+  selector: 'th-dragControls',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThControlBase, useExisting: forwardRef(() => ThDragControls) },

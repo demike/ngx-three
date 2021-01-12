@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { Color, ShadowMaterial, ShadowMaterialParameters } from "three";
-import { applyValue } from "../util";
-import { ThMaterial } from "./ThMaterial";
+} from '@angular/core';
+import { Color, ShadowMaterial, ShadowMaterialParameters } from 'three';
+import { applyValue } from '../util';
+import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: "th-shadowMaterial",
-  template: "",
+  selector: 'th-shadowMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThShadowMaterial) },

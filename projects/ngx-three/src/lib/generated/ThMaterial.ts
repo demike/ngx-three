@@ -4,7 +4,7 @@ import {
   Input,
   SkipSelf,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   Blending,
   BlendingDstFactor,
@@ -15,13 +15,13 @@ import {
   Side,
   StencilFunc,
   StencilOp,
-} from "three";
-import { ThMaterialBase } from "../ThMaterialBase";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { ThMaterialBase } from '../ThMaterialBase';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-material",
-  template: "",
+  selector: 'th-material',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [],
 })
@@ -258,7 +258,7 @@ export class ThMaterial<
   }
 
   @Input()
-  public set precision(value: "highp" | "mediump" | "lowp" | null) {
+  public set precision(value: 'highp' | 'mediump' | 'lowp' | null) {
     if (this.obj) {
       this.obj.precision = value;
     }

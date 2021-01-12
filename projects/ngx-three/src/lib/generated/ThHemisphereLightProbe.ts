@@ -3,14 +3,14 @@ import {
   Component,
   forwardRef,
   Type,
-} from "@angular/core";
-import { Color, HemisphereLightProbe } from "three";
-import { ThLightProbe } from "./ThLightProbe";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { Color, HemisphereLightProbe } from 'three';
+import { ThLightProbe } from './ThLightProbe';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-hemisphereLightProbe",
-  template: "",
+  selector: 'th-hemisphereLightProbe',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

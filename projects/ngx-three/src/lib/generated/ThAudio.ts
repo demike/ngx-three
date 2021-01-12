@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { Audio, AudioContext, AudioListener } from "three";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { Audio, AudioContext, AudioListener } from 'three';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-audio",
-  template: "",
+  selector: 'th-audio',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThAudio) }],
 })
@@ -24,7 +24,7 @@ export class ThAudio<
   }
 
   @Input()
-  public set type(value: "Audio") {
+  public set type(value: 'Audio') {
     if (this.obj) {
       this.obj.type = value;
     }

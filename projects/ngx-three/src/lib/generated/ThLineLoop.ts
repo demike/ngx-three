@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { BufferGeometry, Geometry, LineLoop, Material } from "three";
-import { ThLine } from "./ThLine";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { BufferGeometry, Geometry, LineLoop, Material } from 'three';
+import { ThLine } from './ThLine';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-lineLoop",
-  template: "",
+  selector: 'th-lineLoop',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThLineLoop) },
@@ -28,7 +28,7 @@ export class ThLineLoop<
   }
 
   @Input()
-  public set type(value: "LineLoop") {
+  public set type(value: 'LineLoop') {
     if (this.obj) {
       this.obj.type = value;
     }

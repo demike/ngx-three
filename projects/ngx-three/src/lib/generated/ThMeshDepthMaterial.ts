@@ -4,18 +4,18 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   DepthPackingStrategies,
   MeshDepthMaterial,
   MeshDepthMaterialParameters,
   Texture,
-} from "three";
-import { ThMaterial } from "./ThMaterial";
+} from 'three';
+import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: "th-meshDepthMaterial",
-  template: "",
+  selector: 'th-meshDepthMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThMeshDepthMaterial) },

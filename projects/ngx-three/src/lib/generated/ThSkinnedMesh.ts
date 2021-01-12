@@ -4,7 +4,7 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   BufferGeometry,
   Geometry,
@@ -12,14 +12,14 @@ import {
   Matrix4,
   Skeleton,
   SkinnedMesh,
-} from "three";
-import { applyValue } from "../util";
-import { ThMesh } from "./ThMesh";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { applyValue } from '../util';
+import { ThMesh } from './ThMesh';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-skinnedMesh",
-  template: "",
+  selector: 'th-skinnedMesh',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThSkinnedMesh) },

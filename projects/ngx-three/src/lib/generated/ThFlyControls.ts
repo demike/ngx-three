@@ -5,16 +5,16 @@ import {
   Host,
   Input,
   Type,
-} from "@angular/core";
-import { Camera } from "three";
-import { FlyControls } from "three/examples/jsm/controls/FlyControls";
-import { ThCanvas } from "../ThCanvas";
-import { ThControlBase } from "../ThControlBase";
-import { ThCamera } from "./ThCamera";
+} from '@angular/core';
+import { Camera } from 'three';
+import { FlyControls } from 'three/examples/jsm/controls/FlyControls';
+import { ThCanvas } from '../ThCanvas';
+import { ThControlBase } from '../ThControlBase';
+import { ThCamera } from './ThCamera';
 
 @Component({
-  selector: "th-flyControls",
-  template: "",
+  selector: 'th-flyControls',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThControlBase, useExisting: forwardRef(() => ThFlyControls) },

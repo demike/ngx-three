@@ -4,20 +4,20 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   BufferGeometry,
   Color,
   Geometry,
   Material,
   PolarGridHelper,
-} from "three";
-import { ThLineSegments } from "./ThLineSegments";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { ThLineSegments } from './ThLineSegments';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-polarGridHelper",
-  template: "",
+  selector: 'th-polarGridHelper',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThPolarGridHelper) },

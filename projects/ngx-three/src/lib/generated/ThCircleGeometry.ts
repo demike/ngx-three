@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { CircleGeometry } from "three";
-import { ThGeometry } from "./ThGeometry";
+} from '@angular/core';
+import { CircleGeometry } from 'three';
+import { ThGeometry } from './ThGeometry';
 
 @Component({
-  selector: "th-circleGeometry",
-  template: "",
+  selector: 'th-circleGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThGeometry, useExisting: forwardRef(() => ThCircleGeometry) },

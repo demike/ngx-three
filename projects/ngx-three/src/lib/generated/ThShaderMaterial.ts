@@ -4,18 +4,18 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   GLSLVersion,
   IUniform,
   ShaderMaterial,
   ShaderMaterialParameters,
-} from "three";
-import { ThMaterial } from "./ThMaterial";
+} from 'three';
+import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: "th-shaderMaterial",
-  template: "",
+  selector: 'th-shaderMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) },

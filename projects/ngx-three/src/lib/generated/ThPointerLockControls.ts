@@ -5,16 +5,16 @@ import {
   Host,
   Input,
   Type,
-} from "@angular/core";
-import { Camera } from "three";
-import { PointerLockControls } from "three/examples/jsm/controls/PointerLockControls";
-import { ThCanvas } from "../ThCanvas";
-import { ThControlBase } from "../ThControlBase";
-import { ThCamera } from "./ThCamera";
+} from '@angular/core';
+import { Camera } from 'three';
+import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
+import { ThCanvas } from '../ThCanvas';
+import { ThControlBase } from '../ThControlBase';
+import { ThCamera } from './ThCamera';
 
 @Component({
-  selector: "th-pointerLockControls",
-  template: "",
+  selector: 'th-pointerLockControls',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

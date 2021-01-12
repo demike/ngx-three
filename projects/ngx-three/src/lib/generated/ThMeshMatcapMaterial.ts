@@ -4,7 +4,7 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   Color,
   MeshMatcapMaterial,
@@ -12,13 +12,13 @@ import {
   NormalMapTypes,
   Texture,
   Vector2,
-} from "three";
-import { applyValue } from "../util";
-import { ThMaterial } from "./ThMaterial";
+} from 'three';
+import { applyValue } from '../util';
+import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: "th-meshMatcapMaterial",
-  template: "",
+  selector: 'th-meshMatcapMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

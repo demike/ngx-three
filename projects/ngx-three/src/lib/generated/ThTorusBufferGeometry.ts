@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { TorusBufferGeometry } from "three";
-import { ThBufferGeometry } from "./ThBufferGeometry";
-import { ThGeometry } from "./ThGeometry";
+} from '@angular/core';
+import { TorusBufferGeometry } from 'three';
+import { ThBufferGeometry } from './ThBufferGeometry';
+import { ThGeometry } from './ThGeometry';
 
 @Component({
-  selector: "th-torusBufferGeometry",
-  template: "",
+  selector: 'th-torusBufferGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

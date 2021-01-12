@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { BoxBufferGeometry } from "three";
-import { ThBufferGeometry } from "./ThBufferGeometry";
-import { ThGeometry } from "./ThGeometry";
+} from '@angular/core';
+import { BoxBufferGeometry } from 'three';
+import { ThBufferGeometry } from './ThBufferGeometry';
+import { ThGeometry } from './ThGeometry';
 
 @Component({
-  selector: "th-boxBufferGeometry",
-  template: "",
+  selector: 'th-boxBufferGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThGeometry, useExisting: forwardRef(() => ThBoxBufferGeometry) },

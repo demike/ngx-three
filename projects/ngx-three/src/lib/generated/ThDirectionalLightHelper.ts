@@ -4,20 +4,20 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   Color,
   DirectionalLight,
   DirectionalLightHelper,
   Line,
   Matrix4,
-} from "three";
-import { applyValue } from "../util";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { applyValue } from '../util';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-directionalLightHelper",
-  template: "",
+  selector: 'th-directionalLightHelper',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

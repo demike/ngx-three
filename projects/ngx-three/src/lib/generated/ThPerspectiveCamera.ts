@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { PerspectiveCamera } from "three";
-import { ThCamera } from "./ThCamera";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { PerspectiveCamera } from 'three';
+import { ThCamera } from './ThCamera';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-perspectiveCamera",
-  template: "",
+  selector: 'th-perspectiveCamera',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThPerspectiveCamera) },
@@ -32,7 +32,7 @@ export class ThPerspectiveCamera<
   }
 
   @Input()
-  public set type(value: "PerspectiveCamera") {
+  public set type(value: 'PerspectiveCamera') {
     if (this.obj) {
       this.obj.type = value;
     }

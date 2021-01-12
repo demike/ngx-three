@@ -4,19 +4,19 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   MeshDistanceMaterial,
   MeshDistanceMaterialParameters,
   Texture,
   Vector3,
-} from "three";
-import { applyValue } from "../util";
-import { ThMaterial } from "./ThMaterial";
+} from 'three';
+import { applyValue } from '../util';
+import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: "th-meshDistanceMaterial",
-  template: "",
+  selector: 'th-meshDistanceMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

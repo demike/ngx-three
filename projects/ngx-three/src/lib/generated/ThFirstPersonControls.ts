@@ -5,16 +5,16 @@ import {
   Host,
   Input,
   Type,
-} from "@angular/core";
-import { Camera } from "three";
-import { FirstPersonControls } from "three/examples/jsm/controls/FirstPersonControls";
-import { ThCanvas } from "../ThCanvas";
-import { ThControlBase } from "../ThControlBase";
-import { ThCamera } from "./ThCamera";
+} from '@angular/core';
+import { Camera } from 'three';
+import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls';
+import { ThCanvas } from '../ThCanvas';
+import { ThControlBase } from '../ThControlBase';
+import { ThCamera } from './ThCamera';
 
 @Component({
-  selector: "th-firstPersonControls",
-  template: "",
+  selector: 'th-firstPersonControls',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

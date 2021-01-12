@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { Font, TextBufferGeometry, TextGeometryParameters } from "three";
-import { ThExtrudeBufferGeometry } from "./ThExtrudeBufferGeometry";
-import { ThGeometry } from "./ThGeometry";
+} from '@angular/core';
+import { Font, TextBufferGeometry, TextGeometryParameters } from 'three';
+import { ThExtrudeBufferGeometry } from './ThExtrudeBufferGeometry';
+import { ThGeometry } from './ThGeometry';
 
 @Component({
-  selector: "th-textBufferGeometry",
-  template: "",
+  selector: 'th-textBufferGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

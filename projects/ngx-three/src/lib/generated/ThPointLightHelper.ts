@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { Color, Matrix4, PointLight, PointLightHelper } from "three";
-import { applyValue } from "../util";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { Color, Matrix4, PointLight, PointLightHelper } from 'three';
+import { applyValue } from '../util';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-pointLightHelper",
-  template: "",
+  selector: 'th-pointLightHelper',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThPointLightHelper) },

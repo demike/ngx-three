@@ -5,17 +5,17 @@ import {
   Host,
   Input,
   Type,
-} from "@angular/core";
-import { Camera, MOUSE, Object3D } from "three";
-import { TransformControls } from "three/examples/jsm/controls/TransformControls";
-import { ThCanvas } from "../ThCanvas";
-import { ThControlBase } from "../ThControlBase";
-import { ThCamera } from "./ThCamera";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { Camera, MOUSE, Object3D } from 'three';
+import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
+import { ThCanvas } from '../ThCanvas';
+import { ThControlBase } from '../ThControlBase';
+import { ThCamera } from './ThCamera';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-transformControls",
-  template: "",
+  selector: 'th-transformControls',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

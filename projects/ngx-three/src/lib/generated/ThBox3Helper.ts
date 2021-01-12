@@ -4,7 +4,7 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   Box3,
   Box3Helper,
@@ -13,14 +13,14 @@ import {
   Geometry,
   Material,
   Vector3,
-} from "three";
-import { applyValue } from "../util";
-import { ThLineSegments } from "./ThLineSegments";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { applyValue } from '../util';
+import { ThLineSegments } from './ThLineSegments';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-box3Helper",
-  template: "",
+  selector: 'th-box3Helper',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThBox3Helper) },

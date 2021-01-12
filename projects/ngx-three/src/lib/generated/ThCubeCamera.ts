@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { CubeCamera, WebGLCubeRenderTarget } from "three";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { CubeCamera, WebGLCubeRenderTarget } from 'three';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-cubeCamera",
-  template: "",
+  selector: 'th-cubeCamera',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThCubeCamera) },
@@ -29,7 +29,7 @@ export class ThCubeCamera<
   }
 
   @Input()
-  public set type(value: "CubeCamera") {
+  public set type(value: 'CubeCamera') {
     if (this.obj) {
       this.obj.type = value;
     }

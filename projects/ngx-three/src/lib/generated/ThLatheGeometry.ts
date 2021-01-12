@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { LatheGeometry, Vector2 } from "three";
-import { ThGeometry } from "./ThGeometry";
+} from '@angular/core';
+import { LatheGeometry, Vector2 } from 'three';
+import { ThGeometry } from './ThGeometry';
 
 @Component({
-  selector: "th-latheGeometry",
-  template: "",
+  selector: 'th-latheGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThGeometry, useExisting: forwardRef(() => ThLatheGeometry) },

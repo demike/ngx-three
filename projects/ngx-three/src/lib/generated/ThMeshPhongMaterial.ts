@@ -4,7 +4,7 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   Color,
   Combine,
@@ -13,13 +13,13 @@ import {
   NormalMapTypes,
   Texture,
   Vector2,
-} from "three";
-import { applyValue } from "../util";
-import { ThMaterial } from "./ThMaterial";
+} from 'three';
+import { applyValue } from '../util';
+import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: "th-meshPhongMaterial",
-  template: "",
+  selector: 'th-meshPhongMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThMeshPhongMaterial) },

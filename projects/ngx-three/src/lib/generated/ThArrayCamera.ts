@@ -4,15 +4,15 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { ArrayCamera, PerspectiveCamera } from "three";
-import { ThCamera } from "./ThCamera";
-import { ThObject3D } from "./ThObject3D";
-import { ThPerspectiveCamera } from "./ThPerspectiveCamera";
+} from '@angular/core';
+import { ArrayCamera, PerspectiveCamera } from 'three';
+import { ThCamera } from './ThCamera';
+import { ThObject3D } from './ThObject3D';
+import { ThPerspectiveCamera } from './ThPerspectiveCamera';
 
 @Component({
-  selector: "th-arrayCamera",
-  template: "",
+  selector: 'th-arrayCamera',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThArrayCamera) },

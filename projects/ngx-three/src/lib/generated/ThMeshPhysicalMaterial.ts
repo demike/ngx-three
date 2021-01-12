@@ -4,21 +4,21 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   Color,
   MeshPhysicalMaterial,
   MeshPhysicalMaterialParameters,
   Texture,
   Vector2,
-} from "three";
-import { applyValue } from "../util";
-import { ThMaterial } from "./ThMaterial";
-import { ThMeshStandardMaterial } from "./ThMeshStandardMaterial";
+} from 'three';
+import { applyValue } from '../util';
+import { ThMaterial } from './ThMaterial';
+import { ThMeshStandardMaterial } from './ThMeshStandardMaterial';
 
 @Component({
-  selector: "th-meshPhysicalMaterial",
-  template: "",
+  selector: 'th-meshPhysicalMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

@@ -5,17 +5,17 @@ import {
   Host,
   Input,
   Type,
-} from "@angular/core";
-import { Camera, MOUSE, Vector3 } from "three";
-import { TrackballControls } from "three/examples/jsm/controls/TrackballControls";
-import { ThCanvas } from "../ThCanvas";
-import { ThControlBase } from "../ThControlBase";
-import { applyValue } from "../util";
-import { ThCamera } from "./ThCamera";
+} from '@angular/core';
+import { Camera, MOUSE, Vector3 } from 'three';
+import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
+import { ThCanvas } from '../ThCanvas';
+import { ThControlBase } from '../ThControlBase';
+import { applyValue } from '../util';
+import { ThCamera } from './ThCamera';
 
 @Component({
-  selector: "th-trackballControls",
-  template: "",
+  selector: 'th-trackballControls',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

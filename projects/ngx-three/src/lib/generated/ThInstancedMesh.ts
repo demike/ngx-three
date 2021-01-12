@@ -4,21 +4,21 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   BufferAttribute,
   BufferGeometry,
   Geometry,
   InstancedMesh,
   Material,
-} from "three";
-import { applyValue } from "../util";
-import { ThMesh } from "./ThMesh";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { applyValue } from '../util';
+import { ThMesh } from './ThMesh';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-instancedMesh",
-  template: "",
+  selector: 'th-instancedMesh',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThInstancedMesh) },

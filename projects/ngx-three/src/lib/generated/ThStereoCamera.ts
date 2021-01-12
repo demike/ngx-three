@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { PerspectiveCamera, StereoCamera } from "three";
-import { ThCamera } from "./ThCamera";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { PerspectiveCamera, StereoCamera } from 'three';
+import { ThCamera } from './ThCamera';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-stereoCamera",
-  template: "",
+  selector: 'th-stereoCamera',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThStereoCamera) },
@@ -25,7 +25,7 @@ export class ThStereoCamera<TARGS extends any[] = []> extends ThCamera<TARGS> {
   }
 
   @Input()
-  public set type(value: "StereoCamera") {
+  public set type(value: 'StereoCamera') {
     if (this.obj) {
       this.obj.type = value;
     }

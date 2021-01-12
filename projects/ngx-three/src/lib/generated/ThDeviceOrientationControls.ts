@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { Camera } from "three";
-import { DeviceOrientationControls } from "three/examples/jsm/controls/DeviceOrientationControls";
-import { ThControlBase } from "../ThControlBase";
+} from '@angular/core';
+import { Camera } from 'three';
+import { DeviceOrientationControls } from 'three/examples/jsm/controls/DeviceOrientationControls';
+import { ThControlBase } from '../ThControlBase';
 
 @Component({
-  selector: "th-deviceOrientationControls",
-  template: "",
+  selector: 'th-deviceOrientationControls',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

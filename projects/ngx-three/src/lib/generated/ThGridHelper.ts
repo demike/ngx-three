@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { BufferGeometry, Color, Geometry, GridHelper, Material } from "three";
-import { ThLineSegments } from "./ThLineSegments";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { BufferGeometry, Color, Geometry, GridHelper, Material } from 'three';
+import { ThLineSegments } from './ThLineSegments';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-gridHelper",
-  template: "",
+  selector: 'th-gridHelper',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThGridHelper) },

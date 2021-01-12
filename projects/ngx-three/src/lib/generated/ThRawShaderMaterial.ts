@@ -3,14 +3,14 @@ import {
   Component,
   forwardRef,
   Type,
-} from "@angular/core";
-import { RawShaderMaterial, ShaderMaterialParameters } from "three";
-import { ThMaterial } from "./ThMaterial";
-import { ThShaderMaterial } from "./ThShaderMaterial";
+} from '@angular/core';
+import { RawShaderMaterial, ShaderMaterialParameters } from 'three';
+import { ThMaterial } from './ThMaterial';
+import { ThShaderMaterial } from './ThShaderMaterial';
 
 @Component({
-  selector: "th-rawShaderMaterial",
-  template: "",
+  selector: 'th-rawShaderMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThRawShaderMaterial) },

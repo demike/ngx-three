@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { BufferGeometry, Sprite, SpriteMaterial, Vector2 } from "three";
-import { applyValue } from "../util";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { BufferGeometry, Sprite, SpriteMaterial, Vector2 } from 'three';
+import { applyValue } from '../util';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-sprite",
-  template: "",
+  selector: 'th-sprite',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSprite) }],
 })
@@ -24,7 +24,7 @@ export class ThSprite<
   }
 
   @Input()
-  public set type(value: "Sprite") {
+  public set type(value: 'Sprite') {
     if (this.obj) {
       this.obj.type = value;
     }

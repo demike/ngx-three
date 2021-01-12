@@ -4,20 +4,20 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   BufferGeometry,
   Camera,
   CameraHelper,
   Geometry,
   Material,
-} from "three";
-import { ThLineSegments } from "./ThLineSegments";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { ThLineSegments } from './ThLineSegments';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-cameraHelper",
-  template: "",
+  selector: 'th-cameraHelper',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThCameraHelper) },

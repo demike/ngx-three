@@ -5,7 +5,7 @@ import {
   Input,
   SkipSelf,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   Box3,
   BufferAttribute,
@@ -13,15 +13,15 @@ import {
   InterleavedBufferAttribute,
   Sphere,
   Vector3,
-} from "three";
-import { ThGeometryBase } from "../ThGeometryBase";
-import { applyValue } from "../util";
-import { ThGeometry } from "./ThGeometry";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { ThGeometryBase } from '../ThGeometryBase';
+import { applyValue } from '../util';
+import { ThGeometry } from './ThGeometry';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-bufferGeometry",
-  template: "",
+  selector: 'th-bufferGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThGeometry, useExisting: forwardRef(() => ThBufferGeometry) },

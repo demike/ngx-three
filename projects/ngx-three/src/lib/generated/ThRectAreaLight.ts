@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { Color, RectAreaLight } from "three";
-import { ThLight } from "./ThLight";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { Color, RectAreaLight } from 'three';
+import { ThLight } from './ThLight';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-rectAreaLight",
-  template: "",
+  selector: 'th-rectAreaLight',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThRectAreaLight) },

@@ -4,20 +4,20 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   Color,
   HemisphereLight,
   HemisphereLightHelper,
   Matrix4,
   MeshBasicMaterial,
-} from "three";
-import { applyValue } from "../util";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { applyValue } from '../util';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-hemisphereLightHelper",
-  template: "",
+  selector: 'th-hemisphereLightHelper',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

@@ -4,7 +4,7 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   Camera,
   Color,
@@ -15,13 +15,13 @@ import {
   WebGLCubeRenderTarget,
   WebGLRenderer,
   WebGLRenderTarget,
-} from "three";
-import { applyValue } from "../util";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { applyValue } from '../util';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-scene",
-  template: "",
+  selector: 'th-scene',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }],
 })
@@ -32,7 +32,7 @@ export class ThScene<TARGS extends any[] = []> extends ThObject3D<TARGS> {
   }
 
   @Input()
-  public set type(value: "Scene") {
+  public set type(value: 'Scene') {
     if (this.obj) {
       this.obj.type = value;
     }

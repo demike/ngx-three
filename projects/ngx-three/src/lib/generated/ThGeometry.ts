@@ -4,7 +4,7 @@ import {
   Input,
   SkipSelf,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   AnimationClip,
   Bone,
@@ -18,14 +18,14 @@ import {
   Vector2,
   Vector3,
   Vector4,
-} from "three";
-import { ThGeometryBase } from "../ThGeometryBase";
-import { applyValue } from "../util";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { ThGeometryBase } from '../ThGeometryBase';
+import { applyValue } from '../util';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-geometry",
-  template: "",
+  selector: 'th-geometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [],
 })

@@ -72,6 +72,7 @@ class NgxThreeClassGenerator {
       );
       content = prettier.format(content, {
         parser: 'babel-ts',
+        singleQuote: true,
       });
     } catch (e) {
       console.log(e);

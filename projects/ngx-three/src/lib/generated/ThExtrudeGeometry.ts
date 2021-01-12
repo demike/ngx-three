@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { ExtrudeGeometry, ExtrudeGeometryOptions, Shape } from "three";
-import { ThGeometry } from "./ThGeometry";
+} from '@angular/core';
+import { ExtrudeGeometry, ExtrudeGeometryOptions, Shape } from 'three';
+import { ThGeometry } from './ThGeometry';
 
 @Component({
-  selector: "th-extrudeGeometry",
-  template: "",
+  selector: 'th-extrudeGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThGeometry, useExisting: forwardRef(() => ThExtrudeGeometry) },

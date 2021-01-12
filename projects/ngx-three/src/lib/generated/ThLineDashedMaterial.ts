@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { LineDashedMaterial, LineDashedMaterialParameters } from "three";
-import { ThLineBasicMaterial } from "./ThLineBasicMaterial";
-import { ThMaterial } from "./ThMaterial";
+} from '@angular/core';
+import { LineDashedMaterial, LineDashedMaterialParameters } from 'three';
+import { ThLineBasicMaterial } from './ThLineBasicMaterial';
+import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: "th-lineDashedMaterial",
-  template: "",
+  selector: 'th-lineDashedMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

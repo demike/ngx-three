@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { ConeBufferGeometry } from "three";
-import { ThCylinderBufferGeometry } from "./ThCylinderBufferGeometry";
-import { ThGeometry } from "./ThGeometry";
+} from '@angular/core';
+import { ConeBufferGeometry } from 'three';
+import { ThCylinderBufferGeometry } from './ThCylinderBufferGeometry';
+import { ThGeometry } from './ThGeometry';
 
 @Component({
-  selector: "th-coneBufferGeometry",
-  template: "",
+  selector: 'th-coneBufferGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

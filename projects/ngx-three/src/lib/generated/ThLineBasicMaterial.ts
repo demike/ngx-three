@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { Color, LineBasicMaterial, LineBasicMaterialParameters } from "three";
-import { applyValue } from "../util";
-import { ThMaterial } from "./ThMaterial";
+} from '@angular/core';
+import { Color, LineBasicMaterial, LineBasicMaterialParameters } from 'three';
+import { applyValue } from '../util';
+import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: "th-lineBasicMaterial",
-  template: "",
+  selector: 'th-lineBasicMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThLineBasicMaterial) },

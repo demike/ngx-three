@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { BufferGeometry, Geometry, Material, Points } from "three";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { BufferGeometry, Geometry, Material, Points } from 'three';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-points",
-  template: "",
+  selector: 'th-points',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPoints) }],
 })
@@ -25,7 +25,7 @@ export class ThPoints<
   }
 
   @Input()
-  public set type(value: "Points") {
+  public set type(value: 'Points') {
     if (this.obj) {
       this.obj.type = value;
     }

@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { ConeGeometry } from "three";
-import { ThCylinderGeometry } from "./ThCylinderGeometry";
-import { ThGeometry } from "./ThGeometry";
+} from '@angular/core';
+import { ConeGeometry } from 'three';
+import { ThCylinderGeometry } from './ThCylinderGeometry';
+import { ThGeometry } from './ThGeometry';
 
 @Component({
-  selector: "th-coneGeometry",
-  template: "",
+  selector: 'th-coneGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThGeometry, useExisting: forwardRef(() => ThConeGeometry) },

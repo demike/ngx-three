@@ -5,17 +5,17 @@ import {
   Host,
   Input,
   Type,
-} from "@angular/core";
-import { Camera, MOUSE, TOUCH, Vector3 } from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import { ThCanvas } from "../ThCanvas";
-import { ThControlBase } from "../ThControlBase";
-import { applyValue } from "../util";
-import { ThCamera } from "./ThCamera";
+} from '@angular/core';
+import { Camera, MOUSE, TOUCH, Vector3 } from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { ThCanvas } from '../ThCanvas';
+import { ThControlBase } from '../ThControlBase';
+import { applyValue } from '../util';
+import { ThCamera } from './ThCamera';
 
 @Component({
-  selector: "th-orbitControls",
-  template: "",
+  selector: 'th-orbitControls',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) },

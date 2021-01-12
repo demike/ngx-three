@@ -4,7 +4,7 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   Bone,
   BufferGeometry,
@@ -13,14 +13,14 @@ import {
   Matrix4,
   Object3D,
   SkeletonHelper,
-} from "three";
-import { applyValue } from "../util";
-import { ThLineSegments } from "./ThLineSegments";
-import { ThObject3D } from "./ThObject3D";
+} from 'three';
+import { applyValue } from '../util';
+import { ThLineSegments } from './ThLineSegments';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-skeletonHelper",
-  template: "",
+  selector: 'th-skeletonHelper',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThSkeletonHelper) },

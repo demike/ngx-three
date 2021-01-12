@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { LOD, Object3D } from "three";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { LOD, Object3D } from 'three';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-lOD",
-  template: "",
+  selector: 'th-lOD',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLOD) }],
 })
@@ -21,7 +21,7 @@ export class ThLOD<TARGS extends any[] = []> extends ThObject3D<TARGS> {
   }
 
   @Input()
-  public set type(value: "LOD") {
+  public set type(value: 'LOD') {
     if (this.obj) {
       this.obj.type = value;
     }

@@ -4,14 +4,14 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { IcosahedronBufferGeometry } from "three";
-import { ThGeometry } from "./ThGeometry";
-import { ThPolyhedronBufferGeometry } from "./ThPolyhedronBufferGeometry";
+} from '@angular/core';
+import { IcosahedronBufferGeometry } from 'three';
+import { ThGeometry } from './ThGeometry';
+import { ThPolyhedronBufferGeometry } from './ThPolyhedronBufferGeometry';
 
 @Component({
-  selector: "th-icosahedronBufferGeometry",
-  template: "",
+  selector: 'th-icosahedronBufferGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

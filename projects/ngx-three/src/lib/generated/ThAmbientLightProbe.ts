@@ -3,14 +3,14 @@ import {
   Component,
   forwardRef,
   Type,
-} from "@angular/core";
-import { AmbientLightProbe, Color } from "three";
-import { ThLightProbe } from "./ThLightProbe";
-import { ThObject3D } from "./ThObject3D";
+} from '@angular/core';
+import { AmbientLightProbe, Color } from 'three';
+import { ThLightProbe } from './ThLightProbe';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: "th-ambientLightProbe",
-  template: "",
+  selector: 'th-ambientLightProbe',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThAmbientLightProbe) },

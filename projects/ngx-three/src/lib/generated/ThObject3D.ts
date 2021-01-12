@@ -4,7 +4,7 @@ import {
   Input,
   SkipSelf,
   Type,
-} from "@angular/core";
+} from '@angular/core';
 import {
   AnimationClip,
   BufferGeometry,
@@ -21,13 +21,13 @@ import {
   Scene,
   Vector3,
   WebGLRenderer,
-} from "three";
-import { ThObjectBase } from "../ThObjectBase";
-import { applyValue } from "../util";
+} from 'three';
+import { ThObjectBase } from '../ThObjectBase';
+import { applyValue } from '../util';
 
 @Component({
-  selector: "th-object3D",
-  template: "",
+  selector: 'th-object3D',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [],
 })

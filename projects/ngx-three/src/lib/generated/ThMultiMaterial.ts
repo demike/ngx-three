@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { Material, MultiMaterial } from "three";
-import { ThMaterial } from "./ThMaterial";
+} from '@angular/core';
+import { Material, MultiMaterial } from 'three';
+import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: "th-multiMaterial",
-  template: "",
+  selector: 'th-multiMaterial',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThMultiMaterial) },

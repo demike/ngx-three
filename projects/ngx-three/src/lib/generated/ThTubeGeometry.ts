@@ -4,13 +4,13 @@ import {
   forwardRef,
   Input,
   Type,
-} from "@angular/core";
-import { Curve, TubeGeometry, Vector3 } from "three";
-import { ThGeometry } from "./ThGeometry";
+} from '@angular/core';
+import { Curve, TubeGeometry, Vector3 } from 'three';
+import { ThGeometry } from './ThGeometry';
 
 @Component({
-  selector: "th-tubeGeometry",
-  template: "",
+  selector: 'th-tubeGeometry',
+  template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThGeometry, useExisting: forwardRef(() => ThTubeGeometry) },
