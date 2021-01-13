@@ -3,9 +3,10 @@ import { EventDispatcher } from 'three';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
-  selector: 'abs-th-control',
+  selector: 'th-abs-control',
   template: '',
 })
+// tslint:disable-next-line: component-class-suffix
 export class ThControlBase<ARGS extends any[]> extends ThWrapperBase<
   EventDispatcher,
   ARGS

@@ -3,9 +3,10 @@ import { Material } from 'three';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
-  selector: 'abs-th-material',
+  selector: 'th-abs-material',
   template: '',
 })
+// tslint:disable-next-line: component-class-suffix
 export class ThMaterialBase<ARGS extends any[]> extends ThWrapperBase<
   Material,
   ARGS

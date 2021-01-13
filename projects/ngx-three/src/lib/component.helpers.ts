@@ -23,7 +23,7 @@ export function createThProviderArray(cls: Type<any>, baseCls: Type<any>) {
  * export class TheComponent {
  * ...
  * }
- * @param type
+ * @param type the Object3D derived Class to be provided
  */
 export function createObj3DProviderArray(type: Type<any>) {
   return [{ provide: ThObject3D, useExisting: forwardRef(() => type) }];

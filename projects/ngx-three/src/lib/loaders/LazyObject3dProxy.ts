@@ -39,8 +39,8 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
   };
 
   remove = (...object: Object3D[]): this => {
-    for (let obj of object) {
-      let index = this.children.indexOf(obj);
+    for (const obj of object) {
+      const index = this.children.indexOf(obj);
       if (index >= 0) {
         this.children = this.children.splice(index, 1);
       }

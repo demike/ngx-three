@@ -43,7 +43,7 @@ export class ThEngineService implements OnDestroy {
 
     this.resize();
 
-    //this.renderer.setSize(this.canvas?.width ?? 0, this.canvas?.width ?? 0);
+    // this.renderer.setSize(this.canvas?.width ?? 0, this.canvas?.width ?? 0);
 
     // We have to run this outside angular zones,
     // because it could trigger heavy changeDetection cycles.
@@ -104,7 +104,7 @@ export class ThEngineService implements OnDestroy {
 
     const renderer = this.renderer;
 
-    for (let view of this.views) {
+    for (const view of this.views) {
       if (view.viewPort) {
         if (view.viewPort instanceof Vector4) {
           this.renderer.setViewport(view.viewPort);

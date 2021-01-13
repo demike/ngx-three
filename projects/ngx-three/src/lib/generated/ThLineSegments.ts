@@ -1,3 +1,4 @@
+// tslint:disable: component-selector component-class-suffix no-redundant-jsdoc deprecation
 import {
   ChangeDetectionStrategy,
   Component,

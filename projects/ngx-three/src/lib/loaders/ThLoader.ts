@@ -17,6 +17,7 @@ import {
 @Directive({
   selector: '[load]',
 })
+// tslint:disable-next-line: directive-class-suffix
 export class ThLoader<T = any> implements OnInit {
   @Input()
   public loaderFn?: (
@@ -40,7 +41,7 @@ export class ThLoader<T = any> implements OnInit {
 
   ngOnInit(): void {
     this.loadAsync();
-    //this.zone.runOutsideAngular(() => );
+    // this.zone.runOutsideAngular(() => );
   }
 
   @Output() get onLoaded() {

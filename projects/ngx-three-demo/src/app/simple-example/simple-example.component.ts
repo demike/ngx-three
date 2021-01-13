@@ -12,6 +12,7 @@ import { BoxBufferGeometry, MeshStandardMaterial } from 'three';
 
 @Component({
   template: '',
+  // tslint:disable-next-line: component-selector
   selector: 'th-box',
   providers: createObj3DProviderArray(Box),
 })

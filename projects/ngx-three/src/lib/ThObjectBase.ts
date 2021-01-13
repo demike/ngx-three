@@ -2,9 +2,10 @@ import { Component, Input } from '@angular/core';
 import { Object3D, Vector3 } from 'three';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
-  selector: 'abs-th-object',
+  selector: 'th-abs-object',
   template: '',
 })
+// tslint:disable-next-line: component-class-suffix
 export class ThObjectBase<ARGS extends any[]> extends ThWrapperBase<
   Object3D,
   ARGS

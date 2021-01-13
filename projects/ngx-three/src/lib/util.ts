@@ -14,12 +14,12 @@ export function isSettable(obj: any): obj is ThSettable {
  * else it return the newValue as new target
  * if newValue is undefined the old target is returned
  * @param target the target for the new value
- * @param newValue
+ * @param newValue the value to be set
  * @returns the new target(value)
  */
 export function applyValue<T>(target: T, newValue?: any[] | T): T {
   if (isSettable(target)) {
-    if (newValue == undefined) {
+    if (newValue === undefined) {
       return target as T;
     }
 

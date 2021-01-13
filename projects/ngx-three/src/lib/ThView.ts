@@ -20,7 +20,9 @@ import { ThScene } from './generated/ThScene';
     RaycasterService,
   ],
 })
+// tslint:disable-next-line: component-class-suffix
 export class ThView implements OnInit {
+  // tslint:disable-next-line: variable-name
   protected _camera?: ThCamera;
   constructor(
     protected raycaster: RaycasterService,

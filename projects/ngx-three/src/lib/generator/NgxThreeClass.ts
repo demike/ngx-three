@@ -69,6 +69,7 @@ export abstract class NgxThreeClass {
     this.imports.add("import { applyValue } from '../util';");
 
     const ngxClassDeclarationString = `
+    // tslint:disable: component-selector component-class-suffix no-redundant-jsdoc deprecation
         ${[...this.imports].join('')}
 
         @Component({
@@ -177,7 +178,7 @@ export abstract class NgxThreeClass {
           continue;
         }
 
-        const type = this.typeChecker!.getTypeAtLocation(member.type);
+        const type = this.typeChecker.getTypeAtLocation(member.type);
         const isReadonly = member.modifiers?.find(
           (m) => m.kind === ts.SyntaxKind.ReadonlyKeyword
         );
@@ -270,13 +271,13 @@ export abstract class NgxThreeClass {
       tNodes.push(...member.type.types);
     } else {
       tNodes.push(member.type);
-      const type = this.typeChecker!.getTypeAtLocation(member.type).getProperty(
-        'set'
-      )?.declarations[0];
+      const type = this.typeChecker
+        .getTypeAtLocation(member.type)
+        .getProperty('set')?.declarations[0];
     }
 
     for (const tNode of tNodes) {
-      const decl = this.typeChecker!.getTypeAtLocation(tNode).getProperty('set')
+      const decl = this.typeChecker.getTypeAtLocation(tNode).getProperty('set')
         ?.declarations[0];
       if (decl && ts.isMethodDeclaration(decl)) {
         setters.push(decl);
@@ -339,7 +340,7 @@ export abstract class NgxThreeClass {
       const symbol = this.typeChecker.getSymbolAtLocation(srcFile);
       const exports = this.typeChecker.getExportsOfModule(symbol!);
       exports
-        .filter((exp) => exp.escapedName != this.wrappedClassName)
+        .filter((exp) => exp.escapedName !== this.wrappedClassName)
         .forEach((exp) => {
           this.imports.add(`import { ${exp.escapedName} } from 'three';`);
         });
@@ -361,8 +362,8 @@ export abstract class NgxThreeClass {
 
     for (const clause of node.heritageClauses) {
       if (
-        clause.token == ts.SyntaxKind.ExtendsKeyword &&
-        clause.types.length == 1
+        clause.token === ts.SyntaxKind.ExtendsKeyword &&
+        clause.types.length === 1
       ) {
         const classDecl: ts.Type = checker.getTypeAtLocation(
           clause.types[0].expression
@@ -395,7 +396,7 @@ export abstract class NgxThreeClass {
 
             return p.default!.getText();
           })
-          .filter((s) => s !== undefined) as string[];
+          .filter((str) => str !== undefined) as string[];
       }
     }
 

@@ -7,6 +7,7 @@ import { ThLoader } from './ThLoader';
 @Directive({
   selector: '[loadOBJ]',
 })
+// tslint:disable-next-line: directive-class-suffix
 export class ThOBJLoader extends ThLoader<Group> {
   public readonly LoaderType: Type<Loader> = OBJLoader;
   public loaderFn = async (
@@ -26,12 +27,14 @@ export class ThOBJLoader extends ThLoader<Group> {
     }
 
     return result;
+    // tslint:disable-next-line: semicolon
   };
 }
 
 @Directive({
   selector: 'loadOBJ2',
 })
+// tslint:disable-next-line: directive-class-suffix
 export class ThOBJLoader2 extends ThOBJLoader {
   public readonly LoaderType: Type<Loader> = OBJLoader2;
 }

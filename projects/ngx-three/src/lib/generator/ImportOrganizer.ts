@@ -8,8 +8,8 @@ class LanguageServiceHostImpl implements ts.LanguageServiceHost {
   /**
    * Create a service host instance.
    *
-   * @param {string} name path to file
-   * @param {string} content file content
+   * @param name path to file
+   * @param content file content
    */
   constructor(name: string, content: string) {
     const tsconfig = ts.findConfigFile(name, ts.sys.fileExists);
@@ -61,8 +61,8 @@ const applyChanges = (input: string, changes: readonly ts.TextChange[]) =>
 
 export class ImportOrganizer {
   organizeImports(fileName: string, content: string) {
-    let host = new LanguageServiceHostImpl(fileName, content);
-    let ls = ts.createLanguageService(host);
+    const host = new LanguageServiceHostImpl(fileName, content);
+    const ls = ts.createLanguageService(host);
 
     const fileChanges = ls.organizeImports({ type: 'file', fileName }, {}, {});
 

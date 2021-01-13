@@ -9,9 +9,10 @@ import {
 import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
 
 @Component({
-  selector: 'abs-th-wrapper',
+  selector: 'th-abs-wrapper',
   template: '',
 })
+// tslint:disable-next-line: component-class-suffix
 export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit {
   public obj?: T;
 
@@ -42,13 +43,14 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit {
       return;
     }
 
-    if (changes['obj']?.currentValue) {
-      this.obj = changes['obj']?.currentValue;
+    if (changes.obj?.currentValue) {
+      this.obj = changes.obj?.currentValue;
     } else if (!this.obj) {
-      this.createThreeInstance(changes['args']?.currentValue);
+      this.createThreeInstance(changes.args?.currentValue);
     }
 
-    for (let key in changes) {
+    // tslint:disable-next-line: forin
+    for (const key in changes) {
       (this as any)[key] = changes[key].currentValue;
     }
   }
