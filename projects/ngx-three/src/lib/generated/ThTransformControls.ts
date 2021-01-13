@@ -3,15 +3,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Host,
   Input,
   Type,
 } from '@angular/core';
 import { Camera, MOUSE, Object3D } from 'three';
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
-import { ThCanvas } from '../ThCanvas';
 import { ThControlBase } from '../ThControlBase';
-import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -136,16 +133,5 @@ export class ThTransformControls<
     if (this.obj) {
       this.obj.mouseButtons = value;
     }
-  }
-
-  constructor(@Host() camera: ThCamera, public canvas: ThCanvas) {
-    super(camera);
-  }
-
-  protected createThreeInstance(args?: Iterable<any>) {
-    if (!args) {
-      args = [this.camera, this.canvas];
-    }
-    super.createThreeInstance(args);
   }
 }

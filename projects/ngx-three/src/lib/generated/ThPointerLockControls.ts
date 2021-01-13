@@ -3,15 +3,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Host,
   Input,
   Type,
 } from '@angular/core';
 import { Camera } from 'three';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
-import { ThCanvas } from '../ThCanvas';
 import { ThControlBase } from '../ThControlBase';
-import { ThCamera } from './ThCamera';
 
 @Component({
   selector: 'th-pointerLockControls',
@@ -58,16 +55,5 @@ export class ThPointerLockControls<
     if (this.obj) {
       this.obj.maxPolarAngle = value;
     }
-  }
-
-  constructor(@Host() camera: ThCamera, public canvas: ThCanvas) {
-    super(camera);
-  }
-
-  protected createThreeInstance(args?: Iterable<any>) {
-    if (!args) {
-      args = [this.camera, this.canvas];
-    }
-    super.createThreeInstance(args);
   }
 }

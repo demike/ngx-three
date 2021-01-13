@@ -3,16 +3,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Host,
   Input,
   Type,
 } from '@angular/core';
 import { Camera, MOUSE, Vector3 } from 'three';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
-import { ThCanvas } from '../ThCanvas';
 import { ThControlBase } from '../ThControlBase';
 import { applyValue } from '../util';
-import { ThCamera } from './ThCamera';
 
 @Component({
   selector: 'th-trackballControls',
@@ -180,15 +177,5 @@ export class ThTrackballControls<
     if (this.obj) {
       this.obj.up0 = applyValue<Vector3>(this.obj.up0, value);
     }
-  }
-  constructor(@Host() camera: ThCamera, public canvas: ThCanvas) {
-    super(camera);
-  }
-
-  protected createThreeInstance(args?: Iterable<any>) {
-    if (!args) {
-      args = [this.camera, this.canvas];
-    }
-    super.createThreeInstance(args);
   }
 }

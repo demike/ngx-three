@@ -3,16 +3,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Host,
   Input,
   Type,
 } from '@angular/core';
 import { Camera, MOUSE, TOUCH, Vector3 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { ThCanvas } from '../ThCanvas';
 import { ThControlBase } from '../ThControlBase';
 import { applyValue } from '../util';
-import { ThCamera } from './ThCamera';
 
 @Component({
   selector: 'th-orbitControls',
@@ -234,16 +231,5 @@ export class ThOrbitControls<
     if (this.obj) {
       this.obj.touches = value;
     }
-  }
-
-  constructor(@Host() camera: ThCamera, public canvas: ThCanvas) {
-    super(camera);
-  }
-
-  protected createThreeInstance(args?: Iterable<any>) {
-    if (!args) {
-      args = [this.camera, this.canvas];
-    }
-    super.createThreeInstance(args);
   }
 }

@@ -3,15 +3,12 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Host,
   Input,
   Type,
 } from '@angular/core';
 import { Camera, Object3D } from 'three';
 import { DragControls } from 'three/examples/jsm/controls/DragControls';
-import { ThCanvas } from '../ThCanvas';
 import { ThControlBase } from '../ThControlBase';
-import { ThCamera } from './ThCamera';
 
 @Component({
   selector: 'th-dragControls',
@@ -52,16 +49,5 @@ export class ThDragControls<
     if (this.obj) {
       this.obj.transformGroup = value;
     }
-  }
-
-  constructor(@Host() camera: ThCamera, public canvas: ThCanvas) {
-    super(camera);
-  }
-
-  protected createThreeInstance(args?: Iterable<any>) {
-    if (!args) {
-      args = [this.camera, this.canvas];
-    }
-    super.createThreeInstance(args);
   }
 }
