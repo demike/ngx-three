@@ -23,9 +23,8 @@ import { ThCamera } from './ThCamera';
   ],
 })
 export class ThOrbitControls<
-  TARGS extends any[] = [object: Camera, domElement?: HTMLElement],
-  TARGS
-> {
+  TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
+> extends ThControlBase<TARGS> {
   public obj!: OrbitControls;
   protected getType(): Type<OrbitControls> {
     return OrbitControls;

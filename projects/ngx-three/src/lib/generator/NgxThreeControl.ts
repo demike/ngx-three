@@ -12,7 +12,11 @@ export class NgxThreeControl extends NgxThreeClass {
   }
 
   protected getWrappedClassImportPath() {
-    return 'three/examples/jsm/controls/' + this.wrappedClassName;
+    const fileName = this.classDecl.getSourceFile().fileName;
+    return fileName
+      .substr(fileName.indexOf('/node_modules/three/'))
+      .replace('/node_modules/', '')
+      .replace('.d.ts', '');
   }
 
   protected generateConstructor() {
@@ -36,6 +40,30 @@ export class NgxThreeControl extends NgxThreeClass {
     }
     return '';
   }
+
+  /*
+  protected generateConstructor() {
+    const argTypes = this.getConstructorArgumentTypes();
+
+    if (argTypes.indexOf('HTMLElement') > 0) {
+      this.imports.add('import { ThCanvas } from "../ThCanvas"');
+      this.imports.add('import { ThCamera } from "./ThCamera"');
+      this.imports.add('import { Host } from "@angular/core"');
+      return `constructor(@Host() camera: ThCamera, public canvas: ThCanvas){
+        super(camera);
+      }
+
+      protected createThreeInstance(args?: Iterable<any>) {
+        if (!args) {
+          args = [this.camera, this.canvas];
+        }
+        super.createThreeInstance(args);
+      }
+      `;
+    }
+    return '';
+  }
+  */
 
   protected getConstructorArgumentTypes(): string[] {
     const symbol = ((this.classDecl as unknown) as ts.Type).symbol;

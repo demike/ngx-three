@@ -126,13 +126,13 @@ export abstract class NgxThreeClass {
     header += `TARGS extends any[] = ${this.constructorArgs}>`;
 
     let baseClassName = 'EventDispatcher';
+    const wrapperBaseClassName = this.getWrapperBaseClassName();
     if (this.classDecl.heritageClauses) {
       // if we have a base class and we are not Object3D
       const clause = this.classDecl.heritageClauses[0].getText();
       baseClassName = clause.replace('extends ', '').split('<')[0];
 
       if ('EventDispatcher' === baseClassName) {
-        const wrapperBaseClassName = this.getWrapperBaseClassName();
         this.imports.add(
           `import { ${wrapperBaseClassName} } from '../${wrapperBaseClassName}';`
         );
@@ -144,6 +144,10 @@ export abstract class NgxThreeClass {
         );
         header = `${header}  ${clause.replace('extends ', 'extends Th')}`;
       }
+    } else {
+      // no base class --> use the wrapper base class
+      header = `${header} extends ${wrapperBaseClassName}<TARGS>`;
+      return header;
     }
 
     if (header.endsWith('>')) {

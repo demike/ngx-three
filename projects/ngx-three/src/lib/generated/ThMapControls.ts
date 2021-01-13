@@ -7,7 +7,7 @@ import {
   Type,
 } from '@angular/core';
 import { Camera } from 'three';
-import { MapControls } from 'three/examples/jsm/controls/MapControls';
+import { MapControls } from 'three/examples/jsm/controls/OrbitControls';
 import { ThCanvas } from '../ThCanvas';
 import { ThControlBase } from '../ThControlBase';
 import { ThCamera } from './ThCamera';
