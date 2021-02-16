@@ -1,11 +1,14 @@
 import {
   Component,
+  EventEmitter,
   Input,
   OnChanges,
   OnInit,
+  Output,
   SimpleChanges,
   Type,
 } from '@angular/core';
+import { Observable } from 'rxjs';
 import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
 
 @Component({
@@ -15,6 +18,9 @@ import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
 // tslint:disable-next-line: component-class-suffix
 export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit {
   public obj?: T;
+
+  // emit the changes
+  protected updateEmitter?: EventEmitter<SimpleChanges>;
 
   constructor() {
     // nothing to do
@@ -38,6 +44,11 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit {
     if (this.obj && !isLazyObject3dProxy(this.obj as any)) {
       // the object is already set and it is no proxy
 
+      // emit the changes
+      if (this.updateEmitter) {
+        this.updateEmitter.next(changes);
+      }
+
       // TODO: request animation frame
 
       return;
@@ -57,5 +68,13 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit {
 
   protected getType(): Type<T> {
     throw new Error('derive me');
+  }
+
+  @Output()
+  public get onUpdate(): Observable<SimpleChanges> {
+    if (!this.updateEmitter) {
+      this.updateEmitter = new EventEmitter();
+    }
+    return this.updateEmitter;
   }
 }
