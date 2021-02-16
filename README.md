@@ -1,6 +1,6 @@
 # NgxThree
 
-NgyThree wraps [three.js](https://threejs.org/) in Angular components.
+NgxThree wraps [three.js](https://threejs.org/) in Angular components.
 It allows to render 3d Scenes in a declarative way.
 
 it uses code generation to be able to provide as much functionality from three js.
