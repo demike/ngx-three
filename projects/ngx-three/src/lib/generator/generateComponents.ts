@@ -10,6 +10,7 @@ import { Type } from '@angular/core';
 import { NgxThreeMaterial } from './NgxThreeMaterial';
 import { NgxThreeBufferGeometry, NgxThreeGeometry } from './NgxThreeGeometry';
 import { NgxThreeControl } from './NgxThreeControl';
+import { NgxThreeBarrelGen } from './NgxThreeBarrelGen';
 
 class NgxThreeClassGenerator {
   public readonly baseOutPath = join(__dirname, '../generated');
@@ -64,6 +65,13 @@ class NgxThreeClassGenerator {
     ngxModule.generate(classNames);
 
     this.writeFile('ngx-three-generated.module', ngxModule.content);
+  }
+
+  public generateNgxBarrelFile(classNames: string[]) {
+    const ngxBarrel = new NgxThreeBarrelGen();
+    ngxBarrel.generate(classNames);
+
+    this.writeFile('index', ngxBarrel.content);
   }
 
   private writeFile(fileName: string, content: string) {
@@ -162,3 +170,4 @@ generator.generateMaterials();
 generator.generateGeometries();
 generator.generateControls();
 generator.generateNgxModule(Array.from(generator.ngxThreeClassMap.keys()));
+generator.generateNgxBarrelFile(Array.from(generator.ngxThreeClassMap.keys()));
