@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { EventDispatcher } from 'three';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThCanvas } from './ThCanvas';
 import { ThWrapperBase } from './ThWrapperBase';

@@ -1,11 +1,5 @@
 import * as THREE from 'three';
-import {
-  ElementRef,
-  Injectable,
-  NgZone,
-  OnDestroy,
-  OnInit,
-} from '@angular/core';
+import { Injectable, NgZone, OnDestroy } from '@angular/core';
 import { ThView } from './ThView';
 import { Vector4 } from 'three';
 import { EventEmitter } from '@angular/core';
