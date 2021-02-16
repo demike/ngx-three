@@ -1,6 +1,22 @@
 {
   "name": "ngx-three",
   "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/demike/ngx-three.git"
+  },
+  "keywords": [
+    "angular",
+    "three.js",
+    "WebGL",
+    "generator"
+  ],
+  "author": "Michael Derfler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/demike/ngx-three/issues"
+  },
+  "homepage": "https://github.com/demike/ngx-three#readme",
   "peerDependencies": {
     "@angular/common": "^11.0.4",
     "@angular/core": "^11.0.4"
