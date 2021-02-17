@@ -16,6 +16,7 @@ import { BoxBufferGeometry, MeshStandardMaterial } from 'three';
   selector: 'th-box',
   providers: createObj3DProviderArray(Box),
 })
+// tslint:disable-next-line: component-class-suffix
 export class Box extends ThMesh implements OnInit {
   constructor(@SkipSelf() parent: ThObject3D) {
     super(parent);
