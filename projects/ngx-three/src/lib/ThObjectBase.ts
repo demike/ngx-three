@@ -16,7 +16,7 @@ export class ThObjectBase<ARGS extends any[]> extends ThWrapperBase<
 
   protected createThreeInstance(args?: Iterable<any>) {
     super.createThreeInstance(args);
-    this.parent.obj?.add(this.obj!);
+    this.parent.obj?.add(this.obj as Object3D);
   }
 
   // object 3d methods

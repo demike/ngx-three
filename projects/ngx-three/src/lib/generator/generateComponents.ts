@@ -54,7 +54,7 @@ class NgxThreeClassGenerator {
     classSymbol: ts.Symbol,
     generatorType: Type<NgxThreeClass>
   ): NgxThreeClass {
-    const ngxClass = new generatorType(classSymbol, this.typeChecker!);
+    const ngxClass = new generatorType(classSymbol, this.typeChecker);
     ngxClass.generate();
 
     return ngxClass;

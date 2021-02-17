@@ -183,22 +183,11 @@ export abstract class NgxThreeClass {
         }
 
         const type = this.typeChecker.getTypeAtLocation(member.type);
-        const isReadonly = member.modifiers?.find(
-          (m) => m.kind === ts.SyntaxKind.ReadonlyKeyword
-        );
 
         // generate the setter
-        members += this.generateSetterInput(
-          memberName,
-          member as ts.PropertyDeclaration,
-          type
-        );
+        members += this.generateSetterInput(memberName, member, type);
         // gerate the getter
-        members += this.generateGetter(
-          memberName,
-          member as ts.PropertyDeclaration,
-          type
-        );
+        members += this.generateGetter(memberName, member, type);
       }
     }
     return members;
@@ -275,9 +264,6 @@ export abstract class NgxThreeClass {
       tNodes.push(...member.type.types);
     } else {
       tNodes.push(member.type);
-      const type = this.typeChecker
-        .getTypeAtLocation(member.type)
-        .getProperty('set')?.declarations[0];
     }
 
     for (const tNode of tNodes) {
@@ -342,7 +328,7 @@ export abstract class NgxThreeClass {
         .forEach((el) => this.imports.add(el));
 
       const symbol = this.typeChecker.getSymbolAtLocation(srcFile);
-      const exports = this.typeChecker.getExportsOfModule(symbol!);
+      const exports = this.typeChecker.getExportsOfModule(symbol as ts.Symbol);
       exports
         .filter((exp) => exp.escapedName !== this.wrappedClassName)
         .forEach((exp) => {
@@ -387,7 +373,7 @@ export abstract class NgxThreeClass {
         return typeParams
           .filter((p) => p.default)
           .map((p) => {
-            (p.default! as ts.UnionOrIntersectionTypeNode).types.forEach(
+            (p.default as ts.UnionOrIntersectionTypeNode).types.forEach(
               (type) => {
                 if (ts.isTypeReferenceNode(type)) {
                   // TODO: allow non "three" imports
@@ -398,9 +384,9 @@ export abstract class NgxThreeClass {
               }
             );
 
-            return p.default!.getText();
+            return (p.default as ts.Node).getText();
           })
-          .filter((str) => str !== undefined) as string[];
+          .filter((str) => str !== undefined);
       }
     }
 
