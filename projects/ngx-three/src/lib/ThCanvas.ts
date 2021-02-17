@@ -32,6 +32,7 @@ import { ThView } from './ThView';
     forwardRef(() => RaycasterService),
   ],
 })
+// tslint:disable-next-line: component-class-suffix
 export class ThCanvas implements OnInit, AfterViewInit {
   constructor(
     private engServ: ThEngineService,

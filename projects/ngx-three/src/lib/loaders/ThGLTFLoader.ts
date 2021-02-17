@@ -6,6 +6,7 @@ import { ThLoader } from './ThLoader';
 @Directive({
   selector: '[loadGLTF]',
 })
+// tslint:disable-next-line: directive-class-suffix
 export class ThGLTFLoader extends ThLoader<GLTF> {
   public loaderFn = async (
     input?: string,
