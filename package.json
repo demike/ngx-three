@@ -6,8 +6,11 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "copy:docs": "(cp README.md dist/ngx-three/ || copy README.md dist\\ngx-three)",
+    "package": "ng build --prod ngx-three && npm run copy:docs"
   },
   "private": true,
   "dependencies": {

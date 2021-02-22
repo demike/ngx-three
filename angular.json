@@ -36,9 +36,7 @@
               "projects/ngx-three/tsconfig.lib.json",
               "projects/ngx-three/tsconfig.spec.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }
@@ -67,9 +65,7 @@
               "projects/ngx-three-demo/src/favicon.ico",
               "projects/ngx-three-demo/src/assets"
             ],
-            "styles": [
-              "projects/ngx-three-demo/src/styles.scss"
-            ],
+            "styles": ["projects/ngx-three-demo/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -130,9 +126,7 @@
               "projects/ngx-three-demo/src/favicon.ico",
               "projects/ngx-three-demo/src/assets"
             ],
-            "styles": [
-              "projects/ngx-three-demo/src/styles.scss"
-            ],
+            "styles": ["projects/ngx-three-demo/src/styles.scss"],
             "scripts": []
           }
         },
@@ -144,9 +138,7 @@
               "projects/ngx-three-demo/tsconfig.spec.json",
               "projects/ngx-three-demo/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {

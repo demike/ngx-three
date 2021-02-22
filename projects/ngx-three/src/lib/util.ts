@@ -4,7 +4,7 @@ export interface ThSettable {
 }
 
 export function isSettable(obj: any): obj is ThSettable {
-  return obj && obj.set; // && obj.copy;
+  return !!(obj && obj.set); // && obj.copy;
 }
 
 /**
