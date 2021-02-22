@@ -22,7 +22,7 @@
     "@angular/core": "^11.0.4"
   },
   "dependencies": {
-    "three": "^0.123.0",
+    "three": "^0.124.0",
     "tslib": "^2.0.0"
   },
   "devDependencies": {
