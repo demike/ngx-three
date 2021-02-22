@@ -12,3 +12,6 @@ export * from './lib/loaders/ThOBJLoader';
 export * from './lib/loaders/ThGLTFLoader';
 
 export * from './lib/generated';
+export * from './lib/generated/ngx-three-generated.module';
+
+export * from './lib/events/raycaster.events.directive';
