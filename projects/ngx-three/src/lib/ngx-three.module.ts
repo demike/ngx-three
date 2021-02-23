@@ -3,7 +3,7 @@ import { RaycasterEventDirective } from './events/raycaster.events.directive';
 import { NgxThreeGeneratedModule } from './generated/ngx-three-generated.module';
 import { ThGLTFLoader } from './loaders/ThGLTFLoader';
 import { ThLoader } from './loaders/ThLoader';
-import { ThOBJLoader, ThOBJLoader2 } from './loaders/ThOBJLoader';
+import { ThOBJLoader } from './loaders/ThOBJLoader';
 import { ThCanvas } from './ThCanvas';
 import { ThMaterialBase } from './ThMaterialBase';
 import { ThObjectBase } from './ThObjectBase';
@@ -20,7 +20,6 @@ import { ThWrapperBase } from './ThWrapperBase';
     ThLoader,
     ThGLTFLoader,
     ThOBJLoader,
-    ThOBJLoader2,
     RaycasterEventDirective,
   ],
   imports: [NgxThreeGeneratedModule],
@@ -30,7 +29,6 @@ import { ThWrapperBase } from './ThWrapperBase';
     ThLoader,
     ThGLTFLoader,
     ThOBJLoader,
-    ThOBJLoader2,
     RaycasterEventDirective,
   ],
 })

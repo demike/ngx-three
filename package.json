@@ -24,8 +24,8 @@
     "@angular/platform-browser-dynamic": "~11.2.2",
     "@angular/router": "~11.2.2",
     "rxjs": "~6.6.0",
-    "three": "^0.124.0",
-    "tslib": "^2.0.0",
+    "three": "~0.124.0",
+    "tslib": "^2.1.0",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {

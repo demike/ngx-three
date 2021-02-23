@@ -1,7 +1,6 @@
 import { Directive, Type } from '@angular/core';
 import { Group, Loader, Object3D } from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/ObjLoader';
-import { OBJLoader2 } from 'three/examples/jsm/loaders/ObjLoader2';
 import { ThLoader } from './ThLoader';
 
 @Directive({
@@ -29,12 +28,4 @@ export class ThOBJLoader extends ThLoader<Group> {
     return result;
     // tslint:disable-next-line: semicolon
   };
-}
-
-@Directive({
-  selector: 'loadOBJ2',
-})
-// tslint:disable-next-line: directive-class-suffix
-export class ThOBJLoader2 extends ThOBJLoader {
-  public readonly LoaderType: Type<Loader> = OBJLoader2;
 }
