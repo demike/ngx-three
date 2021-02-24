@@ -1,3 +1,4 @@
+/*
 import { Directive, Type } from '@angular/core';
 import { Group, Loader, Object3D } from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/ObjLoader';
@@ -29,3 +30,4 @@ export class ThOBJLoader extends ThLoader<Group> {
     // tslint:disable-next-line: semicolon
   };
 }
+*/
