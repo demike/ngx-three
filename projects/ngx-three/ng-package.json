@@ -3,9 +3,5 @@
   "dest": "../../dist/ngx-three",
   "lib": {
     "entryFile": "src/public-api.ts"
-  },
-  "whitelistedNonPeerDependencies": [
-    "three",
-    "three/examples/jsm/loaders/OBJLoader"
-  ]
+  }
 }
