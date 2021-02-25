@@ -6,7 +6,9 @@ import {
   NgZone,
   OnInit,
   Output,
+  SimpleChange,
 } from '@angular/core';
+
 import { Object3D } from 'three';
 import { ThObject3D } from '../generated/ThObject3D';
 import {
@@ -88,6 +90,9 @@ export class ThLoader<T = any> implements OnInit {
     this.proxy.applyToObject3D(object);
     this.host.obj = object;
     this.host.parent.obj?.add(object);
+
+    // execute ngOnChanges to allow emitting a change
+    this.host.ngOnChanges({ obj: new SimpleChange(this.proxy, object, false) });
     this.proxy = undefined;
 
     if (this.onLoaded$ && loaderResult !== undefined) {

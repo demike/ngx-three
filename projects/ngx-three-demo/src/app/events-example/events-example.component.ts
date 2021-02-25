@@ -24,7 +24,7 @@ export class EventsExampleComponent {
     if (this.changes.length >= 20) {
       this.changes.shift();
     }
-    this.changes.push(JSON.stringify(changes));
+    this.changes.push(Object.keys(changes).toString());
   }
 
   public onLoaded() {
