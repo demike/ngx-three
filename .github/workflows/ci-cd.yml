@@ -32,11 +32,11 @@ jobs:
       - run: npm run lint
       - run: npm run test-headless
 
-      - name: deploy to gh-pages
-        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.1 ## replace by latest version without it you will see Expected format {org}/{repo}[/path]@ref. Actual 'AhsanAyaz/angular-deploy-gh-pages-actions',Input string was not in a correct format.
+      - name: build demo
+        run: npm run build:demo
+      - name: deploy demo to gh-pages
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          github_access_token: ${{ secrets.ACCESS_TOKEN }} # see the Configuration section for how you can create secrets
-          build_configuration: staging # The build environment for the app. please look configurations in your angular.json
-          base_href: /ngx-three/ # make sure this corresponds to https://<your_username>.github.io/<base_href>/
-          deploy_branch: gh-pages # The branch the action should deploy to.
-          angular_dist_build_folder: dist/ngx-three-demo # The folder where your project is supposed to be after running ng build by the action.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: dist/ngx-three-demo
