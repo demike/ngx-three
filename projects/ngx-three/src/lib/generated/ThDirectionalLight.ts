@@ -28,6 +28,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThDirectionalLight<
   TARGS extends any[] = [color?: Color | string | number, intensity?: number]
 > extends ThLight<TARGS> {
+  @Input()
   public obj!: DirectionalLight;
   protected getType(): Type<DirectionalLight> {
     return DirectionalLight;

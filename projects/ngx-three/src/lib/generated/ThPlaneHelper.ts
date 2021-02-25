@@ -33,6 +33,7 @@ export class ThPlaneHelper<
   Material | Material[],
   TARGS
 > {
+  @Input()
   public obj!: PlaneHelper;
   protected getType(): Type<PlaneHelper> {
     return PlaneHelper;

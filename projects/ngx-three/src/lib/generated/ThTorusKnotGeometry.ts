@@ -27,6 +27,7 @@ export class ThTorusKnotGeometry<
     q?: number
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: TorusKnotGeometry;
   protected getType(): Type<TorusKnotGeometry> {
     return TorusKnotGeometry;

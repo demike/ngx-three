@@ -24,6 +24,7 @@ import { ThGeometry } from './ThGeometry';
 export class ThShapeBufferGeometry<
   TARGS extends any[] = [shapes: Shape | Shape[], curveSegments?: number]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: ShapeBufferGeometry;
   protected getType(): Type<ShapeBufferGeometry> {
     return ShapeBufferGeometry;

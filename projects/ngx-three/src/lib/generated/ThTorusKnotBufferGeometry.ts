@@ -31,6 +31,7 @@ export class ThTorusKnotBufferGeometry<
     q?: number
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: TorusKnotBufferGeometry;
   protected getType(): Type<TorusKnotBufferGeometry> {
     return TorusKnotBufferGeometry;

@@ -29,6 +29,7 @@ export class ThCylinderGeometry<
     thetaLength?: number
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: CylinderGeometry;
   protected getType(): Type<CylinderGeometry> {
     return CylinderGeometry;

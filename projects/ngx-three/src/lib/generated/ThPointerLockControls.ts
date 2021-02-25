@@ -24,6 +24,7 @@ import { ThControlBase } from '../ThControlBase';
 export class ThPointerLockControls<
   TARGS extends any[] = [camera: Camera, domElement?: HTMLElement]
 > extends ThControlBase<TARGS> {
+  @Input()
   public obj!: PointerLockControls;
   protected getType(): Type<PointerLockControls> {
     return PointerLockControls;

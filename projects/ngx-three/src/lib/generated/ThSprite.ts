@@ -19,6 +19,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThSprite<
   TARGS extends any[] = [material?: SpriteMaterial]
 > extends ThObject3D<TARGS> {
+  @Input()
   public obj!: Sprite;
   protected getType(): Type<Sprite> {
     return Sprite;

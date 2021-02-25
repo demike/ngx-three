@@ -24,6 +24,7 @@ import { ThControlBase } from '../ThControlBase';
 export class ThDeviceOrientationControls<
   TARGS extends any[] = [object: Camera]
 > extends ThControlBase<TARGS> {
+  @Input()
   public obj!: DeviceOrientationControls;
   protected getType(): Type<DeviceOrientationControls> {
     return DeviceOrientationControls;

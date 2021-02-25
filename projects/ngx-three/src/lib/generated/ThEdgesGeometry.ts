@@ -24,6 +24,7 @@ export class ThEdgesGeometry<
     thresholdAngle?: number
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: EdgesGeometry;
   protected getType(): Type<EdgesGeometry> {
     return EdgesGeometry;

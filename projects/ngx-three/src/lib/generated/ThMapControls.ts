@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
+  Input,
   Type,
 } from '@angular/core';
 import { Camera } from 'three';
@@ -21,6 +22,7 @@ import { ThOrbitControls } from './ThOrbitControls';
 export class ThMapControls<
   TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
 > extends ThOrbitControls<TARGS> {
+  @Input()
   public obj!: MapControls;
   protected getType(): Type<MapControls> {
     return MapControls;

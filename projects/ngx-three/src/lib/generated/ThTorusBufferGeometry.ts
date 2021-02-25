@@ -30,6 +30,7 @@ export class ThTorusBufferGeometry<
     arc?: number
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: TorusBufferGeometry;
   protected getType(): Type<TorusBufferGeometry> {
     return TorusBufferGeometry;

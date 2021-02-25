@@ -26,6 +26,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThPointsMaterial<
   TARGS extends any[] = [parameters?: PointsMaterialParameters]
 > extends ThMaterial<TARGS> {
+  @Input()
   public obj!: PointsMaterial;
   protected getType(): Type<PointsMaterial> {
     return PointsMaterial;

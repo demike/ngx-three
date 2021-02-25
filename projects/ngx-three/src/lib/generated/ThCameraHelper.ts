@@ -31,6 +31,7 @@ export class ThCameraHelper<
   Material | Material[],
   TARGS
 > {
+  @Input()
   public obj!: CameraHelper;
   protected getType(): Type<CameraHelper> {
     return CameraHelper;

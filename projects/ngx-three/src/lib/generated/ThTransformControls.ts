@@ -25,6 +25,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThTransformControls<
   TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
 > extends ThObject3D<TARGS> {
+  @Input()
   public obj!: TransformControls;
   protected getType(): Type<TransformControls> {
     return TransformControls;

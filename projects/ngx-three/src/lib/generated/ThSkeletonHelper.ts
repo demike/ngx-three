@@ -34,6 +34,7 @@ export class ThSkeletonHelper<
   Material | Material[],
   TARGS
 > {
+  @Input()
   public obj!: SkeletonHelper;
   protected getType(): Type<SkeletonHelper> {
     return SkeletonHelper;

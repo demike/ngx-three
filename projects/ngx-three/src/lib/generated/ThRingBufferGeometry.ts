@@ -31,6 +31,7 @@ export class ThRingBufferGeometry<
     thetaLength?: number
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: RingBufferGeometry;
   protected getType(): Type<RingBufferGeometry> {
     return RingBufferGeometry;

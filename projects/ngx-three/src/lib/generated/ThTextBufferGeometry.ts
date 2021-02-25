@@ -24,6 +24,7 @@ import { ThGeometry } from './ThGeometry';
 export class ThTextBufferGeometry<
   TARGS extends any[] = [text: string, parameters: TextGeometryParameters]
 > extends ThExtrudeBufferGeometry<TARGS> {
+  @Input()
   public obj!: TextBufferGeometry;
   protected getType(): Type<TextBufferGeometry> {
     return TextBufferGeometry;

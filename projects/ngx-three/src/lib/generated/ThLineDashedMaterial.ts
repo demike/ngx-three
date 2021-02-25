@@ -24,6 +24,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThLineDashedMaterial<
   TARGS extends any[] = [parameters?: LineDashedMaterialParameters]
 > extends ThLineBasicMaterial<TARGS> {
+  @Input()
   public obj!: LineDashedMaterial;
   protected getType(): Type<LineDashedMaterial> {
     return LineDashedMaterial;

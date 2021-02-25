@@ -20,6 +20,7 @@ import { ThGeometry } from './ThGeometry';
 export class ThTextGeometry<
   TARGS extends any[] = [text: string, parameters: TextGeometryParameters]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: TextGeometry;
   protected getType(): Type<TextGeometry> {
     return TextGeometry;

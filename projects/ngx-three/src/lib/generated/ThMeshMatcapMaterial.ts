@@ -31,6 +31,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThMeshMatcapMaterial<
   TARGS extends any[] = [parameters?: MeshMatcapMaterialParameters]
 > extends ThMaterial<TARGS> {
+  @Input()
   public obj!: MeshMatcapMaterial;
   protected getType(): Type<MeshMatcapMaterial> {
     return MeshMatcapMaterial;

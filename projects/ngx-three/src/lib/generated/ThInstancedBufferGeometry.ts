@@ -24,6 +24,7 @@ import { ThGeometry } from './ThGeometry';
 export class ThInstancedBufferGeometry<
   TARGS extends any[] = []
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: InstancedBufferGeometry;
   protected getType(): Type<InstancedBufferGeometry> {
     return InstancedBufferGeometry;

@@ -26,6 +26,7 @@ export class ThTubeGeometry<
     closed?: boolean
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: TubeGeometry;
   protected getType(): Type<TubeGeometry> {
     return TubeGeometry;

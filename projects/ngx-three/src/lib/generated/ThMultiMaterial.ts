@@ -20,6 +20,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThMultiMaterial<
   TARGS extends any[] = [materials?: Material[]]
 > extends ThMaterial<TARGS> {
+  @Input()
   public obj!: MultiMaterial;
   protected getType(): Type<MultiMaterial> {
     return MultiMaterial;

@@ -30,6 +30,7 @@ export class ThTubeBufferGeometry<
     closed?: boolean
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: TubeBufferGeometry;
   protected getType(): Type<TubeBufferGeometry> {
     return TubeBufferGeometry;

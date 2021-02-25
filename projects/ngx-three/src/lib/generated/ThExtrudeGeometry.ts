@@ -23,6 +23,7 @@ export class ThExtrudeGeometry<
     options?: ExtrudeGeometryOptions
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: ExtrudeGeometry;
   protected getType(): Type<ExtrudeGeometry> {
     return ExtrudeGeometry;

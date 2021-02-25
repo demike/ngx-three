@@ -28,6 +28,7 @@ export class ThBoxBufferGeometry<
     depthSegments?: number
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: BoxBufferGeometry;
   protected getType(): Type<BoxBufferGeometry> {
     return BoxBufferGeometry;

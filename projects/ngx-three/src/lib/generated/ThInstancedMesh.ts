@@ -34,6 +34,7 @@ export class ThInstancedMesh<
     count: number
   ]
 > extends ThMesh<TGeometry, TMaterial, TARGS> {
+  @Input()
   public obj!: InstancedMesh<TGeometry, TMaterial>;
   protected getType(): Type<InstancedMesh<TGeometry, TMaterial>> {
     return InstancedMesh;

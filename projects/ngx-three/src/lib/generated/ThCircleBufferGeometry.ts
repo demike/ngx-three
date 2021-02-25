@@ -29,6 +29,7 @@ export class ThCircleBufferGeometry<
     thetaLength?: number
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: CircleBufferGeometry;
   protected getType(): Type<CircleBufferGeometry> {
     return CircleBufferGeometry;

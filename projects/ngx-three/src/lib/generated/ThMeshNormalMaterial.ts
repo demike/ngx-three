@@ -30,6 +30,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThMeshNormalMaterial<
   TARGS extends any[] = [parameters?: MeshNormalMaterialParameters]
 > extends ThMaterial<TARGS> {
+  @Input()
   public obj!: MeshNormalMaterial;
   protected getType(): Type<MeshNormalMaterial> {
     return MeshNormalMaterial;

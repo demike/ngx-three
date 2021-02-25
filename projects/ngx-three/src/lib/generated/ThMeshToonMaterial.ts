@@ -28,6 +28,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThMeshToonMaterial<
   TARGS extends any[] = [parameters?: MeshToonMaterialParameters]
 > extends ThMaterial<TARGS> {
+  @Input()
   public obj!: MeshToonMaterial;
   protected getType(): Type<MeshToonMaterial> {
     return MeshToonMaterial;

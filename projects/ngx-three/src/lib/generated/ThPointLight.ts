@@ -26,6 +26,7 @@ export class ThPointLight<
     decay?: number
   ]
 > extends ThLight<TARGS> {
+  @Input()
   public obj!: PointLight;
   protected getType(): Type<PointLight> {
     return PointLight;

@@ -27,6 +27,7 @@ export class ThArrowHelper<
     headWidth?: number
   ]
 > extends ThObject3D<TARGS> {
+  @Input()
   public obj!: ArrowHelper;
   protected getType(): Type<ArrowHelper> {
     return ArrowHelper;

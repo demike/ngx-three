@@ -34,6 +34,7 @@ export class ThBox3Helper<
   Material | Material[],
   TARGS
 > {
+  @Input()
   public obj!: Box3Helper;
   protected getType(): Type<Box3Helper> {
     return Box3Helper;

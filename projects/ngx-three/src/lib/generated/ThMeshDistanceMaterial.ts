@@ -29,6 +29,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThMeshDistanceMaterial<
   TARGS extends any[] = [parameters?: MeshDistanceMaterialParameters]
 > extends ThMaterial<TARGS> {
+  @Input()
   public obj!: MeshDistanceMaterial;
   protected getType(): Type<MeshDistanceMaterial> {
     return MeshDistanceMaterial;

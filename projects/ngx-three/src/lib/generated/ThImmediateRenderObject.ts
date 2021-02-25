@@ -23,6 +23,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThImmediateRenderObject<
   TARGS extends any[] = [material: Material]
 > extends ThObject3D<TARGS> {
+  @Input()
   public obj!: ImmediateRenderObject;
   protected getType(): Type<ImmediateRenderObject> {
     return ImmediateRenderObject;

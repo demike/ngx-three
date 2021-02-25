@@ -27,6 +27,7 @@ export class ThParametricGeometry<
     stacks: number
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: ParametricGeometry;
   protected getType(): Type<ParametricGeometry> {
     return ParametricGeometry;

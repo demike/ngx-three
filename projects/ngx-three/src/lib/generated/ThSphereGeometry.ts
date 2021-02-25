@@ -28,6 +28,7 @@ export class ThSphereGeometry<
     thetaLength?: number
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: SphereGeometry;
   protected getType(): Type<SphereGeometry> {
     return SphereGeometry;

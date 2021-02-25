@@ -28,6 +28,7 @@ export class ThParametricBufferGeometry<
     stacks: number
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: ParametricBufferGeometry;
   protected getType(): Type<ParametricBufferGeometry> {
     return ParametricBufferGeometry;

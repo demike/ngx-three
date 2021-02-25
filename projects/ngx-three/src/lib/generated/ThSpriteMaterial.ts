@@ -26,6 +26,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThSpriteMaterial<
   TARGS extends any[] = [parameters?: SpriteMaterialParameters]
 > extends ThMaterial<TARGS> {
+  @Input()
   public obj!: SpriteMaterial;
   protected getType(): Type<SpriteMaterial> {
     return SpriteMaterial;

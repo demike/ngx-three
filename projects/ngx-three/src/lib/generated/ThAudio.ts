@@ -19,6 +19,7 @@ export class ThAudio<
   NodeType extends AudioNode = GainNode,
   TARGS extends any[] = [listener: AudioListener]
 > extends ThObject3D<TARGS> {
+  @Input()
   public obj!: Audio<NodeType>;
   protected getType(): Type<Audio<NodeType>> {
     return Audio;

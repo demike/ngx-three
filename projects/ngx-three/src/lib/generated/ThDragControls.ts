@@ -25,6 +25,7 @@ export class ThDragControls<
     domElement?: HTMLElement
   ]
 > extends ThControlBase<TARGS> {
+  @Input()
   public obj!: DragControls;
   protected getType(): Type<DragControls> {
     return DragControls;

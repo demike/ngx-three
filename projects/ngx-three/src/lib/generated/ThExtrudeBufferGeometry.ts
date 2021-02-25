@@ -27,6 +27,7 @@ export class ThExtrudeBufferGeometry<
     options?: ExtrudeGeometryOptions
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: ExtrudeBufferGeometry;
   protected getType(): Type<ExtrudeBufferGeometry> {
     return ExtrudeBufferGeometry;

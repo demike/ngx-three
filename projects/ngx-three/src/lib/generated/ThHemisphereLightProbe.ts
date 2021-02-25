@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
+  Input,
   Type,
 } from '@angular/core';
 import { Color, HemisphereLightProbe } from 'three';
@@ -27,6 +28,7 @@ export class ThHemisphereLightProbe<
     intensity?: number
   ]
 > extends ThLightProbe<TARGS> {
+  @Input()
   public obj!: HemisphereLightProbe;
   protected getType(): Type<HemisphereLightProbe> {
     return HemisphereLightProbe;

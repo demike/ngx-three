@@ -27,6 +27,7 @@ export class ThBoxGeometry<
     depthSegments?: number
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: BoxGeometry;
   protected getType(): Type<BoxGeometry> {
     return BoxGeometry;

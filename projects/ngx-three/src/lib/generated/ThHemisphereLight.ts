@@ -26,6 +26,7 @@ export class ThHemisphereLight<
     intensity?: number
   ]
 > extends ThLight<TARGS> {
+  @Input()
   public obj!: HemisphereLight;
   protected getType(): Type<HemisphereLight> {
     return HemisphereLight;

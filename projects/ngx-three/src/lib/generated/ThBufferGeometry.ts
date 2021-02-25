@@ -31,6 +31,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThBufferGeometry<
   TARGS extends any[] = []
 > extends ThGeometryBase<TARGS> {
+  @Input()
   public obj!: BufferGeometry;
   protected getType(): Type<BufferGeometry> {
     return BufferGeometry;

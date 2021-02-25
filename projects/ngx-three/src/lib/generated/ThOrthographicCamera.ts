@@ -32,6 +32,7 @@ export class ThOrthographicCamera<
     far?: number
   ]
 > extends ThCamera<TARGS> {
+  @Input()
   public obj!: OrthographicCamera;
   protected getType(): Type<OrthographicCamera> {
     return OrthographicCamera;

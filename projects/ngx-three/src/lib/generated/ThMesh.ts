@@ -20,6 +20,7 @@ export class ThMesh<
   TMaterial extends Material | Material[] = Material | Material[],
   TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]
 > extends ThObject3D<TARGS> {
+  @Input()
   public obj!: Mesh<TGeometry, TMaterial>;
   protected getType(): Type<Mesh<TGeometry, TMaterial>> {
     return Mesh;

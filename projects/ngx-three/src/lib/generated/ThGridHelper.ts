@@ -30,6 +30,7 @@ export class ThGridHelper<
   Material | Material[],
   TARGS
 > {
+  @Input()
   public obj!: GridHelper;
   protected getType(): Type<GridHelper> {
     return GridHelper;

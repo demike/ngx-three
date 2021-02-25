@@ -25,6 +25,7 @@ export class ThLatheGeometry<
     phiLength?: number
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: LatheGeometry;
   protected getType(): Type<LatheGeometry> {
     return LatheGeometry;

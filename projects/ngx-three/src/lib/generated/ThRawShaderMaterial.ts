@@ -3,6 +3,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
+  Input,
   Type,
 } from '@angular/core';
 import { RawShaderMaterial, ShaderMaterialParameters } from 'three';
@@ -20,6 +21,7 @@ import { ThShaderMaterial } from './ThShaderMaterial';
 export class ThRawShaderMaterial<
   TARGS extends any[] = [parameters?: ShaderMaterialParameters]
 > extends ThShaderMaterial<TARGS> {
+  @Input()
   public obj!: RawShaderMaterial;
   protected getType(): Type<RawShaderMaterial> {
     return RawShaderMaterial;

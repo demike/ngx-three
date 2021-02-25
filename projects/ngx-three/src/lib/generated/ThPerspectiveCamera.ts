@@ -27,6 +27,7 @@ export class ThPerspectiveCamera<
     far?: number
   ]
 > extends ThCamera<TARGS> {
+  @Input()
   public obj!: PerspectiveCamera;
   protected getType(): Type<PerspectiveCamera> {
     return PerspectiveCamera;

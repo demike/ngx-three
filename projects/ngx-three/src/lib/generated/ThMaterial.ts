@@ -29,6 +29,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThMaterial<
   TARGS extends any[] = []
 > extends ThMaterialBase<TARGS> {
+  @Input()
   public obj!: Material;
   protected getType(): Type<Material> {
     return Material;

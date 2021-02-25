@@ -26,6 +26,7 @@ export class ThTorusGeometry<
     arc?: number
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: TorusGeometry;
   protected getType(): Type<TorusGeometry> {
     return TorusGeometry;

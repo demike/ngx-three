@@ -20,6 +20,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThAudioListener<
   TARGS extends any[] = []
 > extends ThObject3D<TARGS> {
+  @Input()
   public obj!: AudioListener;
   protected getType(): Type<AudioListener> {
     return AudioListener;

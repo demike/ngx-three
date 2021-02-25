@@ -24,6 +24,7 @@ import { ThPolyhedronBufferGeometry } from './ThPolyhedronBufferGeometry';
 export class ThTetrahedronBufferGeometry<
   TARGS extends any[] = [radius?: number, detail?: number]
 > extends ThPolyhedronBufferGeometry<TARGS> {
+  @Input()
   public obj!: TetrahedronBufferGeometry;
   protected getType(): Type<TetrahedronBufferGeometry> {
     return TetrahedronBufferGeometry;

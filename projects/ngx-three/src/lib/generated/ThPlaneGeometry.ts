@@ -25,6 +25,7 @@ export class ThPlaneGeometry<
     heightSegments?: number
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: PlaneGeometry;
   protected getType(): Type<PlaneGeometry> {
     return PlaneGeometry;

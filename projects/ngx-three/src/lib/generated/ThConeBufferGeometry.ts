@@ -32,6 +32,7 @@ export class ThConeBufferGeometry<
     thetaLength?: number
   ]
 > extends ThCylinderBufferGeometry<TARGS> {
+  @Input()
   public obj!: ConeBufferGeometry;
   protected getType(): Type<ConeBufferGeometry> {
     return ConeBufferGeometry;

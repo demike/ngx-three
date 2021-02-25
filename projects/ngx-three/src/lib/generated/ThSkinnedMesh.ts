@@ -35,6 +35,7 @@ export class ThSkinnedMesh<
     useVertexTexture?: boolean
   ]
 > extends ThMesh<TGeometry, TMaterial, TARGS> {
+  @Input()
   public obj!: SkinnedMesh<TGeometry, TMaterial>;
   protected getType(): Type<SkinnedMesh<TGeometry, TMaterial>> {
     return SkinnedMesh;

@@ -29,6 +29,7 @@ export class ThConeGeometry<
     thetaLength?: number
   ]
 > extends ThCylinderGeometry<TARGS> {
+  @Input()
   public obj!: ConeGeometry;
   protected getType(): Type<ConeGeometry> {
     return ConeGeometry;

@@ -27,6 +27,7 @@ export class ThRingGeometry<
     thetaLength?: number
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: RingGeometry;
   protected getType(): Type<RingGeometry> {
     return RingGeometry;

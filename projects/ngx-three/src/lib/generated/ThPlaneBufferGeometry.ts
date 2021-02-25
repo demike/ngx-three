@@ -29,6 +29,7 @@ export class ThPlaneBufferGeometry<
     heightSegments?: number
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: PlaneBufferGeometry;
   protected getType(): Type<PlaneBufferGeometry> {
     return PlaneBufferGeometry;

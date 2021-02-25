@@ -22,6 +22,7 @@ import { applyValue } from '../util';
 export class ThOrbitControls<
   TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
 > extends ThControlBase<TARGS> {
+  @Input()
   public obj!: OrbitControls;
   protected getType(): Type<OrbitControls> {
     return OrbitControls;

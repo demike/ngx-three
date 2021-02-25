@@ -34,6 +34,7 @@ export class ThDirectionalLightHelper<
     color?: Color | string | number
   ]
 > extends ThObject3D<TARGS> {
+  @Input()
   public obj!: DirectionalLightHelper;
   protected getType(): Type<DirectionalLightHelper> {
     return DirectionalLightHelper;

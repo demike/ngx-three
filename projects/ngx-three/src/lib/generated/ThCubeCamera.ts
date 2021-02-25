@@ -24,6 +24,7 @@ export class ThCubeCamera<
     renderTarget: WebGLCubeRenderTarget
   ]
 > extends ThObject3D<TARGS> {
+  @Input()
   public obj!: CubeCamera;
   protected getType(): Type<CubeCamera> {
     return CubeCamera;

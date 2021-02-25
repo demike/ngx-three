@@ -20,6 +20,7 @@ export class ThLine<
   TMaterial extends Material | Material[] = Material | Material[],
   TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]
 > extends ThObject3D<TARGS> {
+  @Input()
   public obj!: Line<TGeometry, TMaterial>;
   protected getType(): Type<Line<TGeometry, TMaterial>> {
     return Line;

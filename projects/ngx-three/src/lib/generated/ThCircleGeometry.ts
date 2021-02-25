@@ -25,6 +25,7 @@ export class ThCircleGeometry<
     thetaLength?: number
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: CircleGeometry;
   protected getType(): Type<CircleGeometry> {
     return CircleGeometry;

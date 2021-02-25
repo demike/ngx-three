@@ -46,9 +46,9 @@ export abstract class NgxThreeClass {
     const directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);
     const providersArray = this.generateProvidersArray();
 
-    if (this.inputs.length > 0) {
-      this.imports.add("import { Input } from '@angular/core';");
-    }
+    // we have at least one input (obj) --> import it
+    this.imports.add("import { Input } from '@angular/core';");
+
     this.imports.add(
       "import { SkipSelf, Self, Optional, forwardRef, Type } from '@angular/core';"
     );
@@ -79,6 +79,7 @@ export abstract class NgxThreeClass {
           providers: ${providersArray}
         })
         ${classHeader} {
+          @Input()
           public obj!: ${this.wrappedClassName}${
       this.wrappedClassGenericTypeNames
     };

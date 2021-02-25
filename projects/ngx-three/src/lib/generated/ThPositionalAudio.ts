@@ -21,6 +21,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThPositionalAudio<
   TARGS extends any[] = [listener: AudioListener]
 > extends ThAudio<PannerNode, TARGS> {
+  @Input()
   public obj!: PositionalAudio;
   protected getType(): Type<PositionalAudio> {
     return PositionalAudio;

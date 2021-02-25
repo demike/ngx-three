@@ -28,6 +28,7 @@ export class ThPolyhedronGeometry<
     detail?: number
   ]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: PolyhedronGeometry;
   protected getType(): Type<PolyhedronGeometry> {
     return PolyhedronGeometry;

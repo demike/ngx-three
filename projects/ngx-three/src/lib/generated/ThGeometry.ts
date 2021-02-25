@@ -33,6 +33,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThGeometry<
   TARGS extends any[] = []
 > extends ThGeometryBase<TARGS> {
+  @Input()
   public obj!: Geometry;
   protected getType(): Type<Geometry> {
     return Geometry;

@@ -38,6 +38,7 @@ export class ThPolarGridHelper<
   Material | Material[],
   TARGS
 > {
+  @Input()
   public obj!: PolarGridHelper;
   protected getType(): Type<PolarGridHelper> {
     return PolarGridHelper;

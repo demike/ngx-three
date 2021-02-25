@@ -23,6 +23,7 @@ export class ThLineSegments<
   TMaterial extends Material | Material[] = Material | Material[],
   TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]
 > extends ThLine<TGeometry, TMaterial, TARGS> {
+  @Input()
   public obj!: LineSegments<TGeometry, TMaterial>;
   protected getType(): Type<LineSegments<TGeometry, TMaterial>> {
     return LineSegments;

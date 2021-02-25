@@ -23,6 +23,7 @@ import { ThGeometry } from './ThGeometry';
 export class ThTetrahedronGeometry<
   TARGS extends any[] = [radius?: number, detail?: number]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: TetrahedronGeometry;
   protected getType(): Type<TetrahedronGeometry> {
     return TetrahedronGeometry;

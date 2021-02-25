@@ -21,6 +21,7 @@ import { ThControlBase } from '../ThControlBase';
 export class ThFlyControls<
   TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
 > extends ThControlBase<TARGS> {
+  @Input()
   public obj!: FlyControls;
   protected getType(): Type<FlyControls> {
     return FlyControls;

@@ -29,6 +29,7 @@ export class ThPolyhedronBufferGeometry<
     detail?: number
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: PolyhedronBufferGeometry;
   protected getType(): Type<PolyhedronBufferGeometry> {
     return PolyhedronBufferGeometry;

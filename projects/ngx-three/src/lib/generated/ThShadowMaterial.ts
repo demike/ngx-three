@@ -21,6 +21,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThShadowMaterial<
   TARGS extends any[] = [parameters?: ShadowMaterialParameters]
 > extends ThMaterial<TARGS> {
+  @Input()
   public obj!: ShadowMaterial;
   protected getType(): Type<ShadowMaterial> {
     return ShadowMaterial;

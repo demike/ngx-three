@@ -16,6 +16,7 @@ import { ThObject3D } from './ThObject3D';
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThGroup) }],
 })
 export class ThGroup<TARGS extends any[] = []> extends ThObject3D<TARGS> {
+  @Input()
   public obj!: Group;
   protected getType(): Type<Group> {
     return Group;

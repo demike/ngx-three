@@ -25,6 +25,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThShaderMaterial<
   TARGS extends any[] = [parameters?: ShaderMaterialParameters]
 > extends ThMaterial<TARGS> {
+  @Input()
   public obj!: ShaderMaterial;
   protected getType(): Type<ShaderMaterial> {
     return ShaderMaterial;

@@ -20,6 +20,7 @@ import { ThObject3D } from './ThObject3D';
   ],
 })
 export class ThStereoCamera<TARGS extends any[] = []> extends ThCamera<TARGS> {
+  @Input()
   public obj!: StereoCamera;
   protected getType(): Type<StereoCamera> {
     return StereoCamera;

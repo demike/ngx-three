@@ -34,6 +34,7 @@ export class ThHemisphereLightHelper<
     color?: Color | number | string
   ]
 > extends ThObject3D<TARGS> {
+  @Input()
   public obj!: HemisphereLightHelper;
   protected getType(): Type<HemisphereLightHelper> {
     return HemisphereLightHelper;

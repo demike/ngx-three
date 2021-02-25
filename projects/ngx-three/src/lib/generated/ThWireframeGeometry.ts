@@ -21,6 +21,7 @@ import { ThGeometry } from './ThGeometry';
 export class ThWireframeGeometry<
   TARGS extends any[] = [geometry: Geometry | BufferGeometry]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: WireframeGeometry;
   protected getType(): Type<WireframeGeometry> {
     return WireframeGeometry;

@@ -32,6 +32,7 @@ export class ThSphereBufferGeometry<
     thetaLength?: number
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: SphereBufferGeometry;
   protected getType(): Type<SphereBufferGeometry> {
     return SphereBufferGeometry;

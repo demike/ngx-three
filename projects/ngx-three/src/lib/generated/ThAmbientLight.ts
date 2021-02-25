@@ -21,6 +21,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThAmbientLight<
   TARGS extends any[] = [color?: Color | string | number, intensity?: number]
 > extends ThLight<TARGS> {
+  @Input()
   public obj!: AmbientLight;
   protected getType(): Type<AmbientLight> {
     return AmbientLight;

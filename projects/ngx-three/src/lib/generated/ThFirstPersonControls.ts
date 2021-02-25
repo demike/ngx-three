@@ -24,6 +24,7 @@ import { ThControlBase } from '../ThControlBase';
 export class ThFirstPersonControls<
   TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
 > extends ThControlBase<TARGS> {
+  @Input()
   public obj!: FirstPersonControls;
   protected getType(): Type<FirstPersonControls> {
     return FirstPersonControls;

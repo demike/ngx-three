@@ -26,6 +26,7 @@ export class ThRectAreaLight<
     height?: number
   ]
 > extends ThLight<TARGS> {
+  @Input()
   public obj!: RectAreaLight;
   protected getType(): Type<RectAreaLight> {
     return RectAreaLight;

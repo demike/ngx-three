@@ -20,6 +20,7 @@ import { ThGeometry } from './ThGeometry';
 export class ThShapeGeometry<
   TARGS extends any[] = [shapes: Shape | Shape[], curveSegments?: number]
 > extends ThGeometry<TARGS> {
+  @Input()
   public obj!: ShapeGeometry;
   protected getType(): Type<ShapeGeometry> {
     return ShapeGeometry;

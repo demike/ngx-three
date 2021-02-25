@@ -29,6 +29,7 @@ export class ThLatheBufferGeometry<
     phiLength?: number
   ]
 > extends ThBufferGeometry<TARGS> {
+  @Input()
   public obj!: LatheBufferGeometry;
   protected getType(): Type<LatheBufferGeometry> {
     return LatheBufferGeometry;

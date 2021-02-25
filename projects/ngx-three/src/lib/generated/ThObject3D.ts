@@ -33,6 +33,7 @@ import { applyValue } from '../util';
   providers: [],
 })
 export class ThObject3D<TARGS extends any[] = []> extends ThObjectBase<TARGS> {
+  @Input()
   public obj!: Object3D;
   protected getType(): Type<Object3D> {
     return Object3D;

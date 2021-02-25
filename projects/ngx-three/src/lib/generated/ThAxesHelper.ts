@@ -25,6 +25,7 @@ export class ThAxesHelper<
   Material | Material[],
   TARGS
 > {
+  @Input()
   public obj!: AxesHelper;
   protected getType(): Type<AxesHelper> {
     return AxesHelper;
