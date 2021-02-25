@@ -8,4 +8,6 @@ This approach makes it possible to follow three.js updates with minimal effort.
 
 The project is inspired by the great [react three fiber](https://github.com/pmndrs/react-three-fiber) library.
 
+Check out some [examples](https://demike.github.io/ngx-three/)
+
 !!! WORK IN PROGRESS !!!
