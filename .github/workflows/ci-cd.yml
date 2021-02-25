@@ -33,7 +33,7 @@ jobs:
       - run: npm run test-headless
 
       - name: deploy to gh-pages
-        uses: AhsanAyaz/angular-deploy-gh-pages-actions@1.3.1 ## replace by latest version without it you will see Expected format {org}/{repo}[/path]@ref. Actual 'AhsanAyaz/angular-deploy-gh-pages-actions',Input string was not in a correct format.
+        uses: AhsanAyaz/angular-deploy-gh-pages-actions@v1.3.1 ## replace by latest version without it you will see Expected format {org}/{repo}[/path]@ref. Actual 'AhsanAyaz/angular-deploy-gh-pages-actions',Input string was not in a correct format.
         with:
           github_access_token: ${{ secrets.ACCESS_TOKEN }} # see the Configuration section for how you can create secrets
           build_configuration: staging # The build environment for the app. please look configurations in your angular.json
