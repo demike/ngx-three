@@ -66,7 +66,8 @@
               "projects/ngx-three-demo/src/assets"
             ],
             "styles": ["projects/ngx-three-demo/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": ["highlight.js"]
           },
           "configurations": {
             "production": {

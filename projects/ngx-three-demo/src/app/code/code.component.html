@@ -1,0 +1,22 @@
+<mat-card color="accent">
+  <mat-card-content>
+    <div class="code-wrapper hljs">
+      <mat-tab-group dynamicHeight color="primary" backgroundColor="primary">
+        <mat-tab
+          *ngFor="let codeUrl of codeUrls; let i = index"
+          [label]="fileNames[i]"
+        >
+          <pre>
+            <code [highlight]="$any(codeUrl | codeFromUrl | async ) " [lineNumbers]="lineNumbers"></code>
+        </pre>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </mat-card-content>
+  <mat-card-footer>
+    <a class="gist-url" [href]="codeUrls[0]" target="_blank">
+      <mat-icon>link</mat-icon>
+      Open gist on Github
+    </a>
+  </mat-card-footer>
+</mat-card>

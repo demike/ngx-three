@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,500,700");
+@import "~normalize.css";
+@import "~@angular/material/theming";
+@import "@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+@import "~highlight.js/styles/atom-one-dark.css";
+
+/*
+@include mat-core();
+
+$primary: mat-palette($mat-red, 700);
+$accent: mat-palette($mat-grey, 800);
+$warn: mat-palette($mat-lime, 400);
+$theme: mat-dark-theme($primary, $accent, $warn);
+
+@include angular-material-theme();
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+/*
+body {
+  height: 100vh;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: mat-color(mat-palette($mat-red, 900));
+}
+
+
+h3 {
+  color: white;
+  font-weight: 300;
+  margin: 3em 0 1.5em;
+}
+
+*/
