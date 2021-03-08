@@ -7,7 +7,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class ControlsExampleComponent implements OnInit {
   public selected = false;
-  constructor() {}
 
   ngOnInit(): void {}
 }
