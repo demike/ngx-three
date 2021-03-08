@@ -6,7 +6,7 @@ import { ThWrapperBase } from './ThWrapperBase';
   selector: 'th-abs-control',
   template: '',
 })
-// tslint:disable-next-line: component-class-suffix
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThControlBase<ARGS extends any[]> extends ThWrapperBase<
   any,
   ARGS

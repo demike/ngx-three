@@ -30,13 +30,12 @@
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/ngx-three/tsconfig.lib.json",
-              "projects/ngx-three/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/ngx-three/**/*.ts",
+              "projects/ngx-three/**/*.html"
+            ]
           }
         }
       }
@@ -65,9 +64,13 @@
               "projects/ngx-three-demo/src/favicon.ico",
               "projects/ngx-three-demo/src/assets"
             ],
-            "styles": ["projects/ngx-three-demo/src/styles.scss"],
+            "styles": [
+              "projects/ngx-three-demo/src/styles.scss"
+            ],
             "scripts": [],
-            "allowedCommonJsDependencies": ["highlight.js"]
+            "allowedCommonJsDependencies": [
+              "highlight.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -127,19 +130,19 @@
               "projects/ngx-three-demo/src/favicon.ico",
               "projects/ngx-three-demo/src/assets"
             ],
-            "styles": ["projects/ngx-three-demo/src/styles.scss"],
+            "styles": [
+              "projects/ngx-three-demo/src/styles.scss"
+            ],
             "scripts": []
           }
         },
         "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
+          "builder": "@angular-eslint/builder:lint",
           "options": {
-            "tsConfig": [
-              "projects/ngx-three-demo/tsconfig.app.json",
-              "projects/ngx-three-demo/tsconfig.spec.json",
-              "projects/ngx-three-demo/e2e/tsconfig.json"
-            ],
-            "exclude": ["**/node_modules/**"]
+            "lintFilePatterns": [
+              "projects/ngx-three-demo/**/*.ts",
+              "projects/ngx-three-demo/**/*.html"
+            ]
           }
         },
         "e2e": {

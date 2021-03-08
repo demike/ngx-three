@@ -1,4 +1,4 @@
-// tslint:disable: component-selector component-class-suffix no-redundant-jsdoc deprecation
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,

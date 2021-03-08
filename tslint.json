@@ -30,6 +30,7 @@
         ]
       }
     ],
+    "no-any": true,
     "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-empty": false,
     "no-inferrable-types": [true, "ignore-params"],

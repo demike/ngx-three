@@ -6,7 +6,7 @@ import { ThWrapperBase } from './ThWrapperBase';
   selector: 'th-abs-geometry',
   template: '',
 })
-// tslint:disable-next-line: component-class-suffix
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThGeometryBase<ARGS extends any[]> extends ThWrapperBase<
   Geometry | BufferGeometry,
   ARGS

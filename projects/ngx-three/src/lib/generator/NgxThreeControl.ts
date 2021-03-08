@@ -40,7 +40,7 @@ export class NgxThreeControl extends NgxThreeClass {
     }
 
     return constructSignatures[0].parameters.map((param) => {
-      // tslint:disable-next-line: no-non-null-assertion
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       return (param.declarations[0] as ParameterDeclaration).type!.getText();
     });
   }

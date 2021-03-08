@@ -6,7 +6,7 @@ import { ThWrapperBase } from './ThWrapperBase';
   selector: 'th-abs-material',
   template: '',
 })
-// tslint:disable-next-line: component-class-suffix
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThMaterialBase<ARGS extends any[]> extends ThWrapperBase<
   Material,
   ARGS

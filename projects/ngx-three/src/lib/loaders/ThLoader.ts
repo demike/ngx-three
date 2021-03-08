@@ -19,7 +19,7 @@ import {
 @Directive({
   selector: '[load]',
 })
-// tslint:disable-next-line: directive-class-suffix
+// eslint-disable-next-line @angular-eslint/directive-class-suffix
 export class ThLoader<T = any> implements OnInit {
   @Input()
   public loaderFn?: (

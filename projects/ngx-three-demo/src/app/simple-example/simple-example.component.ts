@@ -12,11 +12,11 @@ import { BoxBufferGeometry, MeshStandardMaterial } from 'three';
 
 @Component({
   template: '',
-  // tslint:disable-next-line: component-selector
+  // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'th-box',
   providers: createObj3DProviderArray(Box),
 })
-// tslint:disable-next-line: component-class-suffix
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class Box extends ThMesh implements OnInit {
   constructor(@SkipSelf() parent: ThObject3D) {
     super(parent);

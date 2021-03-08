@@ -15,7 +15,7 @@ import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
   selector: 'th-abs-wrapper',
   template: '',
 })
-// tslint:disable-next-line: component-class-suffix
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit {
   public obj?: T;
 
@@ -60,7 +60,7 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit {
       this.createThreeInstance(changes.args?.currentValue);
     }
 
-    // tslint:disable-next-line: forin
+    // eslint-disable-next-line guard-for-in
     for (const key in changes) {
       (this as any)[key] = changes[key].currentValue;
     }

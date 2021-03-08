@@ -5,7 +5,7 @@ import { ThWrapperBase } from './ThWrapperBase';
   selector: 'th-abs-object',
   template: '',
 })
-// tslint:disable-next-line: component-class-suffix
+// eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThObjectBase<ARGS extends any[]> extends ThWrapperBase<
   Object3D,
   ARGS
