@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Camera, Matrix4 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -14,7 +8,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-camera',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }]
 })
 export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
   @Input()
@@ -47,10 +41,7 @@ export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
         ]
   ) {
     if (this.obj) {
-      this.obj.matrixWorldInverse = applyValue<Matrix4>(
-        this.obj.matrixWorldInverse,
-        value
-      );
+      this.obj.matrixWorldInverse = applyValue<Matrix4>(this.obj.matrixWorldInverse, value);
     }
   }
   @Input()
@@ -77,10 +68,7 @@ export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
         ]
   ) {
     if (this.obj) {
-      this.obj.projectionMatrix = applyValue<Matrix4>(
-        this.obj.projectionMatrix,
-        value
-      );
+      this.obj.projectionMatrix = applyValue<Matrix4>(this.obj.projectionMatrix, value);
     }
   }
   @Input()
@@ -107,10 +95,7 @@ export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
         ]
   ) {
     if (this.obj) {
-      this.obj.projectionMatrixInverse = applyValue<Matrix4>(
-        this.obj.projectionMatrixInverse,
-        value
-      );
+      this.obj.projectionMatrixInverse = applyValue<Matrix4>(this.obj.projectionMatrixInverse, value);
     }
   }
 }

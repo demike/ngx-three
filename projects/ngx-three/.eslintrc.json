@@ -31,8 +31,7 @@
             "prefix": "th",
             "style": "camelCase"
           }
-        ],
-        "@typescript-eslint/no-explicit-any": "error"
+        ]
       }
     },
     {

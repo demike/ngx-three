@@ -4,13 +4,10 @@ import { ThObject3D } from './generated/ThObject3D';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
   selector: 'th-abs-material',
-  template: '',
+  template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThMaterialBase<ARGS extends any[]> extends ThWrapperBase<
-  Material,
-  ARGS
-> {
+export class ThMaterialBase<ARGS extends any[]> extends ThWrapperBase<Material, ARGS> {
   constructor(protected parent: ThObject3D<any>) {
     super();
   }

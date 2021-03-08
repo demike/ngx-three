@@ -5,7 +5,7 @@ describe('isSettable', () => {
     const obj = {
       set: () => {
         // do nothing
-      },
+      }
     };
     expect(isSettable(obj)).toBeTrue();
   });
@@ -22,7 +22,7 @@ describe('applyValue', () => {
     const obj = {
       set: (value: any) => {
         setValue = value;
-      },
+      }
     };
     expect(applyValue(obj, [12])).toEqual(obj);
     expect(setValue).toEqual(12);
@@ -37,7 +37,7 @@ describe('applyValue', () => {
         setValue1 = a;
         setValue2 = b;
         setValue3 = c;
-      },
+      }
     };
     expect(applyValue(obj, [1, 2, 3])).toEqual(obj);
     expect(setValue1).toEqual(1);

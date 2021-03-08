@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { IcosahedronBufferGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 import { ThPolyhedronBufferGeometry } from './ThPolyhedronBufferGeometry';
@@ -17,9 +11,9 @@ import { ThPolyhedronBufferGeometry } from './ThPolyhedronBufferGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThIcosahedronBufferGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThIcosahedronBufferGeometry)
+    }
+  ]
 })
 export class ThIcosahedronBufferGeometry<
   TARGS extends any[] = [radius?: number, detail?: number]

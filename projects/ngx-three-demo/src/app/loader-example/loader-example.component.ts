@@ -4,7 +4,7 @@ import { SimpleExampleComponent } from '../simple-example/simple-example.compone
 @Component({
   selector: 'app-loader-example',
   templateUrl: './loader-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoaderExampleComponent extends SimpleExampleComponent {
   public onBeforeRender(): void {

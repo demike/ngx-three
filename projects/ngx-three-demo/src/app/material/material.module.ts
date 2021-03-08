@@ -7,18 +7,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 
-const MATERIAL_MODULES = [
-  MatButtonModule,
-  MatListModule,
-  MatIconModule,
-  MatCardModule,
-  MatToolbarModule,
-  MatSelectModule,
-  MatTabsModule,
-];
+const MATERIAL_MODULES = [MatButtonModule, MatListModule, MatIconModule, MatCardModule, MatToolbarModule, MatSelectModule, MatTabsModule];
 
 @NgModule({
   imports: [MATERIAL_MODULES],
-  exports: [MATERIAL_MODULES],
+  exports: [MATERIAL_MODULES]
 })
 export class MaterialModule {}

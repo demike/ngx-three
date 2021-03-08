@@ -4,7 +4,7 @@ import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { ThLoader } from './ThLoader';
 
 @Directive({
-  selector: '[loadGLTF]',
+  selector: '[loadGLTF]'
 })
 // eslint-disable-next-line @angular-eslint/directive-class-suffix
 export class ThGLTFLoader extends ThLoader<GLTF> {

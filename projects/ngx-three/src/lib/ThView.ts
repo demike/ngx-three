@@ -1,11 +1,4 @@
-import {
-  Component,
-  ContentChild,
-  ElementRef,
-  forwardRef,
-  Input,
-  OnInit,
-} from '@angular/core';
+import { Component, ContentChild, ElementRef, forwardRef, Input, OnInit } from '@angular/core';
 import { Object3D, Vector4 } from 'three';
 import { RaycasterService } from './events/raycaster.service';
 import { ThCamera } from './generated/ThCamera';
@@ -15,19 +8,13 @@ import { ThScene } from './generated/ThScene';
 @Component({
   selector: 'th-view',
   template: '',
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThView) },
-    RaycasterService,
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThView) }, RaycasterService]
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThView implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   protected _camera?: ThCamera;
-  constructor(
-    protected raycaster: RaycasterService,
-    private canvas: ElementRef<HTMLCanvasElement>
-  ) {}
+  constructor(protected raycaster: RaycasterService, private canvas: ElementRef<HTMLCanvasElement>) {}
 
   @Input()
   public scene?: ThScene;
@@ -55,9 +42,7 @@ export class ThView implements OnInit {
   }
 
   @Input()
-  public viewPort?:
-    | Vector4
-    | { x: number; y: number; width: number; height: number };
+  public viewPort?: Vector4 | { x: number; y: number; width: number; height: number };
 
   ngOnInit(): void {
     if (this.camera) {

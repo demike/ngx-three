@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { LightProbe, SphericalHarmonics3, Vector3 } from 'three';
 import { applyValue } from '../util';
 import { ThLight } from './ThLight';
@@ -15,13 +9,9 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-lightProbe',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThLightProbe) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLightProbe) }]
 })
-export class ThLightProbe<
-  TARGS extends any[] = [sh?: SphericalHarmonics3, intensity?: number]
-> extends ThLight<TARGS> {
+export class ThLightProbe<TARGS extends any[] = [sh?: SphericalHarmonics3, intensity?: number]> extends ThLight<TARGS> {
   @Input()
   public obj!: LightProbe;
   protected getType(): Type<LightProbe> {

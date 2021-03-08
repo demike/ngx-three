@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  Directive,
-  EventEmitter,
-  Host,
-  OnDestroy,
-  Output,
-} from '@angular/core';
+import { AfterViewInit, Directive, EventEmitter, Host, OnDestroy, Output } from '@angular/core';
 import { Event } from 'three';
 import { ThObject3D } from '../generated/ThObject3D';
 
@@ -22,10 +15,7 @@ export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
   @Output('onMouseExit') mouseExit = new EventEmitter<RaycasterEmitEvent>();
   @Output('onClick') click = new EventEmitter<RaycasterEmitEvent>();
 
-  constructor(
-    @Host() public readonly host: ThObject3D,
-    private raycasterService: RaycasterService
-  ) {
+  constructor(@Host() public readonly host: ThObject3D, private raycasterService: RaycasterService) {
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseExit = this.onMouseExit.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -66,7 +56,7 @@ export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
 
   public onMouseExit() {
     this.mouseExit.emit({
-      component: this.host,
+      component: this.host
     });
   }
 
@@ -74,7 +64,7 @@ export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
     // console.log('RaycasterGroupDirective.onMouseEnter', event);
     this.mouseEnter.emit({
       component: this.host,
-      face: event.face,
+      face: event.face
     });
   }
 
@@ -82,7 +72,7 @@ export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
     // console.log('onClick', event);
     this.click.emit({
       component: this.host,
-      face: event.face,
+      face: event.face
     });
   }
 

@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Camera } from 'three';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
 import { ThControlBase } from '../ThControlBase';
@@ -17,13 +11,11 @@ import { ThControlBase } from '../ThControlBase';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThPointerLockControls),
-    },
-  ],
+      useExisting: forwardRef(() => ThPointerLockControls)
+    }
+  ]
 })
-export class ThPointerLockControls<
-  TARGS extends any[] = [camera: Camera, domElement?: HTMLElement]
-> extends ThControlBase<TARGS> {
+export class ThPointerLockControls<TARGS extends any[] = [camera: Camera, domElement?: HTMLElement]> extends ThControlBase<TARGS> {
   @Input()
   public obj!: PointerLockControls;
   protected getType(): Type<PointerLockControls> {

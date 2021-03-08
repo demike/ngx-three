@@ -1,22 +1,6 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Camera,
-  Color,
-  IFog,
-  Material,
-  Scene,
-  Texture,
-  WebGLCubeRenderTarget,
-  WebGLRenderer,
-  WebGLRenderTarget,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Camera, Color, IFog, Material, Scene, Texture, WebGLCubeRenderTarget, WebGLRenderer, WebGLRenderTarget } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -24,7 +8,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-scene',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }]
 })
 export class ThScene<TARGS extends any[] = []> extends ThObject3D<TARGS> {
   @Input()
@@ -62,18 +46,9 @@ export class ThScene<TARGS extends any[] = []> extends ThObject3D<TARGS> {
   }
 
   @Input()
-  public set background(
-    value:
-      | null
-      | Color
-      | Texture
-      | WebGLCubeRenderTarget
-      | [color: Color | string | number]
-  ) {
+  public set background(value: null | Color | Texture | WebGLCubeRenderTarget | [color: Color | string | number]) {
     if (this.obj) {
-      this.obj.background = applyValue<
-        null | Color | Texture | WebGLCubeRenderTarget
-      >(this.obj.background, value);
+      this.obj.background = applyValue<null | Color | Texture | WebGLCubeRenderTarget>(this.obj.background, value);
     }
   }
   @Input()
@@ -98,9 +73,7 @@ export class ThScene<TARGS extends any[] = []> extends ThObject3D<TARGS> {
   }
 
   @Input()
-  public set onAfterRender(
-    value: (renderer: WebGLRenderer, scene: Scene, camera: Camera) => void
-  ) {
+  public set onAfterRender(value: (renderer: WebGLRenderer, scene: Scene, camera: Camera) => void) {
     if (this.obj) {
       this.obj.onAfterRender = value;
     }

@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { InstancedBufferGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThGeometry } from './ThGeometry';
@@ -17,13 +11,11 @@ import { ThGeometry } from './ThGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThInstancedBufferGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThInstancedBufferGeometry)
+    }
+  ]
 })
-export class ThInstancedBufferGeometry<
-  TARGS extends any[] = []
-> extends ThBufferGeometry<TARGS> {
+export class ThInstancedBufferGeometry<TARGS extends any[] = []> extends ThBufferGeometry<TARGS> {
   @Input()
   public obj!: InstancedBufferGeometry;
   protected getType(): Type<InstancedBufferGeometry> {
@@ -38,9 +30,7 @@ export class ThInstancedBufferGeometry<
   }
 
   @Input()
-  public set groups(
-    value: { start: number; count: number; instances: number }[]
-  ) {
+  public set groups(value: { start: number; count: number; instances: number }[]) {
     if (this.obj) {
       this.obj.groups = value;
     }

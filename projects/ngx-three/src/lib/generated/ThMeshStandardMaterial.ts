@@ -1,19 +1,6 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Color,
-  MeshStandardMaterial,
-  MeshStandardMaterialParameters,
-  NormalMapTypes,
-  Texture,
-  Vector2,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Color, MeshStandardMaterial, MeshStandardMaterialParameters, NormalMapTypes, Texture, Vector2 } from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -24,13 +11,11 @@ import { ThMaterial } from './ThMaterial';
   providers: [
     {
       provide: ThMaterial,
-      useExisting: forwardRef(() => ThMeshStandardMaterial),
-    },
-  ],
+      useExisting: forwardRef(() => ThMeshStandardMaterial)
+    }
+  ]
 })
-export class ThMeshStandardMaterial<
-  TARGS extends any[] = [parameters?: MeshStandardMaterialParameters]
-> extends ThMaterial<TARGS> {
+export class ThMeshStandardMaterial<TARGS extends any[] = [parameters?: MeshStandardMaterialParameters]> extends ThMaterial<TARGS> {
   @Input()
   public obj!: MeshStandardMaterial;
   protected getType(): Type<MeshStandardMaterial> {

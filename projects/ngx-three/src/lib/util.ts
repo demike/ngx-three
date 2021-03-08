@@ -13,6 +13,7 @@ export function isSettable(obj: any): obj is ThSettable {
  * else it tries to use the 'copy' method of the target if available
  * else it return the newValue as new target
  * if newValue is undefined the old target is returned
+ *
  * @param target the target for the new value
  * @param newValue the value to be set
  * @returns the new target(value)

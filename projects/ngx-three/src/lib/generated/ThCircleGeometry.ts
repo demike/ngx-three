@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { CircleGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -13,17 +7,10 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-circleGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThCircleGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThCircleGeometry) }]
 })
 export class ThCircleGeometry<
-  TARGS extends any[] = [
-    radius?: number,
-    segments?: number,
-    thetaStart?: number,
-    thetaLength?: number
-  ]
+  TARGS extends any[] = [radius?: number, segments?: number, thetaStart?: number, thetaLength?: number]
 > extends ThGeometry<TARGS> {
   @Input()
   public obj!: CircleGeometry;
@@ -39,12 +26,7 @@ export class ThCircleGeometry<
   }
 
   @Input()
-  public set parameters(value: {
-    radius: number;
-    segments: number;
-    thetaStart: number;
-    thetaLength: number;
-  }) {
+  public set parameters(value: { radius: number; segments: number; thetaStart: number; thetaLength: number }) {
     if (this.obj) {
       this.obj.parameters = value;
     }

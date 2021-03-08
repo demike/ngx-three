@@ -20,7 +20,7 @@ import { ThWrapperBase } from './ThWrapperBase';
     ThLoader,
     ThGLTFLoader,
     //   ThOBJLoader,
-    RaycasterEventDirective,
+    RaycasterEventDirective
   ],
   imports: [NgxThreeGeneratedModule],
   exports: [
@@ -29,7 +29,7 @@ import { ThWrapperBase } from './ThWrapperBase';
     ThLoader,
     ThGLTFLoader,
     //   ThOBJLoader,
-    RaycasterEventDirective,
-  ],
+    RaycasterEventDirective
+  ]
 })
 export class NgxThreeModule {}

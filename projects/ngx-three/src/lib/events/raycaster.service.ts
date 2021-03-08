@@ -7,7 +7,7 @@ import { RaycasterEventDirective } from './raycaster.events.directive';
 export enum RaycasterEvent {
   mouseEnter = 'mouseEnter',
   mouseExit = 'mouseExit',
-  click = 'click',
+  click = 'click'
 }
 
 interface NearestIntersection {
@@ -88,9 +88,7 @@ export class RaycasterService implements OnDestroy {
     }
   }
 
-  private onMouseMove(
-    event: any /*MouseEvent  & { layerX: number, layerY: number}*/
-  ) {
+  private onMouseMove(event: any /*MouseEvent  & { layerX: number, layerY: number}*/) {
     if (!this.isReady()) {
       return;
     }
@@ -99,7 +97,7 @@ export class RaycasterService implements OnDestroy {
     if (!this.selected || this.selected !== i.target) {
       if (this.selected) {
         this.selected.host.obj.dispatchEvent({
-          type: RaycasterEvent.mouseExit,
+          type: RaycasterEvent.mouseExit
         });
         this.selected.onMouseExit();
         this.selected = null;
@@ -108,7 +106,7 @@ export class RaycasterService implements OnDestroy {
         this.selected = i.target;
         const evt = {
           type: RaycasterEvent.mouseEnter,
-          face: i.face,
+          face: i.face
         };
         this.selected.host.obj.dispatchEvent(evt);
         this.selected.onMouseEnter(evt);
@@ -116,21 +114,16 @@ export class RaycasterService implements OnDestroy {
     }
   }
 
-  private onClick(
-    event: any /*MouseEvent: & { layerX: number, layerY: number}*/
-  ) {
+  private onClick(event: any /*MouseEvent: & { layerX: number, layerY: number}*/) {
     if (!this.isReady(true)) {
       return;
     }
     event.preventDefault();
-    const intersection = this.getFirstIntersectedGroup(
-      event.layerX,
-      event.layerY
-    );
+    const intersection = this.getFirstIntersectedGroup(event.layerX, event.layerY);
     if (intersection && intersection.target) {
       const evt = {
         type: RaycasterEvent.click,
-        face: intersection.face,
+        face: intersection.face
       };
       intersection.target.host.obj.dispatchEvent(evt);
       intersection.target.onClick(evt);
@@ -143,10 +136,7 @@ export class RaycasterService implements OnDestroy {
       return;
     }
     event.preventDefault();
-    const i = this.getFirstIntersectedGroup(
-      event.touches[0].clientX,
-      event.touches[0].clientY
-    );
+    const i = this.getFirstIntersectedGroup(event.touches[0].clientX, event.touches[0].clientY);
     if (i && i.target) {
       const evt = { type: RaycasterEvent.click, face: i.face };
       i.target.host.obj.dispatchEvent(evt);
@@ -155,14 +145,7 @@ export class RaycasterService implements OnDestroy {
   }
 
   private isReady(ignorePaused?: boolean): boolean {
-    return !!(
-      this.enabled &&
-      (ignorePaused || !this.paused) &&
-      this.camera &&
-      this.camera.obj &&
-      this.groups &&
-      this.groups.length > 0
-    );
+    return !!(this.enabled && (ignorePaused || !this.paused) && this.camera && this.camera.obj && this.groups && this.groups.length > 0);
   }
 
   private getFirstIntersectedGroup(x: number, y: number): NearestIntersection {
@@ -181,11 +164,7 @@ export class RaycasterService implements OnDestroy {
     for (const group of this.groups) {
       const i = group.host.obj;
       const intersection = this.raycaster.intersectObject(i, true);
-      if (
-        intersection.length > 0 &&
-        (!nearestIntersection ||
-          nearestIntersection.distance > intersection[0].distance)
-      ) {
+      if (intersection.length > 0 && (!nearestIntersection || nearestIntersection.distance > intersection[0].distance)) {
         nearestIntersection = intersection[0];
         face = nearestIntersection.face;
         nearestGroup = group;
@@ -196,12 +175,12 @@ export class RaycasterService implements OnDestroy {
     if (nearestGroup) {
       return {
         target: nearestGroup,
-        face,
+        face
       };
     } else {
       return {
         target: null,
-        face: null,
+        face: null
       };
     }
   }

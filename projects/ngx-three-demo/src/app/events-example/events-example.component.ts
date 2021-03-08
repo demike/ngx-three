@@ -4,7 +4,7 @@ import { SimpleExampleComponent } from '../simple-example/simple-example.compone
 @Component({
   selector: 'app-events-example',
   templateUrl: './events-example.component.html',
-  styleUrls: ['./events-example.component.scss'],
+  styleUrls: ['./events-example.component.scss']
 })
 export class EventsExampleComponent {
   public changes: string[] = [];

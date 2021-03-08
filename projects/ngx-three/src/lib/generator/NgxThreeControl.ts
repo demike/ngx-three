@@ -13,10 +13,7 @@ export class NgxThreeControl extends NgxThreeClass {
 
   protected getWrappedClassImportPath() {
     const fileName = this.classDecl.getSourceFile().fileName;
-    return fileName
-      .substr(fileName.indexOf('/node_modules/three/'))
-      .replace('/node_modules/', '')
-      .replace('.d.ts', '');
+    return fileName.substr(fileName.indexOf('/node_modules/three/')).replace('/node_modules/', '').replace('.d.ts', '');
   }
 
   protected generateConstructor() {
@@ -25,24 +22,17 @@ export class NgxThreeControl extends NgxThreeClass {
 
   protected getConstructorArgumentTypes(): string[] {
     const symbol = ((this.classDecl as unknown) as ts.Type).symbol;
-    const constructorType = this.typeChecker.getTypeOfSymbolAtLocation(
-      symbol,
-      symbol.valueDeclaration
-    );
+    const constructorType = this.typeChecker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration);
     const constructSignatures = constructorType.getConstructSignatures();
 
-    if (
-      constructSignatures.length === 0 ||
-      (constructSignatures.length === 1 &&
-        constructSignatures[0].parameters.length === 0)
-    ) {
+    if (constructSignatures.length === 0 || (constructSignatures.length === 1 && constructSignatures[0].parameters.length === 0)) {
       return [];
     }
 
-    return constructSignatures[0].parameters.map((param) => {
+    return constructSignatures[0].parameters.map((param) =>
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      return (param.declarations[0] as ParameterDeclaration).type!.getText();
-    });
+      (param.declarations[0] as ParameterDeclaration).type!.getText()
+    );
   }
 
   protected generateProvidersArray() {

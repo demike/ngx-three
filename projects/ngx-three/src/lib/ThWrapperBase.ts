@@ -1,19 +1,10 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnChanges,
-  OnInit,
-  Output,
-  SimpleChanges,
-  Type,
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
 
 @Component({
   selector: 'th-abs-wrapper',
-  template: '',
+  template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit {

@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Color, Light, LightShadow } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -14,11 +8,9 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-light',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLight) }],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLight) }]
 })
-export class ThLight<
-  TARGS extends any[] = [hex?: number | string, intensity?: number]
-> extends ThObject3D<TARGS> {
+export class ThLight<TARGS extends any[] = [hex?: number | string, intensity?: number]> extends ThObject3D<TARGS> {
   @Input()
   public obj!: Light;
   protected getType(): Type<Light> {

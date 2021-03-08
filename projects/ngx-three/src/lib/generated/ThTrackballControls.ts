@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Camera, MOUSE, Vector3 } from 'three';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import { ThControlBase } from '../ThControlBase';
@@ -18,13 +12,11 @@ import { applyValue } from '../util';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThTrackballControls),
-    },
-  ],
+      useExisting: forwardRef(() => ThTrackballControls)
+    }
+  ]
 })
-export class ThTrackballControls<
-  TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
-> extends ThControlBase<TARGS> {
+export class ThTrackballControls<TARGS extends any[] = [object: Camera, domElement?: HTMLElement]> extends ThControlBase<TARGS> {
   @Input()
   public obj!: TrackballControls;
   protected getType(): Type<TrackballControls> {
@@ -53,12 +45,7 @@ export class ThTrackballControls<
   }
 
   @Input()
-  public set screen(value: {
-    left: number;
-    top: number;
-    width: number;
-    height: number;
-  }) {
+  public set screen(value: { left: number; top: number; width: number; height: number }) {
     if (this.obj) {
       this.obj.screen = value;
     }

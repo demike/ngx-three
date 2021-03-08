@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ConeGeometry } from 'three';
 import { ThCylinderGeometry } from './ThCylinderGeometry';
 import { ThGeometry } from './ThGeometry';
@@ -14,9 +8,7 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-coneGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThConeGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThConeGeometry) }]
 })
 export class ThConeGeometry<
   TARGS extends any[] = [

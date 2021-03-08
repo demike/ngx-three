@@ -10,7 +10,7 @@ import {
   OnInit,
   Output,
   QueryList,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { Object3D } from 'three';
 import { RaycasterService } from './events/raycaster.service';
@@ -23,14 +23,9 @@ import { ThView } from './ThView';
 @Component({
   selector: 'th-canvas',
   styleUrls: ['./ThCanvas.scss'],
-  template:
-    '<canvas #rendererCanvas id="renderCanvas" style="width: 100%; height: 100%"></canvas>',
+  template: '<canvas #rendererCanvas id="renderCanvas" style="width: 100%; height: 100%"></canvas>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
-    ThEngineService,
-    forwardRef(() => RaycasterService),
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) }, ThEngineService, forwardRef(() => RaycasterService)]
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThCanvas implements OnInit, AfterViewInit {

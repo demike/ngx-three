@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { CubeCamera, WebGLCubeRenderTarget } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -13,16 +7,10 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-cubeCamera',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThCubeCamera) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCubeCamera) }]
 })
 export class ThCubeCamera<
-  TARGS extends any[] = [
-    near: number,
-    far: number,
-    renderTarget: WebGLCubeRenderTarget
-  ]
+  TARGS extends any[] = [near: number, far: number, renderTarget: WebGLCubeRenderTarget]
 > extends ThObject3D<TARGS> {
   @Input()
   public obj!: CubeCamera;

@@ -239,7 +239,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThMapControls,
     ThPointerLockControls,
     ThTrackballControls,
-    ThTransformControls,
+    ThTransformControls
   ],
   exports: [
     ThScene,
@@ -360,7 +360,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThMapControls,
     ThPointerLockControls,
     ThTrackballControls,
-    ThTransformControls,
-  ],
+    ThTransformControls
+  ]
 })
 export class NgxThreeGeneratedModule {}

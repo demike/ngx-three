@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Font, TextGeometry, TextGeometryParameters } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -13,13 +7,9 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-textGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThTextGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThTextGeometry) }]
 })
-export class ThTextGeometry<
-  TARGS extends any[] = [text: string, parameters: TextGeometryParameters]
-> extends ThGeometry<TARGS> {
+export class ThTextGeometry<TARGS extends any[] = [text: string, parameters: TextGeometryParameters]> extends ThGeometry<TARGS> {
   @Input()
   public obj!: TextGeometry;
   protected getType(): Type<TextGeometry> {

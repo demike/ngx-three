@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
 const polyfillTs = `
 import "core-js/es7/reflect";
 import "zone.js/dist/zone";`;
@@ -12,44 +13,42 @@ export function toCodeSandbox(fileUrls: string[]) {
   const files: { [key: string]: any } = {
     'package.json': createPackageJson(),
     'src/index.html': {
-      content: createIndexHtml(tagName),
+      content: createIndexHtml(tagName)
     },
     'src/main.ts': {
-      content: createMainTs(fileName),
+      content: createMainTs(fileName)
     },
     'src/polyfills.ts': {
-      content: polyfillTs,
-    },
+      content: polyfillTs
+    }
   };
 
   fileUrls.forEach((url) => {
     files[`src/app/${getFileNameFromFullPath(url)}`] = {
       content: url,
-      isBinary: true,
+      isBinary: true
     };
   });
 
   assets.forEach((asset) => {
     files[`src/assets/${asset}`] = {
-      content:
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/assets/' +
-        asset,
-      isBinary: true,
+      content: 'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/assets/' + asset,
+      isBinary: true
     };
   });
 
   fetch('https://codesandbox.io/api/v1/sandboxes/define?json=1', {
     method: 'POST',
     headers: {
+      // eslint-disable-next-line @typescript-eslint/naming-convention
       'Content-Type': 'application/json',
-      Accept: 'application/json',
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      Accept: 'application/json'
     },
-    body: JSON.stringify({ files }),
+    body: JSON.stringify({ files })
   })
     .then((x) => x.json())
-    .then((response) =>
-      window.open(`https://codesandbox.io/s/${response.sandbox_id}`, '_blank')
-    );
+    .then((response) => window.open(`https://codesandbox.io/s/${response.sandbox_id}`, '_blank'));
 }
 
 function createPackageJson() {
@@ -67,9 +66,9 @@ function createPackageJson() {
         rxjs: '~6.6.0',
         three: '~0.124.0',
         tslib: '^2.1.0',
-        'zone.js': '~0.10.2',
-      },
-    },
+        'zone.js': '~0.10.2'
+      }
+    }
   };
 }
 
@@ -84,10 +83,7 @@ function createMainTs(tsFileName: string) {
             import { BrowserModule } from '@angular/platform-browser';
             import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
             import { NgxThreeModule } from 'ngx-three';
-            import { ${component}} from './app/${tsFileName.replace(
-    '.ts',
-    ''
-  )}';
+            import { ${component}} from './app/${tsFileName.replace('.ts', '')}';
 
             @NgModule({
                 imports: [
@@ -126,9 +122,7 @@ function createIndexHtml(mainTagName: string) {
 function getComponentNameFromFileName(fileName: string) {
   return fileName
     .replace('.ts', '')
-    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => {
-      return word.toUpperCase();
-    })
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => word.toUpperCase())
     .replace(/[-.]/g, '');
 }
 

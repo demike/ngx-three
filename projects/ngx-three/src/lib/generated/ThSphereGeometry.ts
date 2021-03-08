@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { SphereGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -13,9 +7,7 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-sphereGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThSphereGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThSphereGeometry) }]
 })
 export class ThSphereGeometry<
   TARGS extends any[] = [

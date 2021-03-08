@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Color, LineBasicMaterial, LineBasicMaterialParameters } from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
@@ -14,13 +8,9 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-lineBasicMaterial',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThLineBasicMaterial) },
-  ],
+  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThLineBasicMaterial) }]
 })
-export class ThLineBasicMaterial<
-  TARGS extends any[] = [parameters?: LineBasicMaterialParameters]
-> extends ThMaterial<TARGS> {
+export class ThLineBasicMaterial<TARGS extends any[] = [parameters?: LineBasicMaterialParameters]> extends ThMaterial<TARGS> {
   @Input()
   public obj!: LineBasicMaterial;
   protected getType(): Type<LineBasicMaterial> {

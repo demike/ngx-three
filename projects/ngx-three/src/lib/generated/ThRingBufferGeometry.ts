@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { RingBufferGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThGeometry } from './ThGeometry';
@@ -17,9 +11,9 @@ import { ThGeometry } from './ThGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThRingBufferGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThRingBufferGeometry)
+    }
+  ]
 })
 export class ThRingBufferGeometry<
   TARGS extends any[] = [

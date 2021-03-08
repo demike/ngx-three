@@ -1,32 +1,16 @@
-import {
-  Directive,
-  EventEmitter,
-  Host,
-  Input,
-  NgZone,
-  OnInit,
-  Output,
-  SimpleChange,
-} from '@angular/core';
+import { Directive, EventEmitter, Host, Input, NgZone, OnInit, Output, SimpleChange } from '@angular/core';
 
 import { Object3D } from 'three';
 import { ThObject3D } from '../generated/ThObject3D';
-import {
-  createLazyObject3DProxy,
-  LazyObject3DProxy,
-} from './LazyObject3dProxy';
+import { createLazyObject3DProxy, LazyObject3DProxy } from './LazyObject3dProxy';
 
 @Directive({
-  selector: '[load]',
+  selector: '[load]'
 })
 // eslint-disable-next-line @angular-eslint/directive-class-suffix
 export class ThLoader<T = any> implements OnInit {
   @Input()
-  public loaderFn?: (
-    input?: string,
-    onProgress?: (progress: ProgressEvent) => void,
-    onLoaded?: (result: T) => void
-  ) => Promise<Object3D>;
+  public loaderFn?: (input?: string, onProgress?: (progress: ProgressEvent) => void, onLoaded?: (result: T) => void) => Promise<Object3D>;
 
   @Input()
   url?: string;
@@ -83,9 +67,7 @@ export class ThLoader<T = any> implements OnInit {
         }
       : undefined;
 
-    const object = await this.zone.runOutsideAngular(() => {
-      return loaderFn(this.url, onProgress, onLoaded);
-    });
+    const object = await this.zone.runOutsideAngular(() => loaderFn(this.url, onProgress, onLoaded));
 
     this.proxy.applyToObject3D(object);
     this.host.obj = object;

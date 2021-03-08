@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Curve, TubeGeometry, Vector3 } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -13,18 +7,10 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-tubeGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThTubeGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThTubeGeometry) }]
 })
 export class ThTubeGeometry<
-  TARGS extends any[] = [
-    path: Curve<Vector3>,
-    tubularSegments?: number,
-    radius?: number,
-    radiusSegments?: number,
-    closed?: boolean
-  ]
+  TARGS extends any[] = [path: Curve<Vector3>, tubularSegments?: number, radius?: number, radiusSegments?: number, closed?: boolean]
 > extends ThGeometry<TARGS> {
   @Input()
   public obj!: TubeGeometry;
@@ -33,13 +19,7 @@ export class ThTubeGeometry<
   }
 
   @Input()
-  public set parameters(value: {
-    path: Curve<Vector3>;
-    tubularSegments: number;
-    radius: number;
-    radialSegments: number;
-    closed: boolean;
-  }) {
+  public set parameters(value: { path: Curve<Vector3>; tubularSegments: number; radius: number; radialSegments: number; closed: boolean }) {
     if (this.obj) {
       this.obj.parameters = value;
     }

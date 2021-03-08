@@ -63,14 +63,9 @@ export interface LazyObject3DProxy extends Object3D {
 }
 
 export function createLazyObject3DProxy(): LazyObject3DProxy {
-  return new Proxy<LazyObject3DProxy>(
-    new Object3D() as LazyObject3DProxy,
-    new Object3DProxyHandler()
-  );
+  return new Proxy<LazyObject3DProxy>(new Object3D() as LazyObject3DProxy, new Object3DProxyHandler());
 }
 
-export function isLazyObject3dProxy(
-  object: Object3D | LazyObject3DProxy
-): object is LazyObject3DProxy {
+export function isLazyObject3dProxy(object: Object3D | LazyObject3DProxy): object is LazyObject3DProxy {
   return (object as LazyObject3DProxy).__isProxy === true;
 }

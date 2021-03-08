@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  SkipSelf,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, SkipSelf, Type } from '@angular/core';
 import {
   AnimationClip,
   BufferGeometry,
@@ -21,7 +15,7 @@ import {
   Quaternion,
   Scene,
   Vector3,
-  WebGLRenderer,
+  WebGLRenderer
 } from 'three';
 import { ThObjectBase } from '../ThObjectBase';
 import { applyValue } from '../util';
@@ -30,7 +24,7 @@ import { applyValue } from '../util';
   selector: 'th-object3D',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
+  providers: []
 })
 export class ThObject3D<TARGS extends any[] = []> extends ThObjectBase<TARGS> {
   @Input()
@@ -87,17 +81,13 @@ export class ThObject3D<TARGS extends any[] = []> extends ThObjectBase<TARGS> {
     }
   }
   @Input()
-  public set rotation(
-    value: Euler | [x: number, y: number, z: number, order?: string]
-  ) {
+  public set rotation(value: Euler | [x: number, y: number, z: number, order?: string]) {
     if (this.obj) {
       applyValue<Euler>(this.obj.rotation, value);
     }
   }
   @Input()
-  public set quaternion(
-    value: Quaternion | [x: number, y: number, z: number, w: number]
-  ) {
+  public set quaternion(value: Quaternion | [x: number, y: number, z: number, w: number]) {
     if (this.obj) {
       applyValue<Quaternion>(this.obj.quaternion, value);
     }
@@ -137,19 +127,7 @@ export class ThObject3D<TARGS extends any[] = []> extends ThObjectBase<TARGS> {
   }
   @Input()
   public set normalMatrix(
-    value:
-      | Matrix3
-      | [
-          n11: number,
-          n12: number,
-          n13: number,
-          n21: number,
-          n22: number,
-          n23: number,
-          n31: number,
-          n32: number,
-          n33: number
-        ]
+    value: Matrix3 | [n11: number, n12: number, n13: number, n21: number, n22: number, n23: number, n31: number, n32: number, n33: number]
   ) {
     if (this.obj) {
       applyValue<Matrix3>(this.obj.normalMatrix, value);

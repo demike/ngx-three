@@ -36,10 +36,7 @@ class NgxThreeClassGenerator {
     this.generate('NgxThreeControls', NgxThreeControl);
   }
 
-  protected generate(
-    exportTypeName: string,
-    generatorType: Type<NgxThreeClass>
-  ) {
+  protected generate(exportTypeName: string, generatorType: Type<NgxThreeClass>) {
     const threeTypes = this.getInterfacePropertyNames(exportTypeName);
     threeTypes.forEach((type) => {
       const cls = this.generateNgxThreeClass(type, generatorType);
@@ -50,10 +47,7 @@ class NgxThreeClassGenerator {
     // this.generateNgxModule(Array.from(this.ngxThreeClassMap.keys()));
   }
 
-  private generateNgxThreeClass(
-    classSymbol: ts.Symbol,
-    generatorType: Type<NgxThreeClass>
-  ): NgxThreeClass {
+  private generateNgxThreeClass(classSymbol: ts.Symbol, generatorType: Type<NgxThreeClass>): NgxThreeClass {
     const ngxClass = new generatorType(classSymbol, this.typeChecker);
     ngxClass.generate();
 
@@ -77,13 +71,10 @@ class NgxThreeClassGenerator {
   private writeFile(fileName: string, content: string) {
     try {
       const organizer = new ImportOrganizer();
-      content = organizer.organizeImports(
-        this.baseOutPath + fileName + '.ts',
-        content
-      );
+      content = organizer.organizeImports(this.baseOutPath + fileName + '.ts', content);
       content = prettier.format(content, {
         parser: 'babel-ts',
-        singleQuote: true,
+        singleQuote: true
       });
     } catch (e) {
       console.log(e);
@@ -93,45 +84,32 @@ class NgxThreeClassGenerator {
 
   private getInterfacePropertyNames(interfaceName: string) {
     const componentsRecordPath = join(__dirname, 'three_types.ts');
-    const configFile = ts.findConfigFile(
-      __dirname,
-      ts.sys.fileExists,
-      'tsconfig.generate.json'
-    );
+    const configFile = ts.findConfigFile(__dirname, ts.sys.fileExists, 'tsconfig.generate.json');
     if (!configFile) {
-      throw new Error("can't find tsconfig.lib.json");
+      throw new Error('can\'t find tsconfig.lib.json');
     }
 
-    const { config, error } = ts.parseConfigFileTextToJson(
-      configFile,
-      readFileSync(configFile, { encoding: 'utf-8' })
-    );
+    const { config, error } = ts.parseConfigFileTextToJson(configFile, readFileSync(configFile, { encoding: 'utf-8' }));
     if (error) {
       console.error(error);
       process.exit(1);
     }
 
-    const { options } = ts.convertCompilerOptionsFromJson(
-      config.compilerOptions,
-      '..'
-    );
+    const { options } = ts.convertCompilerOptionsFromJson(config.compilerOptions, '..');
     const program = ts.createProgram([componentsRecordPath], {
       ...options,
-      baseUrl: '..',
+      baseUrl: '..'
     });
 
     const sourceFile = program.getSourceFile(componentsRecordPath);
     if (!sourceFile) {
-      throw new Error("can't find three_types.ts");
+      throw new Error('can\'t find three_types.ts');
     }
 
     const typeChecker = program.getTypeChecker();
     this.typeChecker = typeChecker;
 
-    const visit = <T extends unknown>(
-      node: ts.Node,
-      f: (n: ts.Node) => T[]
-    ): T[] => {
+    const visit = <T extends unknown>(node: ts.Node, f: (n: ts.Node) => T[]): T[] => {
       const results = f(node);
       node.forEachChild((child) => {
         results.push(...visit(child, f));

@@ -1,18 +1,6 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Color,
-  HemisphereLight,
-  HemisphereLightHelper,
-  Matrix4,
-  MeshBasicMaterial,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Color, HemisphereLight, HemisphereLightHelper, Matrix4, MeshBasicMaterial } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -23,16 +11,12 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThObject3D,
-      useExisting: forwardRef(() => ThHemisphereLightHelper),
-    },
-  ],
+      useExisting: forwardRef(() => ThHemisphereLightHelper)
+    }
+  ]
 })
 export class ThHemisphereLightHelper<
-  TARGS extends any[] = [
-    light: HemisphereLight,
-    size: number,
-    color?: Color | number | string
-  ]
+  TARGS extends any[] = [light: HemisphereLight, size: number, color?: Color | number | string]
 > extends ThObject3D<TARGS> {
   @Input()
   public obj!: HemisphereLightHelper;
@@ -89,19 +73,9 @@ export class ThHemisphereLightHelper<
   }
 
   @Input()
-  public set color(
-    value:
-      | Color
-      | string
-      | number
-      | undefined
-      | [color: Color | string | number]
-  ) {
+  public set color(value: Color | string | number | undefined | [color: Color | string | number]) {
     if (this.obj) {
-      this.obj.color = applyValue<Color | string | number | undefined>(
-        this.obj.color,
-        value
-      );
+      this.obj.color = applyValue<Color | string | number | undefined>(this.obj.color, value);
     }
   }
 }

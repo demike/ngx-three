@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { PerspectiveCamera, StereoCamera } from 'three';
 import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
@@ -16,8 +10,8 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThStereoCamera) },
-    { provide: ThCamera, useExisting: forwardRef(() => ThStereoCamera) },
-  ],
+    { provide: ThCamera, useExisting: forwardRef(() => ThStereoCamera) }
+  ]
 })
 export class ThStereoCamera<TARGS extends any[] = []> extends ThCamera<TARGS> {
   @Input()

@@ -1,18 +1,6 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Color,
-  DirectionalLight,
-  DirectionalLightHelper,
-  Line,
-  Matrix4,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Color, DirectionalLight, DirectionalLightHelper, Line, Matrix4 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -23,16 +11,12 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThObject3D,
-      useExisting: forwardRef(() => ThDirectionalLightHelper),
-    },
-  ],
+      useExisting: forwardRef(() => ThDirectionalLightHelper)
+    }
+  ]
 })
 export class ThDirectionalLightHelper<
-  TARGS extends any[] = [
-    light: DirectionalLight,
-    size?: number,
-    color?: Color | string | number
-  ]
+  TARGS extends any[] = [light: DirectionalLight, size?: number, color?: Color | string | number]
 > extends ThObject3D<TARGS> {
   @Input()
   public obj!: DirectionalLightHelper;
@@ -62,19 +46,9 @@ export class ThDirectionalLightHelper<
   }
 
   @Input()
-  public set color(
-    value:
-      | Color
-      | string
-      | number
-      | undefined
-      | [color: Color | string | number]
-  ) {
+  public set color(value: Color | string | number | undefined | [color: Color | string | number]) {
     if (this.obj) {
-      this.obj.color = applyValue<Color | string | number | undefined>(
-        this.obj.color,
-        value
-      );
+      this.obj.color = applyValue<Color | string | number | undefined>(this.obj.color, value);
     }
   }
   @Input()

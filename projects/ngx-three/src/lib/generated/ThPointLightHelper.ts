@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Color, Matrix4, PointLight, PointLightHelper } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -14,16 +8,10 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-pointLightHelper',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThPointLightHelper) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPointLightHelper) }]
 })
 export class ThPointLightHelper<
-  TARGS extends any[] = [
-    light: PointLight,
-    sphereSize?: number,
-    color?: Color | string | number
-  ]
+  TARGS extends any[] = [light: PointLight, sphereSize?: number, color?: Color | string | number]
 > extends ThObject3D<TARGS> {
   @Input()
   public obj!: PointLightHelper;
@@ -46,19 +34,9 @@ export class ThPointLightHelper<
   }
 
   @Input()
-  public set color(
-    value:
-      | Color
-      | string
-      | number
-      | undefined
-      | [color: Color | string | number]
-  ) {
+  public set color(value: Color | string | number | undefined | [color: Color | string | number]) {
     if (this.obj) {
-      this.obj.color = applyValue<Color | string | number | undefined>(
-        this.obj.color,
-        value
-      );
+      this.obj.color = applyValue<Color | string | number | undefined>(this.obj.color, value);
     }
   }
   @Input()

@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { LineDashedMaterial, LineDashedMaterialParameters } from 'three';
 import { ThLineBasicMaterial } from './ThLineBasicMaterial';
 import { ThMaterial } from './ThMaterial';
@@ -17,13 +11,11 @@ import { ThMaterial } from './ThMaterial';
   providers: [
     {
       provide: ThMaterial,
-      useExisting: forwardRef(() => ThLineDashedMaterial),
-    },
-  ],
+      useExisting: forwardRef(() => ThLineDashedMaterial)
+    }
+  ]
 })
-export class ThLineDashedMaterial<
-  TARGS extends any[] = [parameters?: LineDashedMaterialParameters]
-> extends ThLineBasicMaterial<TARGS> {
+export class ThLineDashedMaterial<TARGS extends any[] = [parameters?: LineDashedMaterialParameters]> extends ThLineBasicMaterial<TARGS> {
   @Input()
   public obj!: LineDashedMaterial;
   protected getType(): Type<LineDashedMaterial> {

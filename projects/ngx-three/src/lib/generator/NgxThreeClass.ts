@@ -21,10 +21,7 @@ export abstract class NgxThreeClass {
   private wrappedClassGenericTypeNames = ''; // i.e.: "<T,U>"
   private inputs = '';
 
-  constructor(
-    protected classSymbol: ts.Symbol,
-    protected typeChecker: ts.TypeChecker
-  ) {
+  constructor(protected classSymbol: ts.Symbol, protected typeChecker: ts.TypeChecker) {
     this.classDecl = this.classSymbol.declarations[0] as ts.ClassDeclaration;
     this.wrappedClassName = this.classSymbol.escapedName as string;
 
@@ -33,13 +30,8 @@ export abstract class NgxThreeClass {
   }
 
   generate() {
-    if (
-      this.getBaseClassName().length > 0 &&
-      this.className !== 'Th' + this.getBaseClassName()
-    ) {
-      this.imports.add(
-        `import { Th${this.getBaseClassName()} } from './Th${this.getBaseClassName()}';`
-      );
+    if (this.getBaseClassName().length > 0 && this.className !== 'Th' + this.getBaseClassName()) {
+      this.imports.add(`import { Th${this.getBaseClassName()} } from './Th${this.getBaseClassName()}';`);
     }
 
     this.inputs = this.generateMembers(this.classDecl);
@@ -47,26 +39,18 @@ export abstract class NgxThreeClass {
     const providersArray = this.generateProvidersArray();
 
     // we have at least one input (obj) --> import it
-    this.imports.add("import { Input } from '@angular/core';");
+    this.imports.add('import { Input } from \'@angular/core\';');
 
-    this.imports.add(
-      "import { SkipSelf, Self, Optional, forwardRef, Type } from '@angular/core';"
-    );
+    this.imports.add('import { SkipSelf, Self, Optional, forwardRef, Type } from \'@angular/core\';');
     const constr = this.generateConstructor();
     this.generateConstructorArgs();
     this.addImportsFrom(this.classDecl);
     const classHeader = this.generateClassHeader();
 
-    this.imports.add(
-      `import { ${
-        this.wrappedClassName
-      } } from '${this.getWrappedClassImportPath()}';`
-    );
-    this.imports.add(
-      "import { Component, ChangeDetectionStrategy } from '@angular/core';"
-    );
+    this.imports.add(`import { ${this.wrappedClassName} } from '${this.getWrappedClassImportPath()}';`);
+    this.imports.add('import { Component, ChangeDetectionStrategy } from \'@angular/core\';');
 
-    this.imports.add("import { applyValue } from '../util';");
+    this.imports.add('import { applyValue } from \'../util\';');
 
     const ngxClassDeclarationString = `
     // tslint:disable: component-selector component-class-suffix no-redundant-jsdoc deprecation
@@ -80,12 +64,8 @@ export abstract class NgxThreeClass {
         })
         ${classHeader} {
           @Input()
-          public obj!: ${this.wrappedClassName}${
-      this.wrappedClassGenericTypeNames
-    };
-          protected getType(): Type<${this.wrappedClassName}${
-      this.wrappedClassGenericTypeNames
-    }> { return ${this.wrappedClassName}};
+          public obj!: ${this.wrappedClassName}${this.wrappedClassGenericTypeNames};
+          protected getType(): Type<${this.wrappedClassName}${this.wrappedClassGenericTypeNames}> { return ${this.wrappedClassName}};
           ${this.inputs}
           ${constr}
         }
@@ -117,12 +97,8 @@ export abstract class NgxThreeClass {
   private generateClassHeader() {
     let header = `export class ${this.className}<`;
     if (this.classDecl.typeParameters) {
-      header = `${header}${this.classDecl.typeParameters
-        .map((param) => param.getText())
-        .join(',')},`;
-      this.wrappedClassGenericTypeNames = `<${this.classDecl.typeParameters
-        .map((param) => param.name.getText())
-        .join(',')}>`;
+      header = `${header}${this.classDecl.typeParameters.map((param) => param.getText()).join(',')},`;
+      this.wrappedClassGenericTypeNames = `<${this.classDecl.typeParameters.map((param) => param.name.getText()).join(',')}>`;
     }
     header += `TARGS extends any[] = ${this.constructorArgs}>`;
 
@@ -134,15 +110,11 @@ export abstract class NgxThreeClass {
       baseClassName = clause.replace('extends ', '').split('<')[0];
 
       if ('EventDispatcher' === baseClassName) {
-        this.imports.add(
-          `import { ${wrapperBaseClassName} } from '../${wrapperBaseClassName}';`
-        );
+        this.imports.add(`import { ${wrapperBaseClassName} } from '../${wrapperBaseClassName}';`);
         header = `${header} extends ${wrapperBaseClassName}<TARGS>`;
         return header;
       } else {
-        this.imports.add(
-          `import { Th${baseClassName} } from './Th${baseClassName}';`
-        );
+        this.imports.add(`import { Th${baseClassName} } from './Th${baseClassName}';`);
         header = `${header}  ${clause.replace('extends ', 'extends Th')}`;
       }
     } else {
@@ -173,11 +145,7 @@ export abstract class NgxThreeClass {
         const memberName = (member.name as ts.Identifier).escapedText as string;
         if (
           INGORED_MEMBERS.find((m) => m === memberName) ||
-          member.modifiers?.find(
-            (m) =>
-              m.kind === ts.SyntaxKind.PrivateKeyword ||
-              m.kind === ts.SyntaxKind.ProtectedKeyword
-          )
+          member.modifiers?.find((m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword)
         ) {
           // it's private or protected, or in the ingore list --> do not expose
           continue;
@@ -194,18 +162,10 @@ export abstract class NgxThreeClass {
     return members;
   }
 
-  private generateSetterInput(
-    memberName: string,
-    member: ts.PropertyDeclaration,
-    memberType: ts.Type
-  ) {
-    const isReadonly = member.modifiers?.find(
-      (m) => m.kind === ts.SyntaxKind.ReadonlyKeyword
-    );
+  private generateSetterInput(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
+    const isReadonly = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.ReadonlyKeyword);
 
-    const isStatic = member.modifiers?.find(
-      (m) => m.kind === ts.SyntaxKind.StaticKeyword
-    );
+    const isStatic = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.StaticKeyword);
 
     if (isStatic) {
       return '';
@@ -268,8 +228,7 @@ export abstract class NgxThreeClass {
     }
 
     for (const tNode of tNodes) {
-      const decl = this.typeChecker.getTypeAtLocation(tNode).getProperty('set')
-        ?.declarations[0];
+      const decl = this.typeChecker.getTypeAtLocation(tNode).getProperty('set')?.declarations[0];
       if (decl && ts.isMethodDeclaration(decl)) {
         setters.push(decl);
       }
@@ -278,40 +237,22 @@ export abstract class NgxThreeClass {
     return setters;
   }
 
-  public generateGetter(
-    memberName: string,
-    member: ts.PropertyDeclaration,
-    memberType: ts.Type
-  ) {
+  public generateGetter(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
     // TODO implement me
     return ''; // return `public get${memberName}(): ${member.type?.getText()} { return this.obj?.${memberName}; }`;
   }
 
   private generateConstructorArgs() {
     const symbol = ((this.classDecl as unknown) as ts.Type).symbol;
-    const constructorType = this.typeChecker.getTypeOfSymbolAtLocation(
-      symbol,
-      symbol.valueDeclaration
-    );
+    const constructorType = this.typeChecker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration);
     const constructSignatures = constructorType.getConstructSignatures();
 
-    if (
-      constructSignatures.length === 0 ||
-      (constructSignatures.length === 1 &&
-        constructSignatures[0].parameters.length === 0)
-    ) {
+    if (constructSignatures.length === 0 || (constructSignatures.length === 1 && constructSignatures[0].parameters.length === 0)) {
       return;
     }
 
     this.constructorArgs = constructSignatures
-      .map(
-        (sig) =>
-          `[${sig.parameters
-            .map((param) =>
-              (param.declarations[0] as ParameterDeclaration).getText()
-            )
-            .join(',')}]`
-      )
+      .map((sig) => `[${sig.parameters.map((param) => (param.declarations[0] as ParameterDeclaration).getText()).join(',')}]`)
       .join('|');
   }
 
@@ -323,7 +264,7 @@ export abstract class NgxThreeClass {
         .filter(ts.isImportDeclaration)
         .map((imp: ts.ImportDeclaration) => {
           let str = imp.getText();
-          str = str.substr(0, str.search(' from ')) + " from 'three';";
+          str = str.substr(0, str.search(' from ')) + ' from \'three\';';
           return str;
         })
         .forEach((el) => this.imports.add(el));
@@ -352,21 +293,15 @@ export abstract class NgxThreeClass {
     }
 
     for (const clause of node.heritageClauses) {
-      if (
-        clause.token === ts.SyntaxKind.ExtendsKeyword &&
-        clause.types.length === 1
-      ) {
-        const classDecl: ts.Type = checker.getTypeAtLocation(
-          clause.types[0].expression
-        );
+      if (clause.token === ts.SyntaxKind.ExtendsKeyword && clause.types.length === 1) {
+        const classDecl: ts.Type = checker.getTypeAtLocation(clause.types[0].expression);
 
         const s = classDecl.getSymbol();
         if (!s || s.declarations.length === 0) {
           return [];
         }
 
-        const typeParams = (s.declarations[0] as ts.ClassDeclaration)
-          .typeParameters as ts.TypeParameterDeclaration[] | undefined;
+        const typeParams = (s.declarations[0] as ts.ClassDeclaration).typeParameters as ts.TypeParameterDeclaration[] | undefined;
         if (!typeParams) {
           return [];
         }
@@ -374,16 +309,12 @@ export abstract class NgxThreeClass {
         return typeParams
           .filter((p) => p.default)
           .map((p) => {
-            (p.default as ts.UnionOrIntersectionTypeNode).types.forEach(
-              (type) => {
-                if (ts.isTypeReferenceNode(type)) {
-                  // TODO: allow non "three" imports
-                  this.imports.add(
-                    `import { ${type.typeName.getText()} } from 'three';`
-                  );
-                }
+            (p.default as ts.UnionOrIntersectionTypeNode).types.forEach((type) => {
+              if (ts.isTypeReferenceNode(type)) {
+                // TODO: allow non "three" imports
+                this.imports.add(`import { ${type.typeName.getText()} } from 'three';`);
               }
-            );
+            });
 
             return (p.default as ts.Node).getText();
           })

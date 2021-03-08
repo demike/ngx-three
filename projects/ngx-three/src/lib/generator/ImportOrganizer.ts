@@ -15,10 +15,7 @@ class LanguageServiceHostImpl implements ts.LanguageServiceHost {
     const tsconfig = ts.findConfigFile(name, ts.sys.fileExists);
 
     const compilerOptions = tsconfig
-      ? ts.convertCompilerOptionsFromJson(
-          ts.readConfigFile(tsconfig, ts.sys.readFile).config.compilerOptions,
-          '..'
-        ).options
+      ? ts.convertCompilerOptionsFromJson(ts.readConfigFile(tsconfig, ts.sys.readFile).config.compilerOptions, '..').options
       : ts.getDefaultCompilerOptions();
 
     this.name = name;
@@ -66,8 +63,6 @@ export class ImportOrganizer {
 
     const fileChanges = ls.organizeImports({ type: 'file', fileName }, {}, {});
 
-    return fileChanges.length > 0
-      ? applyChanges(content, fileChanges[0].textChanges)
-      : content;
+    return fileChanges.length > 0 ? applyChanges(content, fileChanges[0].textChanges) : content;
   }
 }

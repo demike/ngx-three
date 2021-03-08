@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Shape, ShapeGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -13,13 +7,9 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-shapeGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThShapeGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThShapeGeometry) }]
 })
-export class ThShapeGeometry<
-  TARGS extends any[] = [shapes: Shape | Shape[], curveSegments?: number]
-> extends ThGeometry<TARGS> {
+export class ThShapeGeometry<TARGS extends any[] = [shapes: Shape | Shape[], curveSegments?: number]> extends ThGeometry<TARGS> {
   @Input()
   public obj!: ShapeGeometry;
   protected getType(): Type<ShapeGeometry> {

@@ -1,11 +1,5 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { LatheGeometry, Vector2 } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -13,17 +7,10 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-latheGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThLatheGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThLatheGeometry) }]
 })
 export class ThLatheGeometry<
-  TARGS extends any[] = [
-    points: Vector2[],
-    segments?: number,
-    phiStart?: number,
-    phiLength?: number
-  ]
+  TARGS extends any[] = [points: Vector2[], segments?: number, phiStart?: number, phiLength?: number]
 > extends ThGeometry<TARGS> {
   @Input()
   public obj!: LatheGeometry;
@@ -39,12 +26,7 @@ export class ThLatheGeometry<
   }
 
   @Input()
-  public set parameters(value: {
-    points: Vector2[];
-    segments: number;
-    phiStart: number;
-    phiLength: number;
-  }) {
+  public set parameters(value: { points: Vector2[]; segments: number; phiStart: number; phiLength: number }) {
     if (this.obj) {
       this.obj.parameters = value;
     }

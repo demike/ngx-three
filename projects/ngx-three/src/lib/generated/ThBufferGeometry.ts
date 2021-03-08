@@ -1,20 +1,6 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  SkipSelf,
-  Type,
-} from '@angular/core';
-import {
-  Box3,
-  BufferAttribute,
-  BufferGeometry,
-  InterleavedBufferAttribute,
-  Sphere,
-  Vector3,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, SkipSelf, Type } from '@angular/core';
+import { Box3, BufferAttribute, BufferGeometry, InterleavedBufferAttribute, Sphere, Vector3 } from 'three';
 import { ThGeometryBase } from '../ThGeometryBase';
 import { applyValue } from '../util';
 import { ThGeometry } from './ThGeometry';
@@ -24,13 +10,9 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-bufferGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThBufferGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThBufferGeometry) }]
 })
-export class ThBufferGeometry<
-  TARGS extends any[] = []
-> extends ThGeometryBase<TARGS> {
+export class ThBufferGeometry<TARGS extends any[] = []> extends ThGeometryBase<TARGS> {
   @Input()
   public obj!: BufferGeometry;
   protected getType(): Type<BufferGeometry> {
@@ -66,32 +48,20 @@ export class ThBufferGeometry<
   }
 
   @Input()
-  public set index(
-    value:
-      | BufferAttribute
-      | null
-      | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
-  ) {
+  public set index(value: BufferAttribute | null | [value: ArrayLike<number> | ArrayBufferView, offset?: number]) {
     if (this.obj) {
-      this.obj.index = applyValue<BufferAttribute | null>(
-        this.obj.index,
-        value
-      );
+      this.obj.index = applyValue<BufferAttribute | null>(this.obj.index, value);
     }
   }
   @Input()
-  public set attributes(value: {
-    [name: string]: BufferAttribute | InterleavedBufferAttribute;
-  }) {
+  public set attributes(value: { [name: string]: BufferAttribute | InterleavedBufferAttribute }) {
     if (this.obj) {
       this.obj.attributes = value;
     }
   }
 
   @Input()
-  public set morphAttributes(value: {
-    [name: string]: (BufferAttribute | InterleavedBufferAttribute)[];
-  }) {
+  public set morphAttributes(value: { [name: string]: (BufferAttribute | InterleavedBufferAttribute)[] }) {
     if (this.obj) {
       this.obj.morphAttributes = value;
     }
@@ -105,9 +75,7 @@ export class ThBufferGeometry<
   }
 
   @Input()
-  public set groups(
-    value: { start: number; count: number; materialIndex?: number }[]
-  ) {
+  public set groups(value: { start: number; count: number; materialIndex?: number }[]) {
     if (this.obj) {
       this.obj.groups = value;
     }
@@ -116,21 +84,13 @@ export class ThBufferGeometry<
   @Input()
   public set boundingBox(value: Box3 | null | [min: Vector3, max: Vector3]) {
     if (this.obj) {
-      this.obj.boundingBox = applyValue<Box3 | null>(
-        this.obj.boundingBox,
-        value
-      );
+      this.obj.boundingBox = applyValue<Box3 | null>(this.obj.boundingBox, value);
     }
   }
   @Input()
-  public set boundingSphere(
-    value: Sphere | null | [center: Vector3, radius: number]
-  ) {
+  public set boundingSphere(value: Sphere | null | [center: Vector3, radius: number]) {
     if (this.obj) {
-      this.obj.boundingSphere = applyValue<Sphere | null>(
-        this.obj.boundingSphere,
-        value
-      );
+      this.obj.boundingSphere = applyValue<Sphere | null>(this.obj.boundingSphere, value);
     }
   }
   @Input()

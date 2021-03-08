@@ -3,13 +3,10 @@ import { Object3D, Vector3 } from 'three';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
   selector: 'th-abs-object',
-  template: '',
+  template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThObjectBase<ARGS extends any[]> extends ThWrapperBase<
-  Object3D,
-  ARGS
-> {
+export class ThObjectBase<ARGS extends any[]> extends ThWrapperBase<Object3D, ARGS> {
   constructor(public parent: ThObjectBase<any>) {
     super();
   }

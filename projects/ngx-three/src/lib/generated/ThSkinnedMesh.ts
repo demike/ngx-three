@@ -1,19 +1,6 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  BufferGeometry,
-  Geometry,
-  Material,
-  Matrix4,
-  Skeleton,
-  SkinnedMesh,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { BufferGeometry, Geometry, Material, Matrix4, Skeleton, SkinnedMesh } from 'three';
 import { applyValue } from '../util';
 import { ThMesh } from './ThMesh';
 import { ThObject3D } from './ThObject3D';
@@ -22,18 +9,12 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-skinnedMesh',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThSkinnedMesh) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSkinnedMesh) }]
 })
 export class ThSkinnedMesh<
   TGeometry extends Geometry | BufferGeometry = Geometry | BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
-  TARGS extends any[] = [
-    geometry?: TGeometry,
-    material?: TMaterial,
-    useVertexTexture?: boolean
-  ]
+  TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial, useVertexTexture?: boolean]
 > extends ThMesh<TGeometry, TMaterial, TARGS> {
   @Input()
   public obj!: SkinnedMesh<TGeometry, TMaterial>;
@@ -99,10 +80,7 @@ export class ThSkinnedMesh<
         ]
   ) {
     if (this.obj) {
-      this.obj.bindMatrixInverse = applyValue<Matrix4>(
-        this.obj.bindMatrixInverse,
-        value
-      );
+      this.obj.bindMatrixInverse = applyValue<Matrix4>(this.obj.bindMatrixInverse, value);
     }
   }
   @Input()
