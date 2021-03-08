@@ -4,6 +4,7 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
+import { toCodeSandbox } from './codesandbox';
 
 @Component({
   selector: 'app-code',
@@ -36,4 +37,8 @@ export class CodeComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  public toCodeSandbox() {
+    toCodeSandbox(this.urls);
+  }
 }

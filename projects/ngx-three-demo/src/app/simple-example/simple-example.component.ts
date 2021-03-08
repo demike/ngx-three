@@ -34,7 +34,6 @@ export class Box extends ThMesh implements OnInit {
 @Component({
   selector: 'app-simple-example',
   templateUrl: './simple-example.component.html',
-  styleUrls: ['./simple-example.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SimpleExampleComponent implements OnInit {

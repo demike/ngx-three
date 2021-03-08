@@ -14,9 +14,9 @@
     </div>
   </mat-card-content>
   <mat-card-footer>
-    <a class="gist-url" [href]="codeUrls[0]" target="_blank">
+    <a class="gist-url" (click)="toCodeSandbox()" href="#" target="_blank">
       <mat-icon>link</mat-icon>
-      Open gist on Github
+      To CodeSandbox
     </a>
   </mat-card-footer>
 </mat-card>
