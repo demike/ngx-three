@@ -1,6 +1,19 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { BufferAttribute, BufferGeometry, Geometry, InstancedMesh, Material } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  BufferAttribute,
+  BufferGeometry,
+  Geometry,
+  InstancedMesh,
+  Material,
+} from 'three';
 import { applyValue } from '../util';
 import { ThMesh } from './ThMesh';
 import { ThObject3D } from './ThObject3D';
@@ -9,12 +22,18 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-instancedMesh',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThInstancedMesh) }]
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThInstancedMesh) },
+  ],
 })
 export class ThInstancedMesh<
   TGeometry extends Geometry | BufferGeometry = Geometry | BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
-  TARGS extends any[] = [geometry: TGeometry, material: TMaterial, count: number]
+  TARGS extends any[] = [
+    geometry: TGeometry,
+    material: TMaterial,
+    count: number
+  ]
 > extends ThMesh<TGeometry, TMaterial, TARGS> {
   @Input()
   public obj!: InstancedMesh<TGeometry, TMaterial>;
@@ -30,15 +49,30 @@ export class ThInstancedMesh<
   }
 
   @Input()
-  public set instanceColor(value: null | BufferAttribute | [value: ArrayLike<number> | ArrayBufferView, offset?: number]) {
+  public set instanceColor(
+    value:
+      | null
+      | BufferAttribute
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
+  ) {
     if (this.obj) {
-      this.obj.instanceColor = applyValue<null | BufferAttribute>(this.obj.instanceColor, value);
+      this.obj.instanceColor = applyValue<null | BufferAttribute>(
+        this.obj.instanceColor,
+        value
+      );
     }
   }
   @Input()
-  public set instanceMatrix(value: BufferAttribute | [value: ArrayLike<number> | ArrayBufferView, offset?: number]) {
+  public set instanceMatrix(
+    value:
+      | BufferAttribute
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
+  ) {
     if (this.obj) {
-      this.obj.instanceMatrix = applyValue<BufferAttribute>(this.obj.instanceMatrix, value);
+      this.obj.instanceMatrix = applyValue<BufferAttribute>(
+        this.obj.instanceMatrix,
+        value
+      );
     }
   }
 }

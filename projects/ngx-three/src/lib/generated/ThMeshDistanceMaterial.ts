@@ -1,6 +1,18 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { MeshDistanceMaterial, MeshDistanceMaterialParameters, Texture, Vector3 } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  MeshDistanceMaterial,
+  MeshDistanceMaterialParameters,
+  Texture,
+  Vector3,
+} from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -11,11 +23,13 @@ import { ThMaterial } from './ThMaterial';
   providers: [
     {
       provide: ThMaterial,
-      useExisting: forwardRef(() => ThMeshDistanceMaterial)
-    }
-  ]
+      useExisting: forwardRef(() => ThMeshDistanceMaterial),
+    },
+  ],
 })
-export class ThMeshDistanceMaterial<TARGS extends any[] = [parameters?: MeshDistanceMaterialParameters]> extends ThMaterial<TARGS> {
+export class ThMeshDistanceMaterial<
+  TARGS extends any[] = [parameters?: MeshDistanceMaterialParameters]
+> extends ThMaterial<TARGS> {
   @Input()
   public obj!: MeshDistanceMaterial;
   protected getType(): Type<MeshDistanceMaterial> {
@@ -79,9 +93,14 @@ export class ThMeshDistanceMaterial<TARGS extends any[] = [parameters?: MeshDist
   }
 
   @Input()
-  public set referencePosition(value: Vector3 | [x: number, y: number, z: number]) {
+  public set referencePosition(
+    value: Vector3 | [x: number, y: number, z: number]
+  ) {
     if (this.obj) {
-      this.obj.referencePosition = applyValue<Vector3>(this.obj.referencePosition, value);
+      this.obj.referencePosition = applyValue<Vector3>(
+        this.obj.referencePosition,
+        value
+      );
     }
   }
   @Input()

@@ -48,6 +48,7 @@ export class SimpleExampleComponent implements OnInit {
     }, 200);
   }
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   public THREE = THREE;
 
   public box = new THREE.Box3(new THREE.Vector3(0, 0, 0), new THREE.Vector3(1.5, 1.5, 1.5));

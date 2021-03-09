@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, Input, SkipSelf, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  SkipSelf,
+  Type,
+} from '@angular/core';
 import {
   Blending,
   BlendingDstFactor,
@@ -9,7 +16,7 @@ import {
   Material,
   Side,
   StencilFunc,
-  StencilOp
+  StencilOp,
 } from 'three';
 import { ThMaterialBase } from '../ThMaterialBase';
 import { ThObject3D } from './ThObject3D';
@@ -18,9 +25,11 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-material',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: []
+  providers: [],
 })
-export class ThMaterial<TARGS extends any[] = []> extends ThMaterialBase<TARGS> {
+export class ThMaterial<
+  TARGS extends any[] = []
+> extends ThMaterialBase<TARGS> {
   @Input()
   public obj!: Material;
   protected getType(): Type<Material> {

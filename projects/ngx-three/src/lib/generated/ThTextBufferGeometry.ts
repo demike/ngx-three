@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Font, TextBufferGeometry, TextGeometryParameters } from 'three';
 import { ThExtrudeBufferGeometry } from './ThExtrudeBufferGeometry';
 import { ThGeometry } from './ThGeometry';
@@ -11,9 +18,9 @@ import { ThGeometry } from './ThGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThTextBufferGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThTextBufferGeometry),
+    },
+  ],
 })
 export class ThTextBufferGeometry<
   TARGS extends any[] = [text: string, parameters: TextGeometryParameters]

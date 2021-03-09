@@ -1,6 +1,20 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { Color, MeshToonMaterial, MeshToonMaterialParameters, NormalMapTypes, Texture, Vector2 } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  Color,
+  MeshToonMaterial,
+  MeshToonMaterialParameters,
+  NormalMapTypes,
+  Texture,
+  Vector2,
+} from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -8,9 +22,13 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-meshToonMaterial',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThMeshToonMaterial) }]
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThMeshToonMaterial) },
+  ],
 })
-export class ThMeshToonMaterial<TARGS extends any[] = [parameters?: MeshToonMaterialParameters]> extends ThMaterial<TARGS> {
+export class ThMeshToonMaterial<
+  TARGS extends any[] = [parameters?: MeshToonMaterialParameters]
+> extends ThMaterial<TARGS> {
   @Input()
   public obj!: MeshToonMaterial;
   protected getType(): Type<MeshToonMaterial> {

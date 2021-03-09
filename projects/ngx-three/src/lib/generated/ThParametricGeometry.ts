@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { ParametricGeometry, Vector3 } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -10,12 +17,16 @@ import { ThGeometry } from './ThGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThParametricGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThParametricGeometry),
+    },
+  ],
 })
 export class ThParametricGeometry<
-  TARGS extends any[] = [func: (u: number, v: number, dest: Vector3) => void, slices: number, stacks: number]
+  TARGS extends any[] = [
+    func: (u: number, v: number, dest: Vector3) => void,
+    slices: number,
+    stacks: number
+  ]
 > extends ThGeometry<TARGS> {
   @Input()
   public obj!: ParametricGeometry;
@@ -31,7 +42,11 @@ export class ThParametricGeometry<
   }
 
   @Input()
-  public set parameters(value: { func: (u: number, v: number, dest: Vector3) => void; slices: number; stacks: number }) {
+  public set parameters(value: {
+    func: (u: number, v: number, dest: Vector3) => void;
+    slices: number;
+    stacks: number;
+  }) {
     if (this.obj) {
       this.obj.parameters = value;
     }

@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { LOD, Object3D } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -7,7 +14,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-lOD',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLOD) }]
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLOD) }],
 })
 export class ThLOD<TARGS extends any[] = []> extends ThObject3D<TARGS> {
   @Input()

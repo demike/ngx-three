@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Camera, MOUSE, TOUCH, Vector3 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { ThControlBase } from '../ThControlBase';
@@ -9,9 +16,13 @@ import { applyValue } from '../util';
   selector: 'th-orbitControls',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) }]
+  providers: [
+    { provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) },
+  ],
 })
-export class ThOrbitControls<TARGS extends any[] = [object: Camera, domElement?: HTMLElement]> extends ThControlBase<TARGS> {
+export class ThOrbitControls<
+  TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
+> extends ThControlBase<TARGS> {
   @Input()
   public obj!: OrbitControls;
   protected getType(): Type<OrbitControls> {
@@ -199,7 +210,12 @@ export class ThOrbitControls<TARGS extends any[] = [object: Camera, domElement?:
   }
 
   @Input()
-  public set keys(value: { LEFT: number; UP: number; RIGHT: number; BOTTOM: number }) {
+  public set keys(value: {
+    LEFT: number;
+    UP: number;
+    RIGHT: number;
+    BOTTOM: number;
+  }) {
     if (this.obj) {
       this.obj.keys = value;
     }

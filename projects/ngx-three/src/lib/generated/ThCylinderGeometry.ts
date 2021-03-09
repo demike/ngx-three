@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { CylinderGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -7,7 +14,9 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-cylinderGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThCylinderGeometry) }]
+  providers: [
+    { provide: ThGeometry, useExisting: forwardRef(() => ThCylinderGeometry) },
+  ],
 })
 export class ThCylinderGeometry<
   TARGS extends any[] = [

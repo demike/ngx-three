@@ -1,6 +1,19 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { Color, DirectionalLight, DirectionalLightShadow, Object3D, Vector3 } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  Color,
+  DirectionalLight,
+  DirectionalLightShadow,
+  Object3D,
+  Vector3,
+} from 'three';
 import { applyValue } from '../util';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
@@ -9,9 +22,13 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-directionalLight',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThDirectionalLight) }]
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThDirectionalLight) },
+  ],
 })
-export class ThDirectionalLight<TARGS extends any[] = [color?: Color | string | number, intensity?: number]> extends ThLight<TARGS> {
+export class ThDirectionalLight<
+  TARGS extends any[] = [color?: Color | string | number, intensity?: number]
+> extends ThLight<TARGS> {
   @Input()
   public obj!: DirectionalLight;
   protected getType(): Type<DirectionalLight> {

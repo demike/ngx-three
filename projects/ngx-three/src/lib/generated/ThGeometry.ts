@@ -1,6 +1,26 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, Input, SkipSelf, Type } from '@angular/core';
-import { AnimationClip, Bone, Box3, Color, Face3, Geometry, MorphNormals, MorphTarget, Sphere, Vector2, Vector3, Vector4 } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  SkipSelf,
+  Type,
+} from '@angular/core';
+import {
+  AnimationClip,
+  Bone,
+  Box3,
+  Color,
+  Face3,
+  Geometry,
+  MorphNormals,
+  MorphTarget,
+  Sphere,
+  Vector2,
+  Vector3,
+  Vector4,
+} from 'three';
 import { ThGeometryBase } from '../ThGeometryBase';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -9,9 +29,11 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-geometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: []
+  providers: [],
 })
-export class ThGeometry<TARGS extends any[] = []> extends ThGeometryBase<TARGS> {
+export class ThGeometry<
+  TARGS extends any[] = []
+> extends ThGeometryBase<TARGS> {
   @Input()
   public obj!: Geometry;
   protected getType(): Type<Geometry> {
@@ -112,13 +134,21 @@ export class ThGeometry<TARGS extends any[] = []> extends ThGeometryBase<TARGS> 
   @Input()
   public set boundingBox(value: Box3 | null | [min: Vector3, max: Vector3]) {
     if (this.obj) {
-      this.obj.boundingBox = applyValue<Box3 | null>(this.obj.boundingBox, value);
+      this.obj.boundingBox = applyValue<Box3 | null>(
+        this.obj.boundingBox,
+        value
+      );
     }
   }
   @Input()
-  public set boundingSphere(value: Sphere | null | [center: Vector3, radius: number]) {
+  public set boundingSphere(
+    value: Sphere | null | [center: Vector3, radius: number]
+  ) {
     if (this.obj) {
-      this.obj.boundingSphere = applyValue<Sphere | null>(this.obj.boundingSphere, value);
+      this.obj.boundingSphere = applyValue<Sphere | null>(
+        this.obj.boundingSphere,
+        value
+      );
     }
   }
   @Input()

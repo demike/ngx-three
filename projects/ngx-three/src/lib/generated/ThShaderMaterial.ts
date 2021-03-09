@@ -1,15 +1,31 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { GLSLVersion, IUniform, ShaderMaterial, ShaderMaterialParameters } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  GLSLVersion,
+  IUniform,
+  ShaderMaterial,
+  ShaderMaterialParameters,
+} from 'three';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
   selector: 'th-shaderMaterial',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) }]
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) },
+  ],
 })
-export class ThShaderMaterial<TARGS extends any[] = [parameters?: ShaderMaterialParameters]> extends ThMaterial<TARGS> {
+export class ThShaderMaterial<
+  TARGS extends any[] = [parameters?: ShaderMaterialParameters]
+> extends ThMaterial<TARGS> {
   @Input()
   public obj!: ShaderMaterial;
   protected getType(): Type<ShaderMaterial> {
@@ -122,7 +138,12 @@ export class ThShaderMaterial<TARGS extends any[] = [parameters?: ShaderMaterial
   }
 
   @Input()
-  public set extensions(value: { derivatives: boolean; fragDepth: boolean; drawBuffers: boolean; shaderTextureLOD: boolean }) {
+  public set extensions(value: {
+    derivatives: boolean;
+    fragDepth: boolean;
+    drawBuffers: boolean;
+    shaderTextureLOD: boolean;
+  }) {
     if (this.obj) {
       this.obj.extensions = value;
     }

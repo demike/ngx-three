@@ -41,7 +41,8 @@ type __ngxThreeObjects = {
     : never;
 };
 
-export type NgxThreeObjects = OmitByValue<__ngxThreeObjects, never>;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface NgxThreeObjects extends OmitByValue<__ngxThreeObjects, never> {}
 
 type __ngxThreeMaterials = {
   [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
@@ -53,7 +54,8 @@ type __ngxThreeMaterials = {
 
 // materials
 
-export type NgxThreeMaterials = OmitByValue<__ngxThreeMaterials, never>;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface NgxThreeMaterials extends OmitByValue<__ngxThreeMaterials, never> {}
 
 type __ngxThreeGeometries = {
   [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
@@ -64,7 +66,8 @@ type __ngxThreeGeometries = {
 };
 
 // geometries
-export type NgxThreeGeometries = OmitByValue<__ngxThreeGeometries, never>;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface NgxThreeGeometries extends OmitByValue<__ngxThreeGeometries, never> {}
 
 type __ngxThreeBufferGeometries = {
   [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
@@ -74,7 +77,8 @@ type __ngxThreeBufferGeometries = {
     : never;
 };
 
-export type NgxThreeBufferGeometries = OmitByValue<__ngxThreeBufferGeometries, never>;
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface NgxThreeBufferGeometries extends OmitByValue<__ngxThreeBufferGeometries, never> {}
 
 // controls
 
@@ -82,4 +86,6 @@ type Controls = typeof import('./control_types');
 type __ngxControls = {
   [P in keyof Controls]: InstanceType<Controls[P]>;
 };
-export type NgxThreeControls = OmitByValue<__ngxControls, never>;
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface NgxThreeControls extends OmitByValue<__ngxControls, never> {}

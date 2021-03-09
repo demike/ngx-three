@@ -1,9 +1,9 @@
-import { Inject, Injectable, OnDestroy } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
 import { ThCamera } from '../generated/ThCamera';
-import { ThCanvas } from '../ThCanvas';
 import { RaycasterEventDirective } from './raycaster.events.directive';
 
+// eslint-disable-next-line no-shadow
 export enum RaycasterEvent {
   mouseEnter = 'mouseEnter',
   mouseExit = 'mouseExit',

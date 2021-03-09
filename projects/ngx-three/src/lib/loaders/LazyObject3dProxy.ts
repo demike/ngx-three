@@ -58,6 +58,7 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
 }
 
 export interface LazyObject3DProxy extends Object3D {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   readonly __isProxy?: boolean;
   applyToObject3D(real: Object3D): void;
 }
@@ -67,5 +68,6 @@ export function createLazyObject3DProxy(): LazyObject3DProxy {
 }
 
 export function isLazyObject3dProxy(object: Object3D | LazyObject3DProxy): object is LazyObject3DProxy {
+  // eslint-disable-next-line no-underscore-dangle
   return (object as LazyObject3DProxy).__isProxy === true;
 }

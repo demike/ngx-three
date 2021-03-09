@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { OctahedronGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -10,11 +17,13 @@ import { ThGeometry } from './ThGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThOctahedronGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThOctahedronGeometry),
+    },
+  ],
 })
-export class ThOctahedronGeometry<TARGS extends any[] = [radius?: number, detail?: number]> extends ThGeometry<TARGS> {
+export class ThOctahedronGeometry<
+  TARGS extends any[] = [radius?: number, detail?: number]
+> extends ThGeometry<TARGS> {
   @Input()
   public obj!: OctahedronGeometry;
   protected getType(): Type<OctahedronGeometry> {

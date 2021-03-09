@@ -11,7 +11,7 @@ export class ThGLTFLoader extends ThLoader<GLTF> {
   public loaderFn = async (
     input?: string,
     onProgress?: (progress: ProgressEvent) => void,
-    onLoaded?: (result: GLTF) => void
+    onLoaded?: (res: GLTF) => void
   ): Promise<Object3D> => {
     if (!input) {
       throw new Error('missing input url');

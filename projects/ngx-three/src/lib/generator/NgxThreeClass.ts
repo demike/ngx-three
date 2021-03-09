@@ -39,21 +39,22 @@ export abstract class NgxThreeClass {
     const providersArray = this.generateProvidersArray();
 
     // we have at least one input (obj) --> import it
-    this.imports.add('import { Input } from \'@angular/core\';');
+    this.imports.add("import { Input } from '@angular/core';");
 
-    this.imports.add('import { SkipSelf, Self, Optional, forwardRef, Type } from \'@angular/core\';');
+    this.imports.add("import { SkipSelf, Self, Optional, forwardRef, Type } from '@angular/core';");
     const constr = this.generateConstructor();
     this.generateConstructorArgs();
     this.addImportsFrom(this.classDecl);
     const classHeader = this.generateClassHeader();
 
     this.imports.add(`import { ${this.wrappedClassName} } from '${this.getWrappedClassImportPath()}';`);
-    this.imports.add('import { Component, ChangeDetectionStrategy } from \'@angular/core\';');
+    this.imports.add("import { Component, ChangeDetectionStrategy } from '@angular/core';");
 
-    this.imports.add('import { applyValue } from \'../util\';');
+    this.imports.add("import { applyValue } from '../util';");
 
     const ngxClassDeclarationString = `
-    // tslint:disable: component-selector component-class-suffix no-redundant-jsdoc deprecation
+    /* eslint-disable @typescript-eslint/naming-convention */
+    /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
         ${[...this.imports].join('')}
 
         @Component({
@@ -264,7 +265,7 @@ export abstract class NgxThreeClass {
         .filter(ts.isImportDeclaration)
         .map((imp: ts.ImportDeclaration) => {
           let str = imp.getText();
-          str = str.substr(0, str.search(' from ')) + ' from \'three\';';
+          str = str.substr(0, str.search(' from ')) + " from 'three';";
           return str;
         })
         .forEach((el) => this.imports.add(el));

@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { BufferGeometry, Geometry, Material, Mesh } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -7,7 +14,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-mesh',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThMesh) }]
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThMesh) }],
 })
 export class ThMesh<
   TGeometry extends Geometry | BufferGeometry = Geometry | BufferGeometry,

@@ -1,6 +1,19 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { Color, Combine, MeshLambertMaterial, MeshLambertMaterialParameters, Texture } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  Color,
+  Combine,
+  MeshLambertMaterial,
+  MeshLambertMaterialParameters,
+  Texture,
+} from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -11,11 +24,13 @@ import { ThMaterial } from './ThMaterial';
   providers: [
     {
       provide: ThMaterial,
-      useExisting: forwardRef(() => ThMeshLambertMaterial)
-    }
-  ]
+      useExisting: forwardRef(() => ThMeshLambertMaterial),
+    },
+  ],
 })
-export class ThMeshLambertMaterial<TARGS extends any[] = [parameters?: MeshLambertMaterialParameters]> extends ThMaterial<TARGS> {
+export class ThMeshLambertMaterial<
+  TARGS extends any[] = [parameters?: MeshLambertMaterialParameters]
+> extends ThMaterial<TARGS> {
   @Input()
   public obj!: MeshLambertMaterial;
   protected getType(): Type<MeshLambertMaterial> {

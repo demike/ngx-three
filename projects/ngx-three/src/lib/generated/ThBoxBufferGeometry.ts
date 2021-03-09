@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { BoxBufferGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThGeometry } from './ThGeometry';
@@ -8,7 +15,9 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-boxBufferGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThBoxBufferGeometry) }]
+  providers: [
+    { provide: ThGeometry, useExisting: forwardRef(() => ThBoxBufferGeometry) },
+  ],
 })
 export class ThBoxBufferGeometry<
   TARGS extends any[] = [

@@ -12,7 +12,17 @@
         "plugin:@angular-eslint/ng-cli-compat",
         "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
         "plugin:@angular-eslint/template/process-inline-templates"
-      ]
+      ],
+      "rules": {
+        "prefer-arrow/prefer-arrow-functions": "off",
+        "@typescript-eslint/member-ordering": "off",
+        "@typescript-eslint/quotes": [
+          "error",
+          "single",
+          { "avoidEscape": true }
+        ],
+        "no-underscore-dangle": ["error", { "allowAfterThis": true }]
+      }
     },
     {
       "files": ["*.html"],

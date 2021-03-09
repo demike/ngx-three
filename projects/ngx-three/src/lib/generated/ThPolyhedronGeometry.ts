@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { PolyhedronGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -10,12 +17,17 @@ import { ThGeometry } from './ThGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThPolyhedronGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThPolyhedronGeometry),
+    },
+  ],
 })
 export class ThPolyhedronGeometry<
-  TARGS extends any[] = [vertices: number[], indices: number[], radius?: number, detail?: number]
+  TARGS extends any[] = [
+    vertices: number[],
+    indices: number[],
+    radius?: number,
+    detail?: number
+  ]
 > extends ThGeometry<TARGS> {
   @Input()
   public obj!: PolyhedronGeometry;
@@ -31,7 +43,12 @@ export class ThPolyhedronGeometry<
   }
 
   @Input()
-  public set parameters(value: { vertices: number[]; indices: number[]; radius: number; detail: number }) {
+  public set parameters(value: {
+    vertices: number[];
+    indices: number[];
+    radius: number;
+    detail: number;
+  }) {
     if (this.obj) {
       this.obj.parameters = value;
     }

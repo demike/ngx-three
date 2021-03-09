@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { BufferGeometry, Sprite, SpriteMaterial, Vector2 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -8,9 +15,11 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-sprite',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSprite) }]
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSprite) }],
 })
-export class ThSprite<TARGS extends any[] = [material?: SpriteMaterial]> extends ThObject3D<TARGS> {
+export class ThSprite<
+  TARGS extends any[] = [material?: SpriteMaterial]
+> extends ThObject3D<TARGS> {
   @Input()
   public obj!: Sprite;
   protected getType(): Type<Sprite> {

@@ -5,9 +5,9 @@ import { NgxThreeClass } from './NgxThreeClass';
  */
 export class NgxThreeGeometry extends NgxThreeClass {
   public generate() {
-    this.imports.add(`import { ThObject3D } from './ThObject3D';`);
+    this.imports.add("import { ThObject3D } from './ThObject3D';");
     if (this.className !== 'ThGeometry') {
-      this.imports.add(`import { ThGeometry } from './ThGeometry';`);
+      this.imports.add("import { ThGeometry } from './ThGeometry';");
     }
     super.generate();
   }

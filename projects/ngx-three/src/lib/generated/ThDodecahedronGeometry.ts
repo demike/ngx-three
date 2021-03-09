@@ -1,5 +1,12 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { DodecahedronGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -10,11 +17,13 @@ import { ThGeometry } from './ThGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThDodecahedronGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThDodecahedronGeometry),
+    },
+  ],
 })
-export class ThDodecahedronGeometry<TARGS extends any[] = [radius?: number, detail?: number]> extends ThGeometry<TARGS> {
+export class ThDodecahedronGeometry<
+  TARGS extends any[] = [radius?: number, detail?: number]
+> extends ThGeometry<TARGS> {
   @Input()
   public obj!: DodecahedronGeometry;
   protected getType(): Type<DodecahedronGeometry> {

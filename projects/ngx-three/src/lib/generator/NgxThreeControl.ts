@@ -7,7 +7,7 @@ import { NgxThreeClass } from './NgxThreeClass';
  */
 export class NgxThreeControl extends NgxThreeClass {
   public generate() {
-    this.imports.add(`import { ThControlBase } from '../ThControlBase';`);
+    this.imports.add("import { ThControlBase } from '../ThControlBase';");
     super.generate();
   }
 
