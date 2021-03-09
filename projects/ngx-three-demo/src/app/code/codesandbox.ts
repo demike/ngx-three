@@ -3,9 +3,9 @@ const polyfillTs = `
 import "core-js/es7/reflect";
 import "zone.js/dist/zone";`;
 
-const assets = ['BoomBox.glb', 'DamagedHelemt.glb'];
+const assets = ['BoomBox.glb', 'DamagedHelmet.glb'];
 
-export function toCodeSandbox(fileUrls: string[]) {
+export async function toCodeSandbox(fileUrls: string[]) {
   const mainTsUrl = getMainTsUrl(fileUrls);
   const fileName = getFileNameFromFullPath(mainTsUrl);
   const tagName = getTagNameFromFileName(fileName);
@@ -23,12 +23,16 @@ export function toCodeSandbox(fileUrls: string[]) {
     }
   };
 
-  fileUrls.forEach((url) => {
+  await applySources(fileUrls, files);
+
+  /*
+  fileUrls.forEach(async (url) => {
     files[`src/app/${getFileNameFromFullPath(url)}`] = {
-      content: url,
+      contenxt: url,
       isBinary: true
     };
   });
+  */
 
   assets.forEach((asset) => {
     files[`src/assets/${asset}`] = {
@@ -49,6 +53,18 @@ export function toCodeSandbox(fileUrls: string[]) {
   })
     .then((x) => x.json())
     .then((response) => window.open(`https://codesandbox.io/s/${response.sandbox_id}`, '_blank'));
+}
+
+function applySources(fileUrls: string[], fileMap: { [key: string]: any }) {
+  return Promise.all(
+    fileUrls.map((url) =>
+      fetch(url).then(async (response) => {
+        fileMap[`src/app/${getFileNameFromFullPath(url)}`] = {
+          content: await response.text()
+        };
+      })
+    )
+  );
 }
 
 function createPackageJson() {
