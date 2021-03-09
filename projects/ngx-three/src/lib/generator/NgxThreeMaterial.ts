@@ -6,7 +6,7 @@ import { NgxThreeClass } from './NgxThreeClass';
  */
 export class NgxThreeMaterial extends NgxThreeClass {
   public generate() {
-    this.imports.add(`import { ThObject3D } from './ThObject3D';`);
+    this.imports.add("import { ThObject3D } from './ThObject3D';");
     super.generate();
   }
 
