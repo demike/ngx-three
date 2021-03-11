@@ -25,11 +25,13 @@ export class RaycasterService implements OnDestroy {
   private groups: Array<RaycasterEventDirective> = [];
   private paused = false;
 
+  private static instanceCnt = 0;
+  public readonly nid = RaycasterService.instanceCnt++;
+
   constructor() {
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onClick = this.onClick.bind(this);
     this.onTouchStart = this.onTouchStart.bind(this);
-    this.subscribe();
   }
 
   public ngOnDestroy(): void {
@@ -38,16 +40,21 @@ export class RaycasterService implements OnDestroy {
   }
 
   private subscribe() {
-    window.addEventListener('mousemove', this.onMouseMove);
-    window.addEventListener('click', this.onClick);
-    window.addEventListener('touchstart', this.onTouchStart);
+    if (!this.canvas) {
+      throw new Error('missing canvas');
+    }
+    this.canvas.addEventListener('mousemove', this.onMouseMove);
+    this.canvas.addEventListener('click', this.onClick);
+    this.canvas.addEventListener('touchstart', this.onTouchStart);
   }
 
   private unsubscribe() {
-    // console.log('unsubscribe raycaster');
-    window.removeEventListener('mousemove', this.onMouseMove);
-    window.removeEventListener('click', this.onClick);
-    window.removeEventListener('touchstart', this.onTouchStart);
+    if (!this.canvas) {
+      throw new Error('missing canvas');
+    }
+    this.canvas.removeEventListener('mousemove', this.onMouseMove);
+    this.canvas.removeEventListener('click', this.onClick);
+    this.canvas.removeEventListener('touchstart', this.onTouchStart);
   }
 
   public enable() {
@@ -74,6 +81,7 @@ export class RaycasterService implements OnDestroy {
     // console.log('Add camera to raycaster', camera);
     this.camera = camera;
     this.canvas = canvas;
+    this.subscribe();
   }
 
   public addEventTarget(target: RaycasterEventDirective) {

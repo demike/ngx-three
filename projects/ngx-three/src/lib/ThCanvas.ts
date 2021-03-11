@@ -23,18 +23,20 @@ import { ThView } from './ThView';
 @Component({
   selector: 'th-canvas',
   styleUrls: ['./ThCanvas.scss'],
-  template: '<canvas #rendererCanvas id="renderCanvas" style="width: 100%; height: 100%"></canvas>',
+  template: '<canvas #rendererCanvas id="rendererCanvas" style="width: 100%; height: 100%"></canvas>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) }, ThEngineService, forwardRef(() => RaycasterService)]
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThCanvas implements OnInit, AfterViewInit {
+  private static instanceCnt = 0;
+  public readonly nid = ThCanvas.instanceCnt++;
   constructor(
     private engServ: ThEngineService,
     @Inject(forwardRef(() => RaycasterService))
     protected raycaster: RaycasterService
   ) {
-    console.log('canvas ' + ThCanvas.cnt++);
+    console.log('canvas ' + this.nid);
   }
 
   @Output()
@@ -64,7 +66,7 @@ export class ThCanvas implements OnInit, AfterViewInit {
   public set views(viewList: QueryList<ThView>) {
     viewList.forEach((v) => this.engServ.addView(v));
   }
-  public static cnt = 0;
+
   @ViewChild('rendererCanvas', { static: true })
   public rendererCanvas?: ElementRef<HTMLCanvasElement>;
 
@@ -77,6 +79,7 @@ export class ThCanvas implements OnInit, AfterViewInit {
     if (!this.rendererCanvas) {
       throw new Error('Missing Canvas');
     }
+    this.rendererCanvas.nativeElement.id += this.nid;
     this.globalView = new ThView(this.raycaster, this.rendererCanvas);
     this.engServ.setCanvas(this.rendererCanvas.nativeElement);
     this.engServ.addView(this.globalView);
