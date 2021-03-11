@@ -1,4 +1,4 @@
-import { isSettable, applyValue } from './util';
+import { isSettable, applyValue, isDisposable } from './util';
 
 describe('isSettable', () => {
   it('should return true if settable', () => {
@@ -73,5 +73,23 @@ describe('applyValue', () => {
     const b = new TestObj(2);
 
     expect(applyValue(a, b)).toEqual(b);
+  });
+});
+
+describe('isDisposable', () => {
+  it('should return true if disposable', () => {
+    const obj = {
+      dispose: () => {
+        // do nothing
+      }
+    };
+    expect(isDisposable(obj)).toBeTrue();
+  });
+
+  it('should return false if not disposable', () => {
+    const obj = {};
+    expect(isDisposable(obj)).toBeFalse();
+
+    expect(isDisposable(undefined)).toBeFalse();
   });
 });

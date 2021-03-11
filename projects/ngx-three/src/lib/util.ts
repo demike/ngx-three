@@ -47,3 +47,10 @@ export function applyValue<T>(target: T, newValue?: any[] | T): T {
   // nothing to do
   return target;
 }
+
+export function isDisposable(obj: any): obj is { dispose: () => void } {
+  if (obj && typeof obj.dispose === 'function') {
+    return true;
+  }
+  return false;
+}

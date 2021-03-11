@@ -1,13 +1,14 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, Type } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, Type } from '@angular/core';
 import { Observable } from 'rxjs';
 import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
+import { isDisposable } from './util';
 
 @Component({
   selector: 'th-abs-wrapper',
   template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit {
+export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, OnDestroy {
   public obj?: T;
 
   // emit the changes
@@ -67,5 +68,11 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit {
       this.updateEmitter = new EventEmitter();
     }
     return this.updateEmitter;
+  }
+
+  ngOnDestroy() {
+    if (isDisposable(this.obj)) {
+      this.obj.dispose();
+    }
   }
 }
