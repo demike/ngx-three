@@ -5,6 +5,7 @@
 export * from './lib/ngx-three.module';
 
 export * from './lib/ThCanvas';
+export * from './lib/ThEngine.service';
 
 export * from './lib/loaders/ThLoader';
 export * from './lib/loaders/LazyObject3dProxy';
