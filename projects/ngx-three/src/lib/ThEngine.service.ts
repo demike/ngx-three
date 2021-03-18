@@ -21,7 +21,7 @@ export class ThEngineService implements OnDestroy {
   }>();
 
   // @ts-ignore
-  protected resizeObserver?: ResizeObserver;
+  private resizeObserver?: ResizeObserver;
 
   public constructor(private ngZone: NgZone) {}
 
