@@ -20,15 +20,38 @@ export class ThEngineService implements OnDestroy {
     camera: ThCamera;
   }>();
 
+  // @ts-ignore
+  protected resizeObserver?: ResizeObserver;
+
   public constructor(private ngZone: NgZone) {}
 
   public ngOnDestroy(): void {
     if (this.frameId !== undefined) {
       cancelAnimationFrame(this.frameId);
     }
+
+    if (this.resizeObserver && this.canvas) {
+      this.resizeObserver.unobserve(this.canvas);
+    }
   }
 
-  public initRenderer(): void {
+  private initResizeObserver() {
+    // We have to run this outside angular zones,
+    // because it could trigger heavy changeDetection cycles.
+    this.ngZone.runOutsideAngular(() => {
+      if (!this.canvas) {
+        throw new Error('missing canvas element');
+      }
+
+      // @ts-ignore
+      this.resizeObserver = new ResizeObserver(() => {
+        this.resize();
+      });
+      this.resizeObserver.observe(this.canvas);
+    });
+  }
+
+  private initRenderer(): void {
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       alpha: true, // transparent background
@@ -38,14 +61,6 @@ export class ThEngineService implements OnDestroy {
     this.resize();
 
     // this.renderer.setSize(this.canvas?.width ?? 0, this.canvas?.width ?? 0);
-
-    // We have to run this outside angular zones,
-    // because it could trigger heavy changeDetection cycles.
-    this.ngZone.runOutsideAngular(() => {
-      window.addEventListener('resize', () => {
-        this.resize();
-      });
-    });
   }
 
   public setCanvas(canvas: HTMLCanvasElement) {
@@ -91,6 +106,7 @@ export class ThEngineService implements OnDestroy {
 
     if (!this.renderer) {
       this.initRenderer();
+      this.initResizeObserver();
     }
     if (!this.renderer) {
       return;
@@ -135,7 +151,7 @@ export class ThEngineService implements OnDestroy {
     const width = this.canvas?.parentElement?.clientWidth ?? 0;
     const height = this.canvas?.parentElement?.clientHeight ?? 0;
 
-    this.renderer.setSize(width, height);
+    this.renderer.setSize(width, height, false);
 
     for (const view of this.views) {
       if (!view.viewPort && view.camera && (view.camera.obj as any).aspect) {
