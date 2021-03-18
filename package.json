@@ -6,7 +6,7 @@
     "start": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --prod",
-    "build:demo": "ng build ngx-three-demo --prod --sourceMap=false --base-href ngx-three",
+    "build:demo": "ng build ngx-three-demo --prod --sourceMap=false",
     "test": "ng test",
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
