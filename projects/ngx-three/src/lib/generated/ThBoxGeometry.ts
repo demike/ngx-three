@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { BoxGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -14,9 +8,7 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-boxGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThBoxGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThBoxGeometry) }]
 })
 export class ThBoxGeometry<
   TARGS extends any[] = [
@@ -29,15 +21,15 @@ export class ThBoxGeometry<
   ]
 > extends ThGeometry<TARGS> {
   @Input()
-  public obj!: BoxGeometry;
+  public objRef!: BoxGeometry;
   protected getType(): Type<BoxGeometry> {
     return BoxGeometry;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 
@@ -50,8 +42,8 @@ export class ThBoxGeometry<
     heightSegments: number;
     depthSegments: number;
   }) {
-    if (this.obj) {
-      this.obj.parameters = value;
+    if (this.objRef) {
+      this.objRef.parameters = value;
     }
   }
 }

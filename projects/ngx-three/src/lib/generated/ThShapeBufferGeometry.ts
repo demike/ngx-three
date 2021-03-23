@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Shape, ShapeBufferGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThGeometry } from './ThGeometry';
@@ -18,23 +12,23 @@ import { ThGeometry } from './ThGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThShapeBufferGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThShapeBufferGeometry)
+    }
+  ]
 })
 export class ThShapeBufferGeometry<
   TARGS extends any[] = [shapes: Shape | Shape[], curveSegments?: number]
 > extends ThBufferGeometry<TARGS> {
   @Input()
-  public obj!: ShapeBufferGeometry;
+  public objRef!: ShapeBufferGeometry;
   protected getType(): Type<ShapeBufferGeometry> {
     return ShapeBufferGeometry;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 }

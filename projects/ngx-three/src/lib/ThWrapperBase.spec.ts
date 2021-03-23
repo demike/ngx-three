@@ -35,14 +35,14 @@ describe('ThWrapperBase', () => {
     fixture.detectChanges();
     expect(component).toBeTruthy();
 
-    expect(component.obj).toBeDefined();
+    expect(component.objRef).toBeDefined();
   });
 
   it('should dispose on destroy', () => {
     fixture.detectChanges();
-    expect(component.obj).toBeDefined();
+    expect(component.objRef).toBeDefined();
 
-    const disposeSpy = spyOn(component.obj, 'dispose');
+    const disposeSpy = spyOn(component.objRef, 'dispose');
 
     fixture.destroy();
 

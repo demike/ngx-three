@@ -9,7 +9,7 @@ import { isDisposable } from './util';
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, OnDestroy {
-  public obj?: T;
+  public objRef?: T;
 
   // emit the changes
   protected updateEmitter?: EventEmitter<SimpleChanges>;
@@ -22,18 +22,18 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
   public args?: ARGS;
 
   ngOnInit(): void {
-    if (!this.obj) {
+    if (!this.objRef) {
       this.createThreeInstance();
     }
   }
 
   protected createThreeInstance(args?: Iterable<any>) {
-    this.obj = new (this.getType())(...(args ?? []));
+    this.objRef = new (this.getType())(...(args ?? []));
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     // console.log('on changes');
-    if (this.obj && !isLazyObject3dProxy(this.obj as any)) {
+    if (this.objRef && !isLazyObject3dProxy(this.objRef as any)) {
       // the object is already set and it is no proxy
 
       // emit the changes
@@ -47,8 +47,8 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
     }
 
     if (changes.obj?.currentValue) {
-      this.obj = changes.obj?.currentValue;
-    } else if (!this.obj) {
+      this.objRef = changes.obj?.currentValue;
+    } else if (!this.objRef) {
       this.createThreeInstance(changes.args?.currentValue);
     }
 
@@ -71,8 +71,8 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
   }
 
   ngOnDestroy() {
-    if (isDisposable(this.obj)) {
-      this.obj.dispose();
+    if (isDisposable(this.objRef)) {
+      this.objRef.dispose();
     }
   }
 }

@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Camera } from 'three';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
 import { ThControlBase } from '../ThControlBase';
@@ -18,44 +12,42 @@ import { ThControlBase } from '../ThControlBase';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThPointerLockControls),
-    },
-  ],
+      useExisting: forwardRef(() => ThPointerLockControls)
+    }
+  ]
 })
-export class ThPointerLockControls<
-  TARGS extends any[] = [camera: Camera, domElement?: HTMLElement]
-> extends ThControlBase<TARGS> {
+export class ThPointerLockControls<TARGS extends any[] = [camera: Camera, domElement?: HTMLElement]> extends ThControlBase<TARGS> {
   @Input()
-  public obj!: PointerLockControls;
+  public objRef!: PointerLockControls;
   protected getType(): Type<PointerLockControls> {
     return PointerLockControls;
   }
 
   @Input()
   public set domElement(value: HTMLElement) {
-    if (this.obj) {
-      this.obj.domElement = value;
+    if (this.objRef) {
+      this.objRef.domElement = value;
     }
   }
 
   @Input()
   public set isLocked(value: boolean) {
-    if (this.obj) {
-      this.obj.isLocked = value;
+    if (this.objRef) {
+      this.objRef.isLocked = value;
     }
   }
 
   @Input()
   public set minPolarAngle(value: number) {
-    if (this.obj) {
-      this.obj.minPolarAngle = value;
+    if (this.objRef) {
+      this.objRef.minPolarAngle = value;
     }
   }
 
   @Input()
   public set maxPolarAngle(value: number) {
-    if (this.obj) {
-      this.obj.maxPolarAngle = value;
+    if (this.objRef) {
+      this.objRef.maxPolarAngle = value;
     }
   }
 }

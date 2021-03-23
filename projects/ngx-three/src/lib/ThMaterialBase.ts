@@ -15,6 +15,6 @@ export class ThMaterialBase<ARGS extends any[]> extends ThWrapperBase<Material, 
   protected createThreeInstance(args?: Iterable<any>) {
     super.createThreeInstance(args);
 
-    (this.parent.obj as any).material = this.obj;
+    (this.parent.objRef as any).material = this.objRef;
   }
 }

@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Camera, Matrix4 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -15,11 +9,11 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-camera',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }]
 })
 export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
   @Input()
-  public obj!: Camera;
+  public objRef!: Camera;
   protected getType(): Type<Camera> {
     return Camera;
   }
@@ -47,11 +41,8 @@ export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
           n44: number
         ]
   ) {
-    if (this.obj) {
-      this.obj.matrixWorldInverse = applyValue<Matrix4>(
-        this.obj.matrixWorldInverse,
-        value
-      );
+    if (this.objRef) {
+      this.objRef.matrixWorldInverse = applyValue<Matrix4>(this.objRef.matrixWorldInverse, value);
     }
   }
   @Input()
@@ -77,11 +68,8 @@ export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
           n44: number
         ]
   ) {
-    if (this.obj) {
-      this.obj.projectionMatrix = applyValue<Matrix4>(
-        this.obj.projectionMatrix,
-        value
-      );
+    if (this.objRef) {
+      this.objRef.projectionMatrix = applyValue<Matrix4>(this.objRef.projectionMatrix, value);
     }
   }
   @Input()
@@ -107,11 +95,8 @@ export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
           n44: number
         ]
   ) {
-    if (this.obj) {
-      this.obj.projectionMatrixInverse = applyValue<Matrix4>(
-        this.obj.projectionMatrixInverse,
-        value
-      );
+    if (this.objRef) {
+      this.objRef.projectionMatrixInverse = applyValue<Matrix4>(this.objRef.projectionMatrixInverse, value);
     }
   }
 }

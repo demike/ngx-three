@@ -140,7 +140,7 @@ export class ThEngineService implements OnDestroy {
         );
       }
 
-      this.renderer.render(scene.obj, camera.obj);
+      this.renderer.render(scene.objRef, camera.objRef);
     }
   }
 
@@ -154,9 +154,9 @@ export class ThEngineService implements OnDestroy {
     this.renderer.setSize(width, height, false);
 
     for (const view of this.views) {
-      if (!view.viewPort && view.camera && (view.camera.obj as any).aspect) {
-        (view.camera.obj as any).aspect = width / height;
-        (view.camera.obj as any).updateProjectionMatrix();
+      if (!view.viewPort && view.camera && (view.camera.objRef as any).aspect) {
+        (view.camera.objRef as any).aspect = width / height;
+        (view.camera.objRef as any).updateProjectionMatrix();
       }
     }
   }

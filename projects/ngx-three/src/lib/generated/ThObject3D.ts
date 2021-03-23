@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  SkipSelf,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, SkipSelf, Type } from '@angular/core';
 import {
   AnimationClip,
   BufferGeometry,
@@ -22,7 +16,7 @@ import {
   Quaternion,
   Scene,
   Vector3,
-  WebGLRenderer,
+  WebGLRenderer
 } from 'three';
 import { ThObjectBase } from '../ThObjectBase';
 import { applyValue } from '../util';
@@ -31,82 +25,78 @@ import { applyValue } from '../util';
   selector: 'th-object3D',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
+  providers: []
 })
 export class ThObject3D<TARGS extends any[] = []> extends ThObjectBase<TARGS> {
   @Input()
-  public obj!: Object3D;
+  public objRef!: Object3D;
   protected getType(): Type<Object3D> {
     return Object3D;
   }
 
   @Input()
   public set id(value: number) {
-    if (this.obj) {
-      this.obj.id = value;
+    if (this.objRef) {
+      this.objRef.id = value;
     }
   }
 
   @Input()
   public set uuid(value: string) {
-    if (this.obj) {
-      this.obj.uuid = value;
+    if (this.objRef) {
+      this.objRef.uuid = value;
     }
   }
 
   @Input()
   public set name(value: string) {
-    if (this.obj) {
-      this.obj.name = value;
+    if (this.objRef) {
+      this.objRef.name = value;
     }
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 
   @Input()
   public set children(value: Object3D[]) {
-    if (this.obj) {
-      this.obj.children = value;
+    if (this.objRef) {
+      this.objRef.children = value;
     }
   }
 
   @Input()
   public set up(value: Vector3 | [x: number, y: number, z: number]) {
-    if (this.obj) {
-      this.obj.up = applyValue<Vector3>(this.obj.up, value);
+    if (this.objRef) {
+      this.objRef.up = applyValue<Vector3>(this.objRef.up, value);
     }
   }
   @Input()
   public set position(value: Vector3 | [x: number, y: number, z: number]) {
-    if (this.obj) {
-      applyValue<Vector3>(this.obj.position, value);
+    if (this.objRef) {
+      applyValue<Vector3>(this.objRef.position, value);
     }
   }
   @Input()
-  public set rotation(
-    value: Euler | [x: number, y: number, z: number, order?: string]
-  ) {
-    if (this.obj) {
-      applyValue<Euler>(this.obj.rotation, value);
+  public set rotation(value: Euler | [x: number, y: number, z: number, order?: string]) {
+    if (this.objRef) {
+      applyValue<Euler>(this.objRef.rotation, value);
     }
   }
   @Input()
-  public set quaternion(
-    value: Quaternion | [x: number, y: number, z: number, w: number]
-  ) {
-    if (this.obj) {
-      applyValue<Quaternion>(this.obj.quaternion, value);
+  public set quaternion(value: Quaternion | [x: number, y: number, z: number, w: number]) {
+    if (this.objRef) {
+      applyValue<Quaternion>(this.objRef.quaternion, value);
     }
   }
   @Input()
   public set scale(value: Vector3 | [x: number, y: number, z: number]) {
-    if (this.obj) {
-      applyValue<Vector3>(this.obj.scale, value);
+    if (this.objRef) {
+      applyValue<Vector3>(this.objRef.scale, value);
     }
   }
   @Input()
@@ -132,28 +122,16 @@ export class ThObject3D<TARGS extends any[] = []> extends ThObjectBase<TARGS> {
           n44: number
         ]
   ) {
-    if (this.obj) {
-      applyValue<Matrix4>(this.obj.modelViewMatrix, value);
+    if (this.objRef) {
+      applyValue<Matrix4>(this.objRef.modelViewMatrix, value);
     }
   }
   @Input()
   public set normalMatrix(
-    value:
-      | Matrix3
-      | [
-          n11: number,
-          n12: number,
-          n13: number,
-          n21: number,
-          n22: number,
-          n23: number,
-          n31: number,
-          n32: number,
-          n33: number
-        ]
+    value: Matrix3 | [n11: number, n12: number, n13: number, n21: number, n22: number, n23: number, n31: number, n32: number, n33: number]
   ) {
-    if (this.obj) {
-      applyValue<Matrix3>(this.obj.normalMatrix, value);
+    if (this.objRef) {
+      applyValue<Matrix3>(this.objRef.normalMatrix, value);
     }
   }
   @Input()
@@ -179,8 +157,8 @@ export class ThObject3D<TARGS extends any[] = []> extends ThObjectBase<TARGS> {
           n44: number
         ]
   ) {
-    if (this.obj) {
-      this.obj.matrix = applyValue<Matrix4>(this.obj.matrix, value);
+    if (this.objRef) {
+      this.objRef.matrix = applyValue<Matrix4>(this.objRef.matrix, value);
     }
   }
   @Input()
@@ -206,90 +184,90 @@ export class ThObject3D<TARGS extends any[] = []> extends ThObjectBase<TARGS> {
           n44: number
         ]
   ) {
-    if (this.obj) {
-      this.obj.matrixWorld = applyValue<Matrix4>(this.obj.matrixWorld, value);
+    if (this.objRef) {
+      this.objRef.matrixWorld = applyValue<Matrix4>(this.objRef.matrixWorld, value);
     }
   }
   @Input()
   public set matrixAutoUpdate(value: boolean) {
-    if (this.obj) {
-      this.obj.matrixAutoUpdate = value;
+    if (this.objRef) {
+      this.objRef.matrixAutoUpdate = value;
     }
   }
 
   @Input()
   public set matrixWorldNeedsUpdate(value: boolean) {
-    if (this.obj) {
-      this.obj.matrixWorldNeedsUpdate = value;
+    if (this.objRef) {
+      this.objRef.matrixWorldNeedsUpdate = value;
     }
   }
 
   @Input()
   public set layers(value: Layers | [channel: number]) {
-    if (this.obj) {
-      this.obj.layers = applyValue<Layers>(this.obj.layers, value);
+    if (this.objRef) {
+      this.objRef.layers = applyValue<Layers>(this.objRef.layers, value);
     }
   }
   @Input()
   public set visible(value: boolean) {
-    if (this.obj) {
-      this.obj.visible = value;
+    if (this.objRef) {
+      this.objRef.visible = value;
     }
   }
 
   @Input()
   public set castShadow(value: boolean) {
-    if (this.obj) {
-      this.obj.castShadow = value;
+    if (this.objRef) {
+      this.objRef.castShadow = value;
     }
   }
 
   @Input()
   public set receiveShadow(value: boolean) {
-    if (this.obj) {
-      this.obj.receiveShadow = value;
+    if (this.objRef) {
+      this.objRef.receiveShadow = value;
     }
   }
 
   @Input()
   public set frustumCulled(value: boolean) {
-    if (this.obj) {
-      this.obj.frustumCulled = value;
+    if (this.objRef) {
+      this.objRef.frustumCulled = value;
     }
   }
 
   @Input()
   public set renderOrder(value: number) {
-    if (this.obj) {
-      this.obj.renderOrder = value;
+    if (this.objRef) {
+      this.objRef.renderOrder = value;
     }
   }
 
   @Input()
   public set animations(value: AnimationClip[]) {
-    if (this.obj) {
-      this.obj.animations = value;
+    if (this.objRef) {
+      this.objRef.animations = value;
     }
   }
 
   @Input()
   public set userData(value: { [key: string]: any }) {
-    if (this.obj) {
-      this.obj.userData = value;
+    if (this.objRef) {
+      this.objRef.userData = value;
     }
   }
 
   @Input()
   public set customDepthMaterial(value: Material) {
-    if (this.obj) {
-      this.obj.customDepthMaterial = value;
+    if (this.objRef) {
+      this.objRef.customDepthMaterial = value;
     }
   }
 
   @Input()
   public set customDistanceMaterial(value: Material) {
-    if (this.obj) {
-      this.obj.customDistanceMaterial = value;
+    if (this.objRef) {
+      this.objRef.customDistanceMaterial = value;
     }
   }
 
@@ -304,8 +282,8 @@ export class ThObject3D<TARGS extends any[] = []> extends ThObjectBase<TARGS> {
       group: Group
     ) => void
   ) {
-    if (this.obj) {
-      this.obj.onBeforeRender = value;
+    if (this.objRef) {
+      this.objRef.onBeforeRender = value;
     }
   }
 
@@ -320,8 +298,8 @@ export class ThObject3D<TARGS extends any[] = []> extends ThObjectBase<TARGS> {
       group: Group
     ) => void
   ) {
-    if (this.obj) {
-      this.obj.onAfterRender = value;
+    if (this.objRef) {
+      this.objRef.onAfterRender = value;
     }
   }
 

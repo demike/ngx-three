@@ -1,19 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  BufferGeometry,
-  Color,
-  Geometry,
-  Material,
-  PolarGridHelper,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { BufferGeometry, Color, Geometry, Material, PolarGridHelper } from 'three';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
@@ -21,9 +9,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-polarGridHelper',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThPolarGridHelper) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPolarGridHelper) }]
 })
 export class ThPolarGridHelper<
   TARGS extends any[] = [
@@ -34,21 +20,17 @@ export class ThPolarGridHelper<
     color1: Color | string | number | undefined,
     color2: Color | string | number | undefined
   ]
-> extends ThLineSegments<
-  Geometry | BufferGeometry,
-  Material | Material[],
-  TARGS
-> {
+> extends ThLineSegments<Geometry | BufferGeometry, Material | Material[], TARGS> {
   @Input()
-  public obj!: PolarGridHelper;
+  public objRef!: PolarGridHelper;
   protected getType(): Type<PolarGridHelper> {
     return PolarGridHelper;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 }

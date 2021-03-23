@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { DodecahedronBufferGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 import { ThPolyhedronBufferGeometry } from './ThPolyhedronBufferGeometry';
@@ -18,23 +12,23 @@ import { ThPolyhedronBufferGeometry } from './ThPolyhedronBufferGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThDodecahedronBufferGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThDodecahedronBufferGeometry)
+    }
+  ]
 })
 export class ThDodecahedronBufferGeometry<
   TARGS extends any[] = [radius?: number, detail?: number]
 > extends ThPolyhedronBufferGeometry<TARGS> {
   @Input()
-  public obj!: DodecahedronBufferGeometry;
+  public objRef!: DodecahedronBufferGeometry;
   protected getType(): Type<DodecahedronBufferGeometry> {
     return DodecahedronBufferGeometry;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 }

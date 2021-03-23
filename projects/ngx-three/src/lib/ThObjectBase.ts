@@ -13,19 +13,19 @@ export class ThObjectBase<ARGS extends any[]> extends ThWrapperBase<Object3D, AR
 
   protected createThreeInstance(args?: Iterable<any>) {
     super.createThreeInstance(args);
-    this.parent.obj?.add(this.obj as Object3D);
+    this.parent.objRef?.add(this.objRef as Object3D);
   }
 
   // object 3d methods
   @Input()
   public set lookAt(vector: Vector3 | [x: number, y?: number, z?: number]) {
-    if (!this.obj) {
+    if (!this.objRef) {
       return;
     }
     if (Array.isArray(vector)) {
-      this.obj.lookAt(...vector);
+      this.objRef.lookAt(...vector);
     } else {
-      this.obj.lookAt(vector);
+      this.objRef.lookAt(vector);
     }
   }
 }

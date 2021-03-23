@@ -1,21 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Bone,
-  BufferGeometry,
-  Geometry,
-  Material,
-  Matrix4,
-  Object3D,
-  SkeletonHelper,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Bone, BufferGeometry, Geometry, Material, Matrix4, Object3D, SkeletonHelper } from 'three';
 import { applyValue } from '../util';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
@@ -24,41 +10,37 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-skeletonHelper',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThSkeletonHelper) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSkeletonHelper) }]
 })
-export class ThSkeletonHelper<
-  TARGS extends any[] = [object: Object3D]
-> extends ThLineSegments<
+export class ThSkeletonHelper<TARGS extends any[] = [object: Object3D]> extends ThLineSegments<
   Geometry | BufferGeometry,
   Material | Material[],
   TARGS
 > {
   @Input()
-  public obj!: SkeletonHelper;
+  public objRef!: SkeletonHelper;
   protected getType(): Type<SkeletonHelper> {
     return SkeletonHelper;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 
   @Input()
   public set bones(value: Bone[]) {
-    if (this.obj) {
-      this.obj.bones = value;
+    if (this.objRef) {
+      this.objRef.bones = value;
     }
   }
 
   @Input()
   public set root(value: Object3D) {
-    if (this.obj) {
-      this.obj.root = value;
+    if (this.objRef) {
+      this.objRef.root = value;
     }
   }
 
@@ -85,14 +67,14 @@ export class ThSkeletonHelper<
           n44: number
         ]
   ) {
-    if (this.obj) {
-      this.obj.matrix = applyValue<Matrix4>(this.obj.matrix, value);
+    if (this.objRef) {
+      this.objRef.matrix = applyValue<Matrix4>(this.objRef.matrix, value);
     }
   }
   @Input()
   public set matrixAutoUpdate(value: boolean) {
-    if (this.obj) {
-      this.obj.matrixAutoUpdate = value;
+    if (this.objRef) {
+      this.objRef.matrixAutoUpdate = value;
     }
   }
 }

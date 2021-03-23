@@ -1,19 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Color,
-  DirectionalLight,
-  DirectionalLightHelper,
-  Line,
-  Matrix4,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Color, DirectionalLight, DirectionalLightHelper, Line, Matrix4 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -24,58 +12,44 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThObject3D,
-      useExisting: forwardRef(() => ThDirectionalLightHelper),
-    },
-  ],
+      useExisting: forwardRef(() => ThDirectionalLightHelper)
+    }
+  ]
 })
 export class ThDirectionalLightHelper<
-  TARGS extends any[] = [
-    light: DirectionalLight,
-    size?: number,
-    color?: Color | string | number
-  ]
+  TARGS extends any[] = [light: DirectionalLight, size?: number, color?: Color | string | number]
 > extends ThObject3D<TARGS> {
   @Input()
-  public obj!: DirectionalLightHelper;
+  public objRef!: DirectionalLightHelper;
   protected getType(): Type<DirectionalLightHelper> {
     return DirectionalLightHelper;
   }
 
   @Input()
   public set light(value: DirectionalLight) {
-    if (this.obj) {
-      this.obj.light = value;
+    if (this.objRef) {
+      this.objRef.light = value;
     }
   }
 
   @Input()
   public set lightPlane(value: Line) {
-    if (this.obj) {
-      this.obj.lightPlane = value;
+    if (this.objRef) {
+      this.objRef.lightPlane = value;
     }
   }
 
   @Input()
   public set targetLine(value: Line) {
-    if (this.obj) {
-      this.obj.targetLine = value;
+    if (this.objRef) {
+      this.objRef.targetLine = value;
     }
   }
 
   @Input()
-  public set color(
-    value:
-      | Color
-      | string
-      | number
-      | undefined
-      | [color: Color | string | number]
-  ) {
-    if (this.obj) {
-      this.obj.color = applyValue<Color | string | number | undefined>(
-        this.obj.color,
-        value
-      );
+  public set color(value: Color | string | number | undefined | [color: Color | string | number]) {
+    if (this.objRef) {
+      this.objRef.color = applyValue<Color | string | number | undefined>(this.objRef.color, value);
     }
   }
   @Input()
@@ -101,14 +75,14 @@ export class ThDirectionalLightHelper<
           n44: number
         ]
   ) {
-    if (this.obj) {
-      this.obj.matrix = applyValue<Matrix4>(this.obj.matrix, value);
+    if (this.objRef) {
+      this.objRef.matrix = applyValue<Matrix4>(this.objRef.matrix, value);
     }
   }
   @Input()
   public set matrixAutoUpdate(value: boolean) {
-    if (this.obj) {
-      this.obj.matrixAutoUpdate = value;
+    if (this.objRef) {
+      this.objRef.matrixAutoUpdate = value;
     }
   }
 }

@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  SkipSelf,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, SkipSelf, Type } from '@angular/core';
 import {
   Blending,
   BlendingDstFactor,
@@ -16,7 +10,7 @@ import {
   Material,
   Side,
   StencilFunc,
-  StencilOp,
+  StencilOp
 } from 'three';
 import { ThMaterialBase } from '../ThMaterialBase';
 import { ThObject3D } from './ThObject3D';
@@ -25,336 +19,334 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-material',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
+  providers: []
 })
-export class ThMaterial<
-  TARGS extends any[] = []
-> extends ThMaterialBase<TARGS> {
+export class ThMaterial<TARGS extends any[] = []> extends ThMaterialBase<TARGS> {
   @Input()
-  public obj!: Material;
+  public objRef!: Material;
   protected getType(): Type<Material> {
     return Material;
   }
 
   @Input()
   public set alphaTest(value: number) {
-    if (this.obj) {
-      this.obj.alphaTest = value;
+    if (this.objRef) {
+      this.objRef.alphaTest = value;
     }
   }
 
   @Input()
   public set blendDst(value: BlendingDstFactor) {
-    if (this.obj) {
-      this.obj.blendDst = value;
+    if (this.objRef) {
+      this.objRef.blendDst = value;
     }
   }
 
   @Input()
   public set blendDstAlpha(value: number | null) {
-    if (this.obj) {
-      this.obj.blendDstAlpha = value;
+    if (this.objRef) {
+      this.objRef.blendDstAlpha = value;
     }
   }
 
   @Input()
   public set blendEquation(value: BlendingEquation) {
-    if (this.obj) {
-      this.obj.blendEquation = value;
+    if (this.objRef) {
+      this.objRef.blendEquation = value;
     }
   }
 
   @Input()
   public set blendEquationAlpha(value: number | null) {
-    if (this.obj) {
-      this.obj.blendEquationAlpha = value;
+    if (this.objRef) {
+      this.objRef.blendEquationAlpha = value;
     }
   }
 
   @Input()
   public set blending(value: Blending) {
-    if (this.obj) {
-      this.obj.blending = value;
+    if (this.objRef) {
+      this.objRef.blending = value;
     }
   }
 
   @Input()
   public set blendSrc(value: BlendingSrcFactor | BlendingDstFactor) {
-    if (this.obj) {
-      this.obj.blendSrc = value;
+    if (this.objRef) {
+      this.objRef.blendSrc = value;
     }
   }
 
   @Input()
   public set blendSrcAlpha(value: number | null) {
-    if (this.obj) {
-      this.obj.blendSrcAlpha = value;
+    if (this.objRef) {
+      this.objRef.blendSrcAlpha = value;
     }
   }
 
   @Input()
   public set clipIntersection(value: boolean) {
-    if (this.obj) {
-      this.obj.clipIntersection = value;
+    if (this.objRef) {
+      this.objRef.clipIntersection = value;
     }
   }
 
   @Input()
   public set clippingPlanes(value: any) {
-    if (this.obj) {
-      this.obj.clippingPlanes = value;
+    if (this.objRef) {
+      this.objRef.clippingPlanes = value;
     }
   }
 
   @Input()
   public set clipShadows(value: boolean) {
-    if (this.obj) {
-      this.obj.clipShadows = value;
+    if (this.objRef) {
+      this.objRef.clipShadows = value;
     }
   }
 
   @Input()
   public set colorWrite(value: boolean) {
-    if (this.obj) {
-      this.obj.colorWrite = value;
+    if (this.objRef) {
+      this.objRef.colorWrite = value;
     }
   }
 
   @Input()
   public set defines(value: undefined | { [key: string]: any }) {
-    if (this.obj) {
-      this.obj.defines = value;
+    if (this.objRef) {
+      this.objRef.defines = value;
     }
   }
 
   @Input()
   public set depthFunc(value: DepthModes) {
-    if (this.obj) {
-      this.obj.depthFunc = value;
+    if (this.objRef) {
+      this.objRef.depthFunc = value;
     }
   }
 
   @Input()
   public set depthTest(value: boolean) {
-    if (this.obj) {
-      this.obj.depthTest = value;
+    if (this.objRef) {
+      this.objRef.depthTest = value;
     }
   }
 
   @Input()
   public set depthWrite(value: boolean) {
-    if (this.obj) {
-      this.obj.depthWrite = value;
+    if (this.objRef) {
+      this.objRef.depthWrite = value;
     }
   }
 
   @Input()
   public set fog(value: boolean) {
-    if (this.obj) {
-      this.obj.fog = value;
+    if (this.objRef) {
+      this.objRef.fog = value;
     }
   }
 
   @Input()
   public set id(value: number) {
-    if (this.obj) {
-      this.obj.id = value;
+    if (this.objRef) {
+      this.objRef.id = value;
     }
   }
 
   @Input()
   public set stencilWrite(value: boolean) {
-    if (this.obj) {
-      this.obj.stencilWrite = value;
+    if (this.objRef) {
+      this.objRef.stencilWrite = value;
     }
   }
 
   @Input()
   public set stencilFunc(value: StencilFunc) {
-    if (this.obj) {
-      this.obj.stencilFunc = value;
+    if (this.objRef) {
+      this.objRef.stencilFunc = value;
     }
   }
 
   @Input()
   public set stencilRef(value: number) {
-    if (this.obj) {
-      this.obj.stencilRef = value;
+    if (this.objRef) {
+      this.objRef.stencilRef = value;
     }
   }
 
   @Input()
   public set stencilWriteMask(value: number) {
-    if (this.obj) {
-      this.obj.stencilWriteMask = value;
+    if (this.objRef) {
+      this.objRef.stencilWriteMask = value;
     }
   }
 
   @Input()
   public set stencilFuncMask(value: number) {
-    if (this.obj) {
-      this.obj.stencilFuncMask = value;
+    if (this.objRef) {
+      this.objRef.stencilFuncMask = value;
     }
   }
 
   @Input()
   public set stencilFail(value: StencilOp) {
-    if (this.obj) {
-      this.obj.stencilFail = value;
+    if (this.objRef) {
+      this.objRef.stencilFail = value;
     }
   }
 
   @Input()
   public set stencilZFail(value: StencilOp) {
-    if (this.obj) {
-      this.obj.stencilZFail = value;
+    if (this.objRef) {
+      this.objRef.stencilZFail = value;
     }
   }
 
   @Input()
   public set stencilZPass(value: StencilOp) {
-    if (this.obj) {
-      this.obj.stencilZPass = value;
+    if (this.objRef) {
+      this.objRef.stencilZPass = value;
     }
   }
 
   @Input()
   public set name(value: string) {
-    if (this.obj) {
-      this.obj.name = value;
+    if (this.objRef) {
+      this.objRef.name = value;
     }
   }
 
   @Input()
   public set needsUpdate(value: boolean) {
-    if (this.obj) {
-      this.obj.needsUpdate = value;
+    if (this.objRef) {
+      this.objRef.needsUpdate = value;
     }
   }
 
   @Input()
   public set opacity(value: number) {
-    if (this.obj) {
-      this.obj.opacity = value;
+    if (this.objRef) {
+      this.objRef.opacity = value;
     }
   }
 
   @Input()
   public set polygonOffset(value: boolean) {
-    if (this.obj) {
-      this.obj.polygonOffset = value;
+    if (this.objRef) {
+      this.objRef.polygonOffset = value;
     }
   }
 
   @Input()
   public set polygonOffsetFactor(value: number) {
-    if (this.obj) {
-      this.obj.polygonOffsetFactor = value;
+    if (this.objRef) {
+      this.objRef.polygonOffsetFactor = value;
     }
   }
 
   @Input()
   public set polygonOffsetUnits(value: number) {
-    if (this.obj) {
-      this.obj.polygonOffsetUnits = value;
+    if (this.objRef) {
+      this.objRef.polygonOffsetUnits = value;
     }
   }
 
   @Input()
   public set precision(value: 'highp' | 'mediump' | 'lowp' | null) {
-    if (this.obj) {
-      this.obj.precision = value;
+    if (this.objRef) {
+      this.objRef.precision = value;
     }
   }
 
   @Input()
   public set premultipliedAlpha(value: boolean) {
-    if (this.obj) {
-      this.obj.premultipliedAlpha = value;
+    if (this.objRef) {
+      this.objRef.premultipliedAlpha = value;
     }
   }
 
   @Input()
   public set dithering(value: boolean) {
-    if (this.obj) {
-      this.obj.dithering = value;
+    if (this.objRef) {
+      this.objRef.dithering = value;
     }
   }
 
   @Input()
   public set flatShading(value: boolean) {
-    if (this.obj) {
-      this.obj.flatShading = value;
+    if (this.objRef) {
+      this.objRef.flatShading = value;
     }
   }
 
   @Input()
   public set side(value: Side) {
-    if (this.obj) {
-      this.obj.side = value;
+    if (this.objRef) {
+      this.objRef.side = value;
     }
   }
 
   @Input()
   public set shadowSide(value: Side) {
-    if (this.obj) {
-      this.obj.shadowSide = value;
+    if (this.objRef) {
+      this.objRef.shadowSide = value;
     }
   }
 
   @Input()
   public set toneMapped(value: boolean) {
-    if (this.obj) {
-      this.obj.toneMapped = value;
+    if (this.objRef) {
+      this.objRef.toneMapped = value;
     }
   }
 
   @Input()
   public set transparent(value: boolean) {
-    if (this.obj) {
-      this.obj.transparent = value;
+    if (this.objRef) {
+      this.objRef.transparent = value;
     }
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 
   @Input()
   public set uuid(value: string) {
-    if (this.obj) {
-      this.obj.uuid = value;
+    if (this.objRef) {
+      this.objRef.uuid = value;
     }
   }
 
   @Input()
   public set vertexColors(value: boolean) {
-    if (this.obj) {
-      this.obj.vertexColors = value;
+    if (this.objRef) {
+      this.objRef.vertexColors = value;
     }
   }
 
   @Input()
   public set visible(value: boolean) {
-    if (this.obj) {
-      this.obj.visible = value;
+    if (this.objRef) {
+      this.objRef.visible = value;
     }
   }
 
   @Input()
   public set userData(value: any) {
-    if (this.obj) {
-      this.obj.userData = value;
+    if (this.objRef) {
+      this.objRef.userData = value;
     }
   }
 
   @Input()
   public set version(value: number) {
-    if (this.obj) {
-      this.obj.version = value;
+    if (this.objRef) {
+      this.objRef.version = value;
     }
   }
 

@@ -38,7 +38,7 @@ export abstract class NgxThreeClass {
     const directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);
     const providersArray = this.generateProvidersArray();
 
-    // we have at least one input (obj) --> import it
+    // we have at least one input (objRef) --> import it
     this.imports.add("import { Input } from '@angular/core';");
 
     this.imports.add("import { SkipSelf, Self, Optional, forwardRef, Type } from '@angular/core';");
@@ -65,7 +65,7 @@ export abstract class NgxThreeClass {
         })
         ${classHeader} {
           @Input()
-          public obj!: ${this.wrappedClassName}${this.wrappedClassGenericTypeNames};
+          public objRef!: ${this.wrappedClassName}${this.wrappedClassGenericTypeNames};
           protected getType(): Type<${this.wrappedClassName}${this.wrappedClassGenericTypeNames}> { return ${this.wrappedClassName}};
           ${this.inputs}
           ${constr}
@@ -185,7 +185,7 @@ export abstract class NgxThreeClass {
     if (setters.length === 0) {
       // no setter just set it
       str += `) {
-          if(this.obj) { this.obj.${memberName} = value;}
+          if(this.objRef) { this.objRef.${memberName} = value;}
         }
           `;
       return str;
@@ -199,14 +199,14 @@ export abstract class NgxThreeClass {
 
     if (!isReadonly) {
       str += `) {
-      if(this.obj) {
-       this.obj.${memberName} = applyValue<${member.type?.getText()}>(this.obj.${memberName}, value);
+      if(this.objRef) {
+       this.objRef.${memberName} = applyValue<${member.type?.getText()}>(this.objRef.${memberName}, value);
       }
     }`;
     } else {
       str += `) {
-        if(this.obj) {
-         applyValue<${member.type?.getText()}>(this.obj.${memberName}, value);
+        if(this.objRef) {
+         applyValue<${member.type?.getText()}>(this.objRef.${memberName}, value);
         }
       }`;
     }
@@ -240,7 +240,7 @@ export abstract class NgxThreeClass {
 
   public generateGetter(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
     // TODO implement me
-    return ''; // return `public get${memberName}(): ${member.type?.getText()} { return this.obj?.${memberName}; }`;
+    return ''; // return `public get${memberName}(): ${member.type?.getText()} { return this.objRef?.${memberName}; }`;
   }
 
   private generateConstructorArgs() {

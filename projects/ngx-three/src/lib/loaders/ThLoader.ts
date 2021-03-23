@@ -22,7 +22,7 @@ export class ThLoader<T = any> implements OnInit {
 
   constructor(@Host() protected host: ThObject3D<any>, protected zone: NgZone) {
     this.proxy = createLazyObject3DProxy();
-    host.obj = this.proxy;
+    host.objRef = this.proxy;
   }
 
   ngOnInit(): void {
@@ -70,8 +70,8 @@ export class ThLoader<T = any> implements OnInit {
     const object = await this.zone.runOutsideAngular(() => loaderFn(this.url, onProgress, onLoaded));
 
     this.proxy.applyToObject3D(object);
-    this.host.obj = object;
-    this.host.parent.obj?.add(object);
+    this.host.objRef = object;
+    this.host.parent.objRef?.add(object);
 
     // execute ngOnChanges to allow emitting a change
     this.host.ngOnChanges({ obj: new SimpleChange(this.proxy, object, false) });

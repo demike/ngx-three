@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { CylinderGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -14,9 +8,7 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-cylinderGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThCylinderGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThCylinderGeometry) }]
 })
 export class ThCylinderGeometry<
   TARGS extends any[] = [
@@ -31,15 +23,15 @@ export class ThCylinderGeometry<
   ]
 > extends ThGeometry<TARGS> {
   @Input()
-  public obj!: CylinderGeometry;
+  public objRef!: CylinderGeometry;
   protected getType(): Type<CylinderGeometry> {
     return CylinderGeometry;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 
@@ -54,8 +46,8 @@ export class ThCylinderGeometry<
     thetaStart: number;
     thetaLength: number;
   }) {
-    if (this.obj) {
-      this.obj.parameters = value;
+    if (this.objRef) {
+      this.objRef.parameters = value;
     }
   }
 }

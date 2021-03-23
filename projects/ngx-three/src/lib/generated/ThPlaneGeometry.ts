@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { PlaneGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -14,40 +8,28 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-planeGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThPlaneGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThPlaneGeometry) }]
 })
 export class ThPlaneGeometry<
-  TARGS extends any[] = [
-    width?: number,
-    height?: number,
-    widthSegments?: number,
-    heightSegments?: number
-  ]
+  TARGS extends any[] = [width?: number, height?: number, widthSegments?: number, heightSegments?: number]
 > extends ThGeometry<TARGS> {
   @Input()
-  public obj!: PlaneGeometry;
+  public objRef!: PlaneGeometry;
   protected getType(): Type<PlaneGeometry> {
     return PlaneGeometry;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 
   @Input()
-  public set parameters(value: {
-    width: number;
-    height: number;
-    widthSegments: number;
-    heightSegments: number;
-  }) {
-    if (this.obj) {
-      this.obj.parameters = value;
+  public set parameters(value: { width: number; height: number; widthSegments: number; heightSegments: number }) {
+    if (this.objRef) {
+      this.objRef.parameters = value;
     }
   }
 }

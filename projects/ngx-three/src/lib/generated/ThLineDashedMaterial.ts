@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { LineDashedMaterial, LineDashedMaterialParameters } from 'three';
 import { ThLineBasicMaterial } from './ThLineBasicMaterial';
 import { ThMaterial } from './ThMaterial';
@@ -18,44 +12,42 @@ import { ThMaterial } from './ThMaterial';
   providers: [
     {
       provide: ThMaterial,
-      useExisting: forwardRef(() => ThLineDashedMaterial),
-    },
-  ],
+      useExisting: forwardRef(() => ThLineDashedMaterial)
+    }
+  ]
 })
-export class ThLineDashedMaterial<
-  TARGS extends any[] = [parameters?: LineDashedMaterialParameters]
-> extends ThLineBasicMaterial<TARGS> {
+export class ThLineDashedMaterial<TARGS extends any[] = [parameters?: LineDashedMaterialParameters]> extends ThLineBasicMaterial<TARGS> {
   @Input()
-  public obj!: LineDashedMaterial;
+  public objRef!: LineDashedMaterial;
   protected getType(): Type<LineDashedMaterial> {
     return LineDashedMaterial;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 
   @Input()
   public set scale(value: number) {
-    if (this.obj) {
-      this.obj.scale = value;
+    if (this.objRef) {
+      this.objRef.scale = value;
     }
   }
 
   @Input()
   public set dashSize(value: number) {
-    if (this.obj) {
-      this.obj.dashSize = value;
+    if (this.objRef) {
+      this.objRef.dashSize = value;
     }
   }
 
   @Input()
   public set gapSize(value: number) {
-    if (this.obj) {
-      this.obj.gapSize = value;
+    if (this.objRef) {
+      this.objRef.gapSize = value;
     }
   }
 }

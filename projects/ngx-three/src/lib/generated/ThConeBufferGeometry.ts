@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ConeBufferGeometry } from 'three';
 import { ThCylinderBufferGeometry } from './ThCylinderBufferGeometry';
 import { ThGeometry } from './ThGeometry';
@@ -18,9 +12,9 @@ import { ThGeometry } from './ThGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThConeBufferGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThConeBufferGeometry)
+    }
+  ]
 })
 export class ThConeBufferGeometry<
   TARGS extends any[] = [
@@ -34,15 +28,15 @@ export class ThConeBufferGeometry<
   ]
 > extends ThCylinderBufferGeometry<TARGS> {
   @Input()
-  public obj!: ConeBufferGeometry;
+  public objRef!: ConeBufferGeometry;
   protected getType(): Type<ConeBufferGeometry> {
     return ConeBufferGeometry;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 }

@@ -14,7 +14,7 @@ export class ThControlBase<ARGS extends any[]> extends ThWrapperBase<any, ARGS> 
 
   protected createThreeInstance(args?: Iterable<any>) {
     if (!args) {
-      args = [this.camera.obj, this.canvas?.rendererCanvas?.nativeElement];
+      args = [this.camera.objRef, this.canvas?.rendererCanvas?.nativeElement];
     }
     super.createThreeInstance(args);
   }

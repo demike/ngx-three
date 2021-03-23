@@ -15,13 +15,13 @@ export class ThGeometryBase<ARGS extends any[]> extends ThWrapperBase<Geometry |
   protected createThreeInstance(args?: Iterable<any>) {
     super.createThreeInstance(args);
 
-    if (!this.parent.obj) {
-      throw new Error('parent object doesn\'t hold a three js object instance');
+    if (!this.parent.objRef) {
+      throw new Error("parent object doesn't hold a three js object instance");
     }
 
-    (this.parent.obj as any).geometry = this.obj;
-    if ((this.parent.obj as any).updateMorphTargets) {
-      (this.parent.obj as any).updateMorphTargets();
+    (this.parent.objRef as any).geometry = this.objRef;
+    if ((this.parent.objRef as any).updateMorphTargets) {
+      (this.parent.objRef as any).updateMorphTargets();
     }
   }
 }

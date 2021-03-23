@@ -19,11 +19,11 @@ export class Box extends ThMesh implements OnInit {
   }
   public ngOnInit() {
     super.ngOnInit();
-    this.obj.material = new MeshStandardMaterial({
+    this.objRef.material = new MeshStandardMaterial({
       color: 'green'
     });
 
-    this.obj.geometry = new BoxBufferGeometry(1, 1, 1);
+    this.objRef.geometry = new BoxBufferGeometry(1, 1, 1);
   }
 }
 

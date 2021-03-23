@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { SphereGeometry } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -14,9 +8,7 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-sphereGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThSphereGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThSphereGeometry) }]
 })
 export class ThSphereGeometry<
   TARGS extends any[] = [
@@ -30,15 +22,15 @@ export class ThSphereGeometry<
   ]
 > extends ThGeometry<TARGS> {
   @Input()
-  public obj!: SphereGeometry;
+  public objRef!: SphereGeometry;
   protected getType(): Type<SphereGeometry> {
     return SphereGeometry;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 
@@ -52,8 +44,8 @@ export class ThSphereGeometry<
     thetaStart: number;
     thetaLength: number;
   }) {
-    if (this.obj) {
-      this.obj.parameters = value;
+    if (this.objRef) {
+      this.objRef.parameters = value;
     }
   }
 }

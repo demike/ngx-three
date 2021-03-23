@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Color, LineBasicMaterial, LineBasicMaterialParameters } from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
@@ -15,57 +9,53 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-lineBasicMaterial',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThLineBasicMaterial) },
-  ],
+  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThLineBasicMaterial) }]
 })
-export class ThLineBasicMaterial<
-  TARGS extends any[] = [parameters?: LineBasicMaterialParameters]
-> extends ThMaterial<TARGS> {
+export class ThLineBasicMaterial<TARGS extends any[] = [parameters?: LineBasicMaterialParameters]> extends ThMaterial<TARGS> {
   @Input()
-  public obj!: LineBasicMaterial;
+  public objRef!: LineBasicMaterial;
   protected getType(): Type<LineBasicMaterial> {
     return LineBasicMaterial;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 
   @Input()
   public set color(value: Color | [color: Color | string | number]) {
-    if (this.obj) {
-      this.obj.color = applyValue<Color>(this.obj.color, value);
+    if (this.objRef) {
+      this.objRef.color = applyValue<Color>(this.objRef.color, value);
     }
   }
   @Input()
   public set linewidth(value: number) {
-    if (this.obj) {
-      this.obj.linewidth = value;
+    if (this.objRef) {
+      this.objRef.linewidth = value;
     }
   }
 
   @Input()
   public set linecap(value: string) {
-    if (this.obj) {
-      this.obj.linecap = value;
+    if (this.objRef) {
+      this.objRef.linecap = value;
     }
   }
 
   @Input()
   public set linejoin(value: string) {
-    if (this.obj) {
-      this.obj.linejoin = value;
+    if (this.objRef) {
+      this.objRef.linejoin = value;
     }
   }
 
   @Input()
   public set morphTargets(value: boolean) {
-    if (this.obj) {
-      this.obj.morphTargets = value;
+    if (this.objRef) {
+      this.objRef.morphTargets = value;
     }
   }
 }

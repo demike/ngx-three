@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Font, TextGeometry, TextGeometryParameters } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -14,23 +8,19 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-textGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThTextGeometry) },
-  ],
+  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThTextGeometry) }]
 })
-export class ThTextGeometry<
-  TARGS extends any[] = [text: string, parameters: TextGeometryParameters]
-> extends ThGeometry<TARGS> {
+export class ThTextGeometry<TARGS extends any[] = [text: string, parameters: TextGeometryParameters]> extends ThGeometry<TARGS> {
   @Input()
-  public obj!: TextGeometry;
+  public objRef!: TextGeometry;
   protected getType(): Type<TextGeometry> {
     return TextGeometry;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.obj) {
-      this.obj.type = value;
+    if (this.objRef) {
+      this.objRef.type = value;
     }
   }
 
@@ -58,8 +48,8 @@ export class ThTextGeometry<
     bevelOffset: number;
     bevelSegments: number;
   }) {
-    if (this.obj) {
-      this.obj.parameters = value;
+    if (this.objRef) {
+      this.objRef.parameters = value;
     }
   }
 }
