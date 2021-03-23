@@ -1,7 +1,8 @@
 import { Object3D } from 'three';
-import { applyValue } from '../util';
+import { applyValue, isSettable } from '../util';
 
 class Object3DProxyHandler implements ProxyHandler<Object3D> {
+  protected objRef?: Object3D;
   protected memberMap = new Map<keyof Object3D, any>();
   protected children: Object3D[] = [];
 
@@ -11,30 +12,46 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
         return true;
       case 'applyToObject3D':
         return this.applyToObject3D;
+      case 'objRef':
+        return this.objRef;
       case 'add':
         return this.add;
       case 'remove':
         return this.remove;
       default: {
-        let value = this.memberMap.get(p as keyof Object3D);
+        const objKey = p as keyof Object3D;
+        let value = this.objRef ? this.objRef[objKey] : this.memberMap.get(objKey);
         if (value === undefined) {
-          value = target[p as keyof Object3D];
+          value = target[objKey];
           if (value !== undefined) {
-            this.memberMap.set(p, value);
+            this.memberMap.set(objKey, value);
           }
         }
-        return value ?? target[p as keyof Object3D];
+        return value ?? target[objKey];
       }
     }
   }
 
-  set(target: Object3D, p: keyof Object3D, value: any, receiver: any): boolean {
-    this.memberMap.set(p, value);
+  set(target: Object3D, p: keyof LazyObject3DProxy, value: any, receiver: any): boolean {
+    if (p === 'objRef') {
+      this.objRef = value;
+      if (this.objRef) {
+        this.applyToObject3D(this.objRef);
+      }
+    } else {
+      // store to the member map
+      this.memberMap.set(p as keyof Object3D, value);
+      if (this.objRef) {
+        // and apply to the real object if present
+        (this.objRef as any)[p] = value;
+      }
+    }
     return true;
   }
 
   add = (...object: Object3D[]): this => {
     this.children.push(...object);
+    this.objRef?.add(...object);
     return this;
   };
 
@@ -45,21 +62,28 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
         this.children = this.children.splice(index, 1);
       }
     }
+    this.objRef?.remove(...object);
     return this;
   };
 
-  applyToObject3D = (real: Object3D) => {
+  applyToObject3D = (objRef: Object3D) => {
     this.memberMap.forEach((value, key) => {
-      applyValue((real as any)[key], value);
+      const member = (objRef as any)[key];
+      if (isSettable(member)) {
+        applyValue(member, value);
+      } else {
+        (objRef as any)[key] = value;
+      }
     });
 
-    this.children.forEach((child) => real.add(child));
+    this.children.forEach((child) => objRef.add(child));
   };
 }
 
 export interface LazyObject3DProxy extends Object3D {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   readonly __isProxy?: boolean;
+  objRef?: Object3D;
   applyToObject3D(real: Object3D): void;
 }
 
