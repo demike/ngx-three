@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { BufferGeometry, Geometry, Material, Points } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -8,51 +14,50 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-points',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPoints) }]
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPoints) }],
 })
 export class ThPoints<
   TGeometry extends Geometry | BufferGeometry = Geometry | BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
+  T extends Points<TGeometry, TMaterial> = Points<TGeometry, TMaterial>,
   TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]
-> extends ThObject3D<TARGS> {
-  @Input()
-  public objRef!: Points<TGeometry, TMaterial>;
+> extends ThObject3D<T, TARGS> {
   protected getType(): Type<Points<TGeometry, TMaterial>> {
     return Points;
   }
 
   @Input()
   public set type(value: 'Points') {
-    if (this.objRef) {
-      this.objRef.type = value;
+    if (this._objRef) {
+      this._objRef.type = value;
     }
   }
 
   @Input()
   public set morphTargetInfluences(value: number[]) {
-    if (this.objRef) {
-      this.objRef.morphTargetInfluences = value;
+    if (this._objRef) {
+      this._objRef.morphTargetInfluences = value;
     }
   }
 
   @Input()
   public set morphTargetDictionary(value: { [key: string]: number }) {
-    if (this.objRef) {
-      this.objRef.morphTargetDictionary = value;
+    if (this._objRef) {
+      this._objRef.morphTargetDictionary = value;
     }
   }
 
   @Input()
   public set geometry(value: TGeometry) {
-    if (this.objRef) {
-      this.objRef.geometry = value;
+    if (this._objRef) {
+      this._objRef.geometry = value;
     }
   }
 
   @Input()
   public set material(value: TMaterial) {
-    if (this.objRef) {
-      this.objRef.material = value;
+    if (this._objRef) {
+      this._objRef.material = value;
     }
   }
 }

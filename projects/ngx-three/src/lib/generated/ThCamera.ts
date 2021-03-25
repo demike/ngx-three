@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Camera, Matrix4 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -9,11 +15,12 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-camera',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }]
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
 })
-export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
-  @Input()
-  public objRef!: Camera;
+export class ThCamera<
+  T extends Camera = Camera,
+  TARGS extends any[] = []
+> extends ThObject3D<T, TARGS> {
   protected getType(): Type<Camera> {
     return Camera;
   }
@@ -41,8 +48,11 @@ export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
           n44: number
         ]
   ) {
-    if (this.objRef) {
-      this.objRef.matrixWorldInverse = applyValue<Matrix4>(this.objRef.matrixWorldInverse, value);
+    if (this._objRef) {
+      this._objRef.matrixWorldInverse = applyValue<Matrix4>(
+        this._objRef.matrixWorldInverse,
+        value
+      );
     }
   }
   @Input()
@@ -68,8 +78,11 @@ export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
           n44: number
         ]
   ) {
-    if (this.objRef) {
-      this.objRef.projectionMatrix = applyValue<Matrix4>(this.objRef.projectionMatrix, value);
+    if (this._objRef) {
+      this._objRef.projectionMatrix = applyValue<Matrix4>(
+        this._objRef.projectionMatrix,
+        value
+      );
     }
   }
   @Input()
@@ -95,8 +108,11 @@ export class ThCamera<TARGS extends any[] = []> extends ThObject3D<TARGS> {
           n44: number
         ]
   ) {
-    if (this.objRef) {
-      this.objRef.projectionMatrixInverse = applyValue<Matrix4>(this.objRef.projectionMatrixInverse, value);
+    if (this._objRef) {
+      this._objRef.projectionMatrixInverse = applyValue<Matrix4>(
+        this._objRef.projectionMatrixInverse,
+        value
+      );
     }
   }
 }

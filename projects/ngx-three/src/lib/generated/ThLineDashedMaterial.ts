@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { LineDashedMaterial, LineDashedMaterialParameters } from 'three';
 import { ThLineBasicMaterial } from './ThLineBasicMaterial';
 import { ThMaterial } from './ThMaterial';
@@ -12,42 +18,43 @@ import { ThMaterial } from './ThMaterial';
   providers: [
     {
       provide: ThMaterial,
-      useExisting: forwardRef(() => ThLineDashedMaterial)
-    }
-  ]
+      useExisting: forwardRef(() => ThLineDashedMaterial),
+    },
+  ],
 })
-export class ThLineDashedMaterial<TARGS extends any[] = [parameters?: LineDashedMaterialParameters]> extends ThLineBasicMaterial<TARGS> {
-  @Input()
-  public objRef!: LineDashedMaterial;
+export class ThLineDashedMaterial<
+  T extends LineDashedMaterial = LineDashedMaterial,
+  TARGS extends any[] = [parameters?: LineDashedMaterialParameters]
+> extends ThLineBasicMaterial<T, TARGS> {
   protected getType(): Type<LineDashedMaterial> {
     return LineDashedMaterial;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.objRef) {
-      this.objRef.type = value;
+    if (this._objRef) {
+      this._objRef.type = value;
     }
   }
 
   @Input()
   public set scale(value: number) {
-    if (this.objRef) {
-      this.objRef.scale = value;
+    if (this._objRef) {
+      this._objRef.scale = value;
     }
   }
 
   @Input()
   public set dashSize(value: number) {
-    if (this.objRef) {
-      this.objRef.dashSize = value;
+    if (this._objRef) {
+      this._objRef.dashSize = value;
     }
   }
 
   @Input()
   public set gapSize(value: number) {
-    if (this.objRef) {
-      this.objRef.gapSize = value;
+    if (this._objRef) {
+      this._objRef.gapSize = value;
     }
   }
 }

@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Material, MultiMaterial } from 'three';
 import { ThMaterial } from './ThMaterial';
 
@@ -8,19 +14,22 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-multiMaterial',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThMultiMaterial) }]
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThMultiMaterial) },
+  ],
 })
-export class ThMultiMaterial<TARGS extends any[] = [materials?: Material[]]> extends ThMaterial<TARGS> {
-  @Input()
-  public objRef!: MultiMaterial;
+export class ThMultiMaterial<
+  T extends MultiMaterial = MultiMaterial,
+  TARGS extends any[] = [materials?: Material[]]
+> extends ThMaterial<T, TARGS> {
   protected getType(): Type<MultiMaterial> {
     return MultiMaterial;
   }
 
   @Input()
   public set materials(value: Material[]) {
-    if (this.objRef) {
-      this.objRef.materials = value;
+    if (this._objRef) {
+      this._objRef.materials = value;
     }
   }
 }

@@ -1,7 +1,20 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { BoxHelper, BufferGeometry, Color, Geometry, Material, Object3D } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  BoxHelper,
+  BufferGeometry,
+  Color,
+  Geometry,
+  Material,
+  Object3D,
+} from 'three';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
@@ -9,23 +22,27 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-boxHelper',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThBoxHelper) }]
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThBoxHelper) },
+  ],
 })
-export class ThBoxHelper<TARGS extends any[] = [object: Object3D, color?: Color | string | number]> extends ThLineSegments<
+export class ThBoxHelper<
+  T extends BoxHelper = BoxHelper,
+  TARGS extends any[] = [object: Object3D, color?: Color | string | number]
+> extends ThLineSegments<
   Geometry | BufferGeometry,
   Material | Material[],
+  T,
   TARGS
 > {
-  @Input()
-  public objRef!: BoxHelper;
   protected getType(): Type<BoxHelper> {
     return BoxHelper;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.objRef) {
-      this.objRef.type = value;
+    if (this._objRef) {
+      this._objRef.type = value;
     }
   }
 }

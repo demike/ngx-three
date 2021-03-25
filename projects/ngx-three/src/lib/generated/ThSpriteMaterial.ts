@@ -1,7 +1,18 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { Color, SpriteMaterial, SpriteMaterialParameters, Texture } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  Color,
+  SpriteMaterial,
+  SpriteMaterialParameters,
+  Texture,
+} from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -9,60 +20,63 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-spriteMaterial',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThSpriteMaterial) }]
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThSpriteMaterial) },
+  ],
 })
-export class ThSpriteMaterial<TARGS extends any[] = [parameters?: SpriteMaterialParameters]> extends ThMaterial<TARGS> {
-  @Input()
-  public objRef!: SpriteMaterial;
+export class ThSpriteMaterial<
+  T extends SpriteMaterial = SpriteMaterial,
+  TARGS extends any[] = [parameters?: SpriteMaterialParameters]
+> extends ThMaterial<T, TARGS> {
   protected getType(): Type<SpriteMaterial> {
     return SpriteMaterial;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.objRef) {
-      this.objRef.type = value;
+    if (this._objRef) {
+      this._objRef.type = value;
     }
   }
 
   @Input()
   public set color(value: Color | [color: Color | string | number]) {
-    if (this.objRef) {
-      this.objRef.color = applyValue<Color>(this.objRef.color, value);
+    if (this._objRef) {
+      this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
   }
   @Input()
   public set map(value: Texture | null) {
-    if (this.objRef) {
-      this.objRef.map = value;
+    if (this._objRef) {
+      this._objRef.map = value;
     }
   }
 
   @Input()
   public set alphaMap(value: Texture | null) {
-    if (this.objRef) {
-      this.objRef.alphaMap = value;
+    if (this._objRef) {
+      this._objRef.alphaMap = value;
     }
   }
 
   @Input()
   public set rotation(value: number) {
-    if (this.objRef) {
-      this.objRef.rotation = value;
+    if (this._objRef) {
+      this._objRef.rotation = value;
     }
   }
 
   @Input()
   public set sizeAttenuation(value: boolean) {
-    if (this.objRef) {
-      this.objRef.sizeAttenuation = value;
+    if (this._objRef) {
+      this._objRef.sizeAttenuation = value;
     }
   }
 
   @Input()
   public set transparent(value: boolean) {
-    if (this.objRef) {
-      this.objRef.transparent = value;
+    if (this._objRef) {
+      this._objRef.transparent = value;
     }
   }
 }

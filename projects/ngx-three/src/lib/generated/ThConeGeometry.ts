@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { ConeGeometry } from 'three';
 import { ThCylinderGeometry } from './ThCylinderGeometry';
 import { ThGeometry } from './ThGeometry';
@@ -9,9 +15,12 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-coneGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThConeGeometry) }]
+  providers: [
+    { provide: ThGeometry, useExisting: forwardRef(() => ThConeGeometry) },
+  ],
 })
 export class ThConeGeometry<
+  T extends ConeGeometry = ConeGeometry,
   TARGS extends any[] = [
     radius?: number,
     height?: number,
@@ -21,17 +30,15 @@ export class ThConeGeometry<
     thetaStart?: number,
     thetaLength?: number
   ]
-> extends ThCylinderGeometry<TARGS> {
-  @Input()
-  public objRef!: ConeGeometry;
+> extends ThCylinderGeometry<T, TARGS> {
   protected getType(): Type<ConeGeometry> {
     return ConeGeometry;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.objRef) {
-      this.objRef.type = value;
+    if (this._objRef) {
+      this._objRef.type = value;
     }
   }
 }

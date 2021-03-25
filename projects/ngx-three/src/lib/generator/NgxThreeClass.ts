@@ -64,8 +64,6 @@ export abstract class NgxThreeClass {
           providers: ${providersArray}
         })
         ${classHeader} {
-          @Input()
-          public objRef!: ${this.wrappedClassName}${this.wrappedClassGenericTypeNames};
           protected getType(): Type<${this.wrappedClassName}${this.wrappedClassGenericTypeNames}> { return ${this.wrappedClassName}};
           ${this.inputs}
           ${constr}
@@ -101,7 +99,9 @@ export abstract class NgxThreeClass {
       header = `${header}${this.classDecl.typeParameters.map((param) => param.getText()).join(',')},`;
       this.wrappedClassGenericTypeNames = `<${this.classDecl.typeParameters.map((param) => param.name.getText()).join(',')}>`;
     }
-    header += `TARGS extends any[] = ${this.constructorArgs}>`;
+    header += `
+    T extends ${this.wrappedClassName}${this.wrappedClassGenericTypeNames} = ${this.wrappedClassName}${this.wrappedClassGenericTypeNames},
+    TARGS extends any[] = ${this.constructorArgs}>`;
 
     let baseClassName = 'EventDispatcher';
     const wrapperBaseClassName = this.getWrapperBaseClassName();
@@ -112,7 +112,7 @@ export abstract class NgxThreeClass {
 
       if ('EventDispatcher' === baseClassName) {
         this.imports.add(`import { ${wrapperBaseClassName} } from '../${wrapperBaseClassName}';`);
-        header = `${header} extends ${wrapperBaseClassName}<TARGS>`;
+        header = `${header} extends ${wrapperBaseClassName}<T,TARGS>`;
         return header;
       } else {
         this.imports.add(`import { Th${baseClassName} } from './Th${baseClassName}';`);
@@ -120,16 +120,17 @@ export abstract class NgxThreeClass {
       }
     } else {
       // no base class --> use the wrapper base class
-      header = `${header} extends ${wrapperBaseClassName}<TARGS>`;
+      header = `${header} extends ${wrapperBaseClassName}<T,TARGS>`;
       return header;
     }
 
     if (header.endsWith('>')) {
       header = header.slice(0, -1);
-      header += ',TARGS>';
+      header += ',T,TARGS>';
     } else {
       // find out the parent class default type parameters
       const defaultParams = this.generateDefaultTypParametersForParentClass();
+      defaultParams.push('T');
       defaultParams.push('TARGS');
 
       header += `<${defaultParams.join(',')}>`;
@@ -185,7 +186,7 @@ export abstract class NgxThreeClass {
     if (setters.length === 0) {
       // no setter just set it
       str += `) {
-          if(this.objRef) { this.objRef.${memberName} = value;}
+          if(this._objRef) { this._objRef.${memberName} = value;}
         }
           `;
       return str;
@@ -199,14 +200,14 @@ export abstract class NgxThreeClass {
 
     if (!isReadonly) {
       str += `) {
-      if(this.objRef) {
-       this.objRef.${memberName} = applyValue<${member.type?.getText()}>(this.objRef.${memberName}, value);
+      if(this._objRef) {
+       this._objRef.${memberName} = applyValue<${member.type?.getText()}>(this._objRef.${memberName}, value);
       }
     }`;
     } else {
       str += `) {
-        if(this.objRef) {
-         applyValue<${member.type?.getText()}>(this.objRef.${memberName}, value);
+        if(this._objRef) {
+         applyValue<${member.type?.getText()}>(this._objRef.${memberName}, value);
         }
       }`;
     }
@@ -240,7 +241,7 @@ export abstract class NgxThreeClass {
 
   public generateGetter(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
     // TODO implement me
-    return ''; // return `public get${memberName}(): ${member.type?.getText()} { return this.objRef?.${memberName}; }`;
+    return ''; // return `public get${memberName}(): ${member.type?.getText()} { return this._objRef?.${memberName}; }`;
   }
 
   private generateConstructorArgs() {

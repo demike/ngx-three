@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { SphereBufferGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThGeometry } from './ThGeometry';
@@ -12,11 +18,12 @@ import { ThGeometry } from './ThGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThSphereBufferGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThSphereBufferGeometry),
+    },
+  ],
 })
 export class ThSphereBufferGeometry<
+  T extends SphereBufferGeometry = SphereBufferGeometry,
   TARGS extends any[] = [
     radius?: number,
     widthSegments?: number,
@@ -26,17 +33,15 @@ export class ThSphereBufferGeometry<
     thetaStart?: number,
     thetaLength?: number
   ]
-> extends ThBufferGeometry<TARGS> {
-  @Input()
-  public objRef!: SphereBufferGeometry;
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<SphereBufferGeometry> {
     return SphereBufferGeometry;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.objRef) {
-      this.objRef.type = value;
+    if (this._objRef) {
+      this._objRef.type = value;
     }
   }
 
@@ -50,8 +55,8 @@ export class ThSphereBufferGeometry<
     thetaStart: number;
     thetaLength: number;
   }) {
-    if (this.objRef) {
-      this.objRef.parameters = value;
+    if (this._objRef) {
+      this._objRef.parameters = value;
     }
   }
 }

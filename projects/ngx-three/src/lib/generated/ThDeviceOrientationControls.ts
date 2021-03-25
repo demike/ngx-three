@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Camera } from 'three';
 import { DeviceOrientationControls } from 'three/examples/jsm/controls/DeviceOrientationControls';
 import { ThControlBase } from '../ThControlBase';
@@ -12,49 +18,50 @@ import { ThControlBase } from '../ThControlBase';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThDeviceOrientationControls)
-    }
-  ]
+      useExisting: forwardRef(() => ThDeviceOrientationControls),
+    },
+  ],
 })
-export class ThDeviceOrientationControls<TARGS extends any[] = [object: Camera]> extends ThControlBase<TARGS> {
-  @Input()
-  public objRef!: DeviceOrientationControls;
+export class ThDeviceOrientationControls<
+  T extends DeviceOrientationControls = DeviceOrientationControls,
+  TARGS extends any[] = [object: Camera]
+> extends ThControlBase<T, TARGS> {
   protected getType(): Type<DeviceOrientationControls> {
     return DeviceOrientationControls;
   }
 
   @Input()
   public set object(value: Camera) {
-    if (this.objRef) {
-      this.objRef.object = value;
+    if (this._objRef) {
+      this._objRef.object = value;
     }
   }
 
   @Input()
   public set alphaOffset(value: number) {
-    if (this.objRef) {
-      this.objRef.alphaOffset = value;
+    if (this._objRef) {
+      this._objRef.alphaOffset = value;
     }
   }
 
   @Input()
   public set deviceOrientation(value: any) {
-    if (this.objRef) {
-      this.objRef.deviceOrientation = value;
+    if (this._objRef) {
+      this._objRef.deviceOrientation = value;
     }
   }
 
   @Input()
   public set enabled(value: boolean) {
-    if (this.objRef) {
-      this.objRef.enabled = value;
+    if (this._objRef) {
+      this._objRef.enabled = value;
     }
   }
 
   @Input()
   public set screenOrientation(value: number) {
-    if (this.objRef) {
-      this.objRef.screenOrientation = value;
+    if (this._objRef) {
+      this._objRef.screenOrientation = value;
     }
   }
 }

@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { OrthographicCamera } from 'three';
 import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
@@ -12,31 +18,37 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThObject3D,
-      useExisting: forwardRef(() => ThOrthographicCamera)
+      useExisting: forwardRef(() => ThOrthographicCamera),
     },
-    { provide: ThCamera, useExisting: forwardRef(() => ThOrthographicCamera) }
-  ]
+    { provide: ThCamera, useExisting: forwardRef(() => ThOrthographicCamera) },
+  ],
 })
 export class ThOrthographicCamera<
-  TARGS extends any[] = [left: number, right: number, top: number, bottom: number, near?: number, far?: number]
-> extends ThCamera<TARGS> {
-  @Input()
-  public objRef!: OrthographicCamera;
+  T extends OrthographicCamera = OrthographicCamera,
+  TARGS extends any[] = [
+    left: number,
+    right: number,
+    top: number,
+    bottom: number,
+    near?: number,
+    far?: number
+  ]
+> extends ThCamera<T, TARGS> {
   protected getType(): Type<OrthographicCamera> {
     return OrthographicCamera;
   }
 
   @Input()
   public set type(value: 'OrthographicCamera') {
-    if (this.objRef) {
-      this.objRef.type = value;
+    if (this._objRef) {
+      this._objRef.type = value;
     }
   }
 
   @Input()
   public set zoom(value: number) {
-    if (this.objRef) {
-      this.objRef.zoom = value;
+    if (this._objRef) {
+      this._objRef.zoom = value;
     }
   }
 
@@ -52,50 +64,50 @@ export class ThOrthographicCamera<
       height: number;
     }
   ) {
-    if (this.objRef) {
-      this.objRef.view = value;
+    if (this._objRef) {
+      this._objRef.view = value;
     }
   }
 
   @Input()
   public set left(value: number) {
-    if (this.objRef) {
-      this.objRef.left = value;
+    if (this._objRef) {
+      this._objRef.left = value;
     }
   }
 
   @Input()
   public set right(value: number) {
-    if (this.objRef) {
-      this.objRef.right = value;
+    if (this._objRef) {
+      this._objRef.right = value;
     }
   }
 
   @Input()
   public set top(value: number) {
-    if (this.objRef) {
-      this.objRef.top = value;
+    if (this._objRef) {
+      this._objRef.top = value;
     }
   }
 
   @Input()
   public set bottom(value: number) {
-    if (this.objRef) {
-      this.objRef.bottom = value;
+    if (this._objRef) {
+      this._objRef.bottom = value;
     }
   }
 
   @Input()
   public set near(value: number) {
-    if (this.objRef) {
-      this.objRef.near = value;
+    if (this._objRef) {
+      this._objRef.near = value;
     }
   }
 
   @Input()
   public set far(value: number) {
-    if (this.objRef) {
-      this.objRef.far = value;
+    if (this._objRef) {
+      this._objRef.far = value;
     }
   }
 }

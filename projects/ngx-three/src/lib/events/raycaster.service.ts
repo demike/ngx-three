@@ -104,7 +104,7 @@ export class RaycasterService implements OnDestroy {
     const i = this.getFirstIntersectedGroup(event.layerX, event.layerY);
     if (!this.selected || this.selected !== i.target) {
       if (this.selected) {
-        this.selected.host.objRef.dispatchEvent({
+        this.selected.host.objRef?.dispatchEvent({
           type: RaycasterEvent.mouseExit
         });
         this.selected.onMouseExit();
@@ -116,7 +116,7 @@ export class RaycasterService implements OnDestroy {
           type: RaycasterEvent.mouseEnter,
           face: i.face
         };
-        this.selected.host.objRef.dispatchEvent(evt);
+        this.selected.host.objRef?.dispatchEvent(evt);
         this.selected.onMouseEnter(evt);
       }
     }
@@ -128,7 +128,7 @@ export class RaycasterService implements OnDestroy {
     }
     event.preventDefault();
     const intersection = this.getFirstIntersectedGroup(event.layerX, event.layerY);
-    if (intersection && intersection.target) {
+    if (intersection && intersection.target && intersection.target.host.objRef) {
       const evt = {
         type: RaycasterEvent.click,
         face: intersection.face
@@ -145,7 +145,7 @@ export class RaycasterService implements OnDestroy {
     }
     event.preventDefault();
     const i = this.getFirstIntersectedGroup(event.touches[0].clientX, event.touches[0].clientY);
-    if (i && i.target) {
+    if (i && i.target && i.target.host.objRef) {
       const evt = { type: RaycasterEvent.click, face: i.face };
       i.target.host.objRef.dispatchEvent(evt);
       i.target.onClick(evt);
@@ -157,7 +157,7 @@ export class RaycasterService implements OnDestroy {
   }
 
   private getFirstIntersectedGroup(x: number, y: number): NearestIntersection {
-    if (!this.camera || !this.canvas) {
+    if (!this.camera || !this.canvas || !this.camera.objRef) {
       return { face: null, target: null };
     }
     x = (x / this.canvas.clientWidth) * 2 - 1;
@@ -171,6 +171,9 @@ export class RaycasterService implements OnDestroy {
     let nearestGroup: RaycasterEventDirective | undefined;
     for (const group of this.groups) {
       const i = group.host.objRef;
+      if (!i) {
+        continue;
+      }
       const intersection = this.raycaster.intersectObject(i, true);
       if (intersection.length > 0 && (!nearestIntersection || nearestIntersection.distance > intersection[0].distance)) {
         nearestIntersection = intersection[0];

@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { ExtrudeGeometry, ExtrudeGeometryOptions, Shape } from 'three';
 import { ThGeometry } from './ThGeometry';
 
@@ -8,21 +14,25 @@ import { ThGeometry } from './ThGeometry';
   selector: 'th-extrudeGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThGeometry, useExisting: forwardRef(() => ThExtrudeGeometry) }]
+  providers: [
+    { provide: ThGeometry, useExisting: forwardRef(() => ThExtrudeGeometry) },
+  ],
 })
 export class ThExtrudeGeometry<
-  TARGS extends any[] = [shapes: Shape | Shape[], options?: ExtrudeGeometryOptions]
-> extends ThGeometry<TARGS> {
-  @Input()
-  public objRef!: ExtrudeGeometry;
+  T extends ExtrudeGeometry = ExtrudeGeometry,
+  TARGS extends any[] = [
+    shapes: Shape | Shape[],
+    options?: ExtrudeGeometryOptions
+  ]
+> extends ThGeometry<T, TARGS> {
   protected getType(): Type<ExtrudeGeometry> {
     return ExtrudeGeometry;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.objRef) {
-      this.objRef.type = value;
+    if (this._objRef) {
+      this._objRef.type = value;
     }
   }
 }

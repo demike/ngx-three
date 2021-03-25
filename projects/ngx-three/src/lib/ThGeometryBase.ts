@@ -7,7 +7,7 @@ import { ThWrapperBase } from './ThWrapperBase';
   template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThGeometryBase<ARGS extends any[]> extends ThWrapperBase<Geometry | BufferGeometry, ARGS> {
+export class ThGeometryBase<T extends Geometry | BufferGeometry, ARGS extends any[]> extends ThWrapperBase<T, ARGS> {
   constructor(protected parent: ThObject3D<any>) {
     super();
   }

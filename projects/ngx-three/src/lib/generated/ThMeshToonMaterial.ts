@@ -1,7 +1,20 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { Color, MeshToonMaterial, MeshToonMaterialParameters, NormalMapTypes, Texture, Vector2 } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  Color,
+  MeshToonMaterial,
+  MeshToonMaterialParameters,
+  NormalMapTypes,
+  Texture,
+  Vector2,
+} from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -9,205 +22,211 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-meshToonMaterial',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThMeshToonMaterial) }]
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThMeshToonMaterial) },
+  ],
 })
-export class ThMeshToonMaterial<TARGS extends any[] = [parameters?: MeshToonMaterialParameters]> extends ThMaterial<TARGS> {
-  @Input()
-  public objRef!: MeshToonMaterial;
+export class ThMeshToonMaterial<
+  T extends MeshToonMaterial = MeshToonMaterial,
+  TARGS extends any[] = [parameters?: MeshToonMaterialParameters]
+> extends ThMaterial<T, TARGS> {
   protected getType(): Type<MeshToonMaterial> {
     return MeshToonMaterial;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.objRef) {
-      this.objRef.type = value;
+    if (this._objRef) {
+      this._objRef.type = value;
     }
   }
 
   @Input()
   public set defines(value: { [key: string]: any }) {
-    if (this.objRef) {
-      this.objRef.defines = value;
+    if (this._objRef) {
+      this._objRef.defines = value;
     }
   }
 
   @Input()
   public set color(value: Color | [color: Color | string | number]) {
-    if (this.objRef) {
-      this.objRef.color = applyValue<Color>(this.objRef.color, value);
+    if (this._objRef) {
+      this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
   }
   @Input()
   public set gradientMap(value: Texture | null) {
-    if (this.objRef) {
-      this.objRef.gradientMap = value;
+    if (this._objRef) {
+      this._objRef.gradientMap = value;
     }
   }
 
   @Input()
   public set map(value: Texture | null) {
-    if (this.objRef) {
-      this.objRef.map = value;
+    if (this._objRef) {
+      this._objRef.map = value;
     }
   }
 
   @Input()
   public set lightMap(value: Texture | null) {
-    if (this.objRef) {
-      this.objRef.lightMap = value;
+    if (this._objRef) {
+      this._objRef.lightMap = value;
     }
   }
 
   @Input()
   public set lightMapIntensity(value: number) {
-    if (this.objRef) {
-      this.objRef.lightMapIntensity = value;
+    if (this._objRef) {
+      this._objRef.lightMapIntensity = value;
     }
   }
 
   @Input()
   public set aoMap(value: Texture | null) {
-    if (this.objRef) {
-      this.objRef.aoMap = value;
+    if (this._objRef) {
+      this._objRef.aoMap = value;
     }
   }
 
   @Input()
   public set aoMapIntensity(value: number) {
-    if (this.objRef) {
-      this.objRef.aoMapIntensity = value;
+    if (this._objRef) {
+      this._objRef.aoMapIntensity = value;
     }
   }
 
   @Input()
   public set emissive(value: Color | [color: Color | string | number]) {
-    if (this.objRef) {
-      this.objRef.emissive = applyValue<Color>(this.objRef.emissive, value);
+    if (this._objRef) {
+      this._objRef.emissive = applyValue<Color>(this._objRef.emissive, value);
     }
   }
   @Input()
   public set emissiveIntensity(value: number) {
-    if (this.objRef) {
-      this.objRef.emissiveIntensity = value;
+    if (this._objRef) {
+      this._objRef.emissiveIntensity = value;
     }
   }
 
   @Input()
   public set emissiveMap(value: Texture | null) {
-    if (this.objRef) {
-      this.objRef.emissiveMap = value;
+    if (this._objRef) {
+      this._objRef.emissiveMap = value;
     }
   }
 
   @Input()
   public set bumpMap(value: Texture | null) {
-    if (this.objRef) {
-      this.objRef.bumpMap = value;
+    if (this._objRef) {
+      this._objRef.bumpMap = value;
     }
   }
 
   @Input()
   public set bumpScale(value: number) {
-    if (this.objRef) {
-      this.objRef.bumpScale = value;
+    if (this._objRef) {
+      this._objRef.bumpScale = value;
     }
   }
 
   @Input()
   public set normalMap(value: Texture | null) {
-    if (this.objRef) {
-      this.objRef.normalMap = value;
+    if (this._objRef) {
+      this._objRef.normalMap = value;
     }
   }
 
   @Input()
   public set normalMapType(value: NormalMapTypes) {
-    if (this.objRef) {
-      this.objRef.normalMapType = value;
+    if (this._objRef) {
+      this._objRef.normalMapType = value;
     }
   }
 
   @Input()
   public set normalScale(value: Vector2 | [x: number, y: number]) {
-    if (this.objRef) {
-      this.objRef.normalScale = applyValue<Vector2>(this.objRef.normalScale, value);
+    if (this._objRef) {
+      this._objRef.normalScale = applyValue<Vector2>(
+        this._objRef.normalScale,
+        value
+      );
     }
   }
   @Input()
   public set displacementMap(value: Texture | null) {
-    if (this.objRef) {
-      this.objRef.displacementMap = value;
+    if (this._objRef) {
+      this._objRef.displacementMap = value;
     }
   }
 
   @Input()
   public set displacementScale(value: number) {
-    if (this.objRef) {
-      this.objRef.displacementScale = value;
+    if (this._objRef) {
+      this._objRef.displacementScale = value;
     }
   }
 
   @Input()
   public set displacementBias(value: number) {
-    if (this.objRef) {
-      this.objRef.displacementBias = value;
+    if (this._objRef) {
+      this._objRef.displacementBias = value;
     }
   }
 
   @Input()
   public set alphaMap(value: Texture | null) {
-    if (this.objRef) {
-      this.objRef.alphaMap = value;
+    if (this._objRef) {
+      this._objRef.alphaMap = value;
     }
   }
 
   @Input()
   public set wireframe(value: boolean) {
-    if (this.objRef) {
-      this.objRef.wireframe = value;
+    if (this._objRef) {
+      this._objRef.wireframe = value;
     }
   }
 
   @Input()
   public set wireframeLinewidth(value: number) {
-    if (this.objRef) {
-      this.objRef.wireframeLinewidth = value;
+    if (this._objRef) {
+      this._objRef.wireframeLinewidth = value;
     }
   }
 
   @Input()
   public set wireframeLinecap(value: string) {
-    if (this.objRef) {
-      this.objRef.wireframeLinecap = value;
+    if (this._objRef) {
+      this._objRef.wireframeLinecap = value;
     }
   }
 
   @Input()
   public set wireframeLinejoin(value: string) {
-    if (this.objRef) {
-      this.objRef.wireframeLinejoin = value;
+    if (this._objRef) {
+      this._objRef.wireframeLinejoin = value;
     }
   }
 
   @Input()
   public set skinning(value: boolean) {
-    if (this.objRef) {
-      this.objRef.skinning = value;
+    if (this._objRef) {
+      this._objRef.skinning = value;
     }
   }
 
   @Input()
   public set morphTargets(value: boolean) {
-    if (this.objRef) {
-      this.objRef.morphTargets = value;
+    if (this._objRef) {
+      this._objRef.morphTargets = value;
     }
   }
 
   @Input()
   public set morphNormals(value: boolean) {
-    if (this.objRef) {
-      this.objRef.morphNormals = value;
+    if (this._objRef) {
+      this._objRef.morphNormals = value;
     }
   }
 }

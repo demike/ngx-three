@@ -126,7 +126,7 @@ export class ThEngineService implements OnDestroy {
       const camera = view.camera;
       const scene = view.scene;
 
-      if (!camera || !scene) {
+      if (!camera || !scene || !camera.objRef || !scene.objRef) {
         return;
       }
 

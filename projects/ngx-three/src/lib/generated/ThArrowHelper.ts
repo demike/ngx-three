@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { ArrowHelper, Color, Line, Mesh, Vector3 } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -8,9 +14,12 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-arrowHelper',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThArrowHelper) }]
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThArrowHelper) },
+  ],
 })
 export class ThArrowHelper<
+  T extends ArrowHelper = ArrowHelper,
   TARGS extends any[] = [
     dir: Vector3,
     origin?: Vector3,
@@ -19,31 +28,29 @@ export class ThArrowHelper<
     headLength?: number,
     headWidth?: number
   ]
-> extends ThObject3D<TARGS> {
-  @Input()
-  public objRef!: ArrowHelper;
+> extends ThObject3D<T, TARGS> {
   protected getType(): Type<ArrowHelper> {
     return ArrowHelper;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.objRef) {
-      this.objRef.type = value;
+    if (this._objRef) {
+      this._objRef.type = value;
     }
   }
 
   @Input()
   public set line(value: Line) {
-    if (this.objRef) {
-      this.objRef.line = value;
+    if (this._objRef) {
+      this._objRef.line = value;
     }
   }
 
   @Input()
   public set cone(value: Mesh) {
-    if (this.objRef) {
-      this.objRef.cone = value;
+    if (this._objRef) {
+      this._objRef.cone = value;
     }
   }
 }

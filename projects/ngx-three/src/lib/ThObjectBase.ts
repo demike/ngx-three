@@ -6,14 +6,14 @@ import { ThWrapperBase } from './ThWrapperBase';
   template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThObjectBase<ARGS extends any[]> extends ThWrapperBase<Object3D, ARGS> {
+export class ThObjectBase<T extends Object3D, ARGS extends any[] = []> extends ThWrapperBase<T, ARGS> {
   constructor(public parent: ThObjectBase<any>) {
     super();
   }
 
   protected createThreeInstance(args?: Iterable<any>) {
     super.createThreeInstance(args);
-    this.parent.objRef?.add(this.objRef as Object3D);
+    this.parent.objRef?.add(this.objRef);
   }
 
   // object 3d methods

@@ -1,6 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Font, TextBufferGeometry, TextGeometryParameters } from 'three';
 import { ThExtrudeBufferGeometry } from './ThExtrudeBufferGeometry';
 import { ThGeometry } from './ThGeometry';
@@ -12,23 +18,22 @@ import { ThGeometry } from './ThGeometry';
   providers: [
     {
       provide: ThGeometry,
-      useExisting: forwardRef(() => ThTextBufferGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThTextBufferGeometry),
+    },
+  ],
 })
 export class ThTextBufferGeometry<
+  T extends TextBufferGeometry = TextBufferGeometry,
   TARGS extends any[] = [text: string, parameters: TextGeometryParameters]
-> extends ThExtrudeBufferGeometry<TARGS> {
-  @Input()
-  public objRef!: TextBufferGeometry;
+> extends ThExtrudeBufferGeometry<T, TARGS> {
   protected getType(): Type<TextBufferGeometry> {
     return TextBufferGeometry;
   }
 
   @Input()
   public set type(value: string) {
-    if (this.objRef) {
-      this.objRef.type = value;
+    if (this._objRef) {
+      this._objRef.type = value;
     }
   }
 
@@ -44,8 +49,8 @@ export class ThTextBufferGeometry<
     bevelOffset: number;
     bevelSegments: number;
   }) {
-    if (this.objRef) {
-      this.objRef.parameters = value;
+    if (this._objRef) {
+      this._objRef.parameters = value;
     }
   }
 }

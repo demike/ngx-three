@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, Type } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
 import { isDisposable } from './util';
 
@@ -9,7 +9,20 @@ import { isDisposable } from './util';
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, OnDestroy {
-  public objRef?: T;
+  protected _objRef?: T;
+  protected _objRef$?: ReplaySubject<T>;
+
+  @Input()
+  set objRef(ref: T | undefined) {
+    this._objRef = ref;
+    if (this._objRef$) {
+      this._objRef$.next(this._objRef);
+    }
+  }
+
+  get objRef() {
+    return this._objRef;
+  }
 
   // emit the changes
   protected updateEmitter?: EventEmitter<SimpleChanges>;
@@ -58,7 +71,7 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
     }
   }
 
-  protected getType(): Type<T> {
+  protected getType(): Type<any> {
     throw new Error('derive me');
   }
 
@@ -74,5 +87,12 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
     if (isDisposable(this.objRef)) {
       this.objRef.dispose();
     }
+  }
+
+  public get objRef$(): Observable<T> {
+    if (!this._objRef$) {
+      this._objRef$ = new ReplaySubject(1);
+    }
+    return this._objRef$;
   }
 }
