@@ -111,5 +111,5 @@ export function createLazyObject3DProxy(): LazyObject3DProxy {
 
 export function isLazyObject3dProxy(object: Object3D | LazyObject3DProxy): object is LazyObject3DProxy {
   // eslint-disable-next-line no-underscore-dangle
-  return (object as LazyObject3DProxy).__isProxy === true;
+  return (object as LazyObject3DProxy).__isProxy === true && (object as LazyObject3DProxy).objRef === undefined;
 }

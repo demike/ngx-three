@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, Type } from '@angular/core';
+import { LazyObject3DProxy } from 'ngx-three';
 import { Observable, ReplaySubject } from 'rxjs';
 import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
 import { isDisposable } from './util';
@@ -14,10 +15,7 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
 
   @Input()
   set objRef(ref: T | undefined) {
-    this._objRef = ref;
-    if (this._objRef$) {
-      this._objRef$.next(this._objRef);
-    }
+    this.applyObjRef(ref);
   }
 
   get objRef() {
@@ -33,6 +31,21 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
 
   @Input()
   public args?: ARGS;
+
+  @Output()
+  public get onUpdate(): Observable<SimpleChanges> {
+    if (!this.updateEmitter) {
+      this.updateEmitter = new EventEmitter();
+    }
+    return this.updateEmitter;
+  }
+
+  public get objRef$(): Observable<T> {
+    if (!this._objRef$) {
+      this._objRef$ = new ReplaySubject(1);
+    }
+    return this._objRef$;
+  }
 
   ngOnInit(): void {
     if (!this.objRef) {
@@ -59,8 +72,8 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
       return;
     }
 
-    if (changes.obj?.currentValue) {
-      this.objRef = changes.obj?.currentValue;
+    if (changes.objRef?.currentValue) {
+      this.objRef = changes.objRef?.currentValue;
     } else if (!this.objRef) {
       this.createThreeInstance(changes.args?.currentValue);
     }
@@ -71,16 +84,9 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
     }
   }
 
+  // Override this
   protected getType(): Type<any> {
     throw new Error('derive me');
-  }
-
-  @Output()
-  public get onUpdate(): Observable<SimpleChanges> {
-    if (!this.updateEmitter) {
-      this.updateEmitter = new EventEmitter();
-    }
-    return this.updateEmitter;
   }
 
   ngOnDestroy() {
@@ -89,10 +95,16 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
     }
   }
 
-  public get objRef$(): Observable<T> {
-    if (!this._objRef$) {
-      this._objRef$ = new ReplaySubject(1);
+  protected applyObjRef(objRef: T | undefined) {
+    this._objRef = objRef;
+    this.emitObjRefChange();
+  }
+
+  protected emitObjRefChange() {
+    // TODO only emit change if _objRef is no proxy,
+    // and/or trigger emit over objRef event emitter
+    if (this._objRef$) {
+      this._objRef$.next(this._objRef);
     }
-    return this._objRef$;
   }
 }

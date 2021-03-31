@@ -15,7 +15,7 @@ export class ThLoader<T = any> implements OnInit {
   @Input()
   url?: string;
 
-  protected proxy?: LazyObject3DProxy;
+  protected proxy: LazyObject3DProxy;
 
   protected onLoaded$?: EventEmitter<T>;
   protected onProgress$?: EventEmitter<ProgressEvent>;
@@ -69,13 +69,8 @@ export class ThLoader<T = any> implements OnInit {
 
     const object = await this.zone.runOutsideAngular(() => loaderFn(this.url, onProgress, onLoaded));
 
-    this.proxy.applyToObject3D(object);
-    this.host.objRef = object;
-    this.host.parent.objRef?.add(object);
-
-    // execute ngOnChanges to allow emitting a change
-    this.host.ngOnChanges({ obj: new SimpleChange(this.proxy, object, false) });
-    this.proxy = undefined;
+    this.proxy.objRef = object;
+    this.host.parent.objRef?.add(this.proxy);
 
     if (this.onLoaded$ && loaderResult !== undefined) {
       this.onLoaded$?.next(loaderResult);

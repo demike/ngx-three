@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Object3D, Vector3 } from 'three';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
@@ -6,14 +6,40 @@ import { ThWrapperBase } from './ThWrapperBase';
   template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThObjectBase<T extends Object3D, ARGS extends any[] = []> extends ThWrapperBase<T, ARGS> {
+export class ThObjectBase<T extends Object3D, ARGS extends any[] = []> extends ThWrapperBase<T, ARGS> implements OnInit {
   constructor(public parent: ThObjectBase<any>) {
     super();
   }
 
-  protected createThreeInstance(args?: Iterable<any>) {
-    super.createThreeInstance(args);
-    this.parent.objRef?.add(this.objRef);
+  protected applyObjRef(objRef: T | undefined) {
+    this.attachToParent(objRef, this._objRef);
+    this._objRef = objRef;
+    this.emitObjRefChange();
+  }
+
+  protected attachToParent(newRef?: T, oldRef?: T) {
+    if (!this.parent.objRef || (newRef === oldRef && oldRef?.parent?.uuid === this.parent.objRef.uuid)) {
+      return;
+    }
+
+    // remove old obj from parent
+    if (oldRef && oldRef.parent) {
+      oldRef.parent.remove(oldRef);
+    }
+
+    // add new obj to parent
+    if (newRef && (!newRef.parent || (newRef.parent && newRef.parent.uuid !== this.parent.objRef.uuid))) {
+      this.parent.objRef.add(newRef);
+    }
+  }
+
+  ngOnInit(): void {
+    super.ngOnInit();
+    /*
+    if (this._objRef && !this._objRef?.parent) {
+      //  this.attachToParent(this._objRef, undefined);
+    }
+    */
   }
 
   // object 3d methods
