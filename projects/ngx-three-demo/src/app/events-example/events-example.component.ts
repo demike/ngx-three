@@ -1,6 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
-import { SimpleExampleComponent } from '../simple-example/simple-example.component';
-
+import { Component, SimpleChanges } from '@angular/core';
 @Component({
   selector: 'app-events-example',
   templateUrl: './events-example.component.html',

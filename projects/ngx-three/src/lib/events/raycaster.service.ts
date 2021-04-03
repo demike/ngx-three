@@ -25,13 +25,21 @@ export class RaycasterService implements OnDestroy {
   private groups: Array<RaycasterEventDirective> = [];
   private paused = false;
 
+  private maxClickDistance = 23;
+
   private static instanceCnt = 0;
+
+  /**
+   * targets of the pointer down event
+   */
+  private pointerDownEvent?: PointerEvent;
+
   public readonly nid = RaycasterService.instanceCnt++;
 
   constructor() {
-    this.onMouseMove = this.onMouseMove.bind(this);
-    this.onClick = this.onClick.bind(this);
-    this.onTouchStart = this.onTouchStart.bind(this);
+    this.onPointerMove = this.onPointerMove.bind(this);
+    this.onPointerDown = this.onPointerDown.bind(this);
+    this.onPointerUp = this.onPointerUp.bind(this);
   }
 
   public ngOnDestroy(): void {
@@ -43,18 +51,18 @@ export class RaycasterService implements OnDestroy {
     if (!this.canvas) {
       throw new Error('missing canvas');
     }
-    this.canvas.addEventListener('mousemove', this.onMouseMove);
-    this.canvas.addEventListener('click', this.onClick);
-    this.canvas.addEventListener('touchstart', this.onTouchStart);
+    this.canvas.addEventListener('pointermove', this.onPointerMove);
+    this.canvas.addEventListener('pointerdown', this.onPointerDown);
+    this.canvas.addEventListener('pointerup', this.onPointerUp);
   }
 
   private unsubscribe() {
     if (!this.canvas) {
       throw new Error('missing canvas');
     }
-    this.canvas.removeEventListener('mousemove', this.onMouseMove);
-    this.canvas.removeEventListener('click', this.onClick);
-    this.canvas.removeEventListener('touchstart', this.onTouchStart);
+    this.canvas.removeEventListener('pointermove', this.onPointerMove);
+    this.canvas.removeEventListener('pointerdown', this.onPointerDown);
+    this.canvas.removeEventListener('pointerup', this.onPointerUp);
   }
 
   public enable() {
@@ -96,11 +104,10 @@ export class RaycasterService implements OnDestroy {
     }
   }
 
-  private onMouseMove(event: any /*MouseEvent  & { layerX: number, layerY: number}*/) {
+  private onPointerMove(event: any /*MouseEvent  & { layerX: number, layerY: number}*/) {
     if (!this.isReady()) {
       return;
     }
-    event.preventDefault();
     const i = this.getFirstIntersectedGroup(event.layerX, event.layerY);
     if (!this.selected || this.selected !== i.target) {
       if (this.selected) {
@@ -122,29 +129,19 @@ export class RaycasterService implements OnDestroy {
     }
   }
 
-  private onClick(event: any /*MouseEvent: & { layerX: number, layerY: number}*/) {
-    if (!this.isReady(true)) {
-      return;
-    }
-    event.preventDefault();
-    const intersection = this.getFirstIntersectedGroup(event.layerX, event.layerY);
-    if (intersection && intersection.target && intersection.target.host.objRef) {
-      const evt = {
-        type: RaycasterEvent.click,
-        face: intersection.face
-      };
-      intersection.target.host.objRef.dispatchEvent(evt);
-      intersection.target.onClick(evt);
-    }
+  private onPointerDown(event: PointerEvent) {
+    this.maxClickDistance = event.width;
+    this.pointerDownEvent = event;
   }
 
-  private onTouchStart(event: TouchEvent) {
-    // console.log(event);
-    if (!this.isReady()) {
+  private onPointerUp(event: PointerEvent) {
+    const downEvent = this.pointerDownEvent;
+    this.pointerDownEvent = undefined;
+
+    if (!this.isReady() || this.calcPointerDownUpDinstance(event, downEvent) > this.maxClickDistance) {
       return;
     }
-    event.preventDefault();
-    const i = this.getFirstIntersectedGroup(event.touches[0].clientX, event.touches[0].clientY);
+    const i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY);
     if (i && i.target && i.target.host.objRef) {
       const evt = { type: RaycasterEvent.click, face: i.face };
       i.target.host.objRef.dispatchEvent(evt);
@@ -154,6 +151,15 @@ export class RaycasterService implements OnDestroy {
 
   private isReady(ignorePaused?: boolean): boolean {
     return !!(this.enabled && (ignorePaused || !this.paused) && this.camera && this.camera.objRef && this.groups && this.groups.length > 0);
+  }
+
+  private calcPointerDownUpDinstance(upEvent: PointerEvent, downEvent?: PointerEvent) {
+    if (!downEvent) {
+      return Number.MAX_VALUE;
+    }
+    const xDist = (upEvent as any).layerX - (downEvent as any).layerX;
+    const yDist = (upEvent as any).layerY - (downEvent as any).layerY;
+    return Math.sqrt(xDist * xDist + yDist * yDist);
   }
 
   private getFirstIntersectedGroup(x: number, y: number): NearestIntersection {
