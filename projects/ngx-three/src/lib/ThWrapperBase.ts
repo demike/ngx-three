@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, Type } from '@angular/core';
-import { LazyObject3DProxy } from 'ngx-three';
 import { Observable, ReplaySubject } from 'rxjs';
 import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
 import { isDisposable } from './util';
