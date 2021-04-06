@@ -14,6 +14,7 @@ import { MaterialModule } from './material/material.module';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { HighlightPlusModule } from 'ngx-highlightjs/plus';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DynamicLoaderExampleComponent } from './dynamic-loader-example/dynamic-loader-example.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoaderExampleComponent,
     ControlsExampleComponent,
     EventsExampleComponent,
-    CodeComponent
+    CodeComponent,
+    DynamicLoaderExampleComponent
   ],
   imports: [
     BrowserModule,

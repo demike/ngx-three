@@ -40,7 +40,6 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
     if (p === 'objRef') {
       if (value) {
         this.applyToObject3D(value);
-        this.children = [];
       }
       this.objRef = value;
     } else {
@@ -57,9 +56,9 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
   add = (...object: Object3D[]): this => {
     if (this.objRef) {
       this.objRef.add(...object);
-    } else {
-      this.children.push(...object);
     }
+
+    this.children.push(...object);
 
     return this;
   };
@@ -67,12 +66,12 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
   remove = (...object: Object3D[]): this => {
     if (this.objRef) {
       this.objRef.remove(...object);
-    } else {
-      for (const obj of object) {
-        const index = this.children.indexOf(obj);
-        if (index >= 0) {
-          this.children = this.children.splice(index, 1);
-        }
+    }
+
+    for (const obj of object) {
+      const index = this.children.indexOf(obj);
+      if (index >= 0) {
+        this.children = this.children.splice(index, 1);
       }
     }
 
@@ -89,12 +88,13 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
       }
     });
 
-    let children = this.children;
-    if (this.objRef) {
-      children = this.objRef.children;
-    }
+    this.children.forEach((child) => objRef.add(child));
 
-    children.forEach((child) => objRef.add(child));
+    if (this.objRef?.parent) {
+      const parent = this.objRef?.parent;
+      parent.remove(this.objRef);
+      parent.add(objRef);
+    }
   };
 }
 

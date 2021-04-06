@@ -9,11 +9,22 @@ import { createLazyObject3DProxy, LazyObject3DProxy } from './LazyObject3dProxy'
 })
 // eslint-disable-next-line @angular-eslint/directive-class-suffix
 export class ThLoader<T = any> implements OnInit {
+  private initialized = false;
+
+  private _url?: string;
+
   @Input()
   public loaderFn?: (input?: string, onProgress?: (progress: ProgressEvent) => void, onLoaded?: (result: T) => void) => Promise<Object3D>;
 
   @Input()
-  url?: string;
+  set url(url: string | undefined) {
+    this._url = url;
+    this.loadAsync();
+  }
+
+  get url() {
+    return this._url;
+  }
 
   protected proxy: LazyObject3DProxy;
 
@@ -26,6 +37,7 @@ export class ThLoader<T = any> implements OnInit {
   }
 
   ngOnInit(): void {
+    this.initialized = true;
     this.loadAsync();
     // this.zone.runOutsideAngular(() => );
   }
@@ -45,6 +57,9 @@ export class ThLoader<T = any> implements OnInit {
   }
 
   protected async loadAsync() {
+    if (!this.initialized) {
+      return;
+    }
     const loaderFn = this.loaderFn;
     if (!loaderFn) {
       throw new Error('Missing loader Function ( @Input() loaderFn )');
@@ -70,7 +85,9 @@ export class ThLoader<T = any> implements OnInit {
     const object = await this.zone.runOutsideAngular(() => loaderFn(this.url, onProgress, onLoaded));
 
     this.proxy.objRef = object;
-    this.host.parent.objRef?.add(this.proxy);
+    if (!this.proxy.parent) {
+      this.host.parent.objRef?.add(this.proxy);
+    }
 
     if (this.onLoaded$ && loaderResult !== undefined) {
       this.onLoaded$?.next(loaderResult);
