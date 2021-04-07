@@ -9,6 +9,7 @@
       [rotation]="this.rotation"
       [position]="[0, 1, 0]"
       (onLoaded)="onLoaded()"
+      (objRef$)="onRefChange($event)"
     ></th-object3D>
 
     <th-gridHelper [args]="[10, 10]"></th-gridHelper>

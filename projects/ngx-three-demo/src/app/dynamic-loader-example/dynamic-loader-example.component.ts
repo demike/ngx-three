@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Object3D } from 'three';
 
 @Component({
   selector: 'app-dynamic-loader-example',
@@ -31,6 +32,11 @@ export class DynamicLoaderExampleComponent {
     } else {
       this.modelScale = [1, 1, 1];
     }
+  }
+
+  public onRefChange(newRef: Object3D) {
+    // objRef$ emits every time a new object is set
+    // ( also if a loader has loaded the new object)
   }
 
   public onBeforeRender(): void {

@@ -1,10 +1,11 @@
-import { Object3D } from 'three';
+import { Object3D, Event } from 'three';
 import { applyValue, isSettable } from '../util';
 
 class Object3DProxyHandler implements ProxyHandler<Object3D> {
   protected objRef?: Object3D;
   protected memberMap = new Map<keyof Object3D, any>();
   protected children: Object3D[] = [];
+  protected eventListener: { [key: string]: ((event: Event) => void)[] } = {};
 
   get(target: Object3D, p: keyof LazyObject3DProxy, receiver: any): any {
     switch (p) {
@@ -94,6 +95,44 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
       const parent = this.objRef?.parent;
       parent.remove(this.objRef);
       parent.add(objRef);
+    }
+  };
+
+  /**
+   * Adds a listener to an event type.
+   *
+   * @param type The type of event to listen to.
+   * @param listener The function that gets called when the event is fired.
+   */
+  addEventListener = (type: string, listener: (event: Event) => void): void => {
+    let arr = this.eventListener[type];
+    if (!arr) {
+      arr = [];
+      this.eventListener[type] = arr;
+    }
+
+    arr.push(listener);
+
+    if (this.objRef) {
+      this.objRef.addEventListener(type, listener);
+    }
+  };
+
+  /**
+   * Removes a listener from an event type.
+   *
+   * @param type The type of the listener that gets removed.
+   * @param listener The listener function that gets removed.
+   */
+  removeEventListener = (type: string, listener: (event: Event) => void): void => {
+    const arr = this.eventListener[type];
+    if (!arr) {
+      return;
+    }
+
+    const index = arr.indexOf(listener);
+    if (index >= 0) {
+      arr.splice(index, 1);
     }
   };
 }

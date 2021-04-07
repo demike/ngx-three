@@ -85,9 +85,9 @@ export class ThLoader<T = any> implements OnInit {
     const object = await this.zone.runOutsideAngular(() => loaderFn(this.url, onProgress, onLoaded));
 
     this.proxy.objRef = object;
-    if (!this.proxy.parent) {
-      this.host.parent.objRef?.add(this.proxy);
-    }
+    // add the new object to the parent and
+    // emit a loaded event directly on the three.js object and on objRef$
+    this.host.objRef = this.proxy;
 
     if (this.onLoaded$ && loaderResult !== undefined) {
       this.onLoaded$?.next(loaderResult);

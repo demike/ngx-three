@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, Type } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
+import { EventDispatcher, Object3D } from 'three';
 import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
 import { isDisposable } from './util';
 
@@ -39,6 +40,10 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
     return this.updateEmitter;
   }
 
+  /**
+   * emits the last assigned object ref
+   */
+  @Output()
   public get objRef$(): Observable<T> {
     if (!this._objRef$) {
       this._objRef$ = new ReplaySubject(1);
@@ -62,9 +67,7 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
       // the object is already set and it is no proxy
 
       // emit the changes
-      if (this.updateEmitter) {
-        this.updateEmitter.next(changes);
-      }
+      this.emitPropertyChanges(changes);
 
       // TODO: request animation frame
 
@@ -102,8 +105,18 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
   protected emitObjRefChange() {
     // TODO only emit change if _objRef is no proxy,
     // and/or trigger emit over objRef event emitter
-    if (this._objRef$) {
-      this._objRef$.next(this._objRef);
+    if (this._objRef && !isLazyObject3dProxy(this._objRef as any)) {
+      ((this._objRef as unknown) as Object3D).dispatchEvent({ type: 'loaded', object: this._objRef });
+      if (this._objRef$) {
+        this._objRef$.next(this._objRef);
+      }
+    }
+  }
+
+  protected emitPropertyChanges(changes: SimpleChanges) {
+    ((this.objRef as unknown) as EventDispatcher).dispatchEvent({ type: 'changes', changes });
+    if (this.updateEmitter) {
+      this.updateEmitter.next(changes);
     }
   }
 }
