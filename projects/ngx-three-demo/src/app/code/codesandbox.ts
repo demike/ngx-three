@@ -80,7 +80,7 @@ function createPackageJson() {
         '@angular/platform-browser': '~11.2.2',
         '@angular/platform-browser-dynamic': '~11.2.2',
         rxjs: '~6.6.0',
-        three: '~0.124.0',
+        three: '~0.127.0',
         tslib: '^2.1.0',
         'zone.js': '~0.10.2'
       }
