@@ -6,6 +6,10 @@ class ExampleObj {
   public dispose() {
     // do nothing
   }
+
+  public dispatchEvent() {
+    // do nothing
+  }
 }
 
 @Component({
