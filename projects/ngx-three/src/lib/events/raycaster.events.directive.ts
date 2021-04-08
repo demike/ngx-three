@@ -6,7 +6,7 @@ import { RaycasterService } from './raycaster.service';
 
 export interface RaycasterEmitEvent {
   component: ThObject3D;
-  face?: THREE.Face3;
+  face?: THREE.Face;
 }
 
 @Directive({ selector: '[onClick], [onMouseEnter], [onMouseExit]' })

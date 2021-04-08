@@ -7,7 +7,6 @@ type Three = typeof import('three');
 /** Classes exported `three/src/Three.d.ts` but not from `three/src/Three.js` */
 type MissingInThreeRuntimeExports =
   | THREE.AnimationAction
-  | THREE.DirectGeometry
   | THREE.WebGLClipping
   | THREE.WebGLInfo
   | THREE.WebGLProperties
@@ -23,26 +22,18 @@ export { OmitByValue };
 
 // 3D objects
 
-// TODO fix these types
 type __ngxThreeObjects = {
   [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
     ? InstanceType<Three[P]> extends InstanceType<Three['Object3D']>
       ? InstanceType<Three[P]>
-      : /*
-      : InstanceType<Three[P]> extends InstanceType<Three['Geometry']>
-      ? InstanceType<Three[P]>
-      : InstanceType<Three[P]> extends InstanceType<Three['BufferGeometry']>
-      ? InstanceType<Three[P]>
-      : InstanceType<Three[P]> extends InstanceType<Three['Material']>
-      ? InstanceType<Three[P]>
-      : InstanceType<Three[P]>
-      */
-        never
+      : never
     : never;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NgxThreeObjects extends OmitByValue<__ngxThreeObjects, never> {}
+
+// materials
 
 type __ngxThreeMaterials = {
   [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
@@ -52,22 +43,10 @@ type __ngxThreeMaterials = {
     : never;
 };
 
-// materials
-
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NgxThreeMaterials extends OmitByValue<__ngxThreeMaterials, never> {}
 
-type __ngxThreeGeometries = {
-  [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
-    ? InstanceType<Three[P]> extends InstanceType<Three['Geometry']>
-      ? InstanceType<Three[P]>
-      : never
-    : never;
-};
-
 // geometries
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface NgxThreeGeometries extends OmitByValue<__ngxThreeGeometries, never> {}
 
 type __ngxThreeBufferGeometries = {
   [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any

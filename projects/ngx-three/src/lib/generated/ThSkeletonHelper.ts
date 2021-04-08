@@ -10,7 +10,6 @@ import {
 import {
   Bone,
   BufferGeometry,
-  Geometry,
   Material,
   Matrix4,
   Object3D,
@@ -31,12 +30,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThSkeletonHelper<
   T extends SkeletonHelper = SkeletonHelper,
   TARGS extends any[] = [object: Object3D]
-> extends ThLineSegments<
-  Geometry | BufferGeometry,
-  Material | Material[],
-  T,
-  TARGS
-> {
+> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   protected getType(): Type<SkeletonHelper> {
     return SkeletonHelper;
   }

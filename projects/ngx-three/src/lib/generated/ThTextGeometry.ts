@@ -8,20 +8,24 @@ import {
   Type,
 } from '@angular/core';
 import { Font, TextGeometry, TextGeometryParameters } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
+import { ThExtrudeGeometry } from './ThExtrudeGeometry';
 
 @Component({
   selector: 'th-textGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThTextGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThTextGeometry),
+    },
   ],
 })
 export class ThTextGeometry<
   T extends TextGeometry = TextGeometry,
   TARGS extends any[] = [text: string, parameters: TextGeometryParameters]
-> extends ThGeometry<T, TARGS> {
+> extends ThExtrudeGeometry<T, TARGS> {
   protected getType(): Type<TextGeometry> {
     return TextGeometry;
   }
@@ -37,22 +41,10 @@ export class ThTextGeometry<
   public set parameters(value: {
     font: Font;
     size: number;
-    /**
-     * @default 50
-     */
     height: number;
     curveSegments: number;
-    /**
-     * @default false
-     */
     bevelEnabled: boolean;
-    /**
-     * @default 10
-     */
     bevelThickness: number;
-    /**
-     * @default 8
-     */
     bevelSize: number;
     bevelOffset: number;
     bevelSegments: number;

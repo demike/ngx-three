@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import { InstancedBufferGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
-import { ThGeometry } from './ThGeometry';
 
 @Component({
   selector: 'th-instancedBufferGeometry',
@@ -17,7 +16,7 @@ import { ThGeometry } from './ThGeometry';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
-      provide: ThGeometry,
+      provide: ThBufferGeometry,
       useExisting: forwardRef(() => ThInstancedBufferGeometry),
     },
   ],
@@ -38,8 +37,15 @@ export class ThInstancedBufferGeometry<
   }
 
   @Input()
+  public set isInstancedBufferGeometry(value: boolean) {
+    if (this._objRef) {
+      this._objRef.isInstancedBufferGeometry = value;
+    }
+  }
+
+  @Input()
   public set groups(
-    value: { start: number; count: number; instances: number }[]
+    value: Array<{ start: number; count: number; instances: number }>
   ) {
     if (this._objRef) {
       this._objRef.groups = value;

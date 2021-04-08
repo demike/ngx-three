@@ -8,14 +8,17 @@ import {
   Type,
 } from '@angular/core';
 import { RingGeometry } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-ringGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThRingGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThRingGeometry),
+    },
   ],
 })
 export class ThRingGeometry<
@@ -28,7 +31,7 @@ export class ThRingGeometry<
     thetaStart?: number,
     thetaLength?: number
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<RingGeometry> {
     return RingGeometry;
   }

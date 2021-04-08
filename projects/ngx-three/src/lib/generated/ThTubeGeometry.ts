@@ -8,14 +8,17 @@ import {
   Type,
 } from '@angular/core';
 import { Curve, TubeGeometry, Vector3 } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-tubeGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThTubeGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThTubeGeometry),
+    },
   ],
 })
 export class ThTubeGeometry<
@@ -27,9 +30,16 @@ export class ThTubeGeometry<
     radiusSegments?: number,
     closed?: boolean
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<TubeGeometry> {
     return TubeGeometry;
+  }
+
+  @Input()
+  public set type(value: string) {
+    if (this._objRef) {
+      this._objRef.type = value;
+    }
   }
 
   @Input()

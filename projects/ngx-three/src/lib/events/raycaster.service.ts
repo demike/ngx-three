@@ -12,7 +12,7 @@ export enum RaycasterEvent {
 
 interface NearestIntersection {
   target?: RaycasterEventDirective | null;
-  face?: THREE.Face3 | null;
+  face?: THREE.Face | null;
 }
 
 @Injectable()

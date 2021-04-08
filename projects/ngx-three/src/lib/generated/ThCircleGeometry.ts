@@ -8,14 +8,17 @@ import {
   Type,
 } from '@angular/core';
 import { CircleGeometry } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-circleGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThCircleGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThCircleGeometry),
+    },
   ],
 })
 export class ThCircleGeometry<
@@ -26,7 +29,7 @@ export class ThCircleGeometry<
     thetaStart?: number,
     thetaLength?: number
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<CircleGeometry> {
     return CircleGeometry;
   }

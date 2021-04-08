@@ -7,7 +7,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { BufferGeometry, Geometry, Material, Points } from 'three';
+import { BufferGeometry, Material, Points } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -17,7 +17,7 @@ import { ThObject3D } from './ThObject3D';
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPoints) }],
 })
 export class ThPoints<
-  TGeometry extends Geometry | BufferGeometry = Geometry | BufferGeometry,
+  TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   T extends Points<TGeometry, TMaterial> = Points<TGeometry, TMaterial>,
   TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]

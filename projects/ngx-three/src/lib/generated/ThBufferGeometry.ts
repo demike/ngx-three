@@ -3,7 +3,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   SkipSelf,
   Type,
@@ -18,16 +17,13 @@ import {
 } from 'three';
 import { ThGeometryBase } from '../ThGeometryBase';
 import { applyValue } from '../util';
-import { ThGeometry } from './ThGeometry';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
   selector: 'th-bufferGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThBufferGeometry) },
-  ],
+  providers: [],
 })
 export class ThBufferGeometry<
   T extends BufferGeometry = BufferGeometry,
@@ -90,7 +86,7 @@ export class ThBufferGeometry<
 
   @Input()
   public set morphAttributes(value: {
-    [name: string]: (BufferAttribute | InterleavedBufferAttribute)[];
+    [name: string]: Array<BufferAttribute | InterleavedBufferAttribute>;
   }) {
     if (this._objRef) {
       this._objRef.morphAttributes = value;
@@ -106,7 +102,7 @@ export class ThBufferGeometry<
 
   @Input()
   public set groups(
-    value: { start: number; count: number; materialIndex?: number }[]
+    value: Array<{ start: number; count: number; materialIndex?: number }>
   ) {
     if (this._objRef) {
       this._objRef.groups = value;

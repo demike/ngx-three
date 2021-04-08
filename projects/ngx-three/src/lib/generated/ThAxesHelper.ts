@@ -7,7 +7,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { AxesHelper, BufferGeometry, Geometry, Material } from 'three';
+import { AxesHelper, BufferGeometry, Material } from 'three';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
@@ -22,12 +22,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThAxesHelper<
   T extends AxesHelper = AxesHelper,
   TARGS extends any[] = [size?: number]
-> extends ThLineSegments<
-  Geometry | BufferGeometry,
-  Material | Material[],
-  T,
-  TARGS
-> {
+> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   protected getType(): Type<AxesHelper> {
     return AxesHelper;
   }

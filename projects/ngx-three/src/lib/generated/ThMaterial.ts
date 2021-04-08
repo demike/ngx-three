@@ -43,6 +43,13 @@ export class ThMaterial<
   }
 
   @Input()
+  public set alphaToCoverage(value: boolean) {
+    if (this._objRef) {
+      this._objRef.alphaToCoverage = value;
+    }
+  }
+
+  @Input()
   public set blendDst(value: BlendingDstFactor) {
     if (this._objRef) {
       this._objRef.blendDst = value;
@@ -277,13 +284,6 @@ export class ThMaterial<
   public set dithering(value: boolean) {
     if (this._objRef) {
       this._objRef.dithering = value;
-    }
-  }
-
-  @Input()
-  public set flatShading(value: boolean) {
-    if (this._objRef) {
-      this._objRef.flatShading = value;
     }
   }
 

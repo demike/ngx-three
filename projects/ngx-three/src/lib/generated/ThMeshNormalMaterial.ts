@@ -135,4 +135,11 @@ export class ThMeshNormalMaterial<
       this._objRef.morphNormals = value;
     }
   }
+
+  @Input()
+  public set flatShading(value: boolean) {
+    if (this._objRef) {
+      this._objRef.flatShading = value;
+    }
+  }
 }

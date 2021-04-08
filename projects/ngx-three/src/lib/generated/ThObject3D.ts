@@ -12,7 +12,6 @@ import {
   BufferGeometry,
   Camera,
   Euler,
-  Geometry,
   Group,
   Layers,
   Material,
@@ -303,7 +302,7 @@ export class ThObject3D<
       renderer: WebGLRenderer,
       scene: Scene,
       camera: Camera,
-      geometry: Geometry | BufferGeometry,
+      geometry: BufferGeometry,
       material: Material,
       group: Group
     ) => void
@@ -319,7 +318,7 @@ export class ThObject3D<
       renderer: WebGLRenderer,
       scene: Scene,
       camera: Camera,
-      geometry: Geometry | BufferGeometry,
+      geometry: BufferGeometry,
       material: Material,
       group: Group
     ) => void

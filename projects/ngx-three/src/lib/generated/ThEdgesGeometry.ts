@@ -7,24 +7,23 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { BufferGeometry, EdgesGeometry, Geometry } from 'three';
+import { BufferGeometry, EdgesGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
-import { ThGeometry } from './ThGeometry';
 
 @Component({
   selector: 'th-edgesGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThEdgesGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThEdgesGeometry),
+    },
   ],
 })
 export class ThEdgesGeometry<
   T extends EdgesGeometry = EdgesGeometry,
-  TARGS extends any[] = [
-    geometry: BufferGeometry | Geometry,
-    thresholdAngle?: number
-  ]
+  TARGS extends any[] = [geometry: BufferGeometry, thresholdAngle?: number]
 > extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<EdgesGeometry> {
     return EdgesGeometry;

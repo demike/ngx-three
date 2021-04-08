@@ -8,14 +8,17 @@ import {
   Type,
 } from '@angular/core';
 import { SphereGeometry } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-sphereGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThSphereGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThSphereGeometry),
+    },
   ],
 })
 export class ThSphereGeometry<
@@ -29,7 +32,7 @@ export class ThSphereGeometry<
     thetaStart?: number,
     thetaLength?: number
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<SphereGeometry> {
     return SphereGeometry;
   }

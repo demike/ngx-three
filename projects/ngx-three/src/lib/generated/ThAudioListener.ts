@@ -48,7 +48,7 @@ export class ThAudioListener<
   }
 
   @Input()
-  public set filter(value: null | any) {
+  public set filter(value: any) {
     if (this._objRef) {
       this._objRef.filter = value;
     }

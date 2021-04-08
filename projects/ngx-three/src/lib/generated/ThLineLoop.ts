@@ -7,7 +7,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { BufferGeometry, Geometry, LineLoop, Material } from 'three';
+import { BufferGeometry, LineLoop, Material } from 'three';
 import { ThLine } from './ThLine';
 import { ThObject3D } from './ThObject3D';
 
@@ -20,7 +20,7 @@ import { ThObject3D } from './ThObject3D';
   ],
 })
 export class ThLineLoop<
-  TGeometry extends Geometry | BufferGeometry = Geometry | BufferGeometry,
+  TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   T extends LineLoop<TGeometry, TMaterial> = LineLoop<TGeometry, TMaterial>,
   TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]

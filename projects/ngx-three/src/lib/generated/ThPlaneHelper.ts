@@ -7,14 +7,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import {
-  BufferGeometry,
-  Geometry,
-  Material,
-  Plane,
-  PlaneHelper,
-  Vector3,
-} from 'three';
+import { BufferGeometry, Material, Plane, PlaneHelper, Vector3 } from 'three';
 import { applyValue } from '../util';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
@@ -30,12 +23,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThPlaneHelper<
   T extends PlaneHelper = PlaneHelper,
   TARGS extends any[] = [plane: Plane, size?: number, hex?: number]
-> extends ThLineSegments<
-  Geometry | BufferGeometry,
-  Material | Material[],
-  T,
-  TARGS
-> {
+> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   protected getType(): Type<PlaneHelper> {
     return PlaneHelper;
   }

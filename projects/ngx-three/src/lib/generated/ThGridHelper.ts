@@ -7,7 +7,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { BufferGeometry, Color, Geometry, GridHelper, Material } from 'three';
+import { BufferGeometry, Color, GridHelper, Material } from 'three';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
@@ -27,12 +27,7 @@ export class ThGridHelper<
     color1?: Color | string | number,
     color2?: Color | string | number
   ]
-> extends ThLineSegments<
-  Geometry | BufferGeometry,
-  Material | Material[],
-  T,
-  TARGS
-> {
+> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   protected getType(): Type<GridHelper> {
     return GridHelper;
   }

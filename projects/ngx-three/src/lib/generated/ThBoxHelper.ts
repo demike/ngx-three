@@ -7,14 +7,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import {
-  BoxHelper,
-  BufferGeometry,
-  Color,
-  Geometry,
-  Material,
-  Object3D,
-} from 'three';
+import { BoxHelper, BufferGeometry, Color, Material, Object3D } from 'three';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
@@ -29,12 +22,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThBoxHelper<
   T extends BoxHelper = BoxHelper,
   TARGS extends any[] = [object: Object3D, color?: Color | string | number]
-> extends ThLineSegments<
-  Geometry | BufferGeometry,
-  Material | Material[],
-  T,
-  TARGS
-> {
+> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   protected getType(): Type<BoxHelper> {
     return BoxHelper;
   }

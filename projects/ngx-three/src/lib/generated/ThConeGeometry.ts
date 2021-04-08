@@ -8,15 +8,18 @@ import {
   Type,
 } from '@angular/core';
 import { ConeGeometry } from 'three';
+import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThCylinderGeometry } from './ThCylinderGeometry';
-import { ThGeometry } from './ThGeometry';
 
 @Component({
   selector: 'th-coneGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThConeGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThConeGeometry),
+    },
   ],
 })
 export class ThConeGeometry<

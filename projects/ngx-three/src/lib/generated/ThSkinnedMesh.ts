@@ -9,7 +9,6 @@ import {
 } from '@angular/core';
 import {
   BufferGeometry,
-  Geometry,
   Material,
   Matrix4,
   Skeleton,
@@ -28,7 +27,7 @@ import { ThObject3D } from './ThObject3D';
   ],
 })
 export class ThSkinnedMesh<
-  TGeometry extends Geometry | BufferGeometry = Geometry | BufferGeometry,
+  TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   T extends SkinnedMesh<TGeometry, TMaterial> = SkinnedMesh<
     TGeometry,

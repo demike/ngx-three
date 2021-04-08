@@ -7,13 +7,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import {
-  BufferGeometry,
-  Color,
-  Geometry,
-  Material,
-  PolarGridHelper,
-} from 'three';
+import { BufferGeometry, Color, Material, PolarGridHelper } from 'three';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
@@ -28,19 +22,14 @@ import { ThObject3D } from './ThObject3D';
 export class ThPolarGridHelper<
   T extends PolarGridHelper = PolarGridHelper,
   TARGS extends any[] = [
-    radius: number,
-    radials: number,
-    circles: number,
-    divisions: number,
-    color1: Color | string | number | undefined,
-    color2: Color | string | number | undefined
+    radius?: number,
+    radials?: number,
+    circles?: number,
+    divisions?: number,
+    color1?: Color | string | number,
+    color2?: Color | string | number
   ]
-> extends ThLineSegments<
-  Geometry | BufferGeometry,
-  Material | Material[],
-  T,
-  TARGS
-> {
+> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   protected getType(): Type<PolarGridHelper> {
     return PolarGridHelper;
   }

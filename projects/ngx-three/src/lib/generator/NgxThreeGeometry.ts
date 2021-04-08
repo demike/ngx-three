@@ -6,8 +6,8 @@ import { NgxThreeClass } from './NgxThreeClass';
 export class NgxThreeGeometry extends NgxThreeClass {
   public generate() {
     this.imports.add("import { ThObject3D } from './ThObject3D';");
-    if (this.className !== 'ThGeometry') {
-      this.imports.add("import { ThGeometry } from './ThGeometry';");
+    if (this.className !== 'ThBufferGeometry') {
+      this.imports.add("import { ThBufferGeometry } from './ThBufferGeometry';");
     }
     super.generate();
   }
@@ -25,14 +25,14 @@ export class NgxThreeGeometry extends NgxThreeClass {
   }
 
   protected generateProvidersArray() {
-    if (this.className === 'ThGeometry') {
+    if (this.className === 'ThBufferGeometry') {
       return '[]';
     }
-    return `[{provide: ThGeometry, useExisting: forwardRef(() => ${this.className})}]`;
+    return `[{provide: ThBufferGeometry, useExisting: forwardRef(() => ${this.className})}]`;
   }
 
   public getBaseClassName(): string {
-    return 'Geometry';
+    return 'BufferGeometry';
   }
 
   public getWrapperBaseClassName(): string {

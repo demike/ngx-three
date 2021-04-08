@@ -30,6 +30,12 @@ export abstract class NgxThreeClass {
   }
 
   generate() {
+    if (ts.isExportSpecifier(this.classDecl)) {
+      // this is just an export specifier do not generate a wrapper for it
+      // ie.:   export { BoxGeometry as BoxBufferGeometry}
+      this.content = '';
+      return;
+    }
     if (this.getBaseClassName().length > 0 && this.className !== 'Th' + this.getBaseClassName()) {
       this.imports.add(`import { Th${this.getBaseClassName()} } from './Th${this.getBaseClassName()}';`);
     }
@@ -141,6 +147,9 @@ export abstract class NgxThreeClass {
 
   private generateMembers(classDeclaration: ts.ClassDeclaration): string {
     let members = '';
+    if (!classDeclaration.members) {
+      return members;
+    }
 
     for (const member of classDeclaration.members) {
       if (ts.isPropertyDeclaration(member) && member.type) {
@@ -261,7 +270,7 @@ export abstract class NgxThreeClass {
   private addImportsFrom(classNode: ts.Node) {
     const srcFile = classNode.getSourceFile();
 
-    if (srcFile.fileName.search('node_modules/three/') >= 0) {
+    if (srcFile.fileName.search('node_modules/@types/three/') >= 0) {
       srcFile.statements
         .filter(ts.isImportDeclaration)
         .map((imp: ts.ImportDeclaration) => {
@@ -311,12 +320,22 @@ export abstract class NgxThreeClass {
         return typeParams
           .filter((p) => p.default)
           .map((p) => {
-            (p.default as ts.UnionOrIntersectionTypeNode).types.forEach((type) => {
-              if (ts.isTypeReferenceNode(type)) {
-                // TODO: allow non "three" imports
-                this.imports.add(`import { ${type.typeName.getText()} } from 'three';`);
-              }
-            });
+            const typeNode = p.default;
+            if ((typeNode as ts.UnionOrIntersectionTypeNode).types) {
+              (typeNode as ts.UnionOrIntersectionTypeNode).types?.forEach((type) => {
+                if (ts.isTypeReferenceNode(type)) {
+                  // TODO: allow non "three" imports
+                  this.imports.add(`import { ${type.typeName.getText()} } from 'three';`);
+                } else if (ts.isArrayTypeNode(type)) {
+                  this.imports.add(`import { ${((type.elementType as any) as ts.TypeReferenceNode).typeName.getText()} } from 'three';`);
+                }
+              });
+            } else if (typeNode && ts.isTypeReferenceNode(typeNode)) {
+              this.imports.add(`import { ${typeNode.typeName.getText()} } from 'three';`);
+            } else {
+              // TODO:
+              console.log('TODO');
+            }
 
             return (p.default as ts.Node).getText();
           })

@@ -8,14 +8,17 @@ import {
   Type,
 } from '@angular/core';
 import { LatheGeometry, Vector2 } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-latheGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThLatheGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThLatheGeometry),
+    },
   ],
 })
 export class ThLatheGeometry<
@@ -26,7 +29,7 @@ export class ThLatheGeometry<
     phiStart?: number,
     phiLength?: number
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<LatheGeometry> {
     return LatheGeometry;
   }

@@ -8,7 +8,8 @@ import {
   Type,
 } from '@angular/core';
 import { DodecahedronGeometry } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
+import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
 
 @Component({
   selector: 'th-dodecahedronGeometry',
@@ -16,7 +17,7 @@ import { ThGeometry } from './ThGeometry';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
-      provide: ThGeometry,
+      provide: ThBufferGeometry,
       useExisting: forwardRef(() => ThDodecahedronGeometry),
     },
   ],
@@ -24,7 +25,7 @@ import { ThGeometry } from './ThGeometry';
 export class ThDodecahedronGeometry<
   T extends DodecahedronGeometry = DodecahedronGeometry,
   TARGS extends any[] = [radius?: number, detail?: number]
-> extends ThGeometry<T, TARGS> {
+> extends ThPolyhedronGeometry<T, TARGS> {
   protected getType(): Type<DodecahedronGeometry> {
     return DodecahedronGeometry;
   }
@@ -33,13 +34,6 @@ export class ThDodecahedronGeometry<
   public set type(value: string) {
     if (this._objRef) {
       this._objRef.type = value;
-    }
-  }
-
-  @Input()
-  public set parameters(value: { radius: number; detail: number }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
     }
   }
 }

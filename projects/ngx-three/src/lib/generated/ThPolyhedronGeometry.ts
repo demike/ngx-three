@@ -8,7 +8,7 @@ import {
   Type,
 } from '@angular/core';
 import { PolyhedronGeometry } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-polyhedronGeometry',
@@ -16,7 +16,7 @@ import { ThGeometry } from './ThGeometry';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
-      provide: ThGeometry,
+      provide: ThBufferGeometry,
       useExisting: forwardRef(() => ThPolyhedronGeometry),
     },
   ],
@@ -29,7 +29,7 @@ export class ThPolyhedronGeometry<
     radius?: number,
     detail?: number
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<PolyhedronGeometry> {
     return PolyhedronGeometry;
   }

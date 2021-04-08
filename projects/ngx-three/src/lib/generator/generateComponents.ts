@@ -8,7 +8,7 @@ import { ImportOrganizer } from './ImportOrganizer';
 import { NgxThreeObject } from './NgxThreeObject';
 import { Type } from '@angular/core';
 import { NgxThreeMaterial } from './NgxThreeMaterial';
-import { NgxThreeBufferGeometry, NgxThreeGeometry } from './NgxThreeGeometry';
+import { NgxThreeBufferGeometry } from './NgxThreeGeometry';
 import { NgxThreeControl } from './NgxThreeControl';
 import { NgxThreeBarrelGen } from './NgxThreeBarrelGen';
 
@@ -28,7 +28,6 @@ class NgxThreeClassGenerator {
   }
 
   generateGeometries() {
-    this.generate('NgxThreeGeometries', NgxThreeGeometry);
     this.generate('NgxThreeBufferGeometries', NgxThreeBufferGeometry);
   }
 
@@ -40,11 +39,12 @@ class NgxThreeClassGenerator {
     const threeTypes = this.getInterfacePropertyNames(exportTypeName);
     threeTypes.forEach((type) => {
       const cls = this.generateNgxThreeClass(type, generatorType);
+      if (cls.content.length === 0) {
+        return;
+      }
       this.ngxThreeClassMap.set(cls.className, cls);
       this.writeFile(cls.className, cls.content);
     });
-
-    // this.generateNgxModule(Array.from(this.ngxThreeClassMap.keys()));
   }
 
   private generateNgxThreeClass(classSymbol: ts.Symbol, generatorType: Type<NgxThreeClass>): NgxThreeClass {
@@ -86,7 +86,7 @@ class NgxThreeClassGenerator {
     const componentsRecordPath = join(__dirname, 'three_types.ts');
     const configFile = ts.findConfigFile(__dirname, ts.sys.fileExists, 'tsconfig.generate.json');
     if (!configFile) {
-      throw new Error('can\'t find tsconfig.lib.json');
+      throw new Error("can't find tsconfig.lib.json");
     }
 
     const { config, error } = ts.parseConfigFileTextToJson(configFile, readFileSync(configFile, { encoding: 'utf-8' }));
@@ -103,7 +103,7 @@ class NgxThreeClassGenerator {
 
     const sourceFile = program.getSourceFile(componentsRecordPath);
     if (!sourceFile) {
-      throw new Error('can\'t find three_types.ts');
+      throw new Error("can't find three_types.ts");
     }
 
     const typeChecker = program.getTypeChecker();

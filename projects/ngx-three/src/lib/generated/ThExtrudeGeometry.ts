@@ -8,14 +8,17 @@ import {
   Type,
 } from '@angular/core';
 import { ExtrudeGeometry, ExtrudeGeometryOptions, Shape } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-extrudeGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThExtrudeGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThExtrudeGeometry),
+    },
   ],
 })
 export class ThExtrudeGeometry<
@@ -24,7 +27,7 @@ export class ThExtrudeGeometry<
     shapes: Shape | Shape[],
     options?: ExtrudeGeometryOptions
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<ExtrudeGeometry> {
     return ExtrudeGeometry;
   }

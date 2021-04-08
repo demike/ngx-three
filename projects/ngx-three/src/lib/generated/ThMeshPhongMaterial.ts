@@ -266,6 +266,13 @@ export class ThMeshPhongMaterial<
   }
 
   @Input()
+  public set flatShading(value: boolean) {
+    if (this._objRef) {
+      this._objRef.flatShading = value;
+    }
+  }
+
+  @Input()
   public set metal(value: boolean) {
     if (this._objRef) {
       this._objRef.metal = value;

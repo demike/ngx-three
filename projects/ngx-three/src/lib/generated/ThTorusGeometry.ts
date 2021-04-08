@@ -8,14 +8,17 @@ import {
   Type,
 } from '@angular/core';
 import { TorusGeometry } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-torusGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThTorusGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThTorusGeometry),
+    },
   ],
 })
 export class ThTorusGeometry<
@@ -27,7 +30,7 @@ export class ThTorusGeometry<
     tubularSegments?: number,
     arc?: number
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<TorusGeometry> {
     return TorusGeometry;
   }

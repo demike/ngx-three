@@ -32,7 +32,7 @@ export class ThLOD<
   }
 
   @Input()
-  public set levels(value: { distance: number; object: Object3D }[]) {
+  public set levels(value: Array<{ distance: number; object: Object3D }>) {
     if (this._objRef) {
       this._objRef.levels = value;
     }

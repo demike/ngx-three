@@ -8,20 +8,23 @@ import {
   Type,
 } from '@angular/core';
 import { Shape, ShapeGeometry } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-shapeGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThShapeGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThShapeGeometry),
+    },
   ],
 })
 export class ThShapeGeometry<
   T extends ShapeGeometry = ShapeGeometry,
   TARGS extends any[] = [shapes: Shape | Shape[], curveSegments?: number]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<ShapeGeometry> {
     return ShapeGeometry;
   }

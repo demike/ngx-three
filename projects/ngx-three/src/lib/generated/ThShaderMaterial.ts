@@ -175,4 +175,11 @@ export class ThShaderMaterial<
       this._objRef.glslVersion = value;
     }
   }
+
+  @Input()
+  public set isShaderMaterial(value: boolean) {
+    if (this._objRef) {
+      this._objRef.isShaderMaterial = value;
+    }
+  }
 }

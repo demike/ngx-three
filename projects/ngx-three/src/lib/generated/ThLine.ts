@@ -7,7 +7,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { BufferGeometry, Geometry, Line, Material } from 'three';
+import { BufferGeometry, Line, Material } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -17,7 +17,7 @@ import { ThObject3D } from './ThObject3D';
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLine) }],
 })
 export class ThLine<
-  TGeometry extends Geometry | BufferGeometry = Geometry | BufferGeometry,
+  TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   T extends Line<TGeometry, TMaterial> = Line<TGeometry, TMaterial>,
   TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]

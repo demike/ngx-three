@@ -8,7 +8,7 @@ import {
   Type,
 } from '@angular/core';
 import { ParametricGeometry, Vector3 } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-parametricGeometry',
@@ -16,7 +16,7 @@ import { ThGeometry } from './ThGeometry';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
-      provide: ThGeometry,
+      provide: ThBufferGeometry,
       useExisting: forwardRef(() => ThParametricGeometry),
     },
   ],
@@ -28,7 +28,7 @@ export class ThParametricGeometry<
     slices: number,
     stacks: number
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<ParametricGeometry> {
     return ParametricGeometry;
   }

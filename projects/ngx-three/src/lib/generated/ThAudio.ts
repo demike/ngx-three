@@ -145,7 +145,7 @@ export class ThAudio<
   }
 
   @Input()
-  public set filters(value: any[]) {
+  public set filters(value: AudioNode[]) {
     if (this._objRef) {
       this._objRef.filters = value;
     }

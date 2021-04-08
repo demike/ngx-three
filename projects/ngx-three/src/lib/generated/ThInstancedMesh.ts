@@ -10,7 +10,6 @@ import {
 import {
   BufferAttribute,
   BufferGeometry,
-  Geometry,
   InstancedMesh,
   Material,
 } from 'three';
@@ -27,7 +26,7 @@ import { ThObject3D } from './ThObject3D';
   ],
 })
 export class ThInstancedMesh<
-  TGeometry extends Geometry | BufferGeometry = Geometry | BufferGeometry,
+  TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   T extends InstancedMesh<TGeometry, TMaterial> = InstancedMesh<
     TGeometry,

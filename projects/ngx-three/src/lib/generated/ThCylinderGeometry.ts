@@ -8,14 +8,17 @@ import {
   Type,
 } from '@angular/core';
 import { CylinderGeometry } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-cylinderGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThCylinderGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThCylinderGeometry),
+    },
   ],
 })
 export class ThCylinderGeometry<
@@ -30,7 +33,7 @@ export class ThCylinderGeometry<
     thetaStart?: number,
     thetaLength?: number
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<CylinderGeometry> {
     return CylinderGeometry;
   }

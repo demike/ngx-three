@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BufferGeometry, Geometry } from 'three';
+import { BufferGeometry } from 'three';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
@@ -7,7 +7,7 @@ import { ThWrapperBase } from './ThWrapperBase';
   template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThGeometryBase<T extends Geometry | BufferGeometry, ARGS extends any[]> extends ThWrapperBase<T, ARGS> {
+export class ThGeometryBase<T extends BufferGeometry, ARGS extends any[]> extends ThWrapperBase<T, ARGS> {
   constructor(protected parent: ThObject3D) {
     super();
   }

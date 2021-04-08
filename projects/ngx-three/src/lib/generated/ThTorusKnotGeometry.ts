@@ -8,14 +8,17 @@ import {
   Type,
 } from '@angular/core';
 import { TorusKnotGeometry } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-torusKnotGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThTorusKnotGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThTorusKnotGeometry),
+    },
   ],
 })
 export class ThTorusKnotGeometry<
@@ -28,7 +31,7 @@ export class ThTorusKnotGeometry<
     p?: number,
     q?: number
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<TorusKnotGeometry> {
     return TorusKnotGeometry;
   }

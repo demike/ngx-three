@@ -10,13 +10,11 @@ import {
 import {
   Camera,
   Color,
-  IFog,
+  FogBase,
   Material,
   Scene,
   Texture,
-  WebGLCubeRenderTarget,
   WebGLRenderer,
-  WebGLRenderTarget,
 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -43,7 +41,7 @@ export class ThScene<
   }
 
   @Input()
-  public set fog(value: IFog | null) {
+  public set fog(value: FogBase | null) {
     if (this._objRef) {
       this._objRef.fog = value;
     }
@@ -65,17 +63,13 @@ export class ThScene<
 
   @Input()
   public set background(
-    value:
-      | null
-      | Color
-      | Texture
-      | WebGLCubeRenderTarget
-      | [color: Color | string | number]
+    value: null | Color | Texture | [color: Color | string | number]
   ) {
     if (this._objRef) {
-      this._objRef.background = applyValue<
-        null | Color | Texture | WebGLCubeRenderTarget
-      >(this._objRef.background, value);
+      this._objRef.background = applyValue<null | Color | Texture>(
+        this._objRef.background,
+        value
+      );
     }
   }
   @Input()
@@ -91,7 +85,7 @@ export class ThScene<
       renderer: WebGLRenderer,
       scene: Scene,
       camera: Camera,
-      renderTarget: WebGLRenderTarget | any // any required for Object3D.onBeforeRender compatibility
+      renderTarget: any // any required for Object3D.onBeforeRender compatibility
     ) => void
   ) {
     if (this._objRef) {

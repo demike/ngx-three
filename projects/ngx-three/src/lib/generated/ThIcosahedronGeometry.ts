@@ -8,7 +8,8 @@ import {
   Type,
 } from '@angular/core';
 import { IcosahedronGeometry } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
+import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
 
 @Component({
   selector: 'th-icosahedronGeometry',
@@ -16,7 +17,7 @@ import { ThGeometry } from './ThGeometry';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
-      provide: ThGeometry,
+      provide: ThBufferGeometry,
       useExisting: forwardRef(() => ThIcosahedronGeometry),
     },
   ],
@@ -24,7 +25,7 @@ import { ThGeometry } from './ThGeometry';
 export class ThIcosahedronGeometry<
   T extends IcosahedronGeometry = IcosahedronGeometry,
   TARGS extends any[] = [radius?: number, detail?: number]
-> extends ThGeometry<T, TARGS> {
+> extends ThPolyhedronGeometry<T, TARGS> {
   protected getType(): Type<IcosahedronGeometry> {
     return IcosahedronGeometry;
   }

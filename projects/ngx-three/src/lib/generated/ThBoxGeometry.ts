@@ -8,14 +8,14 @@ import {
   Type,
 } from '@angular/core';
 import { BoxGeometry } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-boxGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThBoxGeometry) },
+    { provide: ThBufferGeometry, useExisting: forwardRef(() => ThBoxGeometry) },
   ],
 })
 export class ThBoxGeometry<
@@ -28,7 +28,7 @@ export class ThBoxGeometry<
     heightSegments?: number,
     depthSegments?: number
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<BoxGeometry> {
     return BoxGeometry;
   }

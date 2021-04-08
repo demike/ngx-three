@@ -8,14 +8,17 @@ import {
   Type,
 } from '@angular/core';
 import { PlaneGeometry } from 'three';
-import { ThGeometry } from './ThGeometry';
+import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-planeGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThGeometry, useExisting: forwardRef(() => ThPlaneGeometry) },
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThPlaneGeometry),
+    },
   ],
 })
 export class ThPlaneGeometry<
@@ -26,7 +29,7 @@ export class ThPlaneGeometry<
     widthSegments?: number,
     heightSegments?: number
   ]
-> extends ThGeometry<T, TARGS> {
+> extends ThBufferGeometry<T, TARGS> {
   protected getType(): Type<PlaneGeometry> {
     return PlaneGeometry;
   }
