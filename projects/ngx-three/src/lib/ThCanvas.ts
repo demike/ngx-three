@@ -7,6 +7,7 @@ import {
   ElementRef,
   forwardRef,
   Inject,
+  Input,
   OnInit,
   Output,
   QueryList,
@@ -31,12 +32,14 @@ import { ThView } from './ThView';
 export class ThCanvas implements OnInit, AfterViewInit {
   private static instanceCnt = 0;
   public readonly nid = ThCanvas.instanceCnt++;
-  constructor(
-    private engServ: ThEngineService,
-    @Inject(forwardRef(() => RaycasterService))
-    protected raycaster: RaycasterService
-  ) {
-    console.log('canvas ' + this.nid);
+
+  @Input()
+  public set shadow(enable: boolean) {
+    this.engServ.shadow = enable;
+  }
+
+  public get shadow() {
+    return this.engServ.shadow;
   }
 
   @Output()
@@ -67,10 +70,31 @@ export class ThCanvas implements OnInit, AfterViewInit {
     viewList.forEach((v) => this.engServ.addView(v));
   }
 
+  protected _rendererCanvas?: ElementRef<HTMLCanvasElement>;
   @ViewChild('rendererCanvas', { static: true })
-  public rendererCanvas?: ElementRef<HTMLCanvasElement>;
+  public set rendererCanvas(canvas: ElementRef<HTMLCanvasElement> | undefined) {
+    if (!canvas) {
+      return;
+    }
+    this._rendererCanvas = canvas;
+    canvas.nativeElement.id += this.nid;
+    this.engServ.setCanvas(canvas.nativeElement);
+  }
+
+  public get rendererCanvas() {
+    return this._rendererCanvas;
+  }
 
   private globalView?: ThView;
+
+  constructor(
+    private engServ: ThEngineService,
+    @Inject(forwardRef(() => RaycasterService))
+    protected raycaster: RaycasterService
+  ) {
+    console.log('canvas ' + this.nid);
+  }
+
   ngAfterViewInit(): void {
     this.engServ.requestAnimationFrame();
   }
@@ -79,7 +103,6 @@ export class ThCanvas implements OnInit, AfterViewInit {
     if (!this.rendererCanvas) {
       throw new Error('Missing Canvas');
     }
-    this.rendererCanvas.nativeElement.id += this.nid;
     this.globalView = new ThView(this.raycaster, this.rendererCanvas);
     this.engServ.setCanvas(this.rendererCanvas.nativeElement);
     this.engServ.addView(this.globalView);

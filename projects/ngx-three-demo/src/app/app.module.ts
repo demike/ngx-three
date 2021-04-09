@@ -15,6 +15,7 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { HighlightPlusModule } from 'ngx-highlightjs/plus';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DynamicLoaderExampleComponent } from './dynamic-loader-example/dynamic-loader-example.component';
+import { InstancedMeshExampleComponent } from './instanced-mesh-example/instanced-mesh-example.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DynamicLoaderExampleComponent } from './dynamic-loader-example/dynamic-
     ControlsExampleComponent,
     EventsExampleComponent,
     CodeComponent,
-    DynamicLoaderExampleComponent
+    DynamicLoaderExampleComponent,
+    InstancedMeshExampleComponent
   ],
   imports: [
     BrowserModule,

@@ -8,13 +8,13 @@ import { ThCamera } from './generated/ThCamera';
 
 @Injectable()
 export class ThEngineService implements OnDestroy {
-  private canvas?: HTMLCanvasElement;
   private renderer?: THREE.WebGLRenderer;
   private views: ThView[] = [];
-
   private frameId?: number;
 
-  public onRender = new EventEmitter<{
+  public canvas?: HTMLCanvasElement;
+
+  public readonly onRender = new EventEmitter<{
     renderer: THREE.WebGLRenderer;
     scene: ThScene;
     camera: ThCamera;
@@ -24,6 +24,19 @@ export class ThEngineService implements OnDestroy {
   private resizeObserver?: ResizeObserver;
 
   public constructor(private ngZone: NgZone) {}
+
+  // renderer parameters
+  /**
+   * enable / disable shadows
+   */
+  public set shadow(enable: boolean) {
+    if (this.renderer) {
+      this.renderer.shadowMap.enabled = enable;
+    }
+  }
+  public get shadow() {
+    return this.renderer?.shadowMap.enabled ?? false;
+  }
 
   public ngOnDestroy(): void {
     if (this.frameId !== undefined) {
@@ -43,15 +56,20 @@ export class ThEngineService implements OnDestroy {
         throw new Error('missing canvas element');
       }
 
-      // @ts-ignore
-      this.resizeObserver = new ResizeObserver(() => {
-        this.resize();
-      });
+      if (!this.resizeObserver) {
+        // @ts-ignore
+        this.resizeObserver = new ResizeObserver(() => {
+          this.resize();
+        });
+      }
       this.resizeObserver.observe(this.canvas);
     });
   }
 
   private initRenderer(): void {
+    if (this.renderer) {
+      return;
+    }
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       alpha: true, // transparent background
@@ -65,6 +83,8 @@ export class ThEngineService implements OnDestroy {
 
   public setCanvas(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
+    this.initRenderer();
+    this.initResizeObserver();
   }
 
   public addView(view: ThView) {
@@ -104,10 +124,6 @@ export class ThEngineService implements OnDestroy {
     // TODO: conditional rendere loop
     this.requestAnimationFrame();
 
-    if (!this.renderer) {
-      this.initRenderer();
-      this.initResizeObserver();
-    }
     if (!this.renderer) {
       return;
     }

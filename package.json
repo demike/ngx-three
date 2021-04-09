@@ -30,6 +30,7 @@
     "ngx-highlightjs": "^4.1.3",
     "normalize.css": "^8.0.1",
     "rxjs": "~6.6.0",
+    "simplex-noise": "^2.4.0",
     "three": "~0.127.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.10.2"

@@ -1,0 +1,29 @@
+<th-canvas #canvas (onRender)="onRender()" [shadow]="true">
+  <th-scene>
+    <th-perspectiveCamera [position]="[0, 0, 30]" [lookAt]="[0, 0, 0]">
+      <th-orbitControls></th-orbitControls>
+    </th-perspectiveCamera>
+    <th-ambientLight [color]="['#808080']"> </th-ambientLight>
+    <th-pointLight
+      #light
+      [castShadow]="true"
+      [shadowMapHeight]="1024"
+      [shadowMapWidth]="1024"
+    ></th-pointLight>
+
+    <th-instancedMesh
+      #instancedMesh
+      [args]="[undefined, undefined, NUM_INSTANCES]"
+      [count]="NUM_INSTANCES"
+      [castShadow]="true"
+      [receiveShadow]="true"
+    >
+      <th-boxGeometry [args]="[SIZE, SIZE, SIZE]"></th-boxGeometry>
+      <th-meshPhongMaterial [color]="['#9C1E15']"></th-meshPhongMaterial>
+    </th-instancedMesh>
+    <th-mesh [position]="[0, 0, -10 - SIZE]" [receiveShadow]="true">
+      <th-planeGeometry [args]="[W * 2, H * 2]"></th-planeGeometry>
+      <th-meshPhongMaterial [color]="['#9C1E15']"></th-meshPhongMaterial>
+    </th-mesh>
+  </th-scene>
+</th-canvas>
