@@ -3,37 +3,37 @@ import { Routes, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-simple-example-page',
-  template: ` <app-simple-example></app-simple-example> `
+  template: '<app-simple-example></app-simple-example>'
 })
 export class SimpleExamplePageComponent {}
 
 @Component({
   selector: 'app-controls-example-page',
-  template: ` <app-controls-example></app-controls-example> `
+  template: '<app-controls-example></app-controls-example>'
 })
 export class ControlsExamplePageComponent {}
 
 @Component({
   selector: 'app-loader-example-page',
-  template: ` <app-loader-example></app-loader-example> `
+  template: '<app-loader-example></app-loader-example>'
 })
 export class LoaderExamplePageComponent {}
 
 @Component({
   selector: 'app-dynamic-loader-example-page',
-  template: ` <app-dynamic-loader-example></app-dynamic-loader-example> `
+  template: '<app-dynamic-loader-example></app-dynamic-loader-example>'
 })
 export class DynamicLoaderExamplePageComponent {}
 
 @Component({
   selector: 'app-events-example-page',
-  template: ` <app-events-example></app-events-example> `
+  template: '<app-events-example></app-events-example>'
 })
 export class EventsExamplePageComponent {}
 
 @Component({
   selector: 'app-instanced-mesh-example-page',
-  template: ` <app-instanced-mesh-example></app-instanced-mesh-example> `
+  template: '<app-instanced-mesh-example></app-instanced-mesh-example>'
 })
 export class InstancedMeshExamplePageComponent {}
 
