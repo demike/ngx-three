@@ -43,7 +43,7 @@ export const EXAMPLE_ROUTES: Routes = [
   { path: 'loader-example', component: LoaderExamplePageComponent, data: { title: 'Loader Example' } },
   { path: 'dynamic loader-example', component: DynamicLoaderExamplePageComponent, data: { title: 'Dynamic Loader Example' } },
   { path: 'events-example', component: EventsExamplePageComponent, data: { title: 'Events Example' } },
-  { path: 'instanced-mesh-example', component: EventsExamplePageComponent, data: { title: 'Instanced Mesh Example' } }
+  { path: 'instanced-mesh-example', component: InstancedMeshExamplePageComponent, data: { title: 'Instanced Mesh Example' } }
 ];
 
 export const exampleDeclarations: any[] = [];
