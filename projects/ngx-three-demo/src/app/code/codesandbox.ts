@@ -82,7 +82,8 @@ function createPackageJson() {
         rxjs: '~6.6.0',
         three: '~0.127.0',
         tslib: '^2.1.0',
-        'zone.js': '~0.10.2'
+        'zone.js': '~0.10.2',
+        'simplex-noise': '^2.4.0'
       }
     }
   };
