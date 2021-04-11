@@ -15,15 +15,9 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "ngx-three": [
-        "dist/ngx-three/ngx-three",
-        "dist/ngx-three"
-      ]
+      "ngx-three": ["projects/ngx-three/src/public-api.ts"]
     }
   },
   "angularCompilerOptions": {

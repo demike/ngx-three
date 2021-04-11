@@ -7,7 +7,7 @@
       "projectType": "library",
       "root": "projects/ngx-three",
       "sourceRoot": "projects/ngx-three/src",
-      "prefix": "lib",
+      "prefix": "th",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
@@ -64,13 +64,9 @@
               "projects/ngx-three-demo/src/favicon.ico",
               "projects/ngx-three-demo/src/assets"
             ],
-            "styles": [
-              "projects/ngx-three-demo/src/styles.scss"
-            ],
+            "styles": ["projects/ngx-three-demo/src/styles.scss"],
             "scripts": [],
-            "allowedCommonJsDependencies": [
-              "highlight.js"
-            ]
+            "allowedCommonJsDependencies": ["highlight.js"]
           },
           "configurations": {
             "production": {
@@ -130,9 +126,7 @@
               "projects/ngx-three-demo/src/favicon.ico",
               "projects/ngx-three-demo/src/assets"
             ],
-            "styles": [
-              "projects/ngx-three-demo/src/styles.scss"
-            ],
+            "styles": ["projects/ngx-three-demo/src/styles.scss"],
             "scripts": []
           }
         },

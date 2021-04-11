@@ -16,3 +16,5 @@ export * from './lib/generated';
 export * from './lib/generated/ngx-three-generated.module';
 
 export * from './lib/events/raycaster.events.directive';
+
+export * from './lib/component.helpers';

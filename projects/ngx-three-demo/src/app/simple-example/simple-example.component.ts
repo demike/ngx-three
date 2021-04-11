@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, OnInit, SkipSelf } from '@angular/core';
-import { createObj3DProviderArray } from 'projects/ngx-three/src/lib/component.helpers';
-import { ThMesh } from 'projects/ngx-three/src/lib/generated/ThMesh';
-import { ThObject3D } from 'projects/ngx-three/src/lib/generated/ThObject3D';
+import { createObj3DProviderArray } from 'ngx-three';
+import { ThMesh } from 'ngx-three';
+import { ThObject3D } from 'ngx-three';
 import * as THREE from 'three';
 import { BoxBufferGeometry, MeshStandardMaterial } from 'three';
 

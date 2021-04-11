@@ -3,8 +3,7 @@ import { Object3D } from 'three';
 
 @Component({
   selector: 'app-dynamic-loader-example',
-  templateUrl: './dynamic-loader-example.component.html',
-  styleUrls: ['./dynamic-loader-example.component.scss']
+  templateUrl: './dynamic-loader-example.component.html'
 })
 export class DynamicLoaderExampleComponent {
   public modelUrl: string;
