@@ -33,7 +33,8 @@ export class CodeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  public toCodeSandbox() {
+  public toCodeSandbox(event: MouseEvent) {
+    event.preventDefault();
     toCodeSandbox(this.urls);
   }
 }
