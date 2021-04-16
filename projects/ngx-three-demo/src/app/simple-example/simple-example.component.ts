@@ -63,7 +63,6 @@ export class SimpleExampleComponent implements OnInit {
   public selected = false;
 
   public onBeforeRender() {
-    // console.log('hohoho');
     this.rotation = [0, this.rotation[2] + 0.01, this.rotation[2] + 0.01];
   }
 

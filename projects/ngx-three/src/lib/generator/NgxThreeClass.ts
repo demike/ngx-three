@@ -1,5 +1,6 @@
 import * as ts from 'typescript';
 import { ParameterDeclaration } from 'typescript';
+import * as path from 'path';
 
 const INGORED_MEMBERS = ['parent'];
 
@@ -273,23 +274,47 @@ export abstract class NgxThreeClass {
     if (srcFile.fileName.search('node_modules/@types/three/') >= 0) {
       srcFile.statements
         .filter(ts.isImportDeclaration)
-        .map((imp: ts.ImportDeclaration) => {
-          let str = imp.getText();
-          str = str.substr(0, str.search(' from ')) + " from 'three';";
-          return str;
-        })
+        .map((imp: ts.ImportDeclaration) => this.getImportPathForImportStatement(srcFile.fileName, imp.getText()))
         .forEach((el) => this.imports.add(el));
 
       const symbol = this.typeChecker.getSymbolAtLocation(srcFile);
       const exports = this.typeChecker.getExportsOfModule(symbol as ts.Symbol);
+      const exportsFrom = this.getImportPathForSourceFile(srcFile);
+
       exports
         .filter((exp) => exp.escapedName !== this.wrappedClassName)
         .forEach((exp) => {
-          this.imports.add(`import { ${exp.escapedName} } from 'three';`);
+          this.imports.add(`import { ${exp.escapedName} } from '${exportsFrom}';`);
         });
     } else {
       // TODO: non-three class
     }
+  }
+
+  protected getImportPathForImportStatement(srcFilePath: string, importStatement: string) {
+    const fromPos = importStatement.search(' from ');
+    const importPath = path
+      .normalize(path.join(path.dirname(srcFilePath), importStatement.substr(fromPos + 6).replace(/("|'|;)/g, '')))
+      .replace(/\\/g, '/');
+    let strFrom = ' "three";';
+    if (importPath.search('node_modules/@types/three/examples') >= 0) {
+      strFrom = " '" + importPath.substr(importPath.search('three/examples/jsm')).replace('.d.ts', '') + "';";
+    }
+
+    importStatement = importStatement.substr(0, fromPos) + ' from ' + strFrom;
+    return importStatement;
+  }
+
+  protected getImportPathForSourceFile(srcFile: ts.SourceFile) {
+    const fileName = srcFile.fileName;
+    if (fileName.search('node_modules/@types/three/examples') >= 0) {
+      const importPath = fileName
+        .substr(fileName.indexOf('/node_modules/@types/three/'))
+        .replace('/node_modules/@types/', '')
+        .replace('.d.ts', '');
+      return importPath;
+    }
+    return 'three';
   }
 
   /**
@@ -324,14 +349,20 @@ export abstract class NgxThreeClass {
             if ((typeNode as ts.UnionOrIntersectionTypeNode).types) {
               (typeNode as ts.UnionOrIntersectionTypeNode).types?.forEach((type) => {
                 if (ts.isTypeReferenceNode(type)) {
-                  // TODO: allow non "three" imports
-                  this.imports.add(`import { ${type.typeName.getText()} } from 'three';`);
+                  this.imports.add(
+                    `import { ${type.typeName.getText()} } from '${this.getImportPathForSourceFile(type.getSourceFile())}';`
+                  );
                 } else if (ts.isArrayTypeNode(type)) {
-                  this.imports.add(`import { ${((type.elementType as any) as ts.TypeReferenceNode).typeName.getText()} } from 'three';`);
+                  const typeRefNode = (type.elementType as any) as ts.TypeReferenceNode;
+                  this.imports.add(
+                    `import { ${typeRefNode.typeName.getText()} } from '${this.getImportPathForSourceFile(typeRefNode.getSourceFile())}';`
+                  );
                 }
               });
             } else if (typeNode && ts.isTypeReferenceNode(typeNode)) {
-              this.imports.add(`import { ${typeNode.typeName.getText()} } from 'three';`);
+              this.imports.add(
+                `import { ${typeNode.typeName.getText()} } from '${this.getImportPathForSourceFile(typeNode.getSourceFile())}';`
+              );
             } else {
               // TODO:
               console.log('TODO');

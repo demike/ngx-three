@@ -68,3 +68,13 @@ type __ngxControls = {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NgxThreeControls extends OmitByValue<__ngxControls, never> {}
+
+// post process passes
+
+type Passes = typeof import('./pass_types');
+type __ngxPasses = {
+  [P in keyof Passes]: Passes[P] extends new (...args: any) => any ? InstanceType<Passes[P]> : never;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface NgxThreePasses extends OmitByValue<__ngxPasses, never> {}
