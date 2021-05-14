@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, S
 import { Observable, ReplaySubject } from 'rxjs';
 import { EventDispatcher, Object3D } from 'three';
 import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
+import { ThWrapperLifeCycle } from './ThWrapperLifeCycle';
 import { isDisposable } from './util';
 
 @Component({
@@ -9,9 +10,15 @@ import { isDisposable } from './util';
   template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, OnDestroy {
+export class ThWrapperBase<T, ARGS extends any[]> implements ThWrapperLifeCycle, OnChanges, OnInit, OnDestroy {
   protected _objRef?: T;
   protected _objRef$?: ReplaySubject<T>;
+
+  @Input()
+  public autoAddToParent = true;
+
+  @Input()
+  public autoDispose = true;
 
   @Input()
   set objRef(ref: T | undefined) {
@@ -27,6 +34,13 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
 
   constructor() {
     // nothing to do
+  }
+
+  addToParent(): void {
+    // nothing to do, implement it in a derived class
+  }
+  removeFromParent(): void {
+    // nothing to do, implement it in a derived class
   }
 
   @Input()
@@ -53,12 +67,17 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
 
   ngOnInit(): void {
     if (!this.objRef) {
-      this.createThreeInstance();
+      this.objRef = this.createThreeInstance(this.args);
     }
   }
 
-  protected createThreeInstance(args?: Iterable<any>) {
-    this.objRef = new (this.getType())(...(args ?? []));
+  // Override this
+  public getType(): Type<any> {
+    throw new Error('derive me');
+  }
+
+  public createThreeInstance(args?: Iterable<any>) {
+    return new (this.getType())(...(args ?? []));
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -77,7 +96,7 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
     if (changes.objRef?.currentValue) {
       this.objRef = changes.objRef?.currentValue;
     } else if (!this.objRef) {
-      this.createThreeInstance(changes.args?.currentValue);
+      this.objRef = this.createThreeInstance(changes.args?.currentValue);
     }
 
     // eslint-disable-next-line guard-for-in
@@ -86,19 +105,29 @@ export class ThWrapperBase<T, ARGS extends any[]> implements OnChanges, OnInit, 
     }
   }
 
-  // Override this
-  protected getType(): Type<any> {
-    throw new Error('derive me');
-  }
-
-  ngOnDestroy() {
+  public disposeObjRef() {
     if (isDisposable(this.objRef)) {
       this.objRef.dispose();
     }
   }
 
+  ngOnDestroy() {
+    this.removeFromParent();
+
+    if (this.autoDispose) {
+      this.disposeObjRef();
+    }
+  }
+
   protected applyObjRef(objRef: T | undefined) {
+    if (this._objRef === objRef) {
+      return;
+    }
+    this.removeFromParent();
     this._objRef = objRef;
+    if (this.autoAddToParent) {
+      this.addToParent();
+    }
     this.emitObjRefChange();
   }
 

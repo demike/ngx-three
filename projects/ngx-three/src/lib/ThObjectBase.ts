@@ -11,6 +11,16 @@ export class ThObjectBase<T extends Object3D, ARGS extends any[] = []> extends T
     super();
   }
 
+  public addToParent() {
+    if (this._objRef && this._objRef.parent && this._objRef.parent.uuid !== this.parent.objRef.uuid) {
+      this.parent.objRef.add(this._objRef);
+    }
+  }
+
+  public removeFromParent() {
+    this._objRef?.parent?.remove(this._objRef);
+  }
+
   protected applyObjRef(objRef: T | undefined) {
     this.attachToParent(objRef, this._objRef);
     this._objRef = objRef;
@@ -31,15 +41,6 @@ export class ThObjectBase<T extends Object3D, ARGS extends any[] = []> extends T
     if (newRef && (!newRef.parent || (newRef.parent && newRef.parent.uuid !== this.parent.objRef.uuid))) {
       this.parent.objRef.add(newRef);
     }
-  }
-
-  ngOnInit(): void {
-    super.ngOnInit();
-    /*
-    if (this._objRef && !this._objRef?.parent) {
-      //  this.attachToParent(this._objRef, undefined);
-    }
-    */
   }
 
   // object 3d methods

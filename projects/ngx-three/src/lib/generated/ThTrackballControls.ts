@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Camera, MOUSE, Vector3 } from 'three';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
 import { ThControlBase } from '../ThControlBase';
@@ -19,15 +13,15 @@ import { applyValue } from '../util';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThTrackballControls),
-    },
-  ],
+      useExisting: forwardRef(() => ThTrackballControls)
+    }
+  ]
 })
 export class ThTrackballControls<
   T extends TrackballControls = TrackballControls,
   TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
 > extends ThControlBase<T, TARGS> {
-  protected getType(): Type<TrackballControls> {
+  public getType(): Type<TrackballControls> {
     return TrackballControls;
   }
 
@@ -53,12 +47,7 @@ export class ThTrackballControls<
   }
 
   @Input()
-  public set screen(value: {
-    left: number;
-    top: number;
-    width: number;
-    height: number;
-  }) {
+  public set screen(value: { left: number; top: number; width: number; height: number }) {
     if (this._objRef) {
       this._objRef.screen = value;
     }
@@ -164,10 +153,7 @@ export class ThTrackballControls<
   @Input()
   public set position0(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
-      this._objRef.position0 = applyValue<Vector3>(
-        this._objRef.position0,
-        value
-      );
+      this._objRef.position0 = applyValue<Vector3>(this._objRef.position0, value);
     }
   }
   @Input()

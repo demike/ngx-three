@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { PlaneGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -17,20 +11,15 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThPlaneGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThPlaneGeometry)
+    }
+  ]
 })
 export class ThPlaneGeometry<
   T extends PlaneGeometry = PlaneGeometry,
-  TARGS extends any[] = [
-    width?: number,
-    height?: number,
-    widthSegments?: number,
-    heightSegments?: number
-  ]
+  TARGS extends any[] = [width?: number, height?: number, widthSegments?: number, heightSegments?: number]
 > extends ThBufferGeometry<T, TARGS> {
-  protected getType(): Type<PlaneGeometry> {
+  public getType(): Type<PlaneGeometry> {
     return PlaneGeometry;
   }
 
@@ -42,12 +31,7 @@ export class ThPlaneGeometry<
   }
 
   @Input()
-  public set parameters(value: {
-    width: number;
-    height: number;
-    widthSegments: number;
-    heightSegments: number;
-  }) {
+  public set parameters(value: { width: number; height: number; widthSegments: number; heightSegments: number }) {
     if (this._objRef) {
       this._objRef.parameters = value;
     }

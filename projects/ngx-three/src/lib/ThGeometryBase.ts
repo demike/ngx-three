@@ -12,9 +12,7 @@ export class ThGeometryBase<T extends BufferGeometry, ARGS extends any[]> extend
     super();
   }
 
-  protected createThreeInstance(args?: Iterable<any>) {
-    super.createThreeInstance(args);
-
+  public addToParent() {
     if (!this.parent.objRef) {
       throw new Error("parent object doesn't hold a three js object instance");
     }
@@ -22,6 +20,12 @@ export class ThGeometryBase<T extends BufferGeometry, ARGS extends any[]> extend
     (this.parent.objRef as any).geometry = this.objRef;
     if ((this.parent.objRef as any).updateMorphTargets) {
       (this.parent.objRef as any).updateMorphTargets();
+    }
+  }
+
+  public removeFromParent() {
+    if (this._objRef && this.parent && this.parent.objRef) {
+      (this.parent.objRef as any).geometry = undefined;
     }
   }
 }

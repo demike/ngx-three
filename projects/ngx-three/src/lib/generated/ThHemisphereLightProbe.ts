@@ -1,11 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
 import { Color, HemisphereLightProbe } from 'three';
 import { ThLightProbe } from './ThLightProbe';
 import { ThObject3D } from './ThObject3D';
@@ -17,19 +12,15 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThObject3D,
-      useExisting: forwardRef(() => ThHemisphereLightProbe),
-    },
-  ],
+      useExisting: forwardRef(() => ThHemisphereLightProbe)
+    }
+  ]
 })
 export class ThHemisphereLightProbe<
   T extends HemisphereLightProbe = HemisphereLightProbe,
-  TARGS extends any[] = [
-    skyColor?: Color | string | number,
-    groundColor?: Color | string | number,
-    intensity?: number
-  ]
+  TARGS extends any[] = [skyColor?: Color | string | number, groundColor?: Color | string | number, intensity?: number]
 > extends ThLightProbe<T, TARGS> {
-  protected getType(): Type<HemisphereLightProbe> {
+  public getType(): Type<HemisphereLightProbe> {
     return HemisphereLightProbe;
   }
 }

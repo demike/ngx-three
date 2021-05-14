@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  SkipSelf,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, SkipSelf, Type } from '@angular/core';
 import {
   AnimationClip,
   BufferGeometry,
@@ -21,7 +15,7 @@ import {
   Quaternion,
   Scene,
   Vector3,
-  WebGLRenderer,
+  WebGLRenderer
 } from 'three';
 import { ThObjectBase } from '../ThObjectBase';
 import { applyValue } from '../util';
@@ -30,13 +24,10 @@ import { applyValue } from '../util';
   selector: 'th-object3D',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
+  providers: []
 })
-export class ThObject3D<
-  T extends Object3D = Object3D,
-  TARGS extends any[] = []
-> extends ThObjectBase<T, TARGS> {
-  protected getType(): Type<Object3D> {
+export class ThObject3D<T extends Object3D = Object3D, TARGS extends any[] = []> extends ThObjectBase<T, TARGS> {
+  public getType(): Type<Object3D> {
     return Object3D;
   }
 
@@ -88,17 +79,13 @@ export class ThObject3D<
     }
   }
   @Input()
-  public set rotation(
-    value: Euler | [x: number, y: number, z: number, order?: string]
-  ) {
+  public set rotation(value: Euler | [x: number, y: number, z: number, order?: string]) {
     if (this._objRef) {
       applyValue<Euler>(this._objRef.rotation, value);
     }
   }
   @Input()
-  public set quaternion(
-    value: Quaternion | [x: number, y: number, z: number, w: number]
-  ) {
+  public set quaternion(value: Quaternion | [x: number, y: number, z: number, w: number]) {
     if (this._objRef) {
       applyValue<Quaternion>(this._objRef.quaternion, value);
     }
@@ -138,19 +125,7 @@ export class ThObject3D<
   }
   @Input()
   public set normalMatrix(
-    value:
-      | Matrix3
-      | [
-          n11: number,
-          n12: number,
-          n13: number,
-          n21: number,
-          n22: number,
-          n23: number,
-          n31: number,
-          n32: number,
-          n33: number
-        ]
+    value: Matrix3 | [n11: number, n12: number, n13: number, n21: number, n22: number, n23: number, n31: number, n32: number, n33: number]
   ) {
     if (this._objRef) {
       applyValue<Matrix3>(this._objRef.normalMatrix, value);
@@ -207,10 +182,7 @@ export class ThObject3D<
         ]
   ) {
     if (this._objRef) {
-      this._objRef.matrixWorld = applyValue<Matrix4>(
-        this._objRef.matrixWorld,
-        value
-      );
+      this._objRef.matrixWorld = applyValue<Matrix4>(this._objRef.matrixWorld, value);
     }
   }
   @Input()
@@ -298,14 +270,7 @@ export class ThObject3D<
 
   @Input()
   public set onBeforeRender(
-    value: (
-      renderer: WebGLRenderer,
-      scene: Scene,
-      camera: Camera,
-      geometry: BufferGeometry,
-      material: Material,
-      group: Group
-    ) => void
+    value: (renderer: WebGLRenderer, scene: Scene, camera: Camera, geometry: BufferGeometry, material: Material, group: Group) => void
   ) {
     if (this._objRef) {
       this._objRef.onBeforeRender = value;
@@ -314,14 +279,7 @@ export class ThObject3D<
 
   @Input()
   public set onAfterRender(
-    value: (
-      renderer: WebGLRenderer,
-      scene: Scene,
-      camera: Camera,
-      geometry: BufferGeometry,
-      material: Material,
-      group: Group
-    ) => void
+    value: (renderer: WebGLRenderer, scene: Scene, camera: Camera, geometry: BufferGeometry, material: Material, group: Group) => void
   ) {
     if (this._objRef) {
       this._objRef.onAfterRender = value;

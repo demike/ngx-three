@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { BufferGeometry, Camera, CameraHelper, Material } from 'three';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
@@ -15,15 +9,15 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-cameraHelper',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThCameraHelper) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCameraHelper) }]
 })
-export class ThCameraHelper<
-  T extends CameraHelper = CameraHelper,
-  TARGS extends any[] = [camera: Camera]
-> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
-  protected getType(): Type<CameraHelper> {
+export class ThCameraHelper<T extends CameraHelper = CameraHelper, TARGS extends any[] = [camera: Camera]> extends ThLineSegments<
+  BufferGeometry,
+  Material | Material[],
+  T,
+  TARGS
+> {
+  public getType(): Type<CameraHelper> {
     return CameraHelper;
   }
 

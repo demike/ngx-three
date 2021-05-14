@@ -1,25 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Camera,
-  Color,
-  MeshDepthMaterial,
-  Scene,
-  ShaderMaterial,
-  WebGLRenderTarget,
-} from 'three';
-import {
-  BokehPass,
-  BokehPassParamters,
-} from 'three/examples/jsm/postprocessing/BokehPass';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Camera, Color, MeshDepthMaterial, Scene, ShaderMaterial, WebGLRenderTarget } from 'three';
+import { BokehPass, BokehPassParamters } from 'three/examples/jsm/postprocessing/BokehPass';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';
@@ -28,19 +12,13 @@ import { ThPass } from './ThPass';
   selector: 'th-bokehPass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThBokehPass) },
-  ],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThBokehPass) }]
 })
 export class ThBokehPass<
   T extends BokehPass = BokehPass,
-  TARGS extends any[] = [
-    scene: Scene,
-    camera: Camera,
-    params: BokehPassParamters
-  ]
+  TARGS extends any[] = [scene: Scene, camera: Camera, params: BokehPassParamters]
 > extends ThPass<T, TARGS> {
-  protected getType(): Type<BokehPass> {
+  public getType(): Type<BokehPass> {
     return BokehPass;
   }
 
@@ -103,10 +81,7 @@ export class ThBokehPass<
   @Input()
   public set oldClearColor(value: Color | [color: Color | string | number]) {
     if (this._objRef) {
-      this._objRef.oldClearColor = applyValue<Color>(
-        this._objRef.oldClearColor,
-        value
-      );
+      this._objRef.oldClearColor = applyValue<Color>(this._objRef.oldClearColor, value);
     }
   }
 }

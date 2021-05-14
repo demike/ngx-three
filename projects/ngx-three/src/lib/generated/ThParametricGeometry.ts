@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ParametricGeometry, Vector3 } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -17,19 +11,15 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThParametricGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThParametricGeometry)
+    }
+  ]
 })
 export class ThParametricGeometry<
   T extends ParametricGeometry = ParametricGeometry,
-  TARGS extends any[] = [
-    func: (u: number, v: number, dest: Vector3) => void,
-    slices: number,
-    stacks: number
-  ]
+  TARGS extends any[] = [func: (u: number, v: number, dest: Vector3) => void, slices: number, stacks: number]
 > extends ThBufferGeometry<T, TARGS> {
-  protected getType(): Type<ParametricGeometry> {
+  public getType(): Type<ParametricGeometry> {
     return ParametricGeometry;
   }
 
@@ -41,11 +31,7 @@ export class ThParametricGeometry<
   }
 
   @Input()
-  public set parameters(value: {
-    func: (u: number, v: number, dest: Vector3) => void;
-    slices: number;
-    stacks: number;
-  }) {
+  public set parameters(value: { func: (u: number, v: number, dest: Vector3) => void; slices: number; stacks: number }) {
     if (this._objRef) {
       this._objRef.parameters = value;
     }

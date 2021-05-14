@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ShaderMaterial, WebGLRenderTarget } from 'three';
 import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass';
 import { ThPassBase } from '../ThPassBase';
@@ -17,15 +11,10 @@ import { ThPass } from './ThPass';
   selector: 'th-afterimagePass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThAfterimagePass) },
-  ],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThAfterimagePass) }]
 })
-export class ThAfterimagePass<
-  T extends AfterimagePass = AfterimagePass,
-  TARGS extends any[] = [damp?: number]
-> extends ThPass<T, TARGS> {
-  protected getType(): Type<AfterimagePass> {
+export class ThAfterimagePass<T extends AfterimagePass = AfterimagePass, TARGS extends any[] = [damp?: number]> extends ThPass<T, TARGS> {
+  public getType(): Type<AfterimagePass> {
     return AfterimagePass;
   }
 

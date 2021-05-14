@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { AudioContext, AudioListener } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -14,15 +8,10 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-audioListener',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThAudioListener) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThAudioListener) }]
 })
-export class ThAudioListener<
-  T extends AudioListener = AudioListener,
-  TARGS extends any[] = []
-> extends ThObject3D<T, TARGS> {
-  protected getType(): Type<AudioListener> {
+export class ThAudioListener<T extends AudioListener = AudioListener, TARGS extends any[] = []> extends ThObject3D<T, TARGS> {
+  public getType(): Type<AudioListener> {
     return AudioListener;
   }
 

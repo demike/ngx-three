@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Pass } from 'three/examples/jsm/postprocessing/Pass';
 import { ThPassBase } from '../ThPassBase';
 
@@ -15,13 +9,10 @@ import { ThPassBase } from '../ThPassBase';
   selector: 'th-pass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThPass) }],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThPass) }]
 })
-export class ThPass<
-  T extends Pass = Pass,
-  TARGS extends any[] = []
-> extends ThPassBase<T, TARGS> {
-  protected getType(): Type<Pass> {
+export class ThPass<T extends Pass = Pass, TARGS extends any[] = []> extends ThPassBase<T, TARGS> {
+  public getType(): Type<Pass> {
     return Pass;
   }
 

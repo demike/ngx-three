@@ -1,19 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Color,
-  DirectionalLight,
-  DirectionalLightHelper,
-  Line,
-  Matrix4,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Color, DirectionalLight, DirectionalLightHelper, Line, Matrix4 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -24,19 +12,15 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThObject3D,
-      useExisting: forwardRef(() => ThDirectionalLightHelper),
-    },
-  ],
+      useExisting: forwardRef(() => ThDirectionalLightHelper)
+    }
+  ]
 })
 export class ThDirectionalLightHelper<
   T extends DirectionalLightHelper = DirectionalLightHelper,
-  TARGS extends any[] = [
-    light: DirectionalLight,
-    size?: number,
-    color?: Color | string | number
-  ]
+  TARGS extends any[] = [light: DirectionalLight, size?: number, color?: Color | string | number]
 > extends ThObject3D<T, TARGS> {
-  protected getType(): Type<DirectionalLightHelper> {
+  public getType(): Type<DirectionalLightHelper> {
     return DirectionalLightHelper;
   }
 
@@ -62,19 +46,9 @@ export class ThDirectionalLightHelper<
   }
 
   @Input()
-  public set color(
-    value:
-      | Color
-      | string
-      | number
-      | undefined
-      | [color: Color | string | number]
-  ) {
+  public set color(value: Color | string | number | undefined | [color: Color | string | number]) {
     if (this._objRef) {
-      this._objRef.color = applyValue<Color | string | number | undefined>(
-        this._objRef.color,
-        value
-      );
+      this._objRef.color = applyValue<Color | string | number | undefined>(this._objRef.color, value);
     }
   }
   @Input()

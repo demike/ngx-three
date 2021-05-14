@@ -1,19 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  BufferGeometry,
-  Material,
-  Matrix4,
-  Skeleton,
-  SkinnedMesh,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { BufferGeometry, Material, Matrix4, Skeleton, SkinnedMesh } from 'three';
 import { applyValue } from '../util';
 import { ThMesh } from './ThMesh';
 import { ThObject3D } from './ThObject3D';
@@ -22,24 +10,15 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-skinnedMesh',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThSkinnedMesh) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSkinnedMesh) }]
 })
 export class ThSkinnedMesh<
   TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
-  T extends SkinnedMesh<TGeometry, TMaterial> = SkinnedMesh<
-    TGeometry,
-    TMaterial
-  >,
-  TARGS extends any[] = [
-    geometry?: TGeometry,
-    material?: TMaterial,
-    useVertexTexture?: boolean
-  ]
+  T extends SkinnedMesh<TGeometry, TMaterial> = SkinnedMesh<TGeometry, TMaterial>,
+  TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial, useVertexTexture?: boolean]
 > extends ThMesh<TGeometry, TMaterial, T, TARGS> {
-  protected getType(): Type<SkinnedMesh<TGeometry, TMaterial>> {
+  public getType(): Type<SkinnedMesh<TGeometry, TMaterial>> {
     return SkinnedMesh;
   }
 
@@ -74,10 +53,7 @@ export class ThSkinnedMesh<
         ]
   ) {
     if (this._objRef) {
-      this._objRef.bindMatrix = applyValue<Matrix4>(
-        this._objRef.bindMatrix,
-        value
-      );
+      this._objRef.bindMatrix = applyValue<Matrix4>(this._objRef.bindMatrix, value);
     }
   }
   @Input()
@@ -104,10 +80,7 @@ export class ThSkinnedMesh<
         ]
   ) {
     if (this._objRef) {
-      this._objRef.bindMatrixInverse = applyValue<Matrix4>(
-        this._objRef.bindMatrixInverse,
-        value
-      );
+      this._objRef.bindMatrixInverse = applyValue<Matrix4>(this._objRef.bindMatrixInverse, value);
     }
   }
   @Input()

@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Color, Object3D, SpotLight, SpotLightShadow, Vector3 } from 'three';
 import { applyValue } from '../util';
 import { ThLight } from './ThLight';
@@ -16,9 +10,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-spotLight',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThSpotLight) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSpotLight) }]
 })
 export class ThSpotLight<
   T extends SpotLight = SpotLight,
@@ -31,7 +23,7 @@ export class ThSpotLight<
     decay?: number
   ]
 > extends ThLight<T, TARGS> {
-  protected getType(): Type<SpotLight> {
+  public getType(): Type<SpotLight> {
     return SpotLight;
   }
 

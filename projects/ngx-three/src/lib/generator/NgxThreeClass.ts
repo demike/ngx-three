@@ -71,7 +71,7 @@ export abstract class NgxThreeClass {
           providers: ${providersArray}
         })
         ${classHeader} {
-          protected getType(): Type<${this.wrappedClassName}${this.wrappedClassGenericTypeNames}> { return ${this.wrappedClassName}};
+          public getType(): Type<${this.wrappedClassName}${this.wrappedClassGenericTypeNames}> { return ${this.wrappedClassName}};
           ${this.inputs}
           ${constr}
         }

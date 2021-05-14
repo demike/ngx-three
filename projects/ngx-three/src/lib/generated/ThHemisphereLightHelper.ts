@@ -1,19 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Color,
-  HemisphereLight,
-  HemisphereLightHelper,
-  Matrix4,
-  MeshBasicMaterial,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Color, HemisphereLight, HemisphereLightHelper, Matrix4, MeshBasicMaterial } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -24,19 +12,15 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThObject3D,
-      useExisting: forwardRef(() => ThHemisphereLightHelper),
-    },
-  ],
+      useExisting: forwardRef(() => ThHemisphereLightHelper)
+    }
+  ]
 })
 export class ThHemisphereLightHelper<
   T extends HemisphereLightHelper = HemisphereLightHelper,
-  TARGS extends any[] = [
-    light: HemisphereLight,
-    size: number,
-    color?: Color | number | string
-  ]
+  TARGS extends any[] = [light: HemisphereLight, size: number, color?: Color | number | string]
 > extends ThObject3D<T, TARGS> {
-  protected getType(): Type<HemisphereLightHelper> {
+  public getType(): Type<HemisphereLightHelper> {
     return HemisphereLightHelper;
   }
 
@@ -89,19 +73,9 @@ export class ThHemisphereLightHelper<
   }
 
   @Input()
-  public set color(
-    value:
-      | Color
-      | string
-      | number
-      | undefined
-      | [color: Color | string | number]
-  ) {
+  public set color(value: Color | string | number | undefined | [color: Color | string | number]) {
     if (this._objRef) {
-      this._objRef.color = applyValue<Color | string | number | undefined>(
-        this._objRef.color,
-        value
-      );
+      this._objRef.color = applyValue<Color | string | number | undefined>(this._objRef.color, value);
     }
   }
 }

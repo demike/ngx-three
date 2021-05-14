@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import {
   Camera,
   Color,
@@ -20,13 +14,10 @@ import {
   ShaderMaterial,
   TextureEncoding,
   WebGLRenderer,
-  WebGLRenderTarget,
+  WebGLRenderTarget
 } from 'three';
 import { Pass } from 'three/examples/jsm/postprocessing/Pass';
-import {
-  SSRrPass,
-  SSRrPassParams,
-} from 'three/examples/jsm/postprocessing/SSRrPass';
+import { SSRrPass, SSRrPassParams } from 'three/examples/jsm/postprocessing/SSRrPass';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';
@@ -35,15 +26,10 @@ import { ThPass } from './ThPass';
   selector: 'th-sSRrPass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThSSRrPass) },
-  ],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThSSRrPass) }]
 })
-export class ThSSRrPass<
-  T extends SSRrPass = SSRrPass,
-  TARGS extends any[] = [params: SSRrPassParams]
-> extends ThPass<T, TARGS> {
-  protected getType(): Type<SSRrPass> {
+export class ThSSRrPass<T extends SSRrPass = SSRrPass, TARGS extends any[] = [params: SSRrPassParams]> extends ThPass<T, TARGS> {
+  public getType(): Type<SSRrPass> {
     return SSRrPass;
   }
 
@@ -250,14 +236,9 @@ export class ThSSRrPass<
   }
 
   @Input()
-  public set originalClearColor(
-    value: Color | [color: Color | string | number]
-  ) {
+  public set originalClearColor(value: Color | [color: Color | string | number]) {
     if (this._objRef) {
-      this._objRef.originalClearColor = applyValue<Color>(
-        this._objRef.originalClearColor,
-        value
-      );
+      this._objRef.originalClearColor = applyValue<Color>(this._objRef.originalClearColor, value);
     }
   }
   @Input()
@@ -268,9 +249,7 @@ export class ThSSRrPass<
   }
 
   @Input()
-  public set render(
-    value: (renderer: WebGLRenderer, writeBuffer: WebGLRenderTarget) => void
-  ) {
+  public set render(value: (renderer: WebGLRenderer, writeBuffer: WebGLRenderTarget) => void) {
     if (this._objRef) {
       this._objRef.render = value;
     }

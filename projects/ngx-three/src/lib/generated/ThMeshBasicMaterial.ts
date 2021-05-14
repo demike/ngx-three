@@ -1,19 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Color,
-  Combine,
-  MeshBasicMaterial,
-  MeshBasicMaterialParameters,
-  Texture,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Color, Combine, MeshBasicMaterial, MeshBasicMaterialParameters, Texture } from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -21,15 +9,13 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-meshBasicMaterial',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThMeshBasicMaterial) },
-  ],
+  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThMeshBasicMaterial) }]
 })
 export class ThMeshBasicMaterial<
   T extends MeshBasicMaterial = MeshBasicMaterial,
   TARGS extends any[] = [parameters?: MeshBasicMaterialParameters]
 > extends ThMaterial<T, TARGS> {
-  protected getType(): Type<MeshBasicMaterial> {
+  public getType(): Type<MeshBasicMaterial> {
     return MeshBasicMaterial;
   }
 

@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ArrowHelper, Color, Line, Mesh, Vector3 } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -14,9 +8,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-arrowHelper',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThArrowHelper) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThArrowHelper) }]
 })
 export class ThArrowHelper<
   T extends ArrowHelper = ArrowHelper,
@@ -29,7 +21,7 @@ export class ThArrowHelper<
     headWidth?: number
   ]
 > extends ThObject3D<T, TARGS> {
-  protected getType(): Type<ArrowHelper> {
+  public getType(): Type<ArrowHelper> {
     return ArrowHelper;
   }
 

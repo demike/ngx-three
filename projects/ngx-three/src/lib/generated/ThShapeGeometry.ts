@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Shape, ShapeGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -17,15 +11,15 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThShapeGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThShapeGeometry)
+    }
+  ]
 })
 export class ThShapeGeometry<
   T extends ShapeGeometry = ShapeGeometry,
   TARGS extends any[] = [shapes: Shape | Shape[], curveSegments?: number]
 > extends ThBufferGeometry<T, TARGS> {
-  protected getType(): Type<ShapeGeometry> {
+  public getType(): Type<ShapeGeometry> {
     return ShapeGeometry;
   }
 

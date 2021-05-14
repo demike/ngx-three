@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { TorusGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -17,21 +11,15 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThTorusGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThTorusGeometry)
+    }
+  ]
 })
 export class ThTorusGeometry<
   T extends TorusGeometry = TorusGeometry,
-  TARGS extends any[] = [
-    radius?: number,
-    tube?: number,
-    radialSegments?: number,
-    tubularSegments?: number,
-    arc?: number
-  ]
+  TARGS extends any[] = [radius?: number, tube?: number, radialSegments?: number, tubularSegments?: number, arc?: number]
 > extends ThBufferGeometry<T, TARGS> {
-  protected getType(): Type<TorusGeometry> {
+  public getType(): Type<TorusGeometry> {
     return TorusGeometry;
   }
 
@@ -43,13 +31,7 @@ export class ThTorusGeometry<
   }
 
   @Input()
-  public set parameters(value: {
-    radius: number;
-    tube: number;
-    radialSegments: number;
-    tubularSegments: number;
-    arc: number;
-  }) {
+  public set parameters(value: { radius: number; tube: number; radialSegments: number; tubularSegments: number; arc: number }) {
     if (this._objRef) {
       this._objRef.parameters = value;
     }

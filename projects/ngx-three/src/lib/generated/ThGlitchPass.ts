@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ShaderMaterial } from 'three';
 import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass';
 import { ThPassBase } from '../ThPassBase';
@@ -17,15 +11,10 @@ import { ThPass } from './ThPass';
   selector: 'th-glitchPass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThGlitchPass) },
-  ],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThGlitchPass) }]
 })
-export class ThGlitchPass<
-  T extends GlitchPass = GlitchPass,
-  TARGS extends any[] = [dt_size?: number]
-> extends ThPass<T, TARGS> {
-  protected getType(): Type<GlitchPass> {
+export class ThGlitchPass<T extends GlitchPass = GlitchPass, TARGS extends any[] = [dt_size?: number]> extends ThPass<T, TARGS> {
+  public getType(): Type<GlitchPass> {
     return GlitchPass;
   }
 

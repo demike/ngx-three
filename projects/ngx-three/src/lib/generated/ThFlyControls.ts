@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Camera } from 'three';
 import { FlyControls } from 'three/examples/jsm/controls/FlyControls';
 import { ThControlBase } from '../ThControlBase';
@@ -15,15 +9,13 @@ import { ThControlBase } from '../ThControlBase';
   selector: 'th-flyControls',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThControlBase, useExisting: forwardRef(() => ThFlyControls) },
-  ],
+  providers: [{ provide: ThControlBase, useExisting: forwardRef(() => ThFlyControls) }]
 })
 export class ThFlyControls<
   T extends FlyControls = FlyControls,
   TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
 > extends ThControlBase<T, TARGS> {
-  protected getType(): Type<FlyControls> {
+  public getType(): Type<FlyControls> {
     return FlyControls;
   }
 

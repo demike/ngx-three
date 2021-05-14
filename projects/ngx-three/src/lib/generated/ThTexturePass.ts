@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ShaderMaterial, Texture } from 'three';
 import { TexturePass } from 'three/examples/jsm/postprocessing/TexturePass';
 import { ThPassBase } from '../ThPassBase';
@@ -17,15 +11,13 @@ import { ThPass } from './ThPass';
   selector: 'th-texturePass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThTexturePass) },
-  ],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThTexturePass) }]
 })
-export class ThTexturePass<
-  T extends TexturePass = TexturePass,
-  TARGS extends any[] = [map: Texture, opacity?: number]
-> extends ThPass<T, TARGS> {
-  protected getType(): Type<TexturePass> {
+export class ThTexturePass<T extends TexturePass = TexturePass, TARGS extends any[] = [map: Texture, opacity?: number]> extends ThPass<
+  T,
+  TARGS
+> {
+  public getType(): Type<TexturePass> {
     return TexturePass;
   }
 

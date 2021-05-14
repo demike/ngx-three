@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Camera } from 'three';
 import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls';
 import { ThControlBase } from '../ThControlBase';
@@ -18,15 +12,15 @@ import { ThControlBase } from '../ThControlBase';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThFirstPersonControls),
-    },
-  ],
+      useExisting: forwardRef(() => ThFirstPersonControls)
+    }
+  ]
 })
 export class ThFirstPersonControls<
   T extends FirstPersonControls = FirstPersonControls,
   TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
 > extends ThControlBase<T, TARGS> {
-  protected getType(): Type<FirstPersonControls> {
+  public getType(): Type<FirstPersonControls> {
     return FirstPersonControls;
   }
 

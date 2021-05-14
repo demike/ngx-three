@@ -12,9 +12,17 @@ export class ThMaterialBase<T extends Material, ARGS extends any[] = []> extends
     super();
   }
 
-  protected createThreeInstance(args?: Iterable<any>) {
-    super.createThreeInstance(args);
+  public addToParent() {
+    if (!this.parent.objRef) {
+      throw new Error("parent object doesn't hold a three js object instance");
+    }
 
-    (this.parent.objRef as any).material = this.objRef;
+    this.parent.objRef.material = this.objRef;
+  }
+
+  public removeFromParent() {
+    if (this._objRef && this.parent && this.parent.objRef) {
+      (this.parent.objRef as any).material = undefined;
+    }
   }
 }

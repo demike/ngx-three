@@ -1,27 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Camera,
-  Color,
-  DataTexture,
-  MeshNormalMaterial,
-  Scene,
-  ShaderMaterial,
-  Vector3,
-  WebGLRenderTarget,
-} from 'three';
-import {
-  SSAOPass,
-  SSAOPassOUTPUT,
-} from 'three/examples/jsm/postprocessing/SSAOPass';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Camera, Color, DataTexture, MeshNormalMaterial, Scene, ShaderMaterial, Vector3, WebGLRenderTarget } from 'three';
+import { SSAOPass, SSAOPassOUTPUT } from 'three/examples/jsm/postprocessing/SSAOPass';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';
@@ -30,20 +12,13 @@ import { ThPass } from './ThPass';
   selector: 'th-sSAOPass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThSSAOPass) },
-  ],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThSSAOPass) }]
 })
 export class ThSSAOPass<
   T extends SSAOPass = SSAOPass,
-  TARGS extends any[] = [
-    scene: Scene,
-    camera: Camera,
-    width?: number,
-    height?: number
-  ]
+  TARGS extends any[] = [scene: Scene, camera: Camera, width?: number, height?: number]
 > extends ThPass<T, TARGS> {
-  protected getType(): Type<SSAOPass> {
+  public getType(): Type<SSAOPass> {
     return SSAOPass;
   }
 
@@ -202,14 +177,9 @@ export class ThSSAOPass<
   }
 
   @Input()
-  public set originalClearColor(
-    value: Color | [color: Color | string | number]
-  ) {
+  public set originalClearColor(value: Color | [color: Color | string | number]) {
     if (this._objRef) {
-      this._objRef.originalClearColor = applyValue<Color>(
-        this._objRef.originalClearColor,
-        value
-      );
+      this._objRef.originalClearColor = applyValue<Color>(this._objRef.originalClearColor, value);
     }
   }
 }

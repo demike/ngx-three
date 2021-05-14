@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { PerspectiveCamera } from 'three';
 import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
@@ -17,19 +11,14 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThPerspectiveCamera) },
-    { provide: ThCamera, useExisting: forwardRef(() => ThPerspectiveCamera) },
-  ],
+    { provide: ThCamera, useExisting: forwardRef(() => ThPerspectiveCamera) }
+  ]
 })
 export class ThPerspectiveCamera<
   T extends PerspectiveCamera = PerspectiveCamera,
-  TARGS extends any[] = [
-    fov?: number,
-    aspect?: number,
-    near?: number,
-    far?: number
-  ]
+  TARGS extends any[] = [fov?: number, aspect?: number, near?: number, far?: number]
 > extends ThCamera<T, TARGS> {
-  protected getType(): Type<PerspectiveCamera> {
+  public getType(): Type<PerspectiveCamera> {
     return PerspectiveCamera;
   }
 

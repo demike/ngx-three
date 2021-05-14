@@ -1,12 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { InstancedBufferGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -17,15 +11,15 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThInstancedBufferGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThInstancedBufferGeometry)
+    }
+  ]
 })
 export class ThInstancedBufferGeometry<
   T extends InstancedBufferGeometry = InstancedBufferGeometry,
   TARGS extends any[] = []
 > extends ThBufferGeometry<T, TARGS> {
-  protected getType(): Type<InstancedBufferGeometry> {
+  public getType(): Type<InstancedBufferGeometry> {
     return InstancedBufferGeometry;
   }
 
@@ -44,9 +38,7 @@ export class ThInstancedBufferGeometry<
   }
 
   @Input()
-  public set groups(
-    value: Array<{ start: number; count: number; instances: number }>
-  ) {
+  public set groups(value: Array<{ start: number; count: number; instances: number }>) {
     if (this._objRef) {
       this._objRef.groups = value;
     }

@@ -12,10 +12,10 @@ export class ThControlBase<T, ARGS extends any[]> extends ThWrapperBase<T, ARGS>
     super();
   }
 
-  protected createThreeInstance(args?: Iterable<any>) {
+  public createThreeInstance(args?: Iterable<any>) {
     if (!args) {
       args = [this.camera.objRef, this.canvas?.rendererCanvas?.nativeElement];
     }
-    super.createThreeInstance(args);
+    return super.createThreeInstance(args);
   }
 }

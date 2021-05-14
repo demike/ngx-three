@@ -1,18 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ShaderMaterial } from 'three';
-import {
-  HalftonePass,
-  HalftonePassParameters,
-} from 'three/examples/jsm/postprocessing/HalftonePass';
+import { HalftonePass, HalftonePassParameters } from 'three/examples/jsm/postprocessing/HalftonePass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
@@ -20,19 +11,13 @@ import { ThPass } from './ThPass';
   selector: 'th-halftonePass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThHalftonePass) },
-  ],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThHalftonePass) }]
 })
 export class ThHalftonePass<
   T extends HalftonePass = HalftonePass,
-  TARGS extends any[] = [
-    width: number,
-    height: number,
-    params: HalftonePassParameters
-  ]
+  TARGS extends any[] = [width: number, height: number, params: HalftonePassParameters]
 > extends ThPass<T, TARGS> {
-  protected getType(): Type<HalftonePass> {
+  public getType(): Type<HalftonePass> {
     return HalftonePass;
   }
 
