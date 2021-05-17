@@ -81,7 +81,8 @@ jobs:
 
       # publish to npm
       - name: publish to npm
-        run: npm run package
-        run: cd ./dist/ngx-three && npm publish
+        run: |
+          npm run package
+          cd ./dist/ngx-three && npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
