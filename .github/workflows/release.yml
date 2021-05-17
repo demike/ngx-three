@@ -43,9 +43,9 @@ jobs:
           npm ci
           npm run build:prod
       - name: lint
-      - run: npm run lint
+        run: npm run lint
       - name: unit tests
-      - run: npm run test-headless
+        run: npm run test-headless
 
       # build demo
       - name: build demo
@@ -81,7 +81,7 @@ jobs:
 
       # publish to npm
       - name: publish to npm
-      - run: npm run package
-      - run: cd ./dist/ngx-three && npm publish
+        run: npm run package
+        run: cd ./dist/ngx-three && npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
