@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
