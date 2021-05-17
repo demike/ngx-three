@@ -34,9 +34,3 @@ jobs:
 
       - name: build demo
         run: npm run build:demo
-      - name: deploy demo to gh-pages
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: dist/ngx-three-demo
