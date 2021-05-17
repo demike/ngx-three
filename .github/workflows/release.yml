@@ -1,5 +1,11 @@
 name: Release
 
+# trigger a release:
+# minor:
+# npm version minor -m "Release %s" && git push --tags
+# patch:
+# npm version patch -m "Release %s" && git push --tags
+
 on:
   push:
     # Sequence of patterns matched against refs/tags
