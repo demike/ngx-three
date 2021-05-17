@@ -31,12 +31,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           registry-url: https://registry.npmjs.org/
 
-      # set the package version to the release tag version
-      - name: Check package version
-        uses: technote-space/package-version-check-action@v1
-        with:
-          COMMIT_DISABLED: 1
-
       # build library
       - name: npm ci and npm run build
         run: |
@@ -46,6 +40,13 @@ jobs:
         run: npm run lint
       - name: unit tests
         run: npm run test-headless
+
+      # set the library package version to the release tag version
+      - name: Check package version
+        uses: technote-space/package-version-check-action@v1
+        with:
+          COMMIT_DISABLED: 1
+          PACKAGE_DIR: 'dist/ngx-three'
 
       # build demo
       - name: build demo
@@ -82,7 +83,7 @@ jobs:
       # publish to npm
       - name: publish to npm
         run: |
-          npm run package
+          npm run copy:docs
           cd ./dist/ngx-three && npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
