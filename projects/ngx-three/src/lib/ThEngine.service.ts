@@ -73,7 +73,8 @@ export class ThEngineService implements OnDestroy {
     this.renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       alpha: true, // transparent background
-      antialias: true // smooth edges
+      antialias: true, // smooth edges
+      preserveDrawingBuffer: true,
     });
 
     this.resize();
@@ -135,7 +136,12 @@ export class ThEngineService implements OnDestroy {
         if (view.viewPort instanceof Vector4) {
           this.renderer.setViewport(view.viewPort);
         } else {
-          this.renderer.setViewport(view.viewPort.x, view.viewPort.y, view.viewPort.width, view.viewPort.height);
+          this.renderer.setViewport(
+            view.viewPort.x,
+            view.viewPort.y,
+            view.viewPort.width,
+            view.viewPort.height
+          );
         }
       }
 
@@ -151,7 +157,7 @@ export class ThEngineService implements OnDestroy {
           this.onRender.emit({
             renderer,
             scene,
-            camera
+            camera,
           })
         );
       }
