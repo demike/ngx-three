@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Camera, MOUSE, Object3D } from 'three';
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
 import { ThControlBase } from '../ThControlBase';
@@ -13,9 +20,9 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThTransformControls)
-    }
-  ]
+      useExisting: forwardRef(() => ThTransformControls),
+    },
+  ],
 })
 export class ThTransformControls<
   T extends TransformControls = TransformControls,

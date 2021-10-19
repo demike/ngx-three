@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Curve, TubeGeometry, Vector3 } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -11,13 +18,19 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThTubeGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThTubeGeometry),
+    },
+  ],
 })
 export class ThTubeGeometry<
   T extends TubeGeometry = TubeGeometry,
-  TARGS extends any[] = [path: Curve<Vector3>, tubularSegments?: number, radius?: number, radiusSegments?: number, closed?: boolean]
+  TARGS extends any[] = [
+    path: Curve<Vector3>,
+    tubularSegments?: number,
+    radius?: number,
+    radiusSegments?: number,
+    closed?: boolean
+  ]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<TubeGeometry> {
     return TubeGeometry;
@@ -31,7 +44,13 @@ export class ThTubeGeometry<
   }
 
   @Input()
-  public set parameters(value: { path: Curve<Vector3>; tubularSegments: number; radius: number; radialSegments: number; closed: boolean }) {
+  public set parameters(value: {
+    path: Curve<Vector3>;
+    tubularSegments: number;
+    radius: number;
+    radialSegments: number;
+    closed: boolean;
+  }) {
     if (this._objRef) {
       this._objRef.parameters = value;
     }

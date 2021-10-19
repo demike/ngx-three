@@ -1,10 +1,11 @@
 import * as ts from 'typescript';
 import { ParameterDeclaration } from 'typescript';
 import * as path from 'path';
+import { pascalToCamelCase } from './utils';
+import { NgxThreeOverrideStub } from './NgxThreeOverrideStub';
+import { isOverriddenClass } from './overrides';
 
 const INGORED_MEMBERS = ['parent'];
-
-const pascalToCamelCase = (s: string) => `${s[0].toLowerCase()}${s.slice(1)}`;
 
 /**
  * abstract base class generator
@@ -12,14 +13,17 @@ const pascalToCamelCase = (s: string) => `${s[0].toLowerCase()}${s.slice(1)}`;
  * generates an angular wrapper class for a defined three.js class
  */
 export abstract class NgxThreeClass {
+  public readonly overrideStub?: NgxThreeOverrideStub;
   public content: string;
   public readonly className: string;
   protected classDecl: ts.ClassDeclaration;
   public readonly wrappedClassName: string;
-  protected imports: Set<string> = new Set<string>();
 
-  private constructorArgs = '[]';
-  private wrappedClassGenericTypeNames = ''; // i.e.: "<T,U>"
+  public providersArray?: string;
+  public readonly imports: Set<string> = new Set<string>();
+
+  public constructorArgs = '[]';
+  public wrappedClassGenericTypeNames = ''; // i.e.: "<T,U>"
   private inputs = '';
 
   constructor(protected classSymbol: ts.Symbol, protected typeChecker: ts.TypeChecker) {
@@ -27,6 +31,10 @@ export abstract class NgxThreeClass {
     this.wrappedClassName = this.classSymbol.escapedName as string;
 
     this.className = 'Th' + this.wrappedClassName;
+    if (isOverriddenClass(this.wrappedClassName)) {
+      this.className += 'Gen';
+      this.overrideStub = new NgxThreeOverrideStub(this);
+    }
     this.content = '';
   }
 
@@ -38,7 +46,11 @@ export abstract class NgxThreeClass {
       return;
     }
     if (this.getBaseClassName().length > 0 && this.className !== 'Th' + this.getBaseClassName()) {
-      this.imports.add(`import { Th${this.getBaseClassName()} } from './Th${this.getBaseClassName()}';`);
+      this.imports.add(
+        `import { Th${this.getBaseClassName()} } from './${
+          isOverriddenClass(this.getBaseClassName()) ? NgxThreeOverrideStub.OVERRIDE_SUB_PATH : ''
+        }Th${this.getBaseClassName()}';`
+      );
     }
 
     this.inputs = this.generateMembers(this.classDecl);
@@ -79,6 +91,8 @@ export abstract class NgxThreeClass {
         `;
 
     this.content = ngxClassDeclarationString;
+
+    this.overrideStub?.generate();
   }
 
   /**
@@ -97,7 +111,7 @@ export abstract class NgxThreeClass {
    */
   public abstract getWrapperBaseClassName(): string;
 
-  protected getWrappedClassImportPath() {
+  public getWrappedClassImportPath() {
     return 'three';
   }
 

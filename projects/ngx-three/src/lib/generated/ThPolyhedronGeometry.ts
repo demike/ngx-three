@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { PolyhedronGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -11,13 +18,18 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThPolyhedronGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThPolyhedronGeometry),
+    },
+  ],
 })
 export class ThPolyhedronGeometry<
   T extends PolyhedronGeometry = PolyhedronGeometry,
-  TARGS extends any[] = [vertices: number[], indices: number[], radius?: number, detail?: number]
+  TARGS extends any[] = [
+    vertices: number[],
+    indices: number[],
+    radius?: number,
+    detail?: number
+  ]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<PolyhedronGeometry> {
     return PolyhedronGeometry;
@@ -31,7 +43,12 @@ export class ThPolyhedronGeometry<
   }
 
   @Input()
-  public set parameters(value: { vertices: number[]; indices: number[]; radius: number; detail: number }) {
+  public set parameters(value: {
+    vertices: number[];
+    indices: number[];
+    radius: number;
+    detail: number;
+  }) {
     if (this._objRef) {
       this._objRef.parameters = value;
     }

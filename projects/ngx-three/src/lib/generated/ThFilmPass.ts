@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { ShaderMaterial } from 'three';
 import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass';
 import { ThPassBase } from '../ThPassBase';
@@ -11,11 +18,18 @@ import { ThPass } from './ThPass';
   selector: 'th-filmPass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThFilmPass) }]
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThFilmPass) },
+  ],
 })
 export class ThFilmPass<
   T extends FilmPass = FilmPass,
-  TARGS extends any[] = [noiseIntensity?: number, scanlinesIntensity?: number, scanlinesCount?: number, grayscale?: number]
+  TARGS extends any[] = [
+    noiseIntensity?: number,
+    scanlinesIntensity?: number,
+    scanlinesCount?: number,
+    grayscale?: number
+  ]
 > extends ThPass<T, TARGS> {
   public getType(): Type<FilmPass> {
     return FilmPass;

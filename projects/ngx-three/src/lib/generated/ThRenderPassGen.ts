@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Camera, Color, Material, Scene } from 'three';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { ThPassBase } from '../ThPassBase';
@@ -12,11 +19,19 @@ import { ThPass } from './ThPass';
   selector: 'th-renderPass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThRenderPass) }]
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThRenderPassGen) },
+  ],
 })
-export class ThRenderPass<
+export class ThRenderPassGen<
   T extends RenderPass = RenderPass,
-  TARGS extends any[] = [scene: Scene, camera: Camera, overrideMaterial?: Material, clearColor?: Color, clearAlpha?: number]
+  TARGS extends any[] = [
+    scene: Scene,
+    camera: Camera,
+    overrideMaterial?: Material,
+    clearColor?: Color,
+    clearAlpha?: number
+  ]
 > extends ThPass<T, TARGS> {
   public getType(): Type<RenderPass> {
     return RenderPass;
@@ -46,7 +61,10 @@ export class ThRenderPass<
   @Input()
   public set clearColor(value: Color | [color: Color | string | number]) {
     if (this._objRef) {
-      this._objRef.clearColor = applyValue<Color>(this._objRef.clearColor, value);
+      this._objRef.clearColor = applyValue<Color>(
+        this._objRef.clearColor,
+        value
+      );
     }
   }
   @Input()

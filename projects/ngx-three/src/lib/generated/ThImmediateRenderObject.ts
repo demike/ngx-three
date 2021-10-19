@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { ImmediateRenderObject, Material } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -11,9 +18,9 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThObject3D,
-      useExisting: forwardRef(() => ThImmediateRenderObject)
-    }
-  ]
+      useExisting: forwardRef(() => ThImmediateRenderObject),
+    },
+  ],
 })
 export class ThImmediateRenderObject<
   T extends ImmediateRenderObject = ImmediateRenderObject,

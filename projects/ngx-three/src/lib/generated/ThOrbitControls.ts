@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Camera, MOUSE, TOUCH, Vector3 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { ThControlBase } from '../ThControlBase';
@@ -10,7 +17,9 @@ import { applyValue } from '../util';
   selector: 'th-orbitControls',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) }]
+  providers: [
+    { provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) },
+  ],
 })
 export class ThOrbitControls<
   T extends OrbitControls = OrbitControls,
@@ -201,7 +210,12 @@ export class ThOrbitControls<
   }
 
   @Input()
-  public set keys(value: { LEFT: number; UP: number; RIGHT: number; BOTTOM: number }) {
+  public set keys(value: {
+    LEFT: number;
+    UP: number;
+    RIGHT: number;
+    BOTTOM: number;
+  }) {
     if (this._objRef) {
       this._objRef.keys = value;
     }

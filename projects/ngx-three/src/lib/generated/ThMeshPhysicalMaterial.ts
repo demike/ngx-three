@@ -1,7 +1,20 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { Color, MeshPhysicalMaterial, MeshPhysicalMaterialParameters, Texture, Vector2 } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  Color,
+  MeshPhysicalMaterial,
+  MeshPhysicalMaterialParameters,
+  Texture,
+  Vector2,
+} from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 import { ThMeshStandardMaterial } from './ThMeshStandardMaterial';
@@ -13,9 +26,9 @@ import { ThMeshStandardMaterial } from './ThMeshStandardMaterial';
   providers: [
     {
       provide: ThMaterial,
-      useExisting: forwardRef(() => ThMeshPhysicalMaterial)
-    }
-  ]
+      useExisting: forwardRef(() => ThMeshPhysicalMaterial),
+    },
+  ],
 })
 export class ThMeshPhysicalMaterial<
   T extends MeshPhysicalMaterial = MeshPhysicalMaterial,
@@ -70,7 +83,10 @@ export class ThMeshPhysicalMaterial<
   @Input()
   public set clearcoatNormalScale(value: Vector2 | [x: number, y: number]) {
     if (this._objRef) {
-      this._objRef.clearcoatNormalScale = applyValue<Vector2>(this._objRef.clearcoatNormalScale, value);
+      this._objRef.clearcoatNormalScale = applyValue<Vector2>(
+        this._objRef.clearcoatNormalScale,
+        value
+      );
     }
   }
   @Input()

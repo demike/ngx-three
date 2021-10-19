@@ -1,4 +1,4 @@
-import { readFileSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, writeFileSync } from 'fs';
 import { join } from 'path';
 import * as ts from 'typescript';
 import { NgxThreeClass } from './NgxThreeClass';
@@ -47,8 +47,13 @@ class NgxThreeClassGenerator {
       if (cls.content.length === 0) {
         return;
       }
+
       this.ngxThreeClassMap.set(cls.className, cls);
       this.writeFile(cls.className, cls.content);
+
+      if (cls.overrideStub && !this.doesFileExist('overrides/' + cls.overrideStub.className)) {
+        this.writeFile('overrides/' + cls.overrideStub.className, cls.overrideStub.content);
+      }
     });
   }
 
@@ -59,16 +64,16 @@ class NgxThreeClassGenerator {
     return ngxClass;
   }
 
-  public generateNgxModule(classNames: string[]) {
+  public generateNgxModule(classes: NgxThreeClass[]) {
     const ngxModule = new NgxThreeModuleGen();
-    ngxModule.generate(classNames);
+    ngxModule.generate(classes);
 
     this.writeFile('ngx-three-generated.module', ngxModule.content);
   }
 
-  public generateNgxBarrelFile(classNames: string[]) {
+  public generateNgxBarrelFile(classes: NgxThreeClass[]) {
     const ngxBarrel = new NgxThreeBarrelGen();
-    ngxBarrel.generate(classNames);
+    ngxBarrel.generate(classes);
 
     this.writeFile('index', ngxBarrel.content);
   }
@@ -85,6 +90,10 @@ class NgxThreeClassGenerator {
       console.log(e);
     }
     writeFileSync(join(this.baseOutPath, fileName + '.ts'), content);
+  }
+
+  private doesFileExist(fileName: string): boolean {
+    return existsSync(join(this.baseOutPath, fileName + '.ts'));
   }
 
   private getInterfacePropertyNames(interfaceName: string) {
@@ -153,5 +162,5 @@ generator.generateMaterials();
 generator.generateGeometries();
 generator.generateControls();
 generator.generatePasses();
-generator.generateNgxModule(Array.from(generator.ngxThreeClassMap.keys()));
-generator.generateNgxBarrelFile(Array.from(generator.ngxThreeClassMap.keys()));
+generator.generateNgxModule(Array.from(generator.ngxThreeClassMap.values()));
+generator.generateNgxBarrelFile(Array.from(generator.ngxThreeClassMap.values()));

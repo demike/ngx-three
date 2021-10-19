@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { TorusKnotGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -11,13 +18,20 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThTorusKnotGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThTorusKnotGeometry),
+    },
+  ],
 })
 export class ThTorusKnotGeometry<
   T extends TorusKnotGeometry = TorusKnotGeometry,
-  TARGS extends any[] = [radius?: number, tube?: number, tubularSegments?: number, radialSegments?: number, p?: number, q?: number]
+  TARGS extends any[] = [
+    radius?: number,
+    tube?: number,
+    tubularSegments?: number,
+    radialSegments?: number,
+    p?: number,
+    q?: number
+  ]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<TorusKnotGeometry> {
     return TorusKnotGeometry;
@@ -31,7 +45,14 @@ export class ThTorusKnotGeometry<
   }
 
   @Input()
-  public set parameters(value: { radius: number; tube: number; tubularSegments: number; radialSegments: number; p: number; q: number }) {
+  public set parameters(value: {
+    radius: number;
+    tube: number;
+    tubularSegments: number;
+    radialSegments: number;
+    p: number;
+    q: number;
+  }) {
     if (this._objRef) {
       this._objRef.parameters = value;
     }

@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { SphereGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -11,9 +18,9 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThSphereGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThSphereGeometry),
+    },
+  ],
 })
 export class ThSphereGeometry<
   T extends SphereGeometry = SphereGeometry,

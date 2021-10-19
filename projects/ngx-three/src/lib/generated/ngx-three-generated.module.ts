@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ThRenderPass } from './overrides/ThRenderPass';
 import { ThAdaptiveToneMappingPass } from './ThAdaptiveToneMappingPass';
 import { ThAfterimagePass } from './ThAfterimagePass';
 import { ThAmbientLight } from './ThAmbientLight';
@@ -91,7 +92,7 @@ import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
 import { ThPositionalAudio } from './ThPositionalAudio';
 import { ThRawShaderMaterial } from './ThRawShaderMaterial';
 import { ThRectAreaLight } from './ThRectAreaLight';
-import { ThRenderPass } from './ThRenderPass';
+import { ThRenderPassGen } from './ThRenderPassGen';
 import { ThRingGeometry } from './ThRingGeometry';
 import { ThSAOPass } from './ThSAOPass';
 import { ThSavePass } from './ThSavePass';
@@ -240,6 +241,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThClearMaskPass,
     ThOutlinePass,
     ThPass,
+    ThRenderPassGen,
     ThRenderPass,
     ThSAOPass,
     ThSMAAPass,
@@ -367,6 +369,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThClearMaskPass,
     ThOutlinePass,
     ThPass,
+    ThRenderPassGen,
     ThRenderPass,
     ThSAOPass,
     ThSMAAPass,

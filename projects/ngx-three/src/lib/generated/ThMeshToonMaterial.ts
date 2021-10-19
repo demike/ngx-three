@@ -1,7 +1,21 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { Color, MeshToonMaterial, MeshToonMaterialParameters, NormalMapTypes, Texture, Vector2 } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  Color,
+  MeshToonMaterial,
+  MeshToonMaterialParameters,
+  NormalMapTypes,
+  Texture,
+  Vector2,
+} from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -9,7 +23,9 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-meshToonMaterial',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThMeshToonMaterial) }]
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThMeshToonMaterial) },
+  ],
 })
 export class ThMeshToonMaterial<
   T extends MeshToonMaterial = MeshToonMaterial,
@@ -132,7 +148,10 @@ export class ThMeshToonMaterial<
   @Input()
   public set normalScale(value: Vector2 | [x: number, y: number]) {
     if (this._objRef) {
-      this._objRef.normalScale = applyValue<Vector2>(this._objRef.normalScale, value);
+      this._objRef.normalScale = applyValue<Vector2>(
+        this._objRef.normalScale,
+        value
+      );
     }
   }
   @Input()

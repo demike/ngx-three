@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import {
   Camera,
   Color,
@@ -13,7 +20,7 @@ import {
   ShaderMaterial,
   Texture,
   Vector2,
-  WebGLRenderTarget
+  WebGLRenderTarget,
 } from 'three';
 import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass';
 import { ThPassBase } from '../ThPassBase';
@@ -24,11 +31,18 @@ import { ThPass } from './ThPass';
   selector: 'th-outlinePass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThOutlinePass) }]
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThOutlinePass) },
+  ],
 })
 export class ThOutlinePass<
   T extends OutlinePass = OutlinePass,
-  TARGS extends any[] = [resolution: Vector2, scene: Scene, camera: Camera, selectedObjects?: Object3D[]]
+  TARGS extends any[] = [
+    resolution: Vector2,
+    scene: Scene,
+    camera: Camera,
+    selectedObjects?: Object3D[]
+  ]
 > extends ThPass<T, TARGS> {
   public getType(): Type<OutlinePass> {
     return OutlinePass;
@@ -58,13 +72,19 @@ export class ThOutlinePass<
   @Input()
   public set visibleEdgeColor(value: Color | [color: Color | string | number]) {
     if (this._objRef) {
-      this._objRef.visibleEdgeColor = applyValue<Color>(this._objRef.visibleEdgeColor, value);
+      this._objRef.visibleEdgeColor = applyValue<Color>(
+        this._objRef.visibleEdgeColor,
+        value
+      );
     }
   }
   @Input()
   public set hiddenEdgeColor(value: Color | [color: Color | string | number]) {
     if (this._objRef) {
-      this._objRef.hiddenEdgeColor = applyValue<Color>(this._objRef.hiddenEdgeColor, value);
+      this._objRef.hiddenEdgeColor = applyValue<Color>(
+        this._objRef.hiddenEdgeColor,
+        value
+      );
     }
   }
   @Input()
@@ -112,7 +132,10 @@ export class ThOutlinePass<
   @Input()
   public set resolution(value: Vector2 | [x: number, y: number]) {
     if (this._objRef) {
-      this._objRef.resolution = applyValue<Vector2>(this._objRef.resolution, value);
+      this._objRef.resolution = applyValue<Vector2>(
+        this._objRef.resolution,
+        value
+      );
     }
   }
   @Input()
@@ -237,7 +260,10 @@ export class ThOutlinePass<
   @Input()
   public set oldClearColor(value: Color | [color: Color | string | number]) {
     if (this._objRef) {
-      this._objRef.oldClearColor = applyValue<Color>(this._objRef.oldClearColor, value);
+      this._objRef.oldClearColor = applyValue<Color>(
+        this._objRef.oldClearColor,
+        value
+      );
     }
   }
   @Input()
@@ -257,13 +283,19 @@ export class ThOutlinePass<
   @Input()
   public set tempPulseColor1(value: Color | [color: Color | string | number]) {
     if (this._objRef) {
-      this._objRef.tempPulseColor1 = applyValue<Color>(this._objRef.tempPulseColor1, value);
+      this._objRef.tempPulseColor1 = applyValue<Color>(
+        this._objRef.tempPulseColor1,
+        value
+      );
     }
   }
   @Input()
   public set tempPulseColor2(value: Color | [color: Color | string | number]) {
     if (this._objRef) {
-      this._objRef.tempPulseColor2 = applyValue<Color>(this._objRef.tempPulseColor2, value);
+      this._objRef.tempPulseColor2 = applyValue<Color>(
+        this._objRef.tempPulseColor2,
+        value
+      );
     }
   }
   @Input()
@@ -290,7 +322,10 @@ export class ThOutlinePass<
         ]
   ) {
     if (this._objRef) {
-      this._objRef.textureMatrix = applyValue<Matrix4>(this._objRef.textureMatrix, value);
+      this._objRef.textureMatrix = applyValue<Matrix4>(
+        this._objRef.textureMatrix,
+        value
+      );
     }
   }
 }

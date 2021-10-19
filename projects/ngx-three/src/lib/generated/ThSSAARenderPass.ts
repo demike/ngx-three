@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Camera, Color, Scene, ShaderMaterial, WebGLRenderTarget } from 'three';
 import { SSAARenderPass } from 'three/examples/jsm/postprocessing/SSAARenderPass';
 import { ThPassBase } from '../ThPassBase';
@@ -12,11 +19,18 @@ import { ThPass } from './ThPass';
   selector: 'th-sSAARenderPass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThSSAARenderPass) }]
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThSSAARenderPass) },
+  ],
 })
 export class ThSSAARenderPass<
   T extends SSAARenderPass = SSAARenderPass,
-  TARGS extends any[] = [scene: Scene, camera: Camera, clearColor: Color | string | number, clearAlpha: number]
+  TARGS extends any[] = [
+    scene: Scene,
+    camera: Camera,
+    clearColor: Color | string | number,
+    clearAlpha: number
+  ]
 > extends ThPass<T, TARGS> {
   public getType(): Type<SSAARenderPass> {
     return SSAARenderPass;
@@ -51,9 +65,14 @@ export class ThSSAARenderPass<
   }
 
   @Input()
-  public set clearColor(value: Color | string | number | [color: Color | string | number]) {
+  public set clearColor(
+    value: Color | string | number | [color: Color | string | number]
+  ) {
     if (this._objRef) {
-      this._objRef.clearColor = applyValue<Color | string | number>(this._objRef.clearColor, value);
+      this._objRef.clearColor = applyValue<Color | string | number>(
+        this._objRef.clearColor,
+        value
+      );
     }
   }
   @Input()

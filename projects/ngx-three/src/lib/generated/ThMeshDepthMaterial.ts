@@ -1,14 +1,28 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { DepthPackingStrategies, MeshDepthMaterial, MeshDepthMaterialParameters, Texture } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  DepthPackingStrategies,
+  MeshDepthMaterial,
+  MeshDepthMaterialParameters,
+  Texture,
+} from 'three';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
   selector: 'th-meshDepthMaterial',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThMeshDepthMaterial) }]
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThMeshDepthMaterial) },
+  ],
 })
 export class ThMeshDepthMaterial<
   T extends MeshDepthMaterial = MeshDepthMaterial,

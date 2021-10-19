@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Color, Light, LineSegments, Matrix4, SpotLightHelper } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -9,7 +16,9 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-spotLightHelper',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSpotLightHelper) }]
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThSpotLightHelper) },
+  ],
 })
 export class ThSpotLightHelper<
   T extends SpotLightHelper = SpotLightHelper,
@@ -61,9 +70,19 @@ export class ThSpotLightHelper<
   }
 
   @Input()
-  public set color(value: Color | string | number | undefined | [color: Color | string | number]) {
+  public set color(
+    value:
+      | Color
+      | string
+      | number
+      | undefined
+      | [color: Color | string | number]
+  ) {
     if (this._objRef) {
-      this._objRef.color = applyValue<Color | string | number | undefined>(this._objRef.color, value);
+      this._objRef.color = applyValue<Color | string | number | undefined>(
+        this._objRef.color,
+        value
+      );
     }
   }
   @Input()

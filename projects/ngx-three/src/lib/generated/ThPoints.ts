@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { BufferGeometry, Material, Points } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -8,7 +15,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-points',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPoints) }]
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPoints) }],
 })
 export class ThPoints<
   TGeometry extends BufferGeometry = BufferGeometry,

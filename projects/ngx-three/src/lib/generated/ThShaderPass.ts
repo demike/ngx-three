@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { ShaderMaterial } from 'three';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 import { ThPassBase } from '../ThPassBase';
@@ -11,12 +18,14 @@ import { ThPass } from './ThPass';
   selector: 'th-shaderPass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThShaderPass) }]
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThShaderPass) },
+  ],
 })
-export class ThShaderPass<T extends ShaderPass = ShaderPass, TARGS extends any[] = [shader: object, textureID?: string]> extends ThPass<
-  T,
-  TARGS
-> {
+export class ThShaderPass<
+  T extends ShaderPass = ShaderPass,
+  TARGS extends any[] = [shader: object, textureID?: string]
+> extends ThPass<T, TARGS> {
   public getType(): Type<ShaderPass> {
     return ShaderPass;
   }

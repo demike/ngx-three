@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Color, ShadowMaterial, ShadowMaterialParameters } from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
@@ -9,7 +16,9 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-shadowMaterial',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThShadowMaterial) }]
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThShadowMaterial) },
+  ],
 })
 export class ThShadowMaterial<
   T extends ShadowMaterial = ShadowMaterial,

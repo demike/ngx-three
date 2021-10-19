@@ -2,6 +2,7 @@
           Generated, modifications will get overwritten
         */
 
+export * from './overrides/ThRenderPass';
 export * from './ThAdaptiveToneMappingPass';
 export * from './ThAfterimagePass';
 export * from './ThAmbientLight';
@@ -94,7 +95,7 @@ export * from './ThPolyhedronGeometry';
 export * from './ThPositionalAudio';
 export * from './ThRawShaderMaterial';
 export * from './ThRectAreaLight';
-export * from './ThRenderPass';
+export * from './ThRenderPassGen';
 export * from './ThRingGeometry';
 export * from './ThSAOPass';
 export * from './ThSavePass';

@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { CircleGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -11,13 +18,18 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThCircleGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThCircleGeometry),
+    },
+  ],
 })
 export class ThCircleGeometry<
   T extends CircleGeometry = CircleGeometry,
-  TARGS extends any[] = [radius?: number, segments?: number, thetaStart?: number, thetaLength?: number]
+  TARGS extends any[] = [
+    radius?: number,
+    segments?: number,
+    thetaStart?: number,
+    thetaLength?: number
+  ]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<CircleGeometry> {
     return CircleGeometry;
@@ -31,7 +43,12 @@ export class ThCircleGeometry<
   }
 
   @Input()
-  public set parameters(value: { radius: number; segments: number; thetaStart: number; thetaLength: number }) {
+  public set parameters(value: {
+    radius: number;
+    segments: number;
+    thetaStart: number;
+    thetaLength: number;
+  }) {
     if (this._objRef) {
       this._objRef.parameters = value;
     }

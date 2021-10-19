@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { ShaderMaterial, WebGLRenderTarget } from 'three';
 import { BloomPass } from 'three/examples/jsm/postprocessing/BloomPass';
 import { ThPassBase } from '../ThPassBase';
@@ -11,11 +18,18 @@ import { ThPass } from './ThPass';
   selector: 'th-bloomPass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThBloomPass) }]
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThBloomPass) },
+  ],
 })
 export class ThBloomPass<
   T extends BloomPass = BloomPass,
-  TARGS extends any[] = [strength?: number, kernelSize?: number, sigma?: number, resolution?: number]
+  TARGS extends any[] = [
+    strength?: number,
+    kernelSize?: number,
+    sigma?: number,
+    resolution?: number
+  ]
 > extends ThPass<T, TARGS> {
   public getType(): Type<BloomPass> {
     return BloomPass;

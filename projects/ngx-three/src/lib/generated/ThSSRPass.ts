@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import {
   Camera,
   Color,
@@ -12,11 +19,14 @@ import {
   ShaderMaterial,
   TextureEncoding,
   WebGLRenderer,
-  WebGLRenderTarget
+  WebGLRenderTarget,
 } from 'three';
 import { Reflector } from 'three/examples/jsm/objects/ReflectorForSSRPass';
 import { Pass } from 'three/examples/jsm/postprocessing/Pass';
-import { SSRPass, SSRPassParams } from 'three/examples/jsm/postprocessing/SSRPass';
+import {
+  SSRPass,
+  SSRPassParams,
+} from 'three/examples/jsm/postprocessing/SSRPass';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';
@@ -25,9 +35,14 @@ import { ThPass } from './ThPass';
   selector: 'th-sSRPass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThSSRPass) }]
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThSSRPass) },
+  ],
 })
-export class ThSSRPass<T extends SSRPass = SSRPass, TARGS extends any[] = [params: SSRPassParams]> extends ThPass<T, TARGS> {
+export class ThSSRPass<
+  T extends SSRPass = SSRPass,
+  TARGS extends any[] = [params: SSRPassParams]
+> extends ThPass<T, TARGS> {
   public getType(): Type<SSRPass> {
     return SSRPass;
   }
@@ -256,9 +271,14 @@ export class ThSSRPass<T extends SSRPass = SSRPass, TARGS extends any[] = [param
   }
 
   @Input()
-  public set originalClearColor(value: Color | [color: Color | string | number]) {
+  public set originalClearColor(
+    value: Color | [color: Color | string | number]
+  ) {
     if (this._objRef) {
-      this._objRef.originalClearColor = applyValue<Color>(this._objRef.originalClearColor, value);
+      this._objRef.originalClearColor = applyValue<Color>(
+        this._objRef.originalClearColor,
+        value
+      );
     }
   }
   @Input()

@@ -1,6 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Camera } from 'three';
 import { DeviceOrientationControls } from 'three/examples/jsm/controls/DeviceOrientationControls';
 import { ThControlBase } from '../ThControlBase';
@@ -12,9 +19,9 @@ import { ThControlBase } from '../ThControlBase';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThDeviceOrientationControls)
-    }
-  ]
+      useExisting: forwardRef(() => ThDeviceOrientationControls),
+    },
+  ],
 })
 export class ThDeviceOrientationControls<
   T extends DeviceOrientationControls = DeviceOrientationControls,
