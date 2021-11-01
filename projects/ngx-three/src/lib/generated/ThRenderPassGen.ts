@@ -16,7 +16,7 @@ import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-renderPass',
+  selector: 'th-renderPassGen',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

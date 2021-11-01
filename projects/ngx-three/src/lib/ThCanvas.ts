@@ -2,7 +2,6 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  ContentChild,
   ContentChildren,
   ElementRef,
   forwardRef,
@@ -13,11 +12,10 @@ import {
   QueryList,
   ViewChild
 } from '@angular/core';
-import { Object3D } from 'three';
 import { RaycasterService } from './events/raycaster.service';
-import { ThCamera } from './generated/ThCamera';
+
 import { ThObject3D } from './generated/ThObject3D';
-import { ThScene } from './generated/ThScene';
+
 import { ThEngineService } from './ThEngine.service';
 import { ThView } from './ThView';
 
@@ -26,10 +24,15 @@ import { ThView } from './ThView';
   styleUrls: ['./ThCanvas.scss'],
   template: '<canvas #rendererCanvas id="rendererCanvas" style="width: 100%; height: 100%"></canvas>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) }, ThEngineService, forwardRef(() => RaycasterService)]
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
+    ThEngineService,
+    forwardRef(() => RaycasterService),
+    { provide: ThView, useExisting: forwardRef(() => ThCanvas) }
+  ]
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThCanvas implements OnInit, AfterViewInit {
+export class ThCanvas extends ThView implements OnInit, AfterViewInit {
   private static instanceCnt = 0;
   public readonly nid = ThCanvas.instanceCnt++;
 
@@ -49,20 +52,6 @@ export class ThCanvas implements OnInit, AfterViewInit {
 
   public get obj() {
     return this;
-  }
-
-  @ContentChild(ThScene)
-  public set scene(scene: ThScene) {
-    if (this.globalView) {
-      this.globalView.scene = scene;
-    }
-  }
-
-  @ContentChild(ThCamera)
-  public set camera(camera: ThCamera) {
-    if (this.globalView) {
-      this.globalView.camera = camera;
-    }
   }
 
   @ContentChildren(ThView)
@@ -85,13 +74,12 @@ export class ThCanvas implements OnInit, AfterViewInit {
     return this._rendererCanvas;
   }
 
-  private globalView?: ThView;
-
   constructor(
-    private engServ: ThEngineService,
+    protected engServ: ThEngineService,
     @Inject(forwardRef(() => RaycasterService))
     protected raycaster: RaycasterService
   ) {
+    super(engServ, raycaster);
     console.log('canvas ' + this.nid);
   }
 
@@ -103,22 +91,9 @@ export class ThCanvas implements OnInit, AfterViewInit {
     if (!this.rendererCanvas) {
       throw new Error('Missing Canvas');
     }
-    this.globalView = new ThView(this.raycaster, this.rendererCanvas);
     this.engServ.setCanvas(this.rendererCanvas.nativeElement);
-    this.engServ.addView(this.globalView);
-  }
 
-  /**
-   * add a Scene
-   */
-  add(scene: Object3D) {
-    // nothing to do here
-  }
-
-  /**
-   * remove a Scene
-   */
-  remove(scene: Object3D) {
-    // norhing to do
+    super.ngOnInit();
+    this.engServ.addView(this);
   }
 }

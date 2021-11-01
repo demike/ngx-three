@@ -135,7 +135,7 @@ export class ThWrapperBase<T, ARGS extends any[]> implements ThWrapperLifeCycle,
     // TODO only emit change if _objRef is no proxy,
     // and/or trigger emit over objRef event emitter
     if (this._objRef && !isLazyObject3dProxy(this._objRef as any)) {
-      ((this._objRef as unknown) as Object3D).dispatchEvent({ type: 'loaded', object: this._objRef });
+      ((this._objRef as unknown) as Object3D).dispatchEvent?.({ type: 'loaded', object: this._objRef });
       if (this._objRef$) {
         this._objRef$.next(this._objRef);
       }
@@ -143,7 +143,7 @@ export class ThWrapperBase<T, ARGS extends any[]> implements ThWrapperLifeCycle,
   }
 
   protected emitPropertyChanges(changes: SimpleChanges) {
-    ((this.objRef as unknown) as EventDispatcher).dispatchEvent({ type: 'changes', changes });
+    ((this.objRef as unknown) as EventDispatcher).dispatchEvent?.({ type: 'changes', changes });
     if (this.updateEmitter) {
       this.updateEmitter.next(changes);
     }

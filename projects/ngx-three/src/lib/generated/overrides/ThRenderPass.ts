@@ -1,26 +1,39 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
 import { Camera, Color, Material, Scene } from 'three';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
+import { ThPassBase } from '../../ThPassBase';
+import { ThView } from '../../ThView';
+import { ThObject3D } from '../ThObject3D';
 import { ThRenderPassGen } from '../ThRenderPassGen';
 
 @Component({
   selector: 'th-renderPass',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: undefined,
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThRenderPass) }]
 })
 export class ThRenderPass<
   T extends RenderPass = RenderPass,
-  TARGS extends any[] = [
-    scene: Scene,
-    camera: Camera,
-    overrideMaterial?: Material,
-    clearColor?: Color,
-    clearAlpha?: number
-  ]
+  TARGS extends any[] = [scene: Scene, camera: Camera, overrideMaterial?: Material, clearColor?: Color, clearAlpha?: number]
 > extends ThRenderPassGen<T, TARGS> {
-  // TODO: implement me!
+  constructor(protected effectComposer: ThObject3D<any>, private view: ThView) {
+    super(effectComposer);
+  }
+
+  public createThreeInstance(args?: TARGS): RenderPass {
+    if (!args) {
+      args = new Array(5) as TARGS;
+    }
+
+    args[0] = args[0] ?? this.view.scene;
+    args[1] = args[1] ?? this.view.camera;
+    args[2] = args[2] ?? this.overrideMaterial;
+    args[3] = args[3] ?? this.clearColor;
+    args[4] = args[4] ?? this.clearAlpha;
+
+    return super.createThreeInstance(args);
+  }
 }

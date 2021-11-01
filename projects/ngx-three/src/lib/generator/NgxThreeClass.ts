@@ -16,6 +16,7 @@ export abstract class NgxThreeClass {
   public readonly overrideStub?: NgxThreeOverrideStub;
   public content: string;
   public readonly className: string;
+  public readonly directiveName: string;
   protected classDecl: ts.ClassDeclaration;
   public readonly wrappedClassName: string;
 
@@ -31,10 +32,13 @@ export abstract class NgxThreeClass {
     this.wrappedClassName = this.classSymbol.escapedName as string;
 
     this.className = 'Th' + this.wrappedClassName;
+    this.directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);
     if (isOverriddenClass(this.wrappedClassName)) {
       this.className += 'Gen';
+      this.directiveName += 'Gen';
       this.overrideStub = new NgxThreeOverrideStub(this);
     }
+
     this.content = '';
   }
 
@@ -54,8 +58,8 @@ export abstract class NgxThreeClass {
     }
 
     this.inputs = this.generateMembers(this.classDecl);
-    const directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);
-    const providersArray = this.generateProvidersArray();
+
+    this.providersArray = this.generateProvidersArray();
 
     // we have at least one input (objRef) --> import it
     this.imports.add("import { Input } from '@angular/core';");
@@ -78,10 +82,10 @@ export abstract class NgxThreeClass {
         ${[...this.imports].join('')}
 
         @Component({
-          selector: "${directiveName}",
+          selector: "${this.directiveName}",
           template: "",
           changeDetection: ChangeDetectionStrategy.OnPush,
-          providers: ${providersArray}
+          providers: ${this.providersArray}
         })
         ${classHeader} {
           public getType(): Type<${this.wrappedClassName}${this.wrappedClassGenericTypeNames}> { return ${this.wrappedClassName}};

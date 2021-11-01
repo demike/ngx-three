@@ -4,6 +4,7 @@ import { RaycasterService } from './events/raycaster.service';
 import { ThCamera } from './generated/ThCamera';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThScene } from './generated/ThScene';
+import { ThEngineService } from './ThEngine.service';
 
 @Component({
   selector: 'th-view',
@@ -14,7 +15,7 @@ import { ThScene } from './generated/ThScene';
 export class ThView implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   protected _camera?: ThCamera;
-  constructor(protected raycaster: RaycasterService, private canvas: ElementRef<HTMLCanvasElement>) {}
+  constructor(protected engServ: ThEngineService, protected raycaster: RaycasterService) {}
 
   @Input()
   public scene?: ThScene;
@@ -27,9 +28,7 @@ export class ThView implements OnInit {
   @Input()
   public set camera(camera: ThCamera | undefined) {
     this._camera = camera;
-    if (this._camera) {
-      this.raycaster.init(this._camera, this.canvas.nativeElement);
-    }
+    this.initRaycaster();
   }
 
   public get camera() {
@@ -45,8 +44,12 @@ export class ThView implements OnInit {
   public viewPort?: Vector4 | { x: number; y: number; width: number; height: number };
 
   ngOnInit(): void {
-    if (this.camera) {
-      this.raycaster.init(this.camera, this.canvas.nativeElement);
+    this.initRaycaster();
+  }
+
+  private initRaycaster() {
+    if (this.camera && this.engServ.canvas) {
+      this.raycaster.init(this.camera, this.engServ.canvas);
     }
   }
 
