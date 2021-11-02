@@ -193,7 +193,7 @@ export abstract class NgxThreeClass {
     return members;
   }
 
-  private generateSetterInput(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
+  protected generateSetterInput(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
     const isReadonly = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.ReadonlyKeyword);
 
     const isStatic = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.StaticKeyword);

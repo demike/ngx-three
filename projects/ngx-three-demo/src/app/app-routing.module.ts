@@ -87,13 +87,28 @@ export class EventsExamplePageComponent {}
 })
 export class InstancedMeshExamplePageComponent {}
 
+@Component({
+  selector: 'app-post-processing-example-page',
+  template: `<app-post-processing-example class="example-container"></app-post-processing-example>
+    <app-code
+      [lineNumbers]="true"
+      [codeUrls]="[
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/post-processing-example/post-processing-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/post-processing-example/post-processing-example.component.ts'
+      ]"
+    >
+    </app-code> `
+})
+export class PostProcessingExamplePageComponent {}
+
 export const EXAMPLE_ROUTES: Routes = [
   { path: 'simple-example', component: SimpleExamplePageComponent, data: { title: 'Simple Example' } },
   { path: 'controls-example', component: ControlsExamplePageComponent, data: { title: 'Controls Example' } },
   { path: 'loader-example', component: LoaderExamplePageComponent, data: { title: 'Loader Example' } },
   { path: 'dynamic loader-example', component: DynamicLoaderExamplePageComponent, data: { title: 'Dynamic Loader Example' } },
   { path: 'events-example', component: EventsExamplePageComponent, data: { title: 'Events Example' } },
-  { path: 'instanced-mesh-example', component: InstancedMeshExamplePageComponent, data: { title: 'Instanced Mesh Example' } }
+  { path: 'instanced-mesh-example', component: InstancedMeshExamplePageComponent, data: { title: 'Instanced Mesh Example' } },
+  { path: 'post-processing-example', component: PostProcessingExamplePageComponent, data: { title: 'Post Processing Example' } }
 ];
 
 export const exampleDeclarations: any[] = [];

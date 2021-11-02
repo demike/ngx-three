@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { ThEffectComposer } from './overrides/ThEffectComposer';
 import { ThRenderPass } from './overrides/ThRenderPass';
 import { ThAdaptiveToneMappingPass } from './ThAdaptiveToneMappingPass';
 import { ThAfterimagePass } from './ThAfterimagePass';
@@ -32,7 +33,7 @@ import { ThDodecahedronGeometry } from './ThDodecahedronGeometry';
 import { ThDotScreenPass } from './ThDotScreenPass';
 import { ThDragControls } from './ThDragControls';
 import { ThEdgesGeometry } from './ThEdgesGeometry';
-import { ThEffectComposer } from './ThEffectComposer';
+import { ThEffectComposerGen } from './ThEffectComposerGen';
 import { ThExtrudeGeometry } from './ThExtrudeGeometry';
 import { ThFilmPass } from './ThFilmPass';
 import { ThFirstPersonControls } from './ThFirstPersonControls';
@@ -232,6 +233,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThClearPass,
     ThCubeTexturePass,
     ThDotScreenPass,
+    ThEffectComposerGen,
     ThEffectComposer,
     ThFilmPass,
     ThGlitchPass,
@@ -360,6 +362,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThClearPass,
     ThCubeTexturePass,
     ThDotScreenPass,
+    ThEffectComposerGen,
     ThEffectComposer,
     ThFilmPass,
     ThGlitchPass,

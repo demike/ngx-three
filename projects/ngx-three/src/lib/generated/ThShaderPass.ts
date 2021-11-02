@@ -38,9 +38,10 @@ export class ThShaderPass<
   }
 
   @Input()
-  public set uniforms(value: { [name: string]: { value: any } }) {
+  public set uniforms(map: { [name: string]: { value: any } }) {
     if (this._objRef) {
-      this._objRef.uniforms = value;
+      // this._objRef.uniforms = UniformsUtils.merge([this._objRef.uniforms, map])
+      Object.assign(this._objRef.uniforms, map);
     }
   }
 

@@ -2,34 +2,26 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Type } from '@angular/core';
 import { Clock, WebGLRenderer, WebGLRenderTarget } from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { Pass } from 'three/examples/jsm/postprocessing/Pass';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
-import { ThPassBase } from '../ThPassBase';
+import { ThWrapperBase } from '../ThWrapperBase';
 
 @Component({
-  selector: 'th-effectComposer',
+  selector: 'th-effectComposerGen',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThEffectComposer) },
-  ],
+  providers: [],
 })
-export class ThEffectComposer<
+export class ThEffectComposerGen<
   T extends EffectComposer = EffectComposer,
   TARGS extends any[] = [
     renderer: WebGLRenderer,
     renderTarget?: WebGLRenderTarget
   ]
-> extends ThPassBase<T, TARGS> {
+> extends ThWrapperBase<T, TARGS> {
   public getType(): Type<EffectComposer> {
     return EffectComposer;
   }

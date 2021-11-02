@@ -8,7 +8,7 @@ import { ThCamera } from './generated/ThCamera';
 
 @Injectable()
 export class ThEngineService implements OnDestroy {
-  private renderer?: THREE.WebGLRenderer;
+  private _renderer?: THREE.WebGLRenderer;
   private views: ThView[] = [];
   private frameId?: number;
 
@@ -30,12 +30,16 @@ export class ThEngineService implements OnDestroy {
    * enable / disable shadows
    */
   public set shadow(enable: boolean) {
-    if (this.renderer) {
-      this.renderer.shadowMap.enabled = enable;
+    if (this._renderer) {
+      this._renderer.shadowMap.enabled = enable;
     }
   }
   public get shadow() {
-    return this.renderer?.shadowMap.enabled ?? false;
+    return this._renderer?.shadowMap.enabled ?? false;
+  }
+
+  public get renderer() {
+    return this._renderer;
   }
 
   public ngOnDestroy(): void {
@@ -67,14 +71,14 @@ export class ThEngineService implements OnDestroy {
   }
 
   private initRenderer(): void {
-    if (this.renderer) {
+    if (this._renderer) {
       return;
     }
-    this.renderer = new THREE.WebGLRenderer({
+    this._renderer = new THREE.WebGLRenderer({
       canvas: this.canvas,
       alpha: true, // transparent background
       antialias: true, // smooth edges
-      preserveDrawingBuffer: true,
+      preserveDrawingBuffer: true
     });
 
     this.resize();
@@ -125,60 +129,67 @@ export class ThEngineService implements OnDestroy {
     // TODO: conditional rendere loop
     this.requestAnimationFrame();
 
-    if (!this.renderer) {
+    for (const view of this.views) {
+      this.renderView(view);
+    }
+  }
+
+  protected renderView(view: ThView) {
+    if (!this._renderer) {
       return;
     }
 
-    const renderer = this.renderer;
+    const camera = view.camera;
+    const scene = view.scene;
 
-    for (const view of this.views) {
+    if (!camera || !scene || !camera.objRef || !scene.objRef) {
+      return;
+    }
+
+    const renderer = this._renderer;
+
+    if (this.onRender.observers.length) {
+      this.ngZone.run(() =>
+        this.onRender.emit({
+          renderer,
+          scene,
+          camera
+        })
+      );
+    }
+
+    if (view.effectComposer) {
+      view.effectComposer.render();
+    } else {
       if (view.viewPort) {
         if (view.viewPort instanceof Vector4) {
-          this.renderer.setViewport(view.viewPort);
+          this._renderer.setViewport(view.viewPort);
         } else {
-          this.renderer.setViewport(
-            view.viewPort.x,
-            view.viewPort.y,
-            view.viewPort.width,
-            view.viewPort.height
-          );
+          this._renderer.setViewport(view.viewPort.x, view.viewPort.y, view.viewPort.width, view.viewPort.height);
         }
       }
 
-      const camera = view.camera;
-      const scene = view.scene;
-
-      if (!camera || !scene || !camera.objRef || !scene.objRef) {
-        return;
-      }
-
-      if (this.onRender.observers.length) {
-        this.ngZone.run(() =>
-          this.onRender.emit({
-            renderer,
-            scene,
-            camera,
-          })
-        );
-      }
-
-      this.renderer.render(scene.objRef, camera.objRef);
+      this._renderer.render(scene.objRef, camera.objRef);
     }
   }
 
   public resize(): void {
-    if (!this.renderer) {
+    if (!this._renderer) {
       return;
     }
     const width = this.canvas?.parentElement?.clientWidth ?? 0;
     const height = this.canvas?.parentElement?.clientHeight ?? 0;
 
-    this.renderer.setSize(width, height, false);
+    this._renderer.setSize(width, height, false);
 
     for (const view of this.views) {
-      if (!view.viewPort && view.camera && (view.camera.objRef as any).aspect) {
-        (view.camera.objRef as any).aspect = width / height;
-        (view.camera.objRef as any).updateProjectionMatrix();
+      if (!view.viewPort) {
+        if (view.camera && (view.camera.objRef as any).aspect) {
+          (view.camera.objRef as any).aspect = width / height;
+          (view.camera.objRef as any).updateProjectionMatrix();
+        }
+
+        view.effectComposer?.setSize(width, height);
       }
     }
   }

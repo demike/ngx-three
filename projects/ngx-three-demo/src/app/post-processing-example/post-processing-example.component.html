@@ -1,0 +1,47 @@
+<mat-label>Shift Amount</mat-label>
+<mat-slider
+  matInput
+  type="number"
+  [(ngModel)]="shiftAmount"
+  [min]="0.0015"
+  [max]="0.2"
+  [step]="0.005"
+></mat-slider>
+
+<th-canvas #thecanvas [shadow]="true" (onRender)="this.animate()">
+  <th-effectComposer>
+    <th-renderPass></th-renderPass>
+    <th-unrealBloomPass [strength]="1"></th-unrealBloomPass>
+    <th-shaderPass
+      [args]="[RGBShiftShader]"
+      [uniforms]="{ amount: { value: shiftAmount } }"
+    ></th-shaderPass>
+  </th-effectComposer>
+  <th-scene [background]="['#ffffff']">
+    <th-perspectiveCamera
+      [position]="[0, 0, zDist]"
+      [fov]="70"
+      [near]="1"
+      [far]="1000"
+    >
+    </th-perspectiveCamera>
+    <th-ambientLight [color]="['0x222222']"></th-ambientLight>
+    <th-directionalLight #light [color]="['0xffffff']"></th-directionalLight>
+
+    <th-sphereGeometry #geometry [args]="[1, 4, 4]"></th-sphereGeometry>
+    <th-object3D #object>
+      <th-mesh
+        *ngFor="let data of meshData"
+        [geometry]="geometry.objRef"
+        [position]="data.pos"
+        [rotation]="data.rotation"
+        [scale]="data.scale"
+      >
+        <th-meshPhongMaterial
+          [flatShading]="true"
+          [color]="data.color"
+        ></th-meshPhongMaterial>
+      </th-mesh>
+    </th-object3D>
+  </th-scene>
+</th-canvas>

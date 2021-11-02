@@ -2,6 +2,7 @@
           Generated, modifications will get overwritten
         */
 
+export * from './overrides/ThEffectComposer';
 export * from './overrides/ThRenderPass';
 export * from './ThAdaptiveToneMappingPass';
 export * from './ThAfterimagePass';
@@ -35,7 +36,7 @@ export * from './ThDodecahedronGeometry';
 export * from './ThDotScreenPass';
 export * from './ThDragControls';
 export * from './ThEdgesGeometry';
-export * from './ThEffectComposer';
+export * from './ThEffectComposerGen';
 export * from './ThExtrudeGeometry';
 export * from './ThFilmPass';
 export * from './ThFirstPersonControls';

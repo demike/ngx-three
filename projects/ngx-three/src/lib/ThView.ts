@@ -1,5 +1,6 @@
-import { Component, ContentChild, ElementRef, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, ContentChild, forwardRef, Input, OnInit } from '@angular/core';
 import { Object3D, Vector4 } from 'three';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RaycasterService } from './events/raycaster.service';
 import { ThCamera } from './generated/ThCamera';
 import { ThObject3D } from './generated/ThObject3D';
@@ -15,6 +16,7 @@ import { ThEngineService } from './ThEngine.service';
 export class ThView implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   protected _camera?: ThCamera;
+
   constructor(protected engServ: ThEngineService, protected raycaster: RaycasterService) {}
 
   @Input()
@@ -24,6 +26,9 @@ export class ThView implements OnInit {
   public set contentScene(scene: ThScene) {
     this.scene = scene;
   }
+
+  @Input()
+  public effectComposer?: EffectComposer;
 
   @Input()
   public set camera(camera: ThCamera | undefined) {

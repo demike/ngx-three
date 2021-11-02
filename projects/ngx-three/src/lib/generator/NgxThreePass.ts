@@ -1,3 +1,4 @@
+import * as ts from 'typescript';
 import { NgxThreeClass } from './NgxThreeClass';
 
 /**
@@ -6,6 +7,7 @@ import { NgxThreeClass } from './NgxThreeClass';
 export class NgxThreePass extends NgxThreeClass {
   public generate() {
     this.imports.add("import { ThPassBase } from '../ThPassBase';");
+    this.imports.add("import { ThWrapperBase } from '../ThWrapperBase';");
     super.generate();
     this.content = `/* eslint-disable @typescript-eslint/ban-types */ ${this.content}`;
   }
@@ -36,6 +38,9 @@ export class NgxThreePass extends NgxThreeClass {
   */
 
   protected generateProvidersArray() {
+    if (this.wrappedClassName === 'EffectComposer') {
+      return '[]';
+    }
     return `[{provide: ThPassBase, useExisting: forwardRef(() => ${this.className})}]`;
   }
 
@@ -44,6 +49,23 @@ export class NgxThreePass extends NgxThreeClass {
   }
 
   public getWrapperBaseClassName(): string {
+    if (this.wrappedClassName === 'EffectComposer') {
+      return 'ThWrapperBase';
+    }
     return 'ThPassBase';
+  }
+
+  protected generateSetterInput(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
+    if (memberName === 'uniforms') {
+      return `
+        @Input()
+        public set uniforms(map:  { [name: string]: { value: any } }) {
+          if(this._objRef) {
+            Object.assign(this._objRef.uniforms, map);
+          }
+        }
+      `;
+    }
+    return super.generateSetterInput(memberName, member, memberType);
   }
 }
