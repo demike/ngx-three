@@ -12,14 +12,11 @@ export class ThPassBase<T extends Pass = Pass, ARGS extends any[] = []> extends 
     super();
   }
 
-  ngOnInit() {
-    super.ngOnInit();
+  public addToParent() {
     if (this._objRef && this.effectComposer && this.effectComposer.objRef) {
       this.effectComposer.objRef.addPass(this._objRef);
     }
   }
-
-  public addToParent() {}
 
   public removeFromParent() {
     if (this._objRef && this.effectComposer && this.effectComposer.objRef) {
