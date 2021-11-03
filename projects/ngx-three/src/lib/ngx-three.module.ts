@@ -26,6 +26,7 @@ import { ThWrapperBase } from './ThWrapperBase';
   exports: [
     NgxThreeGeneratedModule,
     ThCanvas,
+    ThView,
     ThLoader,
     ThGLTFLoader,
     //   ThOBJLoader,

@@ -1,4 +1,4 @@
-import { Component, ContentChild, forwardRef, Input, OnInit } from '@angular/core';
+import { Component, ContentChild, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
 import { Object3D, Vector4 } from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RaycasterService } from './events/raycaster.service';
@@ -47,6 +47,14 @@ export class ThView implements OnInit {
 
   @Input()
   public viewPort?: Vector4 | { x: number; y: number; width: number; height: number };
+
+  // eslint-disable-next-line @angular-eslint/no-output-on-prefix
+  @Output()
+  public readonly onRender = new EventEmitter<{
+    renderer: THREE.WebGLRenderer;
+    scene: ThScene;
+    camera: ThCamera;
+  }>();
 
   ngOnInit(): void {
     this.initRaycaster();

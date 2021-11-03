@@ -45,10 +45,11 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit {
     return this.engServ.shadow;
   }
 
-  @Output()
-  public get onRender() {
-    return this.engServ.onRender;
-  }
+  /**
+   * use statically (before ngOnInit is triggered)
+   */
+  @Input()
+  public disableDefaultView = false;
 
   public get obj() {
     return this;
@@ -94,6 +95,8 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit {
     this.engServ.setCanvas(this.rendererCanvas.nativeElement);
 
     super.ngOnInit();
-    this.engServ.addView(this);
+    if (!this.disableDefaultView) {
+      this.engServ.addView(this);
+    }
   }
 }

@@ -14,12 +14,6 @@ export class ThEngineService implements OnDestroy {
 
   public canvas?: HTMLCanvasElement;
 
-  public readonly onRender = new EventEmitter<{
-    renderer: THREE.WebGLRenderer;
-    scene: ThScene;
-    camera: ThCamera;
-  }>();
-
   // @ts-ignore
   private resizeObserver?: ResizeObserver;
 
@@ -148,9 +142,9 @@ export class ThEngineService implements OnDestroy {
 
     const renderer = this._renderer;
 
-    if (this.onRender.observers.length) {
+    if (view.onRender.observers.length) {
       this.ngZone.run(() =>
-        this.onRender.emit({
+        view.onRender.emit({
           renderer,
           scene,
           camera
