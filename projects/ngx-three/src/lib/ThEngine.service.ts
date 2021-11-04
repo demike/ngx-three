@@ -19,19 +19,6 @@ export class ThEngineService implements OnDestroy {
 
   public constructor(private ngZone: NgZone) {}
 
-  // renderer parameters
-  /**
-   * enable / disable shadows
-   */
-  public set shadow(enable: boolean) {
-    if (this._renderer) {
-      this._renderer.shadowMap.enabled = enable;
-    }
-  }
-  public get shadow() {
-    return this._renderer?.shadowMap.enabled ?? false;
-  }
-
   public get renderer() {
     return this._renderer;
   }
@@ -152,18 +139,48 @@ export class ThEngineService implements OnDestroy {
       );
     }
 
+    this.applyRendererParametersFromView(view);
     if (view.effectComposer) {
       view.effectComposer.render();
     } else {
-      if (view.viewPort) {
-        if (view.viewPort instanceof Vector4) {
-          this._renderer.setViewport(view.viewPort);
-        } else {
-          this._renderer.setViewport(view.viewPort.x, view.viewPort.y, view.viewPort.width, view.viewPort.height);
-        }
-      }
-
       this._renderer.render(scene.objRef, camera.objRef);
+    }
+  }
+
+  protected applyRendererParametersFromView(view: ThView) {
+    if (!this._renderer) {
+      return;
+    }
+    if (view.viewPort) {
+      if (view.viewPort instanceof Vector4) {
+        this._renderer.setViewport(view.viewPort);
+      } else {
+        this._renderer.setViewport(view.viewPort.x, view.viewPort.y, view.viewPort.width, view.viewPort.height);
+      }
+    }
+
+    if (view.scissor) {
+      if (view.scissor instanceof Vector4) {
+        this._renderer.setScissor(view.scissor);
+      } else {
+        this._renderer.setScissor(view.scissor.x, view.scissor.y, view.scissor.width, view.scissor.height);
+      }
+    }
+
+    if (view.scissorTest !== undefined) {
+      this._renderer.setScissorTest(view.scissorTest);
+    }
+
+    if (view.clearColor) {
+      this._renderer.setClearColor(view.clearColor);
+    }
+
+    if (view.clearAlpha !== undefined) {
+      this._renderer.setClearAlpha(view.clearAlpha);
+    }
+
+    if (view.shadow !== undefined) {
+      this._renderer.shadowMap.enabled = true;
     }
   }
 

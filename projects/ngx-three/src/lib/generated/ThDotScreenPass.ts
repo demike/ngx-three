@@ -33,7 +33,6 @@ export class ThDotScreenPass<
   @Input()
   public set uniforms(map: { [name: string]: { value: any } }) {
     if (this._objRef) {
-      // this._objRef.uniforms = UniformsUtils.merge([this._objRef.uniforms, map])
       Object.assign(this._objRef.uniforms, map);
     }
   }

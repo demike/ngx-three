@@ -10,7 +10,8 @@ import {
   InstancedMeshExamplePageComponent,
   LoaderExamplePageComponent,
   PostProcessingExamplePageComponent,
-  SimpleExamplePageComponent
+  SimpleExamplePageComponent,
+  ViewsExamplePageComponent
 } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Box, SimpleExampleComponent } from './simple-example/simple-example.component';
@@ -35,6 +36,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { PostProcessingExampleComponent } from './post-processing-example/post-processing-example.component';
 import { FormsModule } from '@angular/forms';
+import { ViewsExampleComponent } from './views-example/views-example.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { FormsModule } from '@angular/forms';
     InstancedMeshExampleComponent,
     PostProcessingExampleComponent,
     NavigationShellComponent,
+    ViewsExampleComponent,
     //
     SimpleExamplePageComponent,
     ControlsExamplePageComponent,
@@ -56,7 +59,8 @@ import { FormsModule } from '@angular/forms';
     DynamicLoaderExamplePageComponent,
     EventsExamplePageComponent,
     InstancedMeshExamplePageComponent,
-    PostProcessingExamplePageComponent
+    PostProcessingExamplePageComponent,
+    ViewsExamplePageComponent
   ],
   imports: [
     BrowserModule,

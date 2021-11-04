@@ -36,16 +36,10 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit {
   private static instanceCnt = 0;
   public readonly nid = ThCanvas.instanceCnt++;
 
-  @Input()
-  public set shadow(enable: boolean) {
-    this.engServ.shadow = enable;
-  }
-
-  public get shadow() {
-    return this.engServ.shadow;
-  }
-
   /**
+   * if true does not use the ThCanvas as view
+   * this is esepcially usefull if you have multiple views
+   * and want to iterate over all of them with *ngFor
    * use statically (before ngOnInit is triggered)
    */
   @Input()

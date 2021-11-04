@@ -1,5 +1,5 @@
 import { Component, ContentChild, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import { Object3D, Vector4 } from 'three';
+import { Color, Object3D, Vector4 } from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RaycasterService } from './events/raycaster.service';
 import { ThCamera } from './generated/ThCamera';
@@ -23,8 +23,10 @@ export class ThView implements OnInit {
   public scene?: ThScene;
 
   @ContentChild(ThScene)
-  public set contentScene(scene: ThScene) {
-    this.scene = scene;
+  public set contentScene(scene: ThScene | undefined) {
+    if (scene) {
+      this.scene = scene;
+    }
   }
 
   @Input()
@@ -45,8 +47,39 @@ export class ThView implements OnInit {
     this.camera = camera;
   }
 
+  // renderer parameters
+  // -----------------------------------------------------------------------------------------------
+  /**
+   * enable / disable shadows
+   */
+  @Input()
+  public shadow?: boolean;
+
   @Input()
   public viewPort?: Vector4 | { x: number; y: number; width: number; height: number };
+
+  @Input()
+  public scissor?: Vector4 | { x: number; y: number; width: number; height: number };
+
+  /**
+   * Enable the scissor test. When this is enabled,
+   * only the pixels within the defined scissor area will be affected by further renderer actions.
+   */
+  @Input()
+  public scissorTest?: boolean;
+
+  /**
+   * Sets the clear color
+   */
+  @Input()
+  clearColor?: Color | string | number;
+
+  /**
+   * a float with the current clear alpha. Ranges from 0 to 1.
+   */
+  @Input()
+  clearAlpha?: number;
+  // -----------------------------------------------------------------------------------------------
 
   // eslint-disable-next-line @angular-eslint/no-output-on-prefix
   @Output()

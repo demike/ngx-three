@@ -1,0 +1,66 @@
+<th-canvas
+  #thecanvas
+  [disableDefaultView]="true"
+  [viewPort]="{
+    x: 0,
+    y: 0,
+    width: 0.5 * canvasWidth,
+    height: canvasHeight
+  }"
+>
+  <th-scene #scene>
+    <th-directionalLight [position]="[0, 0, 1]" [args]="['#ffffff']">
+    </th-directionalLight>
+    <th-mesh [position]="[0, 0, 0]" [rotation]="[-Math.PI / 2, 0, 0]">
+      <th-sphereGeometry #geo [args]="[200, 32, 16]"></th-sphereGeometry>
+      <th-meshPhongMaterial
+        #mat
+        [flatShading]="false"
+        [shininess]="30"
+        [specular]="['#fac400']"
+        [color]="['#f83f0d']"
+      ></th-meshPhongMaterial>
+    </th-mesh>
+    <th-mesh
+      [position]="[-400, 0, 0]"
+      [rotation]="[-Math.PI / 2, 0, 0]"
+      [geometry]="geo.objRef"
+      [material]="mat.objRef"
+    >
+    </th-mesh>
+    <th-mesh
+      [position]="[400, 0, 0]"
+      [rotation]="[-Math.PI / 2, 0, 0]"
+      [geometry]="geo.objRef"
+      [material]="mat.objRef"
+    >
+    </th-mesh>
+  </th-scene>
+
+  <th-view
+    #thview
+    *ngFor="let view of views; let i = index"
+    [scene]="scene"
+    [viewPort]="{
+      x: view.left * canvasWidth,
+      y: view.bottom * canvasHeight,
+      width: view.width * canvasWidth,
+      height: view.height * canvasHeight
+    }"
+    [scissor]="thview.viewPort"
+    [scissorTest]="true"
+    [clearColor]="view.background"
+    (onRender)="view.updateCamera(camera.objRef, scene.objRef)"
+  >
+    <th-perspectiveCamera
+      #camera
+      [position]="$any(view.eye)"
+      [up]="$any(view.up)"
+      [fov]="view.fov"
+      [aspect]="(view.width * canvasWidth) / (view.height * canvasHeight)"
+      [near]="1"
+      [far]="10000"
+    >
+    </th-perspectiveCamera>
+  </th-view>
+</th-canvas>
