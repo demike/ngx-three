@@ -43,8 +43,10 @@ export class ThView implements OnInit {
   }
 
   @ContentChild(ThCamera)
-  public set contentCamera(camera: ThCamera) {
-    this.camera = camera;
+  public set contentCamera(camera: ThCamera<any> | undefined) {
+    if (camera) {
+      this.camera = camera;
+    }
   }
 
   // renderer parameters

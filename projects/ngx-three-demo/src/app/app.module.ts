@@ -9,6 +9,7 @@ import {
   EXAMPLE_ROUTES,
   InstancedMeshExamplePageComponent,
   LoaderExamplePageComponent,
+  MultiSceneExamplePageComponent,
   PostProcessingExamplePageComponent,
   SimpleExamplePageComponent,
   ViewsExamplePageComponent
@@ -37,6 +38,7 @@ import { MatListModule } from '@angular/material/list';
 import { PostProcessingExampleComponent } from './post-processing-example/post-processing-example.component';
 import { FormsModule } from '@angular/forms';
 import { ViewsExampleComponent } from './views-example/views-example.component';
+import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-example.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { ViewsExampleComponent } from './views-example/views-example.component';
     PostProcessingExampleComponent,
     NavigationShellComponent,
     ViewsExampleComponent,
+    MultiSceneExampleComponent,
     //
     SimpleExamplePageComponent,
     ControlsExamplePageComponent,
@@ -60,7 +63,8 @@ import { ViewsExampleComponent } from './views-example/views-example.component';
     EventsExamplePageComponent,
     InstancedMeshExamplePageComponent,
     PostProcessingExamplePageComponent,
-    ViewsExamplePageComponent
+    ViewsExamplePageComponent,
+    MultiSceneExamplePageComponent
   ],
   imports: [
     BrowserModule,

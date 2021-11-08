@@ -1,0 +1,55 @@
+<div
+  #slider
+  class="slider"
+  (pointerdown)="onSliderPointerDown($any($event))"
+></div>
+
+<th-canvas #thecanvas [disableDefaultView]="true">
+  <th-perspectiveCamera #cam [args]="[35, 2, 0.1, 100]" [position]="[0, 0, 6]">
+    <th-orbitControls></th-orbitControls>
+  </th-perspectiveCamera>
+  <th-view
+    [scissor]="{
+      x: 0,
+      y: 0,
+      width: sliderPos,
+      height: thecanvas.rendererCanvas?.nativeElement?.height || 0
+    }"
+    [scissorTest]="true"
+    [clearColor]="colorLeft"
+    [camera]="$any(cam)"
+  >
+    <th-scene [background]="colorLeft">
+      <th-hemisphereLight
+        #light
+        [args]="['#ffffff', '#444444', 1]"
+        [position]="[-2, 2, 2]"
+      ></th-hemisphereLight>
+
+      <th-mesh>
+        <th-meshStandardMaterial></th-meshStandardMaterial>
+        <th-icosahedronGeometry #geo [args]="[1, 3]"></th-icosahedronGeometry>
+      </th-mesh>
+    </th-scene>
+  </th-view>
+
+  <th-view
+    [scissor]="{
+      x: sliderPos,
+      y: 0,
+      width: thecanvas.rendererCanvas?.nativeElement?.width || 0,
+      height: thecanvas.rendererCanvas?.nativeElement?.height || 0
+    }"
+    [scissorTest]="true"
+    [clearColor]="colorRight"
+    [camera]="$any(cam)"
+  >
+    <th-scene [background]="colorRight">
+      <th-light [objRef]="light.objRef?.clone()"> </th-light>
+
+      <th-mesh [geometry]="geo.objRef">
+        <th-meshStandardMaterial [wireframe]="true"></th-meshStandardMaterial>
+      </th-mesh>
+    </th-scene>
+  </th-view>
+</th-canvas>

@@ -115,6 +115,20 @@ export class PostProcessingExamplePageComponent {}
 })
 export class ViewsExamplePageComponent {}
 
+@Component({
+  selector: 'app-multi-scene-example-page',
+  template: `<app-multi-scene-example class="example-container"></app-multi-scene-example>
+    <app-code
+      [lineNumbers]="true"
+      [codeUrls]="[
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/views-example/views-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/views-example/views-example.component.ts'
+      ]"
+    >
+    </app-code> `
+})
+export class MultiSceneExamplePageComponent {}
+
 export const EXAMPLE_ROUTES: Routes = [
   { path: 'simple-example', component: SimpleExamplePageComponent, data: { title: 'Simple Example' } },
   { path: 'controls-example', component: ControlsExamplePageComponent, data: { title: 'Controls Example' } },
@@ -123,7 +137,8 @@ export const EXAMPLE_ROUTES: Routes = [
   { path: 'events-example', component: EventsExamplePageComponent, data: { title: 'Events Example' } },
   { path: 'instanced-mesh-example', component: InstancedMeshExamplePageComponent, data: { title: 'Instanced Mesh Example' } },
   { path: 'post-processing-example', component: PostProcessingExamplePageComponent, data: { title: 'Post Processing Example' } },
-  { path: 'views-example', component: ViewsExamplePageComponent, data: { title: 'Multiple Views Example' } }
+  { path: 'views-example', component: ViewsExamplePageComponent, data: { title: 'Multiple Views Example' } },
+  { path: 'multi-scene-example', component: MultiSceneExamplePageComponent, data: { title: 'Multiple Scenes Example' } }
 ];
 
 export const exampleDeclarations: any[] = [];
