@@ -31,7 +31,7 @@
     "normalize.css": "^8.0.1",
     "rxjs": "~6.6.0",
     "simplex-noise": "^2.4.0",
-    "three": "~0.133.0",
+    "three": "~0.134.0",
     "tslib": "^2.1.0",
     "zone.js": "~0.10.2"
   },
@@ -47,7 +47,7 @@
     "@types/jasmine": "~3.6.0",
     "@types/node": "^12.11.1",
     "@types/prettier": "^2.1.5",
-    "@types/three": "^0.133.1",
+    "@types/three": "^0.134.0",
     "@typescript-eslint/eslint-plugin": "4.3.0",
     "@typescript-eslint/parser": "4.3.0",
     "codelyzer": "^6.0.0",

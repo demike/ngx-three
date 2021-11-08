@@ -29,7 +29,6 @@ import { ThCubeCamera } from './ThCubeCamera';
 import { ThCubeTexturePass } from './ThCubeTexturePass';
 import { ThCylinderGeometry } from './ThCylinderGeometry';
 import { ThDecalGeometry } from './ThDecalGeometry';
-import { ThDeviceOrientationControls } from './ThDeviceOrientationControls';
 import { ThDirectionalLight } from './ThDirectionalLight';
 import { ThDirectionalLightHelper } from './ThDirectionalLightHelper';
 import { ThDodecahedronGeometry } from './ThDodecahedronGeometry';
@@ -49,7 +48,6 @@ import { ThHemisphereLight } from './ThHemisphereLight';
 import { ThHemisphereLightHelper } from './ThHemisphereLightHelper';
 import { ThHemisphereLightProbe } from './ThHemisphereLightProbe';
 import { ThIcosahedronGeometry } from './ThIcosahedronGeometry';
-import { ThImmediateRenderObject } from './ThImmediateRenderObject';
 import { ThInstancedBufferGeometry } from './ThInstancedBufferGeometry';
 import { ThInstancedMesh } from './ThInstancedMesh';
 import { ThLatheGeometry } from './ThLatheGeometry';
@@ -144,7 +142,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThArrayCamera,
     ThCamera,
     ThObject3D,
-    ThImmediateRenderObject,
     ThSpotLightHelper,
     ThSkeletonHelper,
     ThPointLightHelper,
@@ -227,7 +224,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThRoundedBoxGeometry,
     ThTeapotGeometry,
     ThTextGeometry,
-    ThDeviceOrientationControls,
     ThDragControls,
     ThFirstPersonControls,
     ThFlyControls,
@@ -278,7 +274,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThArrayCamera,
     ThCamera,
     ThObject3D,
-    ThImmediateRenderObject,
     ThSpotLightHelper,
     ThSkeletonHelper,
     ThPointLightHelper,
@@ -361,7 +356,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThRoundedBoxGeometry,
     ThTeapotGeometry,
     ThTextGeometry,
-    ThDeviceOrientationControls,
     ThDragControls,
     ThFirstPersonControls,
     ThFlyControls,

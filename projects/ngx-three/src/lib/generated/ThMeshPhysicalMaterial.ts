@@ -119,15 +119,32 @@ export class ThMeshPhysicalMaterial<
   }
 
   @Input()
-  public set sheenTint(value: Color | [color: ColorRepresentation]) {
+  public set sheenColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
-      this._objRef.sheenTint = applyValue<Color>(this._objRef.sheenTint, value);
+      this._objRef.sheenColor = applyValue<Color>(
+        this._objRef.sheenColor,
+        value
+      );
     }
   }
+  @Input()
+  public set sheenColorMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.sheenColorMap = value;
+    }
+  }
+
   @Input()
   public set sheenRoughness(value: number) {
     if (this._objRef) {
       this._objRef.sheenRoughness = value;
+    }
+  }
+
+  @Input()
+  public set sheenRoughnessMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.sheenRoughnessMap = value;
     }
   }
 
@@ -167,10 +184,10 @@ export class ThMeshPhysicalMaterial<
   }
 
   @Input()
-  public set attenuationTint(value: Color | [color: ColorRepresentation]) {
+  public set attenuationColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
-      this._objRef.attenuationTint = applyValue<Color>(
-        this._objRef.attenuationTint,
+      this._objRef.attenuationColor = applyValue<Color>(
+        this._objRef.attenuationColor,
         value
       );
     }
@@ -183,10 +200,10 @@ export class ThMeshPhysicalMaterial<
   }
 
   @Input()
-  public set specularTint(value: Color | [color: ColorRepresentation]) {
+  public set specularColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
-      this._objRef.specularTint = applyValue<Color>(
-        this._objRef.specularTint,
+      this._objRef.specularColor = applyValue<Color>(
+        this._objRef.specularColor,
         value
       );
     }
@@ -199,9 +216,9 @@ export class ThMeshPhysicalMaterial<
   }
 
   @Input()
-  public set specularTintMap(value: Texture | null) {
+  public set specularColorMap(value: Texture | null) {
     if (this._objRef) {
-      this._objRef.specularTintMap = value;
+      this._objRef.specularColorMap = value;
     }
   }
 }

@@ -43,7 +43,7 @@ export class ThHemisphereLight<
   @Input()
   public set position(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
-      applyValue<Vector3>(this._objRef.position, value);
+      this._objRef.position = applyValue<Vector3>(this._objRef.position, value);
     }
   }
   @Input()

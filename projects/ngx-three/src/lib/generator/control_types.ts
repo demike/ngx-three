@@ -1,5 +1,4 @@
-export * from 'three/examples/jsm/controls/DeviceOrientationControls';
-
+// export * from 'three/examples/jsm/controls/ArcballControls';
 export * from 'three/examples/jsm/controls/DragControls';
 export * from 'three/examples/jsm/controls/FirstPersonControls';
 export * from 'three/examples/jsm/controls/FlyControls';
