@@ -8,32 +8,35 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Shape, ShapeGeometry } from 'three';
+import {
+  LightningStrike,
+  RayParameters,
+} from 'three/examples/jsm/geometries/LightningStrike';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-shapeGeometry',
+  selector: 'th-lightningStrike',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThShapeGeometry),
+      useExisting: forwardRef(() => ThLightningStrike),
     },
   ],
 })
-export class ThShapeGeometry<
-  T extends ShapeGeometry = ShapeGeometry,
-  TARGS extends any[] = [shapes?: Shape | Shape[], curveSegments?: number]
-> extends ThBufferGeometry<T, TARGS> {
-  public getType(): Type<ShapeGeometry> {
-    return ShapeGeometry;
+export class ThLightningStrike<
+  T extends LightningStrike = LightningStrike,
+  TARGS extends any[] = [rayParameters?: RayParameters]
+> extends ThGeometryBase<T, TARGS> {
+  public getType(): Type<LightningStrike> {
+    return LightningStrike;
   }
 
   @Input()
-  public set type(value: string) {
+  public set state(value: number) {
     if (this._objRef) {
-      this._objRef.type = value;
+      this._objRef.state = value;
     }
   }
 }

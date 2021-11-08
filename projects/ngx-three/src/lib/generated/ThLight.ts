@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Color, Light, LightShadow } from 'three';
+import { Color, ColorRepresentation, Event, Light, LightShadow } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -21,7 +21,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThLight<
   T extends Light = Light,
   TARGS extends any[] = [hex?: number | string, intensity?: number]
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Light> {
     return Light;
   }
@@ -34,7 +34,7 @@ export class ThLight<
   }
 
   @Input()
-  public set color(value: Color | [color: Color | string | number]) {
+  public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }

@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Color, RectAreaLight } from 'three';
+import { ColorRepresentation, RectAreaLight } from 'three';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
@@ -23,7 +23,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThRectAreaLight<
   T extends RectAreaLight = RectAreaLight,
   TARGS extends any[] = [
-    color?: Color | string | number,
+    color?: ColorRepresentation,
     intensity?: number,
     width?: number,
     height?: number
@@ -58,6 +58,13 @@ export class ThRectAreaLight<
   public set intensity(value: number) {
     if (this._objRef) {
       this._objRef.intensity = value;
+    }
+  }
+
+  @Input()
+  public set power(value: number) {
+    if (this._objRef) {
+      this._objRef.power = value;
     }
   }
 }

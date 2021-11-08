@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Color, PointLight, PointLightShadow } from 'three';
+import { ColorRepresentation, PointLight, PointLightShadow } from 'three';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
@@ -23,7 +23,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThPointLight<
   T extends PointLight = PointLight,
   TARGS extends any[] = [
-    color?: Color | string | number,
+    color?: ColorRepresentation,
     intensity?: number,
     distance?: number,
     decay?: number

@@ -8,27 +8,33 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { BufferGeometry, WireframeGeometry } from 'three';
+import { BoxBufferGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-wireframeGeometry',
+  selector: 'th-boxBufferGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThWireframeGeometry),
+      useExisting: forwardRef(() => ThBoxBufferGeometry),
     },
   ],
 })
-export class ThWireframeGeometry<
-  TBufferGeometry extends BufferGeometry = BufferGeometry,
-  T extends WireframeGeometry<TBufferGeometry> = WireframeGeometry<TBufferGeometry>,
-  TARGS extends any[] = [geometry?: TBufferGeometry]
+export class ThBoxBufferGeometry<
+  T extends BoxBufferGeometry = BoxBufferGeometry,
+  TARGS extends any[] = [
+    width?: number,
+    height?: number,
+    depth?: number,
+    widthSegments?: number,
+    heightSegments?: number,
+    depthSegments?: number
+  ]
 > extends ThBufferGeometry<T, TARGS> {
-  public getType(): Type<WireframeGeometry<TBufferGeometry>> {
-    return WireframeGeometry;
+  public getType(): Type<BoxBufferGeometry> {
+    return BoxBufferGeometry;
   }
 
   @Input()
@@ -39,7 +45,14 @@ export class ThWireframeGeometry<
   }
 
   @Input()
-  public set parameters(value: { geometry: TBufferGeometry }) {
+  public set parameters(value: {
+    width: number;
+    height: number;
+    depth: number;
+    widthSegments: number;
+    heightSegments: number;
+    depthSegments: number;
+  }) {
     if (this._objRef) {
       this._objRef.parameters = value;
     }

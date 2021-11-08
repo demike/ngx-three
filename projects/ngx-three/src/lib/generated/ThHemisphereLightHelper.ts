@@ -9,7 +9,8 @@ import {
   Type,
 } from '@angular/core';
 import {
-  Color,
+  ColorRepresentation,
+  Event,
   HemisphereLight,
   HemisphereLightHelper,
   Matrix4,
@@ -34,9 +35,9 @@ export class ThHemisphereLightHelper<
   TARGS extends any[] = [
     light: HemisphereLight,
     size: number,
-    color?: Color | number | string
+    color?: ColorRepresentation
   ]
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<HemisphereLightHelper> {
     return HemisphereLightHelper;
   }
@@ -90,19 +91,9 @@ export class ThHemisphereLightHelper<
   }
 
   @Input()
-  public set color(
-    value:
-      | Color
-      | string
-      | number
-      | undefined
-      | [color: Color | string | number]
-  ) {
+  public set color(value: ColorRepresentation | undefined) {
     if (this._objRef) {
-      this._objRef.color = applyValue<Color | string | number | undefined>(
-        this._objRef.color,
-        value
-      );
+      this._objRef.color = value;
     }
   }
 }

@@ -7,7 +7,7 @@ import {
   forwardRef,
   Type,
 } from '@angular/core';
-import { AmbientLightProbe, Color } from 'three';
+import { AmbientLightProbe, ColorRepresentation } from 'three';
 import { ThLightProbe } from './ThLightProbe';
 import { ThObject3D } from './ThObject3D';
 
@@ -21,7 +21,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThAmbientLightProbe<
   T extends AmbientLightProbe = AmbientLightProbe,
-  TARGS extends any[] = [color?: Color | string | number, intensity?: number]
+  TARGS extends any[] = [color?: ColorRepresentation, intensity?: number]
 > extends ThLightProbe<T, TARGS> {
   public getType(): Type<AmbientLightProbe> {
     return AmbientLightProbe;

@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { ImmediateRenderObject, Material } from 'three';
+import { Event, ImmediateRenderObject, Material } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -25,7 +25,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThImmediateRenderObject<
   T extends ImmediateRenderObject = ImmediateRenderObject,
   TARGS extends any[] = [material: Material]
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<ImmediateRenderObject> {
     return ImmediateRenderObject;
   }

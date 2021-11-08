@@ -5,35 +5,28 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
-import { Shape, ShapeGeometry } from 'three';
+import { Vector3 } from 'three';
+import { ConvexGeometry } from 'three/examples/jsm/geometries/ConvexGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-shapeGeometry',
+  selector: 'th-convexGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThShapeGeometry),
+      useExisting: forwardRef(() => ThConvexGeometry),
     },
   ],
 })
-export class ThShapeGeometry<
-  T extends ShapeGeometry = ShapeGeometry,
-  TARGS extends any[] = [shapes?: Shape | Shape[], curveSegments?: number]
+export class ThConvexGeometry<
+  T extends ConvexGeometry = ConvexGeometry,
+  TARGS extends any[] = [points: Vector3[]]
 > extends ThBufferGeometry<T, TARGS> {
-  public getType(): Type<ShapeGeometry> {
-    return ShapeGeometry;
-  }
-
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
+  public getType(): Type<ConvexGeometry> {
+    return ConvexGeometry;
   }
 }

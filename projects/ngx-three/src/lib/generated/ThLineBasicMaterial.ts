@@ -8,7 +8,12 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Color, LineBasicMaterial, LineBasicMaterialParameters } from 'three';
+import {
+  Color,
+  ColorRepresentation,
+  LineBasicMaterial,
+  LineBasicMaterialParameters,
+} from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -36,7 +41,7 @@ export class ThLineBasicMaterial<
   }
 
   @Input()
-  public set color(value: Color | [color: Color | string | number]) {
+  public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
@@ -59,13 +64,6 @@ export class ThLineBasicMaterial<
   public set linejoin(value: string) {
     if (this._objRef) {
       this._objRef.linejoin = value;
-    }
-  }
-
-  @Input()
-  public set morphTargets(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphTargets = value;
     }
   }
 }

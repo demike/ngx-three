@@ -9,10 +9,15 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Camera, Color, Scene, ShaderMaterial, WebGLRenderTarget } from 'three';
+import {
+  Camera,
+  ColorRepresentation,
+  Scene,
+  ShaderMaterial,
+  WebGLRenderTarget,
+} from 'three';
 import { SSAARenderPass } from 'three/examples/jsm/postprocessing/SSAARenderPass';
 import { ThPassBase } from '../ThPassBase';
-import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
@@ -28,7 +33,7 @@ export class ThSSAARenderPass<
   TARGS extends any[] = [
     scene: Scene,
     camera: Camera,
-    clearColor: Color | string | number,
+    clearColor: ColorRepresentation,
     clearAlpha: number
   ]
 > extends ThPass<T, TARGS> {
@@ -65,16 +70,12 @@ export class ThSSAARenderPass<
   }
 
   @Input()
-  public set clearColor(
-    value: Color | string | number | [color: Color | string | number]
-  ) {
+  public set clearColor(value: ColorRepresentation) {
     if (this._objRef) {
-      this._objRef.clearColor = applyValue<Color | string | number>(
-        this._objRef.clearColor,
-        value
-      );
+      this._objRef.clearColor = value;
     }
   }
+
   @Input()
   public set clearAlpha(value: number) {
     if (this._objRef) {

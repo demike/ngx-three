@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { AudioContext, AudioListener } from 'three';
+import { AudioContext, AudioListener, Event } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -22,7 +22,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThAudioListener<
   T extends AudioListener = AudioListener,
   TARGS extends any[] = []
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<AudioListener> {
     return AudioListener;
   }

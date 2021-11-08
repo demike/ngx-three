@@ -8,7 +8,12 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Color, ShadowMaterial, ShadowMaterialParameters } from 'three';
+import {
+  Color,
+  ColorRepresentation,
+  ShadowMaterial,
+  ShadowMaterialParameters,
+} from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -36,7 +41,7 @@ export class ThShadowMaterial<
   }
 
   @Input()
-  public set color(value: Color | [color: Color | string | number]) {
+  public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }

@@ -9,9 +9,10 @@ import {
   Type,
 } from '@angular/core';
 import {
-  Color,
+  ColorRepresentation,
   DirectionalLight,
   DirectionalLightHelper,
+  Event,
   Line,
   Matrix4,
 } from 'three';
@@ -34,9 +35,9 @@ export class ThDirectionalLightHelper<
   TARGS extends any[] = [
     light: DirectionalLight,
     size?: number,
-    color?: Color | string | number
+    color?: ColorRepresentation
   ]
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<DirectionalLightHelper> {
     return DirectionalLightHelper;
   }
@@ -63,21 +64,12 @@ export class ThDirectionalLightHelper<
   }
 
   @Input()
-  public set color(
-    value:
-      | Color
-      | string
-      | number
-      | undefined
-      | [color: Color | string | number]
-  ) {
+  public set color(value: ColorRepresentation | undefined) {
     if (this._objRef) {
-      this._objRef.color = applyValue<Color | string | number | undefined>(
-        this._objRef.color,
-        value
-      );
+      this._objRef.color = value;
     }
   }
+
   @Input()
   public set matrix(
     value:

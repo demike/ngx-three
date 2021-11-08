@@ -103,7 +103,11 @@ export class ThBufferGeometry<
 
   @Input()
   public set groups(
-    value: Array<{ start: number; count: number; materialIndex?: number }>
+    value: Array<{
+      start: number;
+      count: number;
+      materialIndex?: number | undefined;
+    }>
   ) {
     if (this._objRef) {
       this._objRef.groups = value;

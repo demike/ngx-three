@@ -9,7 +9,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Camera, Color, Material, Scene } from 'three';
+import { Camera, Color, ColorRepresentation, Material, Scene } from 'three';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
@@ -59,7 +59,7 @@ export class ThRenderPassGen<
   }
 
   @Input()
-  public set clearColor(value: Color | [color: Color | string | number]) {
+  public set clearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.clearColor = applyValue<Color>(
         this._objRef.clearColor,

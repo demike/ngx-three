@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {
   Color,
+  ColorRepresentation,
   MeshMatcapMaterial,
   MeshMatcapMaterialParameters,
   NormalMapTypes,
@@ -53,7 +54,7 @@ export class ThMeshMatcapMaterial<
   }
 
   @Input()
-  public set color(value: Color | [color: Color | string | number]) {
+  public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
@@ -134,27 +135,6 @@ export class ThMeshMatcapMaterial<
   public set alphaMap(value: Texture | null) {
     if (this._objRef) {
       this._objRef.alphaMap = value;
-    }
-  }
-
-  @Input()
-  public set skinning(value: boolean) {
-    if (this._objRef) {
-      this._objRef.skinning = value;
-    }
-  }
-
-  @Input()
-  public set morphTargets(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphTargets = value;
-    }
-  }
-
-  @Input()
-  public set morphNormals(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphNormals = value;
     }
   }
 

@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Camera, MOUSE, Object3D } from 'three';
+import { Camera, Event, MOUSE, Object3D } from 'three';
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
 import { ThControlBase } from '../ThControlBase';
 import { ThObject3D } from './ThObject3D';
@@ -27,7 +27,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThTransformControls<
   T extends TransformControls = TransformControls,
   TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<TransformControls> {
     return TransformControls;
   }
@@ -61,14 +61,16 @@ export class ThTransformControls<
   }
 
   @Input()
-  public set axis(value: string | null) {
+  public set axis(
+    value: 'X' | 'Y' | 'Z' | 'E' | 'XY' | 'YZ' | 'XZ' | 'XYZ' | 'XYZE' | null
+  ) {
     if (this._objRef) {
       this._objRef.axis = value;
     }
   }
 
   @Input()
-  public set mode(value: string) {
+  public set mode(value: 'translate' | 'rotate' | 'scale') {
     if (this._objRef) {
       this._objRef.mode = value;
     }
@@ -89,7 +91,7 @@ export class ThTransformControls<
   }
 
   @Input()
-  public set space(value: string) {
+  public set space(value: 'world' | 'local') {
     if (this._objRef) {
       this._objRef.space = value;
     }

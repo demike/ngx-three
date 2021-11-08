@@ -12,10 +12,6 @@ export class NgxThreePass extends NgxThreeClass {
     this.content = `/* eslint-disable @typescript-eslint/ban-types */ ${this.content}`;
   }
 
-  public getWrappedClassImportPath() {
-    return this.getImportPathForSourceFile(this.classDecl.getSourceFile());
-  }
-
   protected generateConstructor() {
     return '';
   }

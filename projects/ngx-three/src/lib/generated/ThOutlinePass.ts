@@ -12,6 +12,7 @@ import {
 import {
   Camera,
   Color,
+  ColorRepresentation,
   Matrix4,
   MeshBasicMaterial,
   MeshDepthMaterial,
@@ -70,7 +71,7 @@ export class ThOutlinePass<
   }
 
   @Input()
-  public set visibleEdgeColor(value: Color | [color: Color | string | number]) {
+  public set visibleEdgeColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.visibleEdgeColor = applyValue<Color>(
         this._objRef.visibleEdgeColor,
@@ -79,7 +80,7 @@ export class ThOutlinePass<
     }
   }
   @Input()
-  public set hiddenEdgeColor(value: Color | [color: Color | string | number]) {
+  public set hiddenEdgeColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.hiddenEdgeColor = applyValue<Color>(
         this._objRef.hiddenEdgeColor,
@@ -258,7 +259,7 @@ export class ThOutlinePass<
   }
 
   @Input()
-  public set oldClearColor(value: Color | [color: Color | string | number]) {
+  public set oldClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.oldClearColor = applyValue<Color>(
         this._objRef.oldClearColor,
@@ -281,7 +282,7 @@ export class ThOutlinePass<
   }
 
   @Input()
-  public set tempPulseColor1(value: Color | [color: Color | string | number]) {
+  public set tempPulseColor1(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.tempPulseColor1 = applyValue<Color>(
         this._objRef.tempPulseColor1,
@@ -290,7 +291,7 @@ export class ThOutlinePass<
     }
   }
   @Input()
-  public set tempPulseColor2(value: Color | [color: Color | string | number]) {
+  public set tempPulseColor2(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.tempPulseColor2 = applyValue<Color>(
         this._objRef.tempPulseColor2,

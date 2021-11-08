@@ -56,8 +56,17 @@ type __ngxThreeBufferGeometries = {
     : never;
 };
 
+type ExtraGeomtries = typeof import('./geometry_extra_types');
+type __ngxThreeExtraGeometries = {
+  [G in keyof ExtraGeomtries]: ExtraGeomtries[G] extends new (...args: any) => any
+    ? InstanceType<ExtraGeomtries[G]> extends InstanceType<Three['BufferGeometry']>
+      ? InstanceType<ExtraGeomtries[G]>
+      : never
+    : never;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface NgxThreeBufferGeometries extends OmitByValue<__ngxThreeBufferGeometries, never> {}
+export interface NgxThreeBufferGeometries extends OmitByValue<__ngxThreeBufferGeometries & __ngxThreeExtraGeometries, never> {}
 
 // controls
 
@@ -71,7 +80,8 @@ export interface NgxThreeControls extends OmitByValue<__ngxControls, never> {}
 
 // post process passes
 
-type Passes = typeof import('./pass_types');
+import * as PP from './pass_types';
+type Passes = typeof PP;
 type __ngxPasses = {
   [P in keyof Passes]: Passes[P] extends new (...args: any) => any ? InstanceType<Passes[P]> : never;
 };

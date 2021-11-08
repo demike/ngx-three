@@ -117,27 +117,6 @@ export class ThMeshNormalMaterial<
   }
 
   @Input()
-  public set skinning(value: boolean) {
-    if (this._objRef) {
-      this._objRef.skinning = value;
-    }
-  }
-
-  @Input()
-  public set morphTargets(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphTargets = value;
-    }
-  }
-
-  @Input()
-  public set morphNormals(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphNormals = value;
-    }
-  }
-
-  @Input()
   public set flatShading(value: boolean) {
     if (this._objRef) {
       this._objRef.flatShading = value;

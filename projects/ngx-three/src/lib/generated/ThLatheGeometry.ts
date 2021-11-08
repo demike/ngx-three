@@ -25,7 +25,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 export class ThLatheGeometry<
   T extends LatheGeometry = LatheGeometry,
   TARGS extends any[] = [
-    points: Vector2[],
+    points?: Vector2[],
     segments?: number,
     phiStart?: number,
     phiLength?: number

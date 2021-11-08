@@ -9,7 +9,7 @@ import {
   Type,
 } from '@angular/core';
 import {
-  Color,
+  ColorRepresentation,
   DirectionalLight,
   DirectionalLightShadow,
   Object3D,
@@ -29,7 +29,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThDirectionalLight<
   T extends DirectionalLight = DirectionalLight,
-  TARGS extends any[] = [color?: Color | string | number, intensity?: number]
+  TARGS extends any[] = [color?: ColorRepresentation, intensity?: number]
 > extends ThLight<T, TARGS> {
   public getType(): Type<DirectionalLight> {
     return DirectionalLight;

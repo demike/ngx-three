@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Material } from 'three';
+import { Material, Mesh } from 'three';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
@@ -17,7 +17,7 @@ export class ThMaterialBase<T extends Material, ARGS extends any[] = []> extends
       throw new Error("parent object doesn't hold a three js object instance");
     }
 
-    this.parent.objRef.material = this.objRef;
+    (this.parent.objRef as Mesh).material = this.objRef as Material;
   }
 
   public removeFromParent() {

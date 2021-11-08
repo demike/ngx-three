@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {
   Color,
+  ColorRepresentation,
   Combine,
   MeshPhongMaterial,
   MeshPhongMaterialParameters,
@@ -44,13 +45,13 @@ export class ThMeshPhongMaterial<
   }
 
   @Input()
-  public set color(value: Color | [color: Color | string | number]) {
+  public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
   }
   @Input()
-  public set specular(value: Color | [color: Color | string | number]) {
+  public set specular(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.specular = applyValue<Color>(this._objRef.specular, value);
     }
@@ -98,7 +99,7 @@ export class ThMeshPhongMaterial<
   }
 
   @Input()
-  public set emissive(value: Color | [color: Color | string | number]) {
+  public set emissive(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.emissive = applyValue<Color>(this._objRef.emissive, value);
     }
@@ -242,27 +243,6 @@ export class ThMeshPhongMaterial<
   public set wireframeLinejoin(value: string) {
     if (this._objRef) {
       this._objRef.wireframeLinejoin = value;
-    }
-  }
-
-  @Input()
-  public set skinning(value: boolean) {
-    if (this._objRef) {
-      this._objRef.skinning = value;
-    }
-  }
-
-  @Input()
-  public set morphTargets(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphTargets = value;
-    }
-  }
-
-  @Input()
-  public set morphNormals(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphNormals = value;
     }
   }
 

@@ -211,10 +211,10 @@ export class ThOrbitControls<
 
   @Input()
   public set keys(value: {
-    LEFT: number;
-    UP: number;
-    RIGHT: number;
-    BOTTOM: number;
+    LEFT: string;
+    UP: string;
+    RIGHT: string;
+    BOTTOM: string;
   }) {
     if (this._objRef) {
       this._objRef.keys = value;

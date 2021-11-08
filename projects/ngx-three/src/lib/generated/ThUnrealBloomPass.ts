@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import {
   Color,
+  ColorRepresentation,
   MeshBasicMaterial,
   ShaderMaterial,
   Vector2,
@@ -74,7 +75,7 @@ export class ThUnrealBloomPass<
   }
 
   @Input()
-  public set clearColor(value: Color | [color: Color | string | number]) {
+  public set clearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.clearColor = applyValue<Color>(
         this._objRef.clearColor,
@@ -160,7 +161,7 @@ export class ThUnrealBloomPass<
   }
 
   @Input()
-  public set oldClearColor(value: Color | [color: Color | string | number]) {
+  public set oldClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.oldClearColor = applyValue<Color>(
         this._objRef.oldClearColor,

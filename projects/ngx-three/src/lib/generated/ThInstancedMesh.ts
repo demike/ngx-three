@@ -9,8 +9,8 @@ import {
   Type,
 } from '@angular/core';
 import {
-  BufferAttribute,
   BufferGeometry,
+  InstancedBufferAttribute,
   InstancedMesh,
   Material,
 } from 'three';
@@ -34,8 +34,8 @@ export class ThInstancedMesh<
     TMaterial
   >,
   TARGS extends any[] = [
-    geometry: TGeometry,
-    material: TMaterial,
+    geometry: TGeometry | undefined,
+    material: TMaterial | undefined,
     count: number
   ]
 > extends ThMesh<TGeometry, TMaterial, T, TARGS> {
@@ -54,11 +54,11 @@ export class ThInstancedMesh<
   public set instanceColor(
     value:
       | null
-      | BufferAttribute
+      | InstancedBufferAttribute
       | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
   ) {
     if (this._objRef) {
-      this._objRef.instanceColor = applyValue<null | BufferAttribute>(
+      this._objRef.instanceColor = applyValue<null | InstancedBufferAttribute>(
         this._objRef.instanceColor,
         value
       );
@@ -67,11 +67,11 @@ export class ThInstancedMesh<
   @Input()
   public set instanceMatrix(
     value:
-      | BufferAttribute
+      | InstancedBufferAttribute
       | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
   ) {
     if (this._objRef) {
-      this._objRef.instanceMatrix = applyValue<BufferAttribute>(
+      this._objRef.instanceMatrix = applyValue<InstancedBufferAttribute>(
         this._objRef.instanceMatrix,
         value
       );

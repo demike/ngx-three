@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Camera, Matrix4 } from 'three';
+import { Camera, Event, Matrix4 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -21,7 +21,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThCamera<
   T extends Camera = Camera,
   TARGS extends any[] = []
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Camera> {
     return Camera;
   }

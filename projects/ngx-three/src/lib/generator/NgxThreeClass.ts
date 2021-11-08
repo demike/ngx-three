@@ -28,7 +28,7 @@ export abstract class NgxThreeClass {
   private inputs = '';
 
   constructor(protected classSymbol: ts.Symbol, protected typeChecker: ts.TypeChecker) {
-    this.classDecl = this.classSymbol.declarations[0] as ts.ClassDeclaration;
+    this.classDecl = this.fetchClassDecleration();
     this.wrappedClassName = this.classSymbol.escapedName as string;
 
     this.className = 'Th' + this.wrappedClassName;
@@ -42,13 +42,19 @@ export abstract class NgxThreeClass {
     this.content = '';
   }
 
-  generate() {
-    if (ts.isExportSpecifier(this.classDecl)) {
+  private fetchClassDecleration() {
+    const decl = this.classSymbol.declarations[0];
+    if (ts.isExportSpecifier(decl)) {
       // this is just an export specifier do not generate a wrapper for it
-      // ie.:   export { BoxGeometry as BoxBufferGeometry}
-      this.content = '';
-      return;
+      // get the right type
+      this.classSymbol = this.typeChecker.getTypeAtLocation(decl).symbol;
+      return (this.classSymbol.declarations[0] as unknown) as ts.ClassDeclaration;
+    } else {
+      return decl as ts.ClassDeclaration;
     }
+  }
+
+  generate() {
     if (this.getBaseClassName().length > 0 && this.className !== 'Th' + this.getBaseClassName()) {
       this.imports.add(
         `import { Th${this.getBaseClassName()} } from './${
@@ -116,7 +122,7 @@ export abstract class NgxThreeClass {
   public abstract getWrapperBaseClassName(): string;
 
   public getWrappedClassImportPath() {
-    return 'three';
+    return this.getImportPathForSourceFile(this.classDecl.getSourceFile());
   }
 
   private generateClassHeader() {

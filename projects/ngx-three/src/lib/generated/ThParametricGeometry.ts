@@ -8,7 +8,8 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { ParametricGeometry, Vector3 } from 'three';
+import { Vector3 } from 'three';
+import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -25,9 +26,9 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 export class ThParametricGeometry<
   T extends ParametricGeometry = ParametricGeometry,
   TARGS extends any[] = [
-    func: (u: number, v: number, dest: Vector3) => void,
-    slices: number,
-    stacks: number
+    func?: (u: number, v: number, target: Vector3) => void,
+    slices?: number,
+    stacks?: number
   ]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<ParametricGeometry> {

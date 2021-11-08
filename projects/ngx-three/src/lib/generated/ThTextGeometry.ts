@@ -8,7 +8,11 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Font, TextGeometry, TextGeometryParameters } from 'three';
+import {
+  TextGeometry,
+  TextGeometryParameters,
+} from 'three/examples/jsm/geometries/TextGeometry';
+import { Font } from 'three/examples/jsm/loaders/FontLoader';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThExtrudeGeometry } from './ThExtrudeGeometry';
 

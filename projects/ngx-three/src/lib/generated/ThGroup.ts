@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Group } from 'three';
+import { Event, Group } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -20,7 +20,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThGroup<
   T extends Group = Group,
   TARGS extends any[] = []
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Group> {
     return Group;
   }

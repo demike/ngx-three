@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {
   Color,
+  ColorRepresentation,
   MeshPhysicalMaterial,
   MeshPhysicalMaterialParameters,
   Texture,
@@ -32,7 +33,7 @@ import { ThMeshStandardMaterial } from './ThMeshStandardMaterial';
 })
 export class ThMeshPhysicalMaterial<
   T extends MeshPhysicalMaterial = MeshPhysicalMaterial,
-  TARGS extends any[] = [parameters: MeshPhysicalMaterialParameters]
+  TARGS extends any[] = [parameters?: MeshPhysicalMaterialParameters]
 > extends ThMeshStandardMaterial<T, TARGS> {
   public getType(): Type<MeshPhysicalMaterial> {
     return MeshPhysicalMaterial;
@@ -111,11 +112,25 @@ export class ThMeshPhysicalMaterial<
   }
 
   @Input()
-  public set sheen(value: Color | null | [color: Color | string | number]) {
+  public set sheen(value: number) {
     if (this._objRef) {
-      this._objRef.sheen = applyValue<Color | null>(this._objRef.sheen, value);
+      this._objRef.sheen = value;
     }
   }
+
+  @Input()
+  public set sheenTint(value: Color | [color: ColorRepresentation]) {
+    if (this._objRef) {
+      this._objRef.sheenTint = applyValue<Color>(this._objRef.sheenTint, value);
+    }
+  }
+  @Input()
+  public set sheenRoughness(value: number) {
+    if (this._objRef) {
+      this._objRef.sheenRoughness = value;
+    }
+  }
+
   @Input()
   public set transmission(value: number) {
     if (this._objRef) {
@@ -127,6 +142,66 @@ export class ThMeshPhysicalMaterial<
   public set transmissionMap(value: Texture | null) {
     if (this._objRef) {
       this._objRef.transmissionMap = value;
+    }
+  }
+
+  @Input()
+  public set thickness(value: number) {
+    if (this._objRef) {
+      this._objRef.thickness = value;
+    }
+  }
+
+  @Input()
+  public set thicknessMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.thicknessMap = value;
+    }
+  }
+
+  @Input()
+  public set attenuationDistance(value: number) {
+    if (this._objRef) {
+      this._objRef.attenuationDistance = value;
+    }
+  }
+
+  @Input()
+  public set attenuationTint(value: Color | [color: ColorRepresentation]) {
+    if (this._objRef) {
+      this._objRef.attenuationTint = applyValue<Color>(
+        this._objRef.attenuationTint,
+        value
+      );
+    }
+  }
+  @Input()
+  public set specularIntensity(value: number) {
+    if (this._objRef) {
+      this._objRef.specularIntensity = value;
+    }
+  }
+
+  @Input()
+  public set specularTint(value: Color | [color: ColorRepresentation]) {
+    if (this._objRef) {
+      this._objRef.specularTint = applyValue<Color>(
+        this._objRef.specularTint,
+        value
+      );
+    }
+  }
+  @Input()
+  public set specularIntensityMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.specularIntensityMap = value;
+    }
+  }
+
+  @Input()
+  public set specularTintMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.specularTintMap = value;
     }
   }
 }

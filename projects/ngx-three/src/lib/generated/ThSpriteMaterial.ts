@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {
   Color,
+  ColorRepresentation,
   SpriteMaterial,
   SpriteMaterialParameters,
   Texture,
@@ -41,7 +42,7 @@ export class ThSpriteMaterial<
   }
 
   @Input()
-  public set color(value: Color | [color: Color | string | number]) {
+  public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }

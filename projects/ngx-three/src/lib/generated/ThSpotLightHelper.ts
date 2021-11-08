@@ -8,7 +8,14 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Color, Light, LineSegments, Matrix4, SpotLightHelper } from 'three';
+import {
+  ColorRepresentation,
+  Event,
+  Light,
+  LineSegments,
+  Matrix4,
+  SpotLightHelper,
+} from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -22,8 +29,8 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThSpotLightHelper<
   T extends SpotLightHelper = SpotLightHelper,
-  TARGS extends any[] = [light: Light, color?: Color | string | number]
-> extends ThObject3D<T, TARGS> {
+  TARGS extends any[] = [light: Light, color?: ColorRepresentation]
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<SpotLightHelper> {
     return SpotLightHelper;
   }
@@ -70,21 +77,12 @@ export class ThSpotLightHelper<
   }
 
   @Input()
-  public set color(
-    value:
-      | Color
-      | string
-      | number
-      | undefined
-      | [color: Color | string | number]
-  ) {
+  public set color(value: ColorRepresentation | undefined) {
     if (this._objRef) {
-      this._objRef.color = applyValue<Color | string | number | undefined>(
-        this._objRef.color,
-        value
-      );
+      this._objRef.color = value;
     }
   }
+
   @Input()
   public set cone(value: LineSegments) {
     if (this._objRef) {

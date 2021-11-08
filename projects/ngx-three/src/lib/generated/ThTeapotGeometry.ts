@@ -5,35 +5,35 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
-import { Shape, ShapeGeometry } from 'three';
+import { TeapotGeometry } from 'three/examples/jsm/geometries/TeapotGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-shapeGeometry',
+  selector: 'th-teapotGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThShapeGeometry),
+      useExisting: forwardRef(() => ThTeapotGeometry),
     },
   ],
 })
-export class ThShapeGeometry<
-  T extends ShapeGeometry = ShapeGeometry,
-  TARGS extends any[] = [shapes?: Shape | Shape[], curveSegments?: number]
+export class ThTeapotGeometry<
+  T extends TeapotGeometry = TeapotGeometry,
+  TARGS extends any[] = [
+    size?: number,
+    segments?: number,
+    bottom?: boolean,
+    lid?: boolean,
+    body?: boolean,
+    fitLid?: boolean,
+    blinn?: number
+  ]
 > extends ThBufferGeometry<T, TARGS> {
-  public getType(): Type<ShapeGeometry> {
-    return ShapeGeometry;
-  }
-
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
+  public getType(): Type<TeapotGeometry> {
+    return TeapotGeometry;
   }
 }

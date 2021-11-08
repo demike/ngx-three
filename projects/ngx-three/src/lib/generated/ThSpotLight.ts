@@ -8,7 +8,13 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Color, Object3D, SpotLight, SpotLightShadow, Vector3 } from 'three';
+import {
+  ColorRepresentation,
+  Object3D,
+  SpotLight,
+  SpotLightShadow,
+  Vector3,
+} from 'three';
 import { applyValue } from '../util';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
@@ -24,7 +30,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThSpotLight<
   T extends SpotLight = SpotLight,
   TARGS extends any[] = [
-    color?: Color | string | number,
+    color?: ColorRepresentation,
     intensity?: number,
     distance?: number,
     angle?: number,

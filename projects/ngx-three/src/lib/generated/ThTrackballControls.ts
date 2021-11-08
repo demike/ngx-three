@@ -143,7 +143,7 @@ export class ThTrackballControls<
   }
 
   @Input()
-  public set keys(value: number[]) {
+  public set keys(value: string[]) {
     if (this._objRef) {
       this._objRef.keys = value;
     }

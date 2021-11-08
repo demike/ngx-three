@@ -8,7 +8,14 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { ArrowHelper, Color, Line, Mesh, Vector3 } from 'three';
+import {
+  ArrowHelper,
+  ColorRepresentation,
+  Event,
+  Line,
+  Mesh,
+  Vector3,
+} from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -25,11 +32,11 @@ export class ThArrowHelper<
     dir?: Vector3,
     origin?: Vector3,
     length?: number,
-    color?: Color | string | number,
+    color?: ColorRepresentation,
     headLength?: number,
     headWidth?: number
   ]
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<ArrowHelper> {
     return ArrowHelper;
   }

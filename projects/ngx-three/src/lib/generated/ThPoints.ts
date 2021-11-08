@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { BufferGeometry, Material, Points } from 'three';
+import { BufferGeometry, Event, Material, Points } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -22,7 +22,7 @@ export class ThPoints<
   TMaterial extends Material | Material[] = Material | Material[],
   T extends Points<TGeometry, TMaterial> = Points<TGeometry, TMaterial>,
   TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Points<TGeometry, TMaterial>> {
     return Points;
   }
@@ -35,14 +35,16 @@ export class ThPoints<
   }
 
   @Input()
-  public set morphTargetInfluences(value: number[]) {
+  public set morphTargetInfluences(value: number[] | undefined) {
     if (this._objRef) {
       this._objRef.morphTargetInfluences = value;
     }
   }
 
   @Input()
-  public set morphTargetDictionary(value: { [key: string]: number }) {
+  public set morphTargetDictionary(
+    value: { [key: string]: number } | undefined
+  ) {
     if (this._objRef) {
       this._objRef.morphTargetDictionary = value;
     }

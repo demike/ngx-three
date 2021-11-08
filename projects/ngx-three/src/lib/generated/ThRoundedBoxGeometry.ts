@@ -5,38 +5,34 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
-import { ExtrudeGeometry, ExtrudeGeometryOptions, Shape } from 'three';
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry';
+import { ThBoxGeometry } from './ThBoxGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-extrudeGeometry',
+  selector: 'th-roundedBoxGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThExtrudeGeometry),
+      useExisting: forwardRef(() => ThRoundedBoxGeometry),
     },
   ],
 })
-export class ThExtrudeGeometry<
-  T extends ExtrudeGeometry = ExtrudeGeometry,
+export class ThRoundedBoxGeometry<
+  T extends RoundedBoxGeometry = RoundedBoxGeometry,
   TARGS extends any[] = [
-    shapes?: Shape | Shape[],
-    options?: ExtrudeGeometryOptions
+    width?: number,
+    height?: number,
+    depth?: number,
+    segments?: number,
+    radius?: number
   ]
-> extends ThBufferGeometry<T, TARGS> {
-  public getType(): Type<ExtrudeGeometry> {
-    return ExtrudeGeometry;
-  }
-
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
+> extends ThBoxGeometry<T, TARGS> {
+  public getType(): Type<RoundedBoxGeometry> {
+    return RoundedBoxGeometry;
   }
 }

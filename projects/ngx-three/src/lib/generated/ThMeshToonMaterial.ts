@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {
   Color,
+  ColorRepresentation,
   MeshToonMaterial,
   MeshToonMaterialParameters,
   NormalMapTypes,
@@ -50,7 +51,7 @@ export class ThMeshToonMaterial<
   }
 
   @Input()
-  public set color(value: Color | [color: Color | string | number]) {
+  public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
@@ -98,7 +99,7 @@ export class ThMeshToonMaterial<
   }
 
   @Input()
-  public set emissive(value: Color | [color: Color | string | number]) {
+  public set emissive(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.emissive = applyValue<Color>(this._objRef.emissive, value);
     }
@@ -207,27 +208,6 @@ export class ThMeshToonMaterial<
   public set wireframeLinejoin(value: string) {
     if (this._objRef) {
       this._objRef.wireframeLinejoin = value;
-    }
-  }
-
-  @Input()
-  public set skinning(value: boolean) {
-    if (this._objRef) {
-      this._objRef.skinning = value;
-    }
-  }
-
-  @Input()
-  public set morphTargets(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphTargets = value;
-    }
-  }
-
-  @Input()
-  public set morphNormals(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphNormals = value;
     }
   }
 }

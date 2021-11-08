@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { ThObject3D } from 'dist/ngx-three/public-api';
+import { ThObject3D } from 'ngx-three';
 import { Color, Euler, Light, Vector3 } from 'three';
 import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader';
 import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader';

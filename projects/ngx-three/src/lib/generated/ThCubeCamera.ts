@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { CubeCamera, WebGLCubeRenderTarget } from 'three';
+import { CubeCamera, Event, WebGLCubeRenderTarget } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -26,7 +26,7 @@ export class ThCubeCamera<
     far: number,
     renderTarget: WebGLCubeRenderTarget
   ]
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<CubeCamera> {
     return CubeCamera;
   }

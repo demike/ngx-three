@@ -9,7 +9,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Camera, Color, Scene } from 'three';
+import { Camera, ColorRepresentation, Scene } from 'three';
 import { TAARenderPass } from 'three/examples/jsm/postprocessing/TAARenderPass';
 import { ThPassBase } from '../ThPassBase';
 import { ThSSAARenderPass } from './ThSSAARenderPass';
@@ -27,7 +27,7 @@ export class ThTAARenderPass<
   TARGS extends any[] = [
     scene: Scene,
     camera: Camera,
-    clearColor: Color | string | number,
+    clearColor: ColorRepresentation,
     clearAlpha: number
   ]
 > extends ThSSAARenderPass<T, TARGS> {

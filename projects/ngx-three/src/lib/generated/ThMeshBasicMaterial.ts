@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import {
   Color,
+  ColorRepresentation,
   Combine,
   MeshBasicMaterial,
   MeshBasicMaterialParameters,
@@ -42,7 +43,7 @@ export class ThMeshBasicMaterial<
   }
 
   @Input()
-  public set color(value: Color | [color: Color | string | number]) {
+  public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
@@ -51,6 +52,20 @@ export class ThMeshBasicMaterial<
   public set map(value: Texture | null) {
     if (this._objRef) {
       this._objRef.map = value;
+    }
+  }
+
+  @Input()
+  public set lightMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.lightMap = value;
+    }
+  }
+
+  @Input()
+  public set lightMapIntensity(value: number) {
+    if (this._objRef) {
+      this._objRef.lightMapIntensity = value;
     }
   }
 
@@ -135,20 +150,6 @@ export class ThMeshBasicMaterial<
   public set wireframeLinejoin(value: string) {
     if (this._objRef) {
       this._objRef.wireframeLinejoin = value;
-    }
-  }
-
-  @Input()
-  public set skinning(value: boolean) {
-    if (this._objRef) {
-      this._objRef.skinning = value;
-    }
-  }
-
-  @Input()
-  public set morphTargets(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphTargets = value;
     }
   }
 }

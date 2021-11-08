@@ -5,35 +5,33 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
-import { Shape, ShapeGeometry } from 'three';
+import { Euler, Mesh, Vector3 } from 'three';
+import { DecalGeometry } from 'three/examples/jsm/geometries/DecalGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-shapeGeometry',
+  selector: 'th-decalGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThShapeGeometry),
+      useExisting: forwardRef(() => ThDecalGeometry),
     },
   ],
 })
-export class ThShapeGeometry<
-  T extends ShapeGeometry = ShapeGeometry,
-  TARGS extends any[] = [shapes?: Shape | Shape[], curveSegments?: number]
+export class ThDecalGeometry<
+  T extends DecalGeometry = DecalGeometry,
+  TARGS extends any[] = [
+    mesh: Mesh,
+    position: Vector3,
+    orientation: Euler,
+    size: Vector3
+  ]
 > extends ThBufferGeometry<T, TARGS> {
-  public getType(): Type<ShapeGeometry> {
-    return ShapeGeometry;
-  }
-
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
+  public getType(): Type<DecalGeometry> {
+    return DecalGeometry;
   }
 }

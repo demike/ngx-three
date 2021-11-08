@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Color, HemisphereLight, Vector3 } from 'three';
+import { Color, ColorRepresentation, HemisphereLight, Vector3 } from 'three';
 import { applyValue } from '../util';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
@@ -24,8 +24,8 @@ import { ThObject3D } from './ThObject3D';
 export class ThHemisphereLight<
   T extends HemisphereLight = HemisphereLight,
   TARGS extends any[] = [
-    skyColor?: Color | string | number,
-    groundColor?: Color | string | number,
+    skyColor?: ColorRepresentation,
+    groundColor?: ColorRepresentation,
     intensity?: number
   ]
 > extends ThLight<T, TARGS> {
@@ -47,7 +47,7 @@ export class ThHemisphereLight<
     }
   }
   @Input()
-  public set groundColor(value: Color | [color: Color | string | number]) {
+  public set groundColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.groundColor = applyValue<Color>(
         this._objRef.groundColor,

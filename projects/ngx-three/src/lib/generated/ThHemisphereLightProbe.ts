@@ -7,7 +7,7 @@ import {
   forwardRef,
   Type,
 } from '@angular/core';
-import { Color, HemisphereLightProbe } from 'three';
+import { ColorRepresentation, HemisphereLightProbe } from 'three';
 import { ThLightProbe } from './ThLightProbe';
 import { ThObject3D } from './ThObject3D';
 
@@ -25,8 +25,8 @@ import { ThObject3D } from './ThObject3D';
 export class ThHemisphereLightProbe<
   T extends HemisphereLightProbe = HemisphereLightProbe,
   TARGS extends any[] = [
-    skyColor?: Color | string | number,
-    groundColor?: Color | string | number,
+    skyColor?: ColorRepresentation,
+    groundColor?: ColorRepresentation,
     intensity?: number
   ]
 > extends ThLightProbe<T, TARGS> {

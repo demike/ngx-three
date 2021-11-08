@@ -11,11 +11,6 @@ export class NgxThreeControl extends NgxThreeClass {
     super.generate();
   }
 
-  public getWrappedClassImportPath() {
-    const fileName = this.classDecl.getSourceFile().fileName;
-    return fileName.substr(fileName.indexOf('/node_modules/@types/three/')).replace('/node_modules/@types/', '').replace('.d.ts', '');
-  }
-
   protected generateConstructor() {
     return '';
   }

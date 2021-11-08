@@ -12,17 +12,17 @@ import {
 import {
   Camera,
   Color,
+  ColorRepresentation,
   Material,
   MeshBasicMaterial,
   MeshNormalMaterial,
   Scene,
   ShaderMaterial,
-  TextureEncoding,
   WebGLRenderer,
   WebGLRenderTarget,
 } from 'three';
 import { Reflector } from 'three/examples/jsm/objects/ReflectorForSSRPass';
-import { Pass } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import {
   SSRPass,
   SSRPassParams,
@@ -118,21 +118,14 @@ export class ThSSRPass<
   }
 
   @Input()
-  public set surfDist(value: number) {
+  public set thickness(value: number) {
     if (this._objRef) {
-      this._objRef.surfDist = value;
+      this._objRef.thickness = value;
     }
   }
 
   @Input()
-  public set encoding(value: TextureEncoding) {
-    if (this._objRef) {
-      this._objRef.encoding = value;
-    }
-  }
-
-  @Input()
-  public set tempColor(value: Color | [color: Color | string | number]) {
+  public set tempColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.tempColor = applyValue<Color>(this._objRef.tempColor, value);
     }
@@ -264,16 +257,14 @@ export class ThSSRPass<
   }
 
   @Input()
-  public set fsQuad(value: Pass.FullScreenQuad) {
+  public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.fsQuad = value;
     }
   }
 
   @Input()
-  public set originalClearColor(
-    value: Color | [color: Color | string | number]
-  ) {
+  public set originalClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.originalClearColor = applyValue<Color>(
         this._objRef.originalClearColor,
@@ -294,8 +285,8 @@ export class ThSSRPass<
       renderer: WebGLRenderer,
       passMaterial: Material,
       renderTarget: WebGLRenderTarget,
-      clearColor: Color | string | number,
-      clearAlpha: Color | string | number
+      clearColor: ColorRepresentation,
+      clearAlpha: ColorRepresentation
     ) => void
   ) {
     if (this._objRef) {
@@ -309,8 +300,8 @@ export class ThSSRPass<
       renderer: WebGLRenderer,
       passMaterial: Material,
       renderTarget: WebGLRenderTarget,
-      clearColor: Color | string | number,
-      clearAlpha: Color | string | number
+      clearColor: ColorRepresentation,
+      clearAlpha: ColorRepresentation
     ) => void
   ) {
     if (this._objRef) {
@@ -324,8 +315,8 @@ export class ThSSRPass<
       renderer: WebGLRenderer,
       passMaterial: Material,
       renderTarget: WebGLRenderTarget,
-      clearColor: Color | string | number,
-      clearAlpha: Color | string | number
+      clearColor: ColorRepresentation,
+      clearAlpha: ColorRepresentation
     ) => void
   ) {
     if (this._objRef) {

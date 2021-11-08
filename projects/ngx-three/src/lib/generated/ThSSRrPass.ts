@@ -12,6 +12,7 @@ import {
 import {
   Camera,
   Color,
+  ColorRepresentation,
   Material,
   Mesh,
   MeshBasicMaterial,
@@ -19,11 +20,10 @@ import {
   MeshStandardMaterial,
   Scene,
   ShaderMaterial,
-  TextureEncoding,
   WebGLRenderer,
   WebGLRenderTarget,
 } from 'three';
-import { Pass } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import {
   SSRrPass,
   SSRrPassParams,
@@ -119,14 +119,7 @@ export class ThSSRrPass<
   }
 
   @Input()
-  public set encoding(value: TextureEncoding) {
-    if (this._objRef) {
-      this._objRef.encoding = value;
-    }
-  }
-
-  @Input()
-  public set color(value: Color | [color: Color | string | number]) {
+  public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
@@ -244,16 +237,14 @@ export class ThSSRrPass<
   }
 
   @Input()
-  public set fsQuad(value: Pass.FullScreenQuad) {
+  public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.fsQuad = value;
     }
   }
 
   @Input()
-  public set originalClearColor(
-    value: Color | [color: Color | string | number]
-  ) {
+  public set originalClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.originalClearColor = applyValue<Color>(
         this._objRef.originalClearColor,
@@ -283,8 +274,8 @@ export class ThSSRrPass<
       renderer: WebGLRenderer,
       passMaterial: Material,
       renderTarget: WebGLRenderTarget,
-      clearColor: Color | string | number,
-      clearAlpha: Color | string | number
+      clearColor: ColorRepresentation,
+      clearAlpha: ColorRepresentation
     ) => void
   ) {
     if (this._objRef) {
@@ -298,8 +289,8 @@ export class ThSSRrPass<
       renderer: WebGLRenderer,
       passMaterial: Material,
       renderTarget: WebGLRenderTarget,
-      clearColor: Color | string | number,
-      clearAlpha: Color | string | number
+      clearColor: ColorRepresentation,
+      clearAlpha: ColorRepresentation
     ) => void
   ) {
     if (this._objRef) {
@@ -313,8 +304,8 @@ export class ThSSRrPass<
       renderer: WebGLRenderer,
       passMaterial: Material,
       renderTarget: WebGLRenderTarget,
-      clearColor: Color | string | number,
-      clearAlpha: Color | string | number
+      clearColor: ColorRepresentation,
+      clearAlpha: ColorRepresentation
     ) => void
   ) {
     if (this._objRef) {

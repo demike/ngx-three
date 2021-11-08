@@ -11,6 +11,8 @@ import {
 import {
   Camera,
   Color,
+  ColorRepresentation,
+  Event,
   FogBase,
   Material,
   Scene,
@@ -29,7 +31,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThScene<
   T extends Scene = Scene,
   TARGS extends any[] = []
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Scene> {
     return Scene;
   }
@@ -64,7 +66,7 @@ export class ThScene<
 
   @Input()
   public set background(
-    value: null | Color | Texture | [color: Color | string | number]
+    value: null | Color | Texture | [color: ColorRepresentation]
   ) {
     if (this._objRef) {
       this._objRef.background = applyValue<null | Color | Texture>(

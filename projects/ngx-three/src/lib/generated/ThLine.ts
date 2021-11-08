@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { BufferGeometry, Line, Material } from 'three';
+import { BufferGeometry, Event, Line, Material } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -22,7 +22,7 @@ export class ThLine<
   TMaterial extends Material | Material[] = Material | Material[],
   T extends Line<TGeometry, TMaterial> = Line<TGeometry, TMaterial>,
   TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]
-> extends ThObject3D<T, TARGS> {
+> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Line<TGeometry, TMaterial>> {
     return Line;
   }
@@ -49,14 +49,16 @@ export class ThLine<
   }
 
   @Input()
-  public set morphTargetInfluences(value: number[]) {
+  public set morphTargetInfluences(value: number[] | undefined) {
     if (this._objRef) {
       this._objRef.morphTargetInfluences = value;
     }
   }
 
   @Input()
-  public set morphTargetDictionary(value: { [key: string]: number }) {
+  public set morphTargetDictionary(
+    value: { [key: string]: number } | undefined
+  ) {
     if (this._objRef) {
       this._objRef.morphTargetDictionary = value;
     }

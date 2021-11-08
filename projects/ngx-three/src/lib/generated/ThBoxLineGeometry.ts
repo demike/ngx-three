@@ -5,35 +5,34 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
-import { Shape, ShapeGeometry } from 'three';
+import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-shapeGeometry',
+  selector: 'th-boxLineGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThShapeGeometry),
+      useExisting: forwardRef(() => ThBoxLineGeometry),
     },
   ],
 })
-export class ThShapeGeometry<
-  T extends ShapeGeometry = ShapeGeometry,
-  TARGS extends any[] = [shapes?: Shape | Shape[], curveSegments?: number]
+export class ThBoxLineGeometry<
+  T extends BoxLineGeometry = BoxLineGeometry,
+  TARGS extends any[] = [
+    width?: number,
+    height?: number,
+    depth?: number,
+    widthSegments?: number,
+    heightSegments?: number,
+    depthSegments?: number
+  ]
 > extends ThBufferGeometry<T, TARGS> {
-  public getType(): Type<ShapeGeometry> {
-    return ShapeGeometry;
-  }
-
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
+  public getType(): Type<BoxLineGeometry> {
+    return BoxLineGeometry;
   }
 }

@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { AmbientLight, Color } from 'three';
+import { AmbientLight, ColorRepresentation } from 'three';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
@@ -22,7 +22,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThAmbientLight<
   T extends AmbientLight = AmbientLight,
-  TARGS extends any[] = [color?: Color | string | number, intensity?: number]
+  TARGS extends any[] = [color?: ColorRepresentation, intensity?: number]
 > extends ThLight<T, TARGS> {
   public getType(): Type<AmbientLight> {
     return AmbientLight;

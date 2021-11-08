@@ -104,20 +104,6 @@ export class ThMeshDistanceMaterial<
     }
   }
   @Input()
-  public set skinning(value: boolean) {
-    if (this._objRef) {
-      this._objRef.skinning = value;
-    }
-  }
-
-  @Input()
-  public set morphTargets(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphTargets = value;
-    }
-  }
-
-  @Input()
   public set fog(value: boolean) {
     if (this._objRef) {
       this._objRef.fog = value;

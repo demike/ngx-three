@@ -110,27 +110,6 @@ export class ThShaderMaterial<
   }
 
   @Input()
-  public set skinning(value: boolean) {
-    if (this._objRef) {
-      this._objRef.skinning = value;
-    }
-  }
-
-  @Input()
-  public set morphTargets(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphTargets = value;
-    }
-  }
-
-  @Input()
-  public set morphNormals(value: boolean) {
-    if (this._objRef) {
-      this._objRef.morphNormals = value;
-    }
-  }
-
-  @Input()
   public set derivatives(value: any) {
     if (this._objRef) {
       this._objRef.derivatives = value;

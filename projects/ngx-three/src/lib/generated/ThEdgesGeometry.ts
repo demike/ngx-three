@@ -23,10 +23,11 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   ],
 })
 export class ThEdgesGeometry<
-  T extends EdgesGeometry = EdgesGeometry,
-  TARGS extends any[] = [geometry: BufferGeometry, thresholdAngle?: number]
+  TBufferGeometry extends BufferGeometry = BufferGeometry,
+  T extends EdgesGeometry<TBufferGeometry> = EdgesGeometry<TBufferGeometry>,
+  TARGS extends any[] = [geometry?: TBufferGeometry, thresholdAngle?: number]
 > extends ThBufferGeometry<T, TARGS> {
-  public getType(): Type<EdgesGeometry> {
+  public getType(): Type<EdgesGeometry<TBufferGeometry>> {
     return EdgesGeometry;
   }
 
@@ -38,7 +39,10 @@ export class ThEdgesGeometry<
   }
 
   @Input()
-  public set parameters(value: { thresholdAngle: number }) {
+  public set parameters(value: {
+    geometry: TBufferGeometry;
+    thresholdAngle: number;
+  }) {
     if (this._objRef) {
       this._objRef.parameters = value;
     }

@@ -15,6 +15,7 @@ import {
   BlendingSrcFactor,
   DepthModes,
   Material,
+  PixelFormat,
   Side,
   StencilFunc,
   StencilOp,
@@ -163,6 +164,13 @@ export class ThMaterial<
   }
 
   @Input()
+  public set format(value: PixelFormat) {
+    if (this._objRef) {
+      this._objRef.format = value;
+    }
+  }
+
+  @Input()
   public set id(value: number) {
     if (this._objRef) {
       this._objRef.id = value;
@@ -296,7 +304,7 @@ export class ThMaterial<
   }
 
   @Input()
-  public set shadowSide(value: Side) {
+  public set shadowSide(value: Side | null) {
     if (this._objRef) {
       this._objRef.shadowSide = value;
     }

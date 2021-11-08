@@ -12,6 +12,7 @@ import {
 import {
   Camera,
   Color,
+  ColorRepresentation,
   DataTexture,
   MeshNormalMaterial,
   Scene,
@@ -203,9 +204,7 @@ export class ThSSAOPass<
   }
 
   @Input()
-  public set originalClearColor(
-    value: Color | [color: Color | string | number]
-  ) {
+  public set originalClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.originalClearColor = applyValue<Color>(
         this._objRef.originalClearColor,

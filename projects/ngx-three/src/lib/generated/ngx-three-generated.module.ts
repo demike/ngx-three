@@ -16,6 +16,7 @@ import { ThBone } from './ThBone';
 import { ThBox3Helper } from './ThBox3Helper';
 import { ThBoxGeometry } from './ThBoxGeometry';
 import { ThBoxHelper } from './ThBoxHelper';
+import { ThBoxLineGeometry } from './ThBoxLineGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThCamera } from './ThCamera';
 import { ThCameraHelper } from './ThCameraHelper';
@@ -23,9 +24,11 @@ import { ThCircleGeometry } from './ThCircleGeometry';
 import { ThClearMaskPass } from './ThClearMaskPass';
 import { ThClearPass } from './ThClearPass';
 import { ThConeGeometry } from './ThConeGeometry';
+import { ThConvexGeometry } from './ThConvexGeometry';
 import { ThCubeCamera } from './ThCubeCamera';
 import { ThCubeTexturePass } from './ThCubeTexturePass';
 import { ThCylinderGeometry } from './ThCylinderGeometry';
+import { ThDecalGeometry } from './ThDecalGeometry';
 import { ThDeviceOrientationControls } from './ThDeviceOrientationControls';
 import { ThDirectionalLight } from './ThDirectionalLight';
 import { ThDirectionalLightHelper } from './ThDirectionalLightHelper';
@@ -95,6 +98,7 @@ import { ThRawShaderMaterial } from './ThRawShaderMaterial';
 import { ThRectAreaLight } from './ThRectAreaLight';
 import { ThRenderPassGen } from './ThRenderPassGen';
 import { ThRingGeometry } from './ThRingGeometry';
+import { ThRoundedBoxGeometry } from './ThRoundedBoxGeometry';
 import { ThSAOPass } from './ThSAOPass';
 import { ThSavePass } from './ThSavePass';
 import { ThScene } from './ThScene';
@@ -116,6 +120,7 @@ import { ThSSRPass } from './ThSSRPass';
 import { ThSSRrPass } from './ThSSRrPass';
 import { ThStereoCamera } from './ThStereoCamera';
 import { ThTAARenderPass } from './ThTAARenderPass';
+import { ThTeapotGeometry } from './ThTeapotGeometry';
 import { ThTetrahedronGeometry } from './ThTetrahedronGeometry';
 import { ThTextGeometry } from './ThTextGeometry';
 import { ThTexturePass } from './ThTexturePass';
@@ -205,18 +210,23 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThIcosahedronGeometry,
     ThLatheGeometry,
     ThOctahedronGeometry,
-    ThParametricGeometry,
     ThPlaneGeometry,
     ThPolyhedronGeometry,
     ThRingGeometry,
     ThShapeGeometry,
     ThSphereGeometry,
     ThTetrahedronGeometry,
-    ThTextGeometry,
     ThTorusGeometry,
     ThTorusKnotGeometry,
     ThTubeGeometry,
     ThWireframeGeometry,
+    ThBoxLineGeometry,
+    ThConvexGeometry,
+    ThDecalGeometry,
+    ThParametricGeometry,
+    ThRoundedBoxGeometry,
+    ThTeapotGeometry,
+    ThTextGeometry,
     ThDeviceOrientationControls,
     ThDragControls,
     ThFirstPersonControls,
@@ -226,6 +236,9 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThPointerLockControls,
     ThTrackballControls,
     ThTransformControls,
+    ThPass,
+    ThEffectComposerGen,
+    ThEffectComposer,
     ThAdaptiveToneMappingPass,
     ThAfterimagePass,
     ThBloomPass,
@@ -233,8 +246,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThClearPass,
     ThCubeTexturePass,
     ThDotScreenPass,
-    ThEffectComposerGen,
-    ThEffectComposer,
     ThFilmPass,
     ThGlitchPass,
     ThHalftonePass,
@@ -242,7 +253,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThMaskPass,
     ThClearMaskPass,
     ThOutlinePass,
-    ThPass,
     ThRenderPassGen,
     ThRenderPass,
     ThSAOPass,
@@ -334,18 +344,23 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThIcosahedronGeometry,
     ThLatheGeometry,
     ThOctahedronGeometry,
-    ThParametricGeometry,
     ThPlaneGeometry,
     ThPolyhedronGeometry,
     ThRingGeometry,
     ThShapeGeometry,
     ThSphereGeometry,
     ThTetrahedronGeometry,
-    ThTextGeometry,
     ThTorusGeometry,
     ThTorusKnotGeometry,
     ThTubeGeometry,
     ThWireframeGeometry,
+    ThBoxLineGeometry,
+    ThConvexGeometry,
+    ThDecalGeometry,
+    ThParametricGeometry,
+    ThRoundedBoxGeometry,
+    ThTeapotGeometry,
+    ThTextGeometry,
     ThDeviceOrientationControls,
     ThDragControls,
     ThFirstPersonControls,
@@ -355,6 +370,9 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThPointerLockControls,
     ThTrackballControls,
     ThTransformControls,
+    ThPass,
+    ThEffectComposerGen,
+    ThEffectComposer,
     ThAdaptiveToneMappingPass,
     ThAfterimagePass,
     ThBloomPass,
@@ -362,8 +380,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThClearPass,
     ThCubeTexturePass,
     ThDotScreenPass,
-    ThEffectComposerGen,
-    ThEffectComposer,
     ThFilmPass,
     ThGlitchPass,
     ThHalftonePass,
@@ -371,7 +387,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThMaskPass,
     ThClearMaskPass,
     ThOutlinePass,
-    ThPass,
     ThRenderPassGen,
     ThRenderPass,
     ThSAOPass,
