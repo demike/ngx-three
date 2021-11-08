@@ -27,7 +27,7 @@ export class MultiSceneExampleComponent implements OnInit {
       return;
     }
     this.slider.nativeElement.style.touchAction = 'none'; // disable touch scroll
-    this.sliderPos = (this.canvas.rendererCanvas?.nativeElement.width || 0) / 2;
+    this.sliderPos = (this.canvas.rendererCanvas?.nativeElement.clientWidth || 0) / 2;
   }
 
   @HostListener('window:pointermove', ['$event'])
