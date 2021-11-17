@@ -4,13 +4,13 @@
 
     <th-object3D
       loadGLTF
-      url="assets/DamagedHelmet.glb"
+      [url]="assetPath1"
       [rotation]="this.rotation"
       [position]="[0, 1, 0]"
     >
       <th-object3D
         loadGLTF
-        url="assets/BoomBox.glb"
+        [url]="assetPath2"
         [scale]="[100, 100, 100]"
         [rotation]="this.rotation"
         [position]="[0, 0, -3]"

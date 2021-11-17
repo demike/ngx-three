@@ -1,12 +1,12 @@
-<mat-label>Shift Amount</mat-label>
-<mat-slider
-  matInput
-  type="number"
+<label for="shift">Shift Amount</label>
+<input
+  id="shift"
+  type="range"
   [(ngModel)]="shiftAmount"
   [min]="0.0015"
   [max]="0.2"
   [step]="0.005"
-></mat-slider>
+/>
 
 <th-canvas #thecanvas [shadow]="true" (onRender)="this.animate()">
   <th-effectComposer>

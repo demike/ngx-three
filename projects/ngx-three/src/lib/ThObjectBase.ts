@@ -46,13 +46,18 @@ export class ThObjectBase<T extends Object3D, ARGS extends any[] = []> extends T
   // object 3d methods
   @Input()
   public set lookAt(vector: Vector3 | [x: number, y?: number, z?: number]) {
-    if (!this.objRef) {
-      return;
-    }
-    if (Array.isArray(vector)) {
-      this.objRef.lookAt(...vector);
-    } else {
-      this.objRef.lookAt(vector);
-    }
+    Promise.resolve().then(() => {
+      // execute next microtick, to assume all
+      // position changes already happend,
+      // because lookAt triggers a world matrix calculation
+      if (!this.objRef) {
+        return;
+      }
+      if (Array.isArray(vector)) {
+        this.objRef.lookAt(...vector);
+      } else {
+        this.objRef.lookAt(vector);
+      }
+    });
   }
 }

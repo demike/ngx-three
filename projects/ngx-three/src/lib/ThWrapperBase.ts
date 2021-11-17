@@ -103,6 +103,7 @@ export class ThWrapperBase<T, ARGS extends any[]> implements ThWrapperLifeCycle,
     for (const key in changes) {
       (this as any)[key] = changes[key].currentValue;
     }
+    this.emitPropertyChanges(changes);
   }
 
   public disposeObjRef() {

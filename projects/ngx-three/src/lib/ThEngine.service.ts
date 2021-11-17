@@ -1,10 +1,7 @@
-import * as THREE from 'three';
 import { Injectable, NgZone, OnDestroy } from '@angular/core';
-import { ThView } from './ThView';
+import * as THREE from 'three';
 import { Vector4 } from 'three';
-import { EventEmitter } from '@angular/core';
-import { ThScene } from './generated/ThScene';
-import { ThCamera } from './generated/ThCamera';
+import { ThView } from './ThView';
 
 @Injectable()
 export class ThEngineService implements OnDestroy {

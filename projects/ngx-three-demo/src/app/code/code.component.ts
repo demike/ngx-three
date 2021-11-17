@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { toCodeSandbox } from './codesandbox';
+import { toStackblitz } from './stackblitz';
 
 @Component({
   selector: 'app-code',
@@ -36,5 +37,10 @@ export class CodeComponent implements OnInit {
   public toCodeSandbox(event: MouseEvent) {
     event.preventDefault();
     toCodeSandbox(this.urls);
+  }
+
+  public toStackblitz(event: MouseEvent) {
+    event.preventDefault();
+    toStackblitz(this.urls);
   }
 }

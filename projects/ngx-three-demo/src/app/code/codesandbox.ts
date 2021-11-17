@@ -1,7 +1,10 @@
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
-const polyfillTs = `
-import "core-js/es7/reflect";
+export const polyfillTs = `
 import "zone.js/dist/zone";`;
+
+import * as PACKAGE from '../../../../../package.json';
+import { GITHUB_ASSET_PATH } from '../assets';
+export { PACKAGE };
 
 const assets = ['BoomBox.glb', 'DamagedHelmet.glb'];
 
@@ -36,7 +39,7 @@ export async function toCodeSandbox(fileUrls: string[]) {
 
   assets.forEach((asset) => {
     files[`src/assets/${asset}`] = {
-      content: 'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/assets/' + asset,
+      content: GITHUB_ASSET_PATH + asset,
       isBinary: true
     };
   });
@@ -80,32 +83,34 @@ function createPackageJson() {
         '@angular/platform-browser': '~11.2.2',
         '@angular/platform-browser-dynamic': '~11.2.2',
         rxjs: '~6.6.0',
-        three: '~0.127.0',
+        three: PACKAGE.dependencies.three,
         tslib: '^2.1.0',
         'zone.js': '~0.10.2',
-        'simplex-noise': '^2.4.0'
+        'simplex-noise': PACKAGE.dependencies['simplex-noise']
       }
     }
   };
 }
 
-function getFileNameFromFullPath(fullPath: string) {
+export function getFileNameFromFullPath(fullPath: string) {
   return fullPath.replace(/^.*[\\\/]/, ''); // works for both / and \
 }
 
-function createMainTs(tsFileName: string) {
+export function createMainTs(tsFileName: string) {
   const component = getComponentNameFromFileName(tsFileName);
   return `
             import { NgModule } from '@angular/core';
             import { BrowserModule } from '@angular/platform-browser';
             import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
             import { NgxThreeModule } from 'ngx-three';
+            import { FormsModule } from '@angular/forms';
             import { ${component}} from './app/${tsFileName.replace('.ts', '')}';
 
             @NgModule({
                 imports: [
                     BrowserModule,
-                    NgxThreeModule
+                    NgxThreeModule,
+                    FormsModule
                 ],
                 providers: [],
                 declarations: [${component}],
@@ -118,7 +123,7 @@ function createMainTs(tsFileName: string) {
             `;
 }
 
-function createIndexHtml(mainTagName: string) {
+export function createIndexHtml(mainTagName: string) {
   return `
     <!DOCTYPE html>
     <html lang="en">
@@ -136,18 +141,18 @@ function createIndexHtml(mainTagName: string) {
     `;
 }
 
-function getComponentNameFromFileName(fileName: string) {
+export function getComponentNameFromFileName(fileName: string) {
   return fileName
     .replace('.ts', '')
     .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => word.toUpperCase())
     .replace(/[-.]/g, '');
 }
 
-function getTagNameFromFileName(fileName: string) {
+export function getTagNameFromFileName(fileName: string) {
   return 'app-' + fileName.replace('.component.ts', '');
 }
 
-function getMainTsUrl(fileUrls: string[]) {
+export function getMainTsUrl(fileUrls: string[]) {
   for (const url of fileUrls) {
     if (url.endsWith('.ts')) {
       return url;

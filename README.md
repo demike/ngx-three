@@ -11,3 +11,11 @@ The project is inspired by the great [react three fiber](https://github.com/pmnd
 Check out some [examples](https://demike.github.io/ngx-three/)
 
 !!! WORK IN PROGRESS !!!
+
+## Caching Models
+
+to enable loader caching you can use three.js' built in [cache](https://threejs.org/docs/#api/en/loaders/Cache):
+
+```typescript
+THREE.Cache.enabled = true;
+```

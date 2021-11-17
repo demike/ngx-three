@@ -4,7 +4,7 @@
 
     <th-object3D
       loadGLTF
-      url="assets/DamagedHelmet.glb"
+      [url]="glbPath"
       (onClick)="selected = !selected"
       [scale]="selected ? [2, 2, 2] : [1, 1, 1]"
     >
