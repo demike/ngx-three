@@ -5,6 +5,7 @@ import {
   createIndexHtml,
   createMainTs,
   getFileNameFromFullPath,
+  getMainTemplateUrl,
   getMainTsUrl,
   getTagNameFromFileName,
   PACKAGE,
@@ -13,6 +14,7 @@ import {
 
 export async function toStackblitz(fileUrls: string[]) {
   const mainTsUrl = getMainTsUrl(fileUrls);
+  const templateUrl = getMainTemplateUrl(fileUrls);
   const fileName = getFileNameFromFullPath(mainTsUrl);
   const tagName = getTagNameFromFileName(fileName);
 
@@ -38,7 +40,8 @@ export async function toStackblitz(fileUrls: string[]) {
 
   await applySources(fileUrls, project.files);
 
-  sdk.openProject(project);
+  const options = templateUrl ? { openFile: `src/app/${getFileNameFromFullPath(templateUrl)}` } : undefined;
+  sdk.openProject(project, options);
 }
 
 function applySources(fileUrls: string[], fileMap: { [key: string]: string }) {

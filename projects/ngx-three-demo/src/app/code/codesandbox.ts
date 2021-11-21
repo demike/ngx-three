@@ -160,3 +160,12 @@ export function getMainTsUrl(fileUrls: string[]) {
   }
   return '';
 }
+
+export function getMainTemplateUrl(fileUrls: string[]): string | undefined {
+  for (const url of fileUrls) {
+    if (url.endsWith('.html')) {
+      return url;
+    }
+  }
+  return undefined;
+}
