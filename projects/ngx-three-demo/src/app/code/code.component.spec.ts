@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CodeComponent } from './code.component';
+import { EditorService } from './EditorService';
 
 describe('CodeComponent', () => {
   let component: CodeComponent;
@@ -8,7 +9,8 @@ describe('CodeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CodeComponent]
+      declarations: [CodeComponent],
+      providers: [EditorService]
     }).compileComponents();
   });
 
