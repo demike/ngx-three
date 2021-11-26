@@ -14,7 +14,11 @@
     </div>
   </mat-card-content>
   <mat-card-footer>
-    <a class="gist-url" (click)="toStackblitz($event)" href="#">
+    <a
+      class="gist-url"
+      (click)="this.editorService.toStackblitz($event)"
+      href="#"
+    >
       <mat-icon>bolt</mat-icon>
       Stackblitz
     </a>

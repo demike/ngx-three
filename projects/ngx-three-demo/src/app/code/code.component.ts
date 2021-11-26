@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { toCodeSandbox } from './codesandbox';
+import { EditorService } from './EditorService';
 import { toStackblitz } from './stackblitz';
 
 @Component({
@@ -10,37 +11,20 @@ import { toStackblitz } from './stackblitz';
 })
 export class CodeComponent implements OnInit {
   private urls: string[] = [];
+  public fileNames: string[] = [];
 
-  constructor() {}
+  constructor(public readonly editorService: EditorService) {}
 
   @Input()
   public set codeUrls(urls: string[]) {
-    this.urls = urls;
-    this.fileNames = this.extractFileNames();
+    this.editorService.setUrls(urls);
   }
 
   public get codeUrls() {
-    return this.urls;
+    return this.editorService.urls;
   }
 
-  @Input() languages?: string[];
   @Input() lineNumbers = false;
 
-  public fileNames: string[] = [];
-
-  private extractFileNames() {
-    return this.urls.map((path) => path.split('/').pop() ?? '');
-  }
-
   ngOnInit(): void {}
-
-  public toCodeSandbox(event: MouseEvent) {
-    event.preventDefault();
-    toCodeSandbox(this.urls);
-  }
-
-  public toStackblitz(event: MouseEvent) {
-    event.preventDefault();
-    toStackblitz(this.urls);
-  }
 }

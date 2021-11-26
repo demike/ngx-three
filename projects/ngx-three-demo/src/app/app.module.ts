@@ -39,6 +39,7 @@ import { PostProcessingExampleComponent } from './post-processing-example/post-p
 import { FormsModule } from '@angular/forms';
 import { ViewsExampleComponent } from './views-example/views-example.component';
 import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-example.component';
+import { EditorService } from './code/EditorService';
 
 @NgModule({
   declarations: [
@@ -88,7 +89,8 @@ import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-ex
       useValue: {
         fullLibraryLoader: () => import('highlight.js')
       }
-    }
+    },
+    EditorService
   ],
   bootstrap: [AppComponent]
 })
