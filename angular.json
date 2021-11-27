@@ -59,14 +59,19 @@
             "main": "projects/ngx-three-demo/src/main.ts",
             "polyfills": "projects/ngx-three-demo/src/polyfills.ts",
             "tsConfig": "projects/ngx-three-demo/tsconfig.app.json",
-            "aot": true,
             "assets": [
               "projects/ngx-three-demo/src/favicon.ico",
               "projects/ngx-three-demo/src/assets"
             ],
             "styles": ["projects/ngx-three-demo/src/styles.scss"],
             "scripts": [],
-            "allowedCommonJsDependencies": ["highlight.js"]
+            "allowedCommonJsDependencies": ["highlight.js"],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -96,7 +101,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
