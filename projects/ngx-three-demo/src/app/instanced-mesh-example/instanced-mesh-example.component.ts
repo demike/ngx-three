@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Object3D } from 'three';
-import * as SimplexNoise from 'simplex-noise';
+import SimplexNoise from 'simplex-noise';
 import { ThCanvas, ThInstancedMesh, ThPointLight } from 'ngx-three';
 
 @Component({
