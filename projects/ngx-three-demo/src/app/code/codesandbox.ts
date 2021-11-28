@@ -2,7 +2,7 @@
 export const polyfillTs = `
 import "zone.js";`;
 
-import * as PACKAGE from '../../../../../package.json';
+import PACKAGE from '../../../../../package.json';
 import { GITHUB_ASSET_PATH } from '../assets';
 export { PACKAGE };
 
