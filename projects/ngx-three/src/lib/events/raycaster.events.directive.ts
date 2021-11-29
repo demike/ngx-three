@@ -13,6 +13,7 @@ export interface RaycasterEmitEvent {
 export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
   @Output('onMouseEnter') mouseEnter = new EventEmitter<RaycasterEmitEvent>();
   @Output('onMouseExit') mouseExit = new EventEmitter<RaycasterEmitEvent>();
+  /* eslint-disable @angular-eslint/no-output-native */
   @Output('onClick') click = new EventEmitter<RaycasterEmitEvent>();
 
   constructor(@Host() public readonly host: ThObject3D, private raycasterService: RaycasterService) {
