@@ -9,8 +9,7 @@ import { toStackblitz } from './stackblitz';
   styleUrls: ['./code.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CodeComponent implements OnInit {
-  private urls: string[] = [];
+export class CodeComponent {
   public fileNames: string[] = [];
 
   constructor(public readonly editorService: EditorService) {}
@@ -18,6 +17,7 @@ export class CodeComponent implements OnInit {
   @Input()
   public set codeUrls(urls: string[]) {
     this.editorService.setUrls(urls);
+    this.fileNames = this.editorService.fileNames;
   }
 
   public get codeUrls() {
@@ -25,6 +25,4 @@ export class CodeComponent implements OnInit {
   }
 
   @Input() lineNumbers = false;
-
-  ngOnInit(): void {}
 }
