@@ -11,6 +11,27 @@ The project is inspired by the great [react three fiber](https://github.com/pmnd
 Check out some [examples](https://demike.github.io/ngx-three/)
 
 !!! WORK IN PROGRESS !!!
+# Installation
+
+```
+npm install ngx-three
+```
+
+In addition to ngx-three you have to install it's peer dependencies
+Angular ([setup howto](https://angular.io/guide/setup-local)), three.js and its typings
+```
+npm install three
+npm install @types/three"
+```
+
+You can use npm to get the exact peer dependency versions for ngx-three
+```
+npm info ngx-three peerDependencies
+```
+
+
+
+
 
 ## Caching Models
 
