@@ -29,9 +29,23 @@ You can use npm to get the exact peer dependency versions for ngx-three
 npm info ngx-three peerDependencies
 ```
 
+## Event Handling
 
+### Mouse Events
+ngx-three supports the following mouse/pointer events:
+- onClick
+- onMouseEnter 
+- onMouseExit
 
+All of them return a [RaycasterEmitEvent](./projects/ngx-three/src/lib/events/raycaster.events.directive.ts#L7)
 
+### Object 3D Events
+Everty `th-object3d` element emits property changes.
+you can listen to it like this:
+```
+<th-object3d (onUpdate)="doSomething($event)></th-object3d>
+```
+[Events Example](https://demike.github.io/ngx-three/events-example) 
 
 ## Caching Models
 
