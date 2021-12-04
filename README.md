@@ -29,12 +29,82 @@ You can use npm to get the exact peer dependency versions for ngx-three
 npm info ngx-three peerDependencies
 ```
 
-## Model Loading
+# Canvas / View / Scene
+TODO
+
+# Objects / Meshes
+
+In three.js anything that can be added to a Scene is an `Object3D`.
+In ngx-three the component `ThObject3D` with the tag `th-object3D` can be seen as the
+equivalent.
+
+A mesh (`Three.Mesh`) can be represented by `th-mesh` in ngx-three.
+A mesh can have a material (`ThMaterial`) and a Geometry(`ThGeometry`).
+
+```html
+<th-mesh>
+  <th-boxGeometry></th-boxGeometry>
+  <th-meshBasicMaterial></th-meshBasicMaterial>
+</th-mesh>
+```
+
+Every ngx-three object has a membery called
+`objRef` this one holds the reference to the
+three.js object.
+For example `ThMesh` has a member `objRef: THREE.Mesh`.
+
+<!-- TODO: GO ON -->
+
+## Referencing objects in a component
+There are two ways to reference existing ngx-three object
+class instances.
+
+### 1) ViewChild
+You can use ViewChild to reference template objects
+from within the component code.
+
+```typescript
+@Component({
+  selector: 'app-myapp',
+  template: ` <th-mesh></th-mesh> `,
+})
+export class MyApp {
+  @ViewChild(ThMesh, { static: true }) mesh: ThMesh;
+}
+
+```
+
+### 2) Angular Template Variables
+Referencing ngx-three objects (`th-object3D`) can be
+easiliy referenced from within the template by means
+of template variables
+
+```html
+<th-mesh>
+  <th-boxGeometry #theGeo></th-boxGeometry>
+</th-mesh>
+<th-mesh>
+  <th-material [objRef]="theGeo.objRef"></th-material>
+  <th-meshBasicMaterial></th-meshBasicMaterial>
+</th-mesh>
+```
+
+
+## How to put existing Three.Object3D objects into the angular template
+If you want to put an existing object into the angular component tree
+(maybe it was easier to construct the specific object in an imperative way)
+this can be easily achieved by setting the `objRef` Attribute
+```
+<th-object3D [objRef]="existingObj"></th-object3D>
+```
+
+
+# Model Loading
 ngx-three provides an easy way to load models / scenes and apply it
 to a `th-object3D` element.
 
 
-### GLTF Loader
+## GLTF Loader
 Loading GLTF / GLB files can be achieved
 by using the `loadGLTF` directive.
 
@@ -48,7 +118,7 @@ by using the `loadGLTF` directive.
 
 You can find an example [here](https://demike.github.io/ngx-three/loader-example)
 
-### Generic Loader
+## Generic Loader
 
 In addition to the pre-defined loaders it is possible use the generic loader and define a loader function
 that actually does the parsing then.
@@ -91,7 +161,7 @@ public loadObj = async (
 
 
 
-### Caching Models
+## Caching Models
 
 to enable loader caching you can use three.js' built in [cache](https://threejs.org/docs/#api/en/loaders/Cache):
 
@@ -100,9 +170,9 @@ THREE.Cache.enabled = true;
 ```
 
 
-## Event Handling
+# Event Handling
 
-### Mouse Events
+## Mouse Events
 ngx-three supports the following mouse/pointer events:
 - onClick
 - onMouseEnter 
@@ -110,7 +180,7 @@ ngx-three supports the following mouse/pointer events:
 
 All of them return a [RaycasterEmitEvent](./projects/ngx-three/src/lib/events/raycaster.events.directive.ts#L7)
 
-### Object 3D Events
+## Object 3D Events
 Every `th-object3D` element emits property changes.
 you can listen to it like this:
 ```
