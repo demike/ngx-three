@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import {
   AppRoutingModule,
+  BasicExamplePageComponent,
   ControlsExamplePageComponent,
   DynamicLoaderExamplePageComponent,
   EventsExamplePageComponent,
@@ -40,12 +41,14 @@ import { FormsModule } from '@angular/forms';
 import { ViewsExampleComponent } from './views-example/views-example.component';
 import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-example.component';
 import { EditorService } from './code/EditorService';
+import { BasicExampleComponent } from './basic-example/basic-example.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SimpleExampleComponent,
     Box,
+    BasicExampleComponent,
     LoaderExampleComponent,
     ControlsExampleComponent,
     EventsExampleComponent,
@@ -57,6 +60,7 @@ import { EditorService } from './code/EditorService';
     ViewsExampleComponent,
     MultiSceneExampleComponent,
     //
+    BasicExamplePageComponent,
     SimpleExamplePageComponent,
     ControlsExamplePageComponent,
     LoaderExamplePageComponent,

@@ -2,6 +2,20 @@
 import { Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
+@Component({
+  selector: 'app-basic-example-page',
+  template: `<app-basic-example class="example-container"></app-basic-example>
+    <app-code
+      [lineNumbers]="true"
+      [codeUrls]="[
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/basic-example/basic-example.component.ts'
+      ]"
+    >
+    </app-code>`
+})
+export class BasicExamplePageComponent {}
+
 @Component({
   selector: 'app-simple-example-page',
   template: `<app-simple-example class="example-container"></app-simple-example>
@@ -133,6 +147,7 @@ export class ViewsExamplePageComponent {}
 export class MultiSceneExamplePageComponent {}
 
 export const EXAMPLE_ROUTES: Routes = [
+  { path: 'basic-example', component: BasicExamplePageComponent, data: { title: 'Basic Example' } },
   { path: 'simple-example', component: SimpleExamplePageComponent, data: { title: 'Simple Example' } },
   { path: 'controls-example', component: ControlsExamplePageComponent, data: { title: 'Controls Example' } },
   { path: 'loader-example', component: LoaderExamplePageComponent, data: { title: 'Loader Example' } },
