@@ -1,16 +1,40 @@
 # NgxThree [![npm version](https://badge.fury.io/js/ngx-three.svg)](https://badge.fury.io/js/ngx-three) ![Build](https://github.com/demike/ngx-three/actions/workflows/.github/workflows/ci-cd.yml/badge.svg)
 
 NgxThree wraps [three.js](https://threejs.org/) in Angular components.
-It allows to render 3d Scenes in a declarative way.
+It allows to render 3d Scenes in a declarative way. And you can leverage
+the angular features and ecosystem your are familiar with.
 
-it uses code generation to be able to provide as much functionality from three js.
+## What's in the box
+ngx-three uses code generation to be able to provide as much functionality from three js.
 This approach makes it possible to follow three.js updates with minimal effort.
 
+ngx-three:
+- generates wrappers (> 130) for three.js class categories:
+  - Object3d,
+  - Material,
+  - Geometry,
+  - Post processing passes,
+  - Controls 
+- Adds support for simple pointer event handling
+- Easy handling of async model loading
+- Supports Multi-View / Multi-Scene scenarios
+- enables declarative post processing 
+- ...
+
 The project is inspired by the great [react three fiber](https://github.com/pmndrs/react-three-fiber) library.
+But in contrast to RTF angular components are generated that wrap three.js classes.
 
-Check out some [examples](https://demike.github.io/ngx-three/)
+## Performance
 
-!!! WORK IN PROGRESS !!!
+From a performance perspective it's important to know, that ngx-three components
+do not produce any DOM elements. 
+
+In addition the generate classes use OnPush change detection strategy
+and the scene rendering runs outside the angular zone.
+
+This means there is no overhead because of additional DOM elements and the impact of angular's change detection 
+mechanism should be minimized.
+
 # Installation
 
 ```
@@ -28,7 +52,11 @@ You can use npm to get the exact peer dependency versions for ngx-three
 ```
 npm info ngx-three peerDependencies
 ```
+### Introductory Example
 
+Check out some [examples](https://demike.github.io/ngx-three/)
+
+!!! WORK IN PROGRESS !!!
 # Canvas / View / Scene
 TODO
 
