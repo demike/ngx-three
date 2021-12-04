@@ -30,7 +30,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThBox3Helper<
   T extends Box3Helper = Box3Helper,
-  TARGS extends any[] = [box: Box3, color?: Color]
+  TARGS = [box: Box3, color?: Color]
 > extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<Box3Helper> {
     return Box3Helper;

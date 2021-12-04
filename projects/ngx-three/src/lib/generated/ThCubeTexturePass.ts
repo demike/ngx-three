@@ -24,11 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThCubeTexturePass<
   T extends CubeTexturePass = CubeTexturePass,
-  TARGS extends any[] = [
-    camera: PerspectiveCamera,
-    envMap?: CubeTexture,
-    opacity?: number
-  ]
+  TARGS = [camera: PerspectiveCamera, envMap?: CubeTexture, opacity?: number]
 > extends ThPass<T, TARGS> {
   public getType(): Type<CubeTexturePass> {
     return CubeTexturePass;

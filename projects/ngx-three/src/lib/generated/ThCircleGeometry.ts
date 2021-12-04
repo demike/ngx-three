@@ -24,7 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThCircleGeometry<
   T extends CircleGeometry = CircleGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     radius?: number,
     segments?: number,
     thetaStart?: number,

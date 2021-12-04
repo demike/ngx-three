@@ -43,12 +43,12 @@ export abstract class NgxThreeClass {
   }
 
   private fetchClassDecleration() {
-    const decl = this.classSymbol.declarations[0];
-    if (ts.isExportSpecifier(decl)) {
+    const decl = this.classSymbol.declarations?.[0];
+    if (decl && ts.isExportSpecifier(decl)) {
       // this is just an export specifier do not generate a wrapper for it
       // get the right type
       this.classSymbol = this.typeChecker.getTypeAtLocation(decl).symbol;
-      return (this.classSymbol.declarations[0] as unknown) as ts.ClassDeclaration;
+      return (this.classSymbol.declarations?.[0] as unknown) as ts.ClassDeclaration;
     } else {
       return decl as ts.ClassDeclaration;
     }
@@ -133,7 +133,7 @@ export abstract class NgxThreeClass {
     }
     header += `
     T extends ${this.wrappedClassName}${this.wrappedClassGenericTypeNames} = ${this.wrappedClassName}${this.wrappedClassGenericTypeNames},
-    TARGS extends any[] = ${this.constructorArgs}>`;
+    TARGS = ${this.constructorArgs}>`;
 
     let baseClassName = 'EventDispatcher';
     const wrapperBaseClassName = this.getWrapperBaseClassName();
@@ -265,7 +265,7 @@ export abstract class NgxThreeClass {
     }
 
     for (const tNode of tNodes) {
-      const decl = this.typeChecker.getTypeAtLocation(tNode).getProperty('set')?.declarations[0];
+      const decl = this.typeChecker.getTypeAtLocation(tNode).getProperty('set')?.declarations?.[0];
       if (decl && ts.isMethodDeclaration(decl)) {
         setters.push(decl);
       }
@@ -281,7 +281,8 @@ export abstract class NgxThreeClass {
 
   private generateConstructorArgs() {
     const symbol = ((this.classDecl as unknown) as ts.Type).symbol;
-    const constructorType = this.typeChecker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration);
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const constructorType = this.typeChecker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration!);
     const constructSignatures = constructorType.getConstructSignatures();
 
     if (constructSignatures.length === 0 || (constructSignatures.length === 1 && constructSignatures[0].parameters.length === 0)) {
@@ -289,8 +290,20 @@ export abstract class NgxThreeClass {
     }
 
     this.constructorArgs = constructSignatures
-      .map((sig) => `[${sig.parameters.map((param) => (param.declarations[0] as ParameterDeclaration).getText()).join(',')}]`)
+      .map(this.getConstructorSignatureAsString)
       .join('|');
+  }
+
+  private getConstructorSignatureAsString(sig: ts.Signature) {
+    if(sig.parameters.length === 1 ) {
+       // config object
+      const parameterDefParts = (sig.parameters[0].declarations?.[0] as ParameterDeclaration).getText().split(':');
+      return `/* ${parameterDefParts[0]} */ ${parameterDefParts[1]}`;
+
+    } else {
+      // constructor args array
+      return `[${sig.parameters.map((param) => (param.declarations?.[0] as ParameterDeclaration).getText()).join(',')}]`;
+    }
   }
 
   private addImportsFrom(classNode: ts.Node) {
@@ -358,11 +371,11 @@ export abstract class NgxThreeClass {
         const classDecl: ts.Type = checker.getTypeAtLocation(clause.types[0].expression);
 
         const s = classDecl.getSymbol();
-        if (!s || s.declarations.length === 0) {
+        if (!s || s.declarations?.length === 0) {
           return [];
         }
 
-        const typeParams = (s.declarations[0] as ts.ClassDeclaration).typeParameters as ts.TypeParameterDeclaration[] | undefined;
+        const typeParams = (s.declarations?.[0] as ts.ClassDeclaration).typeParameters as ts.TypeParameterDeclaration[] | undefined;
         if (!typeParams) {
           return [];
         }

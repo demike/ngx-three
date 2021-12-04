@@ -20,7 +20,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThAudio<
   NodeType extends AudioNode = GainNode,
   T extends Audio<NodeType> = Audio<NodeType>,
-  TARGS extends any[] = [listener: AudioListener]
+  TARGS = /* listener */ AudioListener
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Audio<NodeType>> {
     return Audio;

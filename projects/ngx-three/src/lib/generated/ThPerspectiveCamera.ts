@@ -23,12 +23,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThPerspectiveCamera<
   T extends PerspectiveCamera = PerspectiveCamera,
-  TARGS extends any[] = [
-    fov?: number,
-    aspect?: number,
-    near?: number,
-    far?: number
-  ]
+  TARGS = [fov?: number, aspect?: number, near?: number, far?: number]
 > extends ThCamera<T, TARGS> {
   public getType(): Type<PerspectiveCamera> {
     return PerspectiveCamera;

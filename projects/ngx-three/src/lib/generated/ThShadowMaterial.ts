@@ -27,7 +27,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThShadowMaterial<
   T extends ShadowMaterial = ShadowMaterial,
-  TARGS extends any[] = [parameters?: ShadowMaterialParameters]
+  TARGS = /* parameters? */ ShadowMaterialParameters
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<ShadowMaterial> {
     return ShadowMaterial;

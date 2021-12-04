@@ -29,7 +29,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThDirectionalLight<
   T extends DirectionalLight = DirectionalLight,
-  TARGS extends any[] = [color?: ColorRepresentation, intensity?: number]
+  TARGS = [color?: ColorRepresentation, intensity?: number]
 > extends ThLight<T, TARGS> {
   public getType(): Type<DirectionalLight> {
     return DirectionalLight;

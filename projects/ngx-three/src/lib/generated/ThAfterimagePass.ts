@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThAfterimagePass<
   T extends AfterimagePass = AfterimagePass,
-  TARGS extends any[] = [damp?: number]
+  TARGS = /* damp? */ number
 > extends ThPass<T, TARGS> {
   public getType(): Type<AfterimagePass> {
     return AfterimagePass;

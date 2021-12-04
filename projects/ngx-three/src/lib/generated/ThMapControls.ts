@@ -22,7 +22,7 @@ import { ThOrbitControls } from './ThOrbitControls';
 })
 export class ThMapControls<
   T extends MapControls = MapControls,
-  TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
+  TARGS = [object: Camera, domElement?: HTMLElement]
 > extends ThOrbitControls<T, TARGS> {
   public getType(): Type<MapControls> {
     return MapControls;

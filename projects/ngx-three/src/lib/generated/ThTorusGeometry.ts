@@ -24,7 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThTorusGeometry<
   T extends TorusGeometry = TorusGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     radius?: number,
     tube?: number,
     radialSegments?: number,

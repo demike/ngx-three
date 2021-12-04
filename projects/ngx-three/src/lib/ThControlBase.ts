@@ -7,7 +7,7 @@ import { ThWrapperBase } from './ThWrapperBase';
   template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThControlBase<T, ARGS extends any[]> extends ThWrapperBase<T, ARGS> {
+export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> {
   constructor(protected camera: ThObject3D<any>, protected canvas?: ThCanvas) {
     super();
   }

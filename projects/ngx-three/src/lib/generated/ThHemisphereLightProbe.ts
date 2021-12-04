@@ -24,7 +24,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThHemisphereLightProbe<
   T extends HemisphereLightProbe = HemisphereLightProbe,
-  TARGS extends any[] = [
+  TARGS = [
     skyColor?: ColorRepresentation,
     groundColor?: ColorRepresentation,
     intensity?: number

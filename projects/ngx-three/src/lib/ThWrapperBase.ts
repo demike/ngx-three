@@ -10,7 +10,7 @@ import { isDisposable } from './util';
   template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThWrapperBase<T, ARGS extends any[]> implements ThWrapperLifeCycle, OnChanges, OnInit, OnDestroy {
+export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnChanges, OnInit, OnDestroy {
   protected _objRef?: T;
   protected _objRef$?: ReplaySubject<T>;
 
@@ -76,8 +76,12 @@ export class ThWrapperBase<T, ARGS extends any[]> implements ThWrapperLifeCycle,
     throw new Error('derive me');
   }
 
-  public createThreeInstance(args?: Iterable<any>) {
-    return new (this.getType())(...(args ?? []));
+  public createThreeInstance(args?: unknown) {
+    if(Array.isArray(args)) {
+      return new (this.getType())( ...(args as any[]));
+    } else {
+      return new (this.getType())(args);
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {

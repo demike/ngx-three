@@ -27,7 +27,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThPolarGridHelper<
   T extends PolarGridHelper = PolarGridHelper,
-  TARGS extends any[] = [
+  TARGS = [
     radius?: number,
     radials?: number,
     circles?: number,

@@ -18,10 +18,11 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
 })
-export class ThCamera<
-  T extends Camera = Camera,
-  TARGS extends any[] = []
-> extends ThObject3D<Event, T, TARGS> {
+export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
+  Event,
+  T,
+  TARGS
+> {
   public getType(): Type<Camera> {
     return Camera;
   }

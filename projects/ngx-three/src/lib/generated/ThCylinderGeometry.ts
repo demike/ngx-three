@@ -24,7 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThCylinderGeometry<
   T extends CylinderGeometry = CylinderGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     radiusTop?: number,
     radiusBottom?: number,
     height?: number,

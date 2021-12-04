@@ -29,7 +29,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThSpotLight<
   T extends SpotLight = SpotLight,
-  TARGS extends any[] = [
+  TARGS = [
     color?: ColorRepresentation,
     intensity?: number,
     distance?: number,

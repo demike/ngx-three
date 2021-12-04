@@ -25,7 +25,7 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThFirstPersonControls<
   T extends FirstPersonControls = FirstPersonControls,
-  TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
+  TARGS = [object: Camera, domElement?: HTMLElement]
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<FirstPersonControls> {
     return FirstPersonControls;

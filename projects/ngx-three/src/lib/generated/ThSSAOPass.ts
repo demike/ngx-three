@@ -38,12 +38,7 @@ import { ThPass } from './ThPass';
 })
 export class ThSSAOPass<
   T extends SSAOPass = SSAOPass,
-  TARGS extends any[] = [
-    scene: Scene,
-    camera: Camera,
-    width?: number,
-    height?: number
-  ]
+  TARGS = [scene: Scene, camera: Camera, width?: number, height?: number]
 > extends ThPass<T, TARGS> {
   public getType(): Type<SSAOPass> {
     return SSAOPass;

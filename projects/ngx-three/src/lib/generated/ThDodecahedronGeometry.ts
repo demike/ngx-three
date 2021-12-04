@@ -25,7 +25,7 @@ import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
 })
 export class ThDodecahedronGeometry<
   T extends DodecahedronGeometry = DodecahedronGeometry,
-  TARGS extends any[] = [radius?: number, detail?: number]
+  TARGS = [radius?: number, detail?: number]
 > extends ThPolyhedronGeometry<T, TARGS> {
   public getType(): Type<DodecahedronGeometry> {
     return DodecahedronGeometry;

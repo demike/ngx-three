@@ -18,10 +18,10 @@ import { ThPassBase } from '../ThPassBase';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThPass) }],
 })
-export class ThPass<
-  T extends Pass = Pass,
-  TARGS extends any[] = []
-> extends ThPassBase<T, TARGS> {
+export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<
+  T,
+  TARGS
+> {
   public getType(): Type<Pass> {
     return Pass;
   }

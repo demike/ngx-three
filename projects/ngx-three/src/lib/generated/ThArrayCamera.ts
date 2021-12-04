@@ -24,7 +24,7 @@ import { ThPerspectiveCamera } from './ThPerspectiveCamera';
 })
 export class ThArrayCamera<
   T extends ArrayCamera = ArrayCamera,
-  TARGS extends any[] = [cameras?: PerspectiveCamera[]]
+  TARGS = /* cameras? */ PerspectiveCamera[]
 > extends ThPerspectiveCamera<T, TARGS> {
   public getType(): Type<ArrayCamera> {
     return ArrayCamera;

@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThBloomPass<
   T extends BloomPass = BloomPass,
-  TARGS extends any[] = [
+  TARGS = [
     strength?: number,
     kernelSize?: number,
     sigma?: number,

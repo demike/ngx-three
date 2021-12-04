@@ -24,7 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThConvexGeometry<
   T extends ConvexGeometry = ConvexGeometry,
-  TARGS extends any[] = [points: Vector3[]]
+  TARGS = /* points */ Vector3[]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<ConvexGeometry> {
     return ConvexGeometry;

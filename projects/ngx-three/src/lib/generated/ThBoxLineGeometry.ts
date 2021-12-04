@@ -23,7 +23,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThBoxLineGeometry<
   T extends BoxLineGeometry = BoxLineGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     width?: number,
     height?: number,
     depth?: number,

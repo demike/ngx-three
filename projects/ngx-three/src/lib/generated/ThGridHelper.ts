@@ -27,7 +27,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThGridHelper<
   T extends GridHelper = GridHelper,
-  TARGS extends any[] = [
+  TARGS = [
     size?: number,
     divisions?: number,
     color1?: ColorRepresentation,

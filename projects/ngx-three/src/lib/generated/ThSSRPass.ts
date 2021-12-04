@@ -41,7 +41,7 @@ import { ThPass } from './ThPass';
 })
 export class ThSSRPass<
   T extends SSRPass = SSRPass,
-  TARGS extends any[] = [params: SSRPassParams]
+  TARGS = /* params */ SSRPassParams
 > extends ThPass<T, TARGS> {
   public getType(): Type<SSRPass> {
     return SSRPass;

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
             <th-mesh>
                 <th-boxGeometry></th-boxGeometry>
                 <th-meshBasicMaterial
-                    [args]="[{color: 'purple'}]"
+                    [args]="{color: 'purple'}"
                 ></th-meshBasicMaterial>
             </th-mesh>
             <th-ambientLight> </th-ambientLight>

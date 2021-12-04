@@ -38,7 +38,7 @@ import { ThPass } from './ThPass';
 })
 export class ThSAOPass<
   T extends SAOPass = SAOPass,
-  TARGS extends any[] = [
+  TARGS = [
     scene: Scene,
     camera: Camera,
     depthTexture?: boolean,

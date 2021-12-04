@@ -24,7 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThPolyhedronGeometry<
   T extends PolyhedronGeometry = PolyhedronGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     vertices?: number[],
     indices?: number[],
     radius?: number,

@@ -21,11 +21,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThCubeCamera<
   T extends CubeCamera = CubeCamera,
-  TARGS extends any[] = [
-    near: number,
-    far: number,
-    renderTarget: WebGLCubeRenderTarget
-  ]
+  TARGS = [near: number, far: number, renderTarget: WebGLCubeRenderTarget]
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<CubeCamera> {
     return CubeCamera;

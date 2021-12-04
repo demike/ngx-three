@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThFilmPass<
   T extends FilmPass = FilmPass,
-  TARGS extends any[] = [
+  TARGS = [
     noiseIntensity?: number,
     scanlinesIntensity?: number,
     scanlinesCount?: number,

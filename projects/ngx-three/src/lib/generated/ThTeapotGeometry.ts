@@ -23,7 +23,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThTeapotGeometry<
   T extends TeapotGeometry = TeapotGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     size?: number,
     segments?: number,
     bottom?: boolean,

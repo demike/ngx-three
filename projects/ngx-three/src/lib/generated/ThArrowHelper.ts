@@ -28,7 +28,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThArrowHelper<
   T extends ArrowHelper = ArrowHelper,
-  TARGS extends any[] = [
+  TARGS = [
     dir?: Vector3,
     origin?: Vector3,
     length?: number,

@@ -32,11 +32,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThHemisphereLightHelper<
   T extends HemisphereLightHelper = HemisphereLightHelper,
-  TARGS extends any[] = [
-    light: HemisphereLight,
-    size: number,
-    color?: ColorRepresentation
-  ]
+  TARGS = [light: HemisphereLight, size: number, color?: ColorRepresentation]
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<HemisphereLightHelper> {
     return HemisphereLightHelper;

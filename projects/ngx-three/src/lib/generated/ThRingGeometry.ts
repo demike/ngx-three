@@ -24,7 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThRingGeometry<
   T extends RingGeometry = RingGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     innerRadius?: number,
     outerRadius?: number,
     thetaSegments?: number,

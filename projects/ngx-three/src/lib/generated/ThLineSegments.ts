@@ -27,7 +27,7 @@ export class ThLineSegments<
     TGeometry,
     TMaterial
   >,
-  TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]
+  TARGS = [geometry?: TGeometry, material?: TMaterial]
 > extends ThLine<TGeometry, TMaterial, T, TARGS> {
   public getType(): Type<LineSegments<TGeometry, TMaterial>> {
     return LineSegments;

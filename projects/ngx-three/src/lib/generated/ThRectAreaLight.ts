@@ -22,7 +22,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThRectAreaLight<
   T extends RectAreaLight = RectAreaLight,
-  TARGS extends any[] = [
+  TARGS = [
     color?: ColorRepresentation,
     intensity?: number,
     width?: number,

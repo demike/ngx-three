@@ -26,7 +26,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThShaderMaterial<
   T extends ShaderMaterial = ShaderMaterial,
-  TARGS extends any[] = [parameters?: ShaderMaterialParameters]
+  TARGS = /* parameters? */ ShaderMaterialParameters
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<ShaderMaterial> {
     return ShaderMaterial;

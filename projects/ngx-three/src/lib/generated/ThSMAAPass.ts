@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThSMAAPass<
   T extends SMAAPass = SMAAPass,
-  TARGS extends any[] = [width: number, height: number]
+  TARGS = [width: number, height: number]
 > extends ThPass<T, TARGS> {
   public getType(): Type<SMAAPass> {
     return SMAAPass;

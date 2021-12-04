@@ -6,7 +6,7 @@ import { ThWrapperBase } from './ThWrapperBase';
   template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThObjectBase<T extends Object3D, ARGS extends any[] = []> extends ThWrapperBase<T, ARGS> implements OnInit {
+export class ThObjectBase<T extends Object3D, ARGS = unknown> extends ThWrapperBase<T, ARGS> implements OnInit {
   constructor(public parent: ThObjectBase<any>) {
     super();
   }

@@ -38,7 +38,7 @@ import { applyValue } from '../util';
 export class ThObject3D<
   E extends BaseEvent = Event,
   T extends Object3D<E> = Object3D<E>,
-  TARGS extends any[] = []
+  TARGS = []
 > extends ThObjectBase<T, TARGS> {
   public getType(): Type<Object3D<E>> {
     return Object3D;

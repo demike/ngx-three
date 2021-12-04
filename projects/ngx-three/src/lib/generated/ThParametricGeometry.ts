@@ -25,7 +25,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThParametricGeometry<
   T extends ParametricGeometry = ParametricGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     func?: (u: number, v: number, target: Vector3) => void,
     slices?: number,
     stacks?: number

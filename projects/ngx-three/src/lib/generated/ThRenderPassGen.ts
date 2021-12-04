@@ -25,7 +25,7 @@ import { ThPass } from './ThPass';
 })
 export class ThRenderPassGen<
   T extends RenderPass = RenderPass,
-  TARGS extends any[] = [
+  TARGS = [
     scene: Scene,
     camera: Camera,
     overrideMaterial?: Material,

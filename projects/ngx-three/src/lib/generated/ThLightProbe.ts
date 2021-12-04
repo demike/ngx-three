@@ -23,7 +23,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThLightProbe<
   T extends LightProbe = LightProbe,
-  TARGS extends any[] = [sh?: SphericalHarmonics3, intensity?: number]
+  TARGS = [sh?: SphericalHarmonics3, intensity?: number]
 > extends ThLight<T, TARGS> {
   public getType(): Type<LightProbe> {
     return LightProbe;

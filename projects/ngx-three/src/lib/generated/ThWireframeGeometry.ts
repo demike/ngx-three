@@ -25,7 +25,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 export class ThWireframeGeometry<
   TBufferGeometry extends BufferGeometry = BufferGeometry,
   T extends WireframeGeometry<TBufferGeometry> = WireframeGeometry<TBufferGeometry>,
-  TARGS extends any[] = [geometry?: TBufferGeometry]
+  TARGS = /* geometry? */ TBufferGeometry
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<WireframeGeometry<TBufferGeometry>> {
     return WireframeGeometry;

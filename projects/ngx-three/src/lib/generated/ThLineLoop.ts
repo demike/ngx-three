@@ -24,7 +24,7 @@ export class ThLineLoop<
   TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   T extends LineLoop<TGeometry, TMaterial> = LineLoop<TGeometry, TMaterial>,
-  TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]
+  TARGS = [geometry?: TGeometry, material?: TMaterial]
 > extends ThLine<TGeometry, TMaterial, T, TARGS> {
   public getType(): Type<LineLoop<TGeometry, TMaterial>> {
     return LineLoop;

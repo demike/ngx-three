@@ -20,7 +20,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThSprite<
   T extends Sprite = Sprite,
-  TARGS extends any[] = [material?: SpriteMaterial]
+  TARGS = /* material? */ SpriteMaterial
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Sprite> {
     return Sprite;

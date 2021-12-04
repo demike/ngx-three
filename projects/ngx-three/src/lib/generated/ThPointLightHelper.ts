@@ -28,11 +28,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThPointLightHelper<
   T extends PointLightHelper = PointLightHelper,
-  TARGS extends any[] = [
-    light: PointLight,
-    sphereSize?: number,
-    color?: ColorRepresentation
-  ]
+  TARGS = [light: PointLight, sphereSize?: number, color?: ColorRepresentation]
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<PointLightHelper> {
     return PointLightHelper;

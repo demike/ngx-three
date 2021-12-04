@@ -32,11 +32,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThDirectionalLightHelper<
   T extends DirectionalLightHelper = DirectionalLightHelper,
-  TARGS extends any[] = [
-    light: DirectionalLight,
-    size?: number,
-    color?: ColorRepresentation
-  ]
+  TARGS = [light: DirectionalLight, size?: number, color?: ColorRepresentation]
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<DirectionalLightHelper> {
     return DirectionalLightHelper;

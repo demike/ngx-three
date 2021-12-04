@@ -24,7 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThRoundedBoxGeometry<
   T extends RoundedBoxGeometry = RoundedBoxGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     width?: number,
     height?: number,
     depth?: number,

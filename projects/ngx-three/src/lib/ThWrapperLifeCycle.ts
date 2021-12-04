@@ -47,7 +47,7 @@ export interface ThWrapperLifeCycle {
    *
    * @param args the arguments to pass to the constructor
    */
-  createThreeInstance(args?: Iterable<any>): any;
+  createThreeInstance(args?: unknown): any;
 
   // ---------------------------------------------------------------------------------------------------------------
   // 2) add three.js object to render tree

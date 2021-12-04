@@ -20,7 +20,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThLight<
   T extends Light = Light,
-  TARGS extends any[] = [hex?: number | string, intensity?: number]
+  TARGS = [hex?: number | string, intensity?: number]
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Light> {
     return Light;

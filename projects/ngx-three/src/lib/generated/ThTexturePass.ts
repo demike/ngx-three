@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThTexturePass<
   T extends TexturePass = TexturePass,
-  TARGS extends any[] = [map: Texture, opacity?: number]
+  TARGS = [map: Texture, opacity?: number]
 > extends ThPass<T, TARGS> {
   public getType(): Type<TexturePass> {
     return TexturePass;

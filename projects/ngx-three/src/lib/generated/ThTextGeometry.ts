@@ -29,7 +29,7 @@ import { ThExtrudeGeometry } from './ThExtrudeGeometry';
 })
 export class ThTextGeometry<
   T extends TextGeometry = TextGeometry,
-  TARGS extends any[] = [text: string, parameters: TextGeometryParameters]
+  TARGS = [text: string, parameters: TextGeometryParameters]
 > extends ThExtrudeGeometry<T, TARGS> {
   public getType(): Type<TextGeometry> {
     return TextGeometry;

@@ -24,7 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThTubeGeometry<
   T extends TubeGeometry = TubeGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     path?: Curve<Vector3>,
     tubularSegments?: number,
     radius?: number,

@@ -24,7 +24,7 @@ import { ThSSAARenderPass } from './ThSSAARenderPass';
 })
 export class ThTAARenderPass<
   T extends TAARenderPass = TAARenderPass,
-  TARGS extends any[] = [
+  TARGS = [
     scene: Scene,
     camera: Camera,
     clearColor: ColorRepresentation,

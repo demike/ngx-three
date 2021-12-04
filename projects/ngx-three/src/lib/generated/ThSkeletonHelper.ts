@@ -30,7 +30,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThSkeletonHelper<
   T extends SkeletonHelper = SkeletonHelper,
-  TARGS extends any[] = [object: Object3D]
+  TARGS = /* object */ Object3D
 > extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<SkeletonHelper> {
     return SkeletonHelper;

@@ -21,7 +21,7 @@ export class ThMesh<
   TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   T extends Mesh<TGeometry, TMaterial> = Mesh<TGeometry, TMaterial>,
-  TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]
+  TARGS = [geometry?: TGeometry, material?: TMaterial]
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Mesh<TGeometry, TMaterial>> {
     return Mesh;

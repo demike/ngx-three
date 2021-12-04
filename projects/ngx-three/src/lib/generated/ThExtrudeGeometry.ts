@@ -24,10 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThExtrudeGeometry<
   T extends ExtrudeGeometry = ExtrudeGeometry,
-  TARGS extends any[] = [
-    shapes?: Shape | Shape[],
-    options?: ExtrudeGeometryOptions
-  ]
+  TARGS = [shapes?: Shape | Shape[], options?: ExtrudeGeometryOptions]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<ExtrudeGeometry> {
     return ExtrudeGeometry;

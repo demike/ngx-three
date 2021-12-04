@@ -22,11 +22,7 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThDragControls<
   T extends DragControls = DragControls,
-  TARGS extends any[] = [
-    objects: Object3D[],
-    camera: Camera,
-    domElement?: HTMLElement
-  ]
+  TARGS = [objects: Object3D[], camera: Camera, domElement?: HTMLElement]
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<DragControls> {
     return DragControls;

@@ -34,7 +34,7 @@ export class ThSkinnedMesh<
     TGeometry,
     TMaterial
   >,
-  TARGS extends any[] = [
+  TARGS = [
     geometry?: TGeometry,
     material?: TMaterial,
     useVertexTexture?: boolean

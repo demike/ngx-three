@@ -25,7 +25,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 export class ThEdgesGeometry<
   TBufferGeometry extends BufferGeometry = BufferGeometry,
   T extends EdgesGeometry<TBufferGeometry> = EdgesGeometry<TBufferGeometry>,
-  TARGS extends any[] = [geometry?: TBufferGeometry, thresholdAngle?: number]
+  TARGS = [geometry?: TBufferGeometry, thresholdAngle?: number]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<EdgesGeometry<TBufferGeometry>> {
     return EdgesGeometry;

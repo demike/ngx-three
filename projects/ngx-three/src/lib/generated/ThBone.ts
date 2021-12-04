@@ -17,10 +17,11 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThBone) }],
 })
-export class ThBone<
-  T extends Bone = Bone,
-  TARGS extends any[] = []
-> extends ThObject3D<Event, T, TARGS> {
+export class ThBone<T extends Bone = Bone, TARGS = []> extends ThObject3D<
+  Event,
+  T,
+  TARGS
+> {
   public getType(): Type<Bone> {
     return Bone;
   }

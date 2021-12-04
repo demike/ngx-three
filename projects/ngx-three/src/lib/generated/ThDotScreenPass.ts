@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThDotScreenPass<
   T extends DotScreenPass = DotScreenPass,
-  TARGS extends any[] = [center?: Vector2, angle?: number, scale?: number]
+  TARGS = [center?: Vector2, angle?: number, scale?: number]
 > extends ThPass<T, TARGS> {
   public getType(): Type<DotScreenPass> {
     return DotScreenPass;

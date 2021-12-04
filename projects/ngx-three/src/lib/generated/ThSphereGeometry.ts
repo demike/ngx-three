@@ -24,7 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThSphereGeometry<
   T extends SphereGeometry = SphereGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     radius?: number,
     widthSegments?: number,
     heightSegments?: number,

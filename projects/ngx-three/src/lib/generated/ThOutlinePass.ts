@@ -38,7 +38,7 @@ import { ThPass } from './ThPass';
 })
 export class ThOutlinePass<
   T extends OutlinePass = OutlinePass,
-  TARGS extends any[] = [
+  TARGS = [
     resolution: Vector2,
     scene: Scene,
     camera: Camera,

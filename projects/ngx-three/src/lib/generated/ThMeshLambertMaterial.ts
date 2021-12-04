@@ -32,7 +32,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThMeshLambertMaterial<
   T extends MeshLambertMaterial = MeshLambertMaterial,
-  TARGS extends any[] = [parameters?: MeshLambertMaterialParameters]
+  TARGS = /* parameters? */ MeshLambertMaterialParameters
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<MeshLambertMaterial> {
     return MeshLambertMaterial;

@@ -22,7 +22,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThCameraHelper<
   T extends CameraHelper = CameraHelper,
-  TARGS extends any[] = [camera: Camera]
+  TARGS = /* camera */ Camera
 > extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<CameraHelper> {
     return CameraHelper;

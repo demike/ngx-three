@@ -24,7 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThShapeGeometry<
   T extends ShapeGeometry = ShapeGeometry,
-  TARGS extends any[] = [shapes?: Shape | Shape[], curveSegments?: number]
+  TARGS = [shapes?: Shape | Shape[], curveSegments?: number]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<ShapeGeometry> {
     return ShapeGeometry;

@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThClearPass<
   T extends ClearPass = ClearPass,
-  TARGS extends any[] = [clearColor?: ColorRepresentation, clearAlpha?: number]
+  TARGS = [clearColor?: ColorRepresentation, clearAlpha?: number]
 > extends ThPass<T, TARGS> {
   public getType(): Type<ClearPass> {
     return ClearPass;

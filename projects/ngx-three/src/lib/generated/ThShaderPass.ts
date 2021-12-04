@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThShaderPass<
   T extends ShaderPass = ShaderPass,
-  TARGS extends any[] = [shader: object, textureID?: string]
+  TARGS = [shader: object, textureID?: string]
 > extends ThPass<T, TARGS> {
   public getType(): Type<ShaderPass> {
     return ShaderPass;

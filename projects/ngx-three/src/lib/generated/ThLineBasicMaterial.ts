@@ -27,7 +27,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThLineBasicMaterial<
   T extends LineBasicMaterial = LineBasicMaterial,
-  TARGS extends any[] = [parameters?: LineBasicMaterialParameters]
+  TARGS = /* parameters? */ LineBasicMaterialParameters
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<LineBasicMaterial> {
     return LineBasicMaterial;

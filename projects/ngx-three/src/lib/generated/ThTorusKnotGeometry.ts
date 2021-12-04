@@ -24,7 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThTorusKnotGeometry<
   T extends TorusKnotGeometry = TorusKnotGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     radius?: number,
     tube?: number,
     tubularSegments?: number,

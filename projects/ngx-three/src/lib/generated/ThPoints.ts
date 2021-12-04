@@ -21,7 +21,7 @@ export class ThPoints<
   TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   T extends Points<TGeometry, TMaterial> = Points<TGeometry, TMaterial>,
-  TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]
+  TARGS = [geometry?: TGeometry, material?: TMaterial]
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Points<TGeometry, TMaterial>> {
     return Points;

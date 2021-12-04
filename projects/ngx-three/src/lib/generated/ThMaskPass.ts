@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThMaskPass<
   T extends MaskPass = MaskPass,
-  TARGS extends any[] = [scene: Scene, camera: Camera]
+  TARGS = [scene: Scene, camera: Camera]
 > extends ThPass<T, TARGS> {
   public getType(): Type<MaskPass> {
     return MaskPass;

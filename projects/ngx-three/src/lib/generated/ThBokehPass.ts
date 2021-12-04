@@ -36,11 +36,7 @@ import { ThPass } from './ThPass';
 })
 export class ThBokehPass<
   T extends BokehPass = BokehPass,
-  TARGS extends any[] = [
-    scene: Scene,
-    camera: Camera,
-    params: BokehPassParamters
-  ]
+  TARGS = [scene: Scene, camera: Camera, params: BokehPassParamters]
 > extends ThPass<T, TARGS> {
   public getType(): Type<BokehPass> {
     return BokehPass;

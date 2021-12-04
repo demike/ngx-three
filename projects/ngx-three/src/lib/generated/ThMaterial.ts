@@ -31,7 +31,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThMaterial<
   T extends Material = Material,
-  TARGS extends any[] = []
+  TARGS = []
 > extends ThMaterialBase<T, TARGS> {
   public getType(): Type<Material> {
     return Material;

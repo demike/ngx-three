@@ -7,7 +7,7 @@ import { ThWrapperBase } from './ThWrapperBase';
   template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThPassBase<T extends Pass = Pass, ARGS extends any[] = []> extends ThWrapperBase<T, ARGS> implements OnInit {
+export class ThPassBase<T extends Pass = Pass, ARGS = unknown> extends ThWrapperBase<T, ARGS> implements OnInit {
   constructor(@Optional() protected effectComposer?: ThEffectComposer) {
     super();
   }

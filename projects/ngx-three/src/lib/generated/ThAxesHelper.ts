@@ -22,7 +22,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThAxesHelper<
   T extends AxesHelper = AxesHelper,
-  TARGS extends any[] = [size?: number]
+  TARGS = /* size? */ number
 > extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<AxesHelper> {
     return AxesHelper;

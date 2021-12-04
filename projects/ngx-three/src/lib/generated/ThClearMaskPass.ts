@@ -22,7 +22,7 @@ import { ThPass } from './ThPass';
 })
 export class ThClearMaskPass<
   T extends ClearMaskPass = ClearMaskPass,
-  TARGS extends any[] = []
+  TARGS = []
 > extends ThPass<T, TARGS> {
   public getType(): Type<ClearMaskPass> {
     return ClearMaskPass;

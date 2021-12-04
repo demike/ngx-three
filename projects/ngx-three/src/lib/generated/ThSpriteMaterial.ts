@@ -28,7 +28,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThSpriteMaterial<
   T extends SpriteMaterial = SpriteMaterial,
-  TARGS extends any[] = [parameters?: SpriteMaterialParameters]
+  TARGS = /* parameters? */ SpriteMaterialParameters
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<SpriteMaterial> {
     return SpriteMaterial;

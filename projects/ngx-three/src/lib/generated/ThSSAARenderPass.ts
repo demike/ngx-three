@@ -30,7 +30,7 @@ import { ThPass } from './ThPass';
 })
 export class ThSSAARenderPass<
   T extends SSAARenderPass = SSAARenderPass,
-  TARGS extends any[] = [
+  TARGS = [
     scene: Scene,
     camera: Camera,
     clearColor: ColorRepresentation,

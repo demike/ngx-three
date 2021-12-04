@@ -27,7 +27,7 @@ import { ThShaderPass } from './ThShaderPass';
 })
 export class ThLUTPass<
   T extends LUTPass = LUTPass,
-  TARGS extends any[] = [params: LUTPassParameters]
+  TARGS = /* params */ LUTPassParameters
 > extends ThShaderPass<T, TARGS> {
   public getType(): Type<LUTPass> {
     return LUTPass;

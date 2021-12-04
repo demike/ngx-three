@@ -28,10 +28,11 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }],
 })
-export class ThScene<
-  T extends Scene = Scene,
-  TARGS extends any[] = []
-> extends ThObject3D<Event, T, TARGS> {
+export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
+  Event,
+  T,
+  TARGS
+> {
   public getType(): Type<Scene> {
     return Scene;
   }

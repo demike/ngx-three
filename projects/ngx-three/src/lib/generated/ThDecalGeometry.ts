@@ -24,12 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThDecalGeometry<
   T extends DecalGeometry = DecalGeometry,
-  TARGS extends any[] = [
-    mesh: Mesh,
-    position: Vector3,
-    orientation: Euler,
-    size: Vector3
-  ]
+  TARGS = [mesh: Mesh, position: Vector3, orientation: Euler, size: Vector3]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<DecalGeometry> {
     return DecalGeometry;

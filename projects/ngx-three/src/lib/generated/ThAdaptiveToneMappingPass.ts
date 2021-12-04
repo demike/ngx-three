@@ -27,7 +27,7 @@ import { ThPass } from './ThPass';
 })
 export class ThAdaptiveToneMappingPass<
   T extends AdaptiveToneMappingPass = AdaptiveToneMappingPass,
-  TARGS extends any[] = [adaptive?: boolean, resolution?: number]
+  TARGS = [adaptive?: boolean, resolution?: number]
 > extends ThPass<T, TARGS> {
   public getType(): Type<AdaptiveToneMappingPass> {
     return AdaptiveToneMappingPass;

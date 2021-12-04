@@ -33,7 +33,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThMeshStandardMaterial<
   T extends MeshStandardMaterial = MeshStandardMaterial,
-  TARGS extends any[] = [parameters?: MeshStandardMaterialParameters]
+  TARGS = /* parameters? */ MeshStandardMaterialParameters
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<MeshStandardMaterial> {
     return MeshStandardMaterial;

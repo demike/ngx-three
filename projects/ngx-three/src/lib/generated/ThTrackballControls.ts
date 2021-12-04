@@ -26,7 +26,7 @@ import { applyValue } from '../util';
 })
 export class ThTrackballControls<
   T extends TrackballControls = TrackballControls,
-  TARGS extends any[] = [object: Camera, domElement?: HTMLElement]
+  TARGS = [object: Camera, domElement?: HTMLElement]
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<TrackballControls> {
     return TrackballControls;

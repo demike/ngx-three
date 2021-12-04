@@ -21,7 +21,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThAudioListener<
   T extends AudioListener = AudioListener,
-  TARGS extends any[] = []
+  TARGS = []
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<AudioListener> {
     return AudioListener;

@@ -22,7 +22,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThPointLight<
   T extends PointLight = PointLight,
-  TARGS extends any[] = [
+  TARGS = [
     color?: ColorRepresentation,
     intensity?: number,
     distance?: number,

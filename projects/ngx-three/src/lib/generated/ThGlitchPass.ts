@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThGlitchPass<
   T extends GlitchPass = GlitchPass,
-  TARGS extends any[] = [dt_size?: number]
+  TARGS = /* dt_size? */ number
 > extends ThPass<T, TARGS> {
   public getType(): Type<GlitchPass> {
     return GlitchPass;

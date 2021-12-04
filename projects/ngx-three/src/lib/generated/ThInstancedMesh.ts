@@ -33,7 +33,7 @@ export class ThInstancedMesh<
     TGeometry,
     TMaterial
   >,
-  TARGS extends any[] = [
+  TARGS = [
     geometry: TGeometry | undefined,
     material: TMaterial | undefined,
     count: number

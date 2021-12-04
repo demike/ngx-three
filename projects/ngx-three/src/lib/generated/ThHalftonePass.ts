@@ -27,11 +27,7 @@ import { ThPass } from './ThPass';
 })
 export class ThHalftonePass<
   T extends HalftonePass = HalftonePass,
-  TARGS extends any[] = [
-    width: number,
-    height: number,
-    params: HalftonePassParameters
-  ]
+  TARGS = [width: number, height: number, params: HalftonePassParameters]
 > extends ThPass<T, TARGS> {
   public getType(): Type<HalftonePass> {
     return HalftonePass;

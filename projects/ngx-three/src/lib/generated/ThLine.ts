@@ -21,7 +21,7 @@ export class ThLine<
   TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   T extends Line<TGeometry, TMaterial> = Line<TGeometry, TMaterial>,
-  TARGS extends any[] = [geometry?: TGeometry, material?: TMaterial]
+  TARGS = [geometry?: TGeometry, material?: TMaterial]
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Line<TGeometry, TMaterial>> {
     return Line;

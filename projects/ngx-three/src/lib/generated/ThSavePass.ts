@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThSavePass<
   T extends SavePass = SavePass,
-  TARGS extends any[] = [renderTarget: WebGLRenderTarget]
+  TARGS = /* renderTarget */ WebGLRenderTarget
 > extends ThPass<T, TARGS> {
   public getType(): Type<SavePass> {
     return SavePass;

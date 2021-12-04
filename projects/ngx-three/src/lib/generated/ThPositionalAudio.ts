@@ -22,7 +22,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThPositionalAudio<
   T extends PositionalAudio = PositionalAudio,
-  TARGS extends any[] = [listener: AudioListener]
+  TARGS = /* listener */ AudioListener
 > extends ThAudio<PannerNode, T, TARGS> {
   public getType(): Type<PositionalAudio> {
     return PositionalAudio;

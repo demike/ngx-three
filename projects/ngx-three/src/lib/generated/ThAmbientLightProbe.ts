@@ -21,7 +21,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThAmbientLightProbe<
   T extends AmbientLightProbe = AmbientLightProbe,
-  TARGS extends any[] = [color?: ColorRepresentation, intensity?: number]
+  TARGS = [color?: ColorRepresentation, intensity?: number]
 > extends ThLightProbe<T, TARGS> {
   public getType(): Type<AmbientLightProbe> {
     return AmbientLightProbe;

@@ -25,7 +25,7 @@ import { ThCylinderGeometry } from './ThCylinderGeometry';
 })
 export class ThConeGeometry<
   T extends ConeGeometry = ConeGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     radius?: number,
     height?: number,
     radialSegments?: number,

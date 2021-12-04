@@ -17,10 +17,7 @@ import { ThWrapperBase } from '../ThWrapperBase';
 })
 export class ThEffectComposerGen<
   T extends EffectComposer = EffectComposer,
-  TARGS extends any[] = [
-    renderer: WebGLRenderer,
-    renderTarget?: WebGLRenderTarget
-  ]
+  TARGS = [renderer: WebGLRenderer, renderTarget?: WebGLRenderTarget]
 > extends ThWrapperBase<T, TARGS> {
   public getType(): Type<EffectComposer> {
     return EffectComposer;

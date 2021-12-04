@@ -33,7 +33,7 @@ import { ThPass } from './ThPass';
 })
 export class ThUnrealBloomPass<
   T extends UnrealBloomPass = UnrealBloomPass,
-  TARGS extends any[] = [
+  TARGS = [
     resolution: Vector2,
     strength: number,
     radius: number,

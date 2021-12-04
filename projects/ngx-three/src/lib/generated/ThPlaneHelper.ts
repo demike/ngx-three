@@ -23,7 +23,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThPlaneHelper<
   T extends PlaneHelper = PlaneHelper,
-  TARGS extends any[] = [plane: Plane, size?: number, hex?: number]
+  TARGS = [plane: Plane, size?: number, hex?: number]
 > extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<PlaneHelper> {
     return PlaneHelper;

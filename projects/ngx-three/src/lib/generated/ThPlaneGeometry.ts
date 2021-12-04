@@ -24,7 +24,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThPlaneGeometry<
   T extends PlaneGeometry = PlaneGeometry,
-  TARGS extends any[] = [
+  TARGS = [
     width?: number,
     height?: number,
     widthSegments?: number,
