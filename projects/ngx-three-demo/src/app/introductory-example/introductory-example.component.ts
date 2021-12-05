@@ -1,3 +1,4 @@
+/* eslint-disable @angular-eslint/component-class-suffix */
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     [rotation]="rotation"
     [position]="position"
     (onClick)="selected = !selected"
-    [scale]="selected ? [2, 2, 2] : [1, 1, 1]"  
+    [scale]="selected ? [2, 2, 2] : [1, 1, 1]"
     >
     <th-boxGeometry></th-boxGeometry>
     <th-meshBasicMaterial
@@ -20,9 +21,6 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
   export class Box {
     public selected = false;
 
-    public onSelected() {
-      window.alert("hoho");
-    }
     @Input()
     public rotation: [x: number, y: number, z: number] = [0, 0, 0];
     @Input()
@@ -57,5 +55,3 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       this.rotation = [0, this.rotation[2] + 0.01, this.rotation[2] + 0.01];
     }
   }
-  
-  
