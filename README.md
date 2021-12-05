@@ -24,6 +24,8 @@ ngx-three:
 The project is inspired by the great [react three fiber](https://github.com/pmndrs/react-three-fiber) library.
 But in contrast to RTF angular components are generated that wrap three.js classes.
 
+Check out some [examples](https://demike.github.io/ngx-three/)
+
 ## Performance
 
 From a performance perspective it's important to know, that ngx-three components
@@ -52,9 +54,183 @@ You can use npm to get the exact peer dependency versions for ngx-three
 ```
 npm info ngx-three peerDependencies
 ```
-### Introductory Example
+# Introductory Example
+We are going to create a basic example showing a cube,
+with animation and interaction.
 
-Check out some [examples](https://demike.github.io/ngx-three/)
+## Step 1) Basic Angular Component
+Lets start by creating a simple component with an empty template.
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+    selector: 'app-example',
+    template: `
+      <!-- Step 2 Content  -->
+    `,
+  })
+  export class ExampleComponent {}
+```
+
+## Step 2) Add a Canvas
+As a second step we start filling the template with
+a canvas and a scene (the most basic setup).
+
+
+```html
+<th-canvas>
+  <th-scene>
+    <!-- Step 3 Content -->
+  </th-scene>
+</th-canvas>
+```
+
+## Step 3) Adding a Mesh ( The Box )
+In this step we are adding a mesh with material and geometry.
+You can add material and geometry to the mesh by nesting `th-*Material` and `th-*Geometry` components 
+inside a `th-mesh` componet.
+
+By means of the `args` attribute you can pass parameters
+to the constructor of the three.js basic material.
+
+```html
+<th-mesh>
+  <th-boxGeometry></th-boxGeometry>
+  <th-meshBasicMaterial [args]="{color: 'purple'}">
+  </th-meshBasicMaterial> 
+</th-mesh>   
+    <!-- Step 4 Content -->
+```
+
+## Step 4) Camera and Light
+Now lets bring some (ambient)light to the scene.
+
+The perspective camera takes multiple constructor arguments.  
+These can be passed to the camera constructor by passing an
+an array holding the arguments to `args`.  
+
+The position of the camera is set by means of the `position` attribute.
+
+```html
+<th-ambientLight> </th-ambientLight>
+<th-perspectiveCamera 
+  [args]="[75, 2, 0.1, 1000]" 
+  [position]="[1,1,5]">
+</th-perspectiveCamera>
+```
+
+## Step 5) Interacting with the box
+
+By adding a boolean member `selected` to our class
+we can modify the scale of the cube
+
+```html
+<th-mesh>
+  (onClick)="selected = !selected"
+  [scale]="selected ? [2, 2, 2] : [1, 1, 1]"
+  ...
+</th-mesh>
+```
+
+## Step 6) Animating the box
+By reacting to the canvas' `onRender`
+we can animate the box by setting its rotation.
+
+Template:
+```html
+<th-canvas (onRender)="this.onBeforeRender()">
+  ...
+  <th-mesh
+    [rotation]="rotation"
+    ...
+  >
+    ...
+  </th-mesh>
+  ...
+</th-canvas>
+```
+Component:
+```typescript
+  ...
+  public rotation: [x: number, y: number, z: number] = [0, 0, 0];
+  public onBeforeRender() {
+    this.rotation = [0, this.rotation[2] + 0.01, this.rotation[2] + 0.01];
+  }
+  ...
+```
+
+## Step 7) Creating a reusable Angular component 
+The mesh part of the current code can be seperated into its own class
+Then we can use two instances ot the box component in the app component
+Take a look at the [working example](https://demike.github.io/ngx-three/introductory-example)
+
+Box Template:
+```html
+<th-mesh
+  [rotation]="rotation"
+  [position]="position"
+  (onClick)="selected = !selected"
+  [scale]="selected ? [2, 2, 2] : [1, 1, 1]"
+
+>
+  <th-boxGeometry></th-boxGeometry>
+  <th-meshBasicMaterial
+    [args]="{color: 'purple'}"
+  ></th-meshBasicMaterial>
+</th-mesh>
+```
+
+Box Component:
+
+```typescript
+@Component({
+    selector: 'app-box',
+    template: `...`,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+  })
+  export class Box {
+    selected = false
+    @Input()
+    public rotation: [x: number, y: number, z: number] = [0, 0, 0];
+    @Input()
+    public position: [x: number, y: number, z: number] = [0, 0, 0];
+  }
+```
+
+App Template:
+```html
+<th-canvas (onRender)="this.onBeforeRender()">
+  <th-scene>
+    <th-box
+      [position]="[-2,0,0]"
+      [rotation]="rotation"
+    >
+    </th-box>
+    <th-box
+      [position]="[2,0,0]"
+      [rotation]="rotation"
+    >
+    </th-box>
+    <th-ambientLight> </th-ambientLight>
+    <th-perspectiveCamera [args]="[75, 2, 0.1, 1000]" [position]="[1,1,5]"></th-perspectiveCamera>
+  </th-scene>
+</th-canvas>
+```
+
+App Component:
+```typescript
+@Component({
+  selector: 'app-example',
+  template: `...`
+  changeDetection: ChangeDetectionStrategy.OnPush
+})
+export class ExampleComponent {
+  public rotation: [x: number, y: number, z: number] = [0, 0, 0];
+  public onBeforeRender() {
+    this.rotation = [0, this.rotation[2] + 0.01, this.rotation[2] + 0.01];
+  }
+}
+```
 
 !!! WORK IN PROGRESS !!!
 # Canvas / View / Scene
@@ -118,7 +294,7 @@ of template variables
 ```
 
 
-## How to put existing Three.Object3D objects into the angular template
+## How to put existing THREE.Object3D objects into the angular template
 If you want to put an existing object into the angular component tree
 (maybe it was easier to construct the specific object in an imperative way)
 this can be easily achieved by setting the `objRef` Attribute
