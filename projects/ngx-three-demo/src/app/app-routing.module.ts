@@ -31,6 +31,20 @@ export class BasicExamplePageComponent {}
 export class SimpleExamplePageComponent {}
 
 @Component({
+  selector: 'app-introductory-example-page',
+  template: `<app-introductory-example class="example-container"></app-introductory-example>
+    <app-code
+      [lineNumbers]="true"
+      [codeUrls]="[
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/introductory-example/introductory-example.component.ts'
+      ]"
+    >
+    </app-code>`
+})
+export class IntroductoryExamplePageComponent {}
+
+
+@Component({
   selector: 'app-controls-example-page',
   template: ` <app-controls-example class="example-container"></app-controls-example>
     <app-code
@@ -149,6 +163,7 @@ export class MultiSceneExamplePageComponent {}
 export const EXAMPLE_ROUTES: Routes = [
   { path: 'basic-example', component: BasicExamplePageComponent, data: { title: 'Basic Example' } },
   { path: 'simple-example', component: SimpleExamplePageComponent, data: { title: 'Simple Example' } },
+  { path: 'introductory-example', component: IntroductoryExamplePageComponent, data: { title: 'Introductory Example' } },
   { path: 'controls-example', component: ControlsExamplePageComponent, data: { title: 'Controls Example' } },
   { path: 'loader-example', component: LoaderExamplePageComponent, data: { title: 'Loader Example' } },
   { path: 'dynamic loader-example', component: DynamicLoaderExamplePageComponent, data: { title: 'Dynamic Loader Example' } },

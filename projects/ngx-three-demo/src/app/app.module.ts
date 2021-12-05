@@ -9,6 +9,7 @@ import {
   EventsExamplePageComponent,
   EXAMPLE_ROUTES,
   InstancedMeshExamplePageComponent,
+  IntroductoryExamplePageComponent,
   LoaderExamplePageComponent,
   MultiSceneExamplePageComponent,
   PostProcessingExamplePageComponent,
@@ -42,13 +43,16 @@ import { ViewsExampleComponent } from './views-example/views-example.component';
 import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-example.component';
 import { EditorService } from './code/EditorService';
 import { BasicExampleComponent } from './basic-example/basic-example.component';
+import { IntroductoryExampleComponent, Box as IntroBox } from './introductory-example/introductory-example.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SimpleExampleComponent,
     Box,
+    IntroBox,
     BasicExampleComponent,
+    IntroductoryExampleComponent,
     LoaderExampleComponent,
     ControlsExampleComponent,
     EventsExampleComponent,
@@ -62,6 +66,7 @@ import { BasicExampleComponent } from './basic-example/basic-example.component';
     //
     BasicExamplePageComponent,
     SimpleExamplePageComponent,
+    IntroductoryExamplePageComponent,
     ControlsExamplePageComponent,
     LoaderExamplePageComponent,
     DynamicLoaderExamplePageComponent,
