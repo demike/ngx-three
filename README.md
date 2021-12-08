@@ -392,3 +392,37 @@ you can listen to it like this:
 ```
 [Events Example](https://demike.github.io/ngx-three/events-example) 
 
+# Pipes
+ngx-three provides some utility pipes that ease input assignments
+
+## color pipe
+Use this pipe to create a Color from any of it's constructor parameters
+```html
+<th-ambientLight
+  [color]="'#aabbcc' | color"
+>
+</th-ambientLight>
+...
+```
+## vector pipes
+the `vector2`, `vector3`, and `vector4` construct the respective vector from an array of numbers
+usage:
+```html
+<th-object3D
+  [position]="[1,2,3] | vector3"
+>
+</th-object3D>
+```
+
+## clone pipe
+calls clone on a clonable three.js instance (or it's ngx-three wrapper)
+and ensures that the clone call only happens once
+
+```html
+<th-hemisphereLight
+  #light
+  ...
+></th-hemisphereLight>
+
+<th-light [objRef]="light | clone"></th-light>
+```

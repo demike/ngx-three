@@ -19,3 +19,7 @@ export * from './lib/generated/ngx-three-generated.module';
 export * from './lib/events/raycaster.events.directive';
 
 export * from './lib/component.helpers';
+
+export * from './lib/pipes/clone.pipe';
+export * from './lib/pipes/color.pipe';
+export * from './lib/pipes/vector.pipe';
