@@ -232,15 +232,61 @@ export class ExampleComponent {
 }
 ```
 
-!!! WORK IN PROGRESS !!!
 # Canvas / View / Scene
-TODO
+!!! WORK IN PROGRESS !!!
 
+Canvas View and Scene are the main building blocks of ngx-three.
+
+## ThCanvas 
+
+In general the `ThCanvas` contains [ThView](#ThView) istances, and a
+[ThView](#ThView) contains a [ThScene](#ThScene).
+
+In a standard scenario `ThCanvas` provides (or actually 'is') the default view.
+So a typical template might look like this
+```html
+<th-canvas>
+  <th-scene>
+    ...
+  </th-scene>
+</th-canvas>
+```
+
+`ThCanvas` creates the canvas dom element that's used
+for rendering. Actually ThCanvas is the <b>only</b> ngx-three component that inserts an element into dom!
+
+`ThCanvas` provides the [ThEngineService](#ThEngineService).
+That means if you have multiple `ThCanvas` instances
+every one gets its own engine service.
+
+As `ThCanvas` is derived from `ThView` it also shares its inputs / outputs
+
+## ThView
+One can say that `ThView` provides the view port.
+The view consists of:
+- a scene [ThScene](#ThScene)
+- a camera (`ThCamera`)
+- and an <b>optional</b> effect composer (`ThEffectComposer`)
+
+This combination makes it possible to render multiple scenarios
+- The same scene in multiple camera perspectives ([Multi View Example](https://demike.github.io/ngx-three/views-example))
+<img src="./docs/multi-view.png" width="50%" style="display:block">
+- mutliple scenes with the same camera ([Multi Scene Example](demike.github.io/ngx-three/multi-scene-example))
+<img src="./docs/multi-scene.png" width="50%" style="display:block">
+- one / multiple scene with multiple effects
+<!--<img src="./docs/multi-view-postprocessing.png" width="50%" style="display:block">-->
+
+## ThScene
+
+`ThScene` is the ngx-three wrapper of THREE.Scene and provides all
+of its members as inputs. It is <b>mandatory</b> for rendering.
+
+## ThEngineService
+TODO
 # Objects / Meshes
 
 In three.js anything that can be added to a Scene is an `Object3D`.
-In ngx-three the component `ThObject3D` with the tag `th-object3D` can be seen as the
-equivalent.
+In ngx-three the component `ThObject3D` with the tag `th-object3D` can be seen as the equivalent.
 
 A mesh (`Three.Mesh`) can be represented by `th-mesh` in ngx-three.
 A mesh can have a material (`ThMaterial`) and a Geometry(`ThGeometry`).
