@@ -269,10 +269,10 @@ The view consists of:
 - and an <b>optional</b> effect composer (`ThEffectComposer`)
 
 This combination makes it possible to render multiple scenarios
-- The same scene in multiple camera perspectives ([Multi View Example](https://demike.github.io/ngx-three/views-example))
-<img src="./docs/multi-view.png" width="50%" style="display:block">
+- The same scene with multiple camera perspectives ([Multi View Example](https://demike.github.io/ngx-three/views-example))
+  <img src="./docs/multi-view.png" width="50%" style="display:block"/>
 - mutliple scenes with the same camera ([Multi Scene Example](demike.github.io/ngx-three/multi-scene-example))
-<img src="./docs/multi-scene.png" width="50%" style="display:block">
+  <img src="./docs/multi-scene.png" width="50%" style="display:block"/>
 - one / multiple scene with multiple effects
 <!--<img src="./docs/multi-view-postprocessing.png" width="50%" style="display:block">-->
 
