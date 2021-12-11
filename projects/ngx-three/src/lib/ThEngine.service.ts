@@ -1,4 +1,4 @@
-import { Injectable, NgZone, OnDestroy } from '@angular/core';
+import { EventEmitter, Injectable, NgZone, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
 import { Vector4 } from 'three';
 import { ThView } from './ThView';
@@ -9,6 +9,8 @@ export class ThEngineService implements OnDestroy {
   private views: ThView[] = [];
   private frameId?: number;
 
+  private readonly beforeRenderEmitter = new EventEmitter<{engine: ThEngineService}>();
+  public readonly beforeRender$ = this.beforeRenderEmitter.asObservable();
   public canvas?: HTMLCanvasElement;
 
   // @ts-ignore
@@ -106,6 +108,9 @@ export class ThEngineService implements OnDestroy {
 
     // TODO: conditional rendere loop
     this.requestAnimationFrame();
+
+    // emit before render
+    this.beforeRenderEmitter.next({engine: this});
 
     for (const view of this.views) {
       this.renderView(view);

@@ -8,7 +8,7 @@
   [step]="0.005"
 />
 
-<th-canvas #thecanvas [shadow]="true" (onRender)="this.animate()">
+<th-canvas #thecanvas [shadow]="true" (onRender)="this.animate()" [thStats]="true">
   <th-effectComposer>
     <th-renderPass></th-renderPass>
     <th-unrealBloomPass [strength]="1"></th-unrealBloomPass>

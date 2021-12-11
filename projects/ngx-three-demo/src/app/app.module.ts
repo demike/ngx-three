@@ -44,6 +44,7 @@ import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-ex
 import { EditorService } from './code/EditorService';
 import { BasicExampleComponent } from './basic-example/basic-example.component';
 import { IntroductoryExampleComponent, Box as IntroBox } from './introductory-example/introductory-example.component';
+import { MultiViewPostprocessingComponent } from './multi-view-postprocessing/multi-view-postprocessing.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { IntroductoryExampleComponent, Box as IntroBox } from './introductory-ex
     InstancedMeshExamplePageComponent,
     PostProcessingExamplePageComponent,
     ViewsExamplePageComponent,
-    MultiSceneExamplePageComponent
+    MultiSceneExamplePageComponent,
+    MultiViewPostprocessingComponent
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,8 @@ import { ThWrapperBase } from './ThWrapperBase';
 import { ColorPipe } from './pipes/color.pipe';
 import { Vector2Pipe, Vector3Pipe, Vector4Pipe } from './pipes/vector.pipe';
 import { ClonePipe } from './pipes/clone.pipe';
+import { StatsDirective } from './stats/stats.directive';
+import { ThRenderDirective } from './renderer/th-render.directive';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ClonePipe } from './pipes/clone.pipe';
     Vector2Pipe,
     Vector3Pipe,
     Vector4Pipe,
-    ClonePipe
+    ClonePipe,
+    StatsDirective,
+    ThRenderDirective
   ],
   imports: [NgxThreeGeneratedModule],
   exports: [
@@ -43,7 +47,9 @@ import { ClonePipe } from './pipes/clone.pipe';
     Vector2Pipe,
     Vector3Pipe,
     Vector4Pipe,
-    ClonePipe
+    ClonePipe,
+    ThRenderDirective,
+    StatsDirective
   ]
 })
 export class NgxThreeModule {}
