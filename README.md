@@ -255,7 +255,7 @@ So a typical template might look like this
 `ThCanvas` creates the canvas dom element that's used
 for rendering. Actually ThCanvas is the <b>only</b> ngx-three component that inserts an element into dom!
 
-`ThCanvas` provides the [ThEngineService](#ThEngineService).
+`ThCanvas` provides the [ThEngineService](#Render-Loop-/-ThEngineService).
 That means if you have multiple `ThCanvas` instances
 every one gets its own engine service.
 
@@ -281,8 +281,23 @@ This combination makes it possible to render multiple scenarios
 `ThScene` is the ngx-three wrapper of THREE.Scene and provides all
 of its members as inputs. It is <b>mandatory</b> for rendering.
 
-## ThEngineService
-TODO
+## Render Loop / ThEngineService
+
+This service runs the render loop.
+
+You can react to a 'global' render event by means
+of using the `beforeRender` output of the `ThRenderDirective`.
+
+In addition you can react to the `onRender`
+outputs of the `ThView` (`ThCanvas` is derived from it)  instances.
+
+```html
+<th-object3D (beforeRender)="doSomething()">
+</th-object3D>
+```
+
+
+
 # Objects / Meshes
 
 In three.js anything that can be added to a Scene is an `Object3D`.
@@ -438,8 +453,16 @@ you can listen to it like this:
 ```
 [Events Example](https://demike.github.io/ngx-three/events-example) 
 
-# Pipes
+# Utilitiy Pipes / Directives
 ngx-three provides some utility pipes that ease input assignments
+
+## ThRenderDirective
+This directive can be used to react to 'global' rendering loop events.
+
+Listen to the `beforeRender` output to to apply changes
+before the next rendering run happens.
+
+If you want to do something directly after the rendering pass use `afterRender`.
 
 ## color pipe
 Use this pipe to create a Color from any of it's constructor parameters
@@ -471,4 +494,17 @@ and ensures that the clone call only happens once
 ></th-hemisphereLight>
 
 <th-light [objRef]="light | clone"></th-light>
+```
+
+## Stats Directive
+
+If you want to display the well known stats panel
+<img src="./docs/stats-panel.png" style="vertical-align:middle"/>
+you can do that simply by adding the `thStats` directive
+to the canvas.
+
+```html
+<th-canvas [thStats]="true">
+...
+</th-canvas>
 ```
