@@ -160,6 +160,20 @@ export class ViewsExamplePageComponent {}
 })
 export class MultiSceneExamplePageComponent {}
 
+@Component({
+  selector: 'app-multi-view-postprocessing-example-page',
+  template: `<app-multi-view-postprocessing-example class="example-container"></app-multi-view-postprocessing-example>
+    <app-code
+      [lineNumbers]="true"
+      [codeUrls]="[
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-view-postprocessing-example/multi-view-postprocessing-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-view-postprocessing-example/multi-view-postprocessing-example.component.ts'
+      ]"
+    >
+    </app-code> `
+})
+export class MultiViewPostprocessingExamplePageComponent {}
+
 export const EXAMPLE_ROUTES: Routes = [
   { path: 'basic-example', component: BasicExamplePageComponent, data: { title: 'Basic Example' } },
   { path: 'simple-example', component: SimpleExamplePageComponent, data: { title: 'Simple Example' } },
@@ -171,7 +185,8 @@ export const EXAMPLE_ROUTES: Routes = [
   { path: 'instanced-mesh-example', component: InstancedMeshExamplePageComponent, data: { title: 'Instanced Mesh Example' } },
   { path: 'post-processing-example', component: PostProcessingExamplePageComponent, data: { title: 'Post Processing Example' } },
   { path: 'views-example', component: ViewsExamplePageComponent, data: { title: 'Multiple Views Example' } },
-  { path: 'multi-scene-example', component: MultiSceneExamplePageComponent, data: { title: 'Multiple Scenes Example' } }
+  { path: 'multi-scene-example', component: MultiSceneExamplePageComponent, data: { title: 'Multiple Scenes Example' } },
+  { path: 'multi-view-postprocessing-example', component: MultiViewPostprocessingExamplePageComponent, data: { title: 'Multiple View Post Processing Example' } }
 ];
 
 export const exampleDeclarations: any[] = [];

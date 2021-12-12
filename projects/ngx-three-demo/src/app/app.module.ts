@@ -12,6 +12,7 @@ import {
   IntroductoryExamplePageComponent,
   LoaderExamplePageComponent,
   MultiSceneExamplePageComponent,
+  MultiViewPostprocessingExamplePageComponent,
   PostProcessingExamplePageComponent,
   SimpleExamplePageComponent,
   ViewsExamplePageComponent
@@ -44,7 +45,7 @@ import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-ex
 import { EditorService } from './code/EditorService';
 import { BasicExampleComponent } from './basic-example/basic-example.component';
 import { IntroductoryExampleComponent, Box as IntroBox } from './introductory-example/introductory-example.component';
-import { MultiViewPostprocessingComponent } from './multi-view-postprocessing/multi-view-postprocessing.component';
+import { MultiViewPostprocessingExampleComponent } from './multi-view-postprocessing-example/multi-view-postprocessing-example.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { MultiViewPostprocessingComponent } from './multi-view-postprocessing/mu
     NavigationShellComponent,
     ViewsExampleComponent,
     MultiSceneExampleComponent,
+    MultiViewPostprocessingExampleComponent,
     //
     BasicExamplePageComponent,
     SimpleExamplePageComponent,
@@ -76,7 +78,7 @@ import { MultiViewPostprocessingComponent } from './multi-view-postprocessing/mu
     PostProcessingExamplePageComponent,
     ViewsExamplePageComponent,
     MultiSceneExamplePageComponent,
-    MultiViewPostprocessingComponent
+    MultiViewPostprocessingExamplePageComponent
   ],
   imports: [
     BrowserModule,

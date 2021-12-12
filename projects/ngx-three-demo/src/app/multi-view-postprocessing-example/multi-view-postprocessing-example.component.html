@@ -1,0 +1,135 @@
+<th-canvas
+  #thecanvas
+  [disableDefaultView]="true"
+  [viewPort]="{
+    x: 0,
+    y: 0,
+    width: 0.5 * canvasWidth,
+    height: canvasHeight
+  }"
+>
+  <th-scene #scene>
+    <th-directionalLight [position]="[0, 0, 1]" [args]="['#ffffff']">
+    </th-directionalLight>
+    <th-mesh [position]="[0, 0, 0]" [rotation]="[-Math.PI / 2, 0, 0]">
+      <th-sphereGeometry #geo [args]="[200, 32, 16]"></th-sphereGeometry>
+      <th-meshPhongMaterial
+        #mat
+        [flatShading]="false"
+        [shininess]="30"
+        [specular]="['#fac400']"
+        [color]="['#f83f0d']"
+      ></th-meshPhongMaterial>
+    </th-mesh>
+    <th-mesh
+      [position]="[-400, 0, 0]"
+      [rotation]="[-Math.PI / 2, 0, 0]"
+      [geometry]="geo.objRef"
+      [material]="mat.objRef"
+    >
+    </th-mesh>
+    <th-mesh
+      [position]="[400, 0, 0]"
+      [rotation]="[-Math.PI / 2, 0, 0]"
+      [geometry]="geo.objRef"
+      [material]="mat.objRef"
+    >
+    </th-mesh>
+  </th-scene>
+
+  <th-view
+    #thview1
+    [scene]="scene"
+    [viewPort]="{
+      x: view1.left * canvasWidth,
+      y: view1.bottom * canvasHeight,
+      width: view1.width * canvasWidth,
+      height: view1.height * canvasHeight
+    }"
+    [scissor]="thview1.viewPort"
+    [scissorTest]="true"
+    (onRender)="view1.updateCamera(camera1.objRef, scene.objRef)"
+  >
+    <th-perspectiveCamera
+      #camera1
+      [position]="$any(view1.eye)"
+      [up]="$any(view1.up)"
+      [fov]="view1.fov"
+      [aspect]="(view1.width * canvasWidth) / (view1.height * canvasHeight)"
+      [near]="1"
+      [far]="10000"
+    >
+    </th-perspectiveCamera>
+    
+    <th-effectComposer>
+        <th-renderPass [clearColor]="view1.background"></th-renderPass>
+        <th-unrealBloomPass [strength]="0.2"></th-unrealBloomPass>
+        <th-shaderPass
+          [args]="[RGBShiftShader]"
+          [uniforms]="{ amount: { value: 0.055 } }"
+        ></th-shaderPass>
+        <th-glitchPass></th-glitchPass>
+    </th-effectComposer>
+
+  </th-view>
+  <th-view
+  #thview2
+  [scene]="scene"
+  [viewPort]="{
+    x: view2.left * canvasWidth,
+    y: view2.bottom * canvasHeight,
+    width: view2.width * canvasWidth,
+    height: view2.height * canvasHeight
+  }"
+  [scissor]="thview2.viewPort"
+  [scissorTest]="true"
+  [clearColor]="view2.background"
+  (onRender)="view2.updateCamera(camera2.objRef, scene.objRef)"
+>
+  <th-perspectiveCamera
+    #camera2
+    [position]="$any(view2.eye)"
+    [up]="$any(view2.up)"
+    [fov]="view2.fov"
+    [aspect]="(view2.width * canvasWidth) / (view2.height * canvasHeight)"
+    [near]="1"
+    [far]="10000"
+  >
+  </th-perspectiveCamera>
+  
+  <th-effectComposer>
+      <th-renderPass></th-renderPass>
+      <th-filmPass
+       [args]="[0.35, 0.5, 2048, true]"
+      ></th-filmPass>      
+    </th-effectComposer>
+  
+</th-view>
+<th-view
+#thview3
+[scene]="scene"
+[viewPort]="{
+  x: view3.left * canvasWidth,
+  y: view3.bottom * canvasHeight,
+  width: view3.width * canvasWidth,
+  height: view3.height * canvasHeight
+}"
+[scissor]="thview3.viewPort"
+[scissorTest]="true"
+[clearColor]="view3.background"
+(onRender)="view3.updateCamera(camera3.objRef, scene.objRef)"
+>
+<th-perspectiveCamera
+  #camera3
+  [position]="$any(view3.eye)"
+  [up]="$any(view3.up)"
+  [fov]="view3.fov"
+  [aspect]="(view3.width * canvasWidth) / (view3.height * canvasHeight)"
+  [near]="1"
+  [far]="10000"
+>
+</th-perspectiveCamera>
+</th-view>
+
+
+</th-canvas>
