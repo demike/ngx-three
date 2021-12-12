@@ -7,6 +7,7 @@ import { ThObject3D } from './generated/ThObject3D';
 import { ThScene } from './generated/ThScene';
 import { ThEngineService } from './ThEngine.service';
 
+
 @Component({
   selector: 'th-view',
   template: '',
@@ -16,6 +17,10 @@ import { ThEngineService } from './ThEngine.service';
 export class ThView implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   protected _camera?: ThCamera;
+  protected _viewPort?: Vector4 | { x: number; y: number; width: number; height: number };
+
+
+  protected _effectComposer?: EffectComposer;
 
   constructor(protected engServ: ThEngineService, protected raycaster: RaycasterService) {}
 
@@ -30,7 +35,14 @@ export class ThView implements OnInit {
   }
 
   @Input()
-  public effectComposer?: EffectComposer;
+  public set effectComposer(effectComposer: EffectComposer | undefined) {
+    this._effectComposer = effectComposer;
+    this.configureEffectComposerRenderTarget();
+  }
+
+  public get effectComposer() {
+    return this._effectComposer;
+  }
 
   @Input()
   public set camera(camera: ThCamera | undefined) {
@@ -58,7 +70,14 @@ export class ThView implements OnInit {
   public shadow?: boolean;
 
   @Input()
-  public viewPort?: Vector4 | { x: number; y: number; width: number; height: number };
+  public set viewPort(viewPort: Vector4 | { x: number; y: number; width: number; height: number } | undefined ) {
+    this._viewPort = viewPort;
+    this.configureEffectComposerRenderTarget();
+  }
+
+  public get viewPort() {
+    return this._viewPort;
+  }
 
   @Input()
   public scissor?: Vector4 | { x: number; y: number; width: number; height: number };
@@ -107,5 +126,23 @@ export class ThView implements OnInit {
 
   remove(scene: Object3D) {
     // norhing to do
+  }
+
+  private configureEffectComposerRenderTarget() {
+    if (!this.viewPort || !this.effectComposer) {
+      return;
+    } else {
+      let width: number;
+      let height: number;
+      if (this.viewPort instanceof Vector4) {
+        width = this.viewPort.z;
+        height = this.viewPort?.width;
+      } else {
+        width = this.viewPort.width;
+        height = this.viewPort.height;
+      }
+      //TODO: check if pixel ration ha
+      this.effectComposer.setSize(width, height);
+    }
   }
 }
