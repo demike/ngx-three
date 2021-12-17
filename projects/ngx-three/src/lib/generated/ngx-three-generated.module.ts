@@ -20,15 +20,22 @@ import { ThBoxLineGeometry } from './ThBoxLineGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThCamera } from './ThCamera';
 import { ThCameraHelper } from './ThCameraHelper';
+import { ThCanvasTexture } from './ThCanvasTexture';
 import { ThCircleGeometry } from './ThCircleGeometry';
 import { ThClearMaskPass } from './ThClearMaskPass';
 import { ThClearPass } from './ThClearPass';
+import { ThCompressedTexture } from './ThCompressedTexture';
 import { ThConeGeometry } from './ThConeGeometry';
 import { ThConvexGeometry } from './ThConvexGeometry';
 import { ThCubeCamera } from './ThCubeCamera';
+import { ThCubeTexture } from './ThCubeTexture';
 import { ThCubeTexturePass } from './ThCubeTexturePass';
 import { ThCylinderGeometry } from './ThCylinderGeometry';
+import { ThDataTexture } from './ThDataTexture';
+import { ThDataTexture2DArray } from './ThDataTexture2DArray';
+import { ThDataTexture3D } from './ThDataTexture3D';
 import { ThDecalGeometry } from './ThDecalGeometry';
+import { ThDepthTexture } from './ThDepthTexture';
 import { ThDirectionalLight } from './ThDirectionalLight';
 import { ThDirectionalLightHelper } from './ThDirectionalLightHelper';
 import { ThDodecahedronGeometry } from './ThDodecahedronGeometry';
@@ -121,6 +128,7 @@ import { ThTAARenderPass } from './ThTAARenderPass';
 import { ThTeapotGeometry } from './ThTeapotGeometry';
 import { ThTetrahedronGeometry } from './ThTetrahedronGeometry';
 import { ThTextGeometry } from './ThTextGeometry';
+import { ThTexture } from './ThTexture';
 import { ThTexturePass } from './ThTexturePass';
 import { ThTorusGeometry } from './ThTorusGeometry';
 import { ThTorusKnotGeometry } from './ThTorusKnotGeometry';
@@ -128,6 +136,7 @@ import { ThTrackballControls } from './ThTrackballControls';
 import { ThTransformControls } from './ThTransformControls';
 import { ThTubeGeometry } from './ThTubeGeometry';
 import { ThUnrealBloomPass } from './ThUnrealBloomPass';
+import { ThVideoTexture } from './ThVideoTexture';
 import { ThWireframeGeometry } from './ThWireframeGeometry';
 
 @NgModule({
@@ -262,6 +271,15 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThTAARenderPass,
     ThTexturePass,
     ThUnrealBloomPass,
+    ThVideoTexture,
+    ThDataTexture,
+    ThDataTexture2DArray,
+    ThDataTexture3D,
+    ThCompressedTexture,
+    ThCubeTexture,
+    ThCanvasTexture,
+    ThDepthTexture,
+    ThTexture,
   ],
   exports: [
     ThAudioListener,
@@ -394,6 +412,15 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThTAARenderPass,
     ThTexturePass,
     ThUnrealBloomPass,
+    ThVideoTexture,
+    ThDataTexture,
+    ThDataTexture2DArray,
+    ThDataTexture3D,
+    ThCompressedTexture,
+    ThCubeTexture,
+    ThCanvasTexture,
+    ThDepthTexture,
+    ThTexture,
   ],
 })
 export class NgxThreeGeneratedModule {}

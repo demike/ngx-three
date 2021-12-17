@@ -20,7 +20,7 @@ type InterestingThreeExports = OmitByValue<Three, MissingInThreeRuntimeExports |
 
 export { OmitByValue };
 
-// 3D objects
+// ------ 3D objects ------
 
 type __ngxThreeObjects = {
   [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
@@ -33,7 +33,7 @@ type __ngxThreeObjects = {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NgxThreeObjects extends OmitByValue<__ngxThreeObjects, never> {}
 
-// materials
+// ------ materials ------
 
 type __ngxThreeMaterials = {
   [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
@@ -46,7 +46,7 @@ type __ngxThreeMaterials = {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NgxThreeMaterials extends OmitByValue<__ngxThreeMaterials, never> {}
 
-// geometries
+// ------ geometries ------
 
 type __ngxThreeBufferGeometries = {
   [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
@@ -68,7 +68,20 @@ type __ngxThreeExtraGeometries = {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NgxThreeBufferGeometries extends OmitByValue<__ngxThreeBufferGeometries & __ngxThreeExtraGeometries, never> {}
 
-// controls
+// ------ textures -----
+
+type __ngxThreeTextures = {
+  [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
+    ? InstanceType<Three[P]> extends InstanceType<Three['Texture']>
+      ? InstanceType<Three[P]>
+      : never
+    : never;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface NgxThreeTextures extends OmitByValue<__ngxThreeTextures, never> {}
+
+// ------ controls ------
 
 type Controls = typeof import('./control_types');
 type __ngxControls = {
@@ -78,7 +91,7 @@ type __ngxControls = {
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NgxThreeControls extends OmitByValue<__ngxControls, never> {}
 
-// post process passes
+// ------ post processing passes ------
 
 import * as PP from './pass_types';
 type Passes = typeof PP;

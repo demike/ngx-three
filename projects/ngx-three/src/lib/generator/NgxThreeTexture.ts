@@ -5,9 +5,9 @@ import { NgxThreeClass } from './NgxThreeClass';
 /**
  * A wrapper class generator for three.js materials
  */
-export class NgxThreeControl extends NgxThreeClass {
+export class NgxThreeTexture extends NgxThreeClass {
   public generate() {
-    this.imports.add("import { ThControlBase } from '../ThControlBase';");
+    this.imports.add("import { ThTextureBase } from '../ThTextureBase';");
     super.generate();
   }
 
@@ -34,7 +34,7 @@ export class NgxThreeControl extends NgxThreeClass {
   }
 
   protected generateProvidersArray() {
-    return `[{provide: ThControlBase, useExisting: forwardRef(() => ${this.className})}]`;
+    return `[{provide: ThTextureBase, useExisting: forwardRef(() => ${this.className})}]`;
   }
 
   public getBaseClassName(): string {
@@ -42,6 +42,6 @@ export class NgxThreeControl extends NgxThreeClass {
   }
 
   public getWrapperBaseClassName(): string {
-    return 'ThControlBase';
+    return 'ThTextureBase';
   }
 }

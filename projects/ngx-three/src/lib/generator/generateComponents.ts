@@ -12,6 +12,7 @@ import { NgxThreeBufferGeometry } from './NgxThreeGeometry';
 import { NgxThreeControl } from './NgxThreeControl';
 import { NgxThreeBarrelGen } from './NgxThreeBarrelGen';
 import { NgxThreePass } from './NgxThreePass';
+import { NgxThreeTexture } from './NgxThreeTexture';
 
 class NgxThreeClassGenerator {
   public readonly baseOutPath = join(__dirname, '../generated');
@@ -39,6 +40,11 @@ class NgxThreeClassGenerator {
   generatePasses() {
     this.generate('NgxThreePasses', NgxThreePass);
   }
+
+  generateTextures() {
+    this.generate('NgxThreeTextures', NgxThreeTexture);
+  }
+
 
   protected generate(exportTypeName: string, generatorType: Type<NgxThreeClass>) {
     const threeTypes = this.getInterfacePropertyNames(exportTypeName);
@@ -162,5 +168,6 @@ generator.generateMaterials();
 generator.generateGeometries();
 generator.generateControls();
 generator.generatePasses();
+generator.generateTextures();
 generator.generateNgxModule(Array.from(generator.ngxThreeClassMap.values()));
 generator.generateNgxBarrelFile(Array.from(generator.ngxThreeClassMap.values()));
