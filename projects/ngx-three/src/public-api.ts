@@ -34,3 +34,10 @@ export * from './lib/pipes/color.pipe';
 export * from './lib/pipes/vector.pipe';
 
 export * from './lib/stats/stats.directive';
+
+
+// texture loaders
+export * from './lib/loaders/ThTextureLoader';
+export * from './lib/loaders/ThDataTextureLoader';
+export * from './lib/loaders/ThCubeTextureLoader';
+export * from './lib/loaders/ThCompressedTextureLoader';

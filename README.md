@@ -15,6 +15,7 @@ ngx-three:
   - Geometry,
   - Post processing passes,
   - Controls 
+  - Textures
 - Adds support for simple pointer event handling
 - Easy handling of async model loading
 - Supports Multi-View / Multi-Scene scenarios
@@ -433,6 +434,52 @@ to enable loader caching you can use three.js' built in [cache](https://threejs.
 ```typescript
 THREE.Cache.enabled = true;
 ```
+
+# Texture Loading
+ngx-three generates wrappers for   
+- CanvasTexture
+- CompressedTexture
+- CubeTexture
+- DataTexture
+- DataTexture2DArray
+- DataTexture3D
+- DepthTexture
+- Texture
+- VideoTexture
+
+all those wrappers can be placed in an angular template
+
+```html
+<th-Texture #myTexture></th-Texture>
+```
+and you can reuse it in the template by means of a template reference (i.e.: `myTexture`);
+
+To load a Texture you have 3 possibilities (service, pipe, directive)
+- place a loader directive on a wrapper component
+    ```html
+    <th-Texture loadTexture url="thetexture.jpg"></th-Texture>
+    ```
+- use the loader pipe 
+  ```html
+    <th-MeshBasicMaterial [map]='"thetexture.jpg" | loadTexture' ><th-MeshBasicMaterial>
+  ```
+- use the injected service
+  ```ts
+  ...
+  constructor(service: TextureLoaderService) {
+    const texture = service.load('thetexture.jpg')
+  }
+  ```
+  the loaders provide event emitters / callbacks for 'loaded' and 'progress'
+
+  Following texture loaders are available:
+  - TextureLoaderService, ThTextureLoaderDirective, ThTextureLoaderPipe
+  - CompressedTextureLoaderService, ThCompressedTextureLoaderDirective, ThCompressedTextureLoaderPipe
+  - DataTextureLoaderService, ThDataTextureLoaderDirective, ThDataTextureLoaderPipe
+  - CubeTextureLoaderService, ThCubeTextureLoaderDirective, ThCubeTextureLoaderPipe
+
+  the pipe and directive names follow a naming scheme
+  `load*Texture` where `*` can be `Cube`, `Data`, `Compressed`, or `''`
 
 
 # Event Handling

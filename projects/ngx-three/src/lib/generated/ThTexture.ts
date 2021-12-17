@@ -269,11 +269,4 @@ export class ThTexture<
       this._objRef.needsUpdate = value;
     }
   }
-
-  @Input()
-  public set onUpdate(value: () => void) {
-    if (this._objRef) {
-      this._objRef.onUpdate = value;
-    }
-  }
 }

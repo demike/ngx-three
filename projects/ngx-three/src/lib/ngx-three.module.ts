@@ -14,6 +14,10 @@ import { Vector2Pipe, Vector3Pipe, Vector4Pipe } from './pipes/vector.pipe';
 import { ClonePipe } from './pipes/clone.pipe';
 import { StatsDirective } from './stats/stats.directive';
 import { ThRenderDirective } from './renderer/th-render.directive';
+import { ThTextureLoaderDirective, ThTextureLoaderPipe } from './loaders/ThTextureLoader';
+import { ThCompressedTextureLoaderDirective, ThCompressedTextureLoaderPipe } from './loaders/ThCompressedTextureLoader';
+import { ThCubeTextureLoaderDirective, ThCubeTextureLoaderPipe } from './loaders/ThCubeTextureLoader';
+import { ThDataTextureLoaderDirective, ThDataTextureLoaderPipe } from './loaders/ThDataTextureLoader';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,17 @@ import { ThRenderDirective } from './renderer/th-render.directive';
     Vector4Pipe,
     ClonePipe,
     StatsDirective,
-    ThRenderDirective
+    ThRenderDirective,
+    // texture loaders
+    ThTextureLoaderDirective,
+    ThTextureLoaderPipe,
+    ThCompressedTextureLoaderPipe,
+    ThCompressedTextureLoaderDirective,
+    ThCubeTextureLoaderDirective,
+    ThCubeTextureLoaderPipe,
+    ThDataTextureLoaderDirective,
+    ThDataTextureLoaderPipe
+
   ],
   imports: [NgxThreeGeneratedModule],
   exports: [
@@ -49,7 +63,16 @@ import { ThRenderDirective } from './renderer/th-render.directive';
     Vector4Pipe,
     ClonePipe,
     ThRenderDirective,
-    StatsDirective
+    StatsDirective,
+    // texture loaders
+    ThTextureLoaderDirective,
+    ThTextureLoaderPipe,
+    ThCompressedTextureLoaderPipe,
+    ThCompressedTextureLoaderDirective,
+    ThCubeTextureLoaderDirective,
+    ThCubeTextureLoaderPipe,
+    ThDataTextureLoaderDirective,
+    ThDataTextureLoaderPipe
   ]
 })
 export class NgxThreeModule {}

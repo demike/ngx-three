@@ -5,7 +5,7 @@ import { pascalToCamelCase } from './utils';
 import { NgxThreeOverrideStub } from './NgxThreeOverrideStub';
 import { isOverriddenClass } from './overrides';
 
-const INGORED_MEMBERS = ['parent'];
+const INGORED_MEMBERS = ['parent', 'onUpdate'];
 
 /**
  * abstract base class generator
