@@ -131,7 +131,7 @@ export class ThEngineService implements OnDestroy {
 
     const renderer = this._renderer;
 
-    if (view.onRender.observers.length) {
+    if (view.onRender.observed) {
       this.ngZone.run(() =>
         view.onRender.emit({
           renderer,
