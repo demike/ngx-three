@@ -1,10 +1,6 @@
 import { Directive, EventEmitter, Host, Input, NgZone, OnInit, Output, PipeTransform, Type } from '@angular/core';
-import { ThObject3D } from 'dist/ngx-three/public-api';
-import { Loader, Texture } from 'three';
-import { ThTexture } from '../generated/ThTexture';
+import { Loader } from 'three';
 import { createLazyObject3DProxy, LazyObject3DProxy } from './LazyObject3dProxy';
-
-
 
 type AsyncLoader = Pick<Loader, 'loadAsync'>;
 type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
