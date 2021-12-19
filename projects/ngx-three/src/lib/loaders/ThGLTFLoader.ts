@@ -1,29 +1,38 @@
-import { Directive } from '@angular/core';
-import { Object3D } from 'three';
+import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
 import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { ThLoader } from './ThLoader';
+import { ThObject3D } from '../generated/ThObject3D';
+import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GLTFLoaderService extends ThAsyncLoaderService<GLTFLoader> {
+  public clazz = GLTFLoader;
+}
+
+@Pipe({
+   name: 'loadGLTF',
+   pure: true
+})
+export class ThGLTFLoaderPipe extends ThAsyncLoaderBasePipe<GLTFLoader> implements PipeTransform {
+    constructor(protected service: GLTFLoaderService) {
+      super();
+    }
+}
 
 @Directive({
-  selector: '[loadGLTF]'
+  selector: '[loadGLTF]',
 })
-// eslint-disable-next-line @angular-eslint/directive-class-suffix
-export class ThGLTFLoader extends ThLoader<GLTF> {
-  public loaderFn = async (
-    input?: string,
-    onProgress?: (progress: ProgressEvent) => void,
-    onLoaded?: (res: GLTF) => void
-  ): Promise<Object3D> => {
-    if (!input) {
-      throw new Error('missing input url');
-    }
+export class ThGLTFLoaderDirective extends ThAsyncLoaderBaseDirective<GLTFLoader> {
+  constructor(@Host() protected host: ThObject3D, protected zone: NgZone, protected service: GLTFLoaderService) {
+    super(host,zone);
+  }
 
-    const loader = new GLTFLoader();
-    const result: GLTF = await loader.loadAsync(input, onProgress);
-
-    if (onLoaded) {
-      onLoaded(result);
-    }
-
-    return result.scene;
-  };
+  protected getRefFromResponse(response: GLTF) {
+   return response.scene;
+  }
 }
+
+
+

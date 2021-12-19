@@ -3,8 +3,8 @@ import { DataTextureLoader, Texture } from 'three';
 import { ThTexture } from '../generated/ThTexture';
 import {
     ThCallbackLoaderService,
-    ThTextureLoaderBaseDirective, ThTextureLoaderBasePipe
-} from './ThTextureLoaderBase';
+    ThCallbackLoaderBaseDirective, ThCallbackLoaderBasePipe
+} from './ThCallbackLoaderBase';
 
 @Injectable({
     providedIn: 'root'
@@ -17,7 +17,7 @@ import {
     name: 'loadCubeTexture',
     pure: true
   })
-  export class ThDataTextureLoaderPipe extends ThTextureLoaderBasePipe<DataTextureLoader> implements PipeTransform {
+  export class ThDataTextureLoaderPipe extends ThCallbackLoaderBasePipe<DataTextureLoader> implements PipeTransform {
     constructor(protected service: DataTextureLoaderService) {
       super();
     }
@@ -26,7 +26,7 @@ import {
   @Directive({
    selector: '[loadCubeTexture]',
   })
-  export class ThDataTextureLoaderDirective extends ThTextureLoaderBaseDirective<DataTextureLoader> {
+  export class ThDataTextureLoaderDirective extends ThCallbackLoaderBaseDirective<DataTextureLoader> {
     constructor(@Host() protected host: ThTexture<Texture>, protected zone: NgZone, protected service: DataTextureLoaderService) {
       super(host,zone);
     }

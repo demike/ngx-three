@@ -1,7 +1,7 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
 import { CompressedTextureLoader, Texture } from 'three';
 import { ThTexture } from '../generated/ThTexture';
-import { ThCallbackLoaderService, ThTextureLoaderBaseDirective, ThTextureLoaderBasePipe } from './ThTextureLoaderBase';
+import { ThCallbackLoaderService, ThCallbackLoaderBaseDirective, ThCallbackLoaderBasePipe } from './ThCallbackLoaderBase';
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +14,7 @@ import { ThCallbackLoaderService, ThTextureLoaderBaseDirective, ThTextureLoaderB
     name: 'loadCompressedTexture',
     pure: true
   })
-  export class ThCompressedTextureLoaderPipe extends ThTextureLoaderBasePipe<CompressedTextureLoader> implements PipeTransform {
+  export class ThCompressedTextureLoaderPipe extends ThCallbackLoaderBasePipe<CompressedTextureLoader> implements PipeTransform {
     constructor(protected service: CompressedTextureLoaderService) {
       super();
     }
@@ -23,7 +23,7 @@ import { ThCallbackLoaderService, ThTextureLoaderBaseDirective, ThTextureLoaderB
   @Directive({
    selector: '[loadCompressedTexture]',
   })
-  export class ThCompressedTextureLoaderDirective extends ThTextureLoaderBaseDirective<CompressedTextureLoader> {
+  export class ThCompressedTextureLoaderDirective extends ThCallbackLoaderBaseDirective<CompressedTextureLoader> {
     constructor(@Host() protected host: ThTexture<Texture>, protected zone: NgZone, protected service: CompressedTextureLoaderService) {
       super(host,zone);
     }

@@ -20,7 +20,7 @@ export abstract class ThCallbackLoaderService<T extends CallBackLoader>  {
 }
 
 
-export abstract class ThTextureLoaderBasePipe<T extends CallBackLoader> implements PipeTransform {
+export abstract class ThCallbackLoaderBasePipe<T extends CallBackLoader> implements PipeTransform {
   protected abstract service: ThCallbackLoaderService<T>;
 
   public transform(...args: Parameters<T['load']>) {
@@ -29,7 +29,7 @@ export abstract class ThTextureLoaderBasePipe<T extends CallBackLoader> implemen
 }
 
 @Directive({})
-export abstract class ThTextureLoaderBaseDirective<T extends CallBackLoader> implements OnInit {
+export abstract class ThCallbackLoaderBaseDirective<T extends CallBackLoader> implements OnInit {
     protected abstract service: ThCallbackLoaderService<T>;
 
 
@@ -64,7 +64,7 @@ export abstract class ThTextureLoaderBaseDirective<T extends CallBackLoader> imp
       return this.onProgress$;
     }
 
-    constructor(@Host() protected host: ThTexture<Texture>, protected zone: NgZone) {
+    constructor(@Host() protected host: { objRef: any}, protected zone: NgZone) {
     }
 
     ngOnInit(): void {
@@ -91,7 +91,6 @@ export abstract class ThTextureLoaderBaseDirective<T extends CallBackLoader> imp
             }
           : undefined;
 
-        let loaderResult: Texture | undefined;
         const onLoad = this.onLoaded$?.observed
           ? (...args: any) => {
               this.onLoaded$?.next(args[0]);

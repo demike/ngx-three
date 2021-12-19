@@ -1,23 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RaycasterEventDirective } from './events/raycaster.events.directive';
 import { NgxThreeGeneratedModule } from './generated/ngx-three-generated.module';
-import { ThGLTFLoader } from './loaders/ThGLTFLoader';
+import { ThCompressedTextureLoaderDirective, ThCompressedTextureLoaderPipe } from './loaders/ThCompressedTextureLoader';
+import { ThCubeTextureLoaderDirective, ThCubeTextureLoaderPipe } from './loaders/ThCubeTextureLoader';
+import { ThDataTextureLoaderDirective, ThDataTextureLoaderPipe } from './loaders/ThDataTextureLoader';
+import { ThGLTFLoaderDirective, ThGLTFLoaderPipe } from './loaders/ThGLTFLoader';
 import { ThLoader } from './loaders/ThLoader';
+import { ThTextureLoaderDirective, ThTextureLoaderPipe } from './loaders/ThTextureLoader';
+import { ClonePipe } from './pipes/clone.pipe';
+import { ColorPipe } from './pipes/color.pipe';
+import { Vector2Pipe, Vector3Pipe, Vector4Pipe } from './pipes/vector.pipe';
+import { ThRenderDirective } from './renderer/th-render.directive';
+import { StatsDirective } from './stats/stats.directive';
 // import { ThOBJLoader } from './loaders/ThOBJLoader';
 import { ThCanvas } from './ThCanvas';
 import { ThMaterialBase } from './ThMaterialBase';
 import { ThObjectBase } from './ThObjectBase';
 import { ThView } from './ThView';
 import { ThWrapperBase } from './ThWrapperBase';
-import { ColorPipe } from './pipes/color.pipe';
-import { Vector2Pipe, Vector3Pipe, Vector4Pipe } from './pipes/vector.pipe';
-import { ClonePipe } from './pipes/clone.pipe';
-import { StatsDirective } from './stats/stats.directive';
-import { ThRenderDirective } from './renderer/th-render.directive';
-import { ThTextureLoaderDirective, ThTextureLoaderPipe } from './loaders/ThTextureLoader';
-import { ThCompressedTextureLoaderDirective, ThCompressedTextureLoaderPipe } from './loaders/ThCompressedTextureLoader';
-import { ThCubeTextureLoaderDirective, ThCubeTextureLoaderPipe } from './loaders/ThCubeTextureLoader';
-import { ThDataTextureLoaderDirective, ThDataTextureLoaderPipe } from './loaders/ThDataTextureLoader';
 
 @NgModule({
   declarations: [
@@ -27,7 +27,8 @@ import { ThDataTextureLoaderDirective, ThDataTextureLoaderPipe } from './loaders
     ThMaterialBase,
     ThWrapperBase,
     ThLoader,
-    ThGLTFLoader,
+    ThGLTFLoaderDirective,
+    ThGLTFLoaderPipe,
     //   ThOBJLoader,
     RaycasterEventDirective,
     ColorPipe,
@@ -54,7 +55,8 @@ import { ThDataTextureLoaderDirective, ThDataTextureLoaderPipe } from './loaders
     ThCanvas,
     ThView,
     ThLoader,
-    ThGLTFLoader,
+    ThGLTFLoaderDirective,
+    ThGLTFLoaderPipe,
     //   ThOBJLoader,
     RaycasterEventDirective,
     ColorPipe,

@@ -1,33 +1,40 @@
-/*
-import { Directive, Type } from '@angular/core';
-import { Group, Loader, Object3D } from 'three';
-import { OBJLoader } from 'three/examples/jsm/loaders/ObjLoader';
-import { ThLoader } from './ThLoader';
+import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
+
+import { ThObject3D } from '../generated/ThObject3D';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
+import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';
+import { Group } from 'three';
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class GLTFLoaderService extends ThAsyncLoaderService<OBJLoader> {
+  public clazz = OBJLoader;
+}
+
+@Pipe({
+   name: 'loadObj',
+   pure: true
+})
+export class ThObjLoaderPipe extends ThAsyncLoaderBasePipe<OBJLoader> implements PipeTransform {
+    constructor(protected service: GLTFLoaderService) {
+      super();
+    }
+}
 
 @Directive({
-  selector: '[loadOBJ]',
+  selector: '[loadObj]',
 })
-// tslint:disable-next-line: directive-class-suffix
-export class ThOBJLoader extends ThLoader<Group> {
-  public readonly LoaderType: Type<Loader> = OBJLoader;
-  public loaderFn = async (
-    input?: string,
-    onProgress?: (progress: ProgressEvent) => void,
-    onLoaded?: (result: Group) => void
-  ): Promise<Object3D> => {
-    if (!input) {
-      throw new Error('missing input url');
-    }
+export class ThGLTFLoaderDirective extends ThAsyncLoaderBaseDirective<OBJLoader> {
+  constructor(@Host() protected host: ThObject3D, protected zone: NgZone, protected service: GLTFLoaderService) {
+    super(host,zone);
+  }
 
-    const loader = new this.LoaderType();
-    const result: Group = await loader.loadAsync(input, onProgress);
-
-    if (onLoaded) {
-      onLoaded(result);
-    }
-
-    return result;
-    // tslint:disable-next-line: semicolon
-  };
+  protected getRefFromResponse(response: Group) {
+      return response;
+  }
 }
-*/
+
+
+

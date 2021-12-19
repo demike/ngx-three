@@ -1,7 +1,7 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
 import { Texture, TextureLoader } from 'three';
 import { ThTexture } from '../generated/ThTexture';
-import { ThCallbackLoaderService, ThTextureLoaderBaseDirective, ThTextureLoaderBasePipe } from './ThTextureLoaderBase';
+import { ThCallbackLoaderService, ThCallbackLoaderBaseDirective, ThCallbackLoaderBasePipe } from './ThCallbackLoaderBase';
 
 
 @Injectable({
@@ -15,7 +15,7 @@ export class TextureLoaderService extends ThCallbackLoaderService<TextureLoader>
    name: 'loadTexture',
    pure: true
 })
-export class ThTextureLoaderPipe extends ThTextureLoaderBasePipe<TextureLoader> implements PipeTransform {
+export class ThTextureLoaderPipe extends ThCallbackLoaderBasePipe<TextureLoader> implements PipeTransform {
     constructor(protected service: TextureLoaderService) {
       super();
     }
@@ -24,7 +24,7 @@ export class ThTextureLoaderPipe extends ThTextureLoaderBasePipe<TextureLoader> 
 @Directive({
   selector: '[loadTexture]',
 })
-export class ThTextureLoaderDirective extends ThTextureLoaderBaseDirective<TextureLoader> {
+export class ThTextureLoaderDirective extends ThCallbackLoaderBaseDirective<TextureLoader> {
   constructor(@Host() protected host: ThTexture<Texture>, protected zone: NgZone, protected service: TextureLoaderService) {
     super(host,zone);
   }
