@@ -474,12 +474,21 @@ To load a Texture you have 3 possibilities (service, pipe, directive)
 
   Following texture loaders are available:
   - TextureLoaderService, ThTextureLoaderDirective, ThTextureLoaderPipe
-  - CompressedTextureLoaderService, ThCompressedTextureLoaderDirective, ThCompressedTextureLoaderPipe
-  - DataTextureLoaderService, ThDataTextureLoaderDirective, ThDataTextureLoaderPipe
-  - CubeTextureLoaderService, ThCubeTextureLoaderDirective, ThCubeTextureLoaderPipe
+  - CubeTextureLoaderService, ThCubeTextureLoaderDirective, ThCubeTextureLoaderPipe,
+  - Data Texture Loaders
+    - ThDDSLoaderDirective, ThDDSLoaderPipe, DDSLoaderService
+    - ThKTXLoaderDirective, ThKTXLoaderPipe, KTXLoaderService
+    - ThKTX2LoaderDirective, ThKTX2LoaderPipe, ThKTX2LoaderService
+    - ThPVRLoaderDirective, ThPVRLoaderPipe, PVRLoaderService
+  - Compressed Texture Loaders
+    - ThEXRLoaderDirective, ThEXRLoaderPipe, EXRLoaderService
+    - ThRGBELoaderDirective, ThRGBELoaderPipe, RGBELoaderService
+    - ThRGBMLoaderDirective, ThRGBMLoaderPipe, RGBMLoaderService
+    - ThTGALoaderDirective, ThTGALoaderPipe, TGALoaderService
+
 
   the pipe and directive names follow a naming scheme
-  `load*Texture` where `*` can be `Cube`, `Data`, `Compressed`, or `''`
+  `load*Texture` where `*` can be `''`, `Cube`, `DDS`, `EXR` ...
 
 
 # Event Handling

@@ -11,10 +11,11 @@ export * from './lib/ThView';
 export * from './lib/renderer/th-render.directive';
 
 // loaders
-export * from './lib/loaders/ThLoader';
 export * from './lib/loaders/LazyObject3dProxy';
+export * from './lib/loaders/ThAsyncLoaderBase';
+export * from './lib/loaders/ThCallbackLoaderBase';
 export * from './lib/loaders/ThGLTFLoader';
-// export * from './lib/loaders/ThOBJLoader';
+export * from './lib/loaders/ThOBJLoader';
 
 // generated
 export * from './lib/generated';
@@ -38,6 +39,13 @@ export * from './lib/stats/stats.directive';
 
 // texture loaders
 export * from './lib/loaders/ThTextureLoader';
-export * from './lib/loaders/ThDataTextureLoader';
+export * from './lib/loaders/data-texture/ThTGALoader';
 export * from './lib/loaders/ThCubeTextureLoader';
-export * from './lib/loaders/ThCompressedTextureLoader';
+export * from './lib/loaders/compressed-texture/ThDDSLoader';
+export * from './lib/loaders/compressed-texture/ThKTX2Loader';
+export * from './lib/loaders/compressed-texture/ThKTXLoader';
+export * from './lib/loaders/compressed-texture/ThPVRLoader';
+export * from './lib/loaders/data-texture/ThEXRLoader';
+export * from './lib/loaders/data-texture/ThRGBELoader';
+export * from './lib/loaders/data-texture/ThRGBMLoader';
+export * from './lib/loaders/data-texture/ThTGALoader';

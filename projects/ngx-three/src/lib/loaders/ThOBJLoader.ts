@@ -9,7 +9,7 @@ import { Group } from 'three';
 @Injectable({
   providedIn: 'root'
 })
-export class GLTFLoaderService extends ThAsyncLoaderService<OBJLoader> {
+export class OBJLoaderService extends ThAsyncLoaderService<OBJLoader> {
   public clazz = OBJLoader;
 }
 
@@ -18,7 +18,7 @@ export class GLTFLoaderService extends ThAsyncLoaderService<OBJLoader> {
    pure: true
 })
 export class ThObjLoaderPipe extends ThAsyncLoaderBasePipe<OBJLoader> implements PipeTransform {
-    constructor(protected service: GLTFLoaderService) {
+    constructor(protected service: OBJLoaderService) {
       super();
     }
 }
@@ -26,8 +26,8 @@ export class ThObjLoaderPipe extends ThAsyncLoaderBasePipe<OBJLoader> implements
 @Directive({
   selector: '[loadObj]',
 })
-export class ThGLTFLoaderDirective extends ThAsyncLoaderBaseDirective<OBJLoader> {
-  constructor(@Host() protected host: ThObject3D, protected zone: NgZone, protected service: GLTFLoaderService) {
+export class ThObjLoaderDirective extends ThAsyncLoaderBaseDirective<OBJLoader> {
+  constructor(@Host() protected host: ThObject3D, protected zone: NgZone, protected service: OBJLoaderService) {
     super(host,zone);
   }
 
