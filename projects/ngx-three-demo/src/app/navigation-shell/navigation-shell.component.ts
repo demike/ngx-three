@@ -1,4 +1,4 @@
-import { Component, ComponentRef, Query } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ComponentRef, Query } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -9,7 +9,8 @@ import { EditorService } from '../code/EditorService';
 @Component({
   selector: 'app-navigation-shell',
   templateUrl: './navigation-shell.component.html',
-  styleUrls: ['./navigation-shell.component.scss']
+  styleUrls: ['./navigation-shell.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavigationShellComponent {
   public routes = EXAMPLE_ROUTES;

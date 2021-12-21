@@ -1,11 +1,12 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ThCamera, ThCanvas, ThScene } from 'ngx-three';
 import { Camera, CanvasTexture, Color, PerspectiveCamera, Scene, WebGLRenderer } from 'three';
 
 @Component({
   selector: 'app-views-example',
   templateUrl: './views-example.component.html',
-  styleUrls: ['./views-example.component.scss']
+  styleUrls: ['./views-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ViewsExampleComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention

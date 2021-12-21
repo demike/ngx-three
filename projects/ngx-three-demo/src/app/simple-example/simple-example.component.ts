@@ -10,7 +10,8 @@ import { BoxBufferGeometry, MeshStandardMaterial } from 'three';
 
   // eslint-disable-next-line @angular-eslint/component-selector
   selector: 'th-box',
-  providers: createObj3DProviderArray(Box)
+  providers: createObj3DProviderArray(Box),
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class Box extends ThMesh implements OnInit {

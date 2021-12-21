@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { ThObject3D } from 'ngx-three';
 import { Color, Euler, Light, Vector3 } from 'three';
 import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader';
@@ -7,7 +7,8 @@ import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader';
 @Component({
   selector: 'app-post-processing-example',
   templateUrl: './post-processing-example.component.html',
-  styleUrls: ['./post-processing-example.component.scss']
+  styleUrls: ['./post-processing-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PostProcessingExampleComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention
