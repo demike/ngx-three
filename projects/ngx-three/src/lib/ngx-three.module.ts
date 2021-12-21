@@ -14,6 +14,7 @@ import { ThGLTFLoaderDirective, ThGLTFLoaderPipe } from './loaders/ThGLTFLoader'
 import { ThTextureLoaderDirective, ThTextureLoaderPipe } from './loaders/ThTextureLoader';
 import { ClonePipe } from './pipes/clone.pipe';
 import { ColorPipe } from './pipes/color.pipe';
+import { FogPipe } from './pipes/fog.pipe';
 import { Vector2Pipe, Vector3Pipe, Vector4Pipe } from './pipes/vector.pipe';
 import { ThRenderDirective } from './renderer/th-render.directive';
 import { StatsDirective } from './stats/stats.directive';
@@ -40,6 +41,7 @@ import { ThWrapperBase } from './ThWrapperBase';
     Vector3Pipe,
     Vector4Pipe,
     ClonePipe,
+    FogPipe,
     StatsDirective,
     ThRenderDirective,
     // texture loaders
@@ -81,6 +83,7 @@ import { ThWrapperBase } from './ThWrapperBase';
     Vector3Pipe,
     Vector4Pipe,
     ClonePipe,
+    FogPipe,
     ThRenderDirective,
     StatsDirective,
     // texture loaders
