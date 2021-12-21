@@ -19,9 +19,11 @@ export class AnimationExampleComponent implements AfterViewInit {
   constructor() { }
 
   ngAfterViewInit(): void {
-    const material =  this.gridHelper?.objRef?.material as Material;
-    material.opacity = 0.2;
-    material.transparent = true;
+    const material =  this.gridHelper?.objRef?.material as Material | undefined;
+    if(material) {
+      material.opacity = 0.2;
+      material.transparent = true;
+    }
   }
 
   public onBeforeRender() {

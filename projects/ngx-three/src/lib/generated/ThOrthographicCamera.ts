@@ -27,10 +27,10 @@ import { ThObject3D } from './ThObject3D';
 export class ThOrthographicCamera<
   T extends OrthographicCamera = OrthographicCamera,
   TARGS = [
-    left: number,
-    right: number,
-    top: number,
-    bottom: number,
+    left?: number,
+    right?: number,
+    top?: number,
+    bottom?: number,
     near?: number,
     far?: number
   ]
