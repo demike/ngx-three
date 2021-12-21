@@ -34,7 +34,7 @@ export abstract class ThAsyncLoaderBaseDirective<T extends AsyncLoader> implemen
     private initialized = false;
     private _url?: Parameters<T['loadAsync']>[0];
 
-    protected onLoaded$?: EventEmitter<ReturnType<T['loadAsync']>>;
+    protected onLoaded$?: EventEmitter<Awaited<ReturnType<T['loadAsync']>>>;
     protected onProgress$?: EventEmitter<ProgressEvent>;
     protected proxy: LazyObject3DProxy;
 
