@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import {
+  AnimationExamplePageComponent,
   AppRoutingModule,
   BasicExamplePageComponent,
   ControlsExamplePageComponent,
@@ -46,6 +47,8 @@ import { EditorService } from './code/EditorService';
 import { BasicExampleComponent } from './basic-example/basic-example.component';
 import { IntroductoryExampleComponent, Box as IntroBox } from './introductory-example/introductory-example.component';
 import { MultiViewPostprocessingExampleComponent } from './multi-view-postprocessing-example/multi-view-postprocessing-example.component';
+import { AnimationExampleComponent } from './animation-example/animation-example.component';
+import { RobotComponent } from './animation-example/robot.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +81,10 @@ import { MultiViewPostprocessingExampleComponent } from './multi-view-postproces
     PostProcessingExamplePageComponent,
     ViewsExamplePageComponent,
     MultiSceneExamplePageComponent,
-    MultiViewPostprocessingExamplePageComponent
+    MultiViewPostprocessingExamplePageComponent,
+    AnimationExampleComponent,
+    AnimationExamplePageComponent,
+    RobotComponent
   ],
   imports: [
     BrowserModule,

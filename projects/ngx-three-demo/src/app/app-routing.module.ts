@@ -1,10 +1,12 @@
 /* eslint-disable max-len */
-import { Component, NgModule } from '@angular/core';
+import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AnimationExampleComponent } from './animation-example/animation-example.component';
 
 
 @Component({
   selector: 'app-basic-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<app-basic-example class="example-container"></app-basic-example>
     <app-code
       [lineNumbers]="true"
@@ -18,6 +20,7 @@ export class BasicExamplePageComponent {}
 
 @Component({
   selector: 'app-simple-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<app-simple-example class="example-container"></app-simple-example>
     <app-code
       [lineNumbers]="true"
@@ -32,6 +35,7 @@ export class SimpleExamplePageComponent {}
 
 @Component({
   selector: 'app-introductory-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<app-introductory-example class="example-container"></app-introductory-example>
     <app-code
       [lineNumbers]="true"
@@ -46,6 +50,7 @@ export class IntroductoryExamplePageComponent {}
 
 @Component({
   selector: 'app-controls-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: ` <app-controls-example class="example-container"></app-controls-example>
     <app-code
       [lineNumbers]="true"
@@ -60,6 +65,7 @@ export class ControlsExamplePageComponent {}
 
 @Component({
   selector: 'app-loader-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<app-loader-example class="example-container"></app-loader-example>
     <app-code
       [lineNumbers]="true"
@@ -74,6 +80,7 @@ export class LoaderExamplePageComponent {}
 
 @Component({
   selector: 'app-dynamic-loader-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<app-dynamic-loader-example class="example-container"></app-dynamic-loader-example>
     <app-code
       [lineNumbers]="true"
@@ -88,6 +95,7 @@ export class DynamicLoaderExamplePageComponent {}
 
 @Component({
   selector: 'app-events-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<app-events-example class="example-container"></app-events-example>
     <app-code
       [lineNumbers]="true"
@@ -103,6 +111,7 @@ export class EventsExamplePageComponent {}
 
 @Component({
   selector: 'app-instanced-mesh-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<app-instanced-mesh-example class="example-container"></app-instanced-mesh-example>
     <app-code
       [lineNumbers]="true"
@@ -117,6 +126,7 @@ export class InstancedMeshExamplePageComponent {}
 
 @Component({
   selector: 'app-post-processing-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<app-post-processing-example class="example-container"></app-post-processing-example>
     <app-code
       [lineNumbers]="true"
@@ -132,6 +142,7 @@ export class PostProcessingExamplePageComponent {}
 
 @Component({
   selector: 'app-views-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<app-views-example class="example-container"></app-views-example>
     <app-code
       [lineNumbers]="true"
@@ -147,6 +158,7 @@ export class ViewsExamplePageComponent {}
 
 @Component({
   selector: 'app-multi-scene-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<app-multi-scene-example class="example-container"></app-multi-scene-example>
     <app-code
       [lineNumbers]="true"
@@ -162,6 +174,7 @@ export class MultiSceneExamplePageComponent {}
 
 @Component({
   selector: 'app-multi-view-postprocessing-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `<app-multi-view-postprocessing-example class="example-container"></app-multi-view-postprocessing-example>
     <app-code
       [lineNumbers]="true"
@@ -173,6 +186,23 @@ export class MultiSceneExamplePageComponent {}
     </app-code> `
 })
 export class MultiViewPostprocessingExamplePageComponent {}
+
+
+@Component({
+  selector: 'app-animation-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `<app-animation-example class="example-container"></app-animation-example>
+    <app-code
+      [lineNumbers]="true"
+      [codeUrls]="[
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/animation-example/animation-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/animation-example/animation-example.component.ts'
+      ]"
+    >
+    </app-code> `
+})
+export class AnimationExamplePageComponent {}
+
 
 export const EXAMPLE_ROUTES: Routes = [
   { path: 'basic-example', component: BasicExamplePageComponent, data: { title: 'Basic Example' } },
@@ -186,7 +216,8 @@ export const EXAMPLE_ROUTES: Routes = [
   { path: 'post-processing-example', component: PostProcessingExamplePageComponent, data: { title: 'Post Processing Example' } },
   { path: 'views-example', component: ViewsExamplePageComponent, data: { title: 'Multiple Views Example' } },
   { path: 'multi-scene-example', component: MultiSceneExamplePageComponent, data: { title: 'Multiple Scenes Example' } },
-  { path: 'multi-view-postprocessing-example', component: MultiViewPostprocessingExamplePageComponent, data: { title: 'Multiple View Post Processing Example' } }
+  { path: 'multi-view-postprocessing-example', component: MultiViewPostprocessingExamplePageComponent, data: { title: 'Multiple View Post Processing Example' } },
+  { path: 'animation-example', component: AnimationExampleComponent, data: { title: 'Animation Example' } }
 ];
 
 export const exampleDeclarations: any[] = [];

@@ -1,15 +1,21 @@
 import { EventEmitter, Injectable, NgZone, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
-import { Vector4 } from 'three';
+import { Clock, Vector4 } from 'three';
 import { ThView } from './ThView';
+
+export interface RenderState {
+  engine: ThEngineService;
+  delta: number;
+}
 
 @Injectable()
 export class ThEngineService implements OnDestroy {
   private _renderer?: THREE.WebGLRenderer;
   private views: ThView[] = [];
   private frameId?: number;
+  private clock = new Clock();
 
-  private readonly beforeRenderEmitter = new EventEmitter<{engine: ThEngineService}>();
+  private readonly beforeRenderEmitter = new EventEmitter<RenderState>();
   public readonly beforeRender$ = this.beforeRenderEmitter.asObservable();
   public canvas?: HTMLCanvasElement;
 
@@ -77,6 +83,7 @@ export class ThEngineService implements OnDestroy {
   }
 
   public requestAnimationFrame() {
+
     if (this.frameId === undefined) {
       this.ngZone.runOutsideAngular(
         () =>
@@ -87,21 +94,6 @@ export class ThEngineService implements OnDestroy {
     }
   }
 
-  /*
-  public animate(): void {
-    // We have to run this outside angular zones,
-    // because it could trigger heavy changeDetection cycles.
-    this.ngZone.runOutsideAngular(() => {
-      if (document.readyState !== 'loading') {
-        this.render();
-      } else {
-        window.addEventListener('DOMContentLoaded', () => {
-          this.render();
-        });
-      }
-    });
-  }
-  */
 
   protected render(): void {
     this.frameId = undefined;
@@ -110,7 +102,7 @@ export class ThEngineService implements OnDestroy {
     this.requestAnimationFrame();
 
     // emit before render
-    this.beforeRenderEmitter.next({engine: this});
+    this.beforeRenderEmitter.next({engine: this, delta: this.clock.getDelta()});
 
     for (const view of this.views) {
       this.renderView(view);
