@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Object3D } from 'three';
 import { ASSET_PATH } from '../assets';
 
 @Component({
   selector: 'app-dynamic-loader-example',
-  templateUrl: './dynamic-loader-example.component.html'
+  templateUrl: './dynamic-loader-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DynamicLoaderExampleComponent {
   public modelUrl: string;

@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Object3D } from 'three';
 import SimplexNoise from 'simplex-noise';
 import { ThCanvas, ThInstancedMesh, ThPointLight } from 'ngx-three';
 
 @Component({
   selector: 'app-instanced-mesh-example',
-  templateUrl: './instanced-mesh-example.component.html'
+  templateUrl: './instanced-mesh-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InstancedMeshExampleComponent implements OnInit {
   readonly SIZE = 1.5;

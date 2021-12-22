@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
     selector: 'app-basic-example',
+    changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
       <th-canvas>
         <th-scene>

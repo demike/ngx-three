@@ -1,11 +1,12 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ThCanvas } from 'ngx-three';
 import { Color } from 'three';
 
 @Component({
   selector: 'app-multi-scene-example',
   templateUrl: './multi-scene-example.component.html',
-  styleUrls: ['./multi-scene-example.component.scss']
+  styleUrls: ['./multi-scene-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MultiSceneExampleComponent implements OnInit {
   public sliderPos = 0;
