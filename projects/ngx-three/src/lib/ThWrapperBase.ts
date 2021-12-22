@@ -148,7 +148,9 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
   }
 
   protected emitPropertyChanges(changes: SimpleChanges) {
-    ((this.objRef as unknown) as EventDispatcher).dispatchEvent?.({ type: 'changes', changes });
+    if(this._objRef) {
+      ((this._objRef as unknown) as EventDispatcher).dispatchEvent?.({ type: 'changes', changes });
+    }
     if (this.updateEmitter) {
       this.updateEmitter.next(changes);
     }
