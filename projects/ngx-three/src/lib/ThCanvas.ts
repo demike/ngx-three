@@ -8,21 +8,21 @@ import {
   Inject,
   Input,
   OnInit,
-  Output,
   QueryList,
   ViewChild
 } from '@angular/core';
+import { WebGLRenderer } from 'three';
 import { RaycasterService } from './events/raycaster.service';
-
 import { ThObject3D } from './generated/ThObject3D';
-
 import { ThEngineService } from './ThEngine.service';
 import { ThView } from './ThView';
+
+
 
 @Component({
   selector: 'th-canvas',
   styleUrls: ['./ThCanvas.scss'],
-  template: '<canvas #rendererCanvas id="rendererCanvas" style="width: 100%; height: 100%"></canvas>',
+  template: '<canvas #rendererCanvas id="rendererCanvas"></canvas>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
@@ -35,6 +35,13 @@ import { ThView } from './ThView';
 export class ThCanvas extends ThView implements OnInit, AfterViewInit {
   private static instanceCnt = 0;
   public readonly nid = ThCanvas.instanceCnt++;
+
+  /**
+   * renderer parameters
+   * those will be applied to the renderer during construction / initialization
+   */
+  @Input()
+  rendererParameters?: Partial<WebGLRenderer>;
 
   /**
    * if true does not use the ThCanvas as view
@@ -62,7 +69,7 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit {
     }
     this._rendererCanvas = canvas;
     canvas.nativeElement.id += this.nid;
-    this.engServ.setCanvas(canvas.nativeElement);
+
   }
 
   public get rendererCanvas() {
@@ -83,14 +90,20 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit {
   }
 
   public ngOnInit(): void {
-    if (!this.rendererCanvas) {
-      throw new Error('Missing Canvas');
-    }
-    this.engServ.setCanvas(this.rendererCanvas.nativeElement);
+
+    this.applyRendererParameters();
 
     super.ngOnInit();
     if (!this.disableDefaultView) {
       this.engServ.addView(this);
     }
+  }
+
+  private applyRendererParameters() {
+    if (!this.rendererCanvas) {
+      throw new Error('Missing Canvas');
+    }
+
+    this.engServ.setRenderer({...this.rendererParameters, domElement: this.rendererCanvas.nativeElement});
   }
 }

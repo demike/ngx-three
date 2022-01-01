@@ -217,7 +217,7 @@ export const EXAMPLE_ROUTES: Routes = [
   { path: 'views-example', component: ViewsExamplePageComponent, data: { title: 'Multiple Views Example' } },
   { path: 'multi-scene-example', component: MultiSceneExamplePageComponent, data: { title: 'Multiple Scenes Example' } },
   { path: 'multi-view-postprocessing-example', component: MultiViewPostprocessingExamplePageComponent, data: { title: 'Multiple View Post Processing Example' } },
-  { path: 'animation-example', component: AnimationExampleComponent, data: { title: 'Animation Example' } }
+  { path: 'animation-example', component: AnimationExamplePageComponent, data: { title: 'Animation Example' } }
 ];
 
 export const exampleDeclarations: any[] = [];

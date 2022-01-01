@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable, NgZone, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
-import { Clock, Vector4 } from 'three';
+import { Clock, OffscreenCanvas, Vector4, WebGLRenderer, WebGLRendererParameters } from 'three';
 import { ThView } from './ThView';
 
 export interface RenderState {
@@ -8,16 +8,29 @@ export interface RenderState {
   delta: number;
 }
 
+export interface ThRendererParameters extends Partial<WebGLRenderer> {
+  domElement: HTMLCanvasElement;
+}
+
+const RENDERER_DEFAULTS: WebGLRendererParameters = {
+  alpha: true, // transparent background
+  antialias: true, // smooth edges
+  preserveDrawingBuffer: true
+};
+
 @Injectable()
 export class ThEngineService implements OnDestroy {
   private _renderer?: THREE.WebGLRenderer;
+  private rendererParameters?: ThRendererParameters;
   private views: ThView[] = [];
   private frameId?: number;
   private clock = new Clock();
 
   private readonly beforeRenderEmitter = new EventEmitter<RenderState>();
   public readonly beforeRender$ = this.beforeRenderEmitter.asObservable();
-  public canvas?: HTMLCanvasElement;
+  public get canvas(): HTMLCanvasElement | undefined {
+    return this.rendererParameters?.domElement;
+  }
 
   // @ts-ignore
   private resizeObserver?: ResizeObserver;
@@ -46,6 +59,7 @@ export class ThEngineService implements OnDestroy {
         throw new Error('missing canvas element');
       }
 
+      this.resize();
       if (!this.resizeObserver) {
         // @ts-ignore
         this.resizeObserver = new ResizeObserver(() => {
@@ -61,19 +75,16 @@ export class ThEngineService implements OnDestroy {
       return;
     }
     this._renderer = new THREE.WebGLRenderer({
-      canvas: this.canvas,
-      alpha: true, // transparent background
-      antialias: true, // smooth edges
-      preserveDrawingBuffer: true
+      canvas: this.rendererParameters?.domElement,
+      ...RENDERER_DEFAULTS
     });
 
+    Object.assign(this._renderer,{...RENDERER_DEFAULTS, ...this.rendererParameters});
     this.resize();
-
-    // this.renderer.setSize(this.canvas?.width ?? 0, this.canvas?.width ?? 0);
   }
 
-  public setCanvas(canvas: HTMLCanvasElement) {
-    this.canvas = canvas;
+  public setRenderer(options: ThRendererParameters) {
+    this.rendererParameters = options;
     this.initRenderer();
     this.initResizeObserver();
   }
@@ -179,11 +190,15 @@ export class ThEngineService implements OnDestroy {
   }
 
   public resize(): void {
-    if (!this._renderer) {
+    if (!this._renderer || !this.canvas ) {
       return;
     }
     const width = this.canvas?.parentElement?.clientWidth ?? 0;
     const height = this.canvas?.parentElement?.clientHeight ?? 0;
+    console.log(height);
+
+//    this.canvas.width  = this.canvas.clientWidth;
+//    this.canvas.height = this.canvas.clientHeight;
 
     this._renderer.setSize(width, height, false);
 

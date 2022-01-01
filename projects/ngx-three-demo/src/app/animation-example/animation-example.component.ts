@@ -1,6 +1,6 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
 import { ThGridHelper } from 'ngx-three';
-import { Material } from 'three';
+import { Material, sRGBEncoding, TextureEncoding } from 'three';
 
 @Component({
   selector: 'app-animation-example',
@@ -11,6 +11,8 @@ import { Material } from 'three';
 export class AnimationExampleComponent implements AfterViewInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   public readonly Math = Math;
+
+  public readonly outputEncoding: TextureEncoding = sRGBEncoding;
 
   @ViewChild('gridHelper', {static: true})
   public gridHelper?: ThGridHelper;
