@@ -238,6 +238,8 @@ export class ExampleComponent {
 
 Canvas View and Scene are the main building blocks of ngx-three.
 
+
+
 ## ThCanvas 
 
 In general the `ThCanvas` contains [ThView](#ThView) istances, and a
@@ -262,6 +264,10 @@ every one gets its own engine service.
 
 As `ThCanvas` is derived from `ThView` it also shares its inputs / outputs
 
+In addition `ThCanvas` also provides an input `rendererParameters`. It takes a configuration object
+that allows for setting all the members provided by the
+[THREE.WebGLRenderer](https://threejs.org/docs/#api/en/renderers/WebGLRenderer).
+
 ## ThView
 One can say that `ThView` provides the view port.
 The view consists of:
@@ -275,7 +281,7 @@ This combination makes it possible to render multiple scenarios
 - mutliple scenes with the same camera ([Multi Scene Example](https://demike.github.io/ngx-three/multi-scene-example))
   <img src="./docs/multi-scene.png" width="50%" style="display:block"/>
 - one / multiple scene with multiple effects ([Multi Effects Example](https://demike.github.io/ngx-three/multi-view-postprocessing-example))
-  <img src="./docs/multi-view-postprocessing.png" width="50%" style="display:block">-->
+  <img src="./docs/multi-view-postprocessing.png" width="50%" style="display:block">
 
 ## ThScene
 
