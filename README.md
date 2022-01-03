@@ -374,11 +374,25 @@ this can be easily achieved by setting the `objRef` Attribute
 # Model Loading
 ngx-three provides an easy way to load models / scenes and apply it
 to a `th-object3D` element.
+It implements a generic loader service, loader directive and loader pipe,
+That is then used by the specific loader implementations
 
+All types of loaders can load models by means of:
+ - a loader service
+   - provides a Promise of the resulting 'model'
+   - a progress callback
+ - a directive
+   - applies the model to the host `ThObject3d` component ( to its `objRef`)
+   - provides a progress output
+   - provides a loaded output 
+ - a pipe
+   - provides a progress callback
 
+under the hood the directive and the pipe use the service
+One example is the GLTF-Loader
 ## GLTF Loader
 Loading GLTF / GLB files can be achieved
-by using the `loadGLTF` directive.
+by using the `loadGLTF` directive:
 
 ```html
 <th-object3D 
@@ -388,49 +402,92 @@ by using the `loadGLTF` directive.
 </th-object3D>
 ```
 
-You can find an example [here](https://demike.github.io/ngx-three/loader-example)
+the `loadGLTF` pipe:
 
-## Generic Loader
-
-In addition to the pre-defined loaders it is possible use the generic loader and define a loader function
-that actually does the parsing then.
-All the specific loaders are actually using the generic loader and provide their own loader function.
-
-The below example shows how to implement simple  'obj' loading
 ```html
 <th-object3D 
-    load
-    url="assets/helmet.obj"
-    [loaderFN]="loadObj"
+    [objRef] = "'assets/helmet.glb' | loadGLTF"
+    url=
     >
 </th-object3D>
 ```
-with
 
-```typescript
+or by using the GLTFLoaderService directly: 
+
+```ts
 ...
+constructor(private service: GLTFLoaderService) {
+}
 
-public loadObj = async (
-    input?: string,
-    onProgress?: (progress: ProgressEvent) => void,
-    onLoaded?: (result: Group) => void
-  ): Promise<Object3D> => {
-    if (!input) {
-      throw new Error('missing input url');
-    }
+async ngOnInit() {
+  const result: GLTF = await service.load('assets/helmet.glb');
+}
+```
+the `load` method of the service uses the three.js Loader.loadAsync method under the hood
+and also provides the same parameters
+```ts
+load(url: string, onProgress?: (event: ProgressEvent) => void): Promise<any>;
+```
 
-    const loader = new ObjLoader();
-    const result: Group = await loader.loadAsync(input, onProgress);
+You can find an example [here](https://demike.github.io/ngx-three/loader-example)
 
-    if (onLoaded) {
-      onLoaded(result);
-    }
+## Creating your own Loader
 
-    return result;
-  };
+In addition to the pre-defined loaders it is actually quite simple to add additional
+loader Service / Directive / Pipe.
+
+All the specific loaders are actually using the generic loader and provide their own loader function.
+
+The below example shows how to implement simple  'obj' loading
+
+Creating the service is actually as simple as deriving from `ThAsyncLoaderService<OBJLoader>`
+and setting the `clazz` member to the Loader class provided by three.js.
+
+```ts
+@Injectable({
+  providedIn: 'root'
+})
+export class OBJLoaderService extends ThAsyncLoaderService<OBJLoader> {
+  public readonly clazz = OBJLoader;
 }
 ```
 
+Creating your own loader pipe is equaly simple. You just have to derive from
+`ThAsyncLoaderBasePipe<OBJLoader>` and inject the previously defined service.
+
+```ts
+@Pipe({
+   name: 'loadObj',
+   pure: true
+})
+export class ThObjLoaderPipe extends ThAsyncLoaderBasePipe<OBJLoader> implements PipeTransform {
+    constructor(protected service: OBJLoaderService) {
+      super();
+    }
+}
+```
+
+The directive can be implemented as follows:
+
+```ts
+@Directive({
+  selector: '[loadObj]',
+})
+export class ThObjLoaderDirective extends ThAsyncLoaderBaseDirective<OBJLoader> {
+  constructor(@Host() protected host: ThObject3D, protected zone: NgZone, protected service: OBJLoaderService) {
+    super(host,zone);
+  }
+
+  protected getRefFromResponse(response: Group) {
+      return response;
+  }
+}
+
+```
+
+- you have to inject the previously implemented service
+- and implement the method `getRefFromResponse`.
+  The value returned by this method is applied to the host ThObject3D's `objRef` member.
 
 
 ## Caching Models
