@@ -5,7 +5,6 @@ import { Material, sRGBEncoding, TextureEncoding } from 'three';
 @Component({
   selector: 'app-animation-example',
   templateUrl: './animation-example.component.html',
-  styleUrls: ['./animation-example.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AnimationExampleComponent implements AfterViewInit {
