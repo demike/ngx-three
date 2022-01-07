@@ -47,6 +47,7 @@ import { ThExtrudeGeometry } from './ThExtrudeGeometry';
 import { ThFilmPass } from './ThFilmPass';
 import { ThFirstPersonControls } from './ThFirstPersonControls';
 import { ThFlyControls } from './ThFlyControls';
+import { ThFramebufferTexture } from './ThFramebufferTexture';
 import { ThGlitchPass } from './ThGlitchPass';
 import { ThGridHelper } from './ThGridHelper';
 import { ThGroup } from './ThGroup';
@@ -279,6 +280,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThCubeTexture,
     ThCanvasTexture,
     ThDepthTexture,
+    ThFramebufferTexture,
     ThTexture,
   ],
   exports: [
@@ -420,6 +422,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThCubeTexture,
     ThCanvasTexture,
     ThDepthTexture,
+    ThFramebufferTexture,
     ThTexture,
   ],
 })

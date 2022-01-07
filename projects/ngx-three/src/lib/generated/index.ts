@@ -50,6 +50,7 @@ export * from './ThExtrudeGeometry';
 export * from './ThFilmPass';
 export * from './ThFirstPersonControls';
 export * from './ThFlyControls';
+export * from './ThFramebufferTexture';
 export * from './ThGlitchPass';
 export * from './ThGridHelper';
 export * from './ThGroup';
