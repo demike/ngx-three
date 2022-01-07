@@ -436,11 +436,9 @@ You can find an example [here](https://demike.github.io/ngx-three/loader-example
 In addition to the pre-defined loaders it is actually quite simple to add additional
 loader Service / Directive / Pipe.
 
-All the specific loaders are actually using the generic loader and provide their own loader function.
-
 The below example shows how to implement simple  'obj' loading
 
-Creating the service is actually as simple as deriving from `ThAsyncLoaderService<OBJLoader>`
+Creating the service is as simple as deriving from `ThAsyncLoaderService<OBJLoader>`
 and setting the `clazz` member to the Loader class provided by three.js.
 
 ```ts
@@ -509,6 +507,7 @@ ngx-three generates wrappers for
 - DepthTexture
 - Texture
 - VideoTexture
+- FramebufferTexture
 
 all those wrappers can be placed in an angular template
 
