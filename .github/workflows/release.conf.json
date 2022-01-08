@@ -23,7 +23,11 @@
       {
         "title": "## 🧹 Chore",
         "labels": ["chore"]
-      }
+      },
+      {
+        "title": "## 📦 Uncategorized",
+        "labels": []
+    }
 
     ],
     "label_extractor": [
@@ -31,5 +35,5 @@
           "pattern": "^([^:])+",
           "target": "$1"
       }
-  ]
+    ]
 }
