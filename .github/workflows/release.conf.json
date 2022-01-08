@@ -33,7 +33,8 @@
     "label_extractor": [
       {
           "pattern": "^([^:])+",
-          "target": "$1"
+          "method": "match",
+          "on_property": "title"
       }
     ]
 }
