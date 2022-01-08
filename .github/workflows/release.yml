@@ -67,7 +67,8 @@ jobs:
       # create a github release
       - name: create release
         id: create_release
-        uses: softprops/action-gh-release@latest
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
