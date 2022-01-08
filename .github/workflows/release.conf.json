@@ -25,5 +25,11 @@
         "labels": ["chore"]
       }
 
-    ]
+    ],
+    "label_extractor": [
+      {
+          "pattern": "^([^:])+",
+          "target": "$1"
+      }
+  ]
 }
