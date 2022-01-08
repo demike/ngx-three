@@ -19,6 +19,11 @@
       {
         "title": "## 🏭 Build",
         "labels": ["build"]
+      },
+      {
+        "title": "## 🧹 Chore",
+        "labels": ["chore"]
       }
+
     ]
 }
