@@ -69,7 +69,7 @@ jobs:
         id: build_changelog
         uses: mikepenz/release-changelog-builder-action@main
         with:
-          configuration: "github/workflows/release.conf.json"
+          configuration: ".github/workflows/release.conf.json"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
