@@ -1,6 +1,6 @@
 {
   "name": "ngx-three",
-  "version": "0.12.8",
+  "version": "0.12.9",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
