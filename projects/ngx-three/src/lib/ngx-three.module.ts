@@ -18,7 +18,7 @@ import { FogPipe } from './pipes/fog.pipe';
 import { Vector2Pipe, Vector3Pipe, Vector4Pipe } from './pipes/vector.pipe';
 import { ThRenderDirective } from './renderer/th-render.directive';
 import { StatsDirective } from './stats/stats.directive';
-// import { ThOBJLoader } from './loaders/ThOBJLoader';
+import { ThObjLoaderDirective, ThObjLoaderPipe } from './loaders/ThOBJLoader';
 import { ThCanvas } from './ThCanvas';
 import { ThMaterialBase } from './ThMaterialBase';
 import { ThObjectBase } from './ThObjectBase';
@@ -34,7 +34,8 @@ import { ThWrapperBase } from './ThWrapperBase';
     ThWrapperBase,
     ThGLTFLoaderDirective,
     ThGLTFLoaderPipe,
-    //   ThOBJLoader,
+    ThObjLoaderPipe,
+    ThObjLoaderDirective,
     RaycasterEventDirective,
     ColorPipe,
     Vector2Pipe,
@@ -76,7 +77,8 @@ import { ThWrapperBase } from './ThWrapperBase';
     ThView,
     ThGLTFLoaderDirective,
     ThGLTFLoaderPipe,
-    //   ThOBJLoader,
+    ThObjLoaderDirective,
+    ThObjLoaderPipe,
     RaycasterEventDirective,
     ColorPipe,
     Vector2Pipe,
