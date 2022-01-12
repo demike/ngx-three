@@ -25,6 +25,7 @@ import { ThObjectBase } from './ThObjectBase';
 import { ThView } from './ThView';
 import { ThWrapperBase } from './ThWrapperBase';
 import { ThFBXLoaderDirective, ThFBXLoaderPipe } from './loaders/ThFBXLoader';
+import { ThLogLuvLoaderDirective, ThLogLuvLoaderPipe } from './loaders/data-texture/ThLogLuvLoader';
 
 @NgModule({
   declarations: [
@@ -70,8 +71,9 @@ import { ThFBXLoaderDirective, ThFBXLoaderPipe } from './loaders/ThFBXLoader';
     ThRGBMLoaderDirective,
     ThRGBMLoaderPipe,
     ThTGALoaderDirective,
-    ThTGALoaderPipe
-
+    ThTGALoaderPipe,
+    ThLogLuvLoaderDirective,
+    ThLogLuvLoaderPipe
   ],
   imports: [NgxThreeGeneratedModule],
   exports: [
@@ -115,7 +117,9 @@ import { ThFBXLoaderDirective, ThFBXLoaderPipe } from './loaders/ThFBXLoader';
     ThRGBMLoaderDirective,
     ThRGBMLoaderPipe,
     ThTGALoaderDirective,
-    ThTGALoaderPipe
+    ThTGALoaderPipe,
+    ThLogLuvLoaderDirective,
+    ThLogLuvLoaderPipe
   ]
 })
 export class NgxThreeModule {}

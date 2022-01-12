@@ -51,3 +51,4 @@ export * from './lib/loaders/data-texture/ThEXRLoader';
 export * from './lib/loaders/data-texture/ThRGBELoader';
 export * from './lib/loaders/data-texture/ThRGBMLoader';
 export * from './lib/loaders/data-texture/ThTGALoader';
+export * from './lib/loaders/data-texture/ThLogLuvLoader';
