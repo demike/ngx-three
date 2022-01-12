@@ -24,6 +24,7 @@ import { ThMaterialBase } from './ThMaterialBase';
 import { ThObjectBase } from './ThObjectBase';
 import { ThView } from './ThView';
 import { ThWrapperBase } from './ThWrapperBase';
+import { ThFBXLoaderDirective, ThFBXLoaderPipe } from './loaders/ThFBXLoader';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,8 @@ import { ThWrapperBase } from './ThWrapperBase';
     ThGLTFLoaderPipe,
     ThObjLoaderPipe,
     ThObjLoaderDirective,
+    ThFBXLoaderDirective,
+    ThFBXLoaderPipe,
     RaycasterEventDirective,
     ColorPipe,
     Vector2Pipe,
@@ -79,6 +82,8 @@ import { ThWrapperBase } from './ThWrapperBase';
     ThGLTFLoaderPipe,
     ThObjLoaderDirective,
     ThObjLoaderPipe,
+    ThFBXLoaderDirective,
+    ThFBXLoaderPipe,
     RaycasterEventDirective,
     ColorPipe,
     Vector2Pipe,

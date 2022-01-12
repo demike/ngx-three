@@ -407,7 +407,6 @@ the `loadGLTF` pipe:
 ```html
 <th-object3D 
     [objRef] = "'assets/helmet.glb' | loadGLTF"
-    url=
     >
 </th-object3D>
 ```
@@ -487,6 +486,29 @@ export class ThObjLoaderDirective extends ThAsyncLoaderBaseDirective<OBJLoader> 
 - and implement the method `getRefFromResponse`.
   The value returned by this method is applied to the host ThObject3D's `objRef` member.
 
+## FBXLoader
+
+The FBXLoader can be used like the GLTF loader
+by using the `loadFBX` directive:
+
+```html
+<th-object3D 
+    loadFBX
+    url="assets/model.fbx"
+    >
+</th-object3D>
+```
+
+the `loadFBX` pipe:
+
+```html
+<th-object3D 
+    [objRef] = "'assets/model.fbx' | loadFBX"
+    >
+</th-object3D>
+```
+
+or by using the FBXLoaderService directly: 
 
 ## Caching Models
 

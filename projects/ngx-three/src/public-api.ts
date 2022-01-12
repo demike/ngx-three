@@ -16,6 +16,7 @@ export * from './lib/loaders/ThAsyncLoaderBase';
 export * from './lib/loaders/ThCallbackLoaderBase';
 export * from './lib/loaders/ThGLTFLoader';
 export * from './lib/loaders/ThOBJLoader';
+export * from './lib/loaders/ThFBXLoader';
 
 // generated
 export * from './lib/generated';
