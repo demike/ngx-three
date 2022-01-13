@@ -2,6 +2,7 @@ import { EventEmitter, Injectable, NgZone, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
 import { Clock, OffscreenCanvas, Vector4, WebGLRenderer, WebGLRendererParameters } from 'three';
 import { ThView } from './ThView';
+import { isObserved } from './util';
 
 export interface RenderState {
   engine: ThEngineService;
@@ -134,7 +135,7 @@ export class ThEngineService implements OnDestroy {
 
     const renderer = this._renderer;
 
-    if (view.onRender.observed) {
+    if ( isObserved(view.onRender) ) {
       this.ngZone.run(() =>
         view.onRender.emit({
           renderer,

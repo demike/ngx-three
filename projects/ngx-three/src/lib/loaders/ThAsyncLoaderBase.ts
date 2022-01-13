@@ -1,5 +1,6 @@
 import { Directive, EventEmitter, Host, Input, NgZone, OnInit, Output, PipeTransform, Type } from '@angular/core';
 import { Loader } from 'three';
+import { isObserved } from '../util';
 import { createLazyObject3DProxy, LazyObject3DProxy } from './LazyObject3dProxy';
 
 type AsyncLoader = Pick<Loader, 'loadAsync'>;
@@ -92,7 +93,7 @@ export abstract class ThAsyncLoaderBaseDirective<T extends AsyncLoader> implemen
         const url = this._url;
 
 
-        const onProgress = this.onProgress$?.observed
+        const onProgress = isObserved(this.onProgress$)
           ? (progress: ProgressEvent<EventTarget>) => {
               this.onProgress$?.next(progress);
             }

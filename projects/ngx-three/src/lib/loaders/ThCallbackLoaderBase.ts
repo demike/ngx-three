@@ -1,6 +1,7 @@
 import { Directive, EventEmitter, Host, Input, NgZone, OnInit, Output, PipeTransform, Type } from '@angular/core';
 import { Texture } from 'three';
 import { ThTexture } from '../generated/ThTexture';
+import { isObserved } from '../util';
 
 
 
@@ -85,13 +86,13 @@ export abstract class ThCallbackLoaderBaseDirective<T extends CallBackLoader> im
         const url = this._url;
 
 
-        const onProgress = this.onProgress$?.observed
+        const onProgress = isObserved(this.onProgress$)
           ? (progress: ProgressEvent<EventTarget>) => {
               this.onProgress$?.next(progress);
             }
           : undefined;
 
-        const onLoad = this.onLoaded$?.observed
+        const onLoad = isObserved(this.onLoaded$)
           ? (...args: any) => {
               this.onLoaded$?.next(args[0]);
             }
