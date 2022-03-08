@@ -8,12 +8,12 @@ import {
   ControlsExamplePageComponent,
   DynamicLoaderExamplePageComponent,
   EventsExamplePageComponent,
-  EXAMPLE_ROUTES,
   InstancedMeshExamplePageComponent,
   IntroductoryExamplePageComponent,
   LoaderExamplePageComponent,
   MultiSceneExamplePageComponent,
   MultiViewPostprocessingExamplePageComponent,
+  PLYLoaderExamplePageComponent,
   PostProcessingExamplePageComponent,
   SimpleExamplePageComponent,
   ViewsExamplePageComponent
@@ -49,6 +49,7 @@ import { IntroductoryExampleComponent, Box as IntroBox } from './introductory-ex
 import { MultiViewPostprocessingExampleComponent } from './multi-view-postprocessing-example/multi-view-postprocessing-example.component';
 import { AnimationExampleComponent } from './animation-example/animation-example.component';
 import { RobotComponent } from './animation-example/robot.component';
+import { PLYLoaderExampleComponent } from './plyloader-example/plyloader-example.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,11 @@ import { RobotComponent } from './animation-example/robot.component';
     MultiViewPostprocessingExamplePageComponent,
     AnimationExampleComponent,
     AnimationExamplePageComponent,
-    RobotComponent
+    RobotComponent,
+//    CustomRenderExampleComponent,
+//    CustomRenderExamplePageComponent,
+    PLYLoaderExampleComponent,
+    PLYLoaderExamplePageComponent
   ],
   imports: [
     BrowserModule,

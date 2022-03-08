@@ -1,0 +1,43 @@
+<th-canvas (onRender)="this.onBeforeRender()" [shadow]="true">
+    <th-scene [background]="'#72645b' | color" [fog]=" ['#72645b', 2, 15] | fog ">
+
+
+    <!-- ground -->
+    <th-mesh
+    [position]="[ 0, -0.5, 0]"
+    [rotation]="[ - Math.PI / 2, 0 , 0]"
+    [receiveShadow]="true"
+    >
+        <th-planeGeometry [args]="[40,40]"></th-planeGeometry>
+        <th-meshPhongMaterial [args]="{color : '#999999', specular: '#101010'}"></th-meshPhongMaterial>
+    </th-mesh>
+  
+    <th-mesh
+        [rotation]="[- Math.PI / 2, 0, 0]"
+        [position]="[0, -0.2, 0.3]"
+        [scale]="[0.001, 0.001, 0.001]"
+        [castShadow]="true"
+        [receiveShadow]="true"
+    >
+        <!-- PLY file ( only provides geometry! ) -->
+        <th-bufferGeometry 
+            loadPLY
+            [url]="assetPath">
+        </th-bufferGeometry>
+        <th-meshStandardMaterial [args]="{ color: '#0055ff', flatShading: true }"></th-meshStandardMaterial>
+    </th-mesh>
+  
+
+    <!-- lights -->
+    <th-hemisphereLight [args]="['#443333', '#111122']"></th-hemisphereLight>
+    <th-directionalLight [castShadow]="true" [position]="[1,1,1]" [color]="'#ffffff' | color" [intensity]="1.35" [shadowMapHeight]="1024" [shadowMapWidth]="1024"></th-directionalLight>
+    <th-directionalLight [castShadow]="true" [position]="[0.5,1,-1]" [color]="'#ffaa00' | color" [intensity]="1" [shadowMapHeight]="1024" [shadowMapWidth]="1024"></th-directionalLight>
+
+    
+  
+    <th-perspectiveCamera #camera
+        [args]="[35, 2, 1, 15]"
+    ></th-perspectiveCamera>
+    </th-scene>
+  </th-canvas>
+  

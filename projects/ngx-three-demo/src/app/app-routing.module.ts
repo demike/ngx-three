@@ -203,6 +203,40 @@ export class MultiViewPostprocessingExamplePageComponent {}
 })
 export class AnimationExamplePageComponent {}
 
+/*
+@Component({
+  selector: 'app-custom-render-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `<app-custom-render-example class="example-container"></app-custom-render-example>
+    <app-code
+      [lineNumbers]="true"
+      [codeUrls]="[
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/custom-render-example/custom-render-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/custom-render-example/custom-render-example.component.ts'
+      ]"
+    >
+    </app-code> `
+})
+export class CustomRenderExamplePageComponent {}
+*/
+
+@Component({
+  selector: 'app-plyloader-example-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `<app-plyloader-example class="example-container"></app-plyloader-example>
+    <app-code
+      [lineNumbers]="true"
+      [codeUrls]="[
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/plyloader-example/plyloader-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/plyloader-example/plyloader-example.component.ts'
+      ]"
+    >
+    </app-code> `
+})
+export class PLYLoaderExamplePageComponent {}
+
+
+
 
 export const EXAMPLE_ROUTES: Routes = [
   { path: 'basic-example', component: BasicExamplePageComponent, data: { title: 'Basic Example' } },
@@ -217,7 +251,9 @@ export const EXAMPLE_ROUTES: Routes = [
   { path: 'views-example', component: ViewsExamplePageComponent, data: { title: 'Multiple Views Example' } },
   { path: 'multi-scene-example', component: MultiSceneExamplePageComponent, data: { title: 'Multiple Scenes Example' } },
   { path: 'multi-view-postprocessing-example', component: MultiViewPostprocessingExamplePageComponent, data: { title: 'Multiple View Post Processing Example' } },
-  { path: 'animation-example', component: AnimationExamplePageComponent, data: { title: 'Animation Example' } }
+  { path: 'animation-example', component: AnimationExamplePageComponent, data: { title: 'Animation Example' } },
+// { path: 'custom-render-example', component: CustomRenderExamplePageComponent, data: { title: 'Custom Render Example (Selective Glow)' } },
+  { path: 'plyloader-example', component: PLYLoaderExamplePageComponent, data: { title: 'PLY Loader Example' } }
 ];
 
 export const exampleDeclarations: any[] = [];

@@ -14,7 +14,8 @@ export class ThGeometryBase<T extends BufferGeometry, ARGS> extends ThWrapperBas
 
   public addToParent() {
     if (!this.parent.objRef) {
-      throw new Error("parent object doesn't hold a three js object instance");
+      return;
+      //throw new Error("parent object doesn't hold a three js object instance");
     }
 
     (this.parent.objRef as any).geometry = this.objRef;

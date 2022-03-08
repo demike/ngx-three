@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { toCodeSandbox } from './codesandbox';
 import { EditorService } from './EditorService';
-import { toStackblitz } from './stackblitz';
 
 @Component({
   selector: 'app-code',

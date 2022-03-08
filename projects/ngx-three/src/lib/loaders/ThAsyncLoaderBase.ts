@@ -32,8 +32,8 @@ export abstract class ThAsyncLoaderBaseDirective<T extends AsyncLoader> implemen
     protected abstract getRefFromResponse(response: Awaited<ReturnType<T['loadAsync']>>): any;
 
 
-    private initialized = false;
-    private _url?: Parameters<T['loadAsync']>[0];
+    protected initialized = false;
+    protected _url?: Parameters<T['loadAsync']>[0];
 
     protected onLoaded$?: EventEmitter<Awaited<ReturnType<T['loadAsync']>>>;
     protected onProgress$?: EventEmitter<ProgressEvent>;

@@ -320,7 +320,7 @@ A mesh can have a material (`ThMaterial`) and a Geometry(`ThGeometry`).
 </th-mesh>
 ```
 
-Every ngx-three object has a membery called
+Every ngx-three object has a member called
 `objRef` this one holds the reference to the
 three.js object.
 For example `ThMesh` has a member `objRef: THREE.Mesh`.
@@ -508,7 +508,42 @@ the `loadFBX` pipe:
 </th-object3D>
 ```
 
-or by using the FBXLoaderService directly: 
+or by using the FBXLoaderService directly.
+
+## PLYLoader
+
+The PLYLoader is a little bit different than the previous Loaders (i.e.: GLTFLoader).
+Because the PLYLoader only provides/loads geometry and no material.
+In contrast the GLTFLoader loads a full scene.
+
+You can use the PLYLoader directive:
+
+```html
+    <th-mesh>
+        <!-- PLY file ( only provides geometry! ) -->
+        <th-bufferGeometry 
+            loadPLY
+            [url]="assets/dolphins.ply">
+        </th-bufferGeometry>
+        <th-meshStandardMaterial [args]="{ color: '#0055ff' }"></th-meshStandardMaterial>
+    </th-mesh>
+```
+
+or the pipe
+```html
+    <th-mesh>
+        <!-- PLY file ( only provides geometry! ) -->
+        <th-bufferGeometry 
+            [objRef] = "'assets/dolphins.ply' | loadPLY">
+        </th-bufferGeometry>
+        <th-meshStandardMaterial [args]="{ color: '#0055ff' }"></th-meshStandardMaterial>
+    </th-mesh>
+```
+
+or you can use the PLYLoader service directly.
+
+You can find an example [here](https://demike.github.io/ngx-three/plyloader-example)
+
 
 ## Caching Models
 
