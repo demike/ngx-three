@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgxThreeModule } from 'ngx-three';
 
 import { PLYLoaderExampleComponent } from './plyloader-example.component';
 
@@ -8,7 +9,8 @@ describe('PLYLoaderExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PLYLoaderExampleComponent ]
+      declarations: [ PLYLoaderExampleComponent ],
+      imports: [ NgxThreeModule ]
     })
     .compileComponents();
   });
