@@ -12,7 +12,7 @@ import {
   polyfillTs
 } from './codesandbox';
 
-export async function toStackblitz(fileUrls: string[]) {
+export async function toStackblitz(fileUrls: string[], exampleComponentName?: string) {
   const mainTsUrl = getMainTsUrl(fileUrls);
   const templateUrl = getMainTemplateUrl(fileUrls);
   const fileName = getFileNameFromFullPath(mainTsUrl);
@@ -24,9 +24,9 @@ export async function toStackblitz(fileUrls: string[]) {
     description: 'ngx-three example ' + tagName,
     files: {
       'src/index.html': createIndexHtml(tagName),
-      'src/main.ts': createMainTs(fileName),
+      'src/main.ts': createMainTs(fileName, exampleComponentName ),
       'src/polyfills.ts': polyfillTs,
-      'src/assets.ts': `export const ASSET_PATH = \'${GITHUB_ASSET_PATH}\';`
+      'src/assets.ts': `export const ASSET_PATH = \'${GITHUB_ASSET_PATH}\';`,
     },
 
     dependencies: {

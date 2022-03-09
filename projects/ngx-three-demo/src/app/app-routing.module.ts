@@ -230,6 +230,7 @@ export class CustomRenderExamplePageComponent {}
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/plyloader-example/plyloader-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/plyloader-example/plyloader-example.component.ts'
       ]"
+      exampleClassName="PLYLoaderExampleComponent"
     >
     </app-code> `
 })

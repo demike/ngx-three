@@ -96,8 +96,8 @@ export function getFileNameFromFullPath(fullPath: string) {
   return fullPath.replace(/^.*[\\\/]/, ''); // works for both / and \
 }
 
-export function createMainTs(tsFileName: string) {
-  const component = getComponentNameFromFileName(tsFileName);
+export function createMainTs(tsFileName: string, exampleComponentName?: string) {
+  const component = exampleComponentName ?? getComponentNameFromFileName(tsFileName);
   return `
             import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
             import { NgModule } from '@angular/core';
