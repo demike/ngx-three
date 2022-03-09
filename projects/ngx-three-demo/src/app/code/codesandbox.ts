@@ -99,9 +99,9 @@ export function getFileNameFromFullPath(fullPath: string) {
 export function createMainTs(tsFileName: string) {
   const component = getComponentNameFromFileName(tsFileName);
   return `
+            import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
             import { NgModule } from '@angular/core';
             import { BrowserModule } from '@angular/platform-browser';
-            import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
             import { NgxThreeModule } from 'ngx-three';
             import { FormsModule } from '@angular/forms';
             import { ${component}} from './app/${tsFileName.replace('.ts', '')}';
