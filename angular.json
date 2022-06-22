@@ -168,6 +168,5 @@
         }
       }
     }
-  },
-  "defaultProject": "ngx-three"
+  }
 }
