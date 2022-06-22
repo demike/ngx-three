@@ -144,9 +144,6 @@ import { ThTubeGeometry } from './ThTubeGeometry';
 import { ThUnrealBloomPass } from './ThUnrealBloomPass';
 import { ThVideoTexture } from './ThVideoTexture';
 import { ThWireframeGeometry } from './ThWireframeGeometry';
-import { ThXRGripSpace } from './ThXRGripSpace';
-import { ThXRHandSpace } from './ThXRHandSpace';
-import { ThXRTargetRaySpace } from './ThXRTargetRaySpace';
 
 @NgModule({
   declarations: [
@@ -194,9 +191,6 @@ import { ThXRTargetRaySpace } from './ThXRTargetRaySpace';
     ThLine,
     ThPoints,
     ThGroup,
-    ThXRHandSpace,
-    ThXRTargetRaySpace,
-    ThXRGripSpace,
     ThScene,
     ThShadowMaterial,
     ThSpriteMaterial,
@@ -297,7 +291,7 @@ import { ThXRTargetRaySpace } from './ThXRTargetRaySpace';
     ThCanvasTexture,
     ThDepthTexture,
     ThFramebufferTexture,
-    ThTexture,
+    ThTexture
   ],
   exports: [
     ThAudioListener,
@@ -344,9 +338,6 @@ import { ThXRTargetRaySpace } from './ThXRTargetRaySpace';
     ThLine,
     ThPoints,
     ThGroup,
-    ThXRHandSpace,
-    ThXRTargetRaySpace,
-    ThXRGripSpace,
     ThScene,
     ThShadowMaterial,
     ThSpriteMaterial,
@@ -447,7 +438,7 @@ import { ThXRTargetRaySpace } from './ThXRTargetRaySpace';
     ThCanvasTexture,
     ThDepthTexture,
     ThFramebufferTexture,
-    ThTexture,
-  ],
+    ThTexture
+  ]
 })
 export class NgxThreeGeneratedModule {}

@@ -147,6 +147,3 @@ export * from './ThTubeGeometry';
 export * from './ThUnrealBloomPass';
 export * from './ThVideoTexture';
 export * from './ThWireframeGeometry';
-export * from './ThXRGripSpace';
-export * from './ThXRHandSpace';
-export * from './ThXRTargetRaySpace';
