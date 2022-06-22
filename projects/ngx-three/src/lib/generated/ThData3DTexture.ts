@@ -8,54 +8,44 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import {
-  CompressedPixelFormat,
-  CompressedTexture,
-  Mapping,
-  TextureDataType,
-  TextureEncoding,
-  TextureFilter,
-  Wrapping,
-} from 'three';
+import { Data3DTexture, TextureFilter } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-  selector: 'th-compressedTexture',
+  selector: 'th-data3DTexture',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    {
-      provide: ThTextureBase,
-      useExisting: forwardRef(() => ThCompressedTexture),
-    },
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThData3DTexture) },
   ],
 })
-export class ThCompressedTexture<
-  T extends CompressedTexture = CompressedTexture,
-  TARGS = [
-    mipmaps: ImageData[],
-    width: number,
-    height: number,
-    format?: CompressedPixelFormat,
-    type?: TextureDataType,
-    mapping?: Mapping,
-    wrapS?: Wrapping,
-    wrapT?: Wrapping,
-    magFilter?: TextureFilter,
-    minFilter?: TextureFilter,
-    anisotropy?: number,
-    encoding?: TextureEncoding
-  ]
+export class ThData3DTexture<
+  T extends Data3DTexture = Data3DTexture,
+  TARGS = [data: BufferSource, width: number, height: number, depth: number]
 > extends ThTexture<T, TARGS> {
-  public getType(): Type<CompressedTexture> {
-    return CompressedTexture;
+  public getType(): Type<Data3DTexture> {
+    return Data3DTexture;
   }
 
   @Input()
-  public set mipmaps(value: ImageData[]) {
+  public set magFilter(value: TextureFilter) {
     if (this._objRef) {
-      this._objRef.mipmaps = value;
+      this._objRef.magFilter = value;
+    }
+  }
+
+  @Input()
+  public set minFilter(value: TextureFilter) {
+    if (this._objRef) {
+      this._objRef.minFilter = value;
+    }
+  }
+
+  @Input()
+  public set wrapR(value: boolean) {
+    if (this._objRef) {
+      this._objRef.wrapR = value;
     }
   }
 

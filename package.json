@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build ngx-three",
     "build:prod": "ng build --configuration production",
     "build:demo": "ng build ngx-three-demo --configuration production --sourceMap=false --base-href /ngx-three/",
     "test": "ng test",
@@ -67,7 +67,7 @@
     "prettier-eslint": "^15.0.1",
     "prettier-eslint-cli": "^5.0.1",
     "protractor": "~7.0.0",
-    "ts-node": "~10.4.0",
+    "ts-node": "^10.8.1",
     "typescript": "~4.7.4",
     "utility-types": "^3.10.0"
   }

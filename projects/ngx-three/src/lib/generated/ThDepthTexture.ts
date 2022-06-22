@@ -45,13 +45,6 @@ export class ThDepthTexture<
   }
 
   @Input()
-  public set image(value: { width: number; height: number }) {
-    if (this._objRef) {
-      this._objRef.image = value;
-    }
-  }
-
-  @Input()
   public set flipY(value: boolean) {
     if (this._objRef) {
       this._objRef.flipY = value;

@@ -9,7 +9,6 @@ import {
   Type,
 } from '@angular/core';
 import {
-  Camera,
   Color,
   ColorRepresentation,
   Event,
@@ -17,7 +16,6 @@ import {
   Material,
   Scene,
   Texture,
-  WebGLRenderer,
 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -80,29 +78,6 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
   public set environment(value: null | Texture) {
     if (this._objRef) {
       this._objRef.environment = value;
-    }
-  }
-
-  @Input()
-  public set onBeforeRender(
-    value: (
-      renderer: WebGLRenderer,
-      scene: Scene,
-      camera: Camera,
-      renderTarget: any // any required for Object3D.onBeforeRender compatibility
-    ) => void
-  ) {
-    if (this._objRef) {
-      this._objRef.onBeforeRender = value;
-    }
-  }
-
-  @Input()
-  public set onAfterRender(
-    value: (renderer: WebGLRenderer, scene: Scene, camera: Camera) => void
-  ) {
-    if (this._objRef) {
-      this._objRef.onAfterRender = value;
     }
   }
 }

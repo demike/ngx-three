@@ -50,13 +50,6 @@ export class ThDataTexture<
   }
 
   @Input()
-  public set image(value: ImageData) {
-    if (this._objRef) {
-      this._objRef.image = value;
-    }
-  }
-
-  @Input()
   public set flipY(value: boolean) {
     if (this._objRef) {
       this._objRef.flipY = value;

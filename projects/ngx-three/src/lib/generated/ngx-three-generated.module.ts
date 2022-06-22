@@ -21,6 +21,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThCamera } from './ThCamera';
 import { ThCameraHelper } from './ThCameraHelper';
 import { ThCanvasTexture } from './ThCanvasTexture';
+import { ThCapsuleGeometry } from './ThCapsuleGeometry';
 import { ThCircleGeometry } from './ThCircleGeometry';
 import { ThClearMaskPass } from './ThClearMaskPass';
 import { ThClearPass } from './ThClearPass';
@@ -31,6 +32,8 @@ import { ThCubeCamera } from './ThCubeCamera';
 import { ThCubeTexture } from './ThCubeTexture';
 import { ThCubeTexturePass } from './ThCubeTexturePass';
 import { ThCylinderGeometry } from './ThCylinderGeometry';
+import { ThData3DTexture } from './ThData3DTexture';
+import { ThDataArrayTexture } from './ThDataArrayTexture';
 import { ThDataTexture } from './ThDataTexture';
 import { ThDataTexture2DArray } from './ThDataTexture2DArray';
 import { ThDataTexture3D } from './ThDataTexture3D';
@@ -60,6 +63,7 @@ import { ThInstancedBufferGeometry } from './ThInstancedBufferGeometry';
 import { ThInstancedMesh } from './ThInstancedMesh';
 import { ThLatheGeometry } from './ThLatheGeometry';
 import { ThLight } from './ThLight';
+import { ThLightningStrike } from './ThLightningStrike';
 import { ThLightProbe } from './ThLightProbe';
 import { ThLine } from './ThLine';
 import { ThLineBasicMaterial } from './ThLineBasicMaterial';
@@ -123,7 +127,6 @@ import { ThSpriteMaterial } from './ThSpriteMaterial';
 import { ThSSAARenderPass } from './ThSSAARenderPass';
 import { ThSSAOPass } from './ThSSAOPass';
 import { ThSSRPass } from './ThSSRPass';
-import { ThSSRrPass } from './ThSSRrPass';
 import { ThStereoCamera } from './ThStereoCamera';
 import { ThTAARenderPass } from './ThTAARenderPass';
 import { ThTeapotGeometry } from './ThTeapotGeometry';
@@ -135,10 +138,15 @@ import { ThTorusGeometry } from './ThTorusGeometry';
 import { ThTorusKnotGeometry } from './ThTorusKnotGeometry';
 import { ThTrackballControls } from './ThTrackballControls';
 import { ThTransformControls } from './ThTransformControls';
+import { ThTransformControlsGizmo } from './ThTransformControlsGizmo';
+import { ThTransformControlsPlane } from './ThTransformControlsPlane';
 import { ThTubeGeometry } from './ThTubeGeometry';
 import { ThUnrealBloomPass } from './ThUnrealBloomPass';
 import { ThVideoTexture } from './ThVideoTexture';
 import { ThWireframeGeometry } from './ThWireframeGeometry';
+import { ThXRGripSpace } from './ThXRGripSpace';
+import { ThXRHandSpace } from './ThXRHandSpace';
+import { ThXRTargetRaySpace } from './ThXRTargetRaySpace';
 
 @NgModule({
   declarations: [
@@ -186,6 +194,9 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThLine,
     ThPoints,
     ThGroup,
+    ThXRHandSpace,
+    ThXRTargetRaySpace,
+    ThXRGripSpace,
     ThScene,
     ThShadowMaterial,
     ThSpriteMaterial,
@@ -208,6 +219,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThInstancedBufferGeometry,
     ThBufferGeometry,
     ThBoxGeometry,
+    ThCapsuleGeometry,
     ThCircleGeometry,
     ThConeGeometry,
     ThCylinderGeometry,
@@ -230,6 +242,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThBoxLineGeometry,
     ThConvexGeometry,
     ThDecalGeometry,
+    ThLightningStrike,
     ThParametricGeometry,
     ThRoundedBoxGeometry,
     ThTeapotGeometry,
@@ -242,6 +255,8 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThPointerLockControls,
     ThTrackballControls,
     ThTransformControls,
+    ThTransformControlsGizmo,
+    ThTransformControlsPlane,
     ThPass,
     ThEffectComposerGen,
     ThEffectComposer,
@@ -266,7 +281,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThSSAARenderPass,
     ThSSAOPass,
     ThSSRPass,
-    ThSSRrPass,
     ThSavePass,
     ThShaderPass,
     ThTAARenderPass,
@@ -278,6 +292,8 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThDataTexture3D,
     ThCompressedTexture,
     ThCubeTexture,
+    ThData3DTexture,
+    ThDataArrayTexture,
     ThCanvasTexture,
     ThDepthTexture,
     ThFramebufferTexture,
@@ -328,6 +344,9 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThLine,
     ThPoints,
     ThGroup,
+    ThXRHandSpace,
+    ThXRTargetRaySpace,
+    ThXRGripSpace,
     ThScene,
     ThShadowMaterial,
     ThSpriteMaterial,
@@ -350,6 +369,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThInstancedBufferGeometry,
     ThBufferGeometry,
     ThBoxGeometry,
+    ThCapsuleGeometry,
     ThCircleGeometry,
     ThConeGeometry,
     ThCylinderGeometry,
@@ -372,6 +392,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThBoxLineGeometry,
     ThConvexGeometry,
     ThDecalGeometry,
+    ThLightningStrike,
     ThParametricGeometry,
     ThRoundedBoxGeometry,
     ThTeapotGeometry,
@@ -384,6 +405,8 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThPointerLockControls,
     ThTrackballControls,
     ThTransformControls,
+    ThTransformControlsGizmo,
+    ThTransformControlsPlane,
     ThPass,
     ThEffectComposerGen,
     ThEffectComposer,
@@ -408,7 +431,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThSSAARenderPass,
     ThSSAOPass,
     ThSSRPass,
-    ThSSRrPass,
     ThSavePass,
     ThShaderPass,
     ThTAARenderPass,
@@ -420,6 +442,8 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThDataTexture3D,
     ThCompressedTexture,
     ThCubeTexture,
+    ThData3DTexture,
+    ThDataArrayTexture,
     ThCanvasTexture,
     ThDepthTexture,
     ThFramebufferTexture,

@@ -13,6 +13,7 @@ import {
   Matrix3,
   PixelFormat,
   PixelFormatGPU,
+  Source,
   Texture,
   TextureDataType,
   TextureEncoding,
@@ -79,9 +80,9 @@ export class ThTexture<
   }
 
   @Input()
-  public set image(value: any) {
+  public set source(value: Source) {
     if (this._objRef) {
-      this._objRef.image = value;
+      this._objRef.source = value;
     }
   }
 
@@ -250,6 +251,13 @@ export class ThTexture<
   }
 
   @Input()
+  public set needsPMREMUpdate(value: boolean) {
+    if (this._objRef) {
+      this._objRef.needsPMREMUpdate = value;
+    }
+  }
+
+  @Input()
   public set userData(value: any) {
     if (this._objRef) {
       this._objRef.userData = value;
@@ -260,13 +268,6 @@ export class ThTexture<
   public set version(value: number) {
     if (this._objRef) {
       this._objRef.version = value;
-    }
-  }
-
-  @Input()
-  public set needsUpdate(value: boolean) {
-    if (this._objRef) {
-      this._objRef.needsUpdate = value;
     }
   }
 }

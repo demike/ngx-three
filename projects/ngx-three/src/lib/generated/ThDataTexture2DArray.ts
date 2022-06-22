@@ -5,12 +5,11 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
-import { DataTexture2DArray, TextureFilter } from 'three';
+import { DataTexture2DArray } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
-import { ThTexture } from './ThTexture';
+import { ThDataArrayTexture } from './ThDataArrayTexture';
 
 @Component({
   selector: 'th-dataTexture2DArray',
@@ -26,43 +25,8 @@ import { ThTexture } from './ThTexture';
 export class ThDataTexture2DArray<
   T extends DataTexture2DArray = DataTexture2DArray,
   TARGS = [data?: BufferSource, width?: number, height?: number, depth?: number]
-> extends ThTexture<T, TARGS> {
+> extends ThDataArrayTexture<T, TARGS> {
   public getType(): Type<DataTexture2DArray> {
     return DataTexture2DArray;
-  }
-
-  @Input()
-  public set magFilter(value: TextureFilter) {
-    if (this._objRef) {
-      this._objRef.magFilter = value;
-    }
-  }
-
-  @Input()
-  public set minFilter(value: TextureFilter) {
-    if (this._objRef) {
-      this._objRef.minFilter = value;
-    }
-  }
-
-  @Input()
-  public set wrapR(value: boolean) {
-    if (this._objRef) {
-      this._objRef.wrapR = value;
-    }
-  }
-
-  @Input()
-  public set flipY(value: boolean) {
-    if (this._objRef) {
-      this._objRef.flipY = value;
-    }
-  }
-
-  @Input()
-  public set generateMipmaps(value: boolean) {
-    if (this._objRef) {
-      this._objRef.generateMipmaps = value;
-    }
   }
 }

@@ -9,7 +9,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { DataTexture, DataTexture3D } from 'three';
+import { Data3DTexture, DataTexture } from 'three';
 import {
   LUTPass,
   LUTPassParameters,
@@ -34,7 +34,7 @@ export class ThLUTPass<
   }
 
   @Input()
-  public set lut(value: DataTexture | DataTexture3D) {
+  public set lut(value: DataTexture | Data3DTexture) {
     if (this._objRef) {
       this._objRef.lut = value;
     }

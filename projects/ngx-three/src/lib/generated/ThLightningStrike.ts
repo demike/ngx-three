@@ -27,8 +27,8 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThLightningStrike<
   T extends LightningStrike = LightningStrike,
-  TARGS extends any[] = [rayParameters?: RayParameters]
-> extends ThGeometryBase<T, TARGS> {
+  TARGS = /* rayParameters? */ RayParameters
+> extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<LightningStrike> {
     return LightningStrike;
   }

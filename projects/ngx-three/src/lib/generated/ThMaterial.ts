@@ -15,7 +15,6 @@ import {
   BlendingSrcFactor,
   DepthModes,
   Material,
-  PixelFormat,
   Side,
   StencilFunc,
   StencilOp,
@@ -153,20 +152,6 @@ export class ThMaterial<
   public set depthWrite(value: boolean) {
     if (this._objRef) {
       this._objRef.depthWrite = value;
-    }
-  }
-
-  @Input()
-  public set fog(value: boolean) {
-    if (this._objRef) {
-      this._objRef.fog = value;
-    }
-  }
-
-  @Input()
-  public set format(value: PixelFormat) {
-    if (this._objRef) {
-      this._objRef.format = value;
     }
   }
 

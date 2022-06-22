@@ -222,13 +222,6 @@ export class ThMeshStandardMaterial<
   }
 
   @Input()
-  public set refractionRatio(value: number) {
-    if (this._objRef) {
-      this._objRef.refractionRatio = value;
-    }
-  }
-
-  @Input()
   public set wireframe(value: boolean) {
     if (this._objRef) {
       this._objRef.wireframe = value;
@@ -260,6 +253,13 @@ export class ThMeshStandardMaterial<
   public set flatShading(value: boolean) {
     if (this._objRef) {
       this._objRef.flatShading = value;
+    }
+  }
+
+  @Input()
+  public set fog(value: boolean) {
+    if (this._objRef) {
+      this._objRef.fog = value;
     }
   }
 

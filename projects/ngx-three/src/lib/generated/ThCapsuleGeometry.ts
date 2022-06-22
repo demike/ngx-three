@@ -8,33 +8,31 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { BoxBufferGeometry } from 'three';
+import { CapsuleGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-boxBufferGeometry',
+  selector: 'th-capsuleGeometry',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThBoxBufferGeometry),
+      useExisting: forwardRef(() => ThCapsuleGeometry),
     },
   ],
 })
-export class ThBoxBufferGeometry<
-  T extends BoxBufferGeometry = BoxBufferGeometry,
-  TARGS extends any[] = [
-    width?: number,
-    height?: number,
-    depth?: number,
-    widthSegments?: number,
-    heightSegments?: number,
-    depthSegments?: number
+export class ThCapsuleGeometry<
+  T extends CapsuleGeometry = CapsuleGeometry,
+  TARGS = [
+    radius?: number,
+    length?: number,
+    capSegments?: number,
+    radialSegments?: number
   ]
 > extends ThBufferGeometry<T, TARGS> {
-  public getType(): Type<BoxBufferGeometry> {
-    return BoxBufferGeometry;
+  public getType(): Type<CapsuleGeometry> {
+    return CapsuleGeometry;
   }
 
   @Input()
@@ -46,12 +44,10 @@ export class ThBoxBufferGeometry<
 
   @Input()
   public set parameters(value: {
-    width: number;
-    height: number;
-    depth: number;
-    widthSegments: number;
-    heightSegments: number;
-    depthSegments: number;
+    radius: number;
+    length: number;
+    capSegments: number;
+    radialSegments: number;
   }) {
     if (this._objRef) {
       this._objRef.parameters = value;

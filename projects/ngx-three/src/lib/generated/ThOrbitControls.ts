@@ -203,13 +203,6 @@ export class ThOrbitControls<
   }
 
   @Input()
-  public set enableKeys(value: boolean) {
-    if (this._objRef) {
-      this._objRef.enableKeys = value;
-    }
-  }
-
-  @Input()
   public set keys(value: {
     LEFT: string;
     UP: string;
@@ -232,6 +225,28 @@ export class ThOrbitControls<
   public set touches(value: { ONE: TOUCH; TWO: TOUCH }) {
     if (this._objRef) {
       this._objRef.touches = value;
+    }
+  }
+
+  @Input()
+  public set target0(value: Vector3 | [x: number, y: number, z: number]) {
+    if (this._objRef) {
+      this._objRef.target0 = applyValue<Vector3>(this._objRef.target0, value);
+    }
+  }
+  @Input()
+  public set position0(value: Vector3 | [x: number, y: number, z: number]) {
+    if (this._objRef) {
+      this._objRef.position0 = applyValue<Vector3>(
+        this._objRef.position0,
+        value
+      );
+    }
+  }
+  @Input()
+  public set zoomO(value: number) {
+    if (this._objRef) {
+      this._objRef.zoomO = value;
     }
   }
 }

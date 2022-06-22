@@ -221,4 +221,32 @@ export class ThMeshPhysicalMaterial<
       this._objRef.specularColorMap = value;
     }
   }
+
+  @Input()
+  public set iridescenceMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.iridescenceMap = value;
+    }
+  }
+
+  @Input()
+  public set iridescenceIOR(value: number) {
+    if (this._objRef) {
+      this._objRef.iridescenceIOR = value;
+    }
+  }
+
+  @Input()
+  public set iridescenceThicknessRange(value: number[]) {
+    if (this._objRef) {
+      this._objRef.iridescenceThicknessRange = value;
+    }
+  }
+
+  @Input()
+  public set iridescenceThicknessMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.iridescenceThicknessMap = value;
+    }
+  }
 }

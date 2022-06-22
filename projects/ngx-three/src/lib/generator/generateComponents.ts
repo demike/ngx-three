@@ -45,7 +45,6 @@ class NgxThreeClassGenerator {
     this.generate('NgxThreeTextures', NgxThreeTexture);
   }
 
-
   protected generate(exportTypeName: string, generatorType: Type<NgxThreeClass>) {
     const threeTypes = this.getInterfacePropertyNames(exportTypeName);
     threeTypes.forEach((type) => {

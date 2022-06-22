@@ -259,4 +259,11 @@ export class ThMeshPhongMaterial<
       this._objRef.metal = value;
     }
   }
+
+  @Input()
+  public set fog(value: boolean) {
+    if (this._objRef) {
+      this._objRef.fog = value;
+    }
+  }
 }

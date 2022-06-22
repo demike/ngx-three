@@ -33,8 +33,8 @@ export class ThSSAARenderPass<
   TARGS = [
     scene: Scene,
     camera: Camera,
-    clearColor: ColorRepresentation,
-    clearAlpha: number
+    clearColor?: ColorRepresentation,
+    clearAlpha?: number
   ]
 > extends ThPass<T, TARGS> {
   public getType(): Type<SSAARenderPass> {

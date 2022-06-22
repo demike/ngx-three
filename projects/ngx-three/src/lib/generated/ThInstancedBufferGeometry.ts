@@ -45,15 +45,6 @@ export class ThInstancedBufferGeometry<
   }
 
   @Input()
-  public set groups(
-    value: Array<{ start: number; count: number; instances: number }>
-  ) {
-    if (this._objRef) {
-      this._objRef.groups = value;
-    }
-  }
-
-  @Input()
   public set instanceCount(value: number) {
     if (this._objRef) {
       this._objRef.instanceCount = value;

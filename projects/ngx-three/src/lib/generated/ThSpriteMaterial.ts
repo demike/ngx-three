@@ -81,4 +81,11 @@ export class ThSpriteMaterial<
       this._objRef.transparent = value;
     }
   }
+
+  @Input()
+  public set fog(value: boolean) {
+    if (this._objRef) {
+      this._objRef.fog = value;
+    }
+  }
 }

@@ -1,3 +1,4 @@
+import { fstat, existsSync, readFileSync } from 'fs';
 import * as ts from 'typescript';
 
 class LanguageServiceHostImpl implements ts.LanguageServiceHost {
@@ -21,6 +22,13 @@ class LanguageServiceHostImpl implements ts.LanguageServiceHost {
     this.name = name;
     this.content = content;
     this.options = compilerOptions;
+  }
+  readFile(path: string, encoding?: string | undefined): string | undefined {
+    const options = encoding !== undefined ? { encoding: encoding as BufferEncoding } : undefined;
+    return readFileSync(path, options) as string | undefined;
+  }
+  fileExists(path: string): boolean {
+    return existsSync(path);
   }
 
   getNewLine() {
