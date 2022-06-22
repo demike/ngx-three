@@ -80,7 +80,7 @@ export class ThEngineService implements OnDestroy {
       ...RENDERER_DEFAULTS
     });
 
-    Object.assign(this._renderer,{...RENDERER_DEFAULTS, ...this.rendererParameters});
+    Object.assign(this._renderer, { ...RENDERER_DEFAULTS, ...this.rendererParameters });
     this.resize();
   }
 
@@ -95,7 +95,6 @@ export class ThEngineService implements OnDestroy {
   }
 
   public requestAnimationFrame() {
-
     if (this.frameId === undefined) {
       this.ngZone.runOutsideAngular(
         () =>
@@ -106,7 +105,6 @@ export class ThEngineService implements OnDestroy {
     }
   }
 
-
   protected render(): void {
     this.frameId = undefined;
 
@@ -114,7 +112,7 @@ export class ThEngineService implements OnDestroy {
     this.requestAnimationFrame();
 
     // emit before render
-    this.beforeRenderEmitter.next({engine: this, delta: this.clock.getDelta()});
+    this.beforeRenderEmitter.next({ engine: this, delta: this.clock.getDelta() });
 
     for (const view of this.views) {
       this.renderView(view);
@@ -135,7 +133,7 @@ export class ThEngineService implements OnDestroy {
 
     const renderer = this._renderer;
 
-    if ( isObserved(view.onRender) ) {
+    if (isObserved(view.onRender)) {
       this.ngZone.run(() =>
         view.onRender.emit({
           renderer,
@@ -191,17 +189,20 @@ export class ThEngineService implements OnDestroy {
   }
 
   public resize(): void {
-    if (!this._renderer || !this.canvas ) {
+    if (!this._renderer || !this.canvas) {
       return;
     }
     const width = this.canvas?.parentElement?.clientWidth ?? 0;
     const height = this.canvas?.parentElement?.clientHeight ?? 0;
-    console.log(height);
 
-//    this.canvas.width  = this.canvas.clientWidth;
-//    this.canvas.height = this.canvas.clientHeight;
+    //    this.canvas.width  = this.canvas.clientWidth;
+    //    this.canvas.height = this.canvas.clientHeight;
 
     this._renderer.setSize(width, height, false);
+
+    if (this._renderer?.pixelRatio !== window.devicePixelRatio) {
+      this._renderer.setPixelRatio(window.devicePixelRatio);
+    }
 
     for (const view of this.views) {
       if (!view.viewPort) {
@@ -211,6 +212,9 @@ export class ThEngineService implements OnDestroy {
         }
 
         view.effectComposer?.setSize(width, height);
+
+        // TODO: check if this works
+        view.effectComposer?.setPixelRatio(window.devicePixelRatio);
       }
     }
   }
