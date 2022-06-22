@@ -4,10 +4,15 @@ import { toStackblitz } from './stackblitz';
 export class EditorService {
   public urls: string[] = [];
   public fileNames: string[] = [];
+  protected exampleClassName?: string;
 
   public setUrls(urls: string[]) {
     this.urls = urls;
     this.fileNames = this.extractFileNames();
+  }
+
+  public setExampleClassName(className: string ) {
+    this.exampleClassName = className;
   }
 
   private extractFileNames() {
@@ -21,6 +26,6 @@ export class EditorService {
 
   public toStackblitz(event?: MouseEvent) {
     event?.preventDefault();
-    toStackblitz(this.urls);
+    toStackblitz(this.urls, this.exampleClassName);
   }
 }
