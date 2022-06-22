@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build ngx-three",
-    "build:prod": "ng build --configuration production",
+    "build:prod": "ng build ngx-three --configuration production",
     "build:demo": "ng build ngx-three-demo --configuration production --sourceMap=false --base-href /ngx-three/",
     "test": "ng test",
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless",

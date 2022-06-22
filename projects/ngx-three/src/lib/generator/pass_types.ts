@@ -18,7 +18,6 @@ export * from 'three/examples/jsm/postprocessing/SMAAPass';
 export * from 'three/examples/jsm/postprocessing/SSAARenderPass';
 export * from 'three/examples/jsm/postprocessing/SSAOPass';
 export * from 'three/examples/jsm/postprocessing/SSRPass';
-export * from 'three/examples/jsm/postprocessing/SSRrPass';
 export * from 'three/examples/jsm/postprocessing/SavePass';
 export * from 'three/examples/jsm/postprocessing/ShaderPass';
 export * from 'three/examples/jsm/postprocessing/TAARenderPass';
