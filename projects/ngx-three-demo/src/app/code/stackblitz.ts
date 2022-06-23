@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+
 import sdk from '@stackblitz/sdk';
 import { Project } from '@stackblitz/sdk/typings/interfaces';
 import { GITHUB_ASSET_PATH } from '../assets';
@@ -22,11 +24,12 @@ export async function toStackblitz(fileUrls: string[], exampleComponentName?: st
     template: 'angular-cli',
     title: tagName,
     description: 'ngx-three example ' + tagName,
+
     files: {
       'src/index.html': createIndexHtml(tagName),
-      'src/main.ts': createMainTs(fileName, exampleComponentName ),
+      'src/main.ts': createMainTs(fileName, exampleComponentName),
       'src/polyfills.ts': polyfillTs,
-      'src/assets.ts': `export const ASSET_PATH = \'${GITHUB_ASSET_PATH}\';`,
+      'src/assets.ts': `export const ASSET_PATH = \'${GITHUB_ASSET_PATH}\';`
     },
 
     dependencies: {

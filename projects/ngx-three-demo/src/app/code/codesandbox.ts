@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable prefer-arrow/prefer-arrow-functions */
 export const polyfillTs = `
 import "zone.js";`;
