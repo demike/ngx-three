@@ -200,7 +200,7 @@ export class ThEngineService implements OnDestroy {
 
     this._renderer.setSize(width, height, false);
 
-    if (this._renderer?.pixelRatio !== window.devicePixelRatio) {
+    if (this._renderer?.getPixelRatio() !== window.devicePixelRatio) {
       this._renderer.setPixelRatio(window.devicePixelRatio);
     }
 
