@@ -1,4 +1,3 @@
-import { InterfaceType, isInterfaceDeclaration } from 'typescript';
 import { NgxThreeClass } from './NgxThreeClass';
 
 /**

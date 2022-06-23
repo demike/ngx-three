@@ -1,4 +1,4 @@
-import { fstat, existsSync, readFileSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
 import * as ts from 'typescript';
 
 class LanguageServiceHostImpl implements ts.LanguageServiceHost {
