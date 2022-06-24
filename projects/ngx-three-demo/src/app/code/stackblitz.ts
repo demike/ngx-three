@@ -20,7 +20,7 @@ export async function toStackblitz(fileUrls: string[], exampleComponentName?: st
   const fileName = getFileNameFromFullPath(mainTsUrl);
   const tagName = getTagNameFromFileName(fileName);
 
-  const project: Project = {
+  const project: Project & { devDependencies: { [name: string]: string } } = {
     template: 'angular-cli',
     title: tagName,
     description: 'ngx-three example ' + tagName,
@@ -34,11 +34,10 @@ export async function toStackblitz(fileUrls: string[], exampleComponentName?: st
 
     dependencies: {
       'ngx-three': 'latest',
-
-      three: PACKAGE.dependencies.three,
-      'simplex-noise': PACKAGE.dependencies['simplex-noise'],
-      '@types/three': PACKAGE.devDependencies['@types/three']
-    }
+      '@types/three': PACKAGE.devDependencies['@types/three'],
+      ...PACKAGE.dependencies
+    },
+    devDependencies: { ...PACKAGE.devDependencies }
   };
 
   await applySources(fileUrls, project.files);

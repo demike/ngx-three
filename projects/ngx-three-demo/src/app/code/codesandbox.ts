@@ -77,18 +77,10 @@ function createPackageJson() {
       main: 'src/main.ts',
       dependencies: {
         'ngx-three': 'latest',
-        '@angular/common': '^11.2.2',
-        '@angular/core': '^11.2.2',
-        '@angular/compiler': '~11.2.2',
-        '@angular/forms': '~11.2.2',
-        '@angular/platform-browser': '~11.2.2',
-        '@angular/platform-browser-dynamic': '~11.2.2',
-        rxjs: '~6.6.0',
-        three: PACKAGE.dependencies.three,
-        tslib: '^2.1.0',
-        'zone.js': '~0.10.2',
-        'simplex-noise': PACKAGE.dependencies['simplex-noise']
-      }
+        '@types/three': PACKAGE.devDependencies['@types/three'],
+        ...PACKAGE.dependencies
+      },
+      devDependencies: { ...PACKAGE.devDependencies }
     }
   };
 }
