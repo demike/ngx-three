@@ -298,7 +298,7 @@ of using the `beforeRender` output of the `ThRenderDirective`.
 In addition you can react to the `onRender`
 outputs of the `ThView` (`ThCanvas` is derived from it) instances.
 
-> Note: The engine service **automatically** adjusts the renderers pixel ratio depending on the device pixel ratio. This also works dynamically i.e.: when moving the window from one display to a second one with different device pixel ratio.
+> Note: The engine service **automatically** takes into account the device pixel ratio when calculating the renderer dimensions. This works dynamically i.e.: when moving the window from one display to a second one with different device pixel ratio.
 
 ```html
 <th-object3D (beforeRender)="doSomething()"> </th-object3D>
