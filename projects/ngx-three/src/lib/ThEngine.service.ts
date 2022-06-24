@@ -92,6 +92,10 @@ export class ThEngineService implements OnDestroy {
 
   public addView(view: ThView) {
     this.views.push(view);
+    const canvasDimensions = this.calcRendererSize();
+    if (canvasDimensions) {
+      this.adjustViewDimensions(view, canvasDimensions.width, canvasDimensions.height);
+    }
   }
 
   public requestAnimationFrame() {
@@ -188,34 +192,42 @@ export class ThEngineService implements OnDestroy {
     }
   }
 
-  public resize(): void {
+  public resize() {
     if (!this._renderer || !this.canvas) {
-      return;
+      return false;
     }
-    const width = this.canvas?.parentElement?.clientWidth ?? 0;
-    const height = this.canvas?.parentElement?.clientHeight ?? 0;
-
-    //    this.canvas.width  = this.canvas.clientWidth;
-    //    this.canvas.height = this.canvas.clientHeight;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const { width, height } = this.calcRendererSize()!;
 
     this._renderer.setSize(width, height, false);
 
-    if (this._renderer?.getPixelRatio() !== window.devicePixelRatio) {
-      this._renderer.setPixelRatio(window.devicePixelRatio);
+    for (const view of this.views) {
+      this.adjustViewDimensions(view, width, height);
     }
 
-    for (const view of this.views) {
-      if (!view.viewPort) {
-        if (view.camera && (view.camera.objRef as any).aspect) {
-          (view.camera.objRef as any).aspect = width / height;
-          (view.camera.objRef as any).updateProjectionMatrix();
-        }
+    return true;
+  }
 
-        view.effectComposer?.setSize(width, height);
+  protected calcRendererSize() {
+    if (!this._renderer || !this.canvas) {
+      return;
+    }
 
-        // TODO: check if this works
-        view.effectComposer?.setPixelRatio(window.devicePixelRatio);
+    const pixelRatio = window.devicePixelRatio;
+    return {
+      width: (this.canvas.clientWidth ?? 0) * pixelRatio,
+      height: (this.canvas.clientHeight ?? 0) * pixelRatio
+    };
+  }
+
+  protected adjustViewDimensions(view: ThView, width: number, height: number) {
+    if (!view.viewPort) {
+      if (view.camera && (view.camera.objRef as any).aspect) {
+        (view.camera.objRef as any).aspect = width / height;
+        (view.camera.objRef as any).updateProjectionMatrix();
       }
+
+      view.effectComposer?.setSize(width, height);
     }
   }
 }
