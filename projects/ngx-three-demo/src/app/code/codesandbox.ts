@@ -3,6 +3,7 @@
 export const polyfillTs = `
 import "zone.js";`;
 
+import { Type } from '@angular/core';
 import PACKAGE from '../../../../../package.json';
 import { GITHUB_ASSET_PATH } from '../assets';
 export { PACKAGE };
@@ -89,15 +90,16 @@ export function getFileNameFromFullPath(fullPath: string) {
   return fullPath.replace(/^.*[\\\/]/, ''); // works for both / and \
 }
 
-export function createMainTs(tsFileName: string, exampleComponentName?: string) {
-  const component = exampleComponentName ?? getComponentNameFromFileName(tsFileName);
+export function createMainTs(tsFileName: string, usedComponents?: Type<any>[]) {
+  const component = getBootstrapComponentName(usedComponents) ?? getComponentNameFromFileName(tsFileName);
+  const declarations = getDeclarationsString(usedComponents, component);
   return `
             import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
             import { NgModule } from '@angular/core';
             import { BrowserModule } from '@angular/platform-browser';
             import { NgxThreeModule } from 'ngx-three';
             import { FormsModule } from '@angular/forms';
-            import { ${component}} from './app/${tsFileName.replace('.ts', '')}';
+            import { ${declarations} } from './app/${tsFileName.replace('.ts', '')}';
 
             @NgModule({
                 imports: [
@@ -106,7 +108,7 @@ export function createMainTs(tsFileName: string, exampleComponentName?: string) 
                     FormsModule
                 ],
                 providers: [],
-                declarations: [${component}],
+                declarations: [${declarations}],
                 bootstrap: [${component}]
             })
             export class AppModule {}
@@ -161,4 +163,19 @@ export function getMainTemplateUrl(fileUrls: string[]): string | undefined {
     }
   }
   return undefined;
+}
+
+function getBootstrapComponentName(usedComponents?: Type<any>[]) {
+  if (usedComponents && usedComponents.length > 0) {
+    return usedComponents[0].name;
+  }
+  return;
+}
+
+function getDeclarationsString(usedComponents?: Type<any>[], defaultDeclaration?: string) {
+  if (usedComponents && usedComponents.length > 0) {
+    return usedComponents.map((c) => c.name).join(',');
+  }
+
+  return defaultDeclaration;
 }

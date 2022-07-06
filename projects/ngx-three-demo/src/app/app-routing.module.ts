@@ -8,7 +8,7 @@ import { DynamicLoaderExampleComponent } from './dynamic-loader-example/dynamic-
 import { EventsExampleComponent } from './events-example/events-example.component';
 import { ExamplePageComponent } from './example-page/example-page.component';
 import { InstancedMeshExampleComponent } from './instanced-mesh-example/instanced-mesh-example.component';
-import { IntroductoryExampleComponent } from './introductory-example/introductory-example.component';
+import { Box, IntroductoryExampleComponent } from './introductory-example/introductory-example.component';
 import { LoaderExampleComponent } from './loader-example/loader-example.component';
 import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-example.component';
 import { MultiViewPostprocessingExampleComponent } from './multi-view-postprocessing-example/multi-view-postprocessing-example.component';
@@ -21,12 +21,11 @@ export const EXAMPLE_ROUTES: (Route & {
   data: {
     title: string;
     codeUrls: string[];
-    exampleComponent: Type<any>;
+    exampleComponent: Type<any> | Type<any>[];
   };
 })[] = [
   {
     path: 'basic-example',
-    component: ExamplePageComponent,
     data: {
       title: 'Basic Example',
       exampleComponent: BasicExampleComponent,
@@ -39,7 +38,7 @@ export const EXAMPLE_ROUTES: (Route & {
     path: 'simple-example',
     data: {
       title: 'Simple Example',
-      exampleComponent: SimpleExampleComponent,
+      exampleComponent: [SimpleExampleComponent, Box],
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/simple-example/simple-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/simple-example/simple-example.component.ts'
@@ -50,7 +49,7 @@ export const EXAMPLE_ROUTES: (Route & {
     path: 'introductory-example',
     data: {
       title: 'Introductory Example',
-      exampleComponent: IntroductoryExampleComponent,
+      exampleComponent: [IntroductoryExampleComponent, Box],
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/introductory-example/introductory-example.component.ts'
       ]
