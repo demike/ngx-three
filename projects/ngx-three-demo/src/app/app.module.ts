@@ -1,23 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import {
-  AnimationExamplePageComponent,
-  AppRoutingModule,
-  BasicExamplePageComponent,
-  ControlsExamplePageComponent,
-  DynamicLoaderExamplePageComponent,
-  EventsExamplePageComponent,
-  InstancedMeshExamplePageComponent,
-  IntroductoryExamplePageComponent,
-  LoaderExamplePageComponent,
-  MultiSceneExamplePageComponent,
-  MultiViewPostprocessingExamplePageComponent,
-  PLYLoaderExamplePageComponent,
-  PostProcessingExamplePageComponent,
-  SimpleExamplePageComponent,
-  ViewsExamplePageComponent
-} from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { Box, SimpleExampleComponent } from './simple-example/simple-example.component';
 import { NgxThreeModule } from 'ngx-three';
@@ -50,14 +34,15 @@ import { MultiViewPostprocessingExampleComponent } from './multi-view-postproces
 import { AnimationExampleComponent } from './animation-example/animation-example.component';
 import { RobotComponent } from './animation-example/robot.component';
 import { PLYLoaderExampleComponent } from './plyloader-example/plyloader-example.component';
+import { ExamplePageComponent } from './example-page/example-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SimpleExampleComponent,
     Box,
     IntroBox,
     BasicExampleComponent,
+    SimpleExampleComponent,
     IntroductoryExampleComponent,
     LoaderExampleComponent,
     ControlsExampleComponent,
@@ -71,25 +56,12 @@ import { PLYLoaderExampleComponent } from './plyloader-example/plyloader-example
     MultiSceneExampleComponent,
     MultiViewPostprocessingExampleComponent,
     //
-    BasicExamplePageComponent,
-    SimpleExamplePageComponent,
-    IntroductoryExamplePageComponent,
-    ControlsExamplePageComponent,
-    LoaderExamplePageComponent,
-    DynamicLoaderExamplePageComponent,
-    EventsExamplePageComponent,
-    InstancedMeshExamplePageComponent,
-    PostProcessingExamplePageComponent,
-    ViewsExamplePageComponent,
-    MultiSceneExamplePageComponent,
-    MultiViewPostprocessingExamplePageComponent,
     AnimationExampleComponent,
-    AnimationExamplePageComponent,
     RobotComponent,
-//    CustomRenderExampleComponent,
-//    CustomRenderExamplePageComponent,
+    //    CustomRenderExampleComponent,
+    //    CustomRenderExamplePageComponent,
     PLYLoaderExampleComponent,
-    PLYLoaderExamplePageComponent
+    ExamplePageComponent
   ],
   imports: [
     BrowserModule,

@@ -1,261 +1,202 @@
 /* eslint-disable max-len */
-import { ChangeDetectionStrategy, Component, NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { ChangeDetectionStrategy, Component, NgModule, Type } from '@angular/core';
+import { Routes, RouterModule, Route } from '@angular/router';
 import { AnimationExampleComponent } from './animation-example/animation-example.component';
+import { BasicExampleComponent } from './basic-example/basic-example.component';
+import { ControlsExampleComponent } from './controls-example/controls-example.component';
+import { DynamicLoaderExampleComponent } from './dynamic-loader-example/dynamic-loader-example.component';
+import { EventsExampleComponent } from './events-example/events-example.component';
+import { ExamplePageComponent } from './example-page/example-page.component';
+import { InstancedMeshExampleComponent } from './instanced-mesh-example/instanced-mesh-example.component';
+import { IntroductoryExampleComponent } from './introductory-example/introductory-example.component';
+import { LoaderExampleComponent } from './loader-example/loader-example.component';
+import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-example.component';
+import { MultiViewPostprocessingExampleComponent } from './multi-view-postprocessing-example/multi-view-postprocessing-example.component';
+import { PLYLoaderExampleComponent } from './plyloader-example/plyloader-example.component';
+import { PostProcessingExampleComponent } from './post-processing-example/post-processing-example.component';
+import { SimpleExampleComponent } from './simple-example/simple-example.component';
+import { ViewsExampleComponent } from './views-example/views-example.component';
 
-
-@Component({
-  selector: 'app-basic-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-basic-example class="example-container"></app-basic-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+export const EXAMPLE_ROUTES: (Route & {
+  data: {
+    title: string;
+    codeUrls: string[];
+    exampleComponent: Type<any>;
+  };
+})[] = [
+  {
+    path: 'basic-example',
+    component: ExamplePageComponent,
+    data: {
+      title: 'Basic Example',
+      exampleComponent: BasicExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/basic-example/basic-example.component.ts'
-      ]"
-    >
-    </app-code>`
-})
-export class BasicExamplePageComponent {}
-
-@Component({
-  selector: 'app-simple-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-simple-example class="example-container"></app-simple-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  {
+    path: 'simple-example',
+    data: {
+      title: 'Simple Example',
+      exampleComponent: SimpleExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/simple-example/simple-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/simple-example/simple-example.component.ts'
-      ]"
-    >
-    </app-code>`
-})
-export class SimpleExamplePageComponent {}
-
-@Component({
-  selector: 'app-introductory-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-introductory-example class="example-container"></app-introductory-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  {
+    path: 'introductory-example',
+    data: {
+      title: 'Introductory Example',
+      exampleComponent: IntroductoryExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/introductory-example/introductory-example.component.ts'
-      ]"
-    >
-    </app-code>`
-})
-export class IntroductoryExamplePageComponent {}
-
-
-@Component({
-  selector: 'app-controls-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: ` <app-controls-example class="example-container"></app-controls-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  {
+    path: 'controls-example',
+    data: {
+      title: 'Controls Example',
+      exampleComponent: ControlsExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/controls-example/controls-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/controls-example/controls-example.component.ts'
-      ]"
-    >
-    </app-code>`
-})
-export class ControlsExamplePageComponent {}
-
-@Component({
-  selector: 'app-loader-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-loader-example class="example-container"></app-loader-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  {
+    path: 'loader-example',
+    data: {
+      title: 'Loader Example',
+      exampleComponent: LoaderExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/loader-example/loader-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/loader-example/loader-example.component.ts'
-      ]"
-    >
-    </app-code>`
-})
-export class LoaderExamplePageComponent {}
-
-@Component({
-  selector: 'app-dynamic-loader-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-dynamic-loader-example class="example-container"></app-dynamic-loader-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  {
+    path: 'dynamic loader-example',
+    data: {
+      title: 'Dynamic Loader Example',
+      exampleComponent: DynamicLoaderExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/dynamic-loader-example/dynamic-loader-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/dynamic-loader-example/dynamic-loader-example.component.ts'
-      ]"
-    >
-    </app-code>`
-})
-export class DynamicLoaderExamplePageComponent {}
-
-@Component({
-  selector: 'app-events-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-events-example class="example-container"></app-events-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  {
+    path: 'events-example',
+    data: {
+      title: 'Events Example',
+      exampleComponent: EventsExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/events-example/events-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/events-example/events-example.component.ts',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/events-example/events-example.component.scss'
-      ]"
-    >
-    </app-code> `
-})
-export class EventsExamplePageComponent {}
-
-@Component({
-  selector: 'app-instanced-mesh-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-instanced-mesh-example class="example-container"></app-instanced-mesh-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  {
+    path: 'instanced-mesh-example',
+    data: {
+      title: 'Instanced Mesh Example',
+      exampleComponent: InstancedMeshExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/instanced-mesh-example/instanced-mesh-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/instanced-mesh-example/instanced-mesh-example.component.ts'
-      ]"
-    >
-    </app-code> `
-})
-export class InstancedMeshExamplePageComponent {}
-
-@Component({
-  selector: 'app-post-processing-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-post-processing-example class="example-container"></app-post-processing-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  {
+    path: 'post-processing-example',
+    data: {
+      title: 'Post Processing Example',
+      exampleComponent: PostProcessingExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/post-processing-example/post-processing-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/post-processing-example/post-processing-example.component.ts',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/post-processing-example/post-processing-example.component.scss'
-      ]"
-    >
-    </app-code> `
-})
-export class PostProcessingExamplePageComponent {}
-
-@Component({
-  selector: 'app-views-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-views-example class="example-container"></app-views-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  {
+    path: 'views-example',
+    data: {
+      title: 'Multiple Views Example',
+      exampleComponent: ViewsExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/views-example/views-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/views-example/views-example.component.ts',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/views-example/views-example.component.scss'
-      ]"
-    >
-    </app-code> `
-})
-export class ViewsExamplePageComponent {}
-
-@Component({
-  selector: 'app-multi-scene-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-multi-scene-example class="example-container"></app-multi-scene-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  {
+    path: 'multi-scene-example',
+    data: {
+      title: 'Multiple Scenes Example',
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-scene-example/multi-scene-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-scene-example/multi-scene-example.component.ts',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-scene-example/multi-scene-example.component.scss'
-      ]"
-    >
-    </app-code> `
-})
-export class MultiSceneExamplePageComponent {}
-
-@Component({
-  selector: 'app-multi-view-postprocessing-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-multi-view-postprocessing-example class="example-container"></app-multi-view-postprocessing-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ],
+      exampleComponent: MultiSceneExampleComponent
+    }
+  },
+  {
+    path: 'multi-view-postprocessing-example',
+    data: {
+      title: 'Multiple View Post Processing Example',
+      exampleComponent: MultiViewPostprocessingExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-view-postprocessing-example/multi-view-postprocessing-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-view-postprocessing-example/multi-view-postprocessing-example.component.ts'
-      ]"
-    >
-    </app-code> `
-})
-export class MultiViewPostprocessingExamplePageComponent {}
-
-
-@Component({
-  selector: 'app-animation-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-animation-example class="example-container"></app-animation-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  {
+    path: 'animation-example',
+    data: {
+      title: 'Animation Example',
+      exampleComponent: AnimationExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/animation-example/animation-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/animation-example/animation-example.component.ts'
-      ]"
-    >
-    </app-code> `
-})
-export class AnimationExamplePageComponent {}
-
-/*
-@Component({
-  selector: 'app-custom-render-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-custom-render-example class="example-container"></app-custom-render-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  /*
+  {
+    path: 'custom-render-example',
+    data: {
+      title: 'Custom Render Example (Selective Glow)',
+      exampleComponent: CustomRenderExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/custom-render-example/custom-render-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/custom-render-example/custom-render-example.component.ts'
-      ]"
-    >
-    </app-code> `
-})
-export class CustomRenderExamplePageComponent {}
-*/
-
-@Component({
-  selector: 'app-plyloader-example-page',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `<app-plyloader-example class="example-container"></app-plyloader-example>
-    <app-code
-      [lineNumbers]="true"
-      [codeUrls]="[
+      ]
+    }
+  },
+  */
+  {
+    path: 'plyloader-example',
+    data: {
+      title: 'PLY Loader Example',
+      exampleComponent: PLYLoaderExampleComponent,
+      codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/plyloader-example/plyloader-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/plyloader-example/plyloader-example.component.ts'
-      ]"
-      exampleClassName="PLYLoaderExampleComponent"
-    >
-    </app-code> `
-})
-export class PLYLoaderExamplePageComponent {}
-
-
-
-
-export const EXAMPLE_ROUTES: Routes = [
-  { path: 'basic-example', component: BasicExamplePageComponent, data: { title: 'Basic Example' } },
-  { path: 'simple-example', component: SimpleExamplePageComponent, data: { title: 'Simple Example' } },
-  { path: 'introductory-example', component: IntroductoryExamplePageComponent, data: { title: 'Introductory Example' } },
-  { path: 'controls-example', component: ControlsExamplePageComponent, data: { title: 'Controls Example' } },
-  { path: 'loader-example', component: LoaderExamplePageComponent, data: { title: 'Loader Example' } },
-  { path: 'dynamic loader-example', component: DynamicLoaderExamplePageComponent, data: { title: 'Dynamic Loader Example' } },
-  { path: 'events-example', component: EventsExamplePageComponent, data: { title: 'Events Example' } },
-  { path: 'instanced-mesh-example', component: InstancedMeshExamplePageComponent, data: { title: 'Instanced Mesh Example' } },
-  { path: 'post-processing-example', component: PostProcessingExamplePageComponent, data: { title: 'Post Processing Example' } },
-  { path: 'views-example', component: ViewsExamplePageComponent, data: { title: 'Multiple Views Example' } },
-  { path: 'multi-scene-example', component: MultiSceneExamplePageComponent, data: { title: 'Multiple Scenes Example' } },
-  { path: 'multi-view-postprocessing-example', component: MultiViewPostprocessingExamplePageComponent, data: { title: 'Multiple View Post Processing Example' } },
-  { path: 'animation-example', component: AnimationExamplePageComponent, data: { title: 'Animation Example' } },
-// { path: 'custom-render-example', component: CustomRenderExamplePageComponent, data: { title: 'Custom Render Example (Selective Glow)' } },
-  { path: 'plyloader-example', component: PLYLoaderExamplePageComponent, data: { title: 'PLY Loader Example' } }
+      ]
+    }
+  }
 ];
+
+EXAMPLE_ROUTES.forEach((route) => (route.component = ExamplePageComponent));
 
 export const exampleDeclarations: any[] = [];
 EXAMPLE_ROUTES.forEach((route) => {

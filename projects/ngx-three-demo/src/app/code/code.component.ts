@@ -10,8 +10,6 @@ import { EditorService } from './EditorService';
 export class CodeComponent {
   public fileNames: string[] = [];
 
-  protected _exampleClassName?: string;
-
   constructor(public readonly editorService: EditorService) {}
 
   @Input()
@@ -22,12 +20,6 @@ export class CodeComponent {
 
   public get codeUrls() {
     return this.editorService.urls;
-  }
-
-  @Input()
-  public set exampleClassName(classname: string) {
-    this._exampleClassName = classname;
-    this.editorService.setExampleClassName(classname);
   }
 
   @Input() lineNumbers = false;
