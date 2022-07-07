@@ -21,7 +21,8 @@ export const EXAMPLE_ROUTES: (Route & {
   data: {
     title: string;
     codeUrls: string[];
-    exampleComponent: Type<any> | Type<any>[];
+    exampleComponent: Type<any>;
+    declarations?: string[];
   };
 })[] = [
   {
@@ -38,7 +39,8 @@ export const EXAMPLE_ROUTES: (Route & {
     path: 'simple-example',
     data: {
       title: 'Simple Example',
-      exampleComponent: [SimpleExampleComponent, Box],
+      exampleComponent: SimpleExampleComponent,
+      declarations: ['SimpleExampleComponent', 'Box'],
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/simple-example/simple-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/simple-example/simple-example.component.ts'
@@ -49,7 +51,8 @@ export const EXAMPLE_ROUTES: (Route & {
     path: 'introductory-example',
     data: {
       title: 'Introductory Example',
-      exampleComponent: [IntroductoryExampleComponent, Box],
+      exampleComponent: IntroductoryExampleComponent,
+      declarations: ['IntroductoryExampleComponent', 'Box'],
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/introductory-example/introductory-example.component.ts'
       ]

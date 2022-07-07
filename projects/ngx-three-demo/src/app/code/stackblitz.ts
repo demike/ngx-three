@@ -15,7 +15,7 @@ import {
   polyfillTs
 } from './codesandbox';
 
-export async function toStackblitz(fileUrls: string[], usedComponents?: Type<any>[]) {
+export async function toStackblitz(fileUrls: string[], declarations?: string[]) {
   const mainTsUrl = getMainTsUrl(fileUrls);
   const templateUrl = getMainTemplateUrl(fileUrls);
   const fileName = getFileNameFromFullPath(mainTsUrl);
@@ -28,7 +28,7 @@ export async function toStackblitz(fileUrls: string[], usedComponents?: Type<any
 
     files: {
       'src/index.html': createIndexHtml(tagName),
-      'src/main.ts': createMainTs(fileName, usedComponents),
+      'src/main.ts': createMainTs(fileName, declarations),
       'src/polyfills.ts': polyfillTs,
       'src/assets.ts': `export const ASSET_PATH = \'${GITHUB_ASSET_PATH}\';`
     },

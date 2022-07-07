@@ -14,10 +14,8 @@ export class ExamplePageComponent implements OnInit {
 
   constructor(private editorService: EditorService, private route: ActivatedRoute) {
     this.codeUrls = this.route.snapshot.data.codeUrls ?? [];
-    this.editorService.usedComponents = Array.isArray(this.route.snapshot.data.exampleComponent)
-      ? this.route.snapshot.data.exampleComponent
-      : [this.route.snapshot.data.exampleComponent];
-    this.exampleComponent = this.editorService.usedComponents[0];
+    this.editorService.declarations = this.route.snapshot.data.declarations;
+    this.exampleComponent = this.route.snapshot.data.exampleComponent;
   }
 
   ngOnInit(): void {}

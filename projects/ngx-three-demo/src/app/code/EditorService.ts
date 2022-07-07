@@ -5,7 +5,7 @@ import { toStackblitz } from './stackblitz';
 export class EditorService {
   public urls: string[] = [];
   public fileNames: string[] = [];
-  public usedComponents?: Type<any>[];
+  public declarations?: string[];
 
   public setUrls(urls: string[]) {
     this.urls = urls;
@@ -23,6 +23,6 @@ export class EditorService {
 
   public toStackblitz(event?: MouseEvent) {
     event?.preventDefault();
-    toStackblitz(this.urls, this.usedComponents);
+    toStackblitz(this.urls, this.declarations);
   }
 }
