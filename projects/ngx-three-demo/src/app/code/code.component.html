@@ -16,6 +16,14 @@
   <mat-card-footer>
     <a
       class="gist-url"
+      (click)="this.editorService.toCodeSandbox($event)"
+      href="#"
+    >
+      <mat-icon>crop_din</mat-icon>
+      CodeSandbox
+    </a>
+    <a
+      class="gist-url"
       (click)="this.editorService.toStackblitz($event)"
       href="#"
     >

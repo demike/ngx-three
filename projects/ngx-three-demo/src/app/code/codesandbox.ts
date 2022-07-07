@@ -7,9 +7,7 @@ import PACKAGE from '../../../../../package.json';
 import { GITHUB_ASSET_PATH } from '../assets';
 export { PACKAGE };
 
-const assets = ['BoomBox.glb', 'DamagedHelmet.glb'];
-
-export async function toCodeSandbox(fileUrls: string[]) {
+export async function toCodeSandbox(fileUrls: string[], declarations?: string[]) {
   const mainTsUrl = getMainTsUrl(fileUrls);
   const fileName = getFileNameFromFullPath(mainTsUrl);
   const tagName = getTagNameFromFileName(fileName);
@@ -20,30 +18,15 @@ export async function toCodeSandbox(fileUrls: string[]) {
       content: createIndexHtml(tagName)
     },
     'src/main.ts': {
-      content: createMainTs(fileName)
+      content: createMainTs(fileName, declarations)
     },
     'src/polyfills.ts': {
       content: polyfillTs
-    }
+    },
+    'src/assets.ts': { content: `export const ASSET_PATH = \'${GITHUB_ASSET_PATH}\';` }
   };
 
   await applySources(fileUrls, files);
-
-  /*
-  fileUrls.forEach(async (url) => {
-    files[`src/app/${getFileNameFromFullPath(url)}`] = {
-      contenxt: url,
-      isBinary: true
-    };
-  });
-  */
-
-  assets.forEach((asset) => {
-    files[`src/assets/${asset}`] = {
-      content: GITHUB_ASSET_PATH + asset,
-      isBinary: true
-    };
-  });
 
   fetch('https://codesandbox.io/api/v1/sandboxes/define?json=1', {
     method: 'POST',

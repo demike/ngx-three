@@ -30,6 +30,15 @@
       <button
         mat-button
         *ngIf="this.editorService.urls.length"
+        (click)="this.editorService.toCodeSandbox($event)"
+        href="#"
+      >
+        <mat-icon>crop_din</mat-icon>
+        CodeSandbox
+      </button>
+      <button
+        mat-button
+        *ngIf="this.editorService.urls.length"
         (click)="this.editorService.toStackblitz($event)"
         href="#"
       >

@@ -1,4 +1,3 @@
-import { Type } from '@angular/core';
 import { toCodeSandbox } from './codesandbox';
 import { toStackblitz } from './stackblitz';
 
@@ -16,13 +15,13 @@ export class EditorService {
     return this.urls.map((path) => path.split('/').pop() ?? '');
   }
 
-  public toCodeSandbox(event?: MouseEvent) {
-    event?.preventDefault();
-    toCodeSandbox(this.urls);
-  }
-
   public toStackblitz(event?: MouseEvent) {
     event?.preventDefault();
     toStackblitz(this.urls, this.declarations);
+  }
+
+  public toCodeSandbox(event?: MouseEvent) {
+    event?.preventDefault();
+    toCodeSandbox(this.urls, this.declarations);
   }
 }

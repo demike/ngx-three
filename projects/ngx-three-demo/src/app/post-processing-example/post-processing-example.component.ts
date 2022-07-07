@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { ThObject3D } from 'ngx-three';
 import { Color, Euler, Light, Vector3 } from 'three';
 import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader';
@@ -25,7 +25,7 @@ export class PostProcessingExampleComponent implements OnInit {
   public readonly zDist = 400;
   public meshData: { pos: Vector3; rotation: Euler; scale: Vector3; color: Color }[] = [];
 
-  constructor(private cdref: ChangeDetectorRef) {
+  constructor() {
     this.initMeshData();
   }
   ngOnInit(): void {
