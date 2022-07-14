@@ -17,13 +17,13 @@ export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements On
   protected renderLoop =  inject(ThAnimationLoopService);
 
 
-  constructor(protected camera: ThObject3D<any>, protected canvas?: ThCanvas, ) {
+  constructor(protected _camera: ThObject3D<any>, protected canvas?: ThCanvas, ) {
     super();
   }
 
   public createThreeInstance(args?: Iterable<any>) {
     if (!args) {
-      args = [this.camera.objRef, this.canvas?.rendererCanvas?.nativeElement];
+      args = [this._camera.objRef, this.canvas?.rendererCanvas?.nativeElement];
     }
     const instance: Partial<EventDispatcher> = super.createThreeInstance(args);
     this.patchDispatchEvent(instance);
