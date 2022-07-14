@@ -143,9 +143,6 @@ import { ThTubeGeometry } from './ThTubeGeometry';
 import { ThUnrealBloomPass } from './ThUnrealBloomPass';
 import { ThVideoTexture } from './ThVideoTexture';
 import { ThWireframeGeometry } from './ThWireframeGeometry';
-import { ThXRGripSpace } from './ThXRGripSpace';
-import { ThXRHandSpace } from './ThXRHandSpace';
-import { ThXRTargetRaySpace } from './ThXRTargetRaySpace';
 
 @NgModule({
   declarations: [
