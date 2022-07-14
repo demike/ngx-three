@@ -12,6 +12,7 @@ import { Box, IntroductoryExampleComponent } from './introductory-example/introd
 import { LoaderExampleComponent } from './loader-example/loader-example.component';
 import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-example.component';
 import { MultiViewPostprocessingExampleComponent } from './multi-view-postprocessing-example/multi-view-postprocessing-example.component';
+import { OnDemandExampleComponent } from './on-demand-example/on-demand-example.component';
 import { PLYLoaderExampleComponent } from './plyloader-example/plyloader-example.component';
 import { PostProcessingExampleComponent } from './post-processing-example/post-processing-example.component';
 import { SimpleExampleComponent } from './simple-example/simple-example.component';
@@ -193,6 +194,17 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/plyloader-example/plyloader-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/plyloader-example/plyloader-example.component.ts'
+      ]
+    }
+  },
+  {
+    path: 'on-demand-example',
+    data: {
+      title: 'On-Demand Rendering Example',
+      exampleComponent: OnDemandExampleComponent,
+      codeUrls: [
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.ts'
       ]
     }
   }

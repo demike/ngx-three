@@ -336,11 +336,14 @@ From this time on the render calls only happen in following cases:
 - Angular change detection is triggered for one of `ThCanvas`' children 
 - A controller fires an event
 
+This works with with `OrbitControl`, `MapControl` and `DragControl`.
+`FlyControl`, `TrackbalControl` and `FirstPersonControl` need a render loop.
+You can play with these controls and on-demand rendering in the [On-Demand Example](https://demike.github.io/ngx-three/on-demand-example).
+
 Example:
 
 This allows to render only once to show a scene (i.e.: resulting from a loaded GLB file). 
 And while you move the camera by means of the orbit control continuous render calls will be triggered. When you stop moving no render calls will happen.
-This should work for all controls that emit events.
 
 Let's say you change the background color that is bound in a template.
 In this case the angular changed detection mechanism triggers and the

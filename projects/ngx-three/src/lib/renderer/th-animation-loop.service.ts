@@ -40,6 +40,7 @@ export class ThAnimationLoopService implements OnDestroy {
         this.active = false;
         if (this.frameId !== undefined) {
             cancelAnimationFrame(this.frameId);
+            this.frameId = undefined;
         }
     }
 

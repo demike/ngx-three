@@ -45,6 +45,10 @@ describe('ThRenderDirective', () => {
     expect(stopSpy).toHaveBeenCalledTimes(1);
     directive.renderOnDemand = true;
     expect(startSpy).toHaveBeenCalledTimes(1);
+    directive.renderOnDemand = false;
+    expect(stopSpy).toHaveBeenCalledTimes(2);
+    directive.renderOnDemand = true;
+    expect(startSpy).toHaveBeenCalledTimes(2);
   });
 
 });

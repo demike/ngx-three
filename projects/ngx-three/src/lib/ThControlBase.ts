@@ -1,4 +1,5 @@
 import { Component, inject, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { EventDispatcher } from 'three';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThAnimationLoopService } from './renderer/th-animation-loop.service';
@@ -12,7 +13,9 @@ import { ThWrapperBase } from './ThWrapperBase';
 export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements OnDestroy {
 
   protected origDispatchEventMethod?: (event: any) => void;
+  protected beforeRenderSubscription?: Subscription;
   protected renderLoop =  inject(ThAnimationLoopService);
+
 
   constructor(protected camera: ThObject3D<any>, protected canvas?: ThCanvas, ) {
     super();
@@ -24,6 +27,7 @@ export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements On
     }
     const instance: Partial<EventDispatcher> = super.createThreeInstance(args);
     this.patchDispatchEvent(instance);
+    this.subscribeControlUpdater(instance as any);
     return instance;
   }
 
@@ -41,11 +45,27 @@ export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements On
   public ngOnDestroy(): void {
       super.ngOnDestroy();
       this.unpatchDispatchEvent();
+      this.unsubscribeControlUpdater();
   }
 
   protected unpatchDispatchEvent() {
     if(this.origDispatchEventMethod && this._objRef) {
       (this._objRef as unknown as EventDispatcher).dispatchEvent = this.origDispatchEventMethod;
+    }
+  }
+
+  protected subscribeControlUpdater( control: { update: (delta: number) => void }) {
+
+    if(control.update !== undefined) {
+      this.beforeRenderSubscription = this.renderLoop.beforeRender$.subscribe((state) => {
+         control.update(state.delta);
+      });
+    }
+  }
+
+  protected unsubscribeControlUpdater() {
+    if(this.beforeRenderSubscription) {
+      this.beforeRenderSubscription.unsubscribe();
     }
   }
 }

@@ -162,10 +162,10 @@ class NgxThreeClassGenerator {
 
 const generator = new NgxThreeClassGenerator();
 
+generator.generateControls();
 generator.generateObjects();
 generator.generateMaterials();
 generator.generateGeometries();
-generator.generateControls();
 generator.generatePasses();
 generator.generateTextures();
 generator.generateNgxModule(Array.from(generator.ngxThreeClassMap.values()));
