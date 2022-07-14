@@ -1,14 +1,14 @@
-import { EventEmitter, Injectable, NgZone, OnDestroy } from '@angular/core';
+import { EventEmitter, forwardRef, Inject, Injectable, NgZone, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
-import { Clock, OffscreenCanvas, Vector4, WebGLRenderer, WebGLRendererParameters } from 'three';
+import { Clock, Vector4, WebGLRenderer, WebGLRendererParameters } from 'three';
 import { ThView } from './ThView';
 import { isObserved } from './util';
+import { Observable, Subject, takeUntil } from 'rxjs';
 
 export interface RenderState {
   engine: ThEngineService;
   delta: number;
 }
-
 export interface ThRendererParameters extends Partial<WebGLRenderer> {
   domElement: HTMLCanvasElement;
 }
@@ -21,32 +21,34 @@ const RENDERER_DEFAULTS: WebGLRendererParameters = {
 
 @Injectable()
 export class ThEngineService implements OnDestroy {
+
+  public readonly beforeRender$: Observable<RenderState>;
+  public readonly resize$: Observable<{ width: number; height: number }>;
+
   private _renderer?: THREE.WebGLRenderer;
   private rendererParameters?: ThRendererParameters;
-  private views: ThView[] = [];
-  private frameId?: number;
   private clock = new Clock();
-
+  private destroyed$ = new Subject<void>();
+  private readonly resizeEmitter = new EventEmitter();
   private readonly beforeRenderEmitter = new EventEmitter<RenderState>();
-  public readonly beforeRender$ = this.beforeRenderEmitter.asObservable();
+  private views: ThView[] = [];
+
   public get canvas(): HTMLCanvasElement | undefined {
     return this.rendererParameters?.domElement;
   }
 
-  // @ts-ignore
   private resizeObserver?: ResizeObserver;
 
-  public constructor(private ngZone: NgZone) {}
+  public constructor(private ngZone: NgZone) {
+    this.beforeRender$ = this.beforeRenderEmitter.pipe(takeUntil(this.destroyed$));
+    this.resize$ = this.resizeEmitter.pipe(takeUntil(this.destroyed$));
+  }
 
   public get renderer() {
     return this._renderer;
   }
 
   public ngOnDestroy(): void {
-    if (this.frameId !== undefined) {
-      cancelAnimationFrame(this.frameId);
-    }
-
     if (this.resizeObserver && this.canvas) {
       this.resizeObserver.unobserve(this.canvas);
     }
@@ -98,26 +100,8 @@ export class ThEngineService implements OnDestroy {
     }
   }
 
-  public requestAnimationFrame() {
-    if (this.frameId === undefined) {
-      this.ngZone.runOutsideAngular(
-        () =>
-          (this.frameId = requestAnimationFrame(() => {
-            this.render();
-          }))
-      );
-    }
-  }
-
-  protected render(): void {
-    this.frameId = undefined;
-
-    // TODO: conditional rendere loop
-    this.requestAnimationFrame();
-
-    // emit before render
-    this.beforeRenderEmitter.next({ engine: this, delta: this.clock.getDelta() });
-
+  public render(): void {
+    this.beforeRenderEmitter.emit({engine: this, delta: this.clock.getDelta()});
     for (const view of this.views) {
       this.renderView(view);
     }
@@ -204,6 +188,8 @@ export class ThEngineService implements OnDestroy {
     for (const view of this.views) {
       this.adjustViewDimensions(view, width, height);
     }
+
+    this.resizeEmitter.emit({ width, height });
 
     return true;
   }

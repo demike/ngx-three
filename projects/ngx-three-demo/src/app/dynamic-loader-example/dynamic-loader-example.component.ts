@@ -1,13 +1,13 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone, OnDestroy } from '@angular/core';
 import { Object3D } from 'three';
 import { ASSET_PATH } from '../assets';
 
 @Component({
   selector: 'app-dynamic-loader-example',
   templateUrl: './dynamic-loader-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.Default
 })
-export class DynamicLoaderExampleComponent {
+export class DynamicLoaderExampleComponent implements OnDestroy {
   public modelUrl: string;
   public modelScale: [number, number, number] = [1, 1, 1];
   public rotation: [x: number, y: number, z: number] = [0, 0, 0];
@@ -15,9 +15,11 @@ export class DynamicLoaderExampleComponent {
   public readonly modelUrl1 = `${ASSET_PATH}DamagedHelmet.glb`;
   public readonly modelUrl2 = `${ASSET_PATH}BoomBox.glb`;
 
-  constructor() {
+  private intervalHandle: number;
+
+  constructor(private cdref: ChangeDetectorRef) {
     this.modelUrl = this.toggleModel();
-    window.setInterval(() => this.toggleModel(), 3000);
+    this.intervalHandle = window.setInterval(() => this.toggleModel(), 3000);
   }
 
   public toggleModel() {
@@ -26,7 +28,9 @@ export class DynamicLoaderExampleComponent {
     } else {
       this.modelUrl = this.modelUrl2;
     }
+    this.cdref.markForCheck();
 
+    console.log('test', NgZone.isInAngularZone());
     return this.modelUrl;
   }
 
@@ -45,5 +49,9 @@ export class DynamicLoaderExampleComponent {
 
   public onBeforeRender(): void {
     this.rotation = [0, this.rotation[1] + 0.01, 0];
+  }
+
+  ngOnDestroy(): void {
+    window.clearInterval(this.intervalHandle);
   }
 }

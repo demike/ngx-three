@@ -3,7 +3,6 @@ import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { ThObject3D } from '../generated/ThObject3D';
 import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -12,27 +11,28 @@ export class GLTFLoaderService extends ThAsyncLoaderService<GLTFLoader> {
 }
 
 @Pipe({
-   name: 'loadGLTF',
-   pure: true
+  name: 'loadGLTF',
+  pure: true
 })
 export class ThGLTFLoaderPipe extends ThAsyncLoaderBasePipe<GLTFLoader> implements PipeTransform {
-    constructor(protected service: GLTFLoaderService) {
-      super();
-    }
+  constructor(protected service: GLTFLoaderService) {
+    super();
+  }
 }
 
 @Directive({
-  selector: '[loadGLTF]',
+  selector: '[loadGLTF]'
 })
 export class ThGLTFLoaderDirective extends ThAsyncLoaderBaseDirective<GLTFLoader> {
-  constructor(@Host() protected host: ThObject3D, protected zone: NgZone, protected service: GLTFLoaderService) {
-    super(host,zone);
+  constructor(
+    @Host() protected host: ThObject3D,
+    protected zone: NgZone,
+    protected service: GLTFLoaderService,
+  ) {
+    super(host, zone);
   }
 
   protected getRefFromResponse(response: GLTF) {
-   return response.scene;
+    return response.scene;
   }
 }
-
-
-

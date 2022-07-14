@@ -1,8 +1,10 @@
 import {
+  AfterContentChecked,
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
+  DoCheck,
   ElementRef,
   forwardRef,
   Inject,
@@ -14,10 +16,9 @@ import {
 import { WebGLRenderer } from 'three';
 import { RaycasterService } from './events/raycaster.service';
 import { ThObject3D } from './generated/ThObject3D';
+import { ThAnimationLoopService } from './renderer/th-animation-loop.service';
 import { ThEngineService } from './ThEngine.service';
 import { ThView } from './ThView';
-
-
 
 @Component({
   selector: 'th-canvas',
@@ -27,12 +28,13 @@ import { ThView } from './ThView';
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
     ThEngineService,
+    ThAnimationLoopService,
     forwardRef(() => RaycasterService),
     { provide: ThView, useExisting: forwardRef(() => ThCanvas) }
   ]
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThCanvas extends ThView implements OnInit, AfterViewInit {
+export class ThCanvas extends ThView implements OnInit, AfterViewInit, AfterContentChecked {
   private static instanceCnt = 0;
   public readonly nid = ThCanvas.instanceCnt++;
 
@@ -69,7 +71,6 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit {
     }
     this._rendererCanvas = canvas;
     canvas.nativeElement.id += this.nid;
-
   }
 
   public get rendererCanvas() {
@@ -78,19 +79,23 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit {
 
   constructor(
     protected engServ: ThEngineService,
+    protected animationLoop: ThAnimationLoopService,
     @Inject(forwardRef(() => RaycasterService))
     protected raycaster: RaycasterService
   ) {
     super(engServ, raycaster);
     console.log('canvas ' + this.nid);
   }
+  ngAfterContentChecked(): void {
+    console.log('!!!DO CHECK!!!');
+    this.animationLoop.requestAnimationFrame();
+  }
 
   ngAfterViewInit(): void {
-    this.engServ.requestAnimationFrame();
+    this.animationLoop.requestAnimationFrame();
   }
 
   public ngOnInit(): void {
-
     this.applyRendererParameters();
 
     super.ngOnInit();
@@ -104,6 +109,6 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit {
       throw new Error('Missing Canvas');
     }
 
-    this.engServ.setRenderer({...this.rendererParameters, domElement: this.rendererCanvas.nativeElement});
+    this.engServ.setRenderer({ ...this.rendererParameters, domElement: this.rendererCanvas.nativeElement });
   }
 }

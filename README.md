@@ -288,20 +288,66 @@ This combination makes it possible to render multiple scenarios
 `ThScene` is the ngx-three wrapper of THREE.Scene and provides all
 of its members as inputs. It is <b>mandatory</b> for rendering.
 
-## Render Loop / ThEngineService
+## ThAnimationLoop / ThEngineService / ThRenderDirective
 
-This service runs the render loop.
+### Render Loop
+The `ThAnimationLoop` service runs the render loop.
+You can `start` and `stop` the loop.
+In addition you can request a 'one-shot` rendering
+by calling the Service-method `requestAnimationFrame`;
 
-You can react to a 'global' render event by means
-of using the `beforeRender` output of the `ThRenderDirective`.
+You can react to a 'global' render event by means of listening to the 
+`ThAnimationLoop.beforeRender$` observable
+or by using the `beforeRender` output of the `ThRenderDirective`.
+
+```html
+<th-object3D (beforeRender)="doSomething()" ></th-object3D>
+```
 
 In addition you can react to the `onRender`
 outputs of the `ThView` (`ThCanvas` is derived from it) instances.
 
+```html
+<th-canvas (onRender)="doSomething()"></th-canvas>
+```
+
+### Resize-Handling & Device Pixel Ratio
+
+For common scenarios ngx-three handles resizing automatically by observing the
+size of the canvas.
+
+But for special scenarios ([Multi View Example](https://demike.github.io/ngx-three/views-example)) you might have to do calculations when the size changes.
+This can be achieved by:
+- using the `onResize` event of the `ThRenderDirective`.
+```html
+<th-object3D (onResize)=calculateSomething($event)></th-object3D>
+```
+- or by subscribing to the `resize$` of the `ThEngineService`
+
+The `ThEngineService` takes care of resizing, does the rendering and organizes the the available views ([ThView](#ThView))
+
 > Note: The engine service **automatically** takes into account the device pixel ratio when calculating the renderer dimensions. This works dynamically i.e.: when moving the window from one display to a second one with different device pixel ratio.
 
+### On-Demand Rendering
+
+In case you do not need an animation (i.e.: static model viewer)
+you can disable the animation loop by setting `renderOnDemand` to true.
+From this time on the render calls only happen in following cases:
+- Angular change detection is triggered for one of `ThCanvas`' children 
+- A controller fires an event
+
+Example:
+
+This allows to render only once to show a scene (i.e.: resulting from a loaded GLB file). 
+And while you move the camera by means of the orbit control continuous render calls will be triggered. When you stop moving no render calls will happen.
+This should work for all controls that emit events.
+
+Let's say you change the background color that is bound in a template.
+In this case the angular changed detection mechanism triggers and the
+scene is rendered (once).
+
 ```html
-<th-object3D (beforeRender)="doSomething()"> </th-object3D>
+<th-canvas [renderOnDemand]="doOnDemandRendering"></th-canvas>
 ```
 
 # Objects / Meshes
