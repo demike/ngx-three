@@ -5,6 +5,7 @@ import { ThAdaptiveToneMappingPass } from './ThAdaptiveToneMappingPass';
 import { ThAfterimagePass } from './ThAfterimagePass';
 import { ThAmbientLight } from './ThAmbientLight';
 import { ThAmbientLightProbe } from './ThAmbientLightProbe';
+import { ThArcballControls } from './ThArcballControls';
 import { ThArrayCamera } from './ThArrayCamera';
 import { ThArrowHelper } from './ThArrowHelper';
 import { ThAudio } from './ThAudio';
@@ -138,15 +139,25 @@ import { ThTorusGeometry } from './ThTorusGeometry';
 import { ThTorusKnotGeometry } from './ThTorusKnotGeometry';
 import { ThTrackballControls } from './ThTrackballControls';
 import { ThTransformControls } from './ThTransformControls';
-import { ThTransformControlsGizmo } from './ThTransformControlsGizmo';
-import { ThTransformControlsPlane } from './ThTransformControlsPlane';
 import { ThTubeGeometry } from './ThTubeGeometry';
 import { ThUnrealBloomPass } from './ThUnrealBloomPass';
 import { ThVideoTexture } from './ThVideoTexture';
 import { ThWireframeGeometry } from './ThWireframeGeometry';
+import { ThXRGripSpace } from './ThXRGripSpace';
+import { ThXRHandSpace } from './ThXRHandSpace';
+import { ThXRTargetRaySpace } from './ThXRTargetRaySpace';
 
 @NgModule({
   declarations: [
+    ThTransformControls,
+    ThArcballControls,
+    ThDragControls,
+    ThFirstPersonControls,
+    ThFlyControls,
+    ThOrbitControls,
+    ThMapControls,
+    ThPointerLockControls,
+    ThTrackballControls,
     ThAudioListener,
     ThPositionalAudio,
     ThAudio,
@@ -241,16 +252,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThRoundedBoxGeometry,
     ThTeapotGeometry,
     ThTextGeometry,
-    ThDragControls,
-    ThFirstPersonControls,
-    ThFlyControls,
-    ThOrbitControls,
-    ThMapControls,
-    ThPointerLockControls,
-    ThTrackballControls,
-    ThTransformControls,
-    ThTransformControlsGizmo,
-    ThTransformControlsPlane,
     ThPass,
     ThEffectComposerGen,
     ThEffectComposer,
@@ -291,9 +292,18 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThCanvasTexture,
     ThDepthTexture,
     ThFramebufferTexture,
-    ThTexture
+    ThTexture,
   ],
   exports: [
+    ThTransformControls,
+    ThArcballControls,
+    ThDragControls,
+    ThFirstPersonControls,
+    ThFlyControls,
+    ThOrbitControls,
+    ThMapControls,
+    ThPointerLockControls,
+    ThTrackballControls,
     ThAudioListener,
     ThPositionalAudio,
     ThAudio,
@@ -388,16 +398,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThRoundedBoxGeometry,
     ThTeapotGeometry,
     ThTextGeometry,
-    ThDragControls,
-    ThFirstPersonControls,
-    ThFlyControls,
-    ThOrbitControls,
-    ThMapControls,
-    ThPointerLockControls,
-    ThTrackballControls,
-    ThTransformControls,
-    ThTransformControlsGizmo,
-    ThTransformControlsPlane,
     ThPass,
     ThEffectComposerGen,
     ThEffectComposer,
@@ -438,7 +438,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThCanvasTexture,
     ThDepthTexture,
     ThFramebufferTexture,
-    ThTexture
-  ]
+    ThTexture,
+  ],
 })
 export class NgxThreeGeneratedModule {}
