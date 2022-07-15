@@ -125,7 +125,7 @@ export abstract class NgxThreeClass {
     return this.getImportPathForSourceFile(this.classDecl.getSourceFile());
   }
 
-  private generateClassHeader() {
+  protected generateClassHeader() {
     let header = `export class ${this.className}<`;
     if (this.classDecl.typeParameters) {
       header = `${header}${this.classDecl.typeParameters.map((param) => param.getText()).join(',')},`;

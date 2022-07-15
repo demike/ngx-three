@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ThEffectComposer } from './overrides/ThEffectComposer';
 import { ThRenderPass } from './overrides/ThRenderPass';
+import { ThTransformControls } from './overrides/ThTransformControls';
 import { ThAdaptiveToneMappingPass } from './ThAdaptiveToneMappingPass';
 import { ThAfterimagePass } from './ThAfterimagePass';
 import { ThAmbientLight } from './ThAmbientLight';
@@ -138,14 +139,16 @@ import { ThTexturePass } from './ThTexturePass';
 import { ThTorusGeometry } from './ThTorusGeometry';
 import { ThTorusKnotGeometry } from './ThTorusKnotGeometry';
 import { ThTrackballControls } from './ThTrackballControls';
-import { ThTransformControls } from './ThTransformControls';
+import { ThTransformControlsGen } from './ThTransformControlsGen';
 import { ThTubeGeometry } from './ThTubeGeometry';
 import { ThUnrealBloomPass } from './ThUnrealBloomPass';
 import { ThVideoTexture } from './ThVideoTexture';
 import { ThWireframeGeometry } from './ThWireframeGeometry';
 
+
 @NgModule({
   declarations: [
+    ThTransformControlsGen,
     ThTransformControls,
     ThArcballControls,
     ThDragControls,
@@ -292,6 +295,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThTexture,
   ],
   exports: [
+    ThTransformControlsGen,
     ThTransformControls,
     ThArcballControls,
     ThDragControls,

@@ -8,26 +8,25 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Camera, Event, MOUSE, Object3D } from 'three';
+import { Camera, MOUSE, Object3D } from 'three';
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
 import { ThControlBase } from '../ThControlBase';
-import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-transformControls',
+  selector: 'th-transformControlsGen',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThTransformControls),
+      useExisting: forwardRef(() => ThTransformControlsGen),
     },
   ],
 })
-export class ThTransformControls<
+export class ThTransformControlsGen<
   T extends TransformControls = TransformControls,
   TARGS = [object: Camera, domElement?: HTMLElement]
-> extends ThObject3D<Event, T, TARGS> {
+> extends ThControlBase<T, TARGS> {
   public getType(): Type<TransformControls> {
     return TransformControls;
   }

@@ -6,6 +6,7 @@
 <select class="form-control" [(ngModel)]="controlType">
     <option class="works-on-demand">orbit</option>
     <option class="works-on-demand">map</option>
+    <option class="works-on-demand">arcball</option>
     <option class="works-on-demand">transform</option>
     <option class="works-on-demand">drag</option>
     <option class="needs-loop">fly</option>
@@ -35,6 +36,7 @@
       >
         <th-orbitControls *ngSwitchCase="'orbit'"></th-orbitControls>
         <th-mapControls *ngSwitchCase="'map'"></th-mapControls>
+        <th-arcballControls *ngSwitchCase="'arcball'"></th-arcballControls>
         <th-transformControls *ngSwitchCase="'transform'" [object]="model.objRef"></th-transformControls>
         <th-dragControls *ngSwitchCase="'drag'" [args]="[[model.objRef], camera.objRef, canvas.rendererCanvas?.nativeElement  ]"></th-dragControls>
         <th-flyControls *ngSwitchCase="'fly'"></th-flyControls>

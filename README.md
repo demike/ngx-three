@@ -336,8 +336,8 @@ From this time on the render calls only happen in following cases:
 - Angular change detection is triggered for one of `ThCanvas`' children 
 - A controller fires an event
 
-This works with with `OrbitControl`, `MapControl` and `DragControl`.
-`FlyControl`, `TrackbalControl` and `FirstPersonControl` need a render loop.
+This works with `OrbitControls`, `MapControls`, `DragControls`, `TransformControls` and `ArcBallControls`.
+But `FlyControls`, `TrackbalControls` and `FirstPersonControls` need a render loop.
 You can play with these controls and on-demand rendering in the [On-Demand Example](https://demike.github.io/ngx-three/on-demand-example).
 
 Example:

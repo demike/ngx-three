@@ -67,3 +67,19 @@ export function isDisposable(obj: any): obj is { dispose: () => void } {
 export function isObserved<T = any>(s?: Subject<T>): s is Subject<T> {
   return s !== undefined && ( s.observed /* <-- needs at least RxJs 7.x.x */ || s.observers?.length > 0 /* <-- for RxJs < 7.x.x */);
 }
+
+
+
+// This can live anywhere in your codebase:
+export function applyMixins(derivedCtor: any, constructors: any[]) {
+  constructors.forEach((baseCtor) => {
+    Object.getOwnPropertyNames(baseCtor.prototype).forEach((name) => {
+      Object.defineProperty(
+        derivedCtor.prototype,
+        name,
+        Object.getOwnPropertyDescriptor(baseCtor.prototype, name) ||
+          Object.create(null)
+      );
+    });
+  });
+}

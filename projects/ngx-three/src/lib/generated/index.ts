@@ -4,6 +4,7 @@
 
 export * from './overrides/ThEffectComposer';
 export * from './overrides/ThRenderPass';
+export * from './overrides/ThTransformControls';
 export * from './ThAdaptiveToneMappingPass';
 export * from './ThAfterimagePass';
 export * from './ThAmbientLight';
@@ -141,7 +142,7 @@ export * from './ThTexturePass';
 export * from './ThTorusGeometry';
 export * from './ThTorusKnotGeometry';
 export * from './ThTrackballControls';
-export * from './ThTransformControls';
+export * from './ThTransformControlsGen';
 export * from './ThTubeGeometry';
 export * from './ThUnrealBloomPass';
 export * from './ThVideoTexture';
