@@ -1,9 +1,8 @@
 
-
-<input id="ondemand" type="checkbox" [(ngModel)]="renderOnDemand"/>
-<label for="ondemand">Render On-Demand</label>
-
-<select class="form-control" [(ngModel)]="controlType">
+<div class="control-panel">
+  <input id="ondemand" type="checkbox" [(ngModel)]="renderOnDemand"/>
+  <label for="ondemand">Render On-Demand</label>
+  <select class="form-control" [(ngModel)]="controlType">
     <option class="works-on-demand">orbit</option>
     <option class="works-on-demand">map</option>
     <option class="works-on-demand">arcball</option>
@@ -13,6 +12,7 @@
     <option class="needs-loop">trackball</option>
     <option class="needs-loop">firstpersion</option>
   </select>
+</div>
 
 <th-canvas [thStats]="true" [renderOnDemand]="renderOnDemand" #canvas>
     <th-scene>

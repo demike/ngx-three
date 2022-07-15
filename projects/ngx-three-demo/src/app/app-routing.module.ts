@@ -204,7 +204,8 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: OnDemandExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.ts'
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.ts',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.scss'
       ]
     }
   }
