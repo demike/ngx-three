@@ -36,19 +36,16 @@ describe('ThRenderDirective', () => {
     (engineServiceMock.resize$ as Subject<any>).next({ width: 800, height: 600});
   });
 
-  it('should enable/disable ondemand rendering', (done) => {
+  it('should enable/disable ondemand rendering', () => {
 
-    const stopSpy = spyOn(animationLoopService,'stop');
-    const startSpy = spyOn(animationLoopService,'start');
-
-    directive.renderOnDemand = false;
-    expect(stopSpy).toHaveBeenCalledTimes(1);
     directive.renderOnDemand = true;
-    expect(startSpy).toHaveBeenCalledTimes(1);
+    expect(animationLoopService.stop).toHaveBeenCalledTimes(1);
     directive.renderOnDemand = false;
-    expect(stopSpy).toHaveBeenCalledTimes(2);
+    expect(animationLoopService.start).toHaveBeenCalledTimes(1);
     directive.renderOnDemand = true;
-    expect(startSpy).toHaveBeenCalledTimes(2);
+    expect(animationLoopService.stop).toHaveBeenCalledTimes(2);
+    directive.renderOnDemand = false;
+    expect(animationLoopService.start).toHaveBeenCalledTimes(2);
   });
 
 });
