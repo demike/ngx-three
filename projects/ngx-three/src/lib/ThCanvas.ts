@@ -87,7 +87,6 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit, AfterCont
     console.log('canvas ' + this.nid);
   }
   ngAfterContentChecked(): void {
-    console.log('!!!DO CHECK!!!');
     this.animationLoop.requestAnimationFrame();
   }
 

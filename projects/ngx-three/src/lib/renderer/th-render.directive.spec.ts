@@ -38,7 +38,7 @@ describe('ThRenderDirective', () => {
 
   it('should enable/disable ondemand rendering', (done) => {
 
-    const stopSpy = spyOn(animationLoopService,'start');
+    const stopSpy = spyOn(animationLoopService,'stop');
     const startSpy = spyOn(animationLoopService,'start');
 
     directive.renderOnDemand = false;

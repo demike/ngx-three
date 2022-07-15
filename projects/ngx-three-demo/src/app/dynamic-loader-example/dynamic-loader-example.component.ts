@@ -30,7 +30,6 @@ export class DynamicLoaderExampleComponent implements OnDestroy {
     }
     this.cdref.markForCheck();
 
-    console.log('test', NgZone.isInAngularZone());
     return this.modelUrl;
   }
 
