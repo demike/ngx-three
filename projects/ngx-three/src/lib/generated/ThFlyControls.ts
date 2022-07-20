@@ -36,7 +36,7 @@ export class ThFlyControls<
   }
 
   @Input()
-  public set domElement(value: HTMLElement | HTMLDocument) {
+  public set domElement(value: HTMLElement | Document) {
     if (this._objRef) {
       this._objRef.domElement = value;
     }

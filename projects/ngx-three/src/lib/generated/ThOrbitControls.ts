@@ -37,7 +37,7 @@ export class ThOrbitControls<
   }
 
   @Input()
-  public set domElement(value: HTMLElement | HTMLDocument) {
+  public set domElement(value: HTMLElement | Document) {
     if (this._objRef) {
       this._objRef.domElement = value;
     }
@@ -215,14 +215,16 @@ export class ThOrbitControls<
   }
 
   @Input()
-  public set mouseButtons(value: { LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }) {
+  public set mouseButtons(
+    value: Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>
+  ) {
     if (this._objRef) {
       this._objRef.mouseButtons = value;
     }
   }
 
   @Input()
-  public set touches(value: { ONE: TOUCH; TWO: TOUCH }) {
+  public set touches(value: Partial<{ ONE: TOUCH; TWO: TOUCH }>) {
     if (this._objRef) {
       this._objRef.touches = value;
     }
