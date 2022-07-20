@@ -51,7 +51,7 @@ Angular ([setup howto](https://angular.io/guide/setup-local)), three.js and its 
 
 ```
 npm install three
-npm install @types/three"
+npm install @types/three
 ```
 
 You can use npm to get the exact peer dependency versions for ngx-three
