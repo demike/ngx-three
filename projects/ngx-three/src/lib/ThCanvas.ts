@@ -4,7 +4,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   ContentChildren,
-  DoCheck,
   ElementRef,
   forwardRef,
   Inject,
@@ -84,7 +83,6 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit, AfterCont
     protected raycaster: RaycasterService
   ) {
     super(engServ, raycaster);
-    console.log('canvas ' + this.nid);
   }
   ngAfterContentChecked(): void {
     this.animationLoop.requestAnimationFrame();

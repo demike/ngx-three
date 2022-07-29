@@ -44,7 +44,6 @@ export abstract class ThAsyncLoaderBaseDirective<T extends AsyncLoader> implemen
   @Input()
   set url(url: Parameters<T['loadAsync']>[0] | undefined) {
     this._url = url;
-    console.log('got some model');
     this.load();
   }
 
