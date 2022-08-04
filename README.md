@@ -455,7 +455,7 @@ by using the `loadGLTF` directive:
 the `loadGLTF` pipe:
 
 ```html
-<th-object3D [objRef]="'assets/helmet.glb' | loadGLTF"> </th-object3D>
+<th-object3D [objRef]="('assets/helmet.glb' | loadGLTF | async).scene"> </th-object3D>
 ```
 
 or by using the GLTFLoaderService directly:
