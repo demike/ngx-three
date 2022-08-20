@@ -632,9 +632,8 @@ To load a Texture you have 3 possibilities (service, pipe, directive)
   ```
 - use the loader pipe
   ```html
-  <th-MeshBasicMaterial [map]='"thetexture.jpg" | loadTexture'
-    ><th-MeshBasicMaterial></th-MeshBasicMaterial
-  ></th-MeshBasicMaterial>
+  <th-MeshBasicMaterial [map]='"thetexture.jpg" | loadTexture'>
+  </th-MeshBasicMaterial>
   ```
 - use the injected service
 
@@ -688,6 +687,50 @@ you can listen to it like this:
 
 [Events Example](https://demike.github.io/ngx-three/events-example)
 
+## three.js Events
+
+Every wrapper can be used to bind to three js events
+within an Angular template.
+For this purpose you can pass an object ( key = event name, value = callback) to the `threeEvents` input.
+You have to make shure that context of the callback functions get preserved.
+This can be done 
+- by means of using the [bind pipe](#bind-pipe)
+- or by using fat arrow function members instead of methods (see example below)
+
+component:
+```ts
+
+@Component({
+  // ...
+})
+export class TestComponent {
+  public onOrbitControlChange(evt: Event) {
+      // ...
+  }
+  public onOrbitControlEnd = (evt: Event) => {  // <-- preserves this context when used in template
+    // ...
+  }
+}
+
+```
+template:
+```html
+     <!-- 
+      binding to three.js events:
+        1) change: with bind directive for preserving this scope
+        2) end: using a fat arrow member function for preserving this scope
+      -->
+      <th-orbitControls
+        [threeEvents]="{
+          'change': onOrbitControlChange | bind : this,
+          'end': onOrbitControlEnd
+        }"></th-orbitControls>
+    
+    </th-perspectiveCamera>
+```
+
+
+
 # Utilitiy Pipes / Directives
 
 ngx-three provides some utility pipes that ease input assignments
@@ -728,6 +771,16 @@ and ensures that the clone call only happens once
 
 <th-light [objRef]="light | clone"></th-light>
 ```
+
+## bind pipe
+
+binds a function to an object by means of [Function.prototype.bind()](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Function/bind)
+
+
+```html
+<th-orbitControls [threeEvents]="{ end: onOrbitEnd | bind: this }"></th-orbitControls>
+```
+
 
 ## Stats Directive
 
