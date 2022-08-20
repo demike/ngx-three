@@ -8,6 +8,7 @@ import { ASSET_PATH } from '../assets';
 
 })
 export class EventsExampleComponent {
+  public readonly id = 'CID';
   public changes: string[] = [];
   public rotation: [x: number, y: number, z: number] = [0, 0, 0];
   public position: [x: number, y: number, z: number] = [0, 1, 0];
@@ -25,13 +26,25 @@ export class EventsExampleComponent {
   }
 
   public logUpdates(changes: SimpleChanges) {
-    if (this.changes.length >= 20) {
-      this.changes.shift();
-    }
-    this.changes.push(Object.keys(changes).toString());
+    this.pushToChangesArray(Object.keys(changes).toString());
   }
 
   public onLoaded() {
     this.changes.push('Model loaded');
+  }
+
+  public onOrbitControlChange() {
+    this.pushToChangesArray(`${this.id}: orbit control change`);
+  }
+
+  public onOrbitControlEnd = () => { // <-- preserves binding scope when used in template
+    this.pushToChangesArray(`${this.id}: orbit control end`);
+  };
+
+  private pushToChangesArray(change: string) {
+    if (this.changes.length >= 20) {
+      this.changes.shift();
+    }
+    this.changes.push(change);
   }
 }
