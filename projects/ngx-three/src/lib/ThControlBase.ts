@@ -35,7 +35,7 @@ export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements On
     if(dispatcher.dispatchEvent) {
       const origMethod = this.origDispatchEventMethod = dispatcher.dispatchEvent;
       dispatcher.dispatchEvent = (event: any) => {
-        origMethod.apply(dispatcher, event);
+        origMethod.call(dispatcher, event);
         // request an animation frame after an event was emitted;
         this.renderLoop.requestAnimationFrame();
       };
