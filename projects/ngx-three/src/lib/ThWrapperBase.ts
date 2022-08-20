@@ -46,6 +46,19 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
   @Input()
   public args?: ARGS;
 
+  protected eventListeners?: {[key: THREE.Event['type']]: THREE.EventListener<THREE.Event, THREE.Event['type'] , T> };
+  @Input()
+  public set threeEvents( eventMap: {[key: THREE.Event['type']]: THREE.EventListener<THREE.Event, THREE.Event['type'] , T> } | undefined) {
+    this.removeEvents();
+    this.eventListeners = eventMap;
+    this.applyEvents();
+  }
+
+  public get threeEvents() {
+    return this.eventListeners;
+  }
+
+
   @Output()
   public get onUpdate(): Observable<SimpleChanges> {
     if (!this.updateEmitter) {
@@ -117,6 +130,7 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
   }
 
   ngOnDestroy() {
+    this.removeEvents();
     this.removeFromParent();
 
     if (this.autoDispose) {
@@ -155,4 +169,22 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
       this.updateEmitter.next(changes);
     }
   }
+
+  private removeEvents() {
+    if( this.eventListeners && this._objRef) {
+      for(const entry of Object.entries(this.eventListeners)) {
+        (this._objRef as any).removeEventListener(entry[0],entry[1]);
+      }
+      this.eventListeners = undefined;
+    }
+  }
+
+  private applyEvents() {
+    if(this.eventListeners && this._objRef) {
+      for(const entry of Object.entries(this.eventListeners)) {
+        (this._objRef as any).addEventListener(entry[0],entry[1]);
+      }
+    }
+  }
+
 }

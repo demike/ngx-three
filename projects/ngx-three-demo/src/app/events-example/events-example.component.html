@@ -2,6 +2,7 @@
   <th-scene>
     <th-ambientLight> </th-ambientLight>
 
+    <!-- binding  onUpdate and onLoad events-->
     <th-object3D
       loadGLTF
       [url]="assetPath"
@@ -15,11 +16,25 @@
     <th-gridHelper [args]="[10, 10]"></th-gridHelper>
     <th-pointLight [position]="[10, 10, 10]"></th-pointLight>
 
+ 
     <th-perspectiveCamera
-      [args]="[45, 2, 0.1, 100]"
-      [position]="[10, 10, 10]"
-      [lookAt]="[0, 0, 0]"
-    ></th-perspectiveCamera>
+        [args]="[45, 2, 0.1, 100]"
+        [position]="[10, 10, 10]"
+        [lookAt]="[0, 0, 0]"
+    >
+      <!-- 
+      binding to three.js events:
+        1) change: with bind directive for preserving this scope
+        2) end: with using a fat arrow member function for preserving this scope
+      -->
+      <th-orbitControls
+        [threeEvents]="{
+          'change': onOrbitControlChange | bind : this,
+          'end': onOrbitControlEnd
+        }"></th-orbitControls>
+    
+    </th-perspectiveCamera>
+    
   </th-scene>
 </th-canvas>
 

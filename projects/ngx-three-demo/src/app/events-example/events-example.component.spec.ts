@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgxThreeModule } from 'ngx-three';
 
 import { EventsExampleComponent } from './events-example.component';
 
@@ -8,6 +9,7 @@ describe('EventsExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports: [NgxThreeModule],
       declarations: [EventsExampleComponent]
     }).compileComponents();
   });
