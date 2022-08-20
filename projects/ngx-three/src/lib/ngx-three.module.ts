@@ -27,6 +27,7 @@ import { ThWrapperBase } from './ThWrapperBase';
 import { ThFBXLoaderDirective, ThFBXLoaderPipe } from './loaders/ThFBXLoader';
 import { ThLogLuvLoaderDirective, ThLogLuvLoaderPipe } from './loaders/data-texture/ThLogLuvLoader';
 import { ThPLYLoaderDirective, ThPLYLoaderPipe } from './loaders/ThPLYLoader';
+import { BindPipe } from './pipes/bind.pipe';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { ThPLYLoaderDirective, ThPLYLoaderPipe } from './loaders/ThPLYLoader';
     Vector4Pipe,
     ClonePipe,
     FogPipe,
+    BindPipe,
     StatsDirective,
     ThRenderDirective,
     // texture loaders
@@ -98,6 +100,7 @@ import { ThPLYLoaderDirective, ThPLYLoaderPipe } from './loaders/ThPLYLoader';
     Vector4Pipe,
     ClonePipe,
     FogPipe,
+    BindPipe,
     ThRenderDirective,
     StatsDirective,
     // texture loaders
