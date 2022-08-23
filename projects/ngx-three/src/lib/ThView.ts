@@ -1,7 +1,7 @@
 import { Component, ContentChild, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
-import { Color, Object3D, Vector4 } from 'three';
+import { Color, Object3D, Raycaster, Vector4 } from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
-import { RaycasterService } from './events/raycaster.service';
+import { RAYCASTER, RaycasterService } from './events/raycaster.service';
 import { ThCamera } from './generated/ThCamera';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThScene } from './generated/ThScene';
@@ -11,7 +11,8 @@ import { ThEngineService } from './ThEngine.service';
 @Component({
   selector: 'th-view',
   template: '',
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThView) }, RaycasterService]
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThView) },
+     { provide: RAYCASTER, useValue:  new Raycaster() }, RaycasterService]
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThView implements OnInit {

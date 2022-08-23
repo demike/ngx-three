@@ -1,0 +1,16 @@
+<div [ngStyle]="styles" #outerRef *ngIf="transform;  else noTransform">
+    <div #innerRef [ngStyle]="transformInnerStyles" >
+        <div [style]="style" [className]="className">
+            <ng-container *ngTemplateOutlet="tempOutlet" ></ng-container>
+        </div>
+    </div>
+</div>
+<ng-template #noTransform>
+    <div [ngStyle]="styles" [className]="className" #outerRef>
+        <ng-container *ngTemplateOutlet="tempOutlet" ></ng-container>
+    </div>
+</ng-template>
+
+<ng-template #tempOutlet>
+    <ng-content></ng-content>
+</ng-template>

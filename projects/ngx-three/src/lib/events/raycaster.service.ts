@@ -1,5 +1,6 @@
-import { Injectable, OnDestroy } from '@angular/core';
+import { inject, Injectable, InjectionToken, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
+import { Raycaster } from 'three';
 import { ThCamera } from '../generated/ThCamera';
 import { RaycasterEventDirective } from './raycaster.events.directive';
 
@@ -10,6 +11,11 @@ export enum RaycasterEvent {
   click = 'click'
 }
 
+
+export const RAYCASTER = new InjectionToken<Raycaster> ('A reference to the raycaster object',{
+  factory: () => new Raycaster()
+});
+
 interface NearestIntersection {
   target?: RaycasterEventDirective | null;
   face?: THREE.Face | null;
@@ -18,7 +24,7 @@ interface NearestIntersection {
 @Injectable()
 export class RaycasterService implements OnDestroy {
   private canvas?: HTMLCanvasElement;
-  private raycaster = new THREE.Raycaster();
+  private raycaster = inject(RAYCASTER);
   private selected: RaycasterEventDirective | null = null;
   private enabled = true;
   private camera?: ThCamera;
