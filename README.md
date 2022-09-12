@@ -781,6 +781,15 @@ binds a function to an object by means of [Function.prototype.bind()](https://de
 <th-orbitControls [threeEvents]="{ end: onOrbitEnd | bind: this }"></th-orbitControls>
 ```
 
+## plane pipe
+
+creates a three.js [plane](https://threejs.org/docs/#api/en/math/Plane) instance from an array of numbers `[x,y,z]` ( = normal vector ) and an optional 
+argument ( = constant: the signed distance from the origin to the plane ).
+
+```html
+<th-planeHelper [args]="[[0,1,0] | plane: 2"></th-orbitControls>
+```
+
 
 ## Stats Directive
 
