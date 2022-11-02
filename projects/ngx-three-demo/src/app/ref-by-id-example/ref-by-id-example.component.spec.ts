@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { AppModule } from '../app.module';
 
 import { RefByIdExampleComponent } from './ref-by-id-example.component';
 
@@ -8,7 +9,7 @@ describe('RefByIdExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RefByIdExampleComponent ]
+      imports: [AppModule]
     })
     .compileComponents();
 
