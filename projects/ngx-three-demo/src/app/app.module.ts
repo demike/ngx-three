@@ -37,6 +37,7 @@ import { PLYLoaderExampleComponent } from './plyloader-example/plyloader-example
 import { ExamplePageComponent } from './example-page/example-page.component';
 import { OnDemandExampleComponent } from './on-demand-example/on-demand-example.component';
 import { RefByIdExampleComponent } from './ref-by-id-example/ref-by-id-example.component';
+import { HtmlExampleComponent } from './html-example/html-example.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { RefByIdExampleComponent } from './ref-by-id-example/ref-by-id-example.c
     PLYLoaderExampleComponent,
     ExamplePageComponent,
     OnDemandExampleComponent,
-    RefByIdExampleComponent
+    RefByIdExampleComponent,
+    HtmlExampleComponent
   ],
   imports: [
     BrowserModule,
