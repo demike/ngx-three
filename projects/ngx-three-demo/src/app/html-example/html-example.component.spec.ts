@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NgxThreeModule } from 'ngx-three';
 import { AppModule } from '../app.module';
 
 import { HtmlExampleComponent } from './html-example.component';

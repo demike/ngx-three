@@ -84,8 +84,8 @@ import { PlanePipe } from './pipes/plane.pipe';
     ThTGALoaderPipe,
     ThLogLuvLoaderDirective,
     ThLogLuvLoaderPipe,
-       // directives
-       RefByIdDirective,
+    // directives
+    RefByIdDirective,
     //extras
     HtmlComponent
   ],
