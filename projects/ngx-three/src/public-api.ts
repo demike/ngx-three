@@ -49,6 +49,7 @@ export * from './lib/loaders/compressed-texture/ThDDSLoader';
 export * from './lib/loaders/compressed-texture/ThKTX2Loader';
 export * from './lib/loaders/compressed-texture/ThKTXLoader';
 export * from './lib/loaders/compressed-texture/ThPVRLoader';
+export * from './lib/loaders/compressed-texture/ThDRACOLoader';
 export * from './lib/loaders/data-texture/ThEXRLoader';
 export * from './lib/loaders/data-texture/ThRGBELoader';
 export * from './lib/loaders/data-texture/ThRGBMLoader';

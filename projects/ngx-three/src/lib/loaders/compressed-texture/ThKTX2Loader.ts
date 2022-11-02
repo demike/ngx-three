@@ -1,6 +1,5 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
 import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader';
-import { ThCompressedTexture } from '../../generated/ThCompressedTexture';
 import { ThTexture } from '../../generated/ThTexture';
 import { ThCallbackLoaderService, ThCallbackLoaderBaseDirective, ThCallbackLoaderBasePipe } from '../ThCallbackLoaderBase';
 
@@ -8,7 +7,19 @@ import { ThCallbackLoaderService, ThCallbackLoaderBaseDirective, ThCallbackLoade
     providedIn: 'root'
   })
   export class KTX2LoaderService extends ThCallbackLoaderService<KTX2Loader> {
-    public clazz = KTX2Loader;
+    public readonly clazz = KTX2Loader;
+
+    protected transcoderPath = '';
+
+    public setDecoderPath(path: string) {
+      this.transcoderPath = path;
+    }
+
+    public createLoaderInstance(): KTX2Loader {
+        const loader = super.createLoaderInstance();
+        loader.setTranscoderPath(this.transcoderPath);
+        return loader;
+    }
   }
 
   @Pipe({

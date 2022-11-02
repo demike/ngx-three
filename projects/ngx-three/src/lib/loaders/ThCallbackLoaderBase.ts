@@ -1,23 +1,23 @@
 import { Directive, EventEmitter, Host, Input, NgZone, OnInit, Output, PipeTransform, Type } from '@angular/core';
-import { Texture } from 'three';
-import { ThTexture } from '../generated/ThTexture';
+import { Loader } from 'three';
 import { isObserved } from '../util';
+import { ThLoader } from './ThLoaderBase';
 
 
 
-interface CallBackLoader  {
+interface CallBackLoader extends Loader  {
   load( url: string| string[], onLoad?: (...args: any) => void,
   onProgress?: (event: ProgressEvent) => void,
   onError?: (event: ErrorEvent) => void, ): any;
 }
 
 
-export abstract class ThCallbackLoaderService<T extends CallBackLoader>  {
-  public abstract clazz: Type<T>;
-  load( ...args: Parameters<T['load']>): ReturnType<T['load']> {
-    const loader = new this.clazz();
+export abstract class ThCallbackLoaderService<T extends CallBackLoader> extends ThLoader<T>  {
+  public load( ...args: Parameters<T['load']>): ReturnType<T['load']> {
+    const loader = this.createLoaderInstance();
     return loader.load(...args as Parameters<CallBackLoader['load']>);
   }
+
 }
 
 
