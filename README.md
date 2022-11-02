@@ -479,6 +479,26 @@ load(url: string, onProgress?: (event: ProgressEvent) => void): Promise<any>;
 
 You can find an example [here](https://demike.github.io/ngx-three/loader-example)
 
+### DRACO Compression
+
+To load draco compressed gltf files you have to specify the path to a folder containing the WASM/JS decoding libraries.
+All you have to do is to inject the `DRACOLoaderService` and set the decoder path.
+
+```ts
+constructor(dracoLoader: DRACOLoaderService) {
+    // specify the draco decoder path used by the gltf loader instances
+    dracoLoader.setDecoderPath('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/js/libs/draco/gltf/');
+}
+```
+
+You may have to specify a different crossOrigin string to implement CORS
+i.e.: 
+```ts
+dracoLoader.setCrossOrigin('no-cors'); // just for testing (default: "anonymous")
+```
+
+You can find an example [here](https://demike.github.io/ngx-three/ref-by-id-example)
+
 ## Creating your own Loader
 
 In addition to the pre-defined loaders it is actually quite simple to add additional
@@ -804,6 +824,8 @@ a specific node of a model.
 </th-object3d>
 
 ```
+
+You can find an example [here](https://demike.github.io/ngx-three/ref-by-id-example)
 
 ## Stats Directive
 
