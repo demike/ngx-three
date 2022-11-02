@@ -22,7 +22,7 @@ import { ThObject3D } from './ThObject3D';
 
 @Component({
   selector: 'th-scene',
-  template: '',
+  template: '<ng-content></ng-content>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }],
 })

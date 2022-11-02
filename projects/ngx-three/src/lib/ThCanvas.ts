@@ -22,7 +22,7 @@ import { ThView } from './ThView';
 @Component({
   selector: 'th-canvas',
   styleUrls: ['./ThCanvas.scss'],
-  template: '<canvas #rendererCanvas id="rendererCanvas"></canvas>',
+  template: '<canvas #rendererCanvas id="rendererCanvas"><ng-content></ng-content></canvas>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
