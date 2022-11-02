@@ -787,9 +787,23 @@ creates a three.js [plane](https://threejs.org/docs/#api/en/math/Plane) instance
 argument ( = constant: the signed distance from the origin to the plane ).
 
 ```html
-<th-planeHelper [args]="[[0,1,0] | plane: 2"></th-orbitControls>
+<th-planeHelper [args]="[[0,1,0] | plane: 2"></th-planeHelper>
 ```
 
+## ref-by-id directive
+
+A utility directive that helps you selecting
+a specific node of a model.
+
+```html
+
+<th-object3d [loadGltf]="head.glb">
+  <th-mesh refById="left-eye" >
+    <th-meshBasicMaterial [args]="{color: 'purple'}"></th-meshBasicMaterial>
+  </th-mesh>
+</th-object3d>
+
+```
 
 ## Stats Directive
 
