@@ -36,6 +36,7 @@ import { RobotComponent } from './animation-example/robot.component';
 import { PLYLoaderExampleComponent } from './plyloader-example/plyloader-example.component';
 import { ExamplePageComponent } from './example-page/example-page.component';
 import { OnDemandExampleComponent } from './on-demand-example/on-demand-example.component';
+import { RefByIdExampleComponent } from './ref-by-id-example/ref-by-id-example.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { OnDemandExampleComponent } from './on-demand-example/on-demand-example.
     //    CustomRenderExamplePageComponent,
     PLYLoaderExampleComponent,
     ExamplePageComponent,
-    OnDemandExampleComponent
+    OnDemandExampleComponent,
+    RefByIdExampleComponent
   ],
   imports: [
     BrowserModule,

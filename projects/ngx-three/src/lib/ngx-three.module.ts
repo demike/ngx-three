@@ -28,6 +28,8 @@ import { ThFBXLoaderDirective, ThFBXLoaderPipe } from './loaders/ThFBXLoader';
 import { ThLogLuvLoaderDirective, ThLogLuvLoaderPipe } from './loaders/data-texture/ThLogLuvLoader';
 import { ThPLYLoaderDirective, ThPLYLoaderPipe } from './loaders/ThPLYLoader';
 import { BindPipe } from './pipes/bind.pipe';
+import { RefByIdDirective } from './directives/ref-by-id.directive';
+import { PlanePipe } from './pipes/plane.pipe';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,7 @@ import { BindPipe } from './pipes/bind.pipe';
     ClonePipe,
     FogPipe,
     BindPipe,
+    PlanePipe,
     StatsDirective,
     ThRenderDirective,
     // texture loaders
@@ -78,7 +81,9 @@ import { BindPipe } from './pipes/bind.pipe';
     ThTGALoaderDirective,
     ThTGALoaderPipe,
     ThLogLuvLoaderDirective,
-    ThLogLuvLoaderPipe
+    ThLogLuvLoaderPipe,
+    // directives
+    RefByIdDirective
   ],
   imports: [NgxThreeGeneratedModule],
   exports: [
@@ -101,6 +106,7 @@ import { BindPipe } from './pipes/bind.pipe';
     ClonePipe,
     FogPipe,
     BindPipe,
+    PlanePipe,
     ThRenderDirective,
     StatsDirective,
     // texture loaders
@@ -127,7 +133,9 @@ import { BindPipe } from './pipes/bind.pipe';
     ThTGALoaderDirective,
     ThTGALoaderPipe,
     ThLogLuvLoaderDirective,
-    ThLogLuvLoaderPipe
+    ThLogLuvLoaderPipe,
+    // directives
+    RefByIdDirective
   ]
 })
 export class NgxThreeModule {}

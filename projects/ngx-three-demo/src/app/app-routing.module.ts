@@ -15,6 +15,7 @@ import { MultiViewPostprocessingExampleComponent } from './multi-view-postproces
 import { OnDemandExampleComponent } from './on-demand-example/on-demand-example.component';
 import { PLYLoaderExampleComponent } from './plyloader-example/plyloader-example.component';
 import { PostProcessingExampleComponent } from './post-processing-example/post-processing-example.component';
+import { RefByIdExampleComponent } from './ref-by-id-example/ref-by-id-example.component';
 import { SimpleExampleComponent } from './simple-example/simple-example.component';
 import { ViewsExampleComponent } from './views-example/views-example.component';
 
@@ -206,6 +207,17 @@ export const EXAMPLE_ROUTES: (Route & {
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.ts',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.scss'
+      ]
+    }
+  },
+  {
+    path: 'ref-by-id-example',
+    data: {
+      title: 'Ref By Id Example',
+      exampleComponent: RefByIdExampleComponent,
+      codeUrls: [
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/ref-by-id-example/ref-by-id-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/ref-by-id-example/ref-by-id-example.component.ts',
       ]
     }
   }

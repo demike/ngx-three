@@ -139,20 +139,19 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
   }
 
   protected applyObjRef(objRef: T | undefined) {
-    if (this._objRef === objRef) {
-      return;
-    }
-    this.removeFromParent();
-    this._objRef = objRef;
-    if (this.autoAddToParent) {
-      this.addToParent();
+    if (this._objRef !== objRef) {
+      this.removeFromParent();
+      this._objRef = objRef;
+      if (this.autoAddToParent) {
+        this.addToParent();
+      }
     }
     this.emitObjRefChange();
   }
 
   protected emitObjRefChange() {
-    // TODO only emit change if _objRef is no proxy,
-    // and/or trigger emit over objRef event emitter
+    // only emit change if _objRef is no proxy,
+    // and trigger emit over objRef event emitter
     if (this._objRef && !isLazyObject3dProxy(this._objRef as any)) {
       ((this._objRef as unknown) as Object3D).dispatchEvent?.({ type: 'loaded', object: this._objRef });
       if (this._objRef$) {
