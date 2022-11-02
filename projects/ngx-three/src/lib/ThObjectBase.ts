@@ -11,21 +11,29 @@ export class ThObjectBase<T extends Object3D, ARGS = unknown> extends ThWrapperB
     super();
   }
 
-  public addToParent() {
-    if (this._objRef && this._objRef.parent && this._objRef.parent.uuid !== this.parent.objRef.uuid) {
+  public override addToParent() {
+    if (this._objRef && this.parent.objRef && (!this._objRef.parent || ( this._objRef.parent.uuid !== this.parent.objRef.uuid))) {
       this.parent.objRef.add(this._objRef);
     }
   }
 
-  public removeFromParent() {
+  public override removeFromParent() {
     this._objRef?.parent?.remove(this._objRef);
   }
 
-  protected applyObjRef(objRef: T | undefined) {
-    this.attachToParent(objRef, this._objRef);
+protected override applyObjRef(objRef: T | undefined) {
+  if (this._objRef !== objRef || this._objRef?.parent?.uuid !== this.parent.objRef.uuid) {
+    this.removeFromParent();
     this._objRef = objRef;
-    this.emitObjRefChange();
+    if (this.autoAddToParent) {
+      this.addToParent();
+    }
   }
+  this.emitObjRefChange();
+}
+
+
+
 
   protected attachToParent(newRef?: T, oldRef?: T) {
     if (!this.parent.objRef || (newRef === oldRef && oldRef?.parent?.uuid === this.parent.objRef.uuid)) {
