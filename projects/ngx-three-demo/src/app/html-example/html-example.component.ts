@@ -9,12 +9,11 @@ import { ASSET_PATH } from '../assets';
  * An example showing
  * - how to use the refById directive.
  * - using draco compression
- * - using the shader material
- * It selects the screen of the notebook by id and applies a shader material to it.
- * By clicking on the notebook you can change the fragment shader.
+ * - show html content
+ * It selects the screen of the notebook by id and adds the html content node as a child.
  */
 @Component({
-  selector: 'app-ref-by-id-example',
+  selector: 'app-html-example',
   templateUrl: './html-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
