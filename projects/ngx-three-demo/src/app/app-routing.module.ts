@@ -7,6 +7,7 @@ import { ControlsExampleComponent } from './controls-example/controls-example.co
 import { DynamicLoaderExampleComponent } from './dynamic-loader-example/dynamic-loader-example.component';
 import { EventsExampleComponent } from './events-example/events-example.component';
 import { ExamplePageComponent } from './example-page/example-page.component';
+import { HtmlExampleComponent } from './html-example/html-example.component';
 import { InstancedMeshExampleComponent } from './instanced-mesh-example/instanced-mesh-example.component';
 import { Box, IntroductoryExampleComponent } from './introductory-example/introductory-example.component';
 import { LoaderExampleComponent } from './loader-example/loader-example.component';
@@ -218,6 +219,17 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/ref-by-id-example/ref-by-id-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/ref-by-id-example/ref-by-id-example.component.ts',
+      ]
+    }
+  },
+  {
+    path: 'html-example',
+    data: {
+      title: 'Html Content Example',
+      exampleComponent: HtmlExampleComponent,
+      codeUrls: [
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-example/html-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-example/html-example.component.ts',
       ]
     }
   }
