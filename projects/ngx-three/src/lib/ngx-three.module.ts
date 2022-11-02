@@ -30,6 +30,8 @@ import { ThPLYLoaderDirective, ThPLYLoaderPipe } from './loaders/ThPLYLoader';
 import { BindPipe } from './pipes/bind.pipe';
 import { HtmlComponent } from './extra/web/html.component';
 import { CommonModule } from '@angular/common';
+import { RefByIdDirective } from './directives/ref-by-id.directive';
+import { PlanePipe } from './pipes/plane.pipe';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { CommonModule } from '@angular/common';
     ClonePipe,
     FogPipe,
     BindPipe,
+    PlanePipe,
     StatsDirective,
     ThRenderDirective,
     // texture loaders
@@ -81,6 +84,8 @@ import { CommonModule } from '@angular/common';
     ThTGALoaderPipe,
     ThLogLuvLoaderDirective,
     ThLogLuvLoaderPipe,
+       // directives
+       RefByIdDirective,
     //extras
     HtmlComponent
   ],
@@ -105,6 +110,7 @@ import { CommonModule } from '@angular/common';
     ClonePipe,
     FogPipe,
     BindPipe,
+    PlanePipe,
     ThRenderDirective,
     StatsDirective,
     // texture loaders
@@ -132,6 +138,8 @@ import { CommonModule } from '@angular/common';
     ThTGALoaderPipe,
     ThLogLuvLoaderDirective,
     ThLogLuvLoaderPipe,
+    // directives
+    RefByIdDirective,
     // extra
     HtmlComponent
   ]

@@ -1,0 +1,36 @@
+<th-canvas [thStats]="true" (onRender)="this.onBeforeRender()" [shadow]="true" >
+    <th-scene>
+      
+      <th-ambientLight> </th-ambientLight>
+        <th-group [rotation]="[0, Math.PI,0]" [position]="[0,1,0]">
+        <th-object3D
+            [castShadow]="true"
+            loadGLTF
+            [url]="glbPath"
+            (onClick)="selected = !selected; shader.needsUpdate = true"
+            [position]="position"
+            [rotation]="rotation"
+        >
+          <th-mesh [refById]="'Cube008_2'" >
+            <th-shaderMaterial #shader  [vertexShader]="vertexShader" [fragmentShader]="selected ? fragmentShader1 : fragmentShader2" [uniforms]="uniforms"></th-shaderMaterial>
+          </th-mesh>
+        </th-object3D>
+        </th-group>
+      
+      <th-directionalLight #light [castShadow]="true" [position]="[4,10,2]" [lookAt]="[0,-3,0]" [color]="'#ffffff' | color" [intensity]="0.75">
+      </th-directionalLight>
+      
+
+      <th-mesh [receiveShadow]="true" [rotation]="[3*Math.PI / 2, 0,0]" [position]="[0,-3,0]">
+        <th-planeGeometry [args]="[100,100]"  ></th-planeGeometry>
+        <th-meshBasicMaterial [color]="'#efefef' | color" ></th-meshBasicMaterial>
+      </th-mesh>
+      <th-perspectiveCamera
+        [args]="[55, 2, 0.1, 100]"
+        [position]="[-5, 0, -15]"
+        [lookAt]="[0, 0, 0]"
+      >
+        <th-orbitControls></th-orbitControls>
+      </th-perspectiveCamera>
+    </th-scene>
+  </th-canvas>

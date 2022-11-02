@@ -3,15 +3,15 @@ import { Loader } from 'three';
 import { ThAnimationLoopService } from '../renderer/th-animation-loop.service';
 import { isObserved } from '../util';
 import { createLazyObject3DProxy, LazyObject3DProxy } from './LazyObject3dProxy';
+import { ThLoader } from './ThLoaderBase';
 
-type AsyncLoader = Pick<Loader, 'loadAsync'>;
+type AsyncLoader = Omit<Loader, 'load'>;
 type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
 
 @Injectable()
-export abstract class ThAsyncLoaderService<T extends AsyncLoader> {
-  public abstract clazz: Type<T>;
-  load(...args: Parameters<T['loadAsync']>): ReturnType<T['loadAsync']> {
-    const loader = new this.clazz();
+export abstract class ThAsyncLoaderService<T extends AsyncLoader> extends ThLoader<T> {
+  public load(...args: Parameters<T['loadAsync']>): ReturnType<T['loadAsync']> {
+    const loader = this.createLoaderInstance();
     return loader.loadAsync(...(args as Parameters<AsyncLoader['loadAsync']>)) as ReturnType<T['loadAsync']>;
   }
 }

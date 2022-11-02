@@ -36,6 +36,7 @@ export * from './lib/pipes/color.pipe';
 export * from './lib/pipes/vector.pipe';
 export * from './lib/pipes/fog.pipe';
 export * from './lib/pipes/bind.pipe';
+export * from './lib/pipes/plane.pipe';
 
 export * from './lib/stats/stats.directive';
 
@@ -48,6 +49,7 @@ export * from './lib/loaders/compressed-texture/ThDDSLoader';
 export * from './lib/loaders/compressed-texture/ThKTX2Loader';
 export * from './lib/loaders/compressed-texture/ThKTXLoader';
 export * from './lib/loaders/compressed-texture/ThPVRLoader';
+export * from './lib/loaders/compressed-texture/ThDRACOLoader';
 export * from './lib/loaders/data-texture/ThEXRLoader';
 export * from './lib/loaders/data-texture/ThRGBELoader';
 export * from './lib/loaders/data-texture/ThRGBMLoader';
@@ -55,6 +57,7 @@ export * from './lib/loaders/data-texture/ThTGALoader';
 export * from './lib/loaders/data-texture/ThLogLuvLoader';
 export * from './lib/loaders/ThPLYLoader';
 
+export * from './lib/directives/ref-by-id.directive';
 
 // extras
 
