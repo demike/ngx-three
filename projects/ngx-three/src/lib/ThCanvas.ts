@@ -12,8 +12,8 @@ import {
   QueryList,
   ViewChild
 } from '@angular/core';
-import { WebGLRenderer } from 'three';
-import { RaycasterService } from './events/raycaster.service';
+import { Raycaster, WebGLRenderer } from 'three';
+import { RAYCASTER, RaycasterService } from './events/raycaster.service';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThAnimationLoopService } from './renderer/th-animation-loop.service';
 import { ThEngineService } from './ThEngine.service';
@@ -28,6 +28,7 @@ import { ThView } from './ThView';
     { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
     ThEngineService,
     ThAnimationLoopService,
+    {provide: RAYCASTER, useValue: new Raycaster() },
     forwardRef(() => RaycasterService),
     { provide: ThView, useExisting: forwardRef(() => ThCanvas) }
   ]

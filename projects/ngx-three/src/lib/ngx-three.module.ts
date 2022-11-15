@@ -28,6 +28,8 @@ import { ThFBXLoaderDirective, ThFBXLoaderPipe } from './loaders/ThFBXLoader';
 import { ThLogLuvLoaderDirective, ThLogLuvLoaderPipe } from './loaders/data-texture/ThLogLuvLoader';
 import { ThPLYLoaderDirective, ThPLYLoaderPipe } from './loaders/ThPLYLoader';
 import { BindPipe } from './pipes/bind.pipe';
+import { HtmlComponent } from './extra/web/html.component';
+import { CommonModule } from '@angular/common';
 import { RefByIdDirective } from './directives/ref-by-id.directive';
 import { PlanePipe } from './pipes/plane.pipe';
 
@@ -83,9 +85,11 @@ import { PlanePipe } from './pipes/plane.pipe';
     ThLogLuvLoaderDirective,
     ThLogLuvLoaderPipe,
     // directives
-    RefByIdDirective
+    RefByIdDirective,
+    //extras
+    HtmlComponent
   ],
-  imports: [NgxThreeGeneratedModule],
+  imports: [NgxThreeGeneratedModule, CommonModule],
   exports: [
     NgxThreeGeneratedModule,
     ThCanvas,
@@ -135,7 +139,9 @@ import { PlanePipe } from './pipes/plane.pipe';
     ThLogLuvLoaderDirective,
     ThLogLuvLoaderPipe,
     // directives
-    RefByIdDirective
+    RefByIdDirective,
+    // extra
+    HtmlComponent
   ]
 })
 export class NgxThreeModule {}

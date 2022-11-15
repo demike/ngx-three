@@ -58,3 +58,8 @@ export * from './lib/loaders/data-texture/ThLogLuvLoader';
 export * from './lib/loaders/ThPLYLoader';
 
 export * from './lib/directives/ref-by-id.directive';
+
+// extras
+
+// web
+export * from './lib/extra/web/html.component';
