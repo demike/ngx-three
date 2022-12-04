@@ -2,12 +2,16 @@ import { Object3D, Event } from 'three';
 import { applyValue, isSettable } from '../util';
 
 class Object3DProxyHandler implements ProxyHandler<Object3D> {
-  protected objRef?: Object3D;
+  constructor(target: Object3D) {
+    this.objRef = target;
+  }
+
+  protected objRef: Object3D;
   protected memberMap = new Map<keyof Object3D, any>();
   protected children: Object3D[] = [];
   protected eventListener: { [key: string]: ((event: Event) => void)[] } = {};
 
-  get(target: Object3D, p: keyof LazyObject3DProxy, receiver: any): any {
+  get(_target: unknown, p: keyof LazyObject3DProxy, receiver: any): any {
     switch (p) {
       case '__isProxy':
         return true;
@@ -23,21 +27,18 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
         return this.objRef ? this.objRef.children : this.children;
       default: {
         const objKey = p as keyof Object3D;
-        let value = this.objRef ? this.objRef[objKey] : this.memberMap.get(objKey);
-        if (value === undefined) {
-          value = target[objKey];
-          if (value !== undefined) {
-            // this is necessary for complex members
-            // (returned by reference, they might be altered, we have to reapply them to the real object )
-            this.memberMap.set(objKey, value);
-          }
+        const value = this.objRef[objKey];
+        if (value !== undefined) {
+          // this is necessary for complex members
+          // (returned by reference, they might be altered, we have to reapply them to the real object )
+          this.memberMap.set(objKey, value);
         }
-        return value ?? target[objKey];
+        return value;
       }
     }
   }
 
-  set(target: Object3D, p: keyof LazyObject3DProxy, value: any, receiver: any): boolean {
+  set(_target: unknown, p: keyof LazyObject3DProxy, value: any, _receiver: any): boolean {
     if (p === 'objRef') {
       if (value) {
         this.applyToObject3D(value);
@@ -144,11 +145,14 @@ export interface LazyObject3DProxy extends Object3D {
   applyToObject3D(real: Object3D): void;
 }
 
-export function createLazyObject3DProxy(): LazyObject3DProxy {
-  return new Proxy<LazyObject3DProxy>(new Object3D() as LazyObject3DProxy, new Object3DProxyHandler());
+export function createLazyObject3DProxy(target = new Object3D()): LazyObject3DProxy {
+  const handler = new Object3DProxyHandler(target);
+  return new Proxy<LazyObject3DProxy>(handler as unknown as LazyObject3DProxy, handler);
 }
 
 export function isLazyObject3dProxy(object: Object3D | LazyObject3DProxy): object is LazyObject3DProxy {
-  // eslint-disable-next-line no-underscore-dangle
-  return (object as LazyObject3DProxy).__isProxy === true && (object as LazyObject3DProxy).objRef === undefined;
+  return (
+    // eslint-disable-next-line no-underscore-dangle
+    (object as LazyObject3DProxy).__isProxy === true && (object as LazyObject3DProxy).objRef === undefined
+  );
 }
