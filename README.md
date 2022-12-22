@@ -487,7 +487,7 @@ All you have to do is to inject the `DRACOLoaderService` and set the decoder pat
 ```ts
 constructor(dracoLoader: DRACOLoaderService) {
     // specify the draco decoder path used by the gltf loader instances
-    dracoLoader.setDecoderPath('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/js/libs/draco/gltf/');
+    dracoLoader.setDecoderPath('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/jsm/libs/draco/gltf/');
 }
 ```
 
