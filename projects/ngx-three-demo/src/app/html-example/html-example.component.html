@@ -1,5 +1,5 @@
-<div>sprite: <input type="checkbox" [checked]="sprite" (change)="sprite = !sprite" /></div>
-
+<!--<div>sprite: <input type="checkbox" [checked]="sprite" (change)="sprite = !sprite" /></div>
+-->
 <th-canvas [thStats]="true" (onRender)="this.onBeforeRender()" [shadow]="true" >
     <th-scene>
       
@@ -13,7 +13,7 @@
             [rotation]="rotation"
         >
           <th-mesh [refById]="'Cube008_2'" >
-            <th-html [rotation]="[-1 * Math.PI / 2,0,0]" [position]="[-0.04, 0.05, 0.35]" [scale]="[0.17,0.17,0.17]" [sprite]="sprite" [style]="{ background:'lightblue', 'borderRadius':'1em' , padding:'1em', display:'flex', flexDirection:'column' }" [transform]="true" [occlude]="true">
+            <th-html [rotation]="[-1 * Math.PI / 2,0,0]" [position]="[-0.04, 0.05, 0]" [scale]="[0.17,0.17,0.17]" [sprite]="sprite" [style]="{ background:'lightblue', 'borderRadius':'1em' , padding:'1em', display:'flex', flexDirection:'column' }" [transform]="true" [occlude]="true">
              <iframe src="./multi-view-postprocessing-example" style="width:1960px; height:1280px;"></iframe>
             </th-html>
           </th-mesh>
