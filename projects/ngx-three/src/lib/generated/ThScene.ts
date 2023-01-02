@@ -50,16 +50,23 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
   }
 
   @Input()
-  public set overrideMaterial(value: Material | null) {
+  public set backgroundBlurriness(value: number) {
     if (this._objRef) {
-      this._objRef.overrideMaterial = value;
+      this._objRef.backgroundBlurriness = value;
     }
   }
 
   @Input()
-  public set autoUpdate(value: boolean) {
+  public set backgroundIntensity(value: number) {
     if (this._objRef) {
-      this._objRef.autoUpdate = value;
+      this._objRef.backgroundIntensity = value;
+    }
+  }
+
+  @Input()
+  public set overrideMaterial(value: Material | null) {
+    if (this._objRef) {
+      this._objRef.overrideMaterial = value;
     }
   }
 

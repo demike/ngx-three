@@ -14,7 +14,9 @@ import {
   Combine,
   MeshLambertMaterial,
   MeshLambertMaterialParameters,
+  NormalMapTypes,
   Texture,
+  Vector2,
 } from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
@@ -52,6 +54,41 @@ export class ThMeshLambertMaterial<
     }
   }
   @Input()
+  public set bumpMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.bumpMap = value;
+    }
+  }
+
+  @Input()
+  public set bumpScale(value: number) {
+    if (this._objRef) {
+      this._objRef.bumpScale = value;
+    }
+  }
+
+  @Input()
+  public set displacementMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.displacementMap = value;
+    }
+  }
+
+  @Input()
+  public set displacementScale(value: number) {
+    if (this._objRef) {
+      this._objRef.displacementScale = value;
+    }
+  }
+
+  @Input()
+  public set displacementBias(value: number) {
+    if (this._objRef) {
+      this._objRef.displacementBias = value;
+    }
+  }
+
+  @Input()
   public set emissive(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.emissive = applyValue<Color>(this._objRef.emissive, value);
@@ -68,6 +105,13 @@ export class ThMeshLambertMaterial<
   public set emissiveMap(value: Texture | null) {
     if (this._objRef) {
       this._objRef.emissiveMap = value;
+    }
+  }
+
+  @Input()
+  public set flatShading(value: boolean) {
+    if (this._objRef) {
+      this._objRef.flatShading = value;
     }
   }
 
@@ -92,6 +136,29 @@ export class ThMeshLambertMaterial<
     }
   }
 
+  @Input()
+  public set normalMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.normalMap = value;
+    }
+  }
+
+  @Input()
+  public set normalMapType(value: NormalMapTypes) {
+    if (this._objRef) {
+      this._objRef.normalMapType = value;
+    }
+  }
+
+  @Input()
+  public set normalScale(value: Vector2 | [x: number, y: number]) {
+    if (this._objRef) {
+      this._objRef.normalScale = applyValue<Vector2>(
+        this._objRef.normalScale,
+        value
+      );
+    }
+  }
   @Input()
   public set aoMap(value: Texture | null) {
     if (this._objRef) {

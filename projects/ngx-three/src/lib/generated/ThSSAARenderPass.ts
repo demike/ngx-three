@@ -16,6 +16,7 @@ import {
   ShaderMaterial,
   WebGLRenderTarget,
 } from 'three';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import { SSAARenderPass } from 'three/examples/jsm/postprocessing/SSAARenderPass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
@@ -98,7 +99,7 @@ export class ThSSAARenderPass<
   }
 
   @Input()
-  public set fsQuad(value: object) {
+  public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.fsQuad = value;
     }

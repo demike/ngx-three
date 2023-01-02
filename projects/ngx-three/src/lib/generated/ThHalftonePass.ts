@@ -14,6 +14,7 @@ import {
   HalftonePass,
   HalftonePassParameters,
 } from 'three/examples/jsm/postprocessing/HalftonePass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
@@ -48,7 +49,7 @@ export class ThHalftonePass<
   }
 
   @Input()
-  public set fsQuad(value: object) {
+  public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.fsQuad = value;
     }

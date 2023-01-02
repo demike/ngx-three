@@ -10,6 +10,7 @@ import {
 import {
   CanvasTexture,
   Mapping,
+  OffscreenCanvas,
   PixelFormat,
   TextureDataType,
   TextureFilter,
@@ -29,11 +30,7 @@ import { ThTexture } from './ThTexture';
 export class ThCanvasTexture<
   T extends CanvasTexture = CanvasTexture,
   TARGS = [
-    canvas:
-      | HTMLImageElement
-      | HTMLCanvasElement
-      | HTMLVideoElement
-      | ImageBitmap,
+    canvas: TexImageSource | OffscreenCanvas,
     mapping?: Mapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
