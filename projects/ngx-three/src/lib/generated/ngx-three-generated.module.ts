@@ -27,6 +27,7 @@ import { ThCapsuleGeometry } from './ThCapsuleGeometry';
 import { ThCircleGeometry } from './ThCircleGeometry';
 import { ThClearMaskPass } from './ThClearMaskPass';
 import { ThClearPass } from './ThClearPass';
+import { ThCompressedArrayTexture } from './ThCompressedArrayTexture';
 import { ThCompressedTexture } from './ThCompressedTexture';
 import { ThConeGeometry } from './ThConeGeometry';
 import { ThConvexGeometry } from './ThConvexGeometry';
@@ -282,6 +283,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThTexturePass,
     ThUnrealBloomPass,
     ThVideoTexture,
+    ThCompressedArrayTexture,
     ThDataTexture,
     ThDataTexture2DArray,
     ThDataTexture3D,
@@ -429,6 +431,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThTexturePass,
     ThUnrealBloomPass,
     ThVideoTexture,
+    ThCompressedArrayTexture,
     ThDataTexture,
     ThDataTexture2DArray,
     ThDataTexture3D,

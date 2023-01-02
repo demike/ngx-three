@@ -13,6 +13,7 @@ import {
   Object3D,
   SpotLight,
   SpotLightShadow,
+  Texture,
   Vector3,
 } from 'three';
 import { applyValue } from '../util';
@@ -108,6 +109,13 @@ export class ThSpotLight<
   public set penumbra(value: number) {
     if (this._objRef) {
       this._objRef.penumbra = value;
+    }
+  }
+
+  @Input()
+  public set map(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.map = value;
     }
   }
 }

@@ -20,6 +20,7 @@ import {
   Vector3,
   WebGLRenderTarget,
 } from 'three';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import {
   SSAOPass,
   SSAOPassOUTPUT,
@@ -192,7 +193,7 @@ export class ThSSAOPass<
   }
 
   @Input()
-  public set fsQuad(value: object) {
+  public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.fsQuad = value;
     }

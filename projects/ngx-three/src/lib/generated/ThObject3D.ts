@@ -14,6 +14,7 @@ import {
   BufferGeometry,
   Camera,
   Euler,
+  EulerOrder,
   Event,
   Group,
   Layers,
@@ -93,7 +94,7 @@ export class ThObject3D<
   }
   @Input()
   public set rotation(
-    value: Euler | [x: number, y: number, z: number, order?: string]
+    value: Euler | [x: number, y: number, z: number, order?: EulerOrder]
   ) {
     if (this._objRef) {
       applyValue<Euler>(this._objRef.rotation, value);
@@ -221,6 +222,13 @@ export class ThObject3D<
   public set matrixAutoUpdate(value: boolean) {
     if (this._objRef) {
       this._objRef.matrixAutoUpdate = value;
+    }
+  }
+
+  @Input()
+  public set matrixWorldAutoUpdate(value: boolean) {
+    if (this._objRef) {
+      this._objRef.matrixWorldAutoUpdate = value;
     }
   }
 

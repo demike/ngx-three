@@ -18,6 +18,7 @@ import {
   Vector3,
   WebGLRenderTarget,
 } from 'three';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
@@ -184,7 +185,7 @@ export class ThUnrealBloomPass<
   }
 
   @Input()
-  public set fsQuad(value: object) {
+  public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.fsQuad = value;
     }

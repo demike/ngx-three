@@ -11,6 +11,7 @@ import {
 import {
   Mapping,
   Matrix3,
+  OffscreenCanvas,
   PixelFormat,
   PixelFormatGPU,
   Source,
@@ -35,7 +36,7 @@ import { applyValue } from '../util';
 export class ThTexture<
   T extends Texture = Texture,
   TARGS = [
-    image?: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement,
+    image?: TexImageSource | OffscreenCanvas,
     mapping?: Mapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,

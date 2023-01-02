@@ -24,6 +24,7 @@ import {
   WebGLRenderTarget,
 } from 'three';
 import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';
@@ -275,7 +276,7 @@ export class ThOutlinePass<
   }
 
   @Input()
-  public set fsQuad(value: object) {
+  public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.fsQuad = value;
     }

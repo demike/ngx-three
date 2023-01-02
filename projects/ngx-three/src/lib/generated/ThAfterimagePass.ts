@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { ShaderMaterial, WebGLRenderTarget } from 'three';
 import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
@@ -66,14 +67,14 @@ export class ThAfterimagePass<
   }
 
   @Input()
-  public set compFsQuad(value: object) {
+  public set compFsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.compFsQuad = value;
     }
   }
 
   @Input()
-  public set copyFsQuad(value: object) {
+  public set copyFsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.copyFsQuad = value;
     }
