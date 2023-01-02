@@ -324,7 +324,7 @@ This can be achieved by:
 ```
 - or by subscribing to the `resize$` of the `ThEngineService`
 
-The `ThEngineService` takes care of resizing, does the rendering and organizes the the available views ([ThView](#ThView))
+The `ThEngineService` takes care of resizing, does the rendering and organizes the available views ([ThView](#ThView))
 
 > Note: The engine service **automatically** takes into account the device pixel ratio when calculating the renderer dimensions. This works dynamically i.e.: when moving the window from one display to a second one with different device pixel ratio.
 
@@ -487,7 +487,7 @@ All you have to do is to inject the `DRACOLoaderService` and set the decoder pat
 ```ts
 constructor(dracoLoader: DRACOLoaderService) {
     // specify the draco decoder path used by the gltf loader instances
-    dracoLoader.setDecoderPath('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/js/libs/draco/gltf/');
+    dracoLoader.setDecoderPath('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/jsm/libs/draco/gltf/');
 }
 ```
 

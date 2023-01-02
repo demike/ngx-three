@@ -192,6 +192,10 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
 
   }
 
+  protected onResize() {
+    this.styles = this.computeStyles();
+  }
+
   public ngOnChanges(changes: NgChanges<HtmlComponent>): void {
     super.ngOnChanges(changes);
     /*
