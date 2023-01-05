@@ -55,6 +55,13 @@ export class ThPointLight<
   }
 
   @Input()
+  public set castShadow(value: boolean) {
+    if (this._objRef) {
+      this._objRef.castShadow = value;
+    }
+  }
+
+  @Input()
   public set decay(value: number) {
     if (this._objRef) {
       this._objRef.decay = value;
