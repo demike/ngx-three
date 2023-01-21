@@ -65,9 +65,13 @@
               "projects/ngx-three-demo/src/favicon.ico",
               "projects/ngx-three-demo/src/assets"
             ],
-            "styles": ["projects/ngx-three-demo/src/styles.scss"],
+            "styles": [
+              "projects/ngx-three-demo/src/styles.scss"
+            ],
             "scripts": [],
-            "allowedCommonJsDependencies": ["highlight.js"],
+            "allowedCommonJsDependencies": [
+              "highlight.js"
+            ],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
@@ -109,8 +113,7 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
-          "options": {
-          },
+          "options": {},
           "configurations": {
             "production": {
               "browserTarget": "ngx-three-demo:build:production"
@@ -138,7 +141,9 @@
               "projects/ngx-three-demo/src/favicon.ico",
               "projects/ngx-three-demo/src/assets"
             ],
-            "styles": ["projects/ngx-three-demo/src/styles.scss"],
+            "styles": [
+              "projects/ngx-three-demo/src/styles.scss"
+            ],
             "scripts": []
           }
         },
@@ -167,6 +172,14 @@
           "defaultConfiguration": "development"
         }
       }
+    }
+  },
+  "schematics": {
+    "@angular-eslint/schematics:application": {
+      "setParserOptionsProject": true
+    },
+    "@angular-eslint/schematics:library": {
+      "setParserOptionsProject": true
     }
   }
 }
