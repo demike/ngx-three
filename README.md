@@ -686,15 +686,18 @@ To load a Texture you have 3 possibilities (service, pipe, directive)
 
 # Event Handling
 
-## Mouse Events
+## Mouse / Pointer Events
 
 ngx-three supports the following mouse/pointer events:
 
 - onClick
 - onMouseEnter
 - onMouseExit
+- onPointerDown
+- onPointerUp
 
 All of them return a [RaycasterEmitEvent](./projects/ngx-three/src/lib/events/raycaster.events.directive.ts#L7)
+that holds the target component and the target face (except of `onMouseExit`)
 
 ## Object 3D Events
 

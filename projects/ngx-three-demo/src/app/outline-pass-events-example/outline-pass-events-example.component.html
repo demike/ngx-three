@@ -1,0 +1,44 @@
+<th-canvas #thecanvas [shadow]="true" [thStats]="true">
+  <th-scene [background]="['#ffffff']" #scene>
+    <th-perspectiveCamera #camera
+      [position]="[0, 0, 8]"
+      [fov]="45"
+      [near]="0.1"
+      [far]="100"
+    >
+    <th-orbitControls></th-orbitControls>
+    </th-perspectiveCamera>
+    <th-ambientLight [color]="['#aaaaaa']"></th-ambientLight>
+    <th-directionalLight #light [color]="['#ddffdd']" [intensity]="0.6"></th-directionalLight>
+
+    <th-sphereGeometry #geometry [args]="[3, 48, 24]"></th-sphereGeometry>
+    <th-mesh
+        *ngFor="let data of meshData"
+        [geometry]="geometry.objRef"
+        [position]="[data.x, data.y, data.z]"
+        [scale]="[data.scale, data.scale, data.scale]"
+        [receiveShadow]="true"
+        [castShadow]="true"
+        (onMouseEnter)="onHover($event)"
+        (onMouseExit)="onBlur()"
+        (onPointerDown)="onPointerDown($event)"
+    >
+        <th-meshPhongMaterial
+          [flatShading]="true"
+          [color]="data.color"
+        ></th-meshPhongMaterial>
+    </th-mesh>
+  </th-scene>
+  <th-effectComposer>
+    <th-renderPass></th-renderPass>
+    <th-outlinePass
+      #outlinePass
+      [args]="[outlinePassResolution, scene.objRef, camera.objRef]"
+      [visibleEdgeColor]="visibleEdgeColor | color" 
+      [hiddenEdgeColor]="hiddenEdgeColor | color" 
+      [edgeStrength]="edgeStrength" 
+      [edgeGlow]="edgeGlow" 
+      [edgeThickness]="edgeThickness" 
+      [pulsePeriod]="pulsePeriod"></th-outlinePass>
+  </th-effectComposer>
+</th-canvas>

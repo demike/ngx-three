@@ -14,6 +14,7 @@ import { LoaderExampleComponent } from './loader-example/loader-example.componen
 import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-example.component';
 import { MultiViewPostprocessingExampleComponent } from './multi-view-postprocessing-example/multi-view-postprocessing-example.component';
 import { OnDemandExampleComponent } from './on-demand-example/on-demand-example.component';
+import { OutlinePassEventsExampleComponent } from './outline-pass-events-example/outline-pass-events-example.component';
 import { PLYLoaderExampleComponent } from './plyloader-example/plyloader-example.component';
 import { PostProcessingExampleComponent } from './post-processing-example/post-processing-example.component';
 import { RefByIdExampleComponent } from './ref-by-id-example/ref-by-id-example.component';
@@ -230,6 +231,17 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-example/html-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-example/html-example.component.ts',
+      ]
+    }
+  },
+  {
+    path: 'outline-pass-events-example',
+    data: {
+      title: 'Render Pass + Events Example',
+      exampleComponent: OutlinePassEventsExampleComponent,
+      codeUrls: [
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/outline-pass-events-example/outline-pass-events-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/outline-pass-events-example/outline-pass-events-example.component.ts',
       ]
     }
   }

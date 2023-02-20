@@ -9,17 +9,56 @@ export interface RaycasterEmitEvent {
   face?: THREE.Face;
 }
 
-@Directive({ selector: '[onClick], [onMouseEnter], [onMouseExit]' })
+@Directive({ selector: '[onClick], [onMouseEnter], [onMouseExit], [onPointerDown], [onPointerUp]' })
 export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
-  @Output('onMouseEnter') mouseEnter = new EventEmitter<RaycasterEmitEvent>();
-  @Output('onMouseExit') mouseExit = new EventEmitter<RaycasterEmitEvent>();
-  /* eslint-disable @angular-eslint/no-output-native */
-  @Output('onClick') click = new EventEmitter<RaycasterEmitEvent>();
+
+  @Output() get onMouseEnter(): EventEmitter<RaycasterEmitEvent> {
+    if(!this.mouseEnter) {
+      this.mouseEnter = new EventEmitter<RaycasterEmitEvent>();
+    }
+    return this.mouseEnter;
+  }
+  protected mouseEnter?: EventEmitter<RaycasterEmitEvent>;
+
+
+  @Output() get onMouseExit(): EventEmitter<RaycasterEmitEvent> {
+    if(!this.mouseExit) {
+      this.mouseExit = new EventEmitter<RaycasterEmitEvent>();
+    }
+    return this.mouseExit;
+  }
+  protected mouseExit?: EventEmitter<RaycasterEmitEvent>;
+
+
+  @Output() get onClick(): EventEmitter<RaycasterEmitEvent> {
+    if(!this.click) {
+      this.click = new EventEmitter<RaycasterEmitEvent>();
+    }
+    return this.click;
+  }
+  protected click?: EventEmitter<RaycasterEmitEvent>;
+
+
+  @Output() get onPointerDown(): EventEmitter<RaycasterEmitEvent> {
+    if(!this.pointerDown) {
+      this.pointerDown = new EventEmitter<RaycasterEmitEvent>();
+    }
+    return this.pointerDown;
+  }
+  protected pointerDown?: EventEmitter<RaycasterEmitEvent>;
+
+  @Output() get onPointerUp(): EventEmitter<RaycasterEmitEvent> {
+    if(!this.pointerUp) {
+      this.pointerUp = new EventEmitter<RaycasterEmitEvent>();
+    }
+    return this.pointerUp;
+  }
+  protected pointerUp?: EventEmitter<RaycasterEmitEvent>;
 
   constructor(@Host() public readonly host: ThObject3D, private raycasterService: RaycasterService) {
-    this.onMouseEnter = this.onMouseEnter.bind(this);
-    this.onMouseExit = this.onMouseExit.bind(this);
-    this.onClick = this.onClick.bind(this);
+    this.emitOnMouseEnter = this.emitOnMouseEnter.bind(this);
+    this.emitOnMouseExit = this.emitOnMouseExit.bind(this);
+    this.emitOnClick = this.emitOnClick.bind(this);
   }
 
   ngAfterViewInit(): void {
@@ -28,50 +67,45 @@ export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
 
   private subscribeEvents() {
     this.raycasterService.addEventTarget(this);
-    /*
-    const obj = this.host.obj;
-    // TODO: addEventListener, removeEventListener for proxy
-    if (this.mouseEnter.observers.length > 0) {
-      obj.addEventListener(RaycasterEvent.mouseEnter, this.onMouseEnter);
-    }
-    if (this.mouseExit.observers.length > 0) {
-      obj.addEventListener(RaycasterEvent.mouseExit, this.onMouseExit);
-    }
-    if (this.click.observers.length > 0) {
-      obj.addEventListener(RaycasterEvent.click, this.onClick);
-    }
-    */
   }
 
   private unSubscribeEvents() {
-    /*
-    const obj = this.host.obj;
-    if (obj) {
-      obj.removeEventListener(RaycasterEvent.mouseEnter, this.onMouseEnter);
-      obj.removeEventListener(RaycasterEvent.mouseExit, this.onMouseExit);
-      obj.removeEventListener(RaycasterEvent.click, this.onClick);
-    }
-    */
     this.raycasterService.removeEventTarget(this);
   }
 
-  public onMouseExit() {
-    this.mouseExit.emit({
+  public emitOnMouseExit() {
+    this.mouseExit?.emit({
       component: this.host
     });
   }
 
-  public onMouseEnter(event: Event) {
+  public emitOnMouseEnter(event: Event) {
     // console.log('RaycasterGroupDirective.onMouseEnter', event);
-    this.mouseEnter.emit({
+    this.mouseEnter?.emit({
       component: this.host,
       face: event.face
     });
   }
 
-  public onClick(event: Event) {
+  public emitOnClick(event: Event) {
     // console.log('onClick', event);
-    this.click.emit({
+    this.click?.emit({
+      component: this.host,
+      face: event.face
+    });
+  }
+
+  public emitOnPointerDown(event: Event) {
+    // console.log('onClick', event);
+    this.pointerDown?.emit({
+      component: this.host,
+      face: event.face
+    });
+  }
+
+  public emitOnPointerUp(event: Event) {
+    // console.log('onClick', event);
+    this.pointerUp?.emit({
       component: this.host,
       face: event.face
     });
