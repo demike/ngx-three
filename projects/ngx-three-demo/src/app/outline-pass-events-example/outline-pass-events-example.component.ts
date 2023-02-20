@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { RaycasterEmitEvent, ThObject3D, ThOutlinePass } from 'ngx-three';
-import { Color, Vector2 } from 'three';
+import { RaycasterEmitEvent, ThMesh, ThObject3D, ThOutlinePass } from 'ngx-three';
+import { Color, MeshPhongMaterial, Vector2 } from 'three';
 import GUI from 'lil-gui';
 
 @Component({
@@ -68,6 +68,10 @@ export class OutlinePassEventsExampleComponent implements OnInit {
 
   onBlur() {
     this.outlinePass.selectedObjects = [];
+  }
+
+  onPointerDown(event: RaycasterEmitEvent) {
+    ((event.component as ThMesh).objRef?.material as MeshPhongMaterial).color.set('#ff0000');
   }
 
 

@@ -21,6 +21,7 @@
         [castShadow]="true"
         (onMouseEnter)="onHover($event)"
         (onMouseExit)="onBlur()"
+        (onPointerDown)="onPointerDown($event)"
     >
         <th-meshPhongMaterial
           [flatShading]="true"

@@ -147,9 +147,9 @@ export class RaycasterService implements OnDestroy {
 
     const i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.pointerDown);
     if (i && i.target && i.target.host.objRef) {
-      const evt = { type: RaycasterEvent.click, face: i.face };
+      const evt = { type: RaycasterEvent.pointerDown, face: i.face };
       i.target.host.objRef.dispatchEvent(evt);
-      i.target.emitOnPointerUp(evt);
+      i.target.emitOnPointerDown(evt);
     }
   }
 
@@ -164,7 +164,7 @@ export class RaycasterService implements OnDestroy {
     // pointer up
     let i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.pointerUp);
     if (i && i.target && i.target.host.objRef) {
-      const evt = { type: RaycasterEvent.click, face: i.face };
+      const evt = { type: RaycasterEvent.pointerUp, face: i.face };
       i.target.host.objRef.dispatchEvent(evt);
       i.target.emitOnPointerUp(evt);
     }
