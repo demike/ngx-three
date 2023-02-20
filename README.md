@@ -697,7 +697,7 @@ ngx-three supports the following mouse/pointer events:
 - onPointerUp
 
 All of them return a [RaycasterEmitEvent](./projects/ngx-three/src/lib/events/raycaster.events.directive.ts#L7)
-that holds the target component and the target face (except of `onMouseExit`)
+that holds the target component and the intersection data of [raycaster.intersectObject](https://threejs.org/docs/#api/en/core/Raycaster.intersectObject) (except for `onMouseExit`)
 
 ## Object 3D Events
 

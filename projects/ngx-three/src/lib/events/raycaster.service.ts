@@ -1,6 +1,6 @@
 import { inject, Injectable, InjectionToken, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
-import { Raycaster } from 'three';
+import { Intersection, Raycaster } from 'three';
 import { ThCamera } from '../generated/ThCamera';
 import { RaycasterEventDirective } from './raycaster.events.directive';
 
@@ -18,9 +18,8 @@ export const RAYCASTER = new InjectionToken<Raycaster> ('A reference to the rayc
   factory: () => new Raycaster()
 });
 
-interface NearestIntersection {
+interface NearestIntersection extends Intersection {
   target?: RaycasterEventDirective | null;
-  face?: THREE.Face | null;
 }
 
 @Injectable()
@@ -117,10 +116,11 @@ export class RaycasterService implements OnDestroy {
       return;
     }
     const i = this.getFirstIntersectedGroup(event.layerX, event.layerY, RaycasterEvent.mouseEnter);
-    if (!this.selected || this.selected !== i.target) {
+    if (!this.selected || this.selected !== i?.target) {
       if (this.selected) {
         this.selected.host.objRef?.dispatchEvent({
-          type: RaycasterEvent.mouseExit
+          type: RaycasterEvent.mouseExit,
+          component: this.selected.host
         });
         this.selected.emitOnMouseExit();
         this.selected = null;
@@ -129,7 +129,8 @@ export class RaycasterService implements OnDestroy {
         this.selected = i.target;
         const evt = {
           type: RaycasterEvent.mouseEnter,
-          face: i.face
+          component: i.target.host,
+          ...i
         };
         this.selected.host.objRef?.dispatchEvent(evt);
         this.selected.emitOnMouseEnter(evt);
@@ -147,7 +148,7 @@ export class RaycasterService implements OnDestroy {
 
     const i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.pointerDown);
     if (i && i.target && i.target.host.objRef) {
-      const evt = { type: RaycasterEvent.pointerDown, face: i.face };
+      const evt = { type: RaycasterEvent.pointerDown, component: i.target.host,  ...i };
       i.target.host.objRef.dispatchEvent(evt);
       i.target.emitOnPointerDown(evt);
     }
@@ -164,7 +165,7 @@ export class RaycasterService implements OnDestroy {
     // pointer up
     let i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.pointerUp);
     if (i && i.target && i.target.host.objRef) {
-      const evt = { type: RaycasterEvent.pointerUp, face: i.face };
+      const evt = { type: RaycasterEvent.pointerUp, component: i.target.host, ...i };
       i.target.host.objRef.dispatchEvent(evt);
       i.target.emitOnPointerUp(evt);
     }
@@ -175,7 +176,7 @@ export class RaycasterService implements OnDestroy {
     }
     i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.click);
     if (i && i.target && i.target.host.objRef) {
-      const evt = { type: RaycasterEvent.click, face: i.face };
+      const evt = { type: RaycasterEvent.click, component: i.target.host,  ...i };
       i.target.host.objRef.dispatchEvent(evt);
       i.target.emitOnClick(evt);
     }
@@ -194,15 +195,15 @@ export class RaycasterService implements OnDestroy {
     return Math.sqrt(xDist * xDist + yDist * yDist);
   }
 
-  private getFirstIntersectedGroup(x: number, y: number, event: RaycasterEvent): NearestIntersection {
+  private getFirstIntersectedGroup(x: number, y: number, event: RaycasterEvent): NearestIntersection | undefined {
     if (!this.camera || !this.canvas || !this.camera.objRef) {
-      return { face: null, target: null };
+      return;
     }
     x = (x / this.canvas.clientWidth) * 2 - 1;
     y = -(y / this.canvas.clientHeight) * 2 + 1;
     const mouseVector = new THREE.Vector2(x, y);
     this.raycaster.setFromCamera(mouseVector, this.camera.objRef);
-    let face = null;
+
 
     // loop across all groups. Try to find the group with nearest distance.
     let nearestIntersection: THREE.Intersection | undefined;
@@ -215,22 +216,18 @@ export class RaycasterService implements OnDestroy {
       const intersection = this.raycaster.intersectObject(i, true);
       if (intersection.length > 0 && (!nearestIntersection || nearestIntersection.distance > intersection[0].distance)) {
         nearestIntersection = intersection[0];
-        face = nearestIntersection.face;
         nearestGroup = group;
       }
     }
 
     // return the group with nearest distance
-    if (nearestGroup) {
+    if (nearestGroup && nearestIntersection) {
       return {
         target: nearestGroup,
-        face
+        ...nearestIntersection
       };
     } else {
-      return {
-        target: null,
-        face: null
-      };
+      return undefined;
     }
   }
 }
