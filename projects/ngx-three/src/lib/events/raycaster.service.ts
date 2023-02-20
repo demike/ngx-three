@@ -8,7 +8,9 @@ import { RaycasterEventDirective } from './raycaster.events.directive';
 export enum RaycasterEvent {
   mouseEnter = 'mouseEnter',
   mouseExit = 'mouseExit',
-  click = 'click'
+  click = 'click',
+  pointerDown = 'pointerDown',
+  pointerUp = 'pointerUp'
 }
 
 
@@ -114,13 +116,13 @@ export class RaycasterService implements OnDestroy {
     if (!this.isReady()) {
       return;
     }
-    const i = this.getFirstIntersectedGroup(event.layerX, event.layerY);
+    const i = this.getFirstIntersectedGroup(event.layerX, event.layerY, RaycasterEvent.mouseEnter);
     if (!this.selected || this.selected !== i.target) {
       if (this.selected) {
         this.selected.host.objRef?.dispatchEvent({
           type: RaycasterEvent.mouseExit
         });
-        this.selected.onMouseExit();
+        this.selected.emitOnMouseExit();
         this.selected = null;
       }
       if (i && i.target) {
@@ -130,7 +132,7 @@ export class RaycasterService implements OnDestroy {
           face: i.face
         };
         this.selected.host.objRef?.dispatchEvent(evt);
-        this.selected.onMouseEnter(evt);
+        this.selected.emitOnMouseEnter(evt);
       }
     }
   }
@@ -138,20 +140,44 @@ export class RaycasterService implements OnDestroy {
   private onPointerDown(event: PointerEvent) {
     this.maxClickDistance = event.width;
     this.pointerDownEvent = event;
+
+    if(!this.isReady()) {
+      return;
+    }
+
+    const i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.pointerDown);
+    if (i && i.target && i.target.host.objRef) {
+      const evt = { type: RaycasterEvent.click, face: i.face };
+      i.target.host.objRef.dispatchEvent(evt);
+      i.target.emitOnPointerUp(evt);
+    }
   }
 
   private onPointerUp(event: PointerEvent) {
     const downEvent = this.pointerDownEvent;
     this.pointerDownEvent = undefined;
 
-    if (!this.isReady() || this.calcPointerDownUpDinstance(event, downEvent) > this.maxClickDistance) {
+    if(!this.isReady()) {
       return;
     }
-    const i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY);
+
+    // pointer up
+    let i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.pointerUp);
     if (i && i.target && i.target.host.objRef) {
       const evt = { type: RaycasterEvent.click, face: i.face };
       i.target.host.objRef.dispatchEvent(evt);
-      i.target.onClick(evt);
+      i.target.emitOnPointerUp(evt);
+    }
+
+    // click
+    if (this.calcPointerDownUpDinstance(event, downEvent) > this.maxClickDistance) {
+      return;
+    }
+    i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.click);
+    if (i && i.target && i.target.host.objRef) {
+      const evt = { type: RaycasterEvent.click, face: i.face };
+      i.target.host.objRef.dispatchEvent(evt);
+      i.target.emitOnClick(evt);
     }
   }
 
@@ -168,7 +194,7 @@ export class RaycasterService implements OnDestroy {
     return Math.sqrt(xDist * xDist + yDist * yDist);
   }
 
-  private getFirstIntersectedGroup(x: number, y: number): NearestIntersection {
+  private getFirstIntersectedGroup(x: number, y: number, event: RaycasterEvent): NearestIntersection {
     if (!this.camera || !this.canvas || !this.camera.objRef) {
       return { face: null, target: null };
     }
@@ -183,7 +209,7 @@ export class RaycasterService implements OnDestroy {
     let nearestGroup: RaycasterEventDirective | undefined;
     for (const group of this.groups) {
       const i = group.host.objRef;
-      if (!i) {
+      if (!group[event] || !i) {
         continue;
       }
       const intersection = this.raycaster.intersectObject(i, true);
