@@ -9,32 +9,28 @@
   }"
 >
   <th-scene #scene>
-    <th-directionalLight [position]="[0, 0, 1]" [args]="['#ffffff']">
-    </th-directionalLight>
+    <th-directionalLight [position]="[0, 0, 1]" [args]="['#ffffff']"/>
     <th-mesh [position]="[0, 0, 0]" [rotation]="[-Math.PI / 2, 0, 0]">
-      <th-sphereGeometry #geo [args]="[200, 32, 16]"></th-sphereGeometry>
+      <th-sphereGeometry #geo [args]="[200, 32, 16]"/>
       <th-meshPhongMaterial
         #mat
         [flatShading]="false"
         [shininess]="30"
         [specular]="['#fac400']"
-        [color]="['#f83f0d']"
-      ></th-meshPhongMaterial>
+        [color]="['#f83f0d']"/>
     </th-mesh>
     <th-mesh
       [position]="[-400, 0, 0]"
       [rotation]="[-Math.PI / 2, 0, 0]"
       [geometry]="geo.objRef"
-      [material]="mat.objRef"
-    >
-    </th-mesh>
+      [material]="mat.objRef"/>
+
     <th-mesh
       [position]="[400, 0, 0]"
       [rotation]="[-Math.PI / 2, 0, 0]"
       [geometry]="geo.objRef"
-      [material]="mat.objRef"
-    >
-    </th-mesh>
+      [material]="mat.objRef"/>
+
   </th-scene>
 
   <th-view
@@ -57,79 +53,71 @@
       [fov]="view1.fov"
       [aspect]="(view1.width * canvasWidth) / (view1.height * canvasHeight)"
       [near]="1"
-      [far]="10000"
-    >
-    </th-perspectiveCamera>
+      [far]="10000"/>
     
     <th-effectComposer>
-        <th-renderPass [clearColor]="view1.background"></th-renderPass>
-        <th-unrealBloomPass [strength]="0.2"></th-unrealBloomPass>
+        <th-renderPass [clearColor]="view1.background"/>
+        <th-unrealBloomPass [strength]="0.2"/>
         <th-shaderPass
           [args]="[RGBShiftShader]"
-          [uniforms]="{ amount: { value: 0.055 } }"
-        ></th-shaderPass>
-        <th-glitchPass></th-glitchPass>
+          [uniforms]="{ amount: { value: 0.055 } }"/>
+        <th-glitchPass/>
     </th-effectComposer>
+  </th-view>
+
+  <th-view
+    #thview2
+    [scene]="scene"
+    [viewPort]="{
+      x: view2.left * canvasWidth,
+      y: view2.bottom * canvasHeight,
+      width: view2.width * canvasWidth,
+      height: view2.height * canvasHeight
+    }"
+    [scissor]="thview2.viewPort"
+    [scissorTest]="true"
+    [clearColor]="view2.background"
+    (onRender)="view2.updateCamera(camera2.objRef, scene.objRef)"
+  >
+    <th-perspectiveCamera
+      #camera2
+      [position]="$any(view2.eye)"
+      [up]="$any(view2.up)"
+      [fov]="view2.fov"
+      [aspect]="(view2.width * canvasWidth) / (view2.height * canvasHeight)"
+      [near]="1"
+      [far]="10000"/>
+
+    
+    <th-effectComposer>
+        <th-renderPass/>
+        <th-filmPass [args]="[0.35, 0.5, 2048, true]"/>   
+    </th-effectComposer>  
+  </th-view>
+
+  <th-view
+    #thview3
+    [scene]="scene"
+    [viewPort]="{
+      x: view3.left * canvasWidth,
+      y: view3.bottom * canvasHeight,
+      width: view3.width * canvasWidth,
+      height: view3.height * canvasHeight
+    }"
+    [scissor]="thview3.viewPort"
+    [scissorTest]="true"
+    [clearColor]="view3.background"
+    (onRender)="view3.updateCamera(camera3.objRef, scene.objRef)"
+  >
+    <th-perspectiveCamera
+      #camera3
+      [position]="$any(view3.eye)"
+      [up]="$any(view3.up)"
+      [fov]="view3.fov"
+      [aspect]="(view3.width * canvasWidth) / (view3.height * canvasHeight)"
+      [near]="1"
+      [far]="10000"/>
 
   </th-view>
-  <th-view
-  #thview2
-  [scene]="scene"
-  [viewPort]="{
-    x: view2.left * canvasWidth,
-    y: view2.bottom * canvasHeight,
-    width: view2.width * canvasWidth,
-    height: view2.height * canvasHeight
-  }"
-  [scissor]="thview2.viewPort"
-  [scissorTest]="true"
-  [clearColor]="view2.background"
-  (onRender)="view2.updateCamera(camera2.objRef, scene.objRef)"
->
-  <th-perspectiveCamera
-    #camera2
-    [position]="$any(view2.eye)"
-    [up]="$any(view2.up)"
-    [fov]="view2.fov"
-    [aspect]="(view2.width * canvasWidth) / (view2.height * canvasHeight)"
-    [near]="1"
-    [far]="10000"
-  >
-  </th-perspectiveCamera>
-  
-  <th-effectComposer>
-      <th-renderPass></th-renderPass>
-      <th-filmPass
-       [args]="[0.35, 0.5, 2048, true]"
-      ></th-filmPass>      
-    </th-effectComposer>
-  
-</th-view>
-<th-view
-#thview3
-[scene]="scene"
-[viewPort]="{
-  x: view3.left * canvasWidth,
-  y: view3.bottom * canvasHeight,
-  width: view3.width * canvasWidth,
-  height: view3.height * canvasHeight
-}"
-[scissor]="thview3.viewPort"
-[scissorTest]="true"
-[clearColor]="view3.background"
-(onRender)="view3.updateCamera(camera3.objRef, scene.objRef)"
->
-<th-perspectiveCamera
-  #camera3
-  [position]="$any(view3.eye)"
-  [up]="$any(view3.up)"
-  [fov]="view3.fov"
-  [aspect]="(view3.width * canvasWidth) / (view3.height * canvasHeight)"
-  [near]="1"
-  [far]="10000"
->
-</th-perspectiveCamera>
-</th-view>
-
 
 </th-canvas>

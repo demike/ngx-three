@@ -1,24 +1,23 @@
 <th-canvas [thStats]="true">
   <th-scene>
-    <th-ambientLight> </th-ambientLight>
+    <th-ambientLight/>
 
     <th-object3D
       loadGLTF
       [url]="glbPath"
       (onClick)="selected = !selected"
       [scale]="selected ? [2, 2, 2] : [1, 1, 1]"
-    >
-    </th-object3D>
+    />
 
-    <th-gridHelper [args]="[10, 10]"></th-gridHelper>
-    <th-pointLight [position]="[10, 10, 10]"></th-pointLight>
+    <th-gridHelper [args]="[10, 10]"/>
+    <th-pointLight [position]="[10, 10, 10]"/>
 
     <th-perspectiveCamera
       [args]="[45, 2, 0.1, 100]"
       [position]="[10, 10, 10]"
       [lookAt]="[0, 0, 0]"
     >
-      <th-orbitControls></th-orbitControls>
+      <th-orbitControls/>
     </th-perspectiveCamera>
   </th-scene>
 </th-canvas>
