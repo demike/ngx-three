@@ -50,10 +50,19 @@ export class ThCompressedArrayTexture<
     }
   }
 
+  // @ts-ignore
+  public get isCompressedArrayTexture(): true | undefined {
+    return this._objRef?.isCompressedArrayTexture;
+  }
   @Input()
   public set wrapR(value: Wrapping) {
     if (this._objRef) {
       this._objRef.wrapR = value;
     }
+  }
+
+  // @ts-ignore
+  public get wrapR(): Wrapping | undefined {
+    return this._objRef?.wrapR;
   }
 }

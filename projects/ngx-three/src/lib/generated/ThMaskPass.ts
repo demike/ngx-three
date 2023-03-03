@@ -37,6 +37,10 @@ export class ThMaskPass<
     }
   }
 
+  // @ts-ignore
+  public get scene(): Scene | undefined {
+    return this._objRef?.scene;
+  }
   @Input()
   public set camera(value: Camera) {
     if (this._objRef) {
@@ -44,10 +48,19 @@ export class ThMaskPass<
     }
   }
 
+  // @ts-ignore
+  public get camera(): Camera | undefined {
+    return this._objRef?.camera;
+  }
   @Input()
   public set inverse(value: boolean) {
     if (this._objRef) {
       this._objRef.inverse = value;
     }
+  }
+
+  // @ts-ignore
+  public get inverse(): boolean | undefined {
+    return this._objRef?.inverse;
   }
 }

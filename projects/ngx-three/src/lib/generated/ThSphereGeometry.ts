@@ -45,6 +45,10 @@ export class ThSphereGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set parameters(value: {
     radius: number;
@@ -58,5 +62,20 @@ export class ThSphereGeometry<
     if (this._objRef) {
       this._objRef.parameters = value;
     }
+  }
+
+  // @ts-ignore
+  public get parameters():
+    | {
+        radius: number;
+        widthSegments: number;
+        heightSegments: number;
+        phiStart: number;
+        phiLength: number;
+        thetaStart: number;
+        thetaLength: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

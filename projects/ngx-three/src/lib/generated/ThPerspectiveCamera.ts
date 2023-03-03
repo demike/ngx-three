@@ -36,6 +36,14 @@ export class ThPerspectiveCamera<
     }
   }
 
+  // @ts-ignore
+  public get type(): 'PerspectiveCamera' | undefined {
+    return this._objRef?.type;
+  }
+  // @ts-ignore
+  public get isPerspectiveCamera(): true | undefined {
+    return this._objRef?.isPerspectiveCamera;
+  }
   @Input()
   public set zoom(value: number) {
     if (this._objRef) {
@@ -43,6 +51,10 @@ export class ThPerspectiveCamera<
     }
   }
 
+  // @ts-ignore
+  public get zoom(): number | undefined {
+    return this._objRef?.zoom;
+  }
   @Input()
   public set fov(value: number) {
     if (this._objRef) {
@@ -50,6 +62,10 @@ export class ThPerspectiveCamera<
     }
   }
 
+  // @ts-ignore
+  public get fov(): number | undefined {
+    return this._objRef?.fov;
+  }
   @Input()
   public set aspect(value: number) {
     if (this._objRef) {
@@ -57,6 +73,10 @@ export class ThPerspectiveCamera<
     }
   }
 
+  // @ts-ignore
+  public get aspect(): number | undefined {
+    return this._objRef?.aspect;
+  }
   @Input()
   public set near(value: number) {
     if (this._objRef) {
@@ -64,6 +84,10 @@ export class ThPerspectiveCamera<
     }
   }
 
+  // @ts-ignore
+  public get near(): number | undefined {
+    return this._objRef?.near;
+  }
   @Input()
   public set far(value: number) {
     if (this._objRef) {
@@ -71,6 +95,10 @@ export class ThPerspectiveCamera<
     }
   }
 
+  // @ts-ignore
+  public get far(): number | undefined {
+    return this._objRef?.far;
+  }
   @Input()
   public set focus(value: number) {
     if (this._objRef) {
@@ -78,6 +106,10 @@ export class ThPerspectiveCamera<
     }
   }
 
+  // @ts-ignore
+  public get focus(): number | undefined {
+    return this._objRef?.focus;
+  }
   @Input()
   public set view(
     value: null | {
@@ -95,6 +127,20 @@ export class ThPerspectiveCamera<
     }
   }
 
+  // @ts-ignore
+  public get view():
+    | (null | {
+        enabled: boolean;
+        fullWidth: number;
+        fullHeight: number;
+        offsetX: number;
+        offsetY: number;
+        width: number;
+        height: number;
+      })
+    | undefined {
+    return this._objRef?.view;
+  }
   @Input()
   public set filmGauge(value: number) {
     if (this._objRef) {
@@ -102,10 +148,19 @@ export class ThPerspectiveCamera<
     }
   }
 
+  // @ts-ignore
+  public get filmGauge(): number | undefined {
+    return this._objRef?.filmGauge;
+  }
   @Input()
   public set filmOffset(value: number) {
     if (this._objRef) {
       this._objRef.filmOffset = value;
     }
+  }
+
+  // @ts-ignore
+  public get filmOffset(): number | undefined {
+    return this._objRef?.filmOffset;
   }
 }

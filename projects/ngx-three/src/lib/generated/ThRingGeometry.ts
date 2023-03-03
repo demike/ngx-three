@@ -44,6 +44,10 @@ export class ThRingGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set parameters(value: {
     innerRadius: number;
@@ -56,5 +60,19 @@ export class ThRingGeometry<
     if (this._objRef) {
       this._objRef.parameters = value;
     }
+  }
+
+  // @ts-ignore
+  public get parameters():
+    | {
+        innerRadius: number;
+        outerRadius: number;
+        thetaSegments: number;
+        phiSegments: number;
+        thetaStart: number;
+        thetaLength: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

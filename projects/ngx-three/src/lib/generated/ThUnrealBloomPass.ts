@@ -54,6 +54,10 @@ export class ThUnrealBloomPass<
       );
     }
   }
+  // @ts-ignore
+  public get resolution(): Vector2 | undefined {
+    return this._objRef?.resolution;
+  }
   @Input()
   public set strength(value: number) {
     if (this._objRef) {
@@ -61,6 +65,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get strength(): number | undefined {
+    return this._objRef?.strength;
+  }
   @Input()
   public set radius(value: number) {
     if (this._objRef) {
@@ -68,6 +76,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get radius(): number | undefined {
+    return this._objRef?.radius;
+  }
   @Input()
   public set threshold(value: number) {
     if (this._objRef) {
@@ -75,6 +87,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get threshold(): number | undefined {
+    return this._objRef?.threshold;
+  }
   @Input()
   public set clearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
@@ -84,6 +100,10 @@ export class ThUnrealBloomPass<
       );
     }
   }
+  // @ts-ignore
+  public get clearColor(): Color | undefined {
+    return this._objRef?.clearColor;
+  }
   @Input()
   public set renderTargetsHorizontal(value: WebGLRenderTarget[]) {
     if (this._objRef) {
@@ -91,6 +111,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetsHorizontal(): WebGLRenderTarget[] | undefined {
+    return this._objRef?.renderTargetsHorizontal;
+  }
   @Input()
   public set renderTargetsVertical(value: WebGLRenderTarget[]) {
     if (this._objRef) {
@@ -98,6 +122,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetsVertical(): WebGLRenderTarget[] | undefined {
+    return this._objRef?.renderTargetsVertical;
+  }
   @Input()
   public set nMips(value: number) {
     if (this._objRef) {
@@ -105,6 +133,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get nMips(): number | undefined {
+    return this._objRef?.nMips;
+  }
   @Input()
   public set renderTargetBright(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -112,6 +144,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetBright(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTargetBright;
+  }
   @Input()
   public set highPassUniforms(value: object) {
     if (this._objRef) {
@@ -119,6 +155,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get highPassUniforms(): object | undefined {
+    return this._objRef?.highPassUniforms;
+  }
   @Input()
   public set materialHighPassFilter(value: ShaderMaterial) {
     if (this._objRef) {
@@ -126,6 +166,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get materialHighPassFilter(): ShaderMaterial | undefined {
+    return this._objRef?.materialHighPassFilter;
+  }
   @Input()
   public set separableBlurMaterials(value: ShaderMaterial[]) {
     if (this._objRef) {
@@ -133,6 +177,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get separableBlurMaterials(): ShaderMaterial[] | undefined {
+    return this._objRef?.separableBlurMaterials;
+  }
   @Input()
   public set compositeMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -140,6 +188,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get compositeMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.compositeMaterial;
+  }
   @Input()
   public set bloomTintColors(value: Vector3[]) {
     if (this._objRef) {
@@ -147,6 +199,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get bloomTintColors(): Vector3[] | undefined {
+    return this._objRef?.bloomTintColors;
+  }
   @Input()
   public set copyUniforms(value: object) {
     if (this._objRef) {
@@ -154,6 +210,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get copyUniforms(): object | undefined {
+    return this._objRef?.copyUniforms;
+  }
   @Input()
   public set materialCopy(value: ShaderMaterial) {
     if (this._objRef) {
@@ -161,6 +221,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get materialCopy(): ShaderMaterial | undefined {
+    return this._objRef?.materialCopy;
+  }
   @Input()
   public set oldClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
@@ -170,6 +234,10 @@ export class ThUnrealBloomPass<
       );
     }
   }
+  // @ts-ignore
+  public get oldClearColor(): Color | undefined {
+    return this._objRef?.oldClearColor;
+  }
   @Input()
   public set oldClearAlpha(value: number) {
     if (this._objRef) {
@@ -177,6 +245,10 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get oldClearAlpha(): number | undefined {
+    return this._objRef?.oldClearAlpha;
+  }
   @Input()
   public set basic(value: MeshBasicMaterial) {
     if (this._objRef) {
@@ -184,10 +256,19 @@ export class ThUnrealBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get basic(): MeshBasicMaterial | undefined {
+    return this._objRef?.basic;
+  }
   @Input()
   public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.fsQuad = value;
     }
+  }
+
+  // @ts-ignore
+  public get fsQuad(): FullScreenQuad | undefined {
+    return this._objRef?.fsQuad;
   }
 }

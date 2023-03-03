@@ -43,6 +43,10 @@ export class ThTubeGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set parameters(value: {
     path: Curve<Vector3>;
@@ -56,6 +60,18 @@ export class ThTubeGeometry<
     }
   }
 
+  // @ts-ignore
+  public get parameters():
+    | {
+        path: Curve<Vector3>;
+        tubularSegments: number;
+        radius: number;
+        radialSegments: number;
+        closed: boolean;
+      }
+    | undefined {
+    return this._objRef?.parameters;
+  }
   @Input()
   public set tangents(value: Vector3[]) {
     if (this._objRef) {
@@ -63,6 +79,10 @@ export class ThTubeGeometry<
     }
   }
 
+  // @ts-ignore
+  public get tangents(): Vector3[] | undefined {
+    return this._objRef?.tangents;
+  }
   @Input()
   public set normals(value: Vector3[]) {
     if (this._objRef) {
@@ -70,10 +90,19 @@ export class ThTubeGeometry<
     }
   }
 
+  // @ts-ignore
+  public get normals(): Vector3[] | undefined {
+    return this._objRef?.normals;
+  }
   @Input()
   public set binormals(value: Vector3[]) {
     if (this._objRef) {
       this._objRef.binormals = value;
     }
+  }
+
+  // @ts-ignore
+  public get binormals(): Vector3[] | undefined {
+    return this._objRef?.binormals;
   }
 }

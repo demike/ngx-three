@@ -35,6 +35,10 @@ export class ThDragControls<
     }
   }
 
+  // @ts-ignore
+  public get object(): Camera | undefined {
+    return this._objRef?.object;
+  }
   @Input()
   public set enabled(value: boolean) {
     if (this._objRef) {
@@ -42,10 +46,19 @@ export class ThDragControls<
     }
   }
 
+  // @ts-ignore
+  public get enabled(): boolean | undefined {
+    return this._objRef?.enabled;
+  }
   @Input()
   public set transformGroup(value: boolean) {
     if (this._objRef) {
       this._objRef.transformGroup = value;
     }
+  }
+
+  // @ts-ignore
+  public get transformGroup(): boolean | undefined {
+    return this._objRef?.transformGroup;
   }
 }

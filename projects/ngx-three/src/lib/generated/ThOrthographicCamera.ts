@@ -46,6 +46,14 @@ export class ThOrthographicCamera<
     }
   }
 
+  // @ts-ignore
+  public get type(): 'OrthographicCamera' | undefined {
+    return this._objRef?.type;
+  }
+  // @ts-ignore
+  public get isOrthographicCamera(): true | undefined {
+    return this._objRef?.isOrthographicCamera;
+  }
   @Input()
   public set zoom(value: number) {
     if (this._objRef) {
@@ -53,6 +61,10 @@ export class ThOrthographicCamera<
     }
   }
 
+  // @ts-ignore
+  public get zoom(): number | undefined {
+    return this._objRef?.zoom;
+  }
   @Input()
   public set view(
     value: null | {
@@ -70,6 +82,20 @@ export class ThOrthographicCamera<
     }
   }
 
+  // @ts-ignore
+  public get view():
+    | (null | {
+        enabled: boolean;
+        fullWidth: number;
+        fullHeight: number;
+        offsetX: number;
+        offsetY: number;
+        width: number;
+        height: number;
+      })
+    | undefined {
+    return this._objRef?.view;
+  }
   @Input()
   public set left(value: number) {
     if (this._objRef) {
@@ -77,6 +103,10 @@ export class ThOrthographicCamera<
     }
   }
 
+  // @ts-ignore
+  public get left(): number | undefined {
+    return this._objRef?.left;
+  }
   @Input()
   public set right(value: number) {
     if (this._objRef) {
@@ -84,6 +114,10 @@ export class ThOrthographicCamera<
     }
   }
 
+  // @ts-ignore
+  public get right(): number | undefined {
+    return this._objRef?.right;
+  }
   @Input()
   public set top(value: number) {
     if (this._objRef) {
@@ -91,6 +125,10 @@ export class ThOrthographicCamera<
     }
   }
 
+  // @ts-ignore
+  public get top(): number | undefined {
+    return this._objRef?.top;
+  }
   @Input()
   public set bottom(value: number) {
     if (this._objRef) {
@@ -98,6 +136,10 @@ export class ThOrthographicCamera<
     }
   }
 
+  // @ts-ignore
+  public get bottom(): number | undefined {
+    return this._objRef?.bottom;
+  }
   @Input()
   public set near(value: number) {
     if (this._objRef) {
@@ -105,10 +147,19 @@ export class ThOrthographicCamera<
     }
   }
 
+  // @ts-ignore
+  public get near(): number | undefined {
+    return this._objRef?.near;
+  }
   @Input()
   public set far(value: number) {
     if (this._objRef) {
       this._objRef.far = value;
     }
+  }
+
+  // @ts-ignore
+  public get far(): number | undefined {
+    return this._objRef?.far;
   }
 }

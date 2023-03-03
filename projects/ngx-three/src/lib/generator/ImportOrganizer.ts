@@ -24,7 +24,7 @@ class LanguageServiceHostImpl implements ts.LanguageServiceHost {
     this.options = compilerOptions;
   }
   readFile(path: string, encoding?: string | undefined): string | undefined {
-    const options = encoding !== undefined ? { encoding: encoding as BufferEncoding } : undefined;
+    const options = encoding !== undefined ? { encoding: encoding as BufferEncoding } : 'utf8';
     return readFileSync(path, options) as string | undefined;
   }
   fileExists(path: string): boolean {

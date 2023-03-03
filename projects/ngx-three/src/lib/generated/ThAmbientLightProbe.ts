@@ -26,4 +26,9 @@ export class ThAmbientLightProbe<
   public getType(): Type<AmbientLightProbe> {
     return AmbientLightProbe;
   }
+
+  // @ts-ignore
+  public get isAmbientLightProbe(): true | undefined {
+    return this._objRef?.isAmbientLightProbe;
+  }
 }

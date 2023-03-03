@@ -15,7 +15,7 @@ import { NgxThreePass } from './NgxThreePass';
 import { NgxThreeTexture } from './NgxThreeTexture';
 
 class NgxThreeClassGenerator {
-  public readonly baseOutPath = join(__dirname, '../generated');
+  public readonly baseOutPath = join(__dirname, '../generated/');
   public readonly ngxThreeClassMap = new Map<string, NgxThreeClass>();
   private typeChecker?: ts.TypeChecker;
 
@@ -92,7 +92,7 @@ class NgxThreeClassGenerator {
         singleQuote: true
       });
     } catch (e) {
-      console.log(e);
+      console.log(`error creating file: ${fileName}`,e);
     }
     writeFileSync(join(this.baseOutPath, fileName + '.ts'), content);
   }

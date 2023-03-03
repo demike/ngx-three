@@ -34,6 +34,10 @@ export class ThMesh<
     }
   }
 
+  // @ts-ignore
+  public get geometry(): TGeometry | undefined {
+    return this._objRef?.geometry;
+  }
   @Input()
   public set material(value: TMaterial) {
     if (this._objRef) {
@@ -41,6 +45,10 @@ export class ThMesh<
     }
   }
 
+  // @ts-ignore
+  public get material(): TMaterial | undefined {
+    return this._objRef?.material;
+  }
   @Input()
   public set morphTargetInfluences(value: number[] | undefined) {
     if (this._objRef) {
@@ -48,6 +56,10 @@ export class ThMesh<
     }
   }
 
+  // @ts-ignore
+  public get morphTargetInfluences(): (number[] | undefined) | undefined {
+    return this._objRef?.morphTargetInfluences;
+  }
   @Input()
   public set morphTargetDictionary(
     value: { [key: string]: number } | undefined
@@ -57,10 +69,25 @@ export class ThMesh<
     }
   }
 
+  // @ts-ignore
+  public get morphTargetDictionary():
+    | ({ [key: string]: number } | undefined)
+    | undefined {
+    return this._objRef?.morphTargetDictionary;
+  }
+  // @ts-ignore
+  public get isMesh(): true | undefined {
+    return this._objRef?.isMesh;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {
       this._objRef.type = value;
     }
+  }
+
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
   }
 }

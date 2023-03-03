@@ -52,6 +52,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get scene(): Scene | undefined {
+    return this._objRef?.scene;
+  }
   @Input()
   public set camera(value: Camera) {
     if (this._objRef) {
@@ -59,6 +63,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get camera(): Camera | undefined {
+    return this._objRef?.camera;
+  }
   @Input()
   public set width(value: number) {
     if (this._objRef) {
@@ -66,6 +74,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get width(): number | undefined {
+    return this._objRef?.width;
+  }
   @Input()
   public set height(value: boolean) {
     if (this._objRef) {
@@ -73,6 +85,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get height(): boolean | undefined {
+    return this._objRef?.height;
+  }
   @Input()
   public set clear(value: boolean) {
     if (this._objRef) {
@@ -80,6 +96,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get clear(): boolean | undefined {
+    return this._objRef?.clear;
+  }
   @Input()
   public set kernelRadius(value: number) {
     if (this._objRef) {
@@ -87,6 +107,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get kernelRadius(): number | undefined {
+    return this._objRef?.kernelRadius;
+  }
   @Input()
   public set kernelSize(value: number) {
     if (this._objRef) {
@@ -94,6 +118,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get kernelSize(): number | undefined {
+    return this._objRef?.kernelSize;
+  }
   @Input()
   public set kernel(value: Vector3[]) {
     if (this._objRef) {
@@ -101,6 +129,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get kernel(): Vector3[] | undefined {
+    return this._objRef?.kernel;
+  }
   @Input()
   public set noiseTexture(value: DataTexture) {
     if (this._objRef) {
@@ -108,6 +140,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get noiseTexture(): DataTexture | undefined {
+    return this._objRef?.noiseTexture;
+  }
   @Input()
   public set output(value: SSAOPassOUTPUT) {
     if (this._objRef) {
@@ -115,6 +151,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get output(): SSAOPassOUTPUT | undefined {
+    return this._objRef?.output;
+  }
   @Input()
   public set minDistance(value: number) {
     if (this._objRef) {
@@ -122,6 +162,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get minDistance(): number | undefined {
+    return this._objRef?.minDistance;
+  }
   @Input()
   public set maxDistance(value: number) {
     if (this._objRef) {
@@ -129,6 +173,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get maxDistance(): number | undefined {
+    return this._objRef?.maxDistance;
+  }
   @Input()
   public set beautyRenderTarget(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -136,6 +184,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get beautyRenderTarget(): WebGLRenderTarget | undefined {
+    return this._objRef?.beautyRenderTarget;
+  }
   @Input()
   public set normalRenderTarget(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -143,6 +195,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get normalRenderTarget(): WebGLRenderTarget | undefined {
+    return this._objRef?.normalRenderTarget;
+  }
   @Input()
   public set ssaoRenderTarget(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -150,6 +206,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get ssaoRenderTarget(): WebGLRenderTarget | undefined {
+    return this._objRef?.ssaoRenderTarget;
+  }
   @Input()
   public set blurRenderTarget(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -157,6 +217,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get blurRenderTarget(): WebGLRenderTarget | undefined {
+    return this._objRef?.blurRenderTarget;
+  }
   @Input()
   public set ssaoMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -164,6 +228,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get ssaoMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.ssaoMaterial;
+  }
   @Input()
   public set normalMaterial(value: MeshNormalMaterial) {
     if (this._objRef) {
@@ -171,6 +239,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get normalMaterial(): MeshNormalMaterial | undefined {
+    return this._objRef?.normalMaterial;
+  }
   @Input()
   public set blurMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -178,6 +250,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get blurMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.blurMaterial;
+  }
   @Input()
   public set depthRenderMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -185,6 +261,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get depthRenderMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.depthRenderMaterial;
+  }
   @Input()
   public set copyMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -192,6 +272,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get copyMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.copyMaterial;
+  }
   @Input()
   public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
@@ -199,6 +283,10 @@ export class ThSSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get fsQuad(): FullScreenQuad | undefined {
+    return this._objRef?.fsQuad;
+  }
   @Input()
   public set originalClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
@@ -208,4 +296,10 @@ export class ThSSAOPass<
       );
     }
   }
+  // @ts-ignore
+  public get originalClearColor(): Color | undefined {
+    return this._objRef?.originalClearColor;
+  }
+
+  public static readonly OUTPUT = SSAOPass.OUTPUT;
 }

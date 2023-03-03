@@ -39,6 +39,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set defines(value: { [key: string]: any }) {
     if (this._objRef) {
@@ -46,6 +50,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get defines(): { [key: string]: any } | undefined {
+    return this._objRef?.defines;
+  }
   @Input()
   public set uniforms(value: { [uniform: string]: IUniform }) {
     if (this._objRef) {
@@ -53,6 +61,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get uniforms(): { [uniform: string]: IUniform } | undefined {
+    return this._objRef?.uniforms;
+  }
   @Input()
   public set vertexShader(value: string) {
     if (this._objRef) {
@@ -60,6 +72,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get vertexShader(): string | undefined {
+    return this._objRef?.vertexShader;
+  }
   @Input()
   public set fragmentShader(value: string) {
     if (this._objRef) {
@@ -67,6 +83,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get fragmentShader(): string | undefined {
+    return this._objRef?.fragmentShader;
+  }
   @Input()
   public set linewidth(value: number) {
     if (this._objRef) {
@@ -74,6 +94,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get linewidth(): number | undefined {
+    return this._objRef?.linewidth;
+  }
   @Input()
   public set wireframe(value: boolean) {
     if (this._objRef) {
@@ -81,6 +105,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get wireframe(): boolean | undefined {
+    return this._objRef?.wireframe;
+  }
   @Input()
   public set wireframeLinewidth(value: number) {
     if (this._objRef) {
@@ -88,6 +116,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get wireframeLinewidth(): number | undefined {
+    return this._objRef?.wireframeLinewidth;
+  }
   @Input()
   public set fog(value: boolean) {
     if (this._objRef) {
@@ -95,6 +127,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get fog(): boolean | undefined {
+    return this._objRef?.fog;
+  }
   @Input()
   public set lights(value: boolean) {
     if (this._objRef) {
@@ -102,6 +138,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get lights(): boolean | undefined {
+    return this._objRef?.lights;
+  }
   @Input()
   public set clipping(value: boolean) {
     if (this._objRef) {
@@ -109,6 +149,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get clipping(): boolean | undefined {
+    return this._objRef?.clipping;
+  }
   @Input()
   public set derivatives(value: any) {
     if (this._objRef) {
@@ -116,6 +160,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get derivatives(): any | undefined {
+    return this._objRef?.derivatives;
+  }
   @Input()
   public set extensions(value: {
     derivatives: boolean;
@@ -128,6 +176,17 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get extensions():
+    | {
+        derivatives: boolean;
+        fragDepth: boolean;
+        drawBuffers: boolean;
+        shaderTextureLOD: boolean;
+      }
+    | undefined {
+    return this._objRef?.extensions;
+  }
   @Input()
   public set defaultAttributeValues(value: any) {
     if (this._objRef) {
@@ -135,6 +194,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get defaultAttributeValues(): any | undefined {
+    return this._objRef?.defaultAttributeValues;
+  }
   @Input()
   public set index0AttributeName(value: string | undefined) {
     if (this._objRef) {
@@ -142,6 +205,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get index0AttributeName(): (string | undefined) | undefined {
+    return this._objRef?.index0AttributeName;
+  }
   @Input()
   public set uniformsNeedUpdate(value: boolean) {
     if (this._objRef) {
@@ -149,6 +216,10 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get uniformsNeedUpdate(): boolean | undefined {
+    return this._objRef?.uniformsNeedUpdate;
+  }
   @Input()
   public set glslVersion(value: GLSLVersion | null) {
     if (this._objRef) {
@@ -156,10 +227,19 @@ export class ThShaderMaterial<
     }
   }
 
+  // @ts-ignore
+  public get glslVersion(): (GLSLVersion | null) | undefined {
+    return this._objRef?.glslVersion;
+  }
   @Input()
   public set isShaderMaterial(value: boolean) {
     if (this._objRef) {
       this._objRef.isShaderMaterial = value;
     }
+  }
+
+  // @ts-ignore
+  public get isShaderMaterial(): boolean | undefined {
+    return this._objRef?.isShaderMaterial;
   }
 }

@@ -44,6 +44,10 @@ export class ThRenderPassGen<
     }
   }
 
+  // @ts-ignore
+  public get scene(): Scene | undefined {
+    return this._objRef?.scene;
+  }
   @Input()
   public set camera(value: Camera) {
     if (this._objRef) {
@@ -51,6 +55,10 @@ export class ThRenderPassGen<
     }
   }
 
+  // @ts-ignore
+  public get camera(): Camera | undefined {
+    return this._objRef?.camera;
+  }
   @Input()
   public set overrideMaterial(value: Material) {
     if (this._objRef) {
@@ -58,6 +66,10 @@ export class ThRenderPassGen<
     }
   }
 
+  // @ts-ignore
+  public get overrideMaterial(): Material | undefined {
+    return this._objRef?.overrideMaterial;
+  }
   @Input()
   public set clearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
@@ -67,6 +79,10 @@ export class ThRenderPassGen<
       );
     }
   }
+  // @ts-ignore
+  public get clearColor(): Color | undefined {
+    return this._objRef?.clearColor;
+  }
   @Input()
   public set clearAlpha(value: number) {
     if (this._objRef) {
@@ -74,10 +90,19 @@ export class ThRenderPassGen<
     }
   }
 
+  // @ts-ignore
+  public get clearAlpha(): number | undefined {
+    return this._objRef?.clearAlpha;
+  }
   @Input()
   public set clearDepth(value: boolean) {
     if (this._objRef) {
       this._objRef.clearDepth = value;
     }
+  }
+
+  // @ts-ignore
+  public get clearDepth(): boolean | undefined {
+    return this._objRef?.clearDepth;
   }
 }

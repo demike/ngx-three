@@ -48,6 +48,10 @@ export class ThArrowHelper<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set line(value: Line) {
     if (this._objRef) {
@@ -55,10 +59,19 @@ export class ThArrowHelper<
     }
   }
 
+  // @ts-ignore
+  public get line(): Line | undefined {
+    return this._objRef?.line;
+  }
   @Input()
   public set cone(value: Mesh) {
     if (this._objRef) {
       this._objRef.cone = value;
     }
+  }
+
+  // @ts-ignore
+  public get cone(): Mesh | undefined {
+    return this._objRef?.cone;
   }
 }

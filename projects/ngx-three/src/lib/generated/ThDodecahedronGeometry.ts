@@ -37,4 +37,9 @@ export class ThDodecahedronGeometry<
       this._objRef.type = value;
     }
   }
+
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
 }

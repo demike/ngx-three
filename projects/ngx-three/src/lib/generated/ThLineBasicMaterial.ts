@@ -40,11 +40,19 @@ export class ThLineBasicMaterial<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
+  }
+  // @ts-ignore
+  public get color(): Color | undefined {
+    return this._objRef?.color;
   }
   @Input()
   public set fog(value: boolean) {
@@ -53,6 +61,10 @@ export class ThLineBasicMaterial<
     }
   }
 
+  // @ts-ignore
+  public get fog(): boolean | undefined {
+    return this._objRef?.fog;
+  }
   @Input()
   public set linewidth(value: number) {
     if (this._objRef) {
@@ -60,6 +72,10 @@ export class ThLineBasicMaterial<
     }
   }
 
+  // @ts-ignore
+  public get linewidth(): number | undefined {
+    return this._objRef?.linewidth;
+  }
   @Input()
   public set linecap(value: string) {
     if (this._objRef) {
@@ -67,10 +83,19 @@ export class ThLineBasicMaterial<
     }
   }
 
+  // @ts-ignore
+  public get linecap(): string | undefined {
+    return this._objRef?.linecap;
+  }
   @Input()
   public set linejoin(value: string) {
     if (this._objRef) {
       this._objRef.linejoin = value;
     }
+  }
+
+  // @ts-ignore
+  public get linejoin(): string | undefined {
+    return this._objRef?.linejoin;
   }
 }

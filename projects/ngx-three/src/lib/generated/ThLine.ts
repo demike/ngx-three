@@ -34,6 +34,10 @@ export class ThLine<
     }
   }
 
+  // @ts-ignore
+  public get geometry(): TGeometry | undefined {
+    return this._objRef?.geometry;
+  }
   @Input()
   public set material(value: TMaterial) {
     if (this._objRef) {
@@ -41,6 +45,10 @@ export class ThLine<
     }
   }
 
+  // @ts-ignore
+  public get material(): TMaterial | undefined {
+    return this._objRef?.material;
+  }
   @Input()
   public set type(value: 'Line' | 'LineLoop' | 'LineSegments' | string) {
     if (this._objRef) {
@@ -48,6 +56,16 @@ export class ThLine<
     }
   }
 
+  // @ts-ignore
+  public get type():
+    | ('Line' | 'LineLoop' | 'LineSegments' | string)
+    | undefined {
+    return this._objRef?.type;
+  }
+  // @ts-ignore
+  public get isLine(): true | undefined {
+    return this._objRef?.isLine;
+  }
   @Input()
   public set morphTargetInfluences(value: number[] | undefined) {
     if (this._objRef) {
@@ -55,6 +73,10 @@ export class ThLine<
     }
   }
 
+  // @ts-ignore
+  public get morphTargetInfluences(): (number[] | undefined) | undefined {
+    return this._objRef?.morphTargetInfluences;
+  }
   @Input()
   public set morphTargetDictionary(
     value: { [key: string]: number } | undefined
@@ -62,5 +84,12 @@ export class ThLine<
     if (this._objRef) {
       this._objRef.morphTargetDictionary = value;
     }
+  }
+
+  // @ts-ignore
+  public get morphTargetDictionary():
+    | ({ [key: string]: number } | undefined)
+    | undefined {
+    return this._objRef?.morphTargetDictionary;
   }
 }

@@ -38,6 +38,10 @@ export class ThBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetX(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTargetX;
+  }
   @Input()
   public set renderTargetY(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -45,6 +49,10 @@ export class ThBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetY(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTargetY;
+  }
   @Input()
   public set copyUniforms(value: object) {
     if (this._objRef) {
@@ -52,6 +60,10 @@ export class ThBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get copyUniforms(): object | undefined {
+    return this._objRef?.copyUniforms;
+  }
   @Input()
   public set materialCopy(value: ShaderMaterial) {
     if (this._objRef) {
@@ -59,6 +71,10 @@ export class ThBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get materialCopy(): ShaderMaterial | undefined {
+    return this._objRef?.materialCopy;
+  }
   @Input()
   public set convolutionUniforms(value: object) {
     if (this._objRef) {
@@ -66,6 +82,10 @@ export class ThBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get convolutionUniforms(): object | undefined {
+    return this._objRef?.convolutionUniforms;
+  }
   @Input()
   public set materialConvolution(value: ShaderMaterial) {
     if (this._objRef) {
@@ -73,10 +93,19 @@ export class ThBloomPass<
     }
   }
 
+  // @ts-ignore
+  public get materialConvolution(): ShaderMaterial | undefined {
+    return this._objRef?.materialConvolution;
+  }
   @Input()
   public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.fsQuad = value;
     }
+  }
+
+  // @ts-ignore
+  public get fsQuad(): FullScreenQuad | undefined {
+    return this._objRef?.fsQuad;
   }
 }
