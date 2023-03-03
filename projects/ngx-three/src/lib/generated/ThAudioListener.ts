@@ -34,6 +34,10 @@ export class ThAudioListener<
     }
   }
 
+  // @ts-ignore
+  public get type(): 'AudioListener' | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set context(value: AudioContext) {
     if (this._objRef) {
@@ -41,6 +45,10 @@ export class ThAudioListener<
     }
   }
 
+  // @ts-ignore
+  public get context(): AudioContext | undefined {
+    return this._objRef?.context;
+  }
   @Input()
   public set gain(value: GainNode) {
     if (this._objRef) {
@@ -48,6 +56,10 @@ export class ThAudioListener<
     }
   }
 
+  // @ts-ignore
+  public get gain(): GainNode | undefined {
+    return this._objRef?.gain;
+  }
   @Input()
   public set filter(value: any) {
     if (this._objRef) {
@@ -55,10 +67,19 @@ export class ThAudioListener<
     }
   }
 
+  // @ts-ignore
+  public get filter(): any | undefined {
+    return this._objRef?.filter;
+  }
   @Input()
   public set timeDelta(value: number) {
     if (this._objRef) {
       this._objRef.timeDelta = value;
     }
+  }
+
+  // @ts-ignore
+  public get timeDelta(): number | undefined {
+    return this._objRef?.timeDelta;
   }
 }

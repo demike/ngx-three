@@ -33,4 +33,9 @@ export class ThHemisphereLightProbe<
   public getType(): Type<HemisphereLightProbe> {
     return HemisphereLightProbe;
   }
+
+  // @ts-ignore
+  public get isHemisphereLightProbe(): true | undefined {
+    return this._objRef?.isHemisphereLightProbe;
+  }
 }

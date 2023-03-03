@@ -57,6 +57,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get renderScene(): Scene | undefined {
+    return this._objRef?.renderScene;
+  }
   @Input()
   public set renderCamera(value: Camera) {
     if (this._objRef) {
@@ -64,6 +68,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get renderCamera(): Camera | undefined {
+    return this._objRef?.renderCamera;
+  }
   @Input()
   public set selectedObjects(value: Object3D[]) {
     if (this._objRef) {
@@ -71,6 +79,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get selectedObjects(): Object3D[] | undefined {
+    return this._objRef?.selectedObjects;
+  }
   @Input()
   public set visibleEdgeColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
@@ -79,6 +91,10 @@ export class ThOutlinePass<
         value
       );
     }
+  }
+  // @ts-ignore
+  public get visibleEdgeColor(): Color | undefined {
+    return this._objRef?.visibleEdgeColor;
   }
   @Input()
   public set hiddenEdgeColor(value: Color | [color: ColorRepresentation]) {
@@ -89,6 +105,10 @@ export class ThOutlinePass<
       );
     }
   }
+  // @ts-ignore
+  public get hiddenEdgeColor(): Color | undefined {
+    return this._objRef?.hiddenEdgeColor;
+  }
   @Input()
   public set edgeGlow(value: number) {
     if (this._objRef) {
@@ -96,6 +116,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get edgeGlow(): number | undefined {
+    return this._objRef?.edgeGlow;
+  }
   @Input()
   public set usePatternTexture(value: boolean) {
     if (this._objRef) {
@@ -103,6 +127,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get usePatternTexture(): boolean | undefined {
+    return this._objRef?.usePatternTexture;
+  }
   @Input()
   public set edgeThickness(value: number) {
     if (this._objRef) {
@@ -110,6 +138,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get edgeThickness(): number | undefined {
+    return this._objRef?.edgeThickness;
+  }
   @Input()
   public set edgeStrength(value: number) {
     if (this._objRef) {
@@ -117,6 +149,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get edgeStrength(): number | undefined {
+    return this._objRef?.edgeStrength;
+  }
   @Input()
   public set downSampleRatio(value: number) {
     if (this._objRef) {
@@ -124,6 +160,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get downSampleRatio(): number | undefined {
+    return this._objRef?.downSampleRatio;
+  }
   @Input()
   public set pulsePeriod(value: number) {
     if (this._objRef) {
@@ -131,6 +171,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get pulsePeriod(): number | undefined {
+    return this._objRef?.pulsePeriod;
+  }
   @Input()
   public set resolution(value: Vector2 | [x: number, y: number]) {
     if (this._objRef) {
@@ -140,6 +184,10 @@ export class ThOutlinePass<
       );
     }
   }
+  // @ts-ignore
+  public get resolution(): Vector2 | undefined {
+    return this._objRef?.resolution;
+  }
   @Input()
   public set patternTexture(value: Texture) {
     if (this._objRef) {
@@ -147,6 +195,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get patternTexture(): Texture | undefined {
+    return this._objRef?.patternTexture;
+  }
   @Input()
   public set maskBufferMaterial(value: MeshBasicMaterial) {
     if (this._objRef) {
@@ -154,6 +206,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get maskBufferMaterial(): MeshBasicMaterial | undefined {
+    return this._objRef?.maskBufferMaterial;
+  }
   @Input()
   public set renderTargetMaskBuffer(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -161,6 +217,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetMaskBuffer(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTargetMaskBuffer;
+  }
   @Input()
   public set depthMaterial(value: MeshDepthMaterial) {
     if (this._objRef) {
@@ -168,6 +228,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get depthMaterial(): MeshDepthMaterial | undefined {
+    return this._objRef?.depthMaterial;
+  }
   @Input()
   public set prepareMaskMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -175,6 +239,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get prepareMaskMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.prepareMaskMaterial;
+  }
   @Input()
   public set renderTargetDepthBuffer(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -182,6 +250,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetDepthBuffer(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTargetDepthBuffer;
+  }
   @Input()
   public set renderTargetMaskDownSampleBuffer(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -189,6 +261,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetMaskDownSampleBuffer(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTargetMaskDownSampleBuffer;
+  }
   @Input()
   public set renderTargetBlurBuffer1(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -196,6 +272,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetBlurBuffer1(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTargetBlurBuffer1;
+  }
   @Input()
   public set renderTargetBlurBuffer2(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -203,6 +283,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetBlurBuffer2(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTargetBlurBuffer2;
+  }
   @Input()
   public set edgeDetectionMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -210,6 +294,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get edgeDetectionMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.edgeDetectionMaterial;
+  }
   @Input()
   public set renderTargetEdgeBuffer1(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -217,6 +305,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetEdgeBuffer1(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTargetEdgeBuffer1;
+  }
   @Input()
   public set renderTargetEdgeBuffer2(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -224,6 +316,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetEdgeBuffer2(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTargetEdgeBuffer2;
+  }
   @Input()
   public set separableBlurMaterial1(value: ShaderMaterial) {
     if (this._objRef) {
@@ -231,6 +327,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get separableBlurMaterial1(): ShaderMaterial | undefined {
+    return this._objRef?.separableBlurMaterial1;
+  }
   @Input()
   public set separableBlurMaterial2(value: ShaderMaterial) {
     if (this._objRef) {
@@ -238,6 +338,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get separableBlurMaterial2(): ShaderMaterial | undefined {
+    return this._objRef?.separableBlurMaterial2;
+  }
   @Input()
   public set overlayMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -245,6 +349,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get overlayMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.overlayMaterial;
+  }
   @Input()
   public set copyUniforms(value: object) {
     if (this._objRef) {
@@ -252,6 +360,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get copyUniforms(): object | undefined {
+    return this._objRef?.copyUniforms;
+  }
   @Input()
   public set materialCopy(value: ShaderMaterial) {
     if (this._objRef) {
@@ -259,6 +371,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get materialCopy(): ShaderMaterial | undefined {
+    return this._objRef?.materialCopy;
+  }
   @Input()
   public set oldClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
@@ -268,6 +384,10 @@ export class ThOutlinePass<
       );
     }
   }
+  // @ts-ignore
+  public get oldClearColor(): Color | undefined {
+    return this._objRef?.oldClearColor;
+  }
   @Input()
   public set oldClearAlpha(value: number) {
     if (this._objRef) {
@@ -275,6 +395,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get oldClearAlpha(): number | undefined {
+    return this._objRef?.oldClearAlpha;
+  }
   @Input()
   public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
@@ -282,6 +406,10 @@ export class ThOutlinePass<
     }
   }
 
+  // @ts-ignore
+  public get fsQuad(): FullScreenQuad | undefined {
+    return this._objRef?.fsQuad;
+  }
   @Input()
   public set tempPulseColor1(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
@@ -291,6 +419,10 @@ export class ThOutlinePass<
       );
     }
   }
+  // @ts-ignore
+  public get tempPulseColor1(): Color | undefined {
+    return this._objRef?.tempPulseColor1;
+  }
   @Input()
   public set tempPulseColor2(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
@@ -299,6 +431,10 @@ export class ThOutlinePass<
         value
       );
     }
+  }
+  // @ts-ignore
+  public get tempPulseColor2(): Color | undefined {
+    return this._objRef?.tempPulseColor2;
   }
   @Input()
   public set textureMatrix(
@@ -329,5 +465,9 @@ export class ThOutlinePass<
         value
       );
     }
+  }
+  // @ts-ignore
+  public get textureMatrix(): Matrix4 | undefined {
+    return this._objRef?.textureMatrix;
   }
 }

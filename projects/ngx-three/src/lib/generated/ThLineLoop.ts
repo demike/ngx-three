@@ -36,4 +36,13 @@ export class ThLineLoop<
       this._objRef.type = value;
     }
   }
+
+  // @ts-ignore
+  public get type(): 'LineLoop' | undefined {
+    return this._objRef?.type;
+  }
+  // @ts-ignore
+  public get isLineLoop(): true | undefined {
+    return this._objRef?.isLineLoop;
+  }
 }

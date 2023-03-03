@@ -34,6 +34,10 @@ export class ThPoints<
     }
   }
 
+  // @ts-ignore
+  public get type(): 'Points' | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set morphTargetInfluences(value: number[] | undefined) {
     if (this._objRef) {
@@ -41,6 +45,10 @@ export class ThPoints<
     }
   }
 
+  // @ts-ignore
+  public get morphTargetInfluences(): (number[] | undefined) | undefined {
+    return this._objRef?.morphTargetInfluences;
+  }
   @Input()
   public set morphTargetDictionary(
     value: { [key: string]: number } | undefined
@@ -50,6 +58,16 @@ export class ThPoints<
     }
   }
 
+  // @ts-ignore
+  public get morphTargetDictionary():
+    | ({ [key: string]: number } | undefined)
+    | undefined {
+    return this._objRef?.morphTargetDictionary;
+  }
+  // @ts-ignore
+  public get isPoints(): true | undefined {
+    return this._objRef?.isPoints;
+  }
   @Input()
   public set geometry(value: TGeometry) {
     if (this._objRef) {
@@ -57,10 +75,19 @@ export class ThPoints<
     }
   }
 
+  // @ts-ignore
+  public get geometry(): TGeometry | undefined {
+    return this._objRef?.geometry;
+  }
   @Input()
   public set material(value: TMaterial) {
     if (this._objRef) {
       this._objRef.material = value;
     }
+  }
+
+  // @ts-ignore
+  public get material(): TMaterial | undefined {
+    return this._objRef?.material;
   }
 }

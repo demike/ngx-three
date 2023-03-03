@@ -71,7 +71,7 @@ export class OutlinePassEventsExampleComponent implements OnInit {
   }
 
   onPointerDown(event: RaycasterEmitEvent) {
-    ((event.component as unknown as ThMesh).objRef?.material as MeshPhongMaterial).color.set('#ff0000');
+    ((event.component as unknown as ThMesh).material as MeshPhongMaterial)?.color.set('#ff0000');
   }
 
 

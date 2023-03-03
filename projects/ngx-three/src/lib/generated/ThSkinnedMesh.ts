@@ -51,6 +51,10 @@ export class ThSkinnedMesh<
     }
   }
 
+  // @ts-ignore
+  public get bindMode(): string | undefined {
+    return this._objRef?.bindMode;
+  }
   @Input()
   public set bindMatrix(
     value:
@@ -80,6 +84,10 @@ export class ThSkinnedMesh<
         value
       );
     }
+  }
+  // @ts-ignore
+  public get bindMatrix(): Matrix4 | undefined {
+    return this._objRef?.bindMatrix;
   }
   @Input()
   public set bindMatrixInverse(
@@ -111,10 +119,23 @@ export class ThSkinnedMesh<
       );
     }
   }
+  // @ts-ignore
+  public get bindMatrixInverse(): Matrix4 | undefined {
+    return this._objRef?.bindMatrixInverse;
+  }
   @Input()
   public set skeleton(value: Skeleton) {
     if (this._objRef) {
       this._objRef.skeleton = value;
     }
+  }
+
+  // @ts-ignore
+  public get skeleton(): Skeleton | undefined {
+    return this._objRef?.skeleton;
+  }
+  // @ts-ignore
+  public get isSkinnedMesh(): true | undefined {
+    return this._objRef?.isSkinnedMesh;
   }
 }

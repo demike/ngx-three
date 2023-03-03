@@ -35,6 +35,10 @@ export class ThCameraHelper<
     }
   }
 
+  // @ts-ignore
+  public get camera(): Camera | undefined {
+    return this._objRef?.camera;
+  }
   @Input()
   public set pointMap(value: { [id: string]: number[] }) {
     if (this._objRef) {
@@ -42,10 +46,19 @@ export class ThCameraHelper<
     }
   }
 
+  // @ts-ignore
+  public get pointMap(): { [id: string]: number[] } | undefined {
+    return this._objRef?.pointMap;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {
       this._objRef.type = value;
     }
+  }
+
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
   }
 }

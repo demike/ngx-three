@@ -37,10 +37,19 @@ export class ThClearPass<
     }
   }
 
+  // @ts-ignore
+  public get clearColor(): ColorRepresentation | undefined {
+    return this._objRef?.clearColor;
+  }
   @Input()
   public set clearAlpha(value: number) {
     if (this._objRef) {
       this._objRef.clearAlpha = value;
     }
+  }
+
+  // @ts-ignore
+  public get clearAlpha(): number | undefined {
+    return this._objRef?.clearAlpha;
   }
 }

@@ -38,6 +38,10 @@ export class ThPointerLockControls<
     }
   }
 
+  // @ts-ignore
+  public get domElement(): HTMLElement | undefined {
+    return this._objRef?.domElement;
+  }
   @Input()
   public set isLocked(value: boolean) {
     if (this._objRef) {
@@ -45,6 +49,10 @@ export class ThPointerLockControls<
     }
   }
 
+  // @ts-ignore
+  public get isLocked(): boolean | undefined {
+    return this._objRef?.isLocked;
+  }
   @Input()
   public set minPolarAngle(value: number) {
     if (this._objRef) {
@@ -52,10 +60,19 @@ export class ThPointerLockControls<
     }
   }
 
+  // @ts-ignore
+  public get minPolarAngle(): number | undefined {
+    return this._objRef?.minPolarAngle;
+  }
   @Input()
   public set maxPolarAngle(value: number) {
     if (this._objRef) {
       this._objRef.maxPolarAngle = value;
     }
+  }
+
+  // @ts-ignore
+  public get maxPolarAngle(): number | undefined {
+    return this._objRef?.maxPolarAngle;
   }
 }

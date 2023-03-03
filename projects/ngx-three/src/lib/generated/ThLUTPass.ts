@@ -40,10 +40,19 @@ export class ThLUTPass<
     }
   }
 
+  // @ts-ignore
+  public get lut(): (DataTexture | Data3DTexture) | undefined {
+    return this._objRef?.lut;
+  }
   @Input()
   public set intensity(value: number) {
     if (this._objRef) {
       this._objRef.intensity = value;
     }
+  }
+
+  // @ts-ignore
+  public get intensity(): number | undefined {
+    return this._objRef?.intensity;
   }
 }

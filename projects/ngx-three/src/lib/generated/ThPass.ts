@@ -33,6 +33,10 @@ export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<
     }
   }
 
+  // @ts-ignore
+  public get enabled(): boolean | undefined {
+    return this._objRef?.enabled;
+  }
   @Input()
   public set needsSwap(value: boolean) {
     if (this._objRef) {
@@ -40,6 +44,10 @@ export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<
     }
   }
 
+  // @ts-ignore
+  public get needsSwap(): boolean | undefined {
+    return this._objRef?.needsSwap;
+  }
   @Input()
   public set clear(value: boolean) {
     if (this._objRef) {
@@ -47,10 +55,19 @@ export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<
     }
   }
 
+  // @ts-ignore
+  public get clear(): boolean | undefined {
+    return this._objRef?.clear;
+  }
   @Input()
   public set renderToScreen(value: boolean) {
     if (this._objRef) {
       this._objRef.renderToScreen = value;
     }
+  }
+
+  // @ts-ignore
+  public get renderToScreen(): boolean | undefined {
+    return this._objRef?.renderToScreen;
   }
 }

@@ -36,16 +36,29 @@ export class ThPlaneHelper<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set plane(value: Plane | [normal: Vector3, constant: number]) {
     if (this._objRef) {
       this._objRef.plane = applyValue<Plane>(this._objRef.plane, value);
     }
   }
+  // @ts-ignore
+  public get plane(): Plane | undefined {
+    return this._objRef?.plane;
+  }
   @Input()
   public set size(value: number) {
     if (this._objRef) {
       this._objRef.size = value;
     }
+  }
+
+  // @ts-ignore
+  public get size(): number | undefined {
+    return this._objRef?.size;
   }
 }

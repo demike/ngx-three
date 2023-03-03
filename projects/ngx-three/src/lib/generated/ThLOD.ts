@@ -33,6 +33,10 @@ export class ThLOD<T extends LOD = LOD, TARGS = []> extends ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get type(): 'LOD' | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set levels(
     value: Array<{ distance: number; hysteresis: number; object: Object3D }>
@@ -42,6 +46,12 @@ export class ThLOD<T extends LOD = LOD, TARGS = []> extends ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get levels():
+    | Array<{ distance: number; hysteresis: number; object: Object3D }>
+    | undefined {
+    return this._objRef?.levels;
+  }
   @Input()
   public set autoUpdate(value: boolean) {
     if (this._objRef) {
@@ -49,10 +59,23 @@ export class ThLOD<T extends LOD = LOD, TARGS = []> extends ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get autoUpdate(): boolean | undefined {
+    return this._objRef?.autoUpdate;
+  }
+  // @ts-ignore
+  public get isLOD(): true | undefined {
+    return this._objRef?.isLOD;
+  }
   @Input()
   public set objects(value: any[]) {
     if (this._objRef) {
       this._objRef.objects = value;
     }
+  }
+
+  // @ts-ignore
+  public get objects(): any[] | undefined {
+    return this._objRef?.objects;
   }
 }

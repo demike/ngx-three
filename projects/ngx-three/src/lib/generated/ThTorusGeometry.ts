@@ -43,6 +43,10 @@ export class ThTorusGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set parameters(value: {
     radius: number;
@@ -54,5 +58,18 @@ export class ThTorusGeometry<
     if (this._objRef) {
       this._objRef.parameters = value;
     }
+  }
+
+  // @ts-ignore
+  public get parameters():
+    | {
+        radius: number;
+        tube: number;
+        radialSegments: number;
+        tubularSegments: number;
+        arc: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

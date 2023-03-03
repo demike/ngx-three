@@ -35,6 +35,10 @@ export class ThFlyControls<
     }
   }
 
+  // @ts-ignore
+  public get object(): Camera | undefined {
+    return this._objRef?.object;
+  }
   @Input()
   public set domElement(value: HTMLElement | Document) {
     if (this._objRef) {
@@ -42,6 +46,10 @@ export class ThFlyControls<
     }
   }
 
+  // @ts-ignore
+  public get domElement(): (HTMLElement | Document) | undefined {
+    return this._objRef?.domElement;
+  }
   @Input()
   public set movementSpeed(value: number) {
     if (this._objRef) {
@@ -49,6 +57,10 @@ export class ThFlyControls<
     }
   }
 
+  // @ts-ignore
+  public get movementSpeed(): number | undefined {
+    return this._objRef?.movementSpeed;
+  }
   @Input()
   public set rollSpeed(value: number) {
     if (this._objRef) {
@@ -56,6 +68,10 @@ export class ThFlyControls<
     }
   }
 
+  // @ts-ignore
+  public get rollSpeed(): number | undefined {
+    return this._objRef?.rollSpeed;
+  }
   @Input()
   public set dragToLook(value: boolean) {
     if (this._objRef) {
@@ -63,10 +79,19 @@ export class ThFlyControls<
     }
   }
 
+  // @ts-ignore
+  public get dragToLook(): boolean | undefined {
+    return this._objRef?.dragToLook;
+  }
   @Input()
   public set autoForward(value: boolean) {
     if (this._objRef) {
       this._objRef.autoForward = value;
     }
+  }
+
+  // @ts-ignore
+  public get autoForward(): boolean | undefined {
+    return this._objRef?.autoForward;
   }
 }

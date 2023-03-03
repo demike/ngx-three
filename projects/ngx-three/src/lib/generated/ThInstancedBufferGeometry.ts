@@ -37,6 +37,10 @@ export class ThInstancedBufferGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set isInstancedBufferGeometry(value: boolean) {
     if (this._objRef) {
@@ -44,10 +48,19 @@ export class ThInstancedBufferGeometry<
     }
   }
 
+  // @ts-ignore
+  public get isInstancedBufferGeometry(): boolean | undefined {
+    return this._objRef?.isInstancedBufferGeometry;
+  }
   @Input()
   public set instanceCount(value: number) {
     if (this._objRef) {
       this._objRef.instanceCount = value;
     }
+  }
+
+  // @ts-ignore
+  public get instanceCount(): number | undefined {
+    return this._objRef?.instanceCount;
   }
 }

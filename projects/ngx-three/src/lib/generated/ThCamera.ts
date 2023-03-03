@@ -57,6 +57,10 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
       );
     }
   }
+  // @ts-ignore
+  public get matrixWorldInverse(): Matrix4 | undefined {
+    return this._objRef?.matrixWorldInverse;
+  }
   @Input()
   public set projectionMatrix(
     value:
@@ -87,6 +91,10 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
       );
     }
   }
+  // @ts-ignore
+  public get projectionMatrix(): Matrix4 | undefined {
+    return this._objRef?.projectionMatrix;
+  }
   @Input()
   public set projectionMatrixInverse(
     value:
@@ -116,5 +124,13 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
         value
       );
     }
+  }
+  // @ts-ignore
+  public get projectionMatrixInverse(): Matrix4 | undefined {
+    return this._objRef?.projectionMatrixInverse;
+  }
+  // @ts-ignore
+  public get isCamera(): true | undefined {
+    return this._objRef?.isCamera;
   }
 }

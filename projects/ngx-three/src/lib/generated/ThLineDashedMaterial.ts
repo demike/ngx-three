@@ -38,6 +38,10 @@ export class ThLineDashedMaterial<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set scale(value: number) {
     if (this._objRef) {
@@ -45,6 +49,10 @@ export class ThLineDashedMaterial<
     }
   }
 
+  // @ts-ignore
+  public get scale(): number | undefined {
+    return this._objRef?.scale;
+  }
   @Input()
   public set dashSize(value: number) {
     if (this._objRef) {
@@ -52,10 +60,23 @@ export class ThLineDashedMaterial<
     }
   }
 
+  // @ts-ignore
+  public get dashSize(): number | undefined {
+    return this._objRef?.dashSize;
+  }
   @Input()
   public set gapSize(value: number) {
     if (this._objRef) {
       this._objRef.gapSize = value;
     }
+  }
+
+  // @ts-ignore
+  public get gapSize(): number | undefined {
+    return this._objRef?.gapSize;
+  }
+  // @ts-ignore
+  public get isLineDashedMaterial(): true | undefined {
+    return this._objRef?.isLineDashedMaterial;
   }
 }

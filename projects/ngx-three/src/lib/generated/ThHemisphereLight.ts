@@ -40,11 +40,19 @@ export class ThHemisphereLight<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set position(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
       this._objRef.position = applyValue<Vector3>(this._objRef.position, value);
     }
+  }
+  // @ts-ignore
+  public get position(): Vector3 | undefined {
+    return this._objRef?.position;
   }
   @Input()
   public set groundColor(value: Color | [color: ColorRepresentation]) {
@@ -54,5 +62,13 @@ export class ThHemisphereLight<
         value
       );
     }
+  }
+  // @ts-ignore
+  public get groundColor(): Color | undefined {
+    return this._objRef?.groundColor;
+  }
+  // @ts-ignore
+  public get isHemisphereLight(): true | undefined {
+    return this._objRef?.isHemisphereLight;
   }
 }

@@ -40,11 +40,19 @@ export class ThShadowMaterial<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
+  }
+  // @ts-ignore
+  public get color(): Color | undefined {
+    return this._objRef?.color;
   }
   @Input()
   public set transparent(value: boolean) {
@@ -53,10 +61,19 @@ export class ThShadowMaterial<
     }
   }
 
+  // @ts-ignore
+  public get transparent(): boolean | undefined {
+    return this._objRef?.transparent;
+  }
   @Input()
   public set fog(value: boolean) {
     if (this._objRef) {
       this._objRef.fog = value;
     }
+  }
+
+  // @ts-ignore
+  public get fog(): boolean | undefined {
+    return this._objRef?.fog;
   }
 }

@@ -45,10 +45,19 @@ export class ThVideoTexture<
     return VideoTexture;
   }
 
+  // @ts-ignore
+  public get isVideoTexture(): true | undefined {
+    return this._objRef?.isVideoTexture;
+  }
   @Input()
   public set generateMipmaps(value: boolean) {
     if (this._objRef) {
       this._objRef.generateMipmaps = value;
     }
+  }
+
+  // @ts-ignore
+  public get generateMipmaps(): boolean | undefined {
+    return this._objRef?.generateMipmaps;
   }
 }

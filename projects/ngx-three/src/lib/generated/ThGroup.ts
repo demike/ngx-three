@@ -32,4 +32,13 @@ export class ThGroup<T extends Group = Group, TARGS = []> extends ThObject3D<
       this._objRef.type = value;
     }
   }
+
+  // @ts-ignore
+  public get type(): 'Group' | undefined {
+    return this._objRef?.type;
+  }
+  // @ts-ignore
+  public get isGroup(): true | undefined {
+    return this._objRef?.isGroup;
+  }
 }

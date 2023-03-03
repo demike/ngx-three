@@ -50,11 +50,19 @@ export class ThSpotLight<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set position(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
       this._objRef.position = applyValue<Vector3>(this._objRef.position, value);
     }
+  }
+  // @ts-ignore
+  public get position(): Vector3 | undefined {
+    return this._objRef?.position;
   }
   @Input()
   public set target(value: Object3D) {
@@ -63,6 +71,10 @@ export class ThSpotLight<
     }
   }
 
+  // @ts-ignore
+  public get target(): Object3D | undefined {
+    return this._objRef?.target;
+  }
   @Input()
   public set intensity(value: number) {
     if (this._objRef) {
@@ -70,6 +82,10 @@ export class ThSpotLight<
     }
   }
 
+  // @ts-ignore
+  public get intensity(): number | undefined {
+    return this._objRef?.intensity;
+  }
   @Input()
   public set distance(value: number) {
     if (this._objRef) {
@@ -77,6 +93,10 @@ export class ThSpotLight<
     }
   }
 
+  // @ts-ignore
+  public get distance(): number | undefined {
+    return this._objRef?.distance;
+  }
   @Input()
   public set angle(value: number) {
     if (this._objRef) {
@@ -84,6 +104,10 @@ export class ThSpotLight<
     }
   }
 
+  // @ts-ignore
+  public get angle(): number | undefined {
+    return this._objRef?.angle;
+  }
   @Input()
   public set decay(value: number) {
     if (this._objRef) {
@@ -91,6 +115,10 @@ export class ThSpotLight<
     }
   }
 
+  // @ts-ignore
+  public get decay(): number | undefined {
+    return this._objRef?.decay;
+  }
   @Input()
   public set shadow(value: SpotLightShadow) {
     if (this._objRef) {
@@ -98,6 +126,10 @@ export class ThSpotLight<
     }
   }
 
+  // @ts-ignore
+  public get shadow(): SpotLightShadow | undefined {
+    return this._objRef?.shadow;
+  }
   @Input()
   public set power(value: number) {
     if (this._objRef) {
@@ -105,6 +137,10 @@ export class ThSpotLight<
     }
   }
 
+  // @ts-ignore
+  public get power(): number | undefined {
+    return this._objRef?.power;
+  }
   @Input()
   public set penumbra(value: number) {
     if (this._objRef) {
@@ -112,10 +148,23 @@ export class ThSpotLight<
     }
   }
 
+  // @ts-ignore
+  public get penumbra(): number | undefined {
+    return this._objRef?.penumbra;
+  }
   @Input()
   public set map(value: Texture | null) {
     if (this._objRef) {
       this._objRef.map = value;
     }
+  }
+
+  // @ts-ignore
+  public get map(): (Texture | null) | undefined {
+    return this._objRef?.map;
+  }
+  // @ts-ignore
+  public get isSpotLight(): true | undefined {
+    return this._objRef?.isSpotLight;
   }
 }

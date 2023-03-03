@@ -64,4 +64,17 @@ export class NgxThreePass extends NgxThreeClass {
     }
     return super.generateSetterInput(memberName, member, memberType);
   }
+
+  public generateGetter(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
+    if(memberName === 'uniforms') {
+      return `
+      // @ts-ignore
+      public get uniforms(): { [name: string]: { value: any } } | undefined {
+        // @ts-ignore
+        return this._objRef?.uniforms;
+      }`;
+    }
+
+    return super.generateGetter(memberName, member, memberType);
+  }
 }

@@ -36,10 +36,22 @@ export class ThLightProbe<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
+  // @ts-ignore
+  public get isLightProbe(): true | undefined {
+    return this._objRef?.isLightProbe;
+  }
   @Input()
   public set sh(value: SphericalHarmonics3 | [coefficients: Vector3[]]) {
     if (this._objRef) {
       this._objRef.sh = applyValue<SphericalHarmonics3>(this._objRef.sh, value);
     }
+  }
+  // @ts-ignore
+  public get sh(): SphericalHarmonics3 | undefined {
+    return this._objRef?.sh;
   }
 }
