@@ -1,46 +1,24 @@
 <label for="shift">Shift Amount</label>
-<input
-  id="shift"
-  type="range"
-  [(ngModel)]="shiftAmount"
-  [min]="0.0015"
-  [max]="0.2"
-  [step]="0.005"
-/>
+<input id="shift" type="range" [(ngModel)]="shiftAmount" [min]="0.0015" [max]="0.2" [step]="0.005" />
 
 <th-canvas #thecanvas [shadow]="true" (onRender)="this.animate()" [thStats]="true">
   <th-effectComposer>
-    <th-renderPass></th-renderPass>
-    <th-unrealBloomPass [strength]="1"></th-unrealBloomPass>
-    <th-shaderPass
-      [args]="[RGBShiftShader]"
-      [uniforms]="{ amount: { value: shiftAmount } }"
-    ></th-shaderPass>
+    <th-renderPass />
+    <th-unrealBloomPass [strength]="1" />
+    <th-shaderPass [args]="[RGBShiftShader]" [uniforms]="{ amount: { value: shiftAmount } }" />
   </th-effectComposer>
+  
   <th-scene [background]="['#ffffff']">
-    <th-perspectiveCamera
-      [position]="[0, 0, zDist]"
-      [fov]="70"
-      [near]="1"
-      [far]="1000"
-    >
-    </th-perspectiveCamera>
-    <th-ambientLight [color]="['0x222222']"></th-ambientLight>
-    <th-directionalLight #light [color]="['0xffffff']"></th-directionalLight>
+    <th-perspectiveCamera [position]="[0, 0, zDist]" [fov]="70" [near]="1" [far]="1000" />
 
-    <th-sphereGeometry #geometry [args]="[1, 4, 4]"></th-sphereGeometry>
+    <th-ambientLight [color]="['0x222222']" />
+    <th-directionalLight #light [color]="['0xffffff']" />
+
+    <th-sphereGeometry #geometry [args]="[1, 4, 4]" />
     <th-object3D #object>
-      <th-mesh
-        *ngFor="let data of meshData"
-        [geometry]="geometry.objRef"
-        [position]="data.pos"
-        [rotation]="data.rotation"
-        [scale]="data.scale"
-      >
-        <th-meshPhongMaterial
-          [flatShading]="true"
-          [color]="data.color"
-        ></th-meshPhongMaterial>
+      <th-mesh *ngFor="let data of meshData" [geometry]="geometry.objRef" [position]="data.pos"
+        [rotation]="data.rotation" [scale]="data.scale">
+        <th-meshPhongMaterial [flatShading]="true" [color]="data.color" />
       </th-mesh>
     </th-object3D>
   </th-scene>

@@ -1,6 +1,6 @@
 <th-canvas (onRender)="this.onBeforeRender()">
   <th-scene>
-    <th-ambientLight> </th-ambientLight>
+    <th-ambientLight/>
 
     <th-object3D
       loadGLTF
@@ -9,16 +9,14 @@
       [rotation]="this.rotation"
       [position]="[0, 1, 0]"
       (onLoaded)="onLoaded()"
-      (objRef$)="onRefChange($event)"
-    ></th-object3D>
+      (objRef$)="onRefChange($event)"/>
 
-    <th-gridHelper [args]="[10, 10]"></th-gridHelper>
-    <th-pointLight [position]="[10, 10, 10]"></th-pointLight>
+    <th-gridHelper [args]="[10, 10]"/>
+    <th-pointLight [position]="[10, 10, 10]"/>
 
     <th-perspectiveCamera
       [args]="[45, 2, 0.1, 100]"
       [position]="[10, 10, 10]"
-      [lookAt]="[0, 0, 0]"
-    ></th-perspectiveCamera>
+      [lookAt]="[0, 0, 0]"/>
   </th-scene>
 </th-canvas>

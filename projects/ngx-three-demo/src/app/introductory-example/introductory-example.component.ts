@@ -5,15 +5,13 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     selector: 'app-box',
     template: `
     <th-mesh
-    [rotation]="rotation"
-    [position]="position"
-    (onClick)="selected = !selected"
-    [scale]="selected ? [2, 2, 2] : [1, 1, 1]"
+      [rotation]="rotation"
+      [position]="position"
+      (onClick)="selected = !selected"
+      [scale]="selected ? [2, 2, 2] : [1, 1, 1]"
     >
-    <th-boxGeometry></th-boxGeometry>
-    <th-meshBasicMaterial
-      [args]="{color: 'purple'}"
-    ></th-meshBasicMaterial>
+      <th-boxGeometry/>
+      <th-meshBasicMaterial [args]="{color: 'purple'}"/>
   </th-mesh>
     `,
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -33,18 +31,10 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     template: `
     <th-canvas (onRender)="this.onBeforeRender()">
       <th-scene>
-        <app-box
-          [position]="[-2,0,0]"
-          [rotation]="rotation"
-        >
-        </app-box>
-        <app-box
-          [position]="[2,0,0]"
-          [rotation]="rotation"
-        >
-        </app-box>
-        <th-ambientLight> </th-ambientLight>
-        <th-perspectiveCamera [args]="[75, 2, 0.1, 1000]" [position]="[1,1,5]"></th-perspectiveCamera>
+        <app-box [position]="[-2,0,0]" [rotation]="rotation"/>
+        <app-box [position]="[2,0,0]" [rotation]="rotation"/>
+        <th-ambientLight/>
+        <th-perspectiveCamera [args]="[75, 2, 0.1, 1000]" [position]="[1,1,5]"/>
       </th-scene>
     </th-canvas>`,
     changeDetection: ChangeDetectionStrategy.OnPush

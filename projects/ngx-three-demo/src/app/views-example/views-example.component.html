@@ -9,32 +9,29 @@
   }"
 >
   <th-scene #scene>
-    <th-directionalLight [position]="[0, 0, 1]" [args]="['#ffffff']">
-    </th-directionalLight>
+    <th-directionalLight [position]="[0, 0, 1]" [args]="['#ffffff']"/>
     <th-mesh [position]="[0, 0, 0]" [rotation]="[-Math.PI / 2, 0, 0]">
-      <th-sphereGeometry #geo [args]="[200, 32, 16]"></th-sphereGeometry>
+      <th-sphereGeometry #geo [args]="[200, 32, 16]"/>
       <th-meshPhongMaterial
         #mat
         [flatShading]="false"
         [shininess]="30"
         [specular]="['#fac400']"
         [color]="['#f83f0d']"
-      ></th-meshPhongMaterial>
+      />
     </th-mesh>
     <th-mesh
       [position]="[-400, 0, 0]"
       [rotation]="[-Math.PI / 2, 0, 0]"
       [geometry]="geo.objRef"
       [material]="mat.objRef"
-    >
-    </th-mesh>
+    />
     <th-mesh
       [position]="[400, 0, 0]"
       [rotation]="[-Math.PI / 2, 0, 0]"
       [geometry]="geo.objRef"
       [material]="mat.objRef"
-    >
-    </th-mesh>
+    />
   </th-scene>
 
   <th-view
@@ -60,7 +57,6 @@
       [aspect]="(view.width * canvasWidth) / (view.height * canvasHeight)"
       [near]="1"
       [far]="10000"
-    >
-    </th-perspectiveCamera>
+    />
   </th-view>
 </th-canvas>
