@@ -13,6 +13,7 @@ export interface DRACODecoderConfig {
     public readonly clazz = DRACOLoader;
     protected decoderPath = '';
     protected decoderConfig?: DRACODecoderConfig;
+    protected workerLimit?: number;
     protected reuseInstance = true;
 
     protected instance?: DRACOLoader;
@@ -23,6 +24,10 @@ export interface DRACODecoderConfig {
 
     public setDecoderConfig(config: DRACODecoderConfig) {
       this.decoderConfig = config;
+    }
+
+    public setWorkerLimit(limit: number) {
+      this.workerLimit = limit;
     }
 
     public setReuseInstance(reuse: boolean) {
@@ -36,8 +41,13 @@ export interface DRACODecoderConfig {
 
       const loader = super.createLoaderInstance();
       loader.setDecoderPath(this.decoderPath);
+
       if(this.decoderConfig) {
         loader.setDecoderConfig(this.decoderConfig);
+      }
+
+      if(this.workerLimit) {
+        loader.setWorkerLimit(this.workerLimit);
       }
 
       if (this.reuseInstance) {
