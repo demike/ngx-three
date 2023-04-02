@@ -497,6 +497,12 @@ i.e.:
 dracoLoader.setCrossOrigin('no-cors'); // just for testing (default: "anonymous")
 ```
 
+By default, a single DRACOLoader is reused when loading consecutive models.
+To change this behaviour, explicitly disable it:
+```ts
+dracoLoader.setReuseInstance(false); // (default: true)
+```
+
 You can find an example [here](https://demike.github.io/ngx-three/ref-by-id-example)
 
 ## Creating your own Loader
