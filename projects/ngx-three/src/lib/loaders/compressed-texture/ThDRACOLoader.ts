@@ -53,7 +53,7 @@ export interface DRACODecoderConfig {
       if (this.reuseInstance) {
         this.instance = loader;
       }
-      
+
       return loader;
     }
   }
