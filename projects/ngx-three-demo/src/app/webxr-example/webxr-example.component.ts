@@ -35,10 +35,10 @@ export class Box extends ThMesh implements OnInit {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WebXRExampleComponent implements AfterViewInit {
-  @ViewChild(ThCanvas, { static: true }) 
+  @ViewChild(ThCanvas, { static: true })
   canvas?: ThCanvas;
 
-  @ViewChild(ThView, { static: true }) 
+  @ViewChild(ThView, { static: true })
   view?: ThView;
 
   public arSupported = false;

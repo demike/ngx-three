@@ -111,8 +111,8 @@ export class ThView implements OnInit {
     camera: ThCamera;
   }>();
 
-  public enterWebXR(sessionMode: XRSessionMode){
-    this.engServ.enterWebXR(sessionMode, this);
+  public enterWebXR(sessionMode: XRSessionMode, sessionInit?: XRSessionInit){
+    this.engServ.enterWebXR(sessionMode, this, sessionInit);
   }
 
   public exitWebXR(){

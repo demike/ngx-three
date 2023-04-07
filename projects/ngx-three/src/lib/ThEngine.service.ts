@@ -203,12 +203,12 @@ export class ThEngineService implements OnDestroy {
     return true;
   }
 
-  public async enterWebXR(sessionMode: XRSessionMode, view: ThView): Promise<void>{
-    if(await this.supportsWebXR(sessionMode)){
+  public async enterWebXR(sessionMode: XRSessionMode, view: ThView, sessionInit?: XRSessionInit): Promise<void>{
+    if(await this.supportsWebXR(sessionMode) && navigator.xr){
       this.xrView = view;
       this.xrInitialCamera = view.camera?.objRef?.clone();
 
-      navigator.xr!.requestSession(sessionMode).then(this.onWebXRSessionStarted.bind(this));
+      navigator.xr.requestSession(sessionMode, sessionInit).then(this.onWebXRSessionStarted.bind(this));
     } else {
       console.warn(`requested WebXR session not supported: "${sessionMode}"`);
     }
@@ -221,16 +221,16 @@ export class ThEngineService implements OnDestroy {
   }
 
   public async supportsWebXR(sessionMode: XRSessionMode): Promise<boolean> {
-    return 'xr' in navigator && await navigator.xr!.isSessionSupported(sessionMode);
+    return navigator.xr && await navigator.xr.isSessionSupported(sessionMode) ? true : false;
   }
 
   private async onWebXRSessionStarted(session: XRSession): Promise<void> {
-    if(!this._renderer) {
+    if(!this._renderer || !this._renderer.xr) {
       return;
     }
 
     session.addEventListener('end', this.onWebXRSessionEnded.bind(this));
-    this._renderer!.xr.setReferenceSpaceType('local');
+    this._renderer.xr.setReferenceSpaceType('local');
     this._renderer.xr.enabled = true;
     this._renderer.xr.setSession(session);
 
