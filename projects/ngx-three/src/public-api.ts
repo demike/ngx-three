@@ -4,6 +4,15 @@
 
 export * from './lib/ngx-three.module';
 
+// wrapper base classes
+export * from './lib/ThControlBase';
+export * from './lib/ThGeometryBase';
+export * from './lib/ThMaterialBase';
+export * from './lib/ThObjectBase';
+export * from './lib/ThPassBase';
+export * from './lib/ThTextureBase';
+export * from './lib/ThWrapperBase';
+
 // renderer specific functionality
 export * from './lib/ThCanvas';
 export * from './lib/ThEngine.service';

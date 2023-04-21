@@ -7,7 +7,7 @@ import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { EffectComposer } from '../../generator/pass_types';
 import { ThPassBase } from '../../ThPassBase';
 import { ThView } from '../../ThView';
-import { ThObject3D } from '../ThObject3D';
+
 import { ThRenderPassGen } from '../ThRenderPassGen';
 import { ThEffectComposer } from './ThEffectComposer';
 
@@ -50,8 +50,9 @@ export class ThRenderPass<
       this._objRef.scene = this.view.scene.objRef;
     }
 
-    if (this.view.camera && this.view.camera.objRef) {
-      this._objRef.camera = this.view.camera.objRef;
+    const camera = this.camera ?? this.view.camera?.objRef:
+    if (camera) {
+      this._objRef.camera = camera;
     }
   }
 }
