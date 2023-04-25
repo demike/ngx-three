@@ -30,6 +30,7 @@ export * from './ThCapsuleGeometry';
 export * from './ThCircleGeometry';
 export * from './ThClearMaskPass';
 export * from './ThClearPass';
+export * from './ThCompressedArrayTexture';
 export * from './ThCompressedTexture';
 export * from './ThConeGeometry';
 export * from './ThConvexGeometry';

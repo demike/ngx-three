@@ -21,7 +21,7 @@ import {
   WebGLRenderer,
   WebGLRenderTarget,
 } from 'three';
-import { Reflector } from 'three/examples/jsm/objects/ReflectorForSSRPass';
+import { ReflectorForSSRPass } from 'three/examples/jsm/objects/ReflectorForSSRPass';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import {
   SSRPass,
@@ -90,7 +90,7 @@ export class ThSSRPass<
   }
 
   @Input()
-  public set groundReflector(value: Reflector | null) {
+  public set groundReflector(value: ReflectorForSSRPass | null) {
     if (this._objRef) {
       this._objRef.groundReflector = value;
     }

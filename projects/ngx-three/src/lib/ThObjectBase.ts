@@ -53,7 +53,7 @@ protected override applyObjRef(objRef: T | undefined) {
 
   // object 3d methods
   @Input()
-  public set lookAt(vector: Vector3 | [x: number, y?: number, z?: number]) {
+  public set lookAt(vector: Vector3 | [x: number, y: number, z: number]) {
     Promise.resolve().then(() => {
       // execute next microtick, to assume all
       // position changes already happend,

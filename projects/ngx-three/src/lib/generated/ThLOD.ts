@@ -34,7 +34,9 @@ export class ThLOD<T extends LOD = LOD, TARGS = []> extends ThObject3D<
   }
 
   @Input()
-  public set levels(value: Array<{ distance: number; object: Object3D }>) {
+  public set levels(
+    value: Array<{ distance: number; hysteresis: number; object: Object3D }>
+  ) {
     if (this._objRef) {
       this._objRef.levels = value;
     }

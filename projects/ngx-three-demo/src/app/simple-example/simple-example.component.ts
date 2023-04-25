@@ -3,7 +3,7 @@ import { createObj3DProviderArray } from 'ngx-three';
 import { ThMesh } from 'ngx-three';
 import { ThObject3D } from 'ngx-three';
 import * as THREE from 'three';
-import { BoxBufferGeometry, MeshStandardMaterial } from 'three';
+import { BoxGeometry, MeshStandardMaterial } from 'three';
 
 @Component({
   template: '',
@@ -25,7 +25,7 @@ export class Box extends ThMesh implements OnInit {
         color: 'green'
       });
 
-      this.objRef.geometry = new BoxBufferGeometry(1, 1, 1);
+      this.objRef.geometry = new BoxGeometry(1, 1, 1);
     }
   }
 }

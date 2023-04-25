@@ -10,6 +10,7 @@ import {
   Type,
 } from '@angular/core';
 import { ShaderMaterial } from 'three';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
@@ -52,7 +53,7 @@ export class ThShaderPass<
   }
 
   @Input()
-  public set fsQuad(value: object) {
+  public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.fsQuad = value;
     }

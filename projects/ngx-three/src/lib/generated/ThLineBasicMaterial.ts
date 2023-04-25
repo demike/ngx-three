@@ -47,6 +47,13 @@ export class ThLineBasicMaterial<
     }
   }
   @Input()
+  public set fog(value: boolean) {
+    if (this._objRef) {
+      this._objRef.fog = value;
+    }
+  }
+
+  @Input()
   public set linewidth(value: number) {
     if (this._objRef) {
       this._objRef.linewidth = value;

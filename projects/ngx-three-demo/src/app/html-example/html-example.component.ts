@@ -32,7 +32,7 @@ export class HtmlExampleComponent  {
 
   constructor(dracoLoader: DRACOLoaderService) {
     // specify the draco decoder path used by the gltf loader instances
-    dracoLoader.setDecoderPath('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/js/libs/draco/gltf/');
+    dracoLoader.setDecoderPath('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/jsm/libs/draco/gltf/');
     // in this case we need to disable cors (should not be necessary if you host the decoder yourself)
     dracoLoader.setCrossOrigin('no-cors');
 
