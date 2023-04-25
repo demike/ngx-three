@@ -15,7 +15,7 @@ import { applyValue } from '../util';
 
 @Component({
   selector: 'th-orbitControls',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) },

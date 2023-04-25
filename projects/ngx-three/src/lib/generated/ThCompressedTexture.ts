@@ -22,7 +22,7 @@ import { ThTexture } from './ThTexture';
 
 @Component({
   selector: 'th-compressedTexture',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

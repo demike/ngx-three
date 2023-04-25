@@ -15,7 +15,7 @@ import { ThObject3D } from './ThObject3D';
 
 @Component({
   selector: 'th-hemisphereLight',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThHemisphereLight) },

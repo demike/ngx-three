@@ -22,7 +22,7 @@ import { ThMeshStandardMaterial } from './ThMeshStandardMaterial';
 
 @Component({
   selector: 'th-meshPhysicalMaterial',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

@@ -22,7 +22,7 @@ import { ThMaterial } from './ThMaterial';
 
 @Component({
   selector: 'th-meshMatcapMaterial',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

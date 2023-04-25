@@ -21,7 +21,7 @@ import { ThTexture } from './ThTexture';
 
 @Component({
   selector: 'th-canvasTexture',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThTextureBase, useExisting: forwardRef(() => ThCanvasTexture) },

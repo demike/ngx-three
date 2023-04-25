@@ -23,7 +23,7 @@ import { ThMaterial } from './ThMaterial';
 
 @Component({
   selector: 'th-meshLambertMaterial',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

@@ -14,7 +14,7 @@ import { ThObject3D } from './ThObject3D';
 
 @Component({
   selector: 'th-orthographicCamera',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

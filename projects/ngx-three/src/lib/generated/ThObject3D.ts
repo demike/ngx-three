@@ -32,7 +32,7 @@ import { applyValue } from '../util';
 
 @Component({
   selector: 'th-object3D',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [],
 })

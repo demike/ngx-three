@@ -18,7 +18,7 @@ import { ThExtrudeGeometry } from './ThExtrudeGeometry';
 
 @Component({
   selector: 'th-textGeometry',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

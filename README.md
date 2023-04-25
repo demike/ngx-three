@@ -846,3 +846,18 @@ to the canvas.
 ```html
 <th-canvas [thStats]="true"> ... </th-canvas>
 ```
+
+# Debugging
+With ngx-three you can leverage the full potential of [Angular DevTools](https://angular.io/guide/devtools)
+without sacrificing performance.
+
+In dev-mode (`ng serve`) ngx-three can be debugged with the DevTools:
+<img src='./docs/angular-dev-tools.png'/>
+by inserting the Angular components into the dom:
+<img src='./docs/dev-mode-dom.png'/>
+
+And in production mode / build not a single additional dom node is inserted for the wrapped three.js objects:
+<img src='./docs/prod-mode-dom.png'/>
+
+IF you create your own components intended to be rendered inside of the three.js node tree don't forget to insert a `<ng-content />` inside of your template.
+Then you can see child nodes attached to your component in debug mode!

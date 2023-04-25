@@ -14,7 +14,7 @@ import { ThTexture } from './ThTexture';
 
 @Component({
   selector: 'th-data3DTexture',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThTextureBase, useExisting: forwardRef(() => ThData3DTexture) },

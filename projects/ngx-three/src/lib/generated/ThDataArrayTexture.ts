@@ -14,7 +14,7 @@ import { ThTexture } from './ThTexture';
 
 @Component({
   selector: 'th-dataArrayTexture',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

@@ -8,9 +8,10 @@ import {
   forwardRef,
   Inject,
   Input,
+  isDevMode,
   OnInit,
   QueryList,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { Raycaster, WebGLRenderer } from 'three';
 import { RAYCASTER, RaycasterService } from './events/raycaster.service';
@@ -22,19 +23,20 @@ import { ThView } from './ThView';
 @Component({
   selector: 'th-canvas',
   styleUrls: ['./ThCanvas.scss'],
-  template: '<canvas #rendererCanvas id="rendererCanvas"></canvas>',
+  template: '<canvas #rendererCanvas id="rendererCanvas"><ng-content *ngIf="isDevMode()" ></ng-content></canvas>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
     ThEngineService,
     ThAnimationLoopService,
-    {provide: RAYCASTER, useValue: new Raycaster() },
+    { provide: RAYCASTER, useValue: new Raycaster() },
     forwardRef(() => RaycasterService),
-    { provide: ThView, useExisting: forwardRef(() => ThCanvas) }
-  ]
+    { provide: ThView, useExisting: forwardRef(() => ThCanvas) },
+  ],
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThCanvas extends ThView implements OnInit, AfterViewInit, AfterContentChecked {
+  public readonly isDevMode = isDevMode;
   private static instanceCnt = 0;
   public readonly nid = ThCanvas.instanceCnt++;
 

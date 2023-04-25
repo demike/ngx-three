@@ -15,7 +15,7 @@ import { applyValue } from '../util';
 
 @Component({
   selector: 'th-arcballControls',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

@@ -21,7 +21,7 @@ import { ThObject3D } from './ThObject3D';
 
 @Component({
   selector: 'th-hemisphereLightHelper',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

@@ -33,13 +33,13 @@ export class NgxThreeOverrideStub {
 
     @Component({
       selector: "${this.directiveName}",
-      template: "",
+      template: "<ng-content/>",
       changeDetection: ChangeDetectionStrategy.OnPush,
       providers: ${this.origClass.providersArray?.replace(this.origClass.className, this.className)}
     })
-    export class ${this.className}<T extends ${this.origClass.wrappedClassName}${this.origClass.wrappedClassGenericTypeNames} = ${
-      this.origClass.wrappedClassName
-    }${this.origClass.wrappedClassGenericTypeNames},
+    export class ${this.className}<T extends ${this.origClass.wrappedClassName}${
+      this.origClass.wrappedClassGenericTypeNames
+    } = ${this.origClass.wrappedClassName}${this.origClass.wrappedClassGenericTypeNames},
     TARGS extends any[] = ${this.origClass.constructorArgs}> extends ${this.className}Gen<T, TARGS> {
         // TODO: implement me!
     }

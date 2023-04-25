@@ -48,7 +48,7 @@ export abstract class NgxThreeClass {
       // this is just an export specifier do not generate a wrapper for it
       // get the right type
       this.classSymbol = this.typeChecker.getTypeAtLocation(decl).symbol;
-      return (this.classSymbol.declarations?.[0] as unknown) as ts.ClassDeclaration;
+      return this.classSymbol.declarations?.[0] as unknown as ts.ClassDeclaration;
     } else {
       return decl as ts.ClassDeclaration;
     }
@@ -89,12 +89,14 @@ export abstract class NgxThreeClass {
 
         @Component({
           selector: "${this.directiveName}",
-          template: "",
+          template: "<ng-content/>",
           changeDetection: ChangeDetectionStrategy.OnPush,
           providers: ${this.providersArray}
         })
         ${classHeader} {
-          public getType(): Type<${this.wrappedClassName}${this.wrappedClassGenericTypeNames}> { return ${this.wrappedClassName}; };
+          public getType(): Type<${this.wrappedClassName}${this.wrappedClassGenericTypeNames}> { return ${
+      this.wrappedClassName
+    }; };
           ${this.inputs}
           ${constr}
         }
@@ -129,7 +131,9 @@ export abstract class NgxThreeClass {
     let header = `export class ${this.className}<`;
     if (this.classDecl.typeParameters) {
       header = `${header}${this.classDecl.typeParameters.map((param) => param.getText()).join(',')},`;
-      this.wrappedClassGenericTypeNames = `<${this.classDecl.typeParameters.map((param) => param.name.getText()).join(',')}>`;
+      this.wrappedClassGenericTypeNames = `<${this.classDecl.typeParameters
+        .map((param) => param.name.getText())
+        .join(',')}>`;
     }
     header += `
     T extends ${this.wrappedClassName}${this.wrappedClassGenericTypeNames} = ${this.wrappedClassName}${this.wrappedClassGenericTypeNames},
@@ -182,7 +186,9 @@ export abstract class NgxThreeClass {
         const memberName = (member.name as ts.Identifier).escapedText as string;
         if (
           INGORED_MEMBERS.find((m) => m === memberName) ||
-          member.modifiers?.find((m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword)
+          member.modifiers?.find(
+            (m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword
+          )
         ) {
           // it's private or protected, or in the ingore list --> do not expose
           continue;
@@ -275,10 +281,9 @@ export abstract class NgxThreeClass {
   }
 
   public generateGetter(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
-
     const isStatic = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.StaticKeyword);
 
-    if(isStatic) {
+    if (isStatic) {
       return `
 
         public static readonly ${memberName} = ${this.wrappedClassName}.${memberName};
@@ -293,29 +298,31 @@ export abstract class NgxThreeClass {
   }
 
   private generateConstructorArgs() {
-    const symbol = ((this.classDecl as unknown) as ts.Type).symbol;
+    const symbol = (this.classDecl as unknown as ts.Type).symbol;
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const constructorType = this.typeChecker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration!);
     const constructSignatures = constructorType.getConstructSignatures();
 
-    if (constructSignatures.length === 0 || (constructSignatures.length === 1 && constructSignatures[0].parameters.length === 0)) {
+    if (
+      constructSignatures.length === 0 ||
+      (constructSignatures.length === 1 && constructSignatures[0].parameters.length === 0)
+    ) {
       return;
     }
 
-    this.constructorArgs = constructSignatures
-      .map(this.getConstructorSignatureAsString)
-      .join('|');
+    this.constructorArgs = constructSignatures.map(this.getConstructorSignatureAsString).join('|');
   }
 
   private getConstructorSignatureAsString(sig: ts.Signature) {
-    if(sig.parameters.length === 1 ) {
-       // config object
+    if (sig.parameters.length === 1) {
+      // config object
       const parameterDefParts = (sig.parameters[0].declarations?.[0] as ParameterDeclaration).getText().split(':');
       return `/* ${parameterDefParts[0]} */ ${parameterDefParts[1]}`;
-
     } else {
       // constructor args array
-      return `[${sig.parameters.map((param) => (param.declarations?.[0] as ParameterDeclaration).getText()).join(',')}]`;
+      return `[${sig.parameters
+        .map((param) => (param.declarations?.[0] as ParameterDeclaration).getText())
+        .join(',')}]`;
     }
   }
 
@@ -388,7 +395,9 @@ export abstract class NgxThreeClass {
           return [];
         }
 
-        const typeParams = (s.declarations?.[0] as ts.ClassDeclaration).typeParameters as ts.TypeParameterDeclaration[] | undefined;
+        const typeParams = (s.declarations?.[0] as ts.ClassDeclaration).typeParameters as
+          | ts.TypeParameterDeclaration[]
+          | undefined;
         if (!typeParams) {
           return [];
         }
@@ -401,18 +410,24 @@ export abstract class NgxThreeClass {
               (typeNode as ts.UnionOrIntersectionTypeNode).types?.forEach((type) => {
                 if (ts.isTypeReferenceNode(type)) {
                   this.imports.add(
-                    `import { ${type.typeName.getText()} } from '${this.getImportPathForSourceFile(type.getSourceFile())}';`
+                    `import { ${type.typeName.getText()} } from '${this.getImportPathForSourceFile(
+                      type.getSourceFile()
+                    )}';`
                   );
                 } else if (ts.isArrayTypeNode(type)) {
-                  const typeRefNode = (type.elementType as any) as ts.TypeReferenceNode;
+                  const typeRefNode = type.elementType as any as ts.TypeReferenceNode;
                   this.imports.add(
-                    `import { ${typeRefNode.typeName.getText()} } from '${this.getImportPathForSourceFile(typeRefNode.getSourceFile())}';`
+                    `import { ${typeRefNode.typeName.getText()} } from '${this.getImportPathForSourceFile(
+                      typeRefNode.getSourceFile()
+                    )}';`
                   );
                 }
               });
             } else if (typeNode && ts.isTypeReferenceNode(typeNode)) {
               this.imports.add(
-                `import { ${typeNode.typeName.getText()} } from '${this.getImportPathForSourceFile(typeNode.getSourceFile())}';`
+                `import { ${typeNode.typeName.getText()} } from '${this.getImportPathForSourceFile(
+                  typeNode.getSourceFile()
+                )}';`
               );
             } else {
               // TODO:

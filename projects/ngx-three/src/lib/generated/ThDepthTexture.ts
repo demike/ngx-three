@@ -20,7 +20,7 @@ import { ThTexture } from './ThTexture';
 
 @Component({
   selector: 'th-depthTexture',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThTextureBase, useExisting: forwardRef(() => ThDepthTexture) },

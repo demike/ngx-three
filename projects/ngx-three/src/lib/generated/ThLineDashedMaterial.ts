@@ -14,7 +14,7 @@ import { ThMaterial } from './ThMaterial';
 
 @Component({
   selector: 'th-lineDashedMaterial',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

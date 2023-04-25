@@ -20,7 +20,7 @@ import { ThMaterial } from './ThMaterial';
 
 @Component({
   selector: 'th-spriteMaterial',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThSpriteMaterial) },

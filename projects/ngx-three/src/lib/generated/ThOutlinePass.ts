@@ -31,7 +31,7 @@ import { ThPass } from './ThPass';
 
 @Component({
   selector: 'th-outlinePass',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThPassBase, useExisting: forwardRef(() => ThOutlinePass) },
