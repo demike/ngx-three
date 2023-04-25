@@ -38,6 +38,11 @@ export class ThGlitchPass<
     }
   }
 
+  // @ts-ignore
+  public get uniforms(): { [name: string]: { value: any } } | undefined {
+    // @ts-ignore
+    return this._objRef?.uniforms;
+  }
   @Input()
   public set material(value: ShaderMaterial) {
     if (this._objRef) {
@@ -45,6 +50,10 @@ export class ThGlitchPass<
     }
   }
 
+  // @ts-ignore
+  public get material(): ShaderMaterial | undefined {
+    return this._objRef?.material;
+  }
   @Input()
   public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
@@ -52,6 +61,10 @@ export class ThGlitchPass<
     }
   }
 
+  // @ts-ignore
+  public get fsQuad(): FullScreenQuad | undefined {
+    return this._objRef?.fsQuad;
+  }
   @Input()
   public set goWild(value: boolean) {
     if (this._objRef) {
@@ -59,6 +72,10 @@ export class ThGlitchPass<
     }
   }
 
+  // @ts-ignore
+  public get goWild(): boolean | undefined {
+    return this._objRef?.goWild;
+  }
   @Input()
   public set curF(value: number) {
     if (this._objRef) {
@@ -66,10 +83,19 @@ export class ThGlitchPass<
     }
   }
 
+  // @ts-ignore
+  public get curF(): number | undefined {
+    return this._objRef?.curF;
+  }
   @Input()
   public set randX(value: number) {
     if (this._objRef) {
       this._objRef.randX = value;
     }
+  }
+
+  // @ts-ignore
+  public get randX(): number | undefined {
+    return this._objRef?.randX;
   }
 }

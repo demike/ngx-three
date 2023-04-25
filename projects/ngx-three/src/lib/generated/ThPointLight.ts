@@ -40,6 +40,10 @@ export class ThPointLight<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set intensity(value: number) {
     if (this._objRef) {
@@ -47,6 +51,10 @@ export class ThPointLight<
     }
   }
 
+  // @ts-ignore
+  public get intensity(): number | undefined {
+    return this._objRef?.intensity;
+  }
   @Input()
   public set distance(value: number) {
     if (this._objRef) {
@@ -54,6 +62,10 @@ export class ThPointLight<
     }
   }
 
+  // @ts-ignore
+  public get distance(): number | undefined {
+    return this._objRef?.distance;
+  }
   @Input()
   public set castShadow(value: boolean) {
     if (this._objRef) {
@@ -61,6 +73,10 @@ export class ThPointLight<
     }
   }
 
+  // @ts-ignore
+  public get castShadow(): boolean | undefined {
+    return this._objRef?.castShadow;
+  }
   @Input()
   public set decay(value: number) {
     if (this._objRef) {
@@ -68,6 +84,10 @@ export class ThPointLight<
     }
   }
 
+  // @ts-ignore
+  public get decay(): number | undefined {
+    return this._objRef?.decay;
+  }
   @Input()
   public set shadow(value: PointLightShadow) {
     if (this._objRef) {
@@ -75,10 +95,19 @@ export class ThPointLight<
     }
   }
 
+  // @ts-ignore
+  public get shadow(): PointLightShadow | undefined {
+    return this._objRef?.shadow;
+  }
   @Input()
   public set power(value: number) {
     if (this._objRef) {
       this._objRef.power = value;
     }
+  }
+
+  // @ts-ignore
+  public get power(): number | undefined {
+    return this._objRef?.power;
   }
 }

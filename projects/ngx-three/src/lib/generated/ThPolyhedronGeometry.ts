@@ -42,6 +42,10 @@ export class ThPolyhedronGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set parameters(value: {
     vertices: number[];
@@ -52,5 +56,17 @@ export class ThPolyhedronGeometry<
     if (this._objRef) {
       this._objRef.parameters = value;
     }
+  }
+
+  // @ts-ignore
+  public get parameters():
+    | {
+        vertices: number[];
+        indices: number[];
+        radius: number;
+        detail: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

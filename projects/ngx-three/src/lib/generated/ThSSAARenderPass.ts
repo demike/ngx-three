@@ -49,6 +49,10 @@ export class ThSSAARenderPass<
     }
   }
 
+  // @ts-ignore
+  public get scene(): Scene | undefined {
+    return this._objRef?.scene;
+  }
   @Input()
   public set camera(value: Camera) {
     if (this._objRef) {
@@ -56,6 +60,10 @@ export class ThSSAARenderPass<
     }
   }
 
+  // @ts-ignore
+  public get camera(): Camera | undefined {
+    return this._objRef?.camera;
+  }
   @Input()
   public set sampleLevel(value: number) {
     if (this._objRef) {
@@ -63,6 +71,10 @@ export class ThSSAARenderPass<
     }
   }
 
+  // @ts-ignore
+  public get sampleLevel(): number | undefined {
+    return this._objRef?.sampleLevel;
+  }
   @Input()
   public set unbiased(value: boolean) {
     if (this._objRef) {
@@ -70,6 +82,10 @@ export class ThSSAARenderPass<
     }
   }
 
+  // @ts-ignore
+  public get unbiased(): boolean | undefined {
+    return this._objRef?.unbiased;
+  }
   @Input()
   public set clearColor(value: ColorRepresentation) {
     if (this._objRef) {
@@ -77,6 +93,10 @@ export class ThSSAARenderPass<
     }
   }
 
+  // @ts-ignore
+  public get clearColor(): ColorRepresentation | undefined {
+    return this._objRef?.clearColor;
+  }
   @Input()
   public set clearAlpha(value: number) {
     if (this._objRef) {
@@ -84,6 +104,10 @@ export class ThSSAARenderPass<
     }
   }
 
+  // @ts-ignore
+  public get clearAlpha(): number | undefined {
+    return this._objRef?.clearAlpha;
+  }
   @Input()
   public set copyUniforms(value: object) {
     if (this._objRef) {
@@ -91,6 +115,10 @@ export class ThSSAARenderPass<
     }
   }
 
+  // @ts-ignore
+  public get copyUniforms(): object | undefined {
+    return this._objRef?.copyUniforms;
+  }
   @Input()
   public set copyMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -98,6 +126,10 @@ export class ThSSAARenderPass<
     }
   }
 
+  // @ts-ignore
+  public get copyMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.copyMaterial;
+  }
   @Input()
   public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
@@ -105,10 +137,19 @@ export class ThSSAARenderPass<
     }
   }
 
+  // @ts-ignore
+  public get fsQuad(): FullScreenQuad | undefined {
+    return this._objRef?.fsQuad;
+  }
   @Input()
   public set sampleRenderTarget(value: undefined | WebGLRenderTarget) {
     if (this._objRef) {
       this._objRef.sampleRenderTarget = value;
     }
+  }
+
+  // @ts-ignore
+  public get sampleRenderTarget(): (undefined | WebGLRenderTarget) | undefined {
+    return this._objRef?.sampleRenderTarget;
   }
 }

@@ -42,6 +42,10 @@ export class ThTextGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set parameters(value: {
     font: Font;
@@ -57,5 +61,22 @@ export class ThTextGeometry<
     if (this._objRef) {
       this._objRef.parameters = value;
     }
+  }
+
+  // @ts-ignore
+  public get parameters():
+    | {
+        font: Font;
+        size: number;
+        height: number;
+        curveSegments: number;
+        bevelEnabled: boolean;
+        bevelThickness: number;
+        bevelSize: number;
+        bevelOffset: number;
+        bevelSegments: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

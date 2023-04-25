@@ -2,38 +2,35 @@
 -->
 <th-canvas [thStats]="true" (onRender)="this.onBeforeRender()" [shadow]="true" >
     <th-scene>
-      
-      <th-ambientLight> </th-ambientLight>
+      <th-ambientLight/>
         <th-group [rotation]="[0, Math.PI,0]" [position]="[0,1,0]">
-        <th-object3D
-            [castShadow]="true"
-            loadGLTF
-            [url]="glbPath"
-            [position]="position"
-            [rotation]="rotation"
-        >
-          <th-mesh [refById]="'Cube008_2'" >
-            <th-html [rotation]="[-1 * Math.PI / 2,0,0]" [position]="[-0.04, 0.05, 0]" [scale]="[0.17,0.17,0.17]" [sprite]="sprite" [style]="{ background:'lightblue', 'borderRadius':'1em' , padding:'1em', display:'flex', flexDirection:'column' }" [transform]="true" [occlude]="true">
-             <iframe src="./multi-view-postprocessing-example" style="width:1960px; height:1280px;"></iframe>
-            </th-html>
-          </th-mesh>
-        </th-object3D>
+          <th-object3D
+              [castShadow]="true"
+              loadGLTF
+              [url]="glbPath"
+              [position]="position"
+              [rotation]="rotation"
+          >
+            <th-mesh [refById]="'Cube008_2'" >
+              <th-html [rotation]="[-1 * Math.PI / 2,0,0]" [position]="[-0.04, 0.05, 0]" [scale]="[0.17,0.17,0.17]" [sprite]="sprite" [style]="{ background:'lightblue', 'borderRadius':'1em' , padding:'1em', display:'flex', flexDirection:'column' }" [transform]="true" [occlude]="true">
+                <iframe src="./multi-view-postprocessing-example" style="width:1960px; height:1280px;"></iframe>
+              </th-html>
+            </th-mesh>
+          </th-object3D>
         </th-group>
       
-      <th-directionalLight #light [castShadow]="true" [position]="[4,10,2]" [lookAt]="[0,-3,0]" [color]="'#ffffff' | color" [intensity]="0.75">
-      </th-directionalLight>
+      <th-directionalLight #light [castShadow]="true" [position]="[4,10,2]" [lookAt]="[0,-3,0]" [color]="'#ffffff' | color" [intensity]="0.75"/>
       
-
       <th-mesh [receiveShadow]="true" [rotation]="[3*Math.PI / 2, 0,0]" [position]="[0,-3,0]">
-        <th-planeGeometry [args]="[100,100]"  ></th-planeGeometry>
-        <th-meshBasicMaterial [color]="'#efefef' | color" ></th-meshBasicMaterial>
+        <th-planeGeometry [args]="[100,100]"/>
+        <th-meshBasicMaterial [color]="'#efefef' | color"/>
       </th-mesh>
       <th-perspectiveCamera
         [args]="[55, 2, 0.1, 100]"
         [position]="[-5, 0, -15]"
         [lookAt]="[0, 0, 0]"
       >
-        <th-orbitControls></th-orbitControls>
+          <th-orbitControls/>
       </th-perspectiveCamera>
     </th-scene>
   </th-canvas>

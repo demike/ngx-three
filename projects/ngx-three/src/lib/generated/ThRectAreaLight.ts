@@ -40,6 +40,10 @@ export class ThRectAreaLight<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set width(value: number) {
     if (this._objRef) {
@@ -47,6 +51,10 @@ export class ThRectAreaLight<
     }
   }
 
+  // @ts-ignore
+  public get width(): number | undefined {
+    return this._objRef?.width;
+  }
   @Input()
   public set height(value: number) {
     if (this._objRef) {
@@ -54,6 +62,10 @@ export class ThRectAreaLight<
     }
   }
 
+  // @ts-ignore
+  public get height(): number | undefined {
+    return this._objRef?.height;
+  }
   @Input()
   public set intensity(value: number) {
     if (this._objRef) {
@@ -61,10 +73,23 @@ export class ThRectAreaLight<
     }
   }
 
+  // @ts-ignore
+  public get intensity(): number | undefined {
+    return this._objRef?.intensity;
+  }
   @Input()
   public set power(value: number) {
     if (this._objRef) {
       this._objRef.power = value;
     }
+  }
+
+  // @ts-ignore
+  public get power(): number | undefined {
+    return this._objRef?.power;
+  }
+  // @ts-ignore
+  public get isRectAreaLight(): true | undefined {
+    return this._objRef?.isRectAreaLight;
   }
 }

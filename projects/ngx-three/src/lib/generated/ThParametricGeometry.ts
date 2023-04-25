@@ -42,6 +42,10 @@ export class ThParametricGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set parameters(value: {
     func: (u: number, v: number, dest: Vector3) => void;
@@ -51,5 +55,16 @@ export class ThParametricGeometry<
     if (this._objRef) {
       this._objRef.parameters = value;
     }
+  }
+
+  // @ts-ignore
+  public get parameters():
+    | {
+        func: (u: number, v: number, dest: Vector3) => void;
+        slices: number;
+        stacks: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

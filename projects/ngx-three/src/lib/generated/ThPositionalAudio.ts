@@ -34,4 +34,9 @@ export class ThPositionalAudio<
       this._objRef.panner = value;
     }
   }
+
+  // @ts-ignore
+  public get panner(): PannerNode | undefined {
+    return this._objRef?.panner;
+  }
 }

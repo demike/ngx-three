@@ -52,6 +52,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get id(): number | undefined {
+    return this._objRef?.id;
+  }
   @Input()
   public set uuid(value: string) {
     if (this._objRef) {
@@ -59,6 +63,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get uuid(): string | undefined {
+    return this._objRef?.uuid;
+  }
   @Input()
   public set name(value: string) {
     if (this._objRef) {
@@ -66,6 +74,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get name(): string | undefined {
+    return this._objRef?.name;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {
@@ -73,6 +85,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set children(value: Object3D[]) {
     if (this._objRef) {
@@ -80,17 +96,29 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get children(): Object3D[] | undefined {
+    return this._objRef?.children;
+  }
   @Input()
   public set up(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
       this._objRef.up = applyValue<Vector3>(this._objRef.up, value);
     }
   }
+  // @ts-ignore
+  public get up(): Vector3 | undefined {
+    return this._objRef?.up;
+  }
   @Input()
   public set position(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
       applyValue<Vector3>(this._objRef.position, value);
     }
+  }
+  // @ts-ignore
+  public get position(): Vector3 | undefined {
+    return this._objRef?.position;
   }
   @Input()
   public set rotation(
@@ -100,6 +128,10 @@ export class ThObject3D<
       applyValue<Euler>(this._objRef.rotation, value);
     }
   }
+  // @ts-ignore
+  public get rotation(): Euler | undefined {
+    return this._objRef?.rotation;
+  }
   @Input()
   public set quaternion(
     value: Quaternion | [x: number, y: number, z: number, w: number]
@@ -108,11 +140,19 @@ export class ThObject3D<
       applyValue<Quaternion>(this._objRef.quaternion, value);
     }
   }
+  // @ts-ignore
+  public get quaternion(): Quaternion | undefined {
+    return this._objRef?.quaternion;
+  }
   @Input()
   public set scale(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
       applyValue<Vector3>(this._objRef.scale, value);
     }
+  }
+  // @ts-ignore
+  public get scale(): Vector3 | undefined {
+    return this._objRef?.scale;
   }
   @Input()
   public set modelViewMatrix(
@@ -141,6 +181,10 @@ export class ThObject3D<
       applyValue<Matrix4>(this._objRef.modelViewMatrix, value);
     }
   }
+  // @ts-ignore
+  public get modelViewMatrix(): Matrix4 | undefined {
+    return this._objRef?.modelViewMatrix;
+  }
   @Input()
   public set normalMatrix(
     value:
@@ -160,6 +204,10 @@ export class ThObject3D<
     if (this._objRef) {
       applyValue<Matrix3>(this._objRef.normalMatrix, value);
     }
+  }
+  // @ts-ignore
+  public get normalMatrix(): Matrix3 | undefined {
+    return this._objRef?.normalMatrix;
   }
   @Input()
   public set matrix(
@@ -187,6 +235,10 @@ export class ThObject3D<
     if (this._objRef) {
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
     }
+  }
+  // @ts-ignore
+  public get matrix(): Matrix4 | undefined {
+    return this._objRef?.matrix;
   }
   @Input()
   public set matrixWorld(
@@ -218,6 +270,10 @@ export class ThObject3D<
       );
     }
   }
+  // @ts-ignore
+  public get matrixWorld(): Matrix4 | undefined {
+    return this._objRef?.matrixWorld;
+  }
   @Input()
   public set matrixAutoUpdate(value: boolean) {
     if (this._objRef) {
@@ -225,6 +281,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get matrixAutoUpdate(): boolean | undefined {
+    return this._objRef?.matrixAutoUpdate;
+  }
   @Input()
   public set matrixWorldAutoUpdate(value: boolean) {
     if (this._objRef) {
@@ -232,6 +292,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get matrixWorldAutoUpdate(): boolean | undefined {
+    return this._objRef?.matrixWorldAutoUpdate;
+  }
   @Input()
   public set matrixWorldNeedsUpdate(value: boolean) {
     if (this._objRef) {
@@ -239,11 +303,19 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get matrixWorldNeedsUpdate(): boolean | undefined {
+    return this._objRef?.matrixWorldNeedsUpdate;
+  }
   @Input()
   public set layers(value: Layers | [channel: number]) {
     if (this._objRef) {
       this._objRef.layers = applyValue<Layers>(this._objRef.layers, value);
     }
+  }
+  // @ts-ignore
+  public get layers(): Layers | undefined {
+    return this._objRef?.layers;
   }
   @Input()
   public set visible(value: boolean) {
@@ -252,6 +324,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get visible(): boolean | undefined {
+    return this._objRef?.visible;
+  }
   @Input()
   public set castShadow(value: boolean) {
     if (this._objRef) {
@@ -259,6 +335,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get castShadow(): boolean | undefined {
+    return this._objRef?.castShadow;
+  }
   @Input()
   public set receiveShadow(value: boolean) {
     if (this._objRef) {
@@ -266,6 +346,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get receiveShadow(): boolean | undefined {
+    return this._objRef?.receiveShadow;
+  }
   @Input()
   public set frustumCulled(value: boolean) {
     if (this._objRef) {
@@ -273,6 +357,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get frustumCulled(): boolean | undefined {
+    return this._objRef?.frustumCulled;
+  }
   @Input()
   public set renderOrder(value: number) {
     if (this._objRef) {
@@ -280,6 +368,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get renderOrder(): number | undefined {
+    return this._objRef?.renderOrder;
+  }
   @Input()
   public set animations(value: AnimationClip[]) {
     if (this._objRef) {
@@ -287,6 +379,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get animations(): AnimationClip[] | undefined {
+    return this._objRef?.animations;
+  }
   @Input()
   public set userData(value: { [key: string]: any }) {
     if (this._objRef) {
@@ -294,6 +390,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get userData(): { [key: string]: any } | undefined {
+    return this._objRef?.userData;
+  }
   @Input()
   public set customDepthMaterial(value: Material) {
     if (this._objRef) {
@@ -301,6 +401,10 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get customDepthMaterial(): Material | undefined {
+    return this._objRef?.customDepthMaterial;
+  }
   @Input()
   public set customDistanceMaterial(value: Material) {
     if (this._objRef) {
@@ -308,6 +412,14 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get customDistanceMaterial(): Material | undefined {
+    return this._objRef?.customDistanceMaterial;
+  }
+  // @ts-ignore
+  public get isObject3D(): true | undefined {
+    return this._objRef?.isObject3D;
+  }
   @Input()
   public set onBeforeRender(
     value: (
@@ -324,6 +436,19 @@ export class ThObject3D<
     }
   }
 
+  // @ts-ignore
+  public get onBeforeRender():
+    | ((
+        renderer: WebGLRenderer,
+        scene: Scene,
+        camera: Camera,
+        geometry: BufferGeometry,
+        material: Material,
+        group: Group
+      ) => void)
+    | undefined {
+    return this._objRef?.onBeforeRender;
+  }
   @Input()
   public set onAfterRender(
     value: (
@@ -339,6 +464,28 @@ export class ThObject3D<
       this._objRef.onAfterRender = value;
     }
   }
+
+  // @ts-ignore
+  public get onAfterRender():
+    | ((
+        renderer: WebGLRenderer,
+        scene: Scene,
+        camera: Camera,
+        geometry: BufferGeometry,
+        material: Material,
+        group: Group
+      ) => void)
+    | undefined {
+    return this._objRef?.onAfterRender;
+  }
+
+  public static readonly DefaultUp = Object3D.DefaultUp;
+
+  public static readonly DefaultMatrixAutoUpdate =
+    Object3D.DefaultMatrixAutoUpdate;
+
+  public static readonly DefaultMatrixWorldAutoUpdate =
+    Object3D.DefaultMatrixWorldAutoUpdate;
 
   constructor(@SkipSelf() parent: ThObject3D) {
     super(parent);

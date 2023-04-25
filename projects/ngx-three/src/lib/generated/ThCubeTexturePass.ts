@@ -37,6 +37,10 @@ export class ThCubeTexturePass<
     }
   }
 
+  // @ts-ignore
+  public get camera(): PerspectiveCamera | undefined {
+    return this._objRef?.camera;
+  }
   @Input()
   public set cubeShader(value: object) {
     if (this._objRef) {
@@ -44,6 +48,10 @@ export class ThCubeTexturePass<
     }
   }
 
+  // @ts-ignore
+  public get cubeShader(): object | undefined {
+    return this._objRef?.cubeShader;
+  }
   @Input()
   public set cubeMesh(value: Mesh) {
     if (this._objRef) {
@@ -51,6 +59,10 @@ export class ThCubeTexturePass<
     }
   }
 
+  // @ts-ignore
+  public get cubeMesh(): Mesh | undefined {
+    return this._objRef?.cubeMesh;
+  }
   @Input()
   public set envMap(value: CubeTexture) {
     if (this._objRef) {
@@ -58,6 +70,10 @@ export class ThCubeTexturePass<
     }
   }
 
+  // @ts-ignore
+  public get envMap(): CubeTexture | undefined {
+    return this._objRef?.envMap;
+  }
   @Input()
   public set opacity(value: number) {
     if (this._objRef) {
@@ -65,6 +81,10 @@ export class ThCubeTexturePass<
     }
   }
 
+  // @ts-ignore
+  public get opacity(): number | undefined {
+    return this._objRef?.opacity;
+  }
   @Input()
   public set cubeScene(value: Scene) {
     if (this._objRef) {
@@ -72,10 +92,19 @@ export class ThCubeTexturePass<
     }
   }
 
+  // @ts-ignore
+  public get cubeScene(): Scene | undefined {
+    return this._objRef?.cubeScene;
+  }
   @Input()
   public set cubeCamera(value: PerspectiveCamera) {
     if (this._objRef) {
       this._objRef.cubeCamera = value;
     }
+  }
+
+  // @ts-ignore
+  public get cubeCamera(): PerspectiveCamera | undefined {
+    return this._objRef?.cubeCamera;
   }
 }

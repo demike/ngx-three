@@ -29,4 +29,9 @@ export class ThFramebufferTexture<
   public getType(): Type<FramebufferTexture> {
     return FramebufferTexture;
   }
+
+  // @ts-ignore
+  public get isFramebufferTexture(): true | undefined {
+    return this._objRef?.isFramebufferTexture;
+  }
 }

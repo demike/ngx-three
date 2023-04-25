@@ -38,6 +38,10 @@ export class ThSavePass<
     }
   }
 
+  // @ts-ignore
+  public get textureID(): string | undefined {
+    return this._objRef?.textureID;
+  }
   @Input()
   public set renderTarget(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -45,6 +49,10 @@ export class ThSavePass<
     }
   }
 
+  // @ts-ignore
+  public get renderTarget(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTarget;
+  }
   @Input()
   public set uniforms(map: { [name: string]: { value: any } }) {
     if (this._objRef) {
@@ -52,6 +60,11 @@ export class ThSavePass<
     }
   }
 
+  // @ts-ignore
+  public get uniforms(): { [name: string]: { value: any } } | undefined {
+    // @ts-ignore
+    return this._objRef?.uniforms;
+  }
   @Input()
   public set material(value: ShaderMaterial) {
     if (this._objRef) {
@@ -59,10 +72,19 @@ export class ThSavePass<
     }
   }
 
+  // @ts-ignore
+  public get material(): ShaderMaterial | undefined {
+    return this._objRef?.material;
+  }
   @Input()
   public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.fsQuad = value;
     }
+  }
+
+  // @ts-ignore
+  public get fsQuad(): FullScreenQuad | undefined {
+    return this._objRef?.fsQuad;
   }
 }

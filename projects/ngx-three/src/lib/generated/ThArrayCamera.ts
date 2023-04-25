@@ -36,4 +36,13 @@ export class ThArrayCamera<
       this._objRef.cameras = value;
     }
   }
+
+  // @ts-ignore
+  public get cameras(): PerspectiveCamera[] | undefined {
+    return this._objRef?.cameras;
+  }
+  // @ts-ignore
+  public get isArrayCamera(): true | undefined {
+    return this._objRef?.isArrayCamera;
+  }
 }

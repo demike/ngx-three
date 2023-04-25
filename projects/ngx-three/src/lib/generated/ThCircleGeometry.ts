@@ -42,6 +42,10 @@ export class ThCircleGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set parameters(value: {
     radius: number;
@@ -52,5 +56,17 @@ export class ThCircleGeometry<
     if (this._objRef) {
       this._objRef.parameters = value;
     }
+  }
+
+  // @ts-ignore
+  public get parameters():
+    | {
+        radius: number;
+        segments: number;
+        thetaStart: number;
+        thetaLength: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

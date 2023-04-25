@@ -44,6 +44,10 @@ export class ThTorusKnotGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set parameters(value: {
     radius: number;
@@ -56,5 +60,19 @@ export class ThTorusKnotGeometry<
     if (this._objRef) {
       this._objRef.parameters = value;
     }
+  }
+
+  // @ts-ignore
+  public get parameters():
+    | {
+        radius: number;
+        tube: number;
+        tubularSegments: number;
+        radialSegments: number;
+        p: number;
+        q: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

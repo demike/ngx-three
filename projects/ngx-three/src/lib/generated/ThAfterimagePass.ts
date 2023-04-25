@@ -38,6 +38,10 @@ export class ThAfterimagePass<
     }
   }
 
+  // @ts-ignore
+  public get shader(): object | undefined {
+    return this._objRef?.shader;
+  }
   @Input()
   public set uniforms(map: { [name: string]: { value: any } }) {
     if (this._objRef) {
@@ -45,6 +49,11 @@ export class ThAfterimagePass<
     }
   }
 
+  // @ts-ignore
+  public get uniforms(): { [name: string]: { value: any } } | undefined {
+    // @ts-ignore
+    return this._objRef?.uniforms;
+  }
   @Input()
   public set textureComp(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -52,6 +61,10 @@ export class ThAfterimagePass<
     }
   }
 
+  // @ts-ignore
+  public get textureComp(): WebGLRenderTarget | undefined {
+    return this._objRef?.textureComp;
+  }
   @Input()
   public set textureOld(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -59,6 +72,10 @@ export class ThAfterimagePass<
     }
   }
 
+  // @ts-ignore
+  public get textureOld(): WebGLRenderTarget | undefined {
+    return this._objRef?.textureOld;
+  }
   @Input()
   public set shaderMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -66,6 +83,10 @@ export class ThAfterimagePass<
     }
   }
 
+  // @ts-ignore
+  public get shaderMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.shaderMaterial;
+  }
   @Input()
   public set compFsQuad(value: FullScreenQuad) {
     if (this._objRef) {
@@ -73,10 +94,19 @@ export class ThAfterimagePass<
     }
   }
 
+  // @ts-ignore
+  public get compFsQuad(): FullScreenQuad | undefined {
+    return this._objRef?.compFsQuad;
+  }
   @Input()
   public set copyFsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.copyFsQuad = value;
     }
+  }
+
+  // @ts-ignore
+  public get copyFsQuad(): FullScreenQuad | undefined {
+    return this._objRef?.copyFsQuad;
   }
 }

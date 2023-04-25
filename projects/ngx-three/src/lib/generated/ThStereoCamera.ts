@@ -36,6 +36,10 @@ export class ThStereoCamera<
     }
   }
 
+  // @ts-ignore
+  public get type(): 'StereoCamera' | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set aspect(value: number) {
     if (this._objRef) {
@@ -43,6 +47,10 @@ export class ThStereoCamera<
     }
   }
 
+  // @ts-ignore
+  public get aspect(): number | undefined {
+    return this._objRef?.aspect;
+  }
   @Input()
   public set eyeSep(value: number) {
     if (this._objRef) {
@@ -50,6 +58,10 @@ export class ThStereoCamera<
     }
   }
 
+  // @ts-ignore
+  public get eyeSep(): number | undefined {
+    return this._objRef?.eyeSep;
+  }
   @Input()
   public set cameraL(value: PerspectiveCamera) {
     if (this._objRef) {
@@ -57,10 +69,19 @@ export class ThStereoCamera<
     }
   }
 
+  // @ts-ignore
+  public get cameraL(): PerspectiveCamera | undefined {
+    return this._objRef?.cameraL;
+  }
   @Input()
   public set cameraR(value: PerspectiveCamera) {
     if (this._objRef) {
       this._objRef.cameraR = value;
     }
+  }
+
+  // @ts-ignore
+  public get cameraR(): PerspectiveCamera | undefined {
+    return this._objRef?.cameraR;
   }
 }

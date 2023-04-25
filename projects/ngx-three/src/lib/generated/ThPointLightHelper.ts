@@ -41,6 +41,10 @@ export class ThPointLightHelper<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set light(value: PointLight) {
     if (this._objRef) {
@@ -48,6 +52,10 @@ export class ThPointLightHelper<
     }
   }
 
+  // @ts-ignore
+  public get light(): PointLight | undefined {
+    return this._objRef?.light;
+  }
   @Input()
   public set color(value: ColorRepresentation | undefined) {
     if (this._objRef) {
@@ -55,6 +63,10 @@ export class ThPointLightHelper<
     }
   }
 
+  // @ts-ignore
+  public get color(): (ColorRepresentation | undefined) | undefined {
+    return this._objRef?.color;
+  }
   @Input()
   public set matrix(
     value:
@@ -82,10 +94,19 @@ export class ThPointLightHelper<
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
     }
   }
+  // @ts-ignore
+  public get matrix(): Matrix4 | undefined {
+    return this._objRef?.matrix;
+  }
   @Input()
   public set matrixAutoUpdate(value: boolean) {
     if (this._objRef) {
       this._objRef.matrixAutoUpdate = value;
     }
+  }
+
+  // @ts-ignore
+  public get matrixAutoUpdate(): boolean | undefined {
+    return this._objRef?.matrixAutoUpdate;
   }
 }

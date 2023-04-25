@@ -43,6 +43,10 @@ export class ThMeshDistanceMaterial<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set map(value: Texture | null) {
     if (this._objRef) {
@@ -50,6 +54,10 @@ export class ThMeshDistanceMaterial<
     }
   }
 
+  // @ts-ignore
+  public get map(): (Texture | null) | undefined {
+    return this._objRef?.map;
+  }
   @Input()
   public set alphaMap(value: Texture | null) {
     if (this._objRef) {
@@ -57,6 +65,10 @@ export class ThMeshDistanceMaterial<
     }
   }
 
+  // @ts-ignore
+  public get alphaMap(): (Texture | null) | undefined {
+    return this._objRef?.alphaMap;
+  }
   @Input()
   public set displacementMap(value: Texture | null) {
     if (this._objRef) {
@@ -64,6 +76,10 @@ export class ThMeshDistanceMaterial<
     }
   }
 
+  // @ts-ignore
+  public get displacementMap(): (Texture | null) | undefined {
+    return this._objRef?.displacementMap;
+  }
   @Input()
   public set displacementScale(value: number) {
     if (this._objRef) {
@@ -71,6 +87,10 @@ export class ThMeshDistanceMaterial<
     }
   }
 
+  // @ts-ignore
+  public get displacementScale(): number | undefined {
+    return this._objRef?.displacementScale;
+  }
   @Input()
   public set displacementBias(value: number) {
     if (this._objRef) {
@@ -78,6 +98,10 @@ export class ThMeshDistanceMaterial<
     }
   }
 
+  // @ts-ignore
+  public get displacementBias(): number | undefined {
+    return this._objRef?.displacementBias;
+  }
   @Input()
   public set farDistance(value: number) {
     if (this._objRef) {
@@ -85,6 +109,10 @@ export class ThMeshDistanceMaterial<
     }
   }
 
+  // @ts-ignore
+  public get farDistance(): number | undefined {
+    return this._objRef?.farDistance;
+  }
   @Input()
   public set nearDistance(value: number) {
     if (this._objRef) {
@@ -92,6 +120,10 @@ export class ThMeshDistanceMaterial<
     }
   }
 
+  // @ts-ignore
+  public get nearDistance(): number | undefined {
+    return this._objRef?.nearDistance;
+  }
   @Input()
   public set referencePosition(
     value: Vector3 | [x: number, y: number, z: number]
@@ -103,10 +135,19 @@ export class ThMeshDistanceMaterial<
       );
     }
   }
+  // @ts-ignore
+  public get referencePosition(): Vector3 | undefined {
+    return this._objRef?.referencePosition;
+  }
   @Input()
   public set fog(value: boolean) {
     if (this._objRef) {
       this._objRef.fog = value;
     }
+  }
+
+  // @ts-ignore
+  public get fog(): boolean | undefined {
+    return this._objRef?.fog;
   }
 }

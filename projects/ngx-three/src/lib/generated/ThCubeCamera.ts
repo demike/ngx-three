@@ -34,10 +34,19 @@ export class ThCubeCamera<
     }
   }
 
+  // @ts-ignore
+  public get type(): 'CubeCamera' | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set renderTarget(value: WebGLCubeRenderTarget) {
     if (this._objRef) {
       this._objRef.renderTarget = value;
     }
+  }
+
+  // @ts-ignore
+  public get renderTarget(): WebGLCubeRenderTarget | undefined {
+    return this._objRef?.renderTarget;
   }
 }

@@ -33,10 +33,27 @@ export class ThLightningStrike<
     return LightningStrike;
   }
 
+  public static readonly RAY_INITIALIZED = LightningStrike.RAY_INITIALIZED;
+
+  public static readonly RAY_UNBORN = LightningStrike.RAY_UNBORN;
+
+  public static readonly RAY_PROPAGATING = LightningStrike.RAY_PROPAGATING;
+
+  public static readonly RAY_STEADY = LightningStrike.RAY_STEADY;
+
+  public static readonly RAY_VANISHING = LightningStrike.RAY_VANISHING;
+
+  public static readonly RAY_EXTINGUISHED = LightningStrike.RAY_EXTINGUISHED;
+
   @Input()
   public set state(value: number) {
     if (this._objRef) {
       this._objRef.state = value;
     }
+  }
+
+  // @ts-ignore
+  public get state(): number | undefined {
+    return this._objRef?.state;
   }
 }

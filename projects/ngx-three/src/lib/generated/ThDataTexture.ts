@@ -56,6 +56,10 @@ export class ThDataTexture<
     }
   }
 
+  // @ts-ignore
+  public get flipY(): boolean | undefined {
+    return this._objRef?.flipY;
+  }
   @Input()
   public set generateMipmaps(value: boolean) {
     if (this._objRef) {
@@ -63,6 +67,10 @@ export class ThDataTexture<
     }
   }
 
+  // @ts-ignore
+  public get generateMipmaps(): boolean | undefined {
+    return this._objRef?.generateMipmaps;
+  }
   @Input()
   public set unpackAlignment(value: number) {
     if (this._objRef) {
@@ -70,10 +78,23 @@ export class ThDataTexture<
     }
   }
 
+  // @ts-ignore
+  public get unpackAlignment(): number | undefined {
+    return this._objRef?.unpackAlignment;
+  }
   @Input()
   public set format(value: PixelFormat) {
     if (this._objRef) {
       this._objRef.format = value;
     }
+  }
+
+  // @ts-ignore
+  public get format(): PixelFormat | undefined {
+    return this._objRef?.format;
+  }
+  // @ts-ignore
+  public get isDataTexture(): true | undefined {
+    return this._objRef?.isDataTexture;
   }
 }

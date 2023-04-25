@@ -26,10 +26,19 @@ export class ThBone<T extends Bone = Bone, TARGS = []> extends ThObject3D<
     return Bone;
   }
 
+  // @ts-ignore
+  public get isBone(): true | undefined {
+    return this._objRef?.isBone;
+  }
   @Input()
   public set type(value: 'Bone') {
     if (this._objRef) {
       this._objRef.type = value;
     }
+  }
+
+  // @ts-ignore
+  public get type(): 'Bone' | undefined {
+    return this._objRef?.type;
   }
 }

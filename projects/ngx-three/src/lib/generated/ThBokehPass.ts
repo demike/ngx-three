@@ -50,6 +50,10 @@ export class ThBokehPass<
     }
   }
 
+  // @ts-ignore
+  public get scene(): Scene | undefined {
+    return this._objRef?.scene;
+  }
   @Input()
   public set camera(value: Camera) {
     if (this._objRef) {
@@ -57,6 +61,10 @@ export class ThBokehPass<
     }
   }
 
+  // @ts-ignore
+  public get camera(): Camera | undefined {
+    return this._objRef?.camera;
+  }
   @Input()
   public set renderTargetColor(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -64,6 +72,10 @@ export class ThBokehPass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetColor(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTargetColor;
+  }
   @Input()
   public set renderTargetDepth(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -71,6 +83,10 @@ export class ThBokehPass<
     }
   }
 
+  // @ts-ignore
+  public get renderTargetDepth(): WebGLRenderTarget | undefined {
+    return this._objRef?.renderTargetDepth;
+  }
   @Input()
   public set materialDepth(value: MeshDepthMaterial) {
     if (this._objRef) {
@@ -78,6 +94,10 @@ export class ThBokehPass<
     }
   }
 
+  // @ts-ignore
+  public get materialDepth(): MeshDepthMaterial | undefined {
+    return this._objRef?.materialDepth;
+  }
   @Input()
   public set materialBokeh(value: ShaderMaterial) {
     if (this._objRef) {
@@ -85,6 +105,10 @@ export class ThBokehPass<
     }
   }
 
+  // @ts-ignore
+  public get materialBokeh(): ShaderMaterial | undefined {
+    return this._objRef?.materialBokeh;
+  }
   @Input()
   public set uniforms(map: { [name: string]: { value: any } }) {
     if (this._objRef) {
@@ -92,6 +116,11 @@ export class ThBokehPass<
     }
   }
 
+  // @ts-ignore
+  public get uniforms(): { [name: string]: { value: any } } | undefined {
+    // @ts-ignore
+    return this._objRef?.uniforms;
+  }
   @Input()
   public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
@@ -99,6 +128,10 @@ export class ThBokehPass<
     }
   }
 
+  // @ts-ignore
+  public get fsQuad(): FullScreenQuad | undefined {
+    return this._objRef?.fsQuad;
+  }
   @Input()
   public set oldClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
@@ -107,5 +140,9 @@ export class ThBokehPass<
         value
       );
     }
+  }
+  // @ts-ignore
+  public get oldClearColor(): Color | undefined {
+    return this._objRef?.oldClearColor;
   }
 }

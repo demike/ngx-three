@@ -42,10 +42,10 @@ export class InstancedMeshExampleComponent implements OnInit {
   }
 
   updateLightPosition() {
-    if (this.light && this.light.objRef) {
-      this.light.objRef.position.x = this.pointerPN.x * this.W;
-      this.light.objRef.position.y = this.pointerPN.y * this.H;
-      //this.light.objRef.matrixWorldNeedsUpdate = true;
+    const pos = this.light?.position;
+    if (pos) {
+      pos.x = this.pointerPN.x * this.W;
+      pos.y = this.pointerPN.y * this.H;
     }
   }
 

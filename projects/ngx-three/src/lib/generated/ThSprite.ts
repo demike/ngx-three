@@ -33,6 +33,14 @@ export class ThSprite<
     }
   }
 
+  // @ts-ignore
+  public get type(): 'Sprite' | undefined {
+    return this._objRef?.type;
+  }
+  // @ts-ignore
+  public get isSprite(): true | undefined {
+    return this._objRef?.isSprite;
+  }
   @Input()
   public set geometry(value: BufferGeometry) {
     if (this._objRef) {
@@ -40,6 +48,10 @@ export class ThSprite<
     }
   }
 
+  // @ts-ignore
+  public get geometry(): BufferGeometry | undefined {
+    return this._objRef?.geometry;
+  }
   @Input()
   public set material(value: SpriteMaterial) {
     if (this._objRef) {
@@ -47,10 +59,18 @@ export class ThSprite<
     }
   }
 
+  // @ts-ignore
+  public get material(): SpriteMaterial | undefined {
+    return this._objRef?.material;
+  }
   @Input()
   public set center(value: Vector2 | [x: number, y: number]) {
     if (this._objRef) {
       this._objRef.center = applyValue<Vector2>(this._objRef.center, value);
     }
+  }
+  // @ts-ignore
+  public get center(): Vector2 | undefined {
+    return this._objRef?.center;
   }
 }

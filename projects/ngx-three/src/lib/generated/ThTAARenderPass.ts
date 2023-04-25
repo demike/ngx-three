@@ -41,4 +41,9 @@ export class ThTAARenderPass<
       this._objRef.accumulate = value;
     }
   }
+
+  // @ts-ignore
+  public get accumulate(): boolean | undefined {
+    return this._objRef?.accumulate;
+  }
 }

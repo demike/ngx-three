@@ -41,6 +41,10 @@ export class ThBoxGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set parameters(value: {
     width: number;
@@ -53,5 +57,19 @@ export class ThBoxGeometry<
     if (this._objRef) {
       this._objRef.parameters = value;
     }
+  }
+
+  // @ts-ignore
+  public get parameters():
+    | {
+        width: number;
+        height: number;
+        depth: number;
+        widthSegments: number;
+        heightSegments: number;
+        depthSegments: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

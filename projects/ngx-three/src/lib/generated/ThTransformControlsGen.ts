@@ -38,6 +38,10 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get domElement(): HTMLElement | undefined {
+    return this._objRef?.domElement;
+  }
   @Input()
   public set camera(value: Camera) {
     if (this._objRef) {
@@ -45,6 +49,10 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get camera(): Camera | undefined {
+    return this._objRef?.camera;
+  }
   @Input()
   public set object(value: Object3D | undefined) {
     if (this._objRef) {
@@ -52,6 +60,10 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get object(): (Object3D | undefined) | undefined {
+    return this._objRef?.object;
+  }
   @Input()
   public set enabled(value: boolean) {
     if (this._objRef) {
@@ -59,6 +71,10 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get enabled(): boolean | undefined {
+    return this._objRef?.enabled;
+  }
   @Input()
   public set axis(
     value: 'X' | 'Y' | 'Z' | 'E' | 'XY' | 'YZ' | 'XZ' | 'XYZ' | 'XYZE' | null
@@ -68,6 +84,12 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get axis():
+    | ('X' | 'Y' | 'Z' | 'E' | 'XY' | 'YZ' | 'XZ' | 'XYZ' | 'XYZE' | null)
+    | undefined {
+    return this._objRef?.axis;
+  }
   @Input()
   public set mode(value: 'translate' | 'rotate' | 'scale') {
     if (this._objRef) {
@@ -75,6 +97,10 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get mode(): ('translate' | 'rotate' | 'scale') | undefined {
+    return this._objRef?.mode;
+  }
   @Input()
   public set translationSnap(value: number | null) {
     if (this._objRef) {
@@ -82,6 +108,10 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get translationSnap(): (number | null) | undefined {
+    return this._objRef?.translationSnap;
+  }
   @Input()
   public set rotationSnap(value: number | null) {
     if (this._objRef) {
@@ -89,6 +119,10 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get rotationSnap(): (number | null) | undefined {
+    return this._objRef?.rotationSnap;
+  }
   @Input()
   public set space(value: 'world' | 'local') {
     if (this._objRef) {
@@ -96,6 +130,10 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get space(): ('world' | 'local') | undefined {
+    return this._objRef?.space;
+  }
   @Input()
   public set size(value: number) {
     if (this._objRef) {
@@ -103,6 +141,10 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get size(): number | undefined {
+    return this._objRef?.size;
+  }
   @Input()
   public set dragging(value: boolean) {
     if (this._objRef) {
@@ -110,6 +152,10 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get dragging(): boolean | undefined {
+    return this._objRef?.dragging;
+  }
   @Input()
   public set showX(value: boolean) {
     if (this._objRef) {
@@ -117,6 +163,10 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get showX(): boolean | undefined {
+    return this._objRef?.showX;
+  }
   @Input()
   public set showY(value: boolean) {
     if (this._objRef) {
@@ -124,6 +174,10 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get showY(): boolean | undefined {
+    return this._objRef?.showY;
+  }
   @Input()
   public set showZ(value: boolean) {
     if (this._objRef) {
@@ -131,10 +185,29 @@ export class ThTransformControlsGen<
     }
   }
 
+  // @ts-ignore
+  public get showZ(): boolean | undefined {
+    return this._objRef?.showZ;
+  }
+  // @ts-ignore
+  public get isTransformControls(): true | undefined {
+    return this._objRef?.isTransformControls;
+  }
   @Input()
   public set mouseButtons(value: { LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }) {
     if (this._objRef) {
       this._objRef.mouseButtons = value;
     }
+  }
+
+  // @ts-ignore
+  public get mouseButtons():
+    | {
+        LEFT: MOUSE;
+        MIDDLE: MOUSE;
+        RIGHT: MOUSE;
+      }
+    | undefined {
+    return this._objRef?.mouseButtons;
   }
 }

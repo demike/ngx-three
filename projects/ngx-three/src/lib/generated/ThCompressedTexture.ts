@@ -59,6 +59,10 @@ export class ThCompressedTexture<
     }
   }
 
+  // @ts-ignore
+  public get mipmaps(): ImageData[] | undefined {
+    return this._objRef?.mipmaps;
+  }
   @Input()
   public set flipY(value: boolean) {
     if (this._objRef) {
@@ -66,10 +70,23 @@ export class ThCompressedTexture<
     }
   }
 
+  // @ts-ignore
+  public get flipY(): boolean | undefined {
+    return this._objRef?.flipY;
+  }
   @Input()
   public set generateMipmaps(value: boolean) {
     if (this._objRef) {
       this._objRef.generateMipmaps = value;
     }
+  }
+
+  // @ts-ignore
+  public get generateMipmaps(): boolean | undefined {
+    return this._objRef?.generateMipmaps;
+  }
+  // @ts-ignore
+  public get isCompressedTexture(): true | undefined {
+    return this._objRef?.isCompressedTexture;
   }
 }

@@ -43,10 +43,18 @@ export class ThBox3Helper<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set box(value: Box3 | [min: Vector3, max: Vector3]) {
     if (this._objRef) {
       this._objRef.box = applyValue<Box3>(this._objRef.box, value);
     }
+  }
+  // @ts-ignore
+  public get box(): Box3 | undefined {
+    return this._objRef?.box;
   }
 }

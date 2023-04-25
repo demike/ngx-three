@@ -33,11 +33,19 @@ export class ThLight<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
+  }
+  // @ts-ignore
+  public get color(): Color | undefined {
+    return this._objRef?.color;
   }
   @Input()
   public set intensity(value: number) {
@@ -46,6 +54,14 @@ export class ThLight<
     }
   }
 
+  // @ts-ignore
+  public get intensity(): number | undefined {
+    return this._objRef?.intensity;
+  }
+  // @ts-ignore
+  public get isLight(): true | undefined {
+    return this._objRef?.isLight;
+  }
   @Input()
   public set shadow(value: LightShadow) {
     if (this._objRef) {
@@ -53,6 +69,10 @@ export class ThLight<
     }
   }
 
+  // @ts-ignore
+  public get shadow(): LightShadow | undefined {
+    return this._objRef?.shadow;
+  }
   @Input()
   public set shadowCameraFov(value: any) {
     if (this._objRef) {
@@ -60,6 +80,10 @@ export class ThLight<
     }
   }
 
+  // @ts-ignore
+  public get shadowCameraFov(): any | undefined {
+    return this._objRef?.shadowCameraFov;
+  }
   @Input()
   public set shadowCameraLeft(value: any) {
     if (this._objRef) {
@@ -67,6 +91,10 @@ export class ThLight<
     }
   }
 
+  // @ts-ignore
+  public get shadowCameraLeft(): any | undefined {
+    return this._objRef?.shadowCameraLeft;
+  }
   @Input()
   public set shadowCameraRight(value: any) {
     if (this._objRef) {
@@ -74,6 +102,10 @@ export class ThLight<
     }
   }
 
+  // @ts-ignore
+  public get shadowCameraRight(): any | undefined {
+    return this._objRef?.shadowCameraRight;
+  }
   @Input()
   public set shadowCameraTop(value: any) {
     if (this._objRef) {
@@ -81,6 +113,10 @@ export class ThLight<
     }
   }
 
+  // @ts-ignore
+  public get shadowCameraTop(): any | undefined {
+    return this._objRef?.shadowCameraTop;
+  }
   @Input()
   public set shadowCameraBottom(value: any) {
     if (this._objRef) {
@@ -88,6 +124,10 @@ export class ThLight<
     }
   }
 
+  // @ts-ignore
+  public get shadowCameraBottom(): any | undefined {
+    return this._objRef?.shadowCameraBottom;
+  }
   @Input()
   public set shadowCameraNear(value: any) {
     if (this._objRef) {
@@ -95,6 +135,10 @@ export class ThLight<
     }
   }
 
+  // @ts-ignore
+  public get shadowCameraNear(): any | undefined {
+    return this._objRef?.shadowCameraNear;
+  }
   @Input()
   public set shadowCameraFar(value: any) {
     if (this._objRef) {
@@ -102,6 +146,10 @@ export class ThLight<
     }
   }
 
+  // @ts-ignore
+  public get shadowCameraFar(): any | undefined {
+    return this._objRef?.shadowCameraFar;
+  }
   @Input()
   public set shadowBias(value: any) {
     if (this._objRef) {
@@ -109,6 +157,10 @@ export class ThLight<
     }
   }
 
+  // @ts-ignore
+  public get shadowBias(): any | undefined {
+    return this._objRef?.shadowBias;
+  }
   @Input()
   public set shadowMapWidth(value: any) {
     if (this._objRef) {
@@ -116,10 +168,19 @@ export class ThLight<
     }
   }
 
+  // @ts-ignore
+  public get shadowMapWidth(): any | undefined {
+    return this._objRef?.shadowMapWidth;
+  }
   @Input()
   public set shadowMapHeight(value: any) {
     if (this._objRef) {
       this._objRef.shadowMapHeight = value;
     }
+  }
+
+  // @ts-ignore
+  public get shadowMapHeight(): any | undefined {
+    return this._objRef?.shadowMapHeight;
   }
 }

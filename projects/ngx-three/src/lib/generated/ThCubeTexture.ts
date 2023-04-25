@@ -54,10 +54,23 @@ export class ThCubeTexture<
     }
   }
 
+  // @ts-ignore
+  public get images(): any | undefined {
+    return this._objRef?.images;
+  }
   @Input()
   public set flipY(value: boolean) {
     if (this._objRef) {
       this._objRef.flipY = value;
     }
+  }
+
+  // @ts-ignore
+  public get flipY(): boolean | undefined {
+    return this._objRef?.flipY;
+  }
+  // @ts-ignore
+  public get isCubeTexture(): true | undefined {
+    return this._objRef?.isCubeTexture;
   }
 }

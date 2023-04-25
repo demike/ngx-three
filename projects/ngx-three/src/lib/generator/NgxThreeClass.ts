@@ -96,7 +96,7 @@ export abstract class NgxThreeClass {
         ${classHeader} {
           public getType(): Type<${this.wrappedClassName}${this.wrappedClassGenericTypeNames}> { return ${
       this.wrappedClassName
-    }};
+    }; };
           ${this.inputs}
           ${constr}
         }
@@ -281,8 +281,20 @@ export abstract class NgxThreeClass {
   }
 
   public generateGetter(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
-    // TODO implement me
-    return ''; // return `public get${memberName}(): ${member.type?.getText()} { return this._objRef?.${memberName}; }`;
+    const isStatic = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.StaticKeyword);
+
+    if (isStatic) {
+      return `
+
+        public static readonly ${memberName} = ${this.wrappedClassName}.${memberName};
+      `;
+    }
+
+    return `
+    // @ts-ignore
+    public get ${memberName}(): ( ${member.type?.getText()}) | undefined {
+      return this._objRef?.${memberName};
+    }`;
   }
 
   private generateConstructorArgs() {

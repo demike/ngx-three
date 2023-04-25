@@ -51,10 +51,23 @@ export class ThDepthTexture<
     }
   }
 
+  // @ts-ignore
+  public get flipY(): boolean | undefined {
+    return this._objRef?.flipY;
+  }
   @Input()
   public set generateMipmaps(value: boolean) {
     if (this._objRef) {
       this._objRef.generateMipmaps = value;
     }
+  }
+
+  // @ts-ignore
+  public get generateMipmaps(): boolean | undefined {
+    return this._objRef?.generateMipmaps;
+  }
+  // @ts-ignore
+  public get isDepthTexture(): true | undefined {
+    return this._objRef?.isDepthTexture;
   }
 }

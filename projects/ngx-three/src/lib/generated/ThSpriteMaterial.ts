@@ -41,11 +41,19 @@ export class ThSpriteMaterial<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set color(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
+  }
+  // @ts-ignore
+  public get color(): Color | undefined {
+    return this._objRef?.color;
   }
   @Input()
   public set map(value: Texture | null) {
@@ -54,6 +62,10 @@ export class ThSpriteMaterial<
     }
   }
 
+  // @ts-ignore
+  public get map(): (Texture | null) | undefined {
+    return this._objRef?.map;
+  }
   @Input()
   public set alphaMap(value: Texture | null) {
     if (this._objRef) {
@@ -61,6 +73,10 @@ export class ThSpriteMaterial<
     }
   }
 
+  // @ts-ignore
+  public get alphaMap(): (Texture | null) | undefined {
+    return this._objRef?.alphaMap;
+  }
   @Input()
   public set rotation(value: number) {
     if (this._objRef) {
@@ -68,6 +84,10 @@ export class ThSpriteMaterial<
     }
   }
 
+  // @ts-ignore
+  public get rotation(): number | undefined {
+    return this._objRef?.rotation;
+  }
   @Input()
   public set sizeAttenuation(value: boolean) {
     if (this._objRef) {
@@ -75,6 +95,10 @@ export class ThSpriteMaterial<
     }
   }
 
+  // @ts-ignore
+  public get sizeAttenuation(): boolean | undefined {
+    return this._objRef?.sizeAttenuation;
+  }
   @Input()
   public set transparent(value: boolean) {
     if (this._objRef) {
@@ -82,10 +106,23 @@ export class ThSpriteMaterial<
     }
   }
 
+  // @ts-ignore
+  public get transparent(): boolean | undefined {
+    return this._objRef?.transparent;
+  }
   @Input()
   public set fog(value: boolean) {
     if (this._objRef) {
       this._objRef.fog = value;
     }
+  }
+
+  // @ts-ignore
+  public get fog(): boolean | undefined {
+    return this._objRef?.fog;
+  }
+  // @ts-ignore
+  public get isSpriteMaterial(): true | undefined {
+    return this._objRef?.isSpriteMaterial;
   }
 }

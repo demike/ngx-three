@@ -46,6 +46,10 @@ export class ThCylinderGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set parameters(value: {
     radiusTop: number;
@@ -60,5 +64,21 @@ export class ThCylinderGeometry<
     if (this._objRef) {
       this._objRef.parameters = value;
     }
+  }
+
+  // @ts-ignore
+  public get parameters():
+    | {
+        radiusTop: number;
+        radiusBottom: number;
+        height: number;
+        radialSegments: number;
+        heightSegments: number;
+        openEnded: boolean;
+        thetaStart: number;
+        thetaLength: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

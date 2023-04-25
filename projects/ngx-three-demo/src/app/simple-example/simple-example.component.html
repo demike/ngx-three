@@ -1,27 +1,13 @@
 <th-canvas (onRender)="this.onBeforeRender()">
   <th-scene>
-    <th-ambientLight> </th-ambientLight>
-    <th-box
-      (onClick)="selected = !selected"
-      [position]="[0, 0, 0]"
-      [material]="material"
-      [rotation]="rotation"
-      [scale]="selected ? [2, 2, 2] : [1, 1, 1]"
-    ></th-box>
+    <th-ambientLight />
+    <th-box (onClick)="selected = !selected" [position]="[0, 0, 0]" [material]="material" [rotation]="rotation"
+      [scale]="selected ? [2, 2, 2] : [1, 1, 1]" />
 
-    <th-box3Helper
-      [args]="[box, color]"
-      [material]="material"
-      [position]="[0, 0, 0]"
-    ></th-box3Helper>
-    <th-gridHelper [args]="[10, 10]"></th-gridHelper>
-    <th-pointLight [position]="[10, 10, 10]"></th-pointLight>
+    <th-box3Helper [args]="[box, color]" [material]="material" [position]="[0, 0, 0]" />
+    <th-gridHelper [args]="[10, 10]" />
+    <th-pointLight [position]="[10, 10, 10]" />
 
-    <!--<th-orthographicCamera [position]="[0, 0.3, 10]"> </th-orthographicCamera>-->
-    <th-perspectiveCamera
-      [args]="[45, 2, 0.1, 100]"
-      [position]="[10, 10, 10]"
-      [lookAt]="[0, 0, 0]"
-    ></th-perspectiveCamera>
+    <th-perspectiveCamera [args]="[45, 2, 0.1, 100]" [position]="[10, 10, 10]" [lookAt]="[0, 0, 0]" />
   </th-scene>
 </th-canvas>

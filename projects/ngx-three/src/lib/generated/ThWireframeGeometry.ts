@@ -38,10 +38,23 @@ export class ThWireframeGeometry<
     }
   }
 
+  // @ts-ignore
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set parameters(value: { geometry: TBufferGeometry }) {
     if (this._objRef) {
       this._objRef.parameters = value;
     }
+  }
+
+  // @ts-ignore
+  public get parameters():
+    | {
+        geometry: TBufferGeometry;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

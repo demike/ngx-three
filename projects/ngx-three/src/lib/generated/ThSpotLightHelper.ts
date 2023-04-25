@@ -42,6 +42,10 @@ export class ThSpotLightHelper<
     }
   }
 
+  // @ts-ignore
+  public get light(): Light | undefined {
+    return this._objRef?.light;
+  }
   @Input()
   public set matrix(
     value:
@@ -69,6 +73,10 @@ export class ThSpotLightHelper<
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
     }
   }
+  // @ts-ignore
+  public get matrix(): Matrix4 | undefined {
+    return this._objRef?.matrix;
+  }
   @Input()
   public set matrixAutoUpdate(value: boolean) {
     if (this._objRef) {
@@ -76,6 +84,10 @@ export class ThSpotLightHelper<
     }
   }
 
+  // @ts-ignore
+  public get matrixAutoUpdate(): boolean | undefined {
+    return this._objRef?.matrixAutoUpdate;
+  }
   @Input()
   public set color(value: ColorRepresentation | undefined) {
     if (this._objRef) {
@@ -83,10 +95,19 @@ export class ThSpotLightHelper<
     }
   }
 
+  // @ts-ignore
+  public get color(): (ColorRepresentation | undefined) | undefined {
+    return this._objRef?.color;
+  }
   @Input()
   public set cone(value: LineSegments) {
     if (this._objRef) {
       this._objRef.cone = value;
     }
+  }
+
+  // @ts-ignore
+  public get cone(): LineSegments | undefined {
+    return this._objRef?.cone;
   }
 }

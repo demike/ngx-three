@@ -39,4 +39,13 @@ export class ThLineSegments<
       this._objRef.type = value;
     }
   }
+
+  // @ts-ignore
+  public get type(): ('LineSegments' | string) | undefined {
+    return this._objRef?.type;
+  }
+  // @ts-ignore
+  public get isLineSegments(): true | undefined {
+    return this._objRef?.isLineSegments;
+  }
 }

@@ -35,6 +35,10 @@ export class ThData3DTexture<
     }
   }
 
+  // @ts-ignore
+  public get magFilter(): TextureFilter | undefined {
+    return this._objRef?.magFilter;
+  }
   @Input()
   public set minFilter(value: TextureFilter) {
     if (this._objRef) {
@@ -42,6 +46,10 @@ export class ThData3DTexture<
     }
   }
 
+  // @ts-ignore
+  public get minFilter(): TextureFilter | undefined {
+    return this._objRef?.minFilter;
+  }
   @Input()
   public set wrapR(value: boolean) {
     if (this._objRef) {
@@ -49,6 +57,10 @@ export class ThData3DTexture<
     }
   }
 
+  // @ts-ignore
+  public get wrapR(): boolean | undefined {
+    return this._objRef?.wrapR;
+  }
   @Input()
   public set flipY(value: boolean) {
     if (this._objRef) {
@@ -56,10 +68,23 @@ export class ThData3DTexture<
     }
   }
 
+  // @ts-ignore
+  public get flipY(): boolean | undefined {
+    return this._objRef?.flipY;
+  }
   @Input()
   public set generateMipmaps(value: boolean) {
     if (this._objRef) {
       this._objRef.generateMipmaps = value;
     }
+  }
+
+  // @ts-ignore
+  public get generateMipmaps(): boolean | undefined {
+    return this._objRef?.generateMipmaps;
+  }
+  // @ts-ignore
+  public get isData3DTexture(): true | undefined {
+    return this._objRef?.isData3DTexture;
   }
 }

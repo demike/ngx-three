@@ -146,7 +146,6 @@ import { ThUnrealBloomPass } from './ThUnrealBloomPass';
 import { ThVideoTexture } from './ThVideoTexture';
 import { ThWireframeGeometry } from './ThWireframeGeometry';
 
-
 @NgModule({
   declarations: [
     ThTransformControlsGen,

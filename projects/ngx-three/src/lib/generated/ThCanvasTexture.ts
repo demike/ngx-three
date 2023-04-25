@@ -44,4 +44,9 @@ export class ThCanvasTexture<
   public getType(): Type<CanvasTexture> {
     return CanvasTexture;
   }
+
+  // @ts-ignore
+  public get isCanvasTexture(): true | undefined {
+    return this._objRef?.isCanvasTexture;
+  }
 }

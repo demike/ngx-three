@@ -41,6 +41,10 @@ export class ThAdaptiveToneMappingPass<
     }
   }
 
+  // @ts-ignore
+  public get adaptive(): boolean | undefined {
+    return this._objRef?.adaptive;
+  }
   @Input()
   public set resolution(value: number) {
     if (this._objRef) {
@@ -48,6 +52,10 @@ export class ThAdaptiveToneMappingPass<
     }
   }
 
+  // @ts-ignore
+  public get resolution(): number | undefined {
+    return this._objRef?.resolution;
+  }
   @Input()
   public set needsInit(value: number) {
     if (this._objRef) {
@@ -55,6 +63,10 @@ export class ThAdaptiveToneMappingPass<
     }
   }
 
+  // @ts-ignore
+  public get needsInit(): number | undefined {
+    return this._objRef?.needsInit;
+  }
   @Input()
   public set luminanceRT(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -62,6 +74,10 @@ export class ThAdaptiveToneMappingPass<
     }
   }
 
+  // @ts-ignore
+  public get luminanceRT(): WebGLRenderTarget | undefined {
+    return this._objRef?.luminanceRT;
+  }
   @Input()
   public set previousLuminanceRT(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -69,6 +85,10 @@ export class ThAdaptiveToneMappingPass<
     }
   }
 
+  // @ts-ignore
+  public get previousLuminanceRT(): WebGLRenderTarget | undefined {
+    return this._objRef?.previousLuminanceRT;
+  }
   @Input()
   public set currentLuminanceRT(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -76,6 +96,10 @@ export class ThAdaptiveToneMappingPass<
     }
   }
 
+  // @ts-ignore
+  public get currentLuminanceRT(): WebGLRenderTarget | undefined {
+    return this._objRef?.currentLuminanceRT;
+  }
   @Input()
   public set copyUniforms(value: object) {
     if (this._objRef) {
@@ -83,6 +107,10 @@ export class ThAdaptiveToneMappingPass<
     }
   }
 
+  // @ts-ignore
+  public get copyUniforms(): object | undefined {
+    return this._objRef?.copyUniforms;
+  }
   @Input()
   public set materialCopy(value: ShaderMaterial) {
     if (this._objRef) {
@@ -90,6 +118,10 @@ export class ThAdaptiveToneMappingPass<
     }
   }
 
+  // @ts-ignore
+  public get materialCopy(): ShaderMaterial | undefined {
+    return this._objRef?.materialCopy;
+  }
   @Input()
   public set materialLuminance(value: ShaderMaterial) {
     if (this._objRef) {
@@ -97,6 +129,10 @@ export class ThAdaptiveToneMappingPass<
     }
   }
 
+  // @ts-ignore
+  public get materialLuminance(): ShaderMaterial | undefined {
+    return this._objRef?.materialLuminance;
+  }
   @Input()
   public set adaptLuminanceShader(value: object) {
     if (this._objRef) {
@@ -104,6 +140,10 @@ export class ThAdaptiveToneMappingPass<
     }
   }
 
+  // @ts-ignore
+  public get adaptLuminanceShader(): object | undefined {
+    return this._objRef?.adaptLuminanceShader;
+  }
   @Input()
   public set materialAdaptiveLum(value: ShaderMaterial) {
     if (this._objRef) {
@@ -111,6 +151,10 @@ export class ThAdaptiveToneMappingPass<
     }
   }
 
+  // @ts-ignore
+  public get materialAdaptiveLum(): ShaderMaterial | undefined {
+    return this._objRef?.materialAdaptiveLum;
+  }
   @Input()
   public set materialToneMap(value: ShaderMaterial) {
     if (this._objRef) {
@@ -118,10 +162,19 @@ export class ThAdaptiveToneMappingPass<
     }
   }
 
+  // @ts-ignore
+  public get materialToneMap(): ShaderMaterial | undefined {
+    return this._objRef?.materialToneMap;
+  }
   @Input()
   public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
       this._objRef.fsQuad = value;
     }
+  }
+
+  // @ts-ignore
+  public get fsQuad(): FullScreenQuad | undefined {
+    return this._objRef?.fsQuad;
   }
 }

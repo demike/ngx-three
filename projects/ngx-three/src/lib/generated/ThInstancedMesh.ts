@@ -50,6 +50,10 @@ export class ThInstancedMesh<
     }
   }
 
+  // @ts-ignore
+  public get count(): number | undefined {
+    return this._objRef?.count;
+  }
   @Input()
   public set instanceColor(
     value:
@@ -64,6 +68,10 @@ export class ThInstancedMesh<
       );
     }
   }
+  // @ts-ignore
+  public get instanceColor(): (null | InstancedBufferAttribute) | undefined {
+    return this._objRef?.instanceColor;
+  }
   @Input()
   public set instanceMatrix(
     value:
@@ -76,5 +84,13 @@ export class ThInstancedMesh<
         value
       );
     }
+  }
+  // @ts-ignore
+  public get instanceMatrix(): InstancedBufferAttribute | undefined {
+    return this._objRef?.instanceMatrix;
+  }
+  // @ts-ignore
+  public get isInstancedMesh(): true | undefined {
+    return this._objRef?.isInstancedMesh;
   }
 }

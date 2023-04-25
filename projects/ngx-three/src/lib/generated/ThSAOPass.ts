@@ -58,6 +58,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get scene(): Scene | undefined {
+    return this._objRef?.scene;
+  }
   @Input()
   public set camera(value: Camera) {
     if (this._objRef) {
@@ -65,6 +69,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get camera(): Camera | undefined {
+    return this._objRef?.camera;
+  }
   @Input()
   public set supportsDepthTextureExtension(value: boolean) {
     if (this._objRef) {
@@ -72,6 +80,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get supportsDepthTextureExtension(): boolean | undefined {
+    return this._objRef?.supportsDepthTextureExtension;
+  }
   @Input()
   public set supportsNormalTexture(value: boolean) {
     if (this._objRef) {
@@ -79,6 +91,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get supportsNormalTexture(): boolean | undefined {
+    return this._objRef?.supportsNormalTexture;
+  }
   @Input()
   public set originalClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
@@ -87,6 +103,10 @@ export class ThSAOPass<
         value
       );
     }
+  }
+  // @ts-ignore
+  public get originalClearColor(): Color | undefined {
+    return this._objRef?.originalClearColor;
   }
   @Input()
   public set oldClearColor(value: Color | [color: ColorRepresentation]) {
@@ -97,6 +117,10 @@ export class ThSAOPass<
       );
     }
   }
+  // @ts-ignore
+  public get oldClearColor(): Color | undefined {
+    return this._objRef?.oldClearColor;
+  }
   @Input()
   public set oldClearAlpha(value: number) {
     if (this._objRef) {
@@ -104,6 +128,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get oldClearAlpha(): number | undefined {
+    return this._objRef?.oldClearAlpha;
+  }
   @Input()
   public set resolution(value: Vector2 | [x: number, y: number]) {
     if (this._objRef) {
@@ -113,6 +141,10 @@ export class ThSAOPass<
       );
     }
   }
+  // @ts-ignore
+  public get resolution(): Vector2 | undefined {
+    return this._objRef?.resolution;
+  }
   @Input()
   public set saoRenderTarget(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -120,6 +152,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get saoRenderTarget(): WebGLRenderTarget | undefined {
+    return this._objRef?.saoRenderTarget;
+  }
   @Input()
   public set blurIntermediateRenderTarget(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -127,6 +163,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get blurIntermediateRenderTarget(): WebGLRenderTarget | undefined {
+    return this._objRef?.blurIntermediateRenderTarget;
+  }
   @Input()
   public set beautyRenderTarget(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -134,6 +174,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get beautyRenderTarget(): WebGLRenderTarget | undefined {
+    return this._objRef?.beautyRenderTarget;
+  }
   @Input()
   public set normalRenderTarget(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -141,6 +185,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get normalRenderTarget(): WebGLRenderTarget | undefined {
+    return this._objRef?.normalRenderTarget;
+  }
   @Input()
   public set depthRenderTarget(value: WebGLRenderTarget) {
     if (this._objRef) {
@@ -148,6 +196,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get depthRenderTarget(): WebGLRenderTarget | undefined {
+    return this._objRef?.depthRenderTarget;
+  }
   @Input()
   public set depthMaterial(value: MeshDepthMaterial) {
     if (this._objRef) {
@@ -155,6 +207,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get depthMaterial(): MeshDepthMaterial | undefined {
+    return this._objRef?.depthMaterial;
+  }
   @Input()
   public set normalMaterial(value: MeshNormalMaterial) {
     if (this._objRef) {
@@ -162,6 +218,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get normalMaterial(): MeshNormalMaterial | undefined {
+    return this._objRef?.normalMaterial;
+  }
   @Input()
   public set saoMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -169,6 +229,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get saoMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.saoMaterial;
+  }
   @Input()
   public set vBlurMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -176,6 +240,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get vBlurMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.vBlurMaterial;
+  }
   @Input()
   public set hBlurMaterial(value: ShaderMaterial) {
     if (this._objRef) {
@@ -183,6 +251,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get hBlurMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.hBlurMaterial;
+  }
   @Input()
   public set materialCopy(value: ShaderMaterial) {
     if (this._objRef) {
@@ -190,6 +262,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get materialCopy(): ShaderMaterial | undefined {
+    return this._objRef?.materialCopy;
+  }
   @Input()
   public set depthCopy(value: ShaderMaterial) {
     if (this._objRef) {
@@ -197,6 +273,10 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get depthCopy(): ShaderMaterial | undefined {
+    return this._objRef?.depthCopy;
+  }
   @Input()
   public set fsQuad(value: FullScreenQuad) {
     if (this._objRef) {
@@ -204,10 +284,21 @@ export class ThSAOPass<
     }
   }
 
+  // @ts-ignore
+  public get fsQuad(): FullScreenQuad | undefined {
+    return this._objRef?.fsQuad;
+  }
   @Input()
   public set params(value: SAOPassParams) {
     if (this._objRef) {
       this._objRef.params = value;
     }
   }
+
+  // @ts-ignore
+  public get params(): SAOPassParams | undefined {
+    return this._objRef?.params;
+  }
+
+  public static readonly OUTPUT = SAOPass.OUTPUT;
 }
