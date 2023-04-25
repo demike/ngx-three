@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { AfterContentChecked, AfterViewChecked, AfterViewInit, ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
+import {
+  AfterContentChecked,
+  AfterViewChecked,
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+} from '@angular/core';
 import { Camera, Color, Material, Scene } from 'three';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
 import { EffectComposer } from '../../generator/pass_types';
@@ -13,16 +20,23 @@ import { ThEffectComposer } from './ThEffectComposer';
 
 @Component({
   selector: 'th-renderPass',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThRenderPass) }]
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThRenderPass) }],
 })
 export class ThRenderPass<
     T extends RenderPass = RenderPass,
-    TARGS extends any[] = [scene: Scene, camera: Camera, overrideMaterial?: Material, clearColor?: Color, clearAlpha?: number]
+    TARGS extends any[] = [
+      scene: Scene,
+      camera: Camera,
+      overrideMaterial?: Material,
+      clearColor?: Color,
+      clearAlpha?: number
+    ]
   >
   extends ThRenderPassGen<T, TARGS>
-  implements AfterContentChecked {
+  implements AfterContentChecked
+{
   constructor(protected effectComposer: ThEffectComposer, private view: ThView) {
     super(effectComposer);
   }

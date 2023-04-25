@@ -13,7 +13,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-planeGeometry',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

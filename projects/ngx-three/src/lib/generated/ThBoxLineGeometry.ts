@@ -12,7 +12,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-boxLineGeometry',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

@@ -13,7 +13,7 @@ import { ThDataArrayTexture } from './ThDataArrayTexture';
 
 @Component({
   selector: 'th-dataTexture2DArray',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

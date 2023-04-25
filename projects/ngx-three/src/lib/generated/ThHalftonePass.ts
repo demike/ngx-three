@@ -20,7 +20,7 @@ import { ThPass } from './ThPass';
 
 @Component({
   selector: 'th-halftonePass',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThPassBase, useExisting: forwardRef(() => ThHalftonePass) },

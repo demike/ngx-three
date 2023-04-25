@@ -16,7 +16,7 @@ import { ThPass } from './ThPass';
 
 @Component({
   selector: 'th-clearPass',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThPassBase, useExisting: forwardRef(() => ThClearPass) },

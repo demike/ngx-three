@@ -13,7 +13,7 @@ import { ThTexture } from './ThTexture';
 
 @Component({
   selector: 'th-framebufferTexture',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

@@ -19,7 +19,7 @@ import { ThMaterial } from './ThMaterial';
 
 @Component({
   selector: 'th-meshDistanceMaterial',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

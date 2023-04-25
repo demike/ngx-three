@@ -14,7 +14,7 @@ import { ThControlBase } from '../ThControlBase';
 
 @Component({
   selector: 'th-dragControls',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThControlBase, useExisting: forwardRef(() => ThDragControls) },

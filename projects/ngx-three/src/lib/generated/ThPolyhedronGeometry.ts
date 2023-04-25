@@ -13,7 +13,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-polyhedronGeometry',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

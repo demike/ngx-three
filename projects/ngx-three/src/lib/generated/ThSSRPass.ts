@@ -33,7 +33,7 @@ import { ThPass } from './ThPass';
 
 @Component({
   selector: 'th-sSRPass',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThPassBase, useExisting: forwardRef(() => ThSSRPass) },

@@ -14,7 +14,7 @@ import { ThOrbitControls } from './ThOrbitControls';
 
 @Component({
   selector: 'th-mapControls',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThControlBase, useExisting: forwardRef(() => ThMapControls) },

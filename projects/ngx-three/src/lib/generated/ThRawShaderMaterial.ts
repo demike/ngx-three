@@ -13,7 +13,7 @@ import { ThShaderMaterial } from './ThShaderMaterial';
 
 @Component({
   selector: 'th-rawShaderMaterial',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThRawShaderMaterial) },

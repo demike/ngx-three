@@ -15,7 +15,7 @@ import { ThPerspectiveCamera } from './ThPerspectiveCamera';
 
 @Component({
   selector: 'th-arrayCamera',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThArrayCamera) },

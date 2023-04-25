@@ -22,7 +22,7 @@ import { ThTexture } from './ThTexture';
 
 @Component({
   selector: 'th-dataTexture',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThTextureBase, useExisting: forwardRef(() => ThDataTexture) },

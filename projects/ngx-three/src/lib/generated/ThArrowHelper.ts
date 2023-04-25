@@ -20,7 +20,7 @@ import { ThObject3D } from './ThObject3D';
 
 @Component({
   selector: 'th-arrowHelper',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThArrowHelper) },

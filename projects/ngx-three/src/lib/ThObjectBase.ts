@@ -3,7 +3,7 @@ import { Object3D, Vector3 } from 'three';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
   selector: 'th-abs-object',
-  template: ''
+  template: '<ng-content/>',
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThObjectBase<T extends Object3D, ARGS = unknown> extends ThWrapperBase<T, ARGS> implements OnInit {
@@ -12,7 +12,11 @@ export class ThObjectBase<T extends Object3D, ARGS = unknown> extends ThWrapperB
   }
 
   public override addToParent() {
-    if (this._objRef && this.parent.objRef && (!this._objRef.parent || ( this._objRef.parent.uuid !== this.parent.objRef.uuid))) {
+    if (
+      this._objRef &&
+      this.parent.objRef &&
+      (!this._objRef.parent || this._objRef.parent.uuid !== this.parent.objRef.uuid)
+    ) {
       this.parent.objRef.add(this._objRef);
     }
   }
@@ -21,19 +25,16 @@ export class ThObjectBase<T extends Object3D, ARGS = unknown> extends ThWrapperB
     this._objRef?.parent?.remove(this._objRef);
   }
 
-protected override applyObjRef(objRef: T | undefined) {
-  if (this._objRef !== objRef || this._objRef?.parent?.uuid !== this.parent.objRef.uuid) {
-    this.removeFromParent();
-    this._objRef = objRef;
-    if (this.autoAddToParent) {
-      this.addToParent();
+  protected override applyObjRef(objRef: T | undefined) {
+    if (this._objRef !== objRef || this._objRef?.parent?.uuid !== this.parent.objRef.uuid) {
+      this.removeFromParent();
+      this._objRef = objRef;
+      if (this.autoAddToParent) {
+        this.addToParent();
+      }
     }
+    this.emitObjRefChange();
   }
-  this.emitObjRefChange();
-}
-
-
-
 
   protected attachToParent(newRef?: T, oldRef?: T) {
     if (!this.parent.objRef || (newRef === oldRef && oldRef?.parent?.uuid === this.parent.objRef.uuid)) {

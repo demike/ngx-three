@@ -14,7 +14,7 @@ import { ThCylinderGeometry } from './ThCylinderGeometry';
 
 @Component({
   selector: 'th-coneGeometry',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

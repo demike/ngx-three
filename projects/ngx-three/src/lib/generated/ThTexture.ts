@@ -27,7 +27,7 @@ import { applyValue } from '../util';
 
 @Component({
   selector: 'th-texture',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThTextureBase, useExisting: forwardRef(() => ThTexture) },

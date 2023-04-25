@@ -23,7 +23,7 @@ import { ThMaterial } from './ThMaterial';
 
 @Component({
   selector: 'th-meshPhongMaterial',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThMeshPhongMaterial) },

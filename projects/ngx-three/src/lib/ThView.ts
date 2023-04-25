@@ -7,19 +7,20 @@ import { ThObject3D } from './generated/ThObject3D';
 import { ThScene } from './generated/ThScene';
 import { ThEngineService } from './ThEngine.service';
 
-
 @Component({
   selector: 'th-view',
-  template: '',
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThView) },
-     { provide: RAYCASTER, useValue:  new Raycaster() }, RaycasterService]
+  template: '<ng-content/>',
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThView) },
+    { provide: RAYCASTER, useValue: new Raycaster() },
+    RaycasterService,
+  ],
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThView implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   protected _camera?: ThCamera;
   protected _viewPort?: Vector4 | { x: number; y: number; width: number; height: number };
-
 
   protected _effectComposer?: EffectComposer;
 
@@ -71,7 +72,7 @@ export class ThView implements OnInit {
   public shadow?: boolean;
 
   @Input()
-  public set viewPort(viewPort: Vector4 | { x: number; y: number; width: number; height: number } | undefined ) {
+  public set viewPort(viewPort: Vector4 | { x: number; y: number; width: number; height: number } | undefined) {
     this._viewPort = viewPort;
     this.configureEffectComposerRenderTarget();
   }

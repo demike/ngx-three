@@ -19,7 +19,7 @@ import { ThMaterial } from './ThMaterial';
 
 @Component({
   selector: 'th-lineBasicMaterial',
-  template: '',
+  template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThLineBasicMaterial) },
