@@ -20,7 +20,7 @@
   "peerDependencies": {
     "@angular/common": "^15.1.1",
     "@angular/core": "^15.1.1",
-    "three": "~0.148.0"
+    "three": "~0.150.0"
   },
   "dependencies": {
     "tslib": "^2.3.1"
