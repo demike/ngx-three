@@ -26,15 +26,8 @@ export class ThAudio<
     return Audio;
   }
 
-  @Input()
-  public set type(value: 'Audio') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): 'Audio' | undefined {
+  public get type(): (string | 'Audio') | undefined {
     return this._objRef?.type;
   }
   @Input()
@@ -82,14 +75,14 @@ export class ThAudio<
     return this._objRef?.autoplay;
   }
   @Input()
-  public set buffer(value: null | AudioBuffer) {
+  public set buffer(value: AudioBuffer | null) {
     if (this._objRef) {
       this._objRef.buffer = value;
     }
   }
 
   // @ts-ignore
-  public get buffer(): (null | AudioBuffer) | undefined {
+  public get buffer(): (AudioBuffer | null) | undefined {
     return this._objRef?.buffer;
   }
   @Input()
@@ -203,14 +196,14 @@ export class ThAudio<
     return this._objRef?.sourceType;
   }
   @Input()
-  public set source(value: null | AudioBufferSourceNode) {
+  public set source(value: AudioBufferSourceNode | null) {
     if (this._objRef) {
       this._objRef.source = value;
     }
   }
 
   // @ts-ignore
-  public get source(): (null | AudioBufferSourceNode) | undefined {
+  public get source(): (AudioBufferSourceNode | null) | undefined {
     return this._objRef?.source;
   }
   @Input()

@@ -202,11 +202,7 @@ export class ThTransformControlsGen<
 
   // @ts-ignore
   public get mouseButtons():
-    | {
-        LEFT: MOUSE;
-        MIDDLE: MOUSE;
-        RIGHT: MOUSE;
-      }
+    | { LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }
     | undefined {
     return this._objRef?.mouseButtons;
   }

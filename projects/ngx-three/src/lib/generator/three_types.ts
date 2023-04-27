@@ -23,7 +23,7 @@ export { OmitByValue };
 // ------ 3D objects ------
 
 type __ngxThreeObjects = {
-  [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
+  [P in keyof InterestingThreeExports]: Three[P] extends abstract new (...args: any) => any
     ? InstanceType<Three[P]> extends InstanceType<Three['Object3D']>
       ? InstanceType<Three[P]>
       : never
@@ -36,7 +36,7 @@ export interface NgxThreeObjects extends OmitByValue<__ngxThreeObjects, never> {
 // ------ materials ------
 
 type __ngxThreeMaterials = {
-  [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
+  [P in keyof InterestingThreeExports]: Three[P] extends abstract new (...args: any) => any
     ? InstanceType<Three[P]> extends InstanceType<Three['Material']>
       ? InstanceType<Three[P]>
       : never
@@ -49,7 +49,7 @@ export interface NgxThreeMaterials extends OmitByValue<__ngxThreeMaterials, neve
 // ------ geometries ------
 
 type __ngxThreeBufferGeometries = {
-  [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
+  [P in keyof InterestingThreeExports]: Three[P] extends abstract new (...args: any) => any
     ? InstanceType<Three[P]> extends InstanceType<Three['BufferGeometry']>
       ? InstanceType<Three[P]>
       : never
@@ -58,7 +58,7 @@ type __ngxThreeBufferGeometries = {
 
 type ExtraGeomtries = typeof import('./geometry_extra_types');
 type __ngxThreeExtraGeometries = {
-  [G in keyof ExtraGeomtries]: ExtraGeomtries[G] extends new (...args: any) => any
+  [G in keyof ExtraGeomtries]: ExtraGeomtries[G] extends abstract new (...args: any) => any
     ? InstanceType<ExtraGeomtries[G]> extends InstanceType<Three['BufferGeometry']>
       ? InstanceType<ExtraGeomtries[G]>
       : never
@@ -66,12 +66,13 @@ type __ngxThreeExtraGeometries = {
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface NgxThreeBufferGeometries extends OmitByValue<__ngxThreeBufferGeometries & __ngxThreeExtraGeometries, never> {}
+export interface NgxThreeBufferGeometries
+  extends OmitByValue<__ngxThreeBufferGeometries & __ngxThreeExtraGeometries, never> {}
 
 // ------ textures -----
 
 type __ngxThreeTextures = {
-  [P in keyof InterestingThreeExports]: Three[P] extends new (...args: any) => any
+  [P in keyof InterestingThreeExports]: Three[P] extends abstract new (...args: any) => any
     ? InstanceType<Three[P]> extends InstanceType<Three['Texture']>
       ? InstanceType<Three[P]>
       : never
@@ -96,7 +97,7 @@ export interface NgxThreeControls extends OmitByValue<__ngxControls, never> {}
 import * as PP from './pass_types';
 type Passes = typeof PP;
 type __ngxPasses = {
-  [P in keyof Passes]: Passes[P] extends new (...args: any) => any ? InstanceType<Passes[P]> : never;
+  [P in keyof Passes]: Passes[P] extends abstract new (...args: any) => any ? InstanceType<Passes[P]> : never;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface

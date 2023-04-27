@@ -10,11 +10,12 @@ import {
 } from '@angular/core';
 import {
   CubeTexture,
-  Mapping,
+  CubeTextureMapping,
+  MagnificationTextureFilter,
+  MinificationTextureFilter,
   PixelFormat,
   TextureDataType,
   TextureEncoding,
-  TextureFilter,
   Wrapping,
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
@@ -32,11 +33,11 @@ export class ThCubeTexture<
   T extends CubeTexture = CubeTexture,
   TARGS = [
     images?: any[],
-    mapping?: Mapping,
+    mapping?: CubeTextureMapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
-    magFilter?: TextureFilter,
-    minFilter?: TextureFilter,
+    magFilter?: MagnificationTextureFilter,
+    minFilter?: MinificationTextureFilter,
     format?: PixelFormat,
     type?: TextureDataType,
     anisotropy?: number,
@@ -47,16 +48,20 @@ export class ThCubeTexture<
     return CubeTexture;
   }
 
+  // @ts-ignore
+  public get isCubeTexture(): true | undefined {
+    return this._objRef?.isCubeTexture;
+  }
   @Input()
-  public set images(value: any) {
+  public set mapping(value: CubeTextureMapping) {
     if (this._objRef) {
-      this._objRef.images = value;
+      this._objRef.mapping = value;
     }
   }
 
   // @ts-ignore
-  public get images(): any | undefined {
-    return this._objRef?.images;
+  public get mapping(): CubeTextureMapping | undefined {
+    return this._objRef?.mapping;
   }
   @Input()
   public set flipY(value: boolean) {
@@ -68,9 +73,5 @@ export class ThCubeTexture<
   // @ts-ignore
   public get flipY(): boolean | undefined {
     return this._objRef?.flipY;
-  }
-  // @ts-ignore
-  public get isCubeTexture(): true | undefined {
-    return this._objRef?.isCubeTexture;
   }
 }

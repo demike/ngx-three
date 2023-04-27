@@ -9,10 +9,12 @@ import {
   Type,
 } from '@angular/core';
 import {
+  DeepTexturePixelFormat,
   DepthTexture,
+  MagnificationTextureFilter,
   Mapping,
+  MinificationTextureFilter,
   TextureDataType,
-  TextureFilter,
   Wrapping,
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
@@ -35,15 +37,20 @@ export class ThDepthTexture<
     mapping?: Mapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
-    magFilter?: TextureFilter,
-    minFilter?: TextureFilter,
-    anisotropy?: number
+    magFilter?: MagnificationTextureFilter,
+    minFilter?: MinificationTextureFilter,
+    anisotropy?: number,
+    format?: DeepTexturePixelFormat
   ]
 > extends ThTexture<T, TARGS> {
   public getType(): Type<DepthTexture> {
     return DepthTexture;
   }
 
+  // @ts-ignore
+  public get isDepthTexture(): true | undefined {
+    return this._objRef?.isDepthTexture;
+  }
   @Input()
   public set flipY(value: boolean) {
     if (this._objRef) {
@@ -56,6 +63,28 @@ export class ThDepthTexture<
     return this._objRef?.flipY;
   }
   @Input()
+  public set magFilter(value: MagnificationTextureFilter) {
+    if (this._objRef) {
+      this._objRef.magFilter = value;
+    }
+  }
+
+  // @ts-ignore
+  public get magFilter(): MagnificationTextureFilter | undefined {
+    return this._objRef?.magFilter;
+  }
+  @Input()
+  public set minFilter(value: MinificationTextureFilter) {
+    if (this._objRef) {
+      this._objRef.minFilter = value;
+    }
+  }
+
+  // @ts-ignore
+  public get minFilter(): MinificationTextureFilter | undefined {
+    return this._objRef?.minFilter;
+  }
+  @Input()
   public set generateMipmaps(value: boolean) {
     if (this._objRef) {
       this._objRef.generateMipmaps = value;
@@ -66,8 +95,26 @@ export class ThDepthTexture<
   public get generateMipmaps(): boolean | undefined {
     return this._objRef?.generateMipmaps;
   }
+  @Input()
+  public set format(value: DeepTexturePixelFormat) {
+    if (this._objRef) {
+      this._objRef.format = value;
+    }
+  }
+
   // @ts-ignore
-  public get isDepthTexture(): true | undefined {
-    return this._objRef?.isDepthTexture;
+  public get format(): DeepTexturePixelFormat | undefined {
+    return this._objRef?.format;
+  }
+  @Input()
+  public set type(value: TextureDataType) {
+    if (this._objRef) {
+      this._objRef.type = value;
+    }
+  }
+
+  // @ts-ignore
+  public get type(): TextureDataType | undefined {
+    return this._objRef?.type;
   }
 }

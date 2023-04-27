@@ -27,6 +27,14 @@ export class ThMesh<
     return Mesh;
   }
 
+  // @ts-ignore
+  public get isMesh(): true | undefined {
+    return this._objRef?.isMesh;
+  }
+  // @ts-ignore
+  public get type(): (string | 'Mesh') | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set geometry(value: TGeometry) {
     if (this._objRef) {
@@ -74,20 +82,5 @@ export class ThMesh<
     | ({ [key: string]: number } | undefined)
     | undefined {
     return this._objRef?.morphTargetDictionary;
-  }
-  // @ts-ignore
-  public get isMesh(): true | undefined {
-    return this._objRef?.isMesh;
-  }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type(): string | undefined {
-    return this._objRef?.type;
   }
 }

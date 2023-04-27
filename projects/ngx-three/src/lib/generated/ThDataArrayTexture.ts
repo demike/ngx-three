@@ -8,7 +8,11 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { DataArrayTexture, TextureFilter } from 'three';
+import {
+  DataArrayTexture,
+  MagnificationTextureFilter,
+  MinificationTextureFilter,
+} from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
@@ -31,26 +35,30 @@ export class ThDataArrayTexture<
     return DataArrayTexture;
   }
 
+  // @ts-ignore
+  public get isDataArrayTexture(): true | undefined {
+    return this._objRef?.isDataArrayTexture;
+  }
   @Input()
-  public set magFilter(value: TextureFilter) {
+  public set magFilter(value: MagnificationTextureFilter) {
     if (this._objRef) {
       this._objRef.magFilter = value;
     }
   }
 
   // @ts-ignore
-  public get magFilter(): TextureFilter | undefined {
+  public get magFilter(): MagnificationTextureFilter | undefined {
     return this._objRef?.magFilter;
   }
   @Input()
-  public set minFilter(value: TextureFilter) {
+  public set minFilter(value: MinificationTextureFilter) {
     if (this._objRef) {
       this._objRef.minFilter = value;
     }
   }
 
   // @ts-ignore
-  public get minFilter(): TextureFilter | undefined {
+  public get minFilter(): MinificationTextureFilter | undefined {
     return this._objRef?.minFilter;
   }
   @Input()
@@ -86,8 +94,15 @@ export class ThDataArrayTexture<
   public get generateMipmaps(): boolean | undefined {
     return this._objRef?.generateMipmaps;
   }
+  @Input()
+  public set unpackAlignment(value: number) {
+    if (this._objRef) {
+      this._objRef.unpackAlignment = value;
+    }
+  }
+
   // @ts-ignore
-  public get isDataArrayTexture(): true | undefined {
-    return this._objRef?.isDataArrayTexture;
+  public get unpackAlignment(): number | undefined {
+    return this._objRef?.unpackAlignment;
   }
 }

@@ -11,6 +11,7 @@ import {
 import {
   Color,
   ColorRepresentation,
+  CubeTexture,
   Event,
   FogBase,
   Material,
@@ -35,6 +36,10 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
     return Scene;
   }
 
+  // @ts-ignore
+  public get isScene(): true | undefined {
+    return this._objRef?.isScene;
+  }
   @Input()
   public set type(value: 'Scene') {
     if (this._objRef) {
@@ -92,32 +97,27 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
   }
   @Input()
   public set background(
-    value: null | Color | Texture | [color: ColorRepresentation]
+    value: Color | Texture | CubeTexture | null | [color: ColorRepresentation]
   ) {
     if (this._objRef) {
-      this._objRef.background = applyValue<null | Color | Texture>(
-        this._objRef.background,
-        value
-      );
+      this._objRef.background = applyValue<
+        Color | Texture | CubeTexture | null
+      >(this._objRef.background, value);
     }
   }
   // @ts-ignore
-  public get background(): (null | Color | Texture) | undefined {
+  public get background(): (Color | Texture | CubeTexture | null) | undefined {
     return this._objRef?.background;
   }
   @Input()
-  public set environment(value: null | Texture) {
+  public set environment(value: Texture | null) {
     if (this._objRef) {
       this._objRef.environment = value;
     }
   }
 
   // @ts-ignore
-  public get environment(): (null | Texture) | undefined {
+  public get environment(): (Texture | null) | undefined {
     return this._objRef?.environment;
-  }
-  // @ts-ignore
-  public get isScene(): true | undefined {
-    return this._objRef?.isScene;
   }
 }

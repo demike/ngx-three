@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { BufferGeometry, WireframeGeometry } from 'three';
@@ -31,28 +30,14 @@ export class ThWireframeGeometry<
     return WireframeGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'WireframeGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: { geometry: TBufferGeometry }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        geometry: TBufferGeometry;
+        readonly geometry: TBufferGeometry;
       }
     | undefined {
     return this._objRef?.parameters;

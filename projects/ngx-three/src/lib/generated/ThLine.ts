@@ -27,6 +27,14 @@ export class ThLine<
     return Line;
   }
 
+  // @ts-ignore
+  public get isLine(): true | undefined {
+    return this._objRef?.isLine;
+  }
+  // @ts-ignore
+  public get type(): (string | 'Line') | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set geometry(value: TGeometry) {
     if (this._objRef) {
@@ -48,23 +56,6 @@ export class ThLine<
   // @ts-ignore
   public get material(): TMaterial | undefined {
     return this._objRef?.material;
-  }
-  @Input()
-  public set type(value: 'Line' | 'LineLoop' | 'LineSegments' | string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type():
-    | ('Line' | 'LineLoop' | 'LineSegments' | string)
-    | undefined {
-    return this._objRef?.type;
-  }
-  // @ts-ignore
-  public get isLine(): true | undefined {
-    return this._objRef?.isLine;
   }
   @Input()
   public set morphTargetInfluences(value: number[] | undefined) {

@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { OctahedronGeometry } from 'three';
@@ -31,15 +30,8 @@ export class ThOctahedronGeometry<
     return OctahedronGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'OctahedronGeometry') | undefined {
     return this._objRef?.type;
   }
 }

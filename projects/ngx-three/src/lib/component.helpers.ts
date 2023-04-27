@@ -3,7 +3,7 @@ import { Object3D } from 'three';
 import { ThCamera } from './generated/ThCamera';
 import { ThObject3D } from './generated/ThObject3D';
 
-export function createThProviderArray(cls: Type<any>, baseCls: Type<any>) {
+export function createThProviderArray(cls: InstanceType<any>, baseCls: InstanceType<any>) {
   const providers: Provider[] = [];
   if (ThObject3D.isPrototypeOf(baseCls) || Object3D === baseCls) {
     providers.push({ provide: ThObject3D, useExisting: forwardRef(() => cls) });
@@ -32,6 +32,6 @@ export function createObj3DProviderArray(type: Type<any>) {
 export function createCameraProviderArray(type: Type<any>) {
   return [
     { provide: ThObject3D, useExisting: forwardRef(() => type) },
-    { provide: ThCamera, useExisting: forwardRef(() => type) }
+    { provide: ThCamera, useExisting: forwardRef(() => type) },
   ];
 }

@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { PlaneGeometry } from 'three';
@@ -35,36 +34,17 @@ export class ThPlaneGeometry<
     return PlaneGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'PlaneGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    width: number;
-    height: number;
-    widthSegments: number;
-    heightSegments: number;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        width: number;
-        height: number;
-        widthSegments: number;
-        heightSegments: number;
+        readonly width: number;
+        readonly height: number;
+        readonly widthSegments: number;
+        readonly heightSegments: number;
       }
     | undefined {
     return this._objRef?.parameters;

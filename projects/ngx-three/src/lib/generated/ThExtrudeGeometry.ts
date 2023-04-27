@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { ExtrudeGeometry, ExtrudeGeometryOptions, Shape } from 'three';
@@ -30,15 +29,17 @@ export class ThExtrudeGeometry<
     return ExtrudeGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'ExtrudeGeometry') | undefined {
     return this._objRef?.type;
+  }
+  // @ts-ignore
+  public get parameters():
+    | {
+        readonly shapes: Shape | Shape[];
+        readonly options: ExtrudeGeometryOptions;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

@@ -12,6 +12,7 @@ import {
   Box3,
   BufferAttribute,
   BufferGeometry,
+  GLBufferAttribute,
   InterleavedBufferAttribute,
   Sphere,
   Vector3,
@@ -67,15 +68,8 @@ export class ThBufferGeometry<
   public get name(): string | undefined {
     return this._objRef?.name;
   }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'BufferGeometry') | undefined {
     return this._objRef?.type;
   }
   @Input()
@@ -98,7 +92,10 @@ export class ThBufferGeometry<
   }
   @Input()
   public set attributes(value: {
-    [name: string]: BufferAttribute | InterleavedBufferAttribute;
+    [name: string]:
+      | BufferAttribute
+      | InterleavedBufferAttribute
+      | GLBufferAttribute; // TODO Replace for 'Record<>'
   }) {
     if (this._objRef) {
       this._objRef.attributes = value;
@@ -108,14 +105,17 @@ export class ThBufferGeometry<
   // @ts-ignore
   public get attributes():
     | {
-        [name: string]: BufferAttribute | InterleavedBufferAttribute;
+        [name: string]:
+          | BufferAttribute
+          | InterleavedBufferAttribute
+          | GLBufferAttribute; // TODO Replace for 'Record<>'
       }
     | undefined {
     return this._objRef?.attributes;
   }
   @Input()
   public set morphAttributes(value: {
-    [name: string]: Array<BufferAttribute | InterleavedBufferAttribute>;
+    [name: string]: Array<BufferAttribute | InterleavedBufferAttribute>; // TODO Replace for 'Record<>'
   }) {
     if (this._objRef) {
       this._objRef.morphAttributes = value;
@@ -125,7 +125,7 @@ export class ThBufferGeometry<
   // @ts-ignore
   public get morphAttributes():
     | {
-        [name: string]: Array<BufferAttribute | InterleavedBufferAttribute>;
+        [name: string]: Array<BufferAttribute | InterleavedBufferAttribute>; // TODO Replace for 'Record<>'
       }
     | undefined {
     return this._objRef?.morphAttributes;
@@ -144,8 +144,20 @@ export class ThBufferGeometry<
   @Input()
   public set groups(
     value: Array<{
+      /**
+       * Specifies the first element in this draw call – the first vertex for non-indexed geometry, otherwise the first triangle index.
+       * @remarks Expects a `Integer`
+       */
       start: number;
+      /**
+       * Specifies how many vertices (or indices) are included.
+       * @remarks Expects a `Integer`
+       */
       count: number;
+      /**
+       * Specifies the material array index to use.
+       * @remarks Expects a `Integer`
+       */
       materialIndex?: number | undefined;
     }>
   ) {
@@ -157,8 +169,20 @@ export class ThBufferGeometry<
   // @ts-ignore
   public get groups():
     | Array<{
+        /**
+         * Specifies the first element in this draw call – the first vertex for non-indexed geometry, otherwise the first triangle index.
+         * @remarks Expects a `Integer`
+         */
         start: number;
+        /**
+         * Specifies how many vertices (or indices) are included.
+         * @remarks Expects a `Integer`
+         */
         count: number;
+        /**
+         * Specifies the material array index to use.
+         * @remarks Expects a `Integer`
+         */
         materialIndex?: number | undefined;
       }>
     | undefined {
@@ -217,28 +241,6 @@ export class ThBufferGeometry<
   // @ts-ignore
   public get isBufferGeometry(): true | undefined {
     return this._objRef?.isBufferGeometry;
-  }
-  @Input()
-  public set drawcalls(value: any) {
-    if (this._objRef) {
-      this._objRef.drawcalls = value;
-    }
-  }
-
-  // @ts-ignore
-  public get drawcalls(): any | undefined {
-    return this._objRef?.drawcalls;
-  }
-  @Input()
-  public set offsets(value: any) {
-    if (this._objRef) {
-      this._objRef.offsets = value;
-    }
-  }
-
-  // @ts-ignore
-  public get offsets(): any | undefined {
-    return this._objRef?.offsets;
   }
 
   constructor(@SkipSelf() hostObject: ThObject3D) {

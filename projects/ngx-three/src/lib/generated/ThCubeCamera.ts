@@ -27,15 +27,8 @@ export class ThCubeCamera<
     return CubeCamera;
   }
 
-  @Input()
-  public set type(value: 'CubeCamera') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): 'CubeCamera' | undefined {
+  public get type(): (string | 'CubeCamera') | undefined {
     return this._objRef?.type;
   }
   @Input()

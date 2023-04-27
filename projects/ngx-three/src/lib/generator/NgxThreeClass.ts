@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import { ParameterDeclaration } from 'typescript';
+import { ParameterDeclaration, AbstractKeyword, SyntaxKind } from 'typescript';
 import * as path from 'path';
 import { pascalToCamelCase } from './utils';
 import { NgxThreeOverrideStub } from './NgxThreeOverrideStub';
@@ -19,6 +19,7 @@ export abstract class NgxThreeClass {
   public readonly directiveName: string;
   protected classDecl: ts.ClassDeclaration;
   public readonly wrappedClassName: string;
+  public readonly isAbstract: boolean;
 
   public providersArray?: string;
   public readonly imports: Set<string> = new Set<string>();
@@ -30,7 +31,7 @@ export abstract class NgxThreeClass {
   constructor(protected classSymbol: ts.Symbol, protected typeChecker: ts.TypeChecker) {
     this.classDecl = this.fetchClassDecleration();
     this.wrappedClassName = this.classSymbol.escapedName as string;
-
+    this.isAbstract = this.classDecl.modifiers?.find((m) => m.kind === SyntaxKind.AbstractKeyword) !== undefined;
     this.className = 'Th' + this.wrappedClassName;
     this.directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);
     if (isOverriddenClass(this.wrappedClassName)) {
@@ -94,9 +95,7 @@ export abstract class NgxThreeClass {
           providers: ${this.providersArray}
         })
         ${classHeader} {
-          public getType(): Type<${this.wrappedClassName}${this.wrappedClassGenericTypeNames}> { return ${
-      this.wrappedClassName
-    }; };
+          ${this.generateTypeGetter()}
           ${this.inputs}
           ${constr}
         }
@@ -128,7 +127,7 @@ export abstract class NgxThreeClass {
   }
 
   protected generateClassHeader() {
-    let header = `export class ${this.className}<`;
+    let header = `export ${this.isAbstract ? 'abstract' : ''} class ${this.className}<`;
     if (this.classDecl.typeParameters) {
       header = `${header}${this.classDecl.typeParameters.map((param) => param.getText()).join(',')},`;
       this.wrappedClassGenericTypeNames = `<${this.classDecl.typeParameters
@@ -441,5 +440,13 @@ export abstract class NgxThreeClass {
     }
 
     return [];
+  }
+
+  protected generateTypeGetter() {
+    if (this.isAbstract) {
+      return '';
+    }
+
+    return `public getType(): Type<${this.wrappedClassName}${this.wrappedClassGenericTypeNames}> { return ${this.wrappedClassName}; };`;
   }
 }

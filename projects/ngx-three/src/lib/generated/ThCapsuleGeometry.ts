@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { CapsuleGeometry } from 'three';
@@ -35,36 +34,17 @@ export class ThCapsuleGeometry<
     return CapsuleGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'CapsuleGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    radius: number;
-    length: number;
-    capSegments: number;
-    radialSegments: number;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        radius: number;
-        length: number;
-        capSegments: number;
-        radialSegments: number;
+        readonly radius: number;
+        readonly length: number;
+        readonly capSegments: number;
+        readonly radialSegments: number;
       }
     | undefined {
     return this._objRef?.parameters;

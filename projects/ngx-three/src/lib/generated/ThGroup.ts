@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { Event, Group } from 'three';
@@ -26,19 +25,12 @@ export class ThGroup<T extends Group = Group, TARGS = []> extends ThObject3D<
     return Group;
   }
 
-  @Input()
-  public set type(value: 'Group') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type(): 'Group' | undefined {
-    return this._objRef?.type;
-  }
   // @ts-ignore
   public get isGroup(): true | undefined {
     return this._objRef?.isGroup;
+  }
+  // @ts-ignore
+  public get type(): (string | 'Group') | undefined {
+    return this._objRef?.type;
   }
 }

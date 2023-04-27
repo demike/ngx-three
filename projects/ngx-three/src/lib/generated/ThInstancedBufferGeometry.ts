@@ -41,15 +41,8 @@ export class ThInstancedBufferGeometry<
   public get type(): string | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set isInstancedBufferGeometry(value: boolean) {
-    if (this._objRef) {
-      this._objRef.isInstancedBufferGeometry = value;
-    }
-  }
-
   // @ts-ignore
-  public get isInstancedBufferGeometry(): boolean | undefined {
+  public get isInstancedBufferGeometry(): true | undefined {
     return this._objRef?.isInstancedBufferGeometry;
   }
   @Input()

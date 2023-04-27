@@ -10,11 +10,12 @@ import {
 } from '@angular/core';
 import {
   DataTexture,
+  MagnificationTextureFilter,
   Mapping,
+  MinificationTextureFilter,
   PixelFormat,
   TextureDataType,
   TextureEncoding,
-  TextureFilter,
   Wrapping,
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
@@ -39,8 +40,8 @@ export class ThDataTexture<
     mapping?: Mapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
-    magFilter?: TextureFilter,
-    minFilter?: TextureFilter,
+    magFilter?: MagnificationTextureFilter,
+    minFilter?: MinificationTextureFilter,
     anisotropy?: number,
     encoding?: TextureEncoding
   ]
@@ -49,6 +50,32 @@ export class ThDataTexture<
     return DataTexture;
   }
 
+  // @ts-ignore
+  public get isDataTexture(): true | undefined {
+    return this._objRef?.isDataTexture;
+  }
+  @Input()
+  public set magFilter(value: MagnificationTextureFilter) {
+    if (this._objRef) {
+      this._objRef.magFilter = value;
+    }
+  }
+
+  // @ts-ignore
+  public get magFilter(): MagnificationTextureFilter | undefined {
+    return this._objRef?.magFilter;
+  }
+  @Input()
+  public set minFilter(value: MinificationTextureFilter) {
+    if (this._objRef) {
+      this._objRef.minFilter = value;
+    }
+  }
+
+  // @ts-ignore
+  public get minFilter(): MinificationTextureFilter | undefined {
+    return this._objRef?.minFilter;
+  }
   @Input()
   public set flipY(value: boolean) {
     if (this._objRef) {
@@ -81,20 +108,5 @@ export class ThDataTexture<
   // @ts-ignore
   public get unpackAlignment(): number | undefined {
     return this._objRef?.unpackAlignment;
-  }
-  @Input()
-  public set format(value: PixelFormat) {
-    if (this._objRef) {
-      this._objRef.format = value;
-    }
-  }
-
-  // @ts-ignore
-  public get format(): PixelFormat | undefined {
-    return this._objRef?.format;
-  }
-  // @ts-ignore
-  public get isDataTexture(): true | undefined {
-    return this._objRef?.isDataTexture;
   }
 }

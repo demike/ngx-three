@@ -11,8 +11,8 @@
   <th-scene [background]="['#ffffff']">
     <th-perspectiveCamera [position]="[0, 0, zDist]" [fov]="70" [near]="1" [far]="1000" />
 
-    <th-ambientLight [color]="['0x222222']" />
-    <th-directionalLight #light [color]="['0xffffff']" />
+    <th-ambientLight [color]="['#222222']" />
+    <th-directionalLight #light [color]="['#ffffff']" />
 
     <th-sphereGeometry #geometry [args]="[1, 4, 4]" />
     <th-object3D #object>

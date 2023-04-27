@@ -39,20 +39,13 @@ export class ThOrthographicCamera<
     return OrthographicCamera;
   }
 
-  @Input()
-  public set type(value: 'OrthographicCamera') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type(): 'OrthographicCamera' | undefined {
-    return this._objRef?.type;
-  }
   // @ts-ignore
   public get isOrthographicCamera(): true | undefined {
     return this._objRef?.isOrthographicCamera;
+  }
+  // @ts-ignore
+  public get type(): (string | 'OrthographicCamera') | undefined {
+    return this._objRef?.type;
   }
   @Input()
   public set zoom(value: number) {

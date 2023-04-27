@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { TorusGeometry } from 'three';
@@ -36,38 +35,18 @@ export class ThTorusGeometry<
     return TorusGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'TorusGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    radius: number;
-    tube: number;
-    radialSegments: number;
-    tubularSegments: number;
-    arc: number;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        radius: number;
-        tube: number;
-        radialSegments: number;
-        tubularSegments: number;
-        arc: number;
+        readonly radius: number;
+        readonly tube: number;
+        readonly radialSegments: number;
+        readonly tubularSegments: number;
+        readonly arc: number;
       }
     | undefined {
     return this._objRef?.parameters;

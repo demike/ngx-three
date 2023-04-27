@@ -11,10 +11,11 @@ import {
 import {
   CompressedPixelFormat,
   CompressedTexture,
+  MagnificationTextureFilter,
   Mapping,
+  MinificationTextureFilter,
   TextureDataType,
   TextureEncoding,
-  TextureFilter,
   Wrapping,
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
@@ -37,13 +38,13 @@ export class ThCompressedTexture<
     mipmaps: ImageData[],
     width: number,
     height: number,
-    format?: CompressedPixelFormat,
+    format: CompressedPixelFormat,
     type?: TextureDataType,
     mapping?: Mapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
-    magFilter?: TextureFilter,
-    minFilter?: TextureFilter,
+    magFilter?: MagnificationTextureFilter,
+    minFilter?: MinificationTextureFilter,
     anisotropy?: number,
     encoding?: TextureEncoding
   ]
@@ -52,6 +53,10 @@ export class ThCompressedTexture<
     return CompressedTexture;
   }
 
+  // @ts-ignore
+  public get isCompressedTexture(): true | undefined {
+    return this._objRef?.isCompressedTexture;
+  }
   @Input()
   public set mipmaps(value: ImageData[]) {
     if (this._objRef) {
@@ -62,6 +67,17 @@ export class ThCompressedTexture<
   // @ts-ignore
   public get mipmaps(): ImageData[] | undefined {
     return this._objRef?.mipmaps;
+  }
+  @Input()
+  public set format(value: CompressedPixelFormat) {
+    if (this._objRef) {
+      this._objRef.format = value;
+    }
+  }
+
+  // @ts-ignore
+  public get format(): CompressedPixelFormat | undefined {
+    return this._objRef?.format;
   }
   @Input()
   public set flipY(value: boolean) {
@@ -84,9 +100,5 @@ export class ThCompressedTexture<
   // @ts-ignore
   public get generateMipmaps(): boolean | undefined {
     return this._objRef?.generateMipmaps;
-  }
-  // @ts-ignore
-  public get isCompressedTexture(): true | undefined {
-    return this._objRef?.isCompressedTexture;
   }
 }

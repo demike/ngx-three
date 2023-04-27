@@ -1,4 +1,14 @@
-import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, Type } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SimpleChanges,
+  Type,
+} from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { EventDispatcher, Object3D } from 'three';
 import { isLazyObject3dProxy } from './loaders/LazyObject3dProxy';
@@ -7,7 +17,7 @@ import { isDisposable } from './util';
 
 @Component({
   selector: 'th-abs-wrapper',
-  template: ''
+  template: '',
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnChanges, OnInit, OnDestroy {
@@ -46,9 +56,11 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
   @Input()
   public args?: ARGS;
 
-  protected eventListeners?: {[key: THREE.Event['type']]: THREE.EventListener<THREE.Event, THREE.Event['type'] , T> };
+  protected eventListeners?: { [key: THREE.Event['type']]: THREE.EventListener<THREE.Event, THREE.Event['type'], T> };
   @Input()
-  public set threeEvents( eventMap: {[key: THREE.Event['type']]: THREE.EventListener<THREE.Event, THREE.Event['type'] , T> } | undefined) {
+  public set threeEvents(
+    eventMap: { [key: THREE.Event['type']]: THREE.EventListener<THREE.Event, THREE.Event['type'], T> } | undefined
+  ) {
     this.removeEvents();
     this.eventListeners = eventMap;
     this.applyEvents();
@@ -57,7 +69,6 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
   public get threeEvents() {
     return this.eventListeners;
   }
-
 
   @Output()
   public get onUpdate(): Observable<SimpleChanges> {
@@ -90,8 +101,8 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
   }
 
   public createThreeInstance(args?: unknown) {
-    if(Array.isArray(args)) {
-      return new (this.getType())( ...(args as any[]));
+    if (Array.isArray(args)) {
+      return new (this.getType())(...(args as any[]));
     } else {
       return new (this.getType())(args);
     }
@@ -110,9 +121,8 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
       return;
     }
 
-    if (changes.objRef?.currentValue) {
-      this.objRef = changes.objRef?.currentValue;
-    } else if (!this.objRef) {
+    if (!this.objRef) {
+      // no object and no proxy is set --> create an instance
       this.objRef = this.createThreeInstance(changes.args?.currentValue);
     }
 
@@ -153,7 +163,7 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
     // only emit change if _objRef is no proxy,
     // and trigger emit over objRef event emitter
     if (this._objRef && !isLazyObject3dProxy(this._objRef as any)) {
-      ((this._objRef as unknown) as Object3D).dispatchEvent?.({ type: 'loaded', object: this._objRef });
+      (this._objRef as unknown as Object3D).dispatchEvent?.({ type: 'loaded', object: this._objRef });
       if (this._objRef$) {
         this._objRef$.next(this._objRef);
       }
@@ -161,8 +171,8 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
   }
 
   protected emitPropertyChanges(changes: SimpleChanges) {
-    if(this._objRef) {
-      ((this._objRef as unknown) as EventDispatcher).dispatchEvent?.({ type: 'changes', changes });
+    if (this._objRef) {
+      (this._objRef as unknown as EventDispatcher).dispatchEvent?.({ type: 'changes', changes });
     }
     if (this.updateEmitter) {
       this.updateEmitter.next(changes);
@@ -170,20 +180,19 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
   }
 
   private removeEvents() {
-    if( this.eventListeners && this._objRef) {
-      for(const entry of Object.entries(this.eventListeners)) {
-        (this._objRef as any).removeEventListener(entry[0],entry[1]);
+    if (this.eventListeners && this._objRef) {
+      for (const entry of Object.entries(this.eventListeners)) {
+        (this._objRef as any).removeEventListener(entry[0], entry[1]);
       }
       this.eventListeners = undefined;
     }
   }
 
   private applyEvents() {
-    if(this.eventListeners && this._objRef) {
-      for(const entry of Object.entries(this.eventListeners)) {
-        (this._objRef as any).addEventListener(entry[0],entry[1]);
+    if (this.eventListeners && this._objRef) {
+      for (const entry of Object.entries(this.eventListeners)) {
+        (this._objRef as any).addEventListener(entry[0], entry[1]);
       }
     }
   }
-
 }

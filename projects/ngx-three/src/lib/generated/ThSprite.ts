@@ -26,20 +26,24 @@ export class ThSprite<
     return Sprite;
   }
 
+  // @ts-ignore
+  public get isSprite(): true | undefined {
+    return this._objRef?.isSprite;
+  }
+  // @ts-ignore
+  public get type(): (string | 'Sprite') | undefined {
+    return this._objRef?.type;
+  }
   @Input()
-  public set type(value: 'Sprite') {
+  public set castShadow(value: false) {
     if (this._objRef) {
-      this._objRef.type = value;
+      this._objRef.castShadow = value;
     }
   }
 
   // @ts-ignore
-  public get type(): 'Sprite' | undefined {
-    return this._objRef?.type;
-  }
-  // @ts-ignore
-  public get isSprite(): true | undefined {
-    return this._objRef?.isSprite;
+  public get castShadow(): false | undefined {
+    return this._objRef?.castShadow;
   }
   @Input()
   public set geometry(value: BufferGeometry) {

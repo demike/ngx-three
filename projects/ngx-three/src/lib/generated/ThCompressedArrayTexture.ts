@@ -35,19 +35,12 @@ export class ThCompressedArrayTexture<
     width: number,
     height: number,
     depth: number,
-    format?: CompressedPixelFormat,
+    format: CompressedPixelFormat,
     type?: TextureDataType
   ]
 > extends ThCompressedTexture<T, TARGS> {
   public getType(): Type<CompressedArrayTexture> {
     return CompressedArrayTexture;
-  }
-
-  @Input()
-  public set isCompressedArrayTexture(value: true) {
-    if (this._objRef) {
-      this._objRef.isCompressedArrayTexture = value;
-    }
   }
 
   // @ts-ignore

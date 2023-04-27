@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { PolyhedronGeometry } from 'three';
@@ -35,36 +34,17 @@ export class ThPolyhedronGeometry<
     return PolyhedronGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'PolyhedronGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    vertices: number[];
-    indices: number[];
-    radius: number;
-    detail: number;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        vertices: number[];
-        indices: number[];
-        radius: number;
-        detail: number;
+        readonly vertices: number[];
+        readonly indices: number[];
+        readonly radius: number;
+        readonly detail: number;
       }
     | undefined {
     return this._objRef?.parameters;

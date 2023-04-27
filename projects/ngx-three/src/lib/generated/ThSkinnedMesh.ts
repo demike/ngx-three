@@ -44,15 +44,23 @@ export class ThSkinnedMesh<
     return SkinnedMesh;
   }
 
+  // @ts-ignore
+  public get isSkinnedMesh(): true | undefined {
+    return this._objRef?.isSkinnedMesh;
+  }
+  // @ts-ignore
+  public get type(): (string | 'SkinnedMesh') | undefined {
+    return this._objRef?.type;
+  }
   @Input()
-  public set bindMode(value: string) {
+  public set bindMode(value: 'attached' | 'detached') {
     if (this._objRef) {
       this._objRef.bindMode = value;
     }
   }
 
   // @ts-ignore
-  public get bindMode(): string | undefined {
+  public get bindMode(): ('attached' | 'detached') | undefined {
     return this._objRef?.bindMode;
   }
   @Input()
@@ -133,9 +141,5 @@ export class ThSkinnedMesh<
   // @ts-ignore
   public get skeleton(): Skeleton | undefined {
     return this._objRef?.skeleton;
-  }
-  // @ts-ignore
-  public get isSkinnedMesh(): true | undefined {
-    return this._objRef?.isSkinnedMesh;
   }
 }

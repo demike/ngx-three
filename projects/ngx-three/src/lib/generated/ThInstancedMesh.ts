@@ -43,6 +43,10 @@ export class ThInstancedMesh<
     return InstancedMesh;
   }
 
+  // @ts-ignore
+  public get isInstancedMesh(): true | undefined {
+    return this._objRef?.isInstancedMesh;
+  }
   @Input()
   public set count(value: number) {
     if (this._objRef) {
@@ -57,19 +61,19 @@ export class ThInstancedMesh<
   @Input()
   public set instanceColor(
     value:
-      | null
       | InstancedBufferAttribute
+      | null
       | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
   ) {
     if (this._objRef) {
-      this._objRef.instanceColor = applyValue<null | InstancedBufferAttribute>(
+      this._objRef.instanceColor = applyValue<InstancedBufferAttribute | null>(
         this._objRef.instanceColor,
         value
       );
     }
   }
   // @ts-ignore
-  public get instanceColor(): (null | InstancedBufferAttribute) | undefined {
+  public get instanceColor(): (InstancedBufferAttribute | null) | undefined {
     return this._objRef?.instanceColor;
   }
   @Input()
@@ -88,9 +92,5 @@ export class ThInstancedMesh<
   // @ts-ignore
   public get instanceMatrix(): InstancedBufferAttribute | undefined {
     return this._objRef?.instanceMatrix;
-  }
-  // @ts-ignore
-  public get isInstancedMesh(): true | undefined {
-    return this._objRef?.isInstancedMesh;
   }
 }

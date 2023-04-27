@@ -27,15 +27,8 @@ export class ThAudioListener<
     return AudioListener;
   }
 
-  @Input()
-  public set type(value: 'AudioListener') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): 'AudioListener' | undefined {
+  public get type(): (string | 'AudioListener') | undefined {
     return this._objRef?.type;
   }
   @Input()
@@ -61,14 +54,14 @@ export class ThAudioListener<
     return this._objRef?.gain;
   }
   @Input()
-  public set filter(value: any) {
+  public set filter(value: AudioNode) {
     if (this._objRef) {
       this._objRef.filter = value;
     }
   }
 
   // @ts-ignore
-  public get filter(): any | undefined {
+  public get filter(): AudioNode | undefined {
     return this._objRef?.filter;
   }
   @Input()

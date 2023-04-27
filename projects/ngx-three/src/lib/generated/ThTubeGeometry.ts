@@ -28,7 +28,7 @@ export class ThTubeGeometry<
     path?: Curve<Vector3>,
     tubularSegments?: number,
     radius?: number,
-    radiusSegments?: number,
+    radialSegments?: number,
     closed?: boolean
   ]
 > extends ThBufferGeometry<T, TARGS> {
@@ -36,38 +36,18 @@ export class ThTubeGeometry<
     return TubeGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'TubeGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    path: Curve<Vector3>;
-    tubularSegments: number;
-    radius: number;
-    radialSegments: number;
-    closed: boolean;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        path: Curve<Vector3>;
-        tubularSegments: number;
-        radius: number;
-        radialSegments: number;
-        closed: boolean;
+        readonly path: Curve<Vector3>;
+        readonly tubularSegments: number;
+        readonly radius: number;
+        readonly radialSegments: number;
+        readonly closed: boolean;
       }
     | undefined {
     return this._objRef?.parameters;

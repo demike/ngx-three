@@ -29,20 +29,13 @@ export class ThPerspectiveCamera<
     return PerspectiveCamera;
   }
 
-  @Input()
-  public set type(value: 'PerspectiveCamera') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type(): 'PerspectiveCamera' | undefined {
-    return this._objRef?.type;
-  }
   // @ts-ignore
   public get isPerspectiveCamera(): true | undefined {
     return this._objRef?.isPerspectiveCamera;
+  }
+  // @ts-ignore
+  public get type(): (string | 'PerspectiveCamera') | undefined {
+    return this._objRef?.type;
   }
   @Input()
   public set zoom(value: number) {

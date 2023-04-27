@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { BoxGeometry } from 'three';
@@ -34,40 +33,19 @@ export class ThBoxGeometry<
     return BoxGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'BoxGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    width: number;
-    height: number;
-    depth: number;
-    widthSegments: number;
-    heightSegments: number;
-    depthSegments: number;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        width: number;
-        height: number;
-        depth: number;
-        widthSegments: number;
-        heightSegments: number;
-        depthSegments: number;
+        readonly width: number;
+        readonly height: number;
+        readonly depth: number;
+        readonly widthSegments: number;
+        readonly heightSegments: number;
+        readonly depthSegments: number;
       }
     | undefined {
     return this._objRef?.parameters;

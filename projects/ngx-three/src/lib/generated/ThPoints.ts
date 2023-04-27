@@ -27,15 +27,12 @@ export class ThPoints<
     return Points;
   }
 
-  @Input()
-  public set type(value: 'Points') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): 'Points' | undefined {
+  public get isPoints(): true | undefined {
+    return this._objRef?.isPoints;
+  }
+  // @ts-ignore
+  public get type(): (string | 'Points') | undefined {
     return this._objRef?.type;
   }
   @Input()
@@ -63,10 +60,6 @@ export class ThPoints<
     | ({ [key: string]: number } | undefined)
     | undefined {
     return this._objRef?.morphTargetDictionary;
-  }
-  // @ts-ignore
-  public get isPoints(): true | undefined {
-    return this._objRef?.isPoints;
   }
   @Input()
   public set geometry(value: TGeometry) {

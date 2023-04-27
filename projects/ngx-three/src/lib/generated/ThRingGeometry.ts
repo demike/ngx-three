@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { RingGeometry } from 'three';
@@ -37,40 +36,19 @@ export class ThRingGeometry<
     return RingGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'RingGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    innerRadius: number;
-    outerRadius: number;
-    thetaSegments: number;
-    phiSegments: number;
-    thetaStart: number;
-    thetaLength: number;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        innerRadius: number;
-        outerRadius: number;
-        thetaSegments: number;
-        phiSegments: number;
-        thetaStart: number;
-        thetaLength: number;
+        readonly innerRadius: number;
+        readonly outerRadius: number;
+        readonly thetaSegments: number;
+        readonly phiSegments: number;
+        readonly thetaStart: number;
+        readonly thetaLength: number;
       }
     | undefined {
     return this._objRef?.parameters;

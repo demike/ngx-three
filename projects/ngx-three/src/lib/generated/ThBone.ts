@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { Bone, Event } from 'three';
@@ -30,15 +29,8 @@ export class ThBone<T extends Bone = Bone, TARGS = []> extends ThObject3D<
   public get isBone(): true | undefined {
     return this._objRef?.isBone;
   }
-  @Input()
-  public set type(value: 'Bone') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): 'Bone' | undefined {
+  public get type(): (string | 'Bone') | undefined {
     return this._objRef?.type;
   }
 }

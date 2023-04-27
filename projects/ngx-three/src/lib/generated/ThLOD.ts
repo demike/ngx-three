@@ -26,20 +26,24 @@ export class ThLOD<T extends LOD = LOD, TARGS = []> extends ThObject3D<
     return LOD;
   }
 
-  @Input()
-  public set type(value: 'LOD') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): 'LOD' | undefined {
+  public get isLOD(): true | undefined {
+    return this._objRef?.isLOD;
+  }
+  // @ts-ignore
+  public get type(): (string | 'LOD') | undefined {
     return this._objRef?.type;
   }
   @Input()
   public set levels(
-    value: Array<{ distance: number; hysteresis: number; object: Object3D }>
+    value: Array<{
+      /** The Object3D to display at this level. */
+      object: Object3D;
+      /** The distance at which to display this level of detail. Expects a `Float`. */
+      distance: number;
+      /** Threshold used to avoid flickering at LOD boundaries, as a fraction of distance. Expects a `Float`. */
+      hysteresis: number;
+    }>
   ) {
     if (this._objRef) {
       this._objRef.levels = value;
@@ -48,7 +52,14 @@ export class ThLOD<T extends LOD = LOD, TARGS = []> extends ThObject3D<
 
   // @ts-ignore
   public get levels():
-    | Array<{ distance: number; hysteresis: number; object: Object3D }>
+    | Array<{
+        /** The Object3D to display at this level. */
+        object: Object3D;
+        /** The distance at which to display this level of detail. Expects a `Float`. */
+        distance: number;
+        /** Threshold used to avoid flickering at LOD boundaries, as a fraction of distance. Expects a `Float`. */
+        hysteresis: number;
+      }>
     | undefined {
     return this._objRef?.levels;
   }
@@ -62,20 +73,5 @@ export class ThLOD<T extends LOD = LOD, TARGS = []> extends ThObject3D<
   // @ts-ignore
   public get autoUpdate(): boolean | undefined {
     return this._objRef?.autoUpdate;
-  }
-  // @ts-ignore
-  public get isLOD(): true | undefined {
-    return this._objRef?.isLOD;
-  }
-  @Input()
-  public set objects(value: any[]) {
-    if (this._objRef) {
-      this._objRef.objects = value;
-    }
-  }
-
-  // @ts-ignore
-  public get objects(): any[] | undefined {
-    return this._objRef?.objects;
   }
 }

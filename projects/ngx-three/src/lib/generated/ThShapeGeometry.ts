@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { Shape, ShapeGeometry } from 'three';
@@ -30,15 +29,17 @@ export class ThShapeGeometry<
     return ShapeGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'ShapeGeometry') | undefined {
     return this._objRef?.type;
+  }
+  // @ts-ignore
+  public get parameters():
+    | {
+        readonly shapes: Shape | Shape[];
+        readonly curveSegments: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

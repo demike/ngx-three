@@ -8,7 +8,12 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { Data3DTexture, TextureFilter } from 'three';
+import {
+  Data3DTexture,
+  MagnificationTextureFilter,
+  MinificationTextureFilter,
+  Wrapping,
+} from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
@@ -22,43 +27,52 @@ import { ThTexture } from './ThTexture';
 })
 export class ThData3DTexture<
   T extends Data3DTexture = Data3DTexture,
-  TARGS = [data: BufferSource, width: number, height: number, depth: number]
+  TARGS = [
+    data?: BufferSource | null,
+    width?: number,
+    height?: number,
+    depth?: number
+  ]
 > extends ThTexture<T, TARGS> {
   public getType(): Type<Data3DTexture> {
     return Data3DTexture;
   }
 
+  // @ts-ignore
+  public get isData3DTexture(): true | undefined {
+    return this._objRef?.isData3DTexture;
+  }
   @Input()
-  public set magFilter(value: TextureFilter) {
+  public set magFilter(value: MagnificationTextureFilter) {
     if (this._objRef) {
       this._objRef.magFilter = value;
     }
   }
 
   // @ts-ignore
-  public get magFilter(): TextureFilter | undefined {
+  public get magFilter(): MagnificationTextureFilter | undefined {
     return this._objRef?.magFilter;
   }
   @Input()
-  public set minFilter(value: TextureFilter) {
+  public set minFilter(value: MinificationTextureFilter) {
     if (this._objRef) {
       this._objRef.minFilter = value;
     }
   }
 
   // @ts-ignore
-  public get minFilter(): TextureFilter | undefined {
+  public get minFilter(): MinificationTextureFilter | undefined {
     return this._objRef?.minFilter;
   }
   @Input()
-  public set wrapR(value: boolean) {
+  public set wrapR(value: Wrapping) {
     if (this._objRef) {
       this._objRef.wrapR = value;
     }
   }
 
   // @ts-ignore
-  public get wrapR(): boolean | undefined {
+  public get wrapR(): Wrapping | undefined {
     return this._objRef?.wrapR;
   }
   @Input()
@@ -83,8 +97,15 @@ export class ThData3DTexture<
   public get generateMipmaps(): boolean | undefined {
     return this._objRef?.generateMipmaps;
   }
+  @Input()
+  public set unpackAlignment(value: number) {
+    if (this._objRef) {
+      this._objRef.unpackAlignment = value;
+    }
+  }
+
   // @ts-ignore
-  public get isData3DTexture(): true | undefined {
-    return this._objRef?.isData3DTexture;
+  public get unpackAlignment(): number | undefined {
+    return this._objRef?.unpackAlignment;
   }
 }

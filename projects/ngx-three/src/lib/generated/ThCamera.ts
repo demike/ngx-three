@@ -6,9 +6,8 @@ import {
   Component,
   forwardRef,
   Input,
-  Type,
 } from '@angular/core';
-import { Camera, Event, Matrix4 } from 'three';
+import { Camera, Event, Layers, Matrix4 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -18,15 +17,28 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
 })
-export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
-  Event,
-  T,
-  TARGS
-> {
-  public getType(): Type<Camera> {
-    return Camera;
+export abstract class ThCamera<
+  T extends Camera = Camera,
+  TARGS = []
+> extends ThObject3D<Event, T, TARGS> {
+  // @ts-ignore
+  public get isCamera(): true | undefined {
+    return this._objRef?.isCamera;
   }
-
+  // @ts-ignore
+  public get type(): (string | 'Camera') | undefined {
+    return this._objRef?.type;
+  }
+  @Input()
+  public set layers(value: Layers | [layer: number]) {
+    if (this._objRef) {
+      this._objRef.layers = applyValue<Layers>(this._objRef.layers, value);
+    }
+  }
+  // @ts-ignore
+  public get layers(): Layers | undefined {
+    return this._objRef?.layers;
+  }
   @Input()
   public set matrixWorldInverse(
     value:
@@ -128,9 +140,5 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
   // @ts-ignore
   public get projectionMatrixInverse(): Matrix4 | undefined {
     return this._objRef?.projectionMatrixInverse;
-  }
-  // @ts-ignore
-  public get isCamera(): true | undefined {
-    return this._objRef?.isCamera;
   }
 }

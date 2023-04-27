@@ -5,14 +5,13 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
+import { Shape } from 'three';
 import {
   TextGeometry,
   TextGeometryParameters,
 } from 'three/examples/jsm/geometries/TextGeometry';
-import { Font } from 'three/examples/jsm/loaders/FontLoader';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThExtrudeGeometry } from './ThExtrudeGeometry';
 
@@ -29,52 +28,21 @@ import { ThExtrudeGeometry } from './ThExtrudeGeometry';
 })
 export class ThTextGeometry<
   T extends TextGeometry = TextGeometry,
-  TARGS = [text: string, parameters: TextGeometryParameters]
+  TARGS = [text: string, parameters?: TextGeometryParameters]
 > extends ThExtrudeGeometry<T, TARGS> {
   public getType(): Type<TextGeometry> {
     return TextGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'TextGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    font: Font;
-    size: number;
-    height: number;
-    curveSegments: number;
-    bevelEnabled: boolean;
-    bevelThickness: number;
-    bevelSize: number;
-    bevelOffset: number;
-    bevelSegments: number;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        font: Font;
-        size: number;
-        height: number;
-        curveSegments: number;
-        bevelEnabled: boolean;
-        bevelThickness: number;
-        bevelSize: number;
-        bevelOffset: number;
-        bevelSegments: number;
+        readonly shapes: Shape | Shape[];
+        readonly options: TextGeometryParameters;
       }
     | undefined {
     return this._objRef?.parameters;

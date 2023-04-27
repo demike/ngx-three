@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { SphereGeometry } from 'three';
@@ -38,42 +37,20 @@ export class ThSphereGeometry<
     return SphereGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'SphereGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    radius: number;
-    widthSegments: number;
-    heightSegments: number;
-    phiStart: number;
-    phiLength: number;
-    thetaStart: number;
-    thetaLength: number;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        radius: number;
-        widthSegments: number;
-        heightSegments: number;
-        phiStart: number;
-        phiLength: number;
-        thetaStart: number;
-        thetaLength: number;
+        readonly radius: number;
+        readonly widthSegments: number;
+        readonly heightSegments: number;
+        readonly phiStart: number;
+        readonly phiLength: number;
+        readonly thetaStart: number;
+        readonly thetaLength: number;
       }
     | undefined {
     return this._objRef?.parameters;

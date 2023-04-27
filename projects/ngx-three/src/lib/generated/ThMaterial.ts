@@ -415,6 +415,17 @@ export class ThMaterial<
     return this._objRef?.premultipliedAlpha;
   }
   @Input()
+  public set forceSinglePass(value: boolean) {
+    if (this._objRef) {
+      this._objRef.forceSinglePass = value;
+    }
+  }
+
+  // @ts-ignore
+  public get forceSinglePass(): boolean | undefined {
+    return this._objRef?.forceSinglePass;
+  }
+  @Input()
   public set dithering(value: boolean) {
     if (this._objRef) {
       this._objRef.dithering = value;

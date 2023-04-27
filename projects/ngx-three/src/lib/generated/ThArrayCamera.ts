@@ -30,6 +30,10 @@ export class ThArrayCamera<
     return ArrayCamera;
   }
 
+  // @ts-ignore
+  public get isArrayCamera(): true | undefined {
+    return this._objRef?.isArrayCamera;
+  }
   @Input()
   public set cameras(value: PerspectiveCamera[]) {
     if (this._objRef) {
@@ -40,9 +44,5 @@ export class ThArrayCamera<
   // @ts-ignore
   public get cameras(): PerspectiveCamera[] | undefined {
     return this._objRef?.cameras;
-  }
-  // @ts-ignore
-  public get isArrayCamera(): true | undefined {
-    return this._objRef?.isArrayCamera;
   }
 }

@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { BufferGeometry, LineSegments, Material } from 'three';
@@ -33,19 +32,12 @@ export class ThLineSegments<
     return LineSegments;
   }
 
-  @Input()
-  public set type(value: 'LineSegments' | string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type(): ('LineSegments' | string) | undefined {
-    return this._objRef?.type;
-  }
   // @ts-ignore
   public get isLineSegments(): true | undefined {
     return this._objRef?.isLineSegments;
+  }
+  // @ts-ignore
+  public get type(): (string | 'LineSegments') | undefined {
+    return this._objRef?.type;
   }
 }

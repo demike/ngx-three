@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { ConeGeometry } from 'three';
@@ -39,15 +38,24 @@ export class ThConeGeometry<
     return ConeGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'ConeGeometry') | undefined {
     return this._objRef?.type;
+  }
+  // @ts-ignore
+  public get parameters():
+    | {
+        readonly radius: number;
+        readonly radiusTop: number;
+        readonly radiusBottom: number;
+        readonly height: number;
+        readonly radialSegments: number;
+        readonly heightSegments: number;
+        readonly openEnded: boolean;
+        readonly thetaStart: number;
+        readonly thetaLength: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

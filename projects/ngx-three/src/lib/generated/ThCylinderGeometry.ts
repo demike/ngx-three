@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { CylinderGeometry } from 'three';
@@ -39,44 +38,21 @@ export class ThCylinderGeometry<
     return CylinderGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'CylinderGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    radiusTop: number;
-    radiusBottom: number;
-    height: number;
-    radialSegments: number;
-    heightSegments: number;
-    openEnded: boolean;
-    thetaStart: number;
-    thetaLength: number;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        radiusTop: number;
-        radiusBottom: number;
-        height: number;
-        radialSegments: number;
-        heightSegments: number;
-        openEnded: boolean;
-        thetaStart: number;
-        thetaLength: number;
+        readonly radiusTop: number;
+        readonly radiusBottom: number;
+        readonly height: number;
+        readonly radialSegments: number;
+        readonly heightSegments: number;
+        readonly openEnded: boolean;
+        readonly thetaStart: number;
+        readonly thetaLength: number;
       }
     | undefined {
     return this._objRef?.parameters;

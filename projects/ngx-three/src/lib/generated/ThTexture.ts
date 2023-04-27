@@ -9,8 +9,12 @@ import {
   Type,
 } from '@angular/core';
 import {
+  AnyMapping,
+  AnyPixelFormat,
+  MagnificationTextureFilter,
   Mapping,
   Matrix3,
+  MinificationTextureFilter,
   OffscreenCanvas,
   PixelFormat,
   PixelFormatGPU,
@@ -18,7 +22,6 @@ import {
   Texture,
   TextureDataType,
   TextureEncoding,
-  TextureFilter,
   Vector2,
   Wrapping,
 } from 'three';
@@ -40,8 +43,8 @@ export class ThTexture<
     mapping?: Mapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
-    magFilter?: TextureFilter,
-    minFilter?: TextureFilter,
+    magFilter?: MagnificationTextureFilter,
+    minFilter?: MinificationTextureFilter,
     format?: PixelFormat,
     type?: TextureDataType,
     anisotropy?: number,
@@ -52,13 +55,10 @@ export class ThTexture<
     return Texture;
   }
 
-  @Input()
-  public set id(value: number) {
-    if (this._objRef) {
-      this._objRef.id = value;
-    }
+  // @ts-ignore
+  public get isTexture(): true | undefined {
+    return this._objRef?.isTexture;
   }
-
   // @ts-ignore
   public get id(): number | undefined {
     return this._objRef?.id;
@@ -86,17 +86,6 @@ export class ThTexture<
     return this._objRef?.name;
   }
   @Input()
-  public set sourceFile(value: string) {
-    if (this._objRef) {
-      this._objRef.sourceFile = value;
-    }
-  }
-
-  // @ts-ignore
-  public get sourceFile(): string | undefined {
-    return this._objRef?.sourceFile;
-  }
-  @Input()
   public set source(value: Source) {
     if (this._objRef) {
       this._objRef.source = value;
@@ -119,14 +108,14 @@ export class ThTexture<
     return this._objRef?.mipmaps;
   }
   @Input()
-  public set mapping(value: Mapping) {
+  public set mapping(value: AnyMapping) {
     if (this._objRef) {
       this._objRef.mapping = value;
     }
   }
 
   // @ts-ignore
-  public get mapping(): Mapping | undefined {
+  public get mapping(): AnyMapping | undefined {
     return this._objRef?.mapping;
   }
   @Input()
@@ -152,25 +141,25 @@ export class ThTexture<
     return this._objRef?.wrapT;
   }
   @Input()
-  public set magFilter(value: TextureFilter) {
+  public set magFilter(value: MagnificationTextureFilter) {
     if (this._objRef) {
       this._objRef.magFilter = value;
     }
   }
 
   // @ts-ignore
-  public get magFilter(): TextureFilter | undefined {
+  public get magFilter(): MagnificationTextureFilter | undefined {
     return this._objRef?.magFilter;
   }
   @Input()
-  public set minFilter(value: TextureFilter) {
+  public set minFilter(value: MinificationTextureFilter) {
     if (this._objRef) {
       this._objRef.minFilter = value;
     }
   }
 
   // @ts-ignore
-  public get minFilter(): TextureFilter | undefined {
+  public get minFilter(): MinificationTextureFilter | undefined {
     return this._objRef?.minFilter;
   }
   @Input()
@@ -185,26 +174,15 @@ export class ThTexture<
     return this._objRef?.anisotropy;
   }
   @Input()
-  public set format(value: PixelFormat) {
+  public set format(value: AnyPixelFormat) {
     if (this._objRef) {
       this._objRef.format = value;
     }
   }
 
   // @ts-ignore
-  public get format(): PixelFormat | undefined {
+  public get format(): AnyPixelFormat | undefined {
     return this._objRef?.format;
-  }
-  @Input()
-  public set internalFormat(value: PixelFormatGPU | null) {
-    if (this._objRef) {
-      this._objRef.internalFormat = value;
-    }
-  }
-
-  // @ts-ignore
-  public get internalFormat(): (PixelFormatGPU | null) | undefined {
-    return this._objRef?.internalFormat;
   }
   @Input()
   public set type(value: TextureDataType) {
@@ -216,6 +194,17 @@ export class ThTexture<
   // @ts-ignore
   public get type(): TextureDataType | undefined {
     return this._objRef?.type;
+  }
+  @Input()
+  public set internalFormat(value: PixelFormatGPU | null) {
+    if (this._objRef) {
+      this._objRef.internalFormat = value;
+    }
+  }
+
+  // @ts-ignore
+  public get internalFormat(): (PixelFormatGPU | null) | undefined {
+    return this._objRef?.internalFormat;
   }
   @Input()
   public set matrix(
@@ -391,10 +380,6 @@ export class ThTexture<
   // @ts-ignore
   public get version(): number | undefined {
     return this._objRef?.version;
-  }
-  // @ts-ignore
-  public get isTexture(): true | undefined {
-    return this._objRef?.isTexture;
   }
 
   public static readonly DEFAULT_ANISOTROPY = Texture.DEFAULT_ANISOTROPY;

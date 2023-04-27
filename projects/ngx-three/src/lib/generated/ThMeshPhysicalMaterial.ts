@@ -356,14 +356,14 @@ export class ThMeshPhysicalMaterial<
     return this._objRef?.iridescence;
   }
   @Input()
-  public set iridescenceThicknessRange(value: number[]) {
+  public set iridescenceThicknessRange(value: [number, number]) {
     if (this._objRef) {
       this._objRef.iridescenceThicknessRange = value;
     }
   }
 
   // @ts-ignore
-  public get iridescenceThicknessRange(): number[] | undefined {
+  public get iridescenceThicknessRange(): [number, number] | undefined {
     return this._objRef?.iridescenceThicknessRange;
   }
   @Input()

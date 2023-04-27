@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { BufferGeometry, LineLoop, Material } from 'three';
@@ -30,19 +29,12 @@ export class ThLineLoop<
     return LineLoop;
   }
 
-  @Input()
-  public set type(value: 'LineLoop') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type(): 'LineLoop' | undefined {
-    return this._objRef?.type;
-  }
   // @ts-ignore
   public get isLineLoop(): true | undefined {
     return this._objRef?.isLineLoop;
+  }
+  // @ts-ignore
+  public get type(): (string | 'LineLoop') | undefined {
+    return this._objRef?.type;
   }
 }

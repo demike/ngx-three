@@ -9,11 +9,12 @@ import {
 } from '@angular/core';
 import {
   CanvasTexture,
+  MagnificationTextureFilter,
   Mapping,
+  MinificationTextureFilter,
   OffscreenCanvas,
   PixelFormat,
   TextureDataType,
-  TextureFilter,
   Wrapping,
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
@@ -34,8 +35,8 @@ export class ThCanvasTexture<
     mapping?: Mapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
-    magFilter?: TextureFilter,
-    minFilter?: TextureFilter,
+    magFilter?: MagnificationTextureFilter,
+    minFilter?: MinificationTextureFilter,
     format?: PixelFormat,
     type?: TextureDataType,
     anisotropy?: number
