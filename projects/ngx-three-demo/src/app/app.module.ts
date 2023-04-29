@@ -39,6 +39,7 @@ import { OnDemandExampleComponent } from './on-demand-example/on-demand-example.
 import { RefByIdExampleComponent } from './ref-by-id-example/ref-by-id-example.component';
 import { HtmlExampleComponent } from './html-example/html-example.component';
 import { OutlinePassEventsExampleComponent } from './outline-pass-events-example/outline-pass-events-example.component';
+import { WebXRExampleComponent } from './webxr-example/webxr-example.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { OutlinePassEventsExampleComponent } from './outline-pass-events-example
     OnDemandExampleComponent,
     RefByIdExampleComponent,
     HtmlExampleComponent,
-    OutlinePassEventsExampleComponent
+    OutlinePassEventsExampleComponent,
+    WebXRExampleComponent
   ],
   imports: [
     BrowserModule,

@@ -112,6 +112,18 @@ export class ThView implements OnInit {
     camera: ThCamera;
   }>();
 
+  public enterWebXR(sessionMode: XRSessionMode, sessionInit?: XRSessionInit){
+    this.engServ.enterWebXR(sessionMode, this, sessionInit);
+  }
+
+  public exitWebXR(){
+    this.engServ.exitWebXR();
+  }
+
+  public async supportsWebXR(sessionMode: XRSessionMode): Promise<boolean>{
+    return this.engServ.supportsWebXR(sessionMode);
+  }
+
   ngOnInit(): void {
     this.initRaycaster();
   }

@@ -20,6 +20,7 @@ import { PostProcessingExampleComponent } from './post-processing-example/post-p
 import { RefByIdExampleComponent } from './ref-by-id-example/ref-by-id-example.component';
 import { SimpleExampleComponent } from './simple-example/simple-example.component';
 import { ViewsExampleComponent } from './views-example/views-example.component';
+import { WebXRExampleComponent } from './webxr-example/webxr-example.component';
 
 export const EXAMPLE_ROUTES: (Route & {
   data: {
@@ -245,7 +246,19 @@ export const EXAMPLE_ROUTES: (Route & {
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/outline-pass-events-example/outline-pass-events-example.component.scss',
       ]
     }
-  }
+  },
+  {
+    path: 'webxr-example',
+    data: {
+      title: 'WebXR Example',
+      exampleComponent: WebXRExampleComponent,
+      declarations: ['WebXRExampleComponent', 'Box'],
+      codeUrls: [
+        'https://raw.githubusercontent.com/NewYearNewPhil/ngx-three/main/projects/ngx-three-demo/src/app/webxr-example/webxr-example.component.html',
+        'https://raw.githubusercontent.com/NewYearNewPhil/ngx-three/main/projects/ngx-three-demo/src/app/webxr-example/webxr-example.component.ts'
+      ]
+    }
+  },
 ];
 
 EXAMPLE_ROUTES.forEach((route) => (route.component = ExamplePageComponent));

@@ -33,6 +33,11 @@ export class ThEngineService implements OnDestroy {
   private readonly beforeRenderEmitter = new EventEmitter<RenderState>();
   private views: ThView[] = [];
 
+  //xr stuff
+  private xrSession?: XRSession;
+  private xrView?: ThView;
+  private xrInitialCamera?: THREE.Camera;
+
   public get canvas(): HTMLCanvasElement | undefined {
     return this.rendererParameters?.domElement;
   }
@@ -102,8 +107,12 @@ export class ThEngineService implements OnDestroy {
 
   public render(): void {
     this.beforeRenderEmitter.emit({engine: this, delta: this.clock.getDelta()});
-    for (const view of this.views) {
-      this.renderView(view);
+    if(!this.xrSession){
+      for (const view of this.views) {
+        this.renderView(view);
+      }
+    } else if (this.xrView){
+      this.renderView(this.xrView);
     }
   }
 
@@ -132,10 +141,10 @@ export class ThEngineService implements OnDestroy {
     }
 
     this.applyRendererParametersFromView(view);
-    if (view.effectComposer) {
-      view.effectComposer.render();
-    } else {
+    if(this.xrSession || !view.effectComposer){
       this._renderer.render(scene.objRef, camera.objRef);
+    } else {
+      view.effectComposer.render();
     }
   }
 
@@ -192,6 +201,58 @@ export class ThEngineService implements OnDestroy {
     this.resizeEmitter.emit({ width, height });
 
     return true;
+  }
+
+  public async enterWebXR(sessionMode: XRSessionMode, view: ThView, sessionInit?: XRSessionInit): Promise<void>{
+    if(await this.supportsWebXR(sessionMode) && navigator.xr){
+      this.xrView = view;
+      this.xrInitialCamera = view.camera?.objRef?.clone();
+
+      navigator.xr.requestSession(sessionMode, sessionInit).then(this.onWebXRSessionStarted.bind(this));
+    } else {
+      console.warn(`requested WebXR session not supported: "${sessionMode}"`);
+    }
+  }
+
+  public exitWebXR(): void{
+    if(this.xrSession){
+      this.xrSession.end();
+    }
+  }
+
+  public async supportsWebXR(sessionMode: XRSessionMode): Promise<boolean> {
+    return navigator.xr && await navigator.xr.isSessionSupported(sessionMode) ? true : false;
+  }
+
+  private async onWebXRSessionStarted(session: XRSession): Promise<void> {
+    if(!this._renderer || !this._renderer.xr) {
+      return;
+    }
+
+    session.addEventListener('end', this.onWebXRSessionEnded.bind(this));
+    this._renderer.xr.setReferenceSpaceType('local');
+    this._renderer.xr.enabled = true;
+    this._renderer.xr.setSession(session);
+
+    this._renderer.setAnimationLoop(this.render.bind(this));
+
+    this.xrSession = session;
+  }
+
+  private async onWebXRSessionEnded(): Promise<void> {
+    if(!this.xrSession || !this.xrView) {
+      return;
+    }
+
+    this.xrSession.removeEventListener('end', this.onWebXRSessionEnded.bind(this));
+    this.xrSession = undefined;
+
+    if(this.xrView.camera && this.xrInitialCamera){
+      this.xrView.camera.objRef?.copy(this.xrInitialCamera);
+    }
+
+    this.xrInitialCamera = undefined;
+    this.xrView = undefined;
   }
 
   protected calcRendererSize() {
