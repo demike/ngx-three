@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Audio, AudioContext, AudioListener, Event } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -15,7 +9,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-audio',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThAudio) }],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThAudio) }]
 })
 export class ThAudio<
   NodeType extends AudioNode = GainNode,

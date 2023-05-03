@@ -9,10 +9,9 @@ describe('PLYLoaderExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PLYLoaderExampleComponent ],
-      imports: [ NgxThreeModule ]
-    })
-    .compileComponents();
+      declarations: [PLYLoaderExampleComponent],
+      imports: [NgxThreeModule]
+    }).compileComponents();
   });
 
   beforeEach(() => {

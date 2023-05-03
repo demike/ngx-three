@@ -13,7 +13,7 @@ import { ThWrapperBase } from '../ThWrapperBase';
   selector: 'th-effectComposerGen',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
+  providers: []
 })
 export class ThEffectComposerGen<
   T extends EffectComposer = EffectComposer,

@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
 import { BoxGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -14,9 +9,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-boxGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThBufferGeometry, useExisting: forwardRef(() => ThBoxGeometry) },
-  ],
+  providers: [{ provide: ThBufferGeometry, useExisting: forwardRef(() => ThBoxGeometry) }]
 })
 export class ThBoxGeometry<
   T extends BoxGeometry = BoxGeometry,

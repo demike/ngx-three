@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import {
   MagnificationTextureFilter,
   Mapping,
@@ -15,7 +9,7 @@ import {
   PixelFormat,
   TextureDataType,
   VideoTexture,
-  Wrapping,
+  Wrapping
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
@@ -24,9 +18,7 @@ import { ThTexture } from './ThTexture';
   selector: 'th-videoTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) },
-  ],
+  providers: [{ provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) }]
 })
 export class ThVideoTexture<
   T extends VideoTexture = VideoTexture,

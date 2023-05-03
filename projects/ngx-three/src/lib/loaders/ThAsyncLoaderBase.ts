@@ -9,7 +9,7 @@ import {
   OnInit,
   Output,
   PipeTransform,
-  Type,
+  Type
 } from '@angular/core';
 import { Loader } from 'three';
 import { ThAnimationLoopService } from '../renderer/th-animation-loop.service';

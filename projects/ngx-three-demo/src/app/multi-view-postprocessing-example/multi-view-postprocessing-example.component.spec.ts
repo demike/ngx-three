@@ -8,9 +8,8 @@ describe('MultiViewPostprocessingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MultiViewPostprocessingExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [MultiViewPostprocessingExampleComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

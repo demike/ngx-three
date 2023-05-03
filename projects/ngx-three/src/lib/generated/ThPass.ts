@@ -2,13 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Pass } from 'three/examples/jsm/postprocessing/Pass';
 import { ThPassBase } from '../ThPassBase';
 
@@ -16,12 +10,9 @@ import { ThPassBase } from '../ThPassBase';
   selector: 'th-pass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThPass) }],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThPass) }]
 })
-export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<
-  T,
-  TARGS
-> {
+export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<T, TARGS> {
   public getType(): Type<Pass> {
     return Pass;
   }

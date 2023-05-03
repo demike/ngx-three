@@ -1,18 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  MeshDistanceMaterial,
-  MeshDistanceMaterialParameters,
-  Texture,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { MeshDistanceMaterial, MeshDistanceMaterialParameters, Texture } from 'three';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
@@ -22,9 +12,9 @@ import { ThMaterial } from './ThMaterial';
   providers: [
     {
       provide: ThMaterial,
-      useExisting: forwardRef(() => ThMeshDistanceMaterial),
-    },
-  ],
+      useExisting: forwardRef(() => ThMeshDistanceMaterial)
+    }
+  ]
 })
 export class ThMeshDistanceMaterial<
   T extends MeshDistanceMaterial = MeshDistanceMaterial,

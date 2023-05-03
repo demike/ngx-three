@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
 import { LatheGeometry, Vector2 } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -17,18 +12,13 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThLatheGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThLatheGeometry)
+    }
+  ]
 })
 export class ThLatheGeometry<
   T extends LatheGeometry = LatheGeometry,
-  TARGS = [
-    points?: Vector2[],
-    segments?: number,
-    phiStart?: number,
-    phiLength?: number
-  ]
+  TARGS = [points?: Vector2[], segments?: number, phiStart?: number, phiLength?: number]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<LatheGeometry> {
     return LatheGeometry;

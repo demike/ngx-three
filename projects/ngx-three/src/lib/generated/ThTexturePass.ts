@@ -2,13 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ShaderMaterial, Texture } from 'three';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import { TexturePass } from 'three/examples/jsm/postprocessing/TexturePass';
@@ -19,9 +13,7 @@ import { ThPass } from './ThPass';
   selector: 'th-texturePass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThTexturePass) },
-  ],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThTexturePass) }]
 })
 export class ThTexturePass<
   T extends TexturePass = TexturePass,

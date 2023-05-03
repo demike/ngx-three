@@ -1,23 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Color,
-  ColorRepresentation,
-  CubeTexture,
-  Event,
-  FogBase,
-  Material,
-  Scene,
-  Texture,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Color, ColorRepresentation, CubeTexture, Event, FogBase, Material, Scene, Texture } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -25,13 +10,9 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-scene',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }]
 })
-export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
-  Event,
-  T,
-  TARGS
-> {
+export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Scene> {
     return Scene;
   }
@@ -96,13 +77,9 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
     return this._objRef?.overrideMaterial;
   }
   @Input()
-  public set background(
-    value: Color | Texture | CubeTexture | null | [color: ColorRepresentation]
-  ) {
+  public set background(value: Color | Texture | CubeTexture | null | [color: ColorRepresentation]) {
     if (this._objRef) {
-      this._objRef.background = applyValue<
-        Color | Texture | CubeTexture | null
-      >(this._objRef.background, value);
+      this._objRef.background = applyValue<Color | Texture | CubeTexture | null>(this._objRef.background, value);
     }
   }
   // @ts-ignore

@@ -1,23 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RenderState } from 'ngx-three';
-import {
-    AnimationAction, AnimationMixer, LoopOnce,
-    Mesh
-} from 'three';
+import { AnimationAction, AnimationMixer, LoopOnce, Mesh } from 'three';
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import { ASSET_PATH } from '../assets';
 
 @Component({
   selector: 'app-robot',
   templateUrl: './robot.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RobotComponent {
   public readonly assetPath = ASSET_PATH + 'RobotExpressive.glb';
 
-
-  public readonly states = [ 'Idle', 'Walking', 'Running', 'Dance', 'Death', 'Sitting', 'Standing' ];
-  public readonly emotes = [ 'Jump', 'Yes', 'No', 'Wave', 'Punch', 'ThumbsUp' ];
+  public readonly states = ['Idle', 'Walking', 'Running', 'Dance', 'Death', 'Sitting', 'Standing'];
+  public readonly emotes = ['Jump', 'Yes', 'No', 'Wave', 'Punch', 'ThumbsUp'];
 
   animationMixer?: AnimationMixer;
 
@@ -25,8 +21,7 @@ export class RobotComponent {
   activeAction?: AnimationAction;
   previousAction?: AnimationAction;
 
-  constructor() {
-  }
+  constructor() {}
 
   onInit(gltf: GLTF) {
     this.animationMixer = new AnimationMixer(gltf.scene);
@@ -42,10 +37,7 @@ export class RobotComponent {
       const action = this.animationMixer.clipAction(animation);
       this.actions[animation.name] = action;
 
-      if (
-        this.emotes.indexOf(animation.name) >= 0 ||
-        this.states.indexOf(animation.name) >= 4
-      ) {
+      if (this.emotes.indexOf(animation.name) >= 0 || this.states.indexOf(animation.name) >= 4) {
         action.clampWhenFinished = true;
         action.loop = LoopOnce;
       }
@@ -69,10 +61,6 @@ export class RobotComponent {
       this.previousAction.fadeOut(duration);
     }
 
-    this.activeAction.reset()
-      .setEffectiveTimeScale(1)
-      .setEffectiveWeight(1)
-      .fadeIn(duration)
-      .play();
+    this.activeAction.reset().setEffectiveTimeScale(1).setEffectiveWeight(1).fadeIn(duration).play();
   }
 }

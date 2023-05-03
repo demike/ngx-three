@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
 import { ExtrudeGeometry, ExtrudeGeometryOptions, Shape } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -17,9 +12,9 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThExtrudeGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThExtrudeGeometry)
+    }
+  ]
 })
 export class ThExtrudeGeometry<
   T extends ExtrudeGeometry = ExtrudeGeometry,

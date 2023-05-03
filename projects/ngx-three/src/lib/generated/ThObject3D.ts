@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  SkipSelf,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, SkipSelf, Type } from '@angular/core';
 import {
   AnimationClip,
   BaseEvent,
@@ -25,7 +19,7 @@ import {
   Quaternion,
   Scene,
   Vector3,
-  WebGLRenderer,
+  WebGLRenderer
 } from 'three';
 import { ThObjectBase } from '../ThObjectBase';
 import { applyValue } from '../util';
@@ -34,7 +28,7 @@ import { applyValue } from '../util';
   selector: 'th-object3D',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
+  providers: []
 })
 export class ThObject3D<
   E extends BaseEvent = Event,
@@ -111,9 +105,7 @@ export class ThObject3D<
     return this._objRef?.position;
   }
   @Input()
-  public set rotation(
-    value: Euler | [x: number, y: number, z: number, order?: EulerOrder]
-  ) {
+  public set rotation(value: Euler | [x: number, y: number, z: number, order?: EulerOrder]) {
     if (this._objRef) {
       applyValue<Euler>(this._objRef.rotation, value);
     }
@@ -123,9 +115,7 @@ export class ThObject3D<
     return this._objRef?.rotation;
   }
   @Input()
-  public set quaternion(
-    value: Quaternion | [x: number, y: number, z: number, w: number]
-  ) {
+  public set quaternion(value: Quaternion | [x: number, y: number, z: number, w: number]) {
     if (this._objRef) {
       applyValue<Quaternion>(this._objRef.quaternion, value);
     }
@@ -254,10 +244,7 @@ export class ThObject3D<
         ]
   ) {
     if (this._objRef) {
-      this._objRef.matrixWorld = applyValue<Matrix4>(
-        this._objRef.matrixWorld,
-        value
-      );
+      this._objRef.matrixWorld = applyValue<Matrix4>(this._objRef.matrixWorld, value);
     }
   }
   // @ts-ignore
@@ -467,11 +454,9 @@ export class ThObject3D<
 
   public static readonly DEFAULT_UP = Object3D.DEFAULT_UP;
 
-  public static readonly DEFAULT_MATRIX_AUTO_UPDATE =
-    Object3D.DEFAULT_MATRIX_AUTO_UPDATE;
+  public static readonly DEFAULT_MATRIX_AUTO_UPDATE = Object3D.DEFAULT_MATRIX_AUTO_UPDATE;
 
-  public static readonly DEFAULT_MATRIX_WORLD_AUTO_UPDATE =
-    Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE;
+  public static readonly DEFAULT_MATRIX_WORLD_AUTO_UPDATE = Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE;
 
   constructor(@SkipSelf() parent: ThObject3D) {
     super(parent);

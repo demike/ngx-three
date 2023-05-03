@@ -1,21 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Box3,
-  Box3Helper,
-  BufferGeometry,
-  Color,
-  Material,
-  Vector3,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Box3, Box3Helper, BufferGeometry, Color, Material, Vector3 } from 'three';
 import { applyValue } from '../util';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
@@ -24,14 +11,14 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-box3Helper',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThBox3Helper) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThBox3Helper) }]
 })
-export class ThBox3Helper<
-  T extends Box3Helper = Box3Helper,
-  TARGS = [box: Box3, color?: Color]
-> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
+export class ThBox3Helper<T extends Box3Helper = Box3Helper, TARGS = [box: Box3, color?: Color]> extends ThLineSegments<
+  BufferGeometry,
+  Material | Material[],
+  T,
+  TARGS
+> {
   public getType(): Type<Box3Helper> {
     return Box3Helper;
   }

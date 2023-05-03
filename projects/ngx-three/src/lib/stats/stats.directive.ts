@@ -4,7 +4,7 @@ import Stats from 'three/examples/jsm/libs/stats.module';
 import { Subscription } from 'rxjs';
 
 @Directive({
-  selector: '[thStats]',
+  selector: '[thStats]'
 })
 export class StatsDirective implements OnInit, OnDestroy {
   private stats: Stats;

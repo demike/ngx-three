@@ -52,7 +52,6 @@ describe('ThWrapperBase', () => {
 
   describe('three js event handling', () => {
     it('should bind three js events', () => {
-
       let callCnt = 0;
       const callback = () => callCnt++;
 
@@ -60,7 +59,7 @@ describe('ThWrapperBase', () => {
 
       component.threeEvents = {
         event1: callback,
-        event2: callback,
+        event2: callback
       };
 
       component.objRef?.dispatchEvent({ type: 'event1' });
@@ -69,7 +68,6 @@ describe('ThWrapperBase', () => {
     });
 
     it('should unbind three js events on destroy', () => {
-
       let callCnt = 0;
       const callback = () => callCnt++;
 
@@ -81,7 +79,7 @@ describe('ThWrapperBase', () => {
 
       const events = {
         event1: callback,
-        event2: callback,
+        event2: callback
       };
       component.threeEvents = events;
 
@@ -91,9 +89,6 @@ describe('ThWrapperBase', () => {
       expect(component.threeEvents).toBeUndefined();
       expect(addEventSpy.length).toBe(2);
       expect(removeEventSpy.length).toBe(2);
-
     });
-
   });
-
 });

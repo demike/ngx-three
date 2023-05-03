@@ -5,7 +5,6 @@ import { ASSET_PATH } from '../assets';
   templateUrl: './events-example.component.html',
   styleUrls: ['./events-example.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
-
 })
 export class EventsExampleComponent {
   public readonly id = 'CID';
@@ -37,7 +36,8 @@ export class EventsExampleComponent {
     this.pushToChangesArray(`${this.id}: orbit control change`);
   }
 
-  public onOrbitControlEnd = () => { // <-- preserves binding scope when used in template
+  public onOrbitControlEnd = () => {
+    // <-- preserves binding scope when used in template
     this.pushToChangesArray(`${this.id}: orbit control end`);
   };
 

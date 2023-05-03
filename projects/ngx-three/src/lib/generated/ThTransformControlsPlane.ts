@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { BufferGeometry, Material, Quaternion, Vector3 } from 'three';
 import { TransformControlsPlane } from 'three/examples/jsm/controls/TransformControls';
 import { ThControlBase } from '../ThControlBase';
@@ -21,9 +15,9 @@ import { ThMesh } from './ThMesh';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThTransformControlsPlane),
-    },
-  ],
+      useExisting: forwardRef(() => ThTransformControlsPlane)
+    }
+  ]
 })
 export class ThTransformControlsPlane<
   T extends TransformControlsPlane = TransformControlsPlane,
@@ -77,21 +71,13 @@ export class ThTransformControlsPlane<
   @Input()
   public set worldPosition(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
-      this._objRef.worldPosition = applyValue<Vector3>(
-        this._objRef.worldPosition,
-        value
-      );
+      this._objRef.worldPosition = applyValue<Vector3>(this._objRef.worldPosition, value);
     }
   }
   @Input()
-  public set worldQuaternion(
-    value: Quaternion | [x: number, y: number, z: number, w: number]
-  ) {
+  public set worldQuaternion(value: Quaternion | [x: number, y: number, z: number, w: number]) {
     if (this._objRef) {
-      this._objRef.worldQuaternion = applyValue<Quaternion>(
-        this._objRef.worldQuaternion,
-        value
-      );
+      this._objRef.worldQuaternion = applyValue<Quaternion>(this._objRef.worldQuaternion, value);
     }
   }
 }

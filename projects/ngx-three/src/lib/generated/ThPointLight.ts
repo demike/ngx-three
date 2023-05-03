@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ColorRepresentation, PointLight, PointLightShadow } from 'three';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
@@ -16,18 +10,11 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-pointLight',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThPointLight) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPointLight) }]
 })
 export class ThPointLight<
   T extends PointLight = PointLight,
-  TARGS = [
-    color?: ColorRepresentation,
-    intensity?: number,
-    distance?: number,
-    decay?: number
-  ]
+  TARGS = [color?: ColorRepresentation, intensity?: number, distance?: number, decay?: number]
 > extends ThLight<PointLightShadow, T, TARGS> {
   public getType(): Type<PointLight> {
     return PointLight;

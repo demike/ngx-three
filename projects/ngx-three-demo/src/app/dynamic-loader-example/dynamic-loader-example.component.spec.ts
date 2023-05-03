@@ -8,9 +8,8 @@ describe('DynamicLoaderExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DynamicLoaderExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [DynamicLoaderExampleComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

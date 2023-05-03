@@ -21,7 +21,6 @@ const RENDERER_DEFAULTS: WebGLRendererParameters = {
 
 @Injectable()
 export class ThEngineService implements OnDestroy {
-
   public readonly beforeRender$: Observable<RenderState>;
   public readonly resize$: Observable<{ width: number; height: number }>;
 
@@ -101,7 +100,7 @@ export class ThEngineService implements OnDestroy {
   }
 
   public render(): void {
-    this.beforeRenderEmitter.emit({engine: this, delta: this.clock.getDelta()});
+    this.beforeRenderEmitter.emit({ engine: this, delta: this.clock.getDelta() });
     for (const view of this.views) {
       this.renderView(view);
     }

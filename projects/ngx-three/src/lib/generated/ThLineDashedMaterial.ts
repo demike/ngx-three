@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { LineDashedMaterial, LineDashedMaterialParameters } from 'three';
 import { ThLineBasicMaterial } from './ThLineBasicMaterial';
 import { ThMaterial } from './ThMaterial';
@@ -19,9 +13,9 @@ import { ThMaterial } from './ThMaterial';
   providers: [
     {
       provide: ThMaterial,
-      useExisting: forwardRef(() => ThLineDashedMaterial),
-    },
-  ],
+      useExisting: forwardRef(() => ThLineDashedMaterial)
+    }
+  ]
 })
 export class ThLineDashedMaterial<
   T extends LineDashedMaterial = LineDashedMaterial,

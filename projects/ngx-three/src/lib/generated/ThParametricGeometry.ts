@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Vector3 } from 'three';
 import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
@@ -19,17 +13,13 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThParametricGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThParametricGeometry)
+    }
+  ]
 })
 export class ThParametricGeometry<
   T extends ParametricGeometry = ParametricGeometry,
-  TARGS = [
-    func?: (u: number, v: number, target: Vector3) => void,
-    slices?: number,
-    stacks?: number
-  ]
+  TARGS = [func?: (u: number, v: number, target: Vector3) => void, slices?: number, stacks?: number]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<ParametricGeometry> {
     return ParametricGeometry;

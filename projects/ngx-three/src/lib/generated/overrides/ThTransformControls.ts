@@ -14,9 +14,9 @@ import { ThTransformControlsGen } from '../ThTransformControlsGen';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThTransformControls),
-    },
-  ],
+      useExisting: forwardRef(() => ThTransformControls)
+    }
+  ]
 })
 export class ThTransformControls<
   T extends TransformControls = TransformControls,

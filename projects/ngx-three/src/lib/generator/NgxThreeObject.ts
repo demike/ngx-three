@@ -23,7 +23,7 @@ export class NgxThreeObject extends NgxThreeClass {
     }
 
     let arr = `[{provide: ThObject3D, useExisting: forwardRef(() => ${this.className})}`;
-    if (this.hasBaseClass('Camera', (this.classDecl as unknown) as InterfaceType)) {
+    if (this.hasBaseClass('Camera', this.classDecl as unknown as InterfaceType)) {
       // also provide a camera
       this.imports.add("import { ThCamera } from './ThCamera';");
       arr += `,{provide: ThCamera, useExisting: forwardRef(() => ${this.className})}`;

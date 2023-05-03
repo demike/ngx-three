@@ -13,8 +13,8 @@ import { ThEngineService } from './ThEngine.service';
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThView) },
     { provide: RAYCASTER, useValue: new Raycaster() },
-    RaycasterService,
-  ],
+    RaycasterService
+  ]
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThView implements OnInit {

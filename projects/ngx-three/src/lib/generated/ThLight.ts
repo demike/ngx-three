@@ -1,12 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
 import { Color, ColorRepresentation, Event, Light, LightShadow } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -15,7 +10,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-light',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLight) }],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLight) }]
 })
 export abstract class ThLight<
   TShadowSupport extends LightShadow | undefined = LightShadow | undefined,

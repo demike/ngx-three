@@ -13,8 +13,7 @@ export enum RaycasterEvent {
   pointerUp = 'pointerUp'
 }
 
-
-export const RAYCASTER = new InjectionToken<Raycaster> ('A reference to the raycaster object',{
+export const RAYCASTER = new InjectionToken<Raycaster>('A reference to the raycaster object', {
   factory: () => new Raycaster()
 });
 
@@ -142,13 +141,13 @@ export class RaycasterService implements OnDestroy {
     this.maxClickDistance = event.width;
     this.pointerDownEvent = event;
 
-    if(!this.isReady()) {
+    if (!this.isReady()) {
       return;
     }
 
     const i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.pointerDown);
     if (i && i.target && i.target.host.objRef) {
-      const evt = { type: RaycasterEvent.pointerDown, component: i.target.host,  ...i };
+      const evt = { type: RaycasterEvent.pointerDown, component: i.target.host, ...i };
       i.target.host.objRef.dispatchEvent(evt);
       i.target.emitOnPointerDown(evt);
     }
@@ -158,7 +157,7 @@ export class RaycasterService implements OnDestroy {
     const downEvent = this.pointerDownEvent;
     this.pointerDownEvent = undefined;
 
-    if(!this.isReady()) {
+    if (!this.isReady()) {
       return;
     }
 
@@ -176,14 +175,21 @@ export class RaycasterService implements OnDestroy {
     }
     i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.click);
     if (i && i.target && i.target.host.objRef) {
-      const evt = { type: RaycasterEvent.click, component: i.target.host,  ...i };
+      const evt = { type: RaycasterEvent.click, component: i.target.host, ...i };
       i.target.host.objRef.dispatchEvent(evt);
       i.target.emitOnClick(evt);
     }
   }
 
   private isReady(ignorePaused?: boolean): boolean {
-    return !!(this.enabled && (ignorePaused || !this.paused) && this.camera && this.camera.objRef && this.groups && this.groups.length > 0);
+    return !!(
+      this.enabled &&
+      (ignorePaused || !this.paused) &&
+      this.camera &&
+      this.camera.objRef &&
+      this.groups &&
+      this.groups.length > 0
+    );
   }
 
   private calcPointerDownUpDinstance(upEvent: PointerEvent, downEvent?: PointerEvent) {
@@ -204,7 +210,6 @@ export class RaycasterService implements OnDestroy {
     const mouseVector = new THREE.Vector2(x, y);
     this.raycaster.setFromCamera(mouseVector, this.camera.objRef);
 
-
     // loop across all groups. Try to find the group with nearest distance.
     let nearestIntersection: THREE.Intersection | undefined;
     let nearestGroup: RaycasterEventDirective | undefined;
@@ -214,7 +219,10 @@ export class RaycasterService implements OnDestroy {
         continue;
       }
       const intersection = this.raycaster.intersectObject(i, true);
-      if (intersection.length > 0 && (!nearestIntersection || nearestIntersection.distance > intersection[0].distance)) {
+      if (
+        intersection.length > 0 &&
+        (!nearestIntersection || nearestIntersection.distance > intersection[0].distance)
+      ) {
         nearestIntersection = intersection[0];
         nearestGroup = group;
       }

@@ -4,7 +4,6 @@ import * as THREE from 'three';
 import { Clock, Plane, Vector3 } from 'three';
 import { ASSET_PATH } from '../assets';
 
-
 /**
  * An example showing
  * - how to use the refById directive.
@@ -18,17 +17,17 @@ import { ASSET_PATH } from '../assets';
   templateUrl: './ref-by-id-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RefByIdExampleComponent  {
+export class RefByIdExampleComponent {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   public readonly Math = Math;
   public selected = false;
   public readonly glbPath = `${ASSET_PATH}mac-draco.glb`;
   public readonly clock = new Clock(true);
 
-  public readonly plane = new Plane(new Vector3(0,1,0),3);
+  public readonly plane = new Plane(new Vector3(0, 1, 0), 3);
 
-  public rotation: [number, number, number] = [0,0,0];
-  public position: [number, number, number] = [0,0,0];
+  public rotation: [number, number, number] = [0, 0, 0];
+  public position: [number, number, number] = [0, 0, 0];
 
   constructor(dracoLoader: DRACOLoaderService) {
     // specify the draco decoder path used by the gltf loader instances
@@ -59,11 +58,9 @@ export class RefByIdExampleComponent  {
     this.uniforms.time.value = 1 + this.clock.getElapsedTime() * 5;
   }
 
-  public uniforms = { time: {value: 1.0}};
+  public uniforms = { time: { value: 1.0 } };
 
-
-  public readonly fragmentShader1 =
-`
+  public readonly fragmentShader1 = `
 uniform float time;
 varying vec2 vUv;
 
@@ -78,8 +75,7 @@ void main( void ) {
 }
 `;
 
-public readonly fragmentShader2 =
-  `
+  public readonly fragmentShader2 = `
   uniform float time;
   varying vec2 vUv;
 
@@ -94,8 +90,7 @@ public readonly fragmentShader2 =
   }
   `;
 
-  public readonly vertexShader =
-  `varying vec2 vUv;
+  public readonly vertexShader = `varying vec2 vUv;
   void main() {
     vUv = uv;
     vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );

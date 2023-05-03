@@ -7,7 +7,7 @@ import {
   OnInit,
   Output,
   SimpleChanges,
-  Type,
+  Type
 } from '@angular/core';
 import { Observable, ReplaySubject } from 'rxjs';
 import { EventDispatcher, Object3D } from 'three';
@@ -17,7 +17,7 @@ import { isDisposable } from './util';
 
 @Component({
   selector: 'th-abs-wrapper',
-  template: '',
+  template: ''
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnChanges, OnInit, OnDestroy {

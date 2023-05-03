@@ -2,13 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ShaderMaterial, Texture, WebGLRenderTarget } from 'three';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import { SMAAPass } from 'three/examples/jsm/postprocessing/SMAAPass';
@@ -19,14 +13,12 @@ import { ThPass } from './ThPass';
   selector: 'th-sMAAPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThSMAAPass) },
-  ],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThSMAAPass) }]
 })
-export class ThSMAAPass<
-  T extends SMAAPass = SMAAPass,
-  TARGS = [width: number, height: number]
-> extends ThPass<T, TARGS> {
+export class ThSMAAPass<T extends SMAAPass = SMAAPass, TARGS = [width: number, height: number]> extends ThPass<
+  T,
+  TARGS
+> {
   public getType(): Type<SMAAPass> {
     return SMAAPass;
   }

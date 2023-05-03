@@ -7,7 +7,7 @@ import { ThCanvas, ThInstancedMesh, ThPointLight } from 'ngx-three';
 @Component({
   selector: 'app-instanced-mesh-example',
   templateUrl: './instanced-mesh-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InstancedMeshExampleComponent implements OnInit {
   readonly SIZE = 1.5;

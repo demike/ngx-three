@@ -24,7 +24,6 @@ export * from './lib/generated/ngx-three-generated.module';
 
 export * from './lib/events/raycaster.events.directive';
 
-
 // component helpers
 
 export * from './lib/component.helpers';
@@ -39,7 +38,6 @@ export * from './lib/pipes/bind.pipe';
 export * from './lib/pipes/plane.pipe';
 
 export * from './lib/stats/stats.directive';
-
 
 // texture loaders
 export * from './lib/loaders/ThTextureLoader';

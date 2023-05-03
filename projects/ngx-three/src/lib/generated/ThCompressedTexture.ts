@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import {
   CompressedPixelFormat,
   CompressedTexture,
@@ -16,7 +10,7 @@ import {
   MinificationTextureFilter,
   TextureDataType,
   TextureEncoding,
-  Wrapping,
+  Wrapping
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
@@ -28,9 +22,9 @@ import { ThTexture } from './ThTexture';
   providers: [
     {
       provide: ThTextureBase,
-      useExisting: forwardRef(() => ThCompressedTexture),
-    },
-  ],
+      useExisting: forwardRef(() => ThCompressedTexture)
+    }
+  ]
 })
 export class ThCompressedTexture<
   T extends CompressedTexture = CompressedTexture,

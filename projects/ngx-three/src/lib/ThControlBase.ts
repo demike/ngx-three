@@ -11,13 +11,11 @@ import { ThWrapperBase } from './ThWrapperBase';
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements OnDestroy {
-
   protected origDispatchEventMethod?: (event: any) => void;
   protected beforeRenderSubscription?: Subscription;
-  protected renderLoop =  inject(ThAnimationLoopService);
+  protected renderLoop = inject(ThAnimationLoopService);
 
-
-  constructor(protected _camera: ThObject3D<any>, protected canvas?: ThCanvas, ) {
+  constructor(protected _camera: ThObject3D<any>, protected canvas?: ThCanvas) {
     super();
   }
 
@@ -32,8 +30,8 @@ export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements On
   }
 
   protected patchDispatchEvent(dispatcher: Partial<EventDispatcher>) {
-    if(dispatcher.dispatchEvent) {
-      const origMethod = this.origDispatchEventMethod = dispatcher.dispatchEvent;
+    if (dispatcher.dispatchEvent) {
+      const origMethod = (this.origDispatchEventMethod = dispatcher.dispatchEvent);
       dispatcher.dispatchEvent = (event: any) => {
         origMethod.call(dispatcher, event);
         // request an animation frame after an event was emitted;
@@ -43,28 +41,27 @@ export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements On
   }
 
   public ngOnDestroy(): void {
-      super.ngOnDestroy();
-      this.unpatchDispatchEvent();
-      this.unsubscribeControlUpdater();
+    super.ngOnDestroy();
+    this.unpatchDispatchEvent();
+    this.unsubscribeControlUpdater();
   }
 
   protected unpatchDispatchEvent() {
-    if(this.origDispatchEventMethod && this._objRef) {
+    if (this.origDispatchEventMethod && this._objRef) {
       (this._objRef as unknown as EventDispatcher).dispatchEvent = this.origDispatchEventMethod;
     }
   }
 
-  protected subscribeControlUpdater( control: { update: (delta: number) => void }) {
-
-    if(control.update !== undefined) {
+  protected subscribeControlUpdater(control: { update: (delta: number) => void }) {
+    if (control.update !== undefined) {
       this.beforeRenderSubscription = this.renderLoop.beforeRender$.subscribe((state) => {
-         control.update(state.delta);
+        control.update(state.delta);
       });
     }
   }
 
   protected unsubscribeControlUpdater() {
-    if(this.beforeRenderSubscription) {
+    if (this.beforeRenderSubscription) {
       this.beforeRenderSubscription.unsubscribe();
     }
   }

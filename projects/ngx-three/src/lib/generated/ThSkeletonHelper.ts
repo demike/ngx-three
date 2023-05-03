@@ -1,22 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  Bone,
-  BufferGeometry,
-  Material,
-  Matrix4,
-  Object3D,
-  SkeletonHelper,
-  SkinnedMesh,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { Bone, BufferGeometry, Material, Matrix4, Object3D, SkeletonHelper, SkinnedMesh } from 'three';
 import { applyValue } from '../util';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
@@ -25,9 +11,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-skeletonHelper',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThSkeletonHelper) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSkeletonHelper) }]
 })
 export class ThSkeletonHelper<
   T extends SkeletonHelper = SkeletonHelper,

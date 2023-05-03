@@ -7,7 +7,7 @@ import {
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
+  forwardRef
 } from '@angular/core';
 import { Camera, Color, Material, Scene } from 'three';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
@@ -22,7 +22,7 @@ import { ThEffectComposer } from './ThEffectComposer';
   selector: 'th-renderPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThRenderPass) }],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThRenderPass) }]
 })
 export class ThRenderPass<
     T extends RenderPass = RenderPass,

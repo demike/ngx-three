@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import {
   CubeTexture,
   CubeTextureMapping,
@@ -16,7 +10,7 @@ import {
   PixelFormat,
   TextureDataType,
   TextureEncoding,
-  Wrapping,
+  Wrapping
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
@@ -25,9 +19,7 @@ import { ThTexture } from './ThTexture';
   selector: 'th-cubeTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThCubeTexture) },
-  ],
+  providers: [{ provide: ThTextureBase, useExisting: forwardRef(() => ThCubeTexture) }]
 })
 export class ThCubeTexture<
   T extends CubeTexture = CubeTexture,

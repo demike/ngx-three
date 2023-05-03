@@ -10,8 +10,7 @@ describe('HtmlExampleComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppModule]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(HtmlExampleComponent);
     component = fixture.componentInstance;

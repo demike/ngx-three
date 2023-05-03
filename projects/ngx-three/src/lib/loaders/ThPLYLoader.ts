@@ -7,7 +7,6 @@ import { BufferGeometry } from 'three';
 import { ThBufferGeometry } from '../generated';
 import { isObserved } from '../util';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -16,36 +15,35 @@ export class PLYLoaderService extends ThAsyncLoaderService<PLYLoader> {
 }
 
 @Pipe({
-   name: 'loadPLY',
-   pure: true
+  name: 'loadPLY',
+  pure: true
 })
 export class ThPLYLoaderPipe extends ThAsyncLoaderBasePipe<PLYLoader> implements PipeTransform {
-    constructor(protected service: PLYLoaderService) {
-      super();
-    }
+  constructor(protected service: PLYLoaderService) {
+    super();
+  }
 }
 
 @Directive({
-  selector: '[loadPLY]',
+  selector: '[loadPLY]'
 })
 export class ThPLYLoaderDirective extends ThAsyncLoaderBaseDirective<PLYLoader> {
   constructor(@Host() protected host: ThBufferGeometry, protected zone: NgZone, protected service: PLYLoaderService) {
-    super(host,zone);
+    super(host, zone);
   }
 
   protected getRefFromResponse(response: BufferGeometry) {
-      response.computeVertexNormals();
-      return response;
+    response.computeVertexNormals();
+    return response;
   }
-
 
   protected async load() {
     if (!this.initialized) {
       return;
     }
 
-    if(this._url === undefined) {
-        throw new Error('missing url');
+    if (this._url === undefined) {
+      throw new Error('missing url');
     }
 
     const url = this._url;
@@ -56,19 +54,14 @@ export class ThPLYLoaderDirective extends ThAsyncLoaderBaseDirective<PLYLoader> 
         }
       : undefined;
 
-    const result = await this.zone.runOutsideAngular(() =>
-        this.service.load(url, onProgress));
+    const result = await this.zone.runOutsideAngular(() => this.service.load(url, onProgress));
 
-       // add the new object to the parent and
+    // add the new object to the parent and
     // emit a loaded event directly on the three.js object and on objRef$
     this.host.objRef = this.getRefFromResponse(result);
 
     if (this.onLoaded$ && result !== undefined) {
-    this.onLoaded$?.next(result);
+      this.onLoaded$?.next(result);
+    }
+  }
 }
-
-}
-}
-
-
-

@@ -24,6 +24,5 @@ describe('Pipe: Bind', () => {
 
     const boundFn = pipe.transform(instance.method, instance);
     expect(boundFn()).toBe(instance.member);
-
   });
 });

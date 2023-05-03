@@ -285,7 +285,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThCanvasTexture,
     ThDepthTexture,
     ThFramebufferTexture,
-    ThTexture,
+    ThTexture
   ],
   exports: [
     ThTransformControlsGen,
@@ -429,7 +429,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThCanvasTexture,
     ThDepthTexture,
     ThFramebufferTexture,
-    ThTexture,
-  ],
+    ThTexture
+  ]
 })
 export class NgxThreeGeneratedModule {}

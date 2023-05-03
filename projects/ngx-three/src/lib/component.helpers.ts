@@ -32,6 +32,6 @@ export function createObj3DProviderArray(type: Type<any>) {
 export function createCameraProviderArray(type: Type<any>) {
   return [
     { provide: ThObject3D, useExisting: forwardRef(() => type) },
-    { provide: ThCamera, useExisting: forwardRef(() => type) },
+    { provide: ThCamera, useExisting: forwardRef(() => type) }
   ];
 }

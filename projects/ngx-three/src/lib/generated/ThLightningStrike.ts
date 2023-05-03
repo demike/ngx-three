@@ -1,17 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  LightningStrike,
-  RayParameters,
-} from 'three/examples/jsm/geometries/LightningStrike';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { LightningStrike, RayParameters } from 'three/examples/jsm/geometries/LightningStrike';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -21,9 +12,9 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThLightningStrike),
-    },
-  ],
+      useExisting: forwardRef(() => ThLightningStrike)
+    }
+  ]
 })
 export class ThLightningStrike<
   T extends LightningStrike = LightningStrike,

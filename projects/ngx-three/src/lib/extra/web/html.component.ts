@@ -317,6 +317,7 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
         this.el.style.height = size.height + 'px';
         this.el.style.perspective = isOrthographicCamera ? '' : `${fov}px`;
         if (this.transformOuterRef && this.transformInnerRef) {
+          // eslint-disable-next-line max-len
           this.transformOuterRef.nativeElement.style.transform = `${cameraTransform}${cameraMatrix}translate(${widthHalf}px,${heightHalf}px)`;
           this.transformInnerRef.nativeElement.style.transform = getObjectCSSMatrix(
             matrix,
