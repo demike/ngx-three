@@ -15,6 +15,7 @@ import {
   Matrix4,
   Object3D,
   SkeletonHelper,
+  SkinnedMesh,
 } from 'three';
 import { applyValue } from '../util';
 import { ThLineSegments } from './ThLineSegments';
@@ -30,21 +31,14 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThSkeletonHelper<
   T extends SkeletonHelper = SkeletonHelper,
-  TARGS = /* object */ Object3D
+  TARGS = /* object */ SkinnedMesh | Object3D
 > extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<SkeletonHelper> {
     return SkeletonHelper;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'SkeletonHelper') | undefined {
     return this._objRef?.type;
   }
   @Input()
@@ -59,19 +53,15 @@ export class ThSkeletonHelper<
     return this._objRef?.bones;
   }
   @Input()
-  public set root(value: Object3D) {
+  public set root(value: SkinnedMesh | Object3D) {
     if (this._objRef) {
       this._objRef.root = value;
     }
   }
 
   // @ts-ignore
-  public get root(): Object3D | undefined {
+  public get root(): (SkinnedMesh | Object3D) | undefined {
     return this._objRef?.root;
-  }
-  // @ts-ignore
-  public get isSkeletonHelper(): true | undefined {
-    return this._objRef?.isSkeletonHelper;
   }
   @Input()
   public set matrix(

@@ -41,15 +41,8 @@ export class ThArrowHelper<
     return ArrowHelper;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'ArrowHelper') | undefined {
     return this._objRef?.type;
   }
   @Input()

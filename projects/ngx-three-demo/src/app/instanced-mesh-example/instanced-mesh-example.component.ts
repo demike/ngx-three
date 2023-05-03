@@ -7,7 +7,7 @@ import { ThCanvas, ThInstancedMesh, ThPointLight } from 'ngx-three';
 @Component({
   selector: 'app-instanced-mesh-example',
   templateUrl: './instanced-mesh-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InstancedMeshExampleComponent implements OnInit {
   readonly SIZE = 1.5;
@@ -34,7 +34,12 @@ export class InstancedMeshExampleComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.light?.shadow) {
+      this.light.shadow.mapSize.width = 1024;
+      this.light.shadow.mapSize.height = 1024;
+    }
+  }
 
   onRender() {
     this.updateLightPosition();

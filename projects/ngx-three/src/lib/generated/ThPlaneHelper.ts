@@ -29,15 +29,8 @@ export class ThPlaneHelper<
     return PlaneHelper;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'PlaneHelper') | undefined {
     return this._objRef?.type;
   }
   @Input()

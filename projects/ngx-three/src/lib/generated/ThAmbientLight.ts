@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { AmbientLight, ColorRepresentation } from 'three';
@@ -23,24 +22,17 @@ import { ThObject3D } from './ThObject3D';
 export class ThAmbientLight<
   T extends AmbientLight = AmbientLight,
   TARGS = [color?: ColorRepresentation, intensity?: number]
-> extends ThLight<T, TARGS> {
+> extends ThLight<undefined, T, TARGS> {
   public getType(): Type<AmbientLight> {
     return AmbientLight;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type(): string | undefined {
-    return this._objRef?.type;
-  }
   // @ts-ignore
   public get isAmbientLight(): true | undefined {
     return this._objRef?.isAmbientLight;
+  }
+  // @ts-ignore
+  public get type(): (string | 'AmbientLight') | undefined {
+    return this._objRef?.type;
   }
 }

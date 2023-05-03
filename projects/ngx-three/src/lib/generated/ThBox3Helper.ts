@@ -36,15 +36,8 @@ export class ThBox3Helper<
     return Box3Helper;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'Box3Helper') | undefined {
     return this._objRef?.type;
   }
   @Input()

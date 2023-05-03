@@ -370,14 +370,14 @@ export class ThOrbitControls<
     return this._objRef?.position0;
   }
   @Input()
-  public set zoomO(value: number) {
+  public set zoom0(value: number) {
     if (this._objRef) {
-      this._objRef.zoomO = value;
+      this._objRef.zoom0 = value;
     }
   }
 
   // @ts-ignore
-  public get zoomO(): number | undefined {
-    return this._objRef?.zoomO;
+  public get zoom0(): number | undefined {
+    return this._objRef?.zoom0;
   }
 }

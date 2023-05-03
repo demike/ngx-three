@@ -62,7 +62,6 @@ import { ThIcosahedronGeometry } from './ThIcosahedronGeometry';
 import { ThInstancedBufferGeometry } from './ThInstancedBufferGeometry';
 import { ThInstancedMesh } from './ThInstancedMesh';
 import { ThLatheGeometry } from './ThLatheGeometry';
-import { ThLight } from './ThLight';
 import { ThLightningStrike } from './ThLightningStrike';
 import { ThLightProbe } from './ThLightProbe';
 import { ThLine } from './ThLine';
@@ -183,7 +182,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThHemisphereLight,
     ThDirectionalLight,
     ThAmbientLight,
-    ThLight,
     ThAmbientLightProbe,
     ThHemisphereLightProbe,
     ThLightProbe,
@@ -328,7 +326,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThHemisphereLight,
     ThDirectionalLight,
     ThAmbientLight,
-    ThLight,
     ThAmbientLightProbe,
     ThHemisphereLightProbe,
     ThLightProbe,

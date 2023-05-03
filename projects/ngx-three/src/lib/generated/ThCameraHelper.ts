@@ -29,6 +29,10 @@ export class ThCameraHelper<
     return CameraHelper;
   }
 
+  // @ts-ignore
+  public get type(): (string | 'CameraHelper') | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set camera(value: Camera) {
     if (this._objRef) {
@@ -92,16 +96,5 @@ export class ThCameraHelper<
   // @ts-ignore
   public get matrixAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixAutoUpdate;
-  }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type(): string | undefined {
-    return this._objRef?.type;
   }
 }

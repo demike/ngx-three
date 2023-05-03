@@ -41,7 +41,7 @@
     [camera]="$any(cam)"
   >
     <th-scene [background]="colorRight">
-      <th-light [objRef]="light.objRef?.clone()"/>
+      <th-hemisphereLight [objRef]="light.objRef?.clone()"/>
       <th-mesh [geometry]="geo.objRef">
         <th-meshStandardMaterial [wireframe]="true"/>
       </th-mesh>

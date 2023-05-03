@@ -30,53 +30,39 @@ import { ThObject3D } from './ThObject3D';
 export class ThDirectionalLight<
   T extends DirectionalLight = DirectionalLight,
   TARGS = [color?: ColorRepresentation, intensity?: number]
-> extends ThLight<T, TARGS> {
+> extends ThLight<DirectionalLightShadow, T, TARGS> {
   public getType(): Type<DirectionalLight> {
     return DirectionalLight;
   }
 
+  // @ts-ignore
+  public get isDirectionalLight(): true | undefined {
+    return this._objRef?.isDirectionalLight;
+  }
+  // @ts-ignore
+  public get type(): (string | 'DirectionalLight') | undefined {
+    return this._objRef?.type;
+  }
   @Input()
-  public set type(value: string) {
+  public set castShadow(value: boolean) {
     if (this._objRef) {
-      this._objRef.type = value;
+      this._objRef.castShadow = value;
     }
   }
 
   // @ts-ignore
-  public get type(): string | undefined {
-    return this._objRef?.type;
+  public get castShadow(): boolean | undefined {
+    return this._objRef?.castShadow;
   }
   @Input()
   public set position(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
-      applyValue<Vector3>(this._objRef.position, value);
+      this._objRef.position = applyValue<Vector3>(this._objRef.position, value);
     }
   }
   // @ts-ignore
   public get position(): Vector3 | undefined {
     return this._objRef?.position;
-  }
-  @Input()
-  public set target(value: Object3D) {
-    if (this._objRef) {
-      this._objRef.target = value;
-    }
-  }
-
-  // @ts-ignore
-  public get target(): Object3D | undefined {
-    return this._objRef?.target;
-  }
-  @Input()
-  public set intensity(value: number) {
-    if (this._objRef) {
-      this._objRef.intensity = value;
-    }
-  }
-
-  // @ts-ignore
-  public get intensity(): number | undefined {
-    return this._objRef?.intensity;
   }
   @Input()
   public set shadow(value: DirectionalLightShadow) {
@@ -89,8 +75,15 @@ export class ThDirectionalLight<
   public get shadow(): DirectionalLightShadow | undefined {
     return this._objRef?.shadow;
   }
+  @Input()
+  public set target(value: Object3D) {
+    if (this._objRef) {
+      this._objRef.target = value;
+    }
+  }
+
   // @ts-ignore
-  public get isDirectionalLight(): true | undefined {
-    return this._objRef?.isDirectionalLight;
+  public get target(): Object3D | undefined {
+    return this._objRef?.target;
   }
 }

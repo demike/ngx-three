@@ -27,6 +27,17 @@ export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<
   }
 
   @Input()
+  public set isPass(value: boolean) {
+    if (this._objRef) {
+      this._objRef.isPass = value;
+    }
+  }
+
+  // @ts-ignore
+  public get isPass(): boolean | undefined {
+    return this._objRef?.isPass;
+  }
+  @Input()
   public set enabled(value: boolean) {
     if (this._objRef) {
       this._objRef.enabled = value;

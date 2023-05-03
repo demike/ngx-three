@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import {
@@ -40,15 +39,8 @@ export class ThPolarGridHelper<
     return PolarGridHelper;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'PolarGridHelper') | undefined {
     return this._objRef?.type;
   }
 }

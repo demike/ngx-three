@@ -12,9 +12,7 @@ import {
   MeshDistanceMaterial,
   MeshDistanceMaterialParameters,
   Texture,
-  Vector3,
 } from 'three';
-import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
@@ -101,43 +99,6 @@ export class ThMeshDistanceMaterial<
   // @ts-ignore
   public get displacementBias(): number | undefined {
     return this._objRef?.displacementBias;
-  }
-  @Input()
-  public set farDistance(value: number) {
-    if (this._objRef) {
-      this._objRef.farDistance = value;
-    }
-  }
-
-  // @ts-ignore
-  public get farDistance(): number | undefined {
-    return this._objRef?.farDistance;
-  }
-  @Input()
-  public set nearDistance(value: number) {
-    if (this._objRef) {
-      this._objRef.nearDistance = value;
-    }
-  }
-
-  // @ts-ignore
-  public get nearDistance(): number | undefined {
-    return this._objRef?.nearDistance;
-  }
-  @Input()
-  public set referencePosition(
-    value: Vector3 | [x: number, y: number, z: number]
-  ) {
-    if (this._objRef) {
-      this._objRef.referencePosition = applyValue<Vector3>(
-        this._objRef.referencePosition,
-        value
-      );
-    }
-  }
-  // @ts-ignore
-  public get referencePosition(): Vector3 | undefined {
-    return this._objRef?.referencePosition;
   }
   @Input()
   public set fog(value: boolean) {

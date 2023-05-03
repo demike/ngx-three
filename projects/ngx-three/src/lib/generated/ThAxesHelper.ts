@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import { AxesHelper, BufferGeometry, Material } from 'three';
@@ -28,15 +27,8 @@ export class ThAxesHelper<
     return AxesHelper;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'AxesHelper') | undefined {
     return this._objRef?.type;
   }
 }

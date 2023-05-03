@@ -38,16 +38,9 @@ export class ThDirectionalLightHelper<
     return DirectionalLightHelper;
   }
 
-  @Input()
-  public set light(value: DirectionalLight) {
-    if (this._objRef) {
-      this._objRef.light = value;
-    }
-  }
-
   // @ts-ignore
-  public get light(): DirectionalLight | undefined {
-    return this._objRef?.light;
+  public get type(): (string | 'DirectionalLightHelper') | undefined {
+    return this._objRef?.type;
   }
   @Input()
   public set lightPlane(value: Line) {
@@ -61,26 +54,15 @@ export class ThDirectionalLightHelper<
     return this._objRef?.lightPlane;
   }
   @Input()
-  public set targetLine(value: Line) {
+  public set light(value: DirectionalLight) {
     if (this._objRef) {
-      this._objRef.targetLine = value;
+      this._objRef.light = value;
     }
   }
 
   // @ts-ignore
-  public get targetLine(): Line | undefined {
-    return this._objRef?.targetLine;
-  }
-  @Input()
-  public set color(value: ColorRepresentation | undefined) {
-    if (this._objRef) {
-      this._objRef.color = value;
-    }
-  }
-
-  // @ts-ignore
-  public get color(): (ColorRepresentation | undefined) | undefined {
-    return this._objRef?.color;
+  public get light(): DirectionalLight | undefined {
+    return this._objRef?.light;
   }
   @Input()
   public set matrix(
@@ -123,5 +105,27 @@ export class ThDirectionalLightHelper<
   // @ts-ignore
   public get matrixAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixAutoUpdate;
+  }
+  @Input()
+  public set color(value: ColorRepresentation | undefined) {
+    if (this._objRef) {
+      this._objRef.color = value;
+    }
+  }
+
+  // @ts-ignore
+  public get color(): (ColorRepresentation | undefined) | undefined {
+    return this._objRef?.color;
+  }
+  @Input()
+  public set targetLine(value: Line) {
+    if (this._objRef) {
+      this._objRef.targetLine = value;
+    }
+  }
+
+  // @ts-ignore
+  public get targetLine(): Line | undefined {
+    return this._objRef?.targetLine;
   }
 }

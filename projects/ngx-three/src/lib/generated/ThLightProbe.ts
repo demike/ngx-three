@@ -8,7 +8,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { LightProbe, SphericalHarmonics3, Vector3 } from 'three';
+import { LightProbe, LightShadow, SphericalHarmonics3, Vector3 } from 'three';
 import { applyValue } from '../util';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
@@ -24,22 +24,11 @@ import { ThObject3D } from './ThObject3D';
 export class ThLightProbe<
   T extends LightProbe = LightProbe,
   TARGS = [sh?: SphericalHarmonics3, intensity?: number]
-> extends ThLight<T, TARGS> {
+> extends ThLight<LightShadow | undefined, T, TARGS> {
   public getType(): Type<LightProbe> {
     return LightProbe;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type(): string | undefined {
-    return this._objRef?.type;
-  }
   // @ts-ignore
   public get isLightProbe(): true | undefined {
     return this._objRef?.isLightProbe;

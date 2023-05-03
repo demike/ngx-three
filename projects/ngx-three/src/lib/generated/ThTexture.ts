@@ -119,6 +119,17 @@ export class ThTexture<
     return this._objRef?.mapping;
   }
   @Input()
+  public set channel(value: number) {
+    if (this._objRef) {
+      this._objRef.channel = value;
+    }
+  }
+
+  // @ts-ignore
+  public get channel(): number | undefined {
+    return this._objRef?.channel;
+  }
+  @Input()
   public set wrapS(value: Wrapping) {
     if (this._objRef) {
       this._objRef.wrapS = value;

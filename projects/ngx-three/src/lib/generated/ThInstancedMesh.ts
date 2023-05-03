@@ -9,10 +9,13 @@ import {
   Type,
 } from '@angular/core';
 import {
+  Box3,
   BufferGeometry,
   InstancedBufferAttribute,
   InstancedMesh,
   Material,
+  Sphere,
+  Vector3,
 } from 'three';
 import { applyValue } from '../util';
 import { ThMesh } from './ThMesh';
@@ -46,6 +49,34 @@ export class ThInstancedMesh<
   // @ts-ignore
   public get isInstancedMesh(): true | undefined {
     return this._objRef?.isInstancedMesh;
+  }
+  @Input()
+  public set boundingBox(value: Box3 | null | [min: Vector3, max: Vector3]) {
+    if (this._objRef) {
+      this._objRef.boundingBox = applyValue<Box3 | null>(
+        this._objRef.boundingBox,
+        value
+      );
+    }
+  }
+  // @ts-ignore
+  public get boundingBox(): (Box3 | null) | undefined {
+    return this._objRef?.boundingBox;
+  }
+  @Input()
+  public set boundingSphere(
+    value: Sphere | null | [center: Vector3, radius: number]
+  ) {
+    if (this._objRef) {
+      this._objRef.boundingSphere = applyValue<Sphere | null>(
+        this._objRef.boundingSphere,
+        value
+      );
+    }
+  }
+  // @ts-ignore
+  public get boundingSphere(): (Sphere | null) | undefined {
+    return this._objRef?.boundingSphere;
   }
   @Input()
   public set count(value: number) {

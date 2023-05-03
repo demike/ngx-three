@@ -9,11 +9,14 @@ import {
   Type,
 } from '@angular/core';
 import {
+  Box3,
   BufferGeometry,
   Material,
   Matrix4,
   Skeleton,
   SkinnedMesh,
+  Sphere,
+  Vector3,
 } from 'three';
 import { applyValue } from '../util';
 import { ThMesh } from './ThMesh';
@@ -130,6 +133,32 @@ export class ThSkinnedMesh<
   // @ts-ignore
   public get bindMatrixInverse(): Matrix4 | undefined {
     return this._objRef?.bindMatrixInverse;
+  }
+  @Input()
+  public set boundingBox(value: Box3 | [min: Vector3, max: Vector3]) {
+    if (this._objRef) {
+      this._objRef.boundingBox = applyValue<Box3>(
+        this._objRef.boundingBox,
+        value
+      );
+    }
+  }
+  // @ts-ignore
+  public get boundingBox(): Box3 | undefined {
+    return this._objRef?.boundingBox;
+  }
+  @Input()
+  public set boundingSphere(value: Sphere | [center: Vector3, radius: number]) {
+    if (this._objRef) {
+      this._objRef.boundingSphere = applyValue<Sphere>(
+        this._objRef.boundingSphere,
+        value
+      );
+    }
+  }
+  // @ts-ignore
+  public get boundingSphere(): Sphere | undefined {
+    return this._objRef?.boundingSphere;
   }
   @Input()
   public set skeleton(value: Skeleton) {

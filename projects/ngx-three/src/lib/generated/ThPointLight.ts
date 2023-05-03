@@ -28,7 +28,7 @@ export class ThPointLight<
     distance?: number,
     decay?: number
   ]
-> extends ThLight<T, TARGS> {
+> extends ThLight<PointLightShadow, T, TARGS> {
   public getType(): Type<PointLight> {
     return PointLight;
   }

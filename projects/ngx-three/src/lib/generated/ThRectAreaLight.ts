@@ -28,20 +28,17 @@ export class ThRectAreaLight<
     width?: number,
     height?: number
   ]
-> extends ThLight<T, TARGS> {
+> extends ThLight<undefined, T, TARGS> {
   public getType(): Type<RectAreaLight> {
     return RectAreaLight;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get isRectAreaLight(): true | undefined {
+    return this._objRef?.isRectAreaLight;
+  }
+  // @ts-ignore
+  public get type(): (string | 'RectAreaLight') | undefined {
     return this._objRef?.type;
   }
   @Input()
@@ -87,9 +84,5 @@ export class ThRectAreaLight<
   // @ts-ignore
   public get power(): number | undefined {
     return this._objRef?.power;
-  }
-  // @ts-ignore
-  public get isRectAreaLight(): true | undefined {
-    return this._objRef?.isRectAreaLight;
   }
 }

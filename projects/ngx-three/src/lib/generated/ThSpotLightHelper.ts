@@ -35,6 +35,21 @@ export class ThSpotLightHelper<
     return SpotLightHelper;
   }
 
+  // @ts-ignore
+  public get type(): (string | 'SpotLightHelper') | undefined {
+    return this._objRef?.type;
+  }
+  @Input()
+  public set cone(value: LineSegments) {
+    if (this._objRef) {
+      this._objRef.cone = value;
+    }
+  }
+
+  // @ts-ignore
+  public get cone(): LineSegments | undefined {
+    return this._objRef?.cone;
+  }
   @Input()
   public set light(value: Light) {
     if (this._objRef) {
@@ -78,17 +93,6 @@ export class ThSpotLightHelper<
     return this._objRef?.matrix;
   }
   @Input()
-  public set matrixAutoUpdate(value: boolean) {
-    if (this._objRef) {
-      this._objRef.matrixAutoUpdate = value;
-    }
-  }
-
-  // @ts-ignore
-  public get matrixAutoUpdate(): boolean | undefined {
-    return this._objRef?.matrixAutoUpdate;
-  }
-  @Input()
   public set color(value: ColorRepresentation | undefined) {
     if (this._objRef) {
       this._objRef.color = value;
@@ -100,14 +104,14 @@ export class ThSpotLightHelper<
     return this._objRef?.color;
   }
   @Input()
-  public set cone(value: LineSegments) {
+  public set matrixAutoUpdate(value: boolean) {
     if (this._objRef) {
-      this._objRef.cone = value;
+      this._objRef.matrixAutoUpdate = value;
     }
   }
 
   // @ts-ignore
-  public get cone(): LineSegments | undefined {
-    return this._objRef?.cone;
+  public get matrixAutoUpdate(): boolean | undefined {
+    return this._objRef?.matrixAutoUpdate;
   }
 }

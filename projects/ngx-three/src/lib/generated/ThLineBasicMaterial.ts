@@ -13,6 +13,7 @@ import {
   ColorRepresentation,
   LineBasicMaterial,
   LineBasicMaterialParameters,
+  Texture,
 } from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
@@ -97,5 +98,16 @@ export class ThLineBasicMaterial<
   // @ts-ignore
   public get linejoin(): string | undefined {
     return this._objRef?.linejoin;
+  }
+  @Input()
+  public set map(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.map = value;
+    }
+  }
+
+  // @ts-ignore
+  public get map(): (Texture | null) | undefined {
+    return this._objRef?.map;
   }
 }

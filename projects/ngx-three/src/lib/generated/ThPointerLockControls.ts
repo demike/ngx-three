@@ -32,6 +32,17 @@ export class ThPointerLockControls<
   }
 
   @Input()
+  public set camera(value: Camera) {
+    if (this._objRef) {
+      this._objRef.camera = value;
+    }
+  }
+
+  // @ts-ignore
+  public get camera(): Camera | undefined {
+    return this._objRef?.camera;
+  }
+  @Input()
   public set domElement(value: HTMLElement) {
     if (this._objRef) {
       this._objRef.domElement = value;
@@ -74,5 +85,16 @@ export class ThPointerLockControls<
   // @ts-ignore
   public get maxPolarAngle(): number | undefined {
     return this._objRef?.maxPolarAngle;
+  }
+  @Input()
+  public set pointerSpeed(value: number) {
+    if (this._objRef) {
+      this._objRef.pointerSpeed = value;
+    }
+  }
+
+  // @ts-ignore
+  public get pointerSpeed(): number | undefined {
+    return this._objRef?.pointerSpeed;
   }
 }

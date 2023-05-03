@@ -38,6 +38,10 @@ export class ThHemisphereLightHelper<
     return HemisphereLightHelper;
   }
 
+  // @ts-ignore
+  public get type(): (string | 'HemisphereLightHelper') | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set light(value: HemisphereLight) {
     if (this._objRef) {

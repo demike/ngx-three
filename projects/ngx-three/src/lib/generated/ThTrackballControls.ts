@@ -205,6 +205,28 @@ export class ThTrackballControls<
     return this._objRef?.maxDistance;
   }
   @Input()
+  public set minZoom(value: number) {
+    if (this._objRef) {
+      this._objRef.minZoom = value;
+    }
+  }
+
+  // @ts-ignore
+  public get minZoom(): number | undefined {
+    return this._objRef?.minZoom;
+  }
+  @Input()
+  public set maxZoom(value: number) {
+    if (this._objRef) {
+      this._objRef.maxZoom = value;
+    }
+  }
+
+  // @ts-ignore
+  public get maxZoom(): number | undefined {
+    return this._objRef?.maxZoom;
+  }
+  @Input()
   public set keys(value: string[]) {
     if (this._objRef) {
       this._objRef.keys = value;

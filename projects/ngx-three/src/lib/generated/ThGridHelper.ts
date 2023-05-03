@@ -5,7 +5,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   forwardRef,
-  Input,
   Type,
 } from '@angular/core';
 import {
@@ -38,15 +37,8 @@ export class ThGridHelper<
     return GridHelper;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'GridHelper') | undefined {
     return this._objRef?.type;
   }
 }

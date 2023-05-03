@@ -28,20 +28,17 @@ export class ThHemisphereLight<
     groundColor?: ColorRepresentation,
     intensity?: number
   ]
-> extends ThLight<T, TARGS> {
+> extends ThLight<undefined, T, TARGS> {
   public getType(): Type<HemisphereLight> {
     return HemisphereLight;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get isHemisphereLight(): true | undefined {
+    return this._objRef?.isHemisphereLight;
+  }
+  // @ts-ignore
+  public get type(): (string | 'HemisphereLight') | undefined {
     return this._objRef?.type;
   }
   @Input()
@@ -55,6 +52,16 @@ export class ThHemisphereLight<
     return this._objRef?.position;
   }
   @Input()
+  public set color(value: Color | [color: ColorRepresentation]) {
+    if (this._objRef) {
+      this._objRef.color = applyValue<Color>(this._objRef.color, value);
+    }
+  }
+  // @ts-ignore
+  public get color(): Color | undefined {
+    return this._objRef?.color;
+  }
+  @Input()
   public set groundColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.groundColor = applyValue<Color>(
@@ -66,9 +73,5 @@ export class ThHemisphereLight<
   // @ts-ignore
   public get groundColor(): Color | undefined {
     return this._objRef?.groundColor;
-  }
-  // @ts-ignore
-  public get isHemisphereLight(): true | undefined {
-    return this._objRef?.isHemisphereLight;
   }
 }
