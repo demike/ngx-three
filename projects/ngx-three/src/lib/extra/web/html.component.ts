@@ -16,7 +16,7 @@ import {
   OnInit,
   Output,
   SkipSelf,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { Subscription } from 'rxjs';
 import {
@@ -28,7 +28,7 @@ import {
   PerspectiveCamera,
   Raycaster,
   Vector2,
-  Vector3,
+  Vector3
 } from 'three';
 import { RAYCASTER } from '../../events/raycaster.service';
 import { ThGroup, ThObject3D } from '../../generated';
@@ -140,7 +140,7 @@ type PointerEventsProperties =
 @Component({
   selector: 'th-html',
   templateUrl: './html.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   @Input() prepend = false; // Project content behind the canvas (default: false)
@@ -348,7 +348,7 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
         width: size.width + 'px',
         height: size.height + 'px',
         transformStyle: 'preserve-3d',
-        pointerEvents: 'none',
+        pointerEvents: 'none'
       };
     } else {
       return {
@@ -358,9 +358,9 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
           top: -size.height / 2 + 'px',
           left: -size.width / 2 + 'px',
           width: size.width + 'px',
-          height: size.height + 'px',
+          height: size.height + 'px'
         }),
-        ...this.style,
+        ...this.style
       };
     }
   }
