@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
 import { AmbientLight, ColorRepresentation } from 'three';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
@@ -16,31 +10,22 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-ambientLight',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThAmbientLight) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThAmbientLight) }]
 })
 export class ThAmbientLight<
   T extends AmbientLight = AmbientLight,
   TARGS = [color?: ColorRepresentation, intensity?: number]
-> extends ThLight<T, TARGS> {
+> extends ThLight<undefined, T, TARGS> {
   public getType(): Type<AmbientLight> {
     return AmbientLight;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type(): string | undefined {
-    return this._objRef?.type;
-  }
   // @ts-ignore
   public get isAmbientLight(): true | undefined {
     return this._objRef?.isAmbientLight;
+  }
+  // @ts-ignore
+  public get type(): (string | 'AmbientLight') | undefined {
+    return this._objRef?.type;
   }
 }

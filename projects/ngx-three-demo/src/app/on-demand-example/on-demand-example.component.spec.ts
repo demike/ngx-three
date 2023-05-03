@@ -8,9 +8,8 @@ describe('OnDemandExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OnDemandExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [OnDemandExampleComponent]
+    }).compileComponents();
 
     fixture = TestBed.createComponent(OnDemandExampleComponent);
     component = fixture.componentInstance;

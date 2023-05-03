@@ -9,7 +9,6 @@ import { ASSET_PATH } from '../assets';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PLYLoaderExampleComponent {
-
   // eslint-disable-next-line @typescript-eslint/naming-convention
   public Math = Math;
   public cameraPosition = new Vector3(3, 0.15, 3);
@@ -20,12 +19,9 @@ export class PLYLoaderExampleComponent {
   public assetPath = `${ASSET_PATH}dolphins.ply`;
   public onBeforeRender(): void {
     const timer = Date.now() * 0.0005;
-    if(this.camera) {
-      this.camera.position = new Vector3(
-        Math.sin( timer ) * 2.5, 0.15,
-        Math.cos( timer ) * 2.5);
+    if (this.camera) {
+      this.camera.position = new Vector3(Math.sin(timer) * 2.5, 0.15, Math.cos(timer) * 2.5);
       this.camera.lookAt = [0, 0.1, 0];
     }
   }
-
 }

@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
 import { TetrahedronGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
@@ -19,9 +13,9 @@ import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThTetrahedronGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThTetrahedronGeometry)
+    }
+  ]
 })
 export class ThTetrahedronGeometry<
   T extends TetrahedronGeometry = TetrahedronGeometry,
@@ -31,15 +25,8 @@ export class ThTetrahedronGeometry<
     return TetrahedronGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'TetrahedronGeometry') | undefined {
     return this._objRef?.type;
   }
 }

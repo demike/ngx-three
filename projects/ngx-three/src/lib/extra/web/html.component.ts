@@ -3,16 +3,38 @@
  * Many thanks to pmndrs/drei at its contributors!
  */
 
-import { AfterViewInit, ChangeDetectionStrategy, Component, ElementRef,
-  EventEmitter, inject, Input, OnChanges, OnDestroy, OnInit, Output, SkipSelf, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  EventEmitter,
+  inject,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  Output,
+  SkipSelf,
+  ViewChild
+} from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Camera, Group, Matrix4, Object3D, OrthographicCamera, PerspectiveCamera, Raycaster, Vector3 } from 'three';
+import {
+  Camera,
+  Group,
+  Matrix4,
+  Object3D,
+  OrthographicCamera,
+  PerspectiveCamera,
+  Raycaster,
+  Vector2,
+  Vector3
+} from 'three';
 import { RAYCASTER } from '../../events/raycaster.service';
 import { ThGroup, ThObject3D } from '../../generated';
 import { ThCanvas } from '../../ThCanvas';
 import { ThView } from '../../ThView';
 import { NgChanges } from '../../util';
-
 
 const v1 = new Vector3();
 const v2 = new Vector3();
@@ -40,7 +62,7 @@ function isObjectVisible(el: Object3D, camera: Camera, raycaster: Raycaster, occ
   const elPos = v1.setFromMatrixPosition(el.matrixWorld);
   const screenPos = elPos.clone();
   screenPos.project(camera);
-  raycaster.setFromCamera(screenPos, camera);
+  raycaster.setFromCamera(screenPos as unknown as Vector2, camera);
   const intersects = raycaster.intersectObjects(occlude, true);
   if (intersects.length) {
     const intersectionDistance = intersects[0].distance;
@@ -87,12 +109,15 @@ function getCSSMatrix(matrix: Matrix4, multipliers: number[], prepend = '') {
   return prepend + matrix3d;
 }
 
-const getCameraCSSMatrix = ((multipliers: number[]) =>
-  (matrix: Matrix4) => getCSSMatrix(matrix, multipliers))([1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1]);
+const getCameraCSSMatrix = (
+  (multipliers: number[]) => (matrix: Matrix4) =>
+    getCSSMatrix(matrix, multipliers)
+)([1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1, 1, -1, 1, 1]);
 
-const getObjectCSSMatrix = ((scaleMultipliers: (n: number) => number[]) =>
-  (matrix: Matrix4, factor: number) => getCSSMatrix(matrix, scaleMultipliers(factor), 'translate(-50%,-50%)'))
-    ((f: number) => [1 / f, 1 / f, 1 / f, 1, -1 / f, -1 / f, -1 / f, -1, 1 / f, 1 / f, 1 / f, 1, 1, 1, 1, 1]);
+const getObjectCSSMatrix = (
+  (scaleMultipliers: (n: number) => number[]) => (matrix: Matrix4, factor: number) =>
+    getCSSMatrix(matrix, scaleMultipliers(factor), 'translate(-50%,-50%)')
+)((f: number) => [1 / f, 1 / f, 1 / f, 1, -1 / f, -1 / f, -1 / f, -1, 1 / f, 1 / f, 1 / f, 1, 1, 1, 1, 1]);
 
 type PointerEventsProperties =
   | 'auto'
@@ -107,8 +132,6 @@ type PointerEventsProperties =
   | 'all'
   | 'inherit';
 
-
-
 /**
  * A port of the pmndrs/drei Html component
  *
@@ -120,7 +143,6 @@ type PointerEventsProperties =
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, OnChanges, AfterViewInit {
-
   @Input() prepend = false; // Project content behind the canvas (default: false)
   @Input() center = false; // Adds a -50%/-50% css transform (default: false) [ignored in transform mode]
   @Input() fullscreen = false; // Aligns to the upper-left corner, fills the screen (default:false) [ignored in transform mode]
@@ -132,7 +154,7 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
   @Input() distanceFactor?: number;
   @Input() sprite = false; // Renders as sprite, but only in transform mode (default=false)
   @Input() transform = false; // If true, applies matrix3d transformations (default=false)
-  @Input() zIndexRange: [number,number] = [16777271, 0]; // Z-order range (default=[16777271, 0])
+  @Input() zIndexRange: [number, number] = [16777271, 0]; // Z-order range (default=[16777271, 0])
 
   @Input() style?: Partial<CSSStyleDeclaration>;
   @Input() className?: string;
@@ -152,12 +174,11 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
   @Input() wrapperClass?: string; // The className of the wrapping element (default: undefined)
   @Input() pointerEvents: PointerEventsProperties = 'auto';
 
-
   protected transformInnerStyles = this.computeInnerStyles();
-  protected styles: Record<string,any> | null = null;
+  protected styles: Record<string, any> | null = null;
 
   private oldZoom = 0;
-  private oldPosition = [0,0];
+  private oldPosition = [0, 0];
   private notOccluded = true;
 
   @ViewChild('outerRef')
@@ -168,8 +189,6 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
   private target?: HTMLElement | null;
   private frameSubscription?: Subscription;
   private raycaster = inject(RAYCASTER);
-
-
 
   constructor(private view: ThView, private canvas: ThCanvas, @SkipSelf() parent: ThObject3D) {
     super(parent);
@@ -183,13 +202,12 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
   public ngAfterViewInit() {
     this.el = document.createElement(this.as);
     this.frameSubscription = this.view.onRender.subscribe(() => this.onFrame());
-    if(this.transformOuterRef) {
+    if (this.transformOuterRef) {
       this.el.appendChild(this.transformOuterRef.nativeElement);
     }
-    if(this.el && !this.target) {
+    if (this.el && !this.target) {
       this.appendElement(this.el);
     }
-
   }
 
   protected onResize() {
@@ -216,12 +234,12 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
   }
 
   private appendElement(el: HTMLElement) {
-    if(!this.el || !this.objRef || !this.canvas.rendererCanvas || ! this.view.camera) {
+    if (!this.el || !this.objRef || !this.canvas.rendererCanvas || !this.view.camera) {
       return;
     }
     this.target = this.portal ?? this.canvas.rendererCanvas?.nativeElement.parentElement;
     this.view.scene?.objRef?.updateMatrixWorld();
-    if(this.transform) {
+    if (this.transform) {
       el.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;overflow:hidden;';
     } else {
       const vec = this.calculatePosition(this.objRef, this.view.camera.objRef as Camera, this.getSize());
@@ -238,15 +256,15 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
 
   public onFrame() {
     const camera = this.view.camera?.objRef as PerspectiveCamera | OrthographicCamera | undefined;
-    const scene  = this.view.scene?.objRef;
+    const scene = this.view.scene?.objRef;
     const group = this._objRef;
     const size = this.getSize();
-    if(!camera || !group || !scene || !this.el) {
+    if (!camera || !group || !scene || !this.el) {
       return;
     }
 
     camera.updateMatrixWorld();
-    group.updateWorldMatrix(true,false);
+    group.updateWorldMatrix(true, false);
     const vec = this.transform ? this.oldPosition : this.calculatePosition(group, camera, size);
 
     if (
@@ -273,7 +291,8 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
       }
 
       if (previouslyVisible !== this.notOccluded) {
-        if (this.onOcclude.length > 0) { this.onOcclude.next(!this.notOccluded);
+        if (this.onOcclude.length > 0) {
+          this.onOcclude.next(!this.notOccluded);
         } else {
           this.el.style.display = this.notOccluded ? 'block' : 'none';
         }
@@ -298,9 +317,12 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
         this.el.style.height = size.height + 'px';
         this.el.style.perspective = isOrthographicCamera ? '' : `${fov}px`;
         if (this.transformOuterRef && this.transformInnerRef) {
-          this.transformOuterRef.nativeElement.style.transform
-              = `${cameraTransform}${cameraMatrix}translate(${widthHalf}px,${heightHalf}px)`;
-          this.transformInnerRef.nativeElement.style.transform = getObjectCSSMatrix(matrix, 1 / ((this.distanceFactor || 10) / 400));
+          // eslint-disable-next-line max-len
+          this.transformOuterRef.nativeElement.style.transform = `${cameraTransform}${cameraMatrix}translate(${widthHalf}px,${heightHalf}px)`;
+          this.transformInnerRef.nativeElement.style.transform = getObjectCSSMatrix(
+            matrix,
+            1 / ((this.distanceFactor || 10) / 400)
+          );
         }
       } else {
         const scale = this.distanceFactor === undefined ? 1 : objectScale(group, camera) * this.distanceFactor;
@@ -310,7 +332,6 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
       this.oldZoom = camera.zoom;
     }
   }
-
 
   ngOnDestroy(): void {
     this.el?.remove();
@@ -327,7 +348,7 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
         width: size.width + 'px',
         height: size.height + 'px',
         transformStyle: 'preserve-3d',
-        pointerEvents: 'none',
+        pointerEvents: 'none'
       };
     } else {
       return {
@@ -337,9 +358,9 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
           top: -size.height / 2 + 'px',
           left: -size.width / 2 + 'px',
           width: size.width + 'px',
-          height: size.height + 'px',
+          height: size.height + 'px'
         }),
-        ...this.style,
+        ...this.style
       };
     }
   }
@@ -349,6 +370,8 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
   }
 
   private getSize() {
-    return this.view.viewPort ?? this.canvas.rendererCanvas?.nativeElement.getBoundingClientRect() ?? {width: 0, height: 0};
+    return (
+      this.view.viewPort ?? this.canvas.rendererCanvas?.nativeElement.getBoundingClientRect() ?? { width: 0, height: 0 }
+    );
   }
 }

@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
 import { IcosahedronGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
@@ -19,9 +13,9 @@ import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThIcosahedronGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThIcosahedronGeometry)
+    }
+  ]
 })
 export class ThIcosahedronGeometry<
   T extends IcosahedronGeometry = IcosahedronGeometry,
@@ -31,15 +25,8 @@ export class ThIcosahedronGeometry<
     return IcosahedronGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'IcosahedronGeometry') | undefined {
     return this._objRef?.type;
   }
 }

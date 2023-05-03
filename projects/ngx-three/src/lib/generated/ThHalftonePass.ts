@@ -2,18 +2,9 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ShaderMaterial } from 'three';
-import {
-  HalftonePass,
-  HalftonePassParameters,
-} from 'three/examples/jsm/postprocessing/HalftonePass';
+import { HalftonePass, HalftonePassParameters } from 'three/examples/jsm/postprocessing/HalftonePass';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
@@ -22,9 +13,7 @@ import { ThPass } from './ThPass';
   selector: 'th-halftonePass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThHalftonePass) },
-  ],
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThHalftonePass) }]
 })
 export class ThHalftonePass<
   T extends HalftonePass = HalftonePass,

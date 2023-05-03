@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  SkipSelf,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, SkipSelf, Type } from '@angular/core';
 import {
   AnimationClip,
   BaseEvent,
@@ -25,7 +19,7 @@ import {
   Quaternion,
   Scene,
   Vector3,
-  WebGLRenderer,
+  WebGLRenderer
 } from 'three';
 import { ThObjectBase } from '../ThObjectBase';
 import { applyValue } from '../util';
@@ -34,7 +28,7 @@ import { applyValue } from '../util';
   selector: 'th-object3D',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
+  providers: []
 })
 export class ThObject3D<
   E extends BaseEvent = Event,
@@ -45,13 +39,10 @@ export class ThObject3D<
     return Object3D;
   }
 
-  @Input()
-  public set id(value: number) {
-    if (this._objRef) {
-      this._objRef.id = value;
-    }
+  // @ts-ignore
+  public get isObject3D(): true | undefined {
+    return this._objRef?.isObject3D;
   }
-
   // @ts-ignore
   public get id(): number | undefined {
     return this._objRef?.id;
@@ -78,15 +69,8 @@ export class ThObject3D<
   public get name(): string | undefined {
     return this._objRef?.name;
   }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'Object3D') | undefined {
     return this._objRef?.type;
   }
   @Input()
@@ -121,9 +105,7 @@ export class ThObject3D<
     return this._objRef?.position;
   }
   @Input()
-  public set rotation(
-    value: Euler | [x: number, y: number, z: number, order?: EulerOrder]
-  ) {
+  public set rotation(value: Euler | [x: number, y: number, z: number, order?: EulerOrder]) {
     if (this._objRef) {
       applyValue<Euler>(this._objRef.rotation, value);
     }
@@ -133,9 +115,7 @@ export class ThObject3D<
     return this._objRef?.rotation;
   }
   @Input()
-  public set quaternion(
-    value: Quaternion | [x: number, y: number, z: number, w: number]
-  ) {
+  public set quaternion(value: Quaternion | [x: number, y: number, z: number, w: number]) {
     if (this._objRef) {
       applyValue<Quaternion>(this._objRef.quaternion, value);
     }
@@ -264,10 +244,7 @@ export class ThObject3D<
         ]
   ) {
     if (this._objRef) {
-      this._objRef.matrixWorld = applyValue<Matrix4>(
-        this._objRef.matrixWorld,
-        value
-      );
+      this._objRef.matrixWorld = applyValue<Matrix4>(this._objRef.matrixWorld, value);
     }
   }
   // @ts-ignore
@@ -308,7 +285,7 @@ export class ThObject3D<
     return this._objRef?.matrixWorldNeedsUpdate;
   }
   @Input()
-  public set layers(value: Layers | [channel: number]) {
+  public set layers(value: Layers | [layer: number]) {
     if (this._objRef) {
       this._objRef.layers = applyValue<Layers>(this._objRef.layers, value);
     }
@@ -395,30 +372,26 @@ export class ThObject3D<
     return this._objRef?.userData;
   }
   @Input()
-  public set customDepthMaterial(value: Material) {
+  public set customDepthMaterial(value: Material | undefined) {
     if (this._objRef) {
       this._objRef.customDepthMaterial = value;
     }
   }
 
   // @ts-ignore
-  public get customDepthMaterial(): Material | undefined {
+  public get customDepthMaterial(): (Material | undefined) | undefined {
     return this._objRef?.customDepthMaterial;
   }
   @Input()
-  public set customDistanceMaterial(value: Material) {
+  public set customDistanceMaterial(value: Material | undefined) {
     if (this._objRef) {
       this._objRef.customDistanceMaterial = value;
     }
   }
 
   // @ts-ignore
-  public get customDistanceMaterial(): Material | undefined {
+  public get customDistanceMaterial(): (Material | undefined) | undefined {
     return this._objRef?.customDistanceMaterial;
-  }
-  // @ts-ignore
-  public get isObject3D(): true | undefined {
-    return this._objRef?.isObject3D;
   }
   @Input()
   public set onBeforeRender(
@@ -479,13 +452,11 @@ export class ThObject3D<
     return this._objRef?.onAfterRender;
   }
 
-  public static readonly DefaultUp = Object3D.DefaultUp;
+  public static readonly DEFAULT_UP = Object3D.DEFAULT_UP;
 
-  public static readonly DefaultMatrixAutoUpdate =
-    Object3D.DefaultMatrixAutoUpdate;
+  public static readonly DEFAULT_MATRIX_AUTO_UPDATE = Object3D.DEFAULT_MATRIX_AUTO_UPDATE;
 
-  public static readonly DefaultMatrixWorldAutoUpdate =
-    Object3D.DefaultMatrixWorldAutoUpdate;
+  public static readonly DEFAULT_MATRIX_WORLD_AUTO_UPDATE = Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE;
 
   constructor(@SkipSelf() parent: ThObject3D) {
     super(parent);

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { ChangeDetectionStrategy, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Object3D } from 'three';
-import SimplexNoise from 'simplex-noise';
+import { createNoise3D } from 'simplex-noise';
 import { ThCanvas, ThInstancedMesh, ThPointLight } from 'ngx-three';
 
 @Component({
@@ -20,7 +20,7 @@ export class InstancedMeshExampleComponent implements OnInit {
   readonly NUM_INSTANCES = this.NX * this.NY;
 
   public dummy = new Object3D();
-  public simplex = new SimplexNoise();
+  public simplexNoise = createNoise3D();
   public pointerPN = { x: 0, y: 0 };
 
   @ViewChild('canvas')
@@ -34,7 +34,12 @@ export class InstancedMeshExampleComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.light?.shadow) {
+      this.light.shadow.mapSize.width = 1024;
+      this.light.shadow.mapSize.height = 1024;
+    }
+  }
 
   onRender() {
     this.updateLightPosition();
@@ -71,8 +76,8 @@ export class InstancedMeshExampleComponent implements OnInit {
         y = y0 + j * this.SIZEP;
         nx = x * noise + mx;
         ny = y * noise + my;
-        rx = this.simplex.noise3D(nx, ny, time) * Math.PI;
-        ry = this.simplex.noise3D(ny, nx, time) * Math.PI;
+        rx = this.simplexNoise(nx, ny, time) * Math.PI;
+        ry = this.simplexNoise(ny, nx, time) * Math.PI;
         this.dummy.position.set(x, y, -10);
         this.dummy.rotation.set(rx, ry, 0);
         this.dummy.updateMatrix();

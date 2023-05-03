@@ -10,7 +10,7 @@ describe('ClonePipe', () => {
 
   it('should clone an instance of a cloneable three.js object', () => {
     const pipe = new ClonePipe();
-    const vector = new Vector2(1,2);
+    const vector = new Vector2(1, 2);
     const clone = pipe.transform(vector);
 
     expect(clone).toEqual(vector);
@@ -18,7 +18,7 @@ describe('ClonePipe', () => {
 
   it('should return undefined on undefined | null inputs', () => {
     const pipe = new ClonePipe();
-    const vector = new Vector2(1,2);
+    const vector = new Vector2(1, 2);
     let clone = pipe.transform();
     expect(clone).toBeUndefined();
     clone = pipe.transform(null);
@@ -29,7 +29,7 @@ describe('ClonePipe', () => {
     const pipe = new ClonePipe();
     const obj = new Object3D();
     obj.name = 'TestName';
-    const wrapper = new ThWrapperBase<Object3D,any>();
+    const wrapper = new ThWrapperBase<Object3D, any>();
     wrapper.objRef = obj;
 
     const clone = pipe.transform(wrapper);
@@ -37,6 +37,4 @@ describe('ClonePipe', () => {
     expect(clone).toBeInstanceOf(Object3D);
     expect(clone?.name).toEqual(obj.name);
   });
-
-
 });

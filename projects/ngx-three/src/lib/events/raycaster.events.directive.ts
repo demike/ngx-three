@@ -11,36 +11,32 @@ export interface RaycasterEmitEvent extends Intersection {
 
 @Directive({ selector: '[onClick], [onMouseEnter], [onMouseExit], [onPointerDown], [onPointerUp]' })
 export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
-
   @Output() get onMouseEnter(): EventEmitter<RaycasterEmitEvent> {
-    if(!this.mouseEnter) {
+    if (!this.mouseEnter) {
       this.mouseEnter = new EventEmitter<RaycasterEmitEvent>();
     }
     return this.mouseEnter;
   }
   protected mouseEnter?: EventEmitter<RaycasterEmitEvent>;
 
-
-  @Output() get onMouseExit(): EventEmitter<{ component: ThObject3D; type: RaycasterEvent}> {
-    if(!this.mouseExit) {
-      this.mouseExit = new EventEmitter<{ component: ThObject3D; type: RaycasterEvent}>();
+  @Output() get onMouseExit(): EventEmitter<{ component: ThObject3D; type: RaycasterEvent }> {
+    if (!this.mouseExit) {
+      this.mouseExit = new EventEmitter<{ component: ThObject3D; type: RaycasterEvent }>();
     }
     return this.mouseExit;
   }
-  protected mouseExit?: EventEmitter<{ component: ThObject3D; type: RaycasterEvent}>;
-
+  protected mouseExit?: EventEmitter<{ component: ThObject3D; type: RaycasterEvent }>;
 
   @Output() get onClick(): EventEmitter<RaycasterEmitEvent> {
-    if(!this.click) {
+    if (!this.click) {
       this.click = new EventEmitter<RaycasterEmitEvent>();
     }
     return this.click;
   }
   protected click?: EventEmitter<RaycasterEmitEvent>;
 
-
   @Output() get onPointerDown(): EventEmitter<RaycasterEmitEvent> {
-    if(!this.pointerDown) {
+    if (!this.pointerDown) {
       this.pointerDown = new EventEmitter<RaycasterEmitEvent>();
     }
     return this.pointerDown;
@@ -48,7 +44,7 @@ export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
   protected pointerDown?: EventEmitter<RaycasterEmitEvent>;
 
   @Output() get onPointerUp(): EventEmitter<RaycasterEmitEvent> {
-    if(!this.pointerUp) {
+    if (!this.pointerUp) {
       this.pointerUp = new EventEmitter<RaycasterEmitEvent>();
     }
     return this.pointerUp;

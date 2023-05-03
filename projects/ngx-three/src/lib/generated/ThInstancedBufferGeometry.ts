@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { InstancedBufferGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -18,9 +12,9 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThInstancedBufferGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThInstancedBufferGeometry)
+    }
+  ]
 })
 export class ThInstancedBufferGeometry<
   T extends InstancedBufferGeometry = InstancedBufferGeometry,
@@ -41,15 +35,8 @@ export class ThInstancedBufferGeometry<
   public get type(): string | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set isInstancedBufferGeometry(value: boolean) {
-    if (this._objRef) {
-      this._objRef.isInstancedBufferGeometry = value;
-    }
-  }
-
   // @ts-ignore
-  public get isInstancedBufferGeometry(): boolean | undefined {
+  public get isInstancedBufferGeometry(): true | undefined {
     return this._objRef?.isInstancedBufferGeometry;
   }
   @Input()

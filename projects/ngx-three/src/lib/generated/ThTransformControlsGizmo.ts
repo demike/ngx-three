@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Event, Object3D } from 'three';
 import { TransformControlsGizmo } from 'three/examples/jsm/controls/TransformControls';
 import { ThControlBase } from '../ThControlBase';
@@ -20,9 +14,9 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThTransformControlsGizmo),
-    },
-  ],
+      useExisting: forwardRef(() => ThTransformControlsGizmo)
+    }
+  ]
 })
 export class ThTransformControlsGizmo<
   T extends TransformControlsGizmo = TransformControlsGizmo,
@@ -47,33 +41,21 @@ export class ThTransformControlsGizmo<
   }
 
   @Input()
-  public set gizmo(value: {
-    translate: Object3D;
-    rotate: Object3D;
-    scale: Object3D;
-  }) {
+  public set gizmo(value: { translate: Object3D; rotate: Object3D; scale: Object3D }) {
     if (this._objRef) {
       this._objRef.gizmo = value;
     }
   }
 
   @Input()
-  public set helper(value: {
-    translate: Object3D;
-    rotate: Object3D;
-    scale: Object3D;
-  }) {
+  public set helper(value: { translate: Object3D; rotate: Object3D; scale: Object3D }) {
     if (this._objRef) {
       this._objRef.helper = value;
     }
   }
 
   @Input()
-  public set picker(value: {
-    translate: Object3D;
-    rotate: Object3D;
-    scale: Object3D;
-  }) {
+  public set picker(value: { translate: Object3D; rotate: Object3D; scale: Object3D }) {
     if (this._objRef) {
       this._objRef.picker = value;
     }

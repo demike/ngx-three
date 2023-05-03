@@ -1,28 +1,15 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  GLSLVersion,
-  IUniform,
-  ShaderMaterial,
-  ShaderMaterialParameters,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { GLSLVersion, IUniform, ShaderMaterial, ShaderMaterialParameters } from 'three';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
   selector: 'th-shaderMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) },
-  ],
+  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) }]
 })
 export class ThShaderMaterial<
   T extends ShaderMaterial = ShaderMaterial,

@@ -1,19 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  CompressedArrayTexture,
-  CompressedPixelFormat,
-  TextureDataType,
-  Wrapping,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { CompressedArrayTexture, CompressedPixelFormat, TextureDataType, Wrapping } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThCompressedTexture } from './ThCompressedTexture';
 
@@ -24,9 +13,9 @@ import { ThCompressedTexture } from './ThCompressedTexture';
   providers: [
     {
       provide: ThTextureBase,
-      useExisting: forwardRef(() => ThCompressedArrayTexture),
-    },
-  ],
+      useExisting: forwardRef(() => ThCompressedArrayTexture)
+    }
+  ]
 })
 export class ThCompressedArrayTexture<
   T extends CompressedArrayTexture = CompressedArrayTexture,
@@ -35,19 +24,12 @@ export class ThCompressedArrayTexture<
     width: number,
     height: number,
     depth: number,
-    format?: CompressedPixelFormat,
+    format: CompressedPixelFormat,
     type?: TextureDataType
   ]
 > extends ThCompressedTexture<T, TARGS> {
   public getType(): Type<CompressedArrayTexture> {
     return CompressedArrayTexture;
-  }
-
-  @Input()
-  public set isCompressedArrayTexture(value: true) {
-    if (this._objRef) {
-      this._objRef.isCompressedArrayTexture = value;
-    }
   }
 
   // @ts-ignore

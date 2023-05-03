@@ -10,37 +10,36 @@ export class StatsDirective implements OnInit, OnDestroy {
   private stats: Stats;
   private renderSubscription?: Subscription;
   constructor(private engineService: ThEngineService) {
-    this.stats = Stats();
+    this.stats = new Stats();
   }
   ngOnDestroy(): void {
-    if(this.renderSubscription) {
+    if (this.renderSubscription) {
       this.renderSubscription.unsubscribe();
     }
   }
   ngOnInit(): void {
-    if(!this.engineService.canvas) {
+    if (!this.engineService.canvas) {
       throw new Error('No canvas present');
     }
 
     const parentElement = this.engineService.canvas.parentElement;
-    if(parentElement) {
+    if (parentElement) {
       parentElement.style.position = 'relative';
-      this.stats.domElement.style.position = 'absolute';
+      this.stats.dom.style.position = 'absolute';
       this.stats.showPanel(0);
-    this.engineService.canvas.parentElement?.appendChild(this.stats.dom);
-    this.renderSubscription = this.engineService.beforeRender$.subscribe(() => {
-      this.stats.update();
-    });
+      this.engineService.canvas.parentElement?.appendChild(this.stats.dom);
+      this.renderSubscription = this.engineService.beforeRender$.subscribe(() => {
+        this.stats.update();
+      });
     }
   }
 
   @Input()
   public set thStats(enabled: boolean) {
-    if(!enabled) {
-      this.stats.domElement.style.visibility = 'hidden';
+    if (!enabled) {
+      this.stats.dom.style.visibility = 'hidden';
     } else {
-      this.stats.domElement.style.visibility = 'visible';
+      this.stats.dom.style.visibility = 'visible';
     }
   }
-
 }

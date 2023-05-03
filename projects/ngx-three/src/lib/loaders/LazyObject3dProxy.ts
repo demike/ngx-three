@@ -10,6 +10,7 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
   protected memberMap = new Map<keyof Object3D, any>();
   protected children: Object3D[] = [];
   protected eventListener: { [key: string]: ((event: Event) => void)[] } = {};
+  protected loaded = false;
 
   get(_target: unknown, p: keyof LazyObject3DProxy, receiver: any): any {
     switch (p) {
@@ -18,7 +19,11 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
       case 'applyToObject3D':
         return this.applyToObject3D;
       case 'objRef':
-        return this.objRef;
+        if (this.loaded) {
+          return this.objRef;
+        } else {
+          return undefined;
+        }
       case 'add':
         return this.add;
       case 'remove':
@@ -43,6 +48,7 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
       if (value) {
         this.applyToObject3D(value);
       }
+      this.loaded = true;
       this.objRef = value;
     } else {
       // store to the member map

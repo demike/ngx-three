@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { PerspectiveCamera } from 'three';
 import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
@@ -18,8 +12,8 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThPerspectiveCamera) },
-    { provide: ThCamera, useExisting: forwardRef(() => ThPerspectiveCamera) },
-  ],
+    { provide: ThCamera, useExisting: forwardRef(() => ThPerspectiveCamera) }
+  ]
 })
 export class ThPerspectiveCamera<
   T extends PerspectiveCamera = PerspectiveCamera,
@@ -29,20 +23,13 @@ export class ThPerspectiveCamera<
     return PerspectiveCamera;
   }
 
-  @Input()
-  public set type(value: 'PerspectiveCamera') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type(): 'PerspectiveCamera' | undefined {
-    return this._objRef?.type;
-  }
   // @ts-ignore
   public get isPerspectiveCamera(): true | undefined {
     return this._objRef?.isPerspectiveCamera;
+  }
+  // @ts-ignore
+  public get type(): (string | 'PerspectiveCamera') | undefined {
+    return this._objRef?.type;
   }
   @Input()
   public set zoom(value: number) {

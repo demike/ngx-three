@@ -25,8 +25,8 @@
   
     <!-- lights -->
     <th-hemisphereLight [args]="['#443333', '#111122']"/>
-    <th-directionalLight [castShadow]="true" [position]="[1,1,1]" [color]="'#ffffff' | color" [intensity]="1.35" [shadowMapHeight]="1024" [shadowMapWidth]="1024"/>
-    <th-directionalLight [castShadow]="true" [position]="[0.5,1,-1]" [color]="'#ffaa00' | color" [intensity]="1" [shadowMapHeight]="1024" [shadowMapWidth]="1024"/>
+    <th-directionalLight [castShadow]="true" [position]="[1,1,1]" [color]="'#ffffff' | color" [intensity]="1.35" [castShadow]="true" [receiveShadow]="true"/>
+    <th-directionalLight [castShadow]="true" [position]="[0.5,1,-1]" [color]="'#ffaa00' | color" [intensity]="1" [castShadow]="true" [receiveShadow]="true"/>
 
     <th-perspectiveCamera #camera [args]="[35, 2, 1, 15]"/>
     </th-scene>

@@ -5,7 +5,6 @@ import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';
 import { Group } from 'three';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,27 +13,24 @@ export class OBJLoaderService extends ThAsyncLoaderService<OBJLoader> {
 }
 
 @Pipe({
-   name: 'loadObj',
-   pure: true
+  name: 'loadObj',
+  pure: true
 })
 export class ThObjLoaderPipe extends ThAsyncLoaderBasePipe<OBJLoader> implements PipeTransform {
-    constructor(protected service: OBJLoaderService) {
-      super();
-    }
+  constructor(protected service: OBJLoaderService) {
+    super();
+  }
 }
 
 @Directive({
-  selector: '[loadObj]',
+  selector: '[loadObj]'
 })
 export class ThObjLoaderDirective extends ThAsyncLoaderBaseDirective<OBJLoader> {
   constructor(@Host() protected host: ThObject3D, protected zone: NgZone, protected service: OBJLoaderService) {
-    super(host,zone);
+    super(host, zone);
   }
 
   protected getRefFromResponse(response: Group) {
-      return response;
+    return response;
   }
 }
-
-
-

@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Audio, AudioContext, AudioListener, Event } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -15,7 +9,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-audio',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThAudio) }],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThAudio) }]
 })
 export class ThAudio<
   NodeType extends AudioNode = GainNode,
@@ -26,15 +20,8 @@ export class ThAudio<
     return Audio;
   }
 
-  @Input()
-  public set type(value: 'Audio') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): 'Audio' | undefined {
+  public get type(): (string | 'Audio') | undefined {
     return this._objRef?.type;
   }
   @Input()
@@ -82,14 +69,14 @@ export class ThAudio<
     return this._objRef?.autoplay;
   }
   @Input()
-  public set buffer(value: null | AudioBuffer) {
+  public set buffer(value: AudioBuffer | null) {
     if (this._objRef) {
       this._objRef.buffer = value;
     }
   }
 
   // @ts-ignore
-  public get buffer(): (null | AudioBuffer) | undefined {
+  public get buffer(): (AudioBuffer | null) | undefined {
     return this._objRef?.buffer;
   }
   @Input()
@@ -203,14 +190,14 @@ export class ThAudio<
     return this._objRef?.sourceType;
   }
   @Input()
-  public set source(value: null | AudioBufferSourceNode) {
+  public set source(value: AudioBufferSourceNode | null) {
     if (this._objRef) {
       this._objRef.source = value;
     }
   }
 
   // @ts-ignore
-  public get source(): (null | AudioBufferSourceNode) | undefined {
+  public get source(): (AudioBufferSourceNode | null) | undefined {
     return this._objRef?.source;
   }
   @Input()

@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
 import { Bone, Event } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -15,13 +9,9 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-bone',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThBone) }],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThBone) }]
 })
-export class ThBone<T extends Bone = Bone, TARGS = []> extends ThObject3D<
-  Event,
-  T,
-  TARGS
-> {
+export class ThBone<T extends Bone = Bone, TARGS = []> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Bone> {
     return Bone;
   }
@@ -30,15 +20,8 @@ export class ThBone<T extends Bone = Bone, TARGS = []> extends ThObject3D<
   public get isBone(): true | undefined {
     return this._objRef?.isBone;
   }
-  @Input()
-  public set type(value: 'Bone') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): 'Bone' | undefined {
+  public get type(): (string | 'Bone') | undefined {
     return this._objRef?.type;
   }
 }

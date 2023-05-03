@@ -16,14 +16,17 @@ export class NgxThreeControl extends NgxThreeClass {
   }
 
   protected getConstructorArgumentTypes(): string[] {
-    const symbol = ((this.classDecl as unknown) as ts.Type).symbol;
-    if(!symbol.valueDeclaration) {
+    const symbol = (this.classDecl as unknown as ts.Type).symbol;
+    if (!symbol.valueDeclaration) {
       return [];
     }
     const constructorType = this.typeChecker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration);
     const constructSignatures = constructorType.getConstructSignatures();
 
-    if (constructSignatures.length === 0 || (constructSignatures.length === 1 && constructSignatures[0].parameters.length === 0)) {
+    if (
+      constructSignatures.length === 0 ||
+      (constructSignatures.length === 1 && constructSignatures[0].parameters.length === 0)
+    ) {
       return [];
     }
 

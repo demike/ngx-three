@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
 import { BoxGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -15,9 +9,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-boxGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThBufferGeometry, useExisting: forwardRef(() => ThBoxGeometry) },
-  ],
+  providers: [{ provide: ThBufferGeometry, useExisting: forwardRef(() => ThBoxGeometry) }]
 })
 export class ThBoxGeometry<
   T extends BoxGeometry = BoxGeometry,
@@ -34,40 +26,19 @@ export class ThBoxGeometry<
     return BoxGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'BoxGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    width: number;
-    height: number;
-    depth: number;
-    widthSegments: number;
-    heightSegments: number;
-    depthSegments: number;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        width: number;
-        height: number;
-        depth: number;
-        widthSegments: number;
-        heightSegments: number;
-        depthSegments: number;
+        readonly width: number;
+        readonly height: number;
+        readonly depth: number;
+        readonly widthSegments: number;
+        readonly heightSegments: number;
+        readonly depthSegments: number;
       }
     | undefined {
     return this._objRef?.parameters;

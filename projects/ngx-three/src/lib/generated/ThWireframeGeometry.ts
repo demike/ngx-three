@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
 import { BufferGeometry, WireframeGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -18,9 +12,9 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThWireframeGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThWireframeGeometry)
+    }
+  ]
 })
 export class ThWireframeGeometry<
   TBufferGeometry extends BufferGeometry = BufferGeometry,
@@ -31,28 +25,14 @@ export class ThWireframeGeometry<
     return WireframeGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'WireframeGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: { geometry: TBufferGeometry }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        geometry: TBufferGeometry;
+        readonly geometry: TBufferGeometry;
       }
     | undefined {
     return this._objRef?.parameters;

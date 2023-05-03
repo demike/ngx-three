@@ -1,11 +1,25 @@
-import { Directive, EventEmitter, Host, inject, Injectable, Input, NgZone, OnInit, Output, PipeTransform, Type } from '@angular/core';
+import {
+  Directive,
+  EventEmitter,
+  Host,
+  inject,
+  Injectable,
+  Input,
+  NgZone,
+  OnInit,
+  Output,
+  PipeTransform,
+  Type
+} from '@angular/core';
 import { Loader } from 'three';
 import { ThAnimationLoopService } from '../renderer/th-animation-loop.service';
 import { isObserved } from '../util';
 import { createLazyObject3DProxy, LazyObject3DProxy } from './LazyObject3dProxy';
 import { ThLoader } from './ThLoaderBase';
 
-type AsyncLoader = Omit<Loader, 'load'>;
+interface AsyncLoader<T = any> extends Loader {
+  loadAsync(url: string, onProgress?: (event: ProgressEvent) => void): Promise<T>;
+}
 type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
 
 @Injectable()
@@ -22,7 +36,10 @@ export abstract class ThAsyncLoaderBasePipe<T extends AsyncLoader> implements Pi
   constructor() {}
 
   public transform(...args: Parameters<T['loadAsync']>) {
-    return this.service.load(...args).then(response => { this.animationLoop.requestAnimationFrame(); return response;});
+    return this.service.load(...args).then((response) => {
+      this.animationLoop.requestAnimationFrame();
+      return response;
+    });
   }
 }
 
@@ -99,7 +116,9 @@ export abstract class ThAsyncLoaderBaseDirective<T extends AsyncLoader> implemen
         }
       : undefined;
 
-    const result = await this.zone.runOutsideAngular(() => (this.service as ThAsyncLoaderService<AsyncLoader>).load(url, onProgress));
+    const result = await this.zone.runOutsideAngular(() =>
+      (this.service as ThAsyncLoaderService<AsyncLoader>).load(url, onProgress)
+    );
 
     this.animationLoop.requestAnimationFrame();
     this.proxy.objRef = this.getRefFromResponse(result);

@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Curve, TubeGeometry, Vector3 } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -18,56 +12,30 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThTubeGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThTubeGeometry)
+    }
+  ]
 })
 export class ThTubeGeometry<
   T extends TubeGeometry = TubeGeometry,
-  TARGS = [
-    path?: Curve<Vector3>,
-    tubularSegments?: number,
-    radius?: number,
-    radiusSegments?: number,
-    closed?: boolean
-  ]
+  TARGS = [path?: Curve<Vector3>, tubularSegments?: number, radius?: number, radialSegments?: number, closed?: boolean]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<TubeGeometry> {
     return TubeGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'TubeGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    path: Curve<Vector3>;
-    tubularSegments: number;
-    radius: number;
-    radialSegments: number;
-    closed: boolean;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        path: Curve<Vector3>;
-        tubularSegments: number;
-        radius: number;
-        radialSegments: number;
-        closed: boolean;
+        readonly path: Curve<Vector3>;
+        readonly tubularSegments: number;
+        readonly radius: number;
+        readonly radialSegments: number;
+        readonly closed: boolean;
       }
     | undefined {
     return this._objRef?.parameters;

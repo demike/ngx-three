@@ -1,4 +1,3 @@
-
 import { Color } from 'three';
 import { ColorPipe } from './color.pipe';
 

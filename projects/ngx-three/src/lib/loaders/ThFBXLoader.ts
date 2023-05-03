@@ -5,7 +5,6 @@ import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
 import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';
 import { Group } from 'three';
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -14,27 +13,24 @@ export class FBXLoaderService extends ThAsyncLoaderService<FBXLoader> {
 }
 
 @Pipe({
-   name: 'loadFBX',
-   pure: true
+  name: 'loadFBX',
+  pure: true
 })
 export class ThFBXLoaderPipe extends ThAsyncLoaderBasePipe<FBXLoader> implements PipeTransform {
-    constructor(protected service: FBXLoaderService) {
-      super();
-    }
+  constructor(protected service: FBXLoaderService) {
+    super();
+  }
 }
 
 @Directive({
-  selector: '[loadFBX]',
+  selector: '[loadFBX]'
 })
 export class ThFBXLoaderDirective extends ThAsyncLoaderBaseDirective<FBXLoader> {
   constructor(@Host() protected host: ThObject3D, protected zone: NgZone, protected service: FBXLoaderService) {
-    super(host,zone);
+    super(host, zone);
   }
 
   protected getRefFromResponse(response: Group) {
-      return response;
+    return response;
   }
 }
-
-
-

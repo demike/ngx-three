@@ -12,5 +12,4 @@ export class OnDemandExampleComponent {
   protected renderOnDemand = true;
   protected selected = false;
   public readonly glbPath = `${ASSET_PATH}DamagedHelmet.glb`;
-
 }

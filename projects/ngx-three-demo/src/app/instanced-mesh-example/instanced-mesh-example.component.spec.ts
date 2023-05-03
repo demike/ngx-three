@@ -8,9 +8,8 @@ describe('InstancedMeshExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InstancedMeshExampleComponent ]
-    })
-    .compileComponents();
+      declarations: [InstancedMeshExampleComponent]
+    }).compileComponents();
   });
 
   beforeEach(() => {

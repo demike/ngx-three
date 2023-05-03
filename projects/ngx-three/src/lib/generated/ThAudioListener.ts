@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { AudioContext, AudioListener, Event } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -15,27 +9,15 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-audioListener',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThAudioListener) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThAudioListener) }]
 })
-export class ThAudioListener<
-  T extends AudioListener = AudioListener,
-  TARGS = []
-> extends ThObject3D<Event, T, TARGS> {
+export class ThAudioListener<T extends AudioListener = AudioListener, TARGS = []> extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<AudioListener> {
     return AudioListener;
   }
 
-  @Input()
-  public set type(value: 'AudioListener') {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): 'AudioListener' | undefined {
+  public get type(): (string | 'AudioListener') | undefined {
     return this._objRef?.type;
   }
   @Input()
@@ -61,14 +43,14 @@ export class ThAudioListener<
     return this._objRef?.gain;
   }
   @Input()
-  public set filter(value: any) {
+  public set filter(value: AudioNode) {
     if (this._objRef) {
       this._objRef.filter = value;
     }
   }
 
   // @ts-ignore
-  public get filter(): any | undefined {
+  public get filter(): AudioNode | undefined {
     return this._objRef?.filter;
   }
   @Input()

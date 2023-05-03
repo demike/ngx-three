@@ -1,20 +1,15 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
+  MagnificationTextureFilter,
   Mapping,
+  MinificationTextureFilter,
   PixelFormat,
   TextureDataType,
-  TextureFilter,
   VideoTexture,
-  Wrapping,
+  Wrapping
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
@@ -23,9 +18,7 @@ import { ThTexture } from './ThTexture';
   selector: 'th-videoTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) },
-  ],
+  providers: [{ provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) }]
 })
 export class ThVideoTexture<
   T extends VideoTexture = VideoTexture,
@@ -34,8 +27,8 @@ export class ThVideoTexture<
     mapping?: Mapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
-    magFilter?: TextureFilter,
-    minFilter?: TextureFilter,
+    magFilter?: MagnificationTextureFilter,
+    minFilter?: MinificationTextureFilter,
     format?: PixelFormat,
     type?: TextureDataType,
     anisotropy?: number
@@ -48,6 +41,28 @@ export class ThVideoTexture<
   // @ts-ignore
   public get isVideoTexture(): true | undefined {
     return this._objRef?.isVideoTexture;
+  }
+  @Input()
+  public set magFilter(value: MagnificationTextureFilter) {
+    if (this._objRef) {
+      this._objRef.magFilter = value;
+    }
+  }
+
+  // @ts-ignore
+  public get magFilter(): MagnificationTextureFilter | undefined {
+    return this._objRef?.magFilter;
+  }
+  @Input()
+  public set minFilter(value: MinificationTextureFilter) {
+    if (this._objRef) {
+      this._objRef.minFilter = value;
+    }
+  }
+
+  // @ts-ignore
+  public get minFilter(): MinificationTextureFilter | undefined {
+    return this._objRef?.minFilter;
   }
   @Input()
   public set generateMipmaps(value: boolean) {

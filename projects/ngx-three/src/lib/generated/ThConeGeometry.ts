@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
 import { ConeGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThCylinderGeometry } from './ThCylinderGeometry';
@@ -19,9 +13,9 @@ import { ThCylinderGeometry } from './ThCylinderGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThConeGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThConeGeometry)
+    }
+  ]
 })
 export class ThConeGeometry<
   T extends ConeGeometry = ConeGeometry,
@@ -39,15 +33,24 @@ export class ThConeGeometry<
     return ConeGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'ConeGeometry') | undefined {
     return this._objRef?.type;
+  }
+  // @ts-ignore
+  public get parameters():
+    | {
+        readonly radius: number;
+        readonly radiusTop: number;
+        readonly radiusBottom: number;
+        readonly height: number;
+        readonly radialSegments: number;
+        readonly heightSegments: number;
+        readonly openEnded: boolean;
+        readonly thetaStart: number;
+        readonly thetaLength: number;
+      }
+    | undefined {
+    return this._objRef?.parameters;
   }
 }

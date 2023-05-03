@@ -20,7 +20,6 @@ import { ThBoxGeometry } from './ThBoxGeometry';
 import { ThBoxHelper } from './ThBoxHelper';
 import { ThBoxLineGeometry } from './ThBoxLineGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
-import { ThCamera } from './ThCamera';
 import { ThCameraHelper } from './ThCameraHelper';
 import { ThCanvasTexture } from './ThCanvasTexture';
 import { ThCapsuleGeometry } from './ThCapsuleGeometry';
@@ -38,8 +37,6 @@ import { ThCylinderGeometry } from './ThCylinderGeometry';
 import { ThData3DTexture } from './ThData3DTexture';
 import { ThDataArrayTexture } from './ThDataArrayTexture';
 import { ThDataTexture } from './ThDataTexture';
-import { ThDataTexture2DArray } from './ThDataTexture2DArray';
-import { ThDataTexture3D } from './ThDataTexture3D';
 import { ThDecalGeometry } from './ThDecalGeometry';
 import { ThDepthTexture } from './ThDepthTexture';
 import { ThDirectionalLight } from './ThDirectionalLight';
@@ -65,7 +62,6 @@ import { ThIcosahedronGeometry } from './ThIcosahedronGeometry';
 import { ThInstancedBufferGeometry } from './ThInstancedBufferGeometry';
 import { ThInstancedMesh } from './ThInstancedMesh';
 import { ThLatheGeometry } from './ThLatheGeometry';
-import { ThLight } from './ThLight';
 import { ThLightningStrike } from './ThLightningStrike';
 import { ThLightProbe } from './ThLightProbe';
 import { ThLine } from './ThLine';
@@ -166,7 +162,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThOrthographicCamera,
     ThCubeCamera,
     ThArrayCamera,
-    ThCamera,
     ThObject3D,
     ThSpotLightHelper,
     ThSkeletonHelper,
@@ -187,7 +182,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThHemisphereLight,
     ThDirectionalLight,
     ThAmbientLight,
-    ThLight,
     ThAmbientLightProbe,
     ThHemisphereLightProbe,
     ThLightProbe,
@@ -284,8 +278,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThVideoTexture,
     ThCompressedArrayTexture,
     ThDataTexture,
-    ThDataTexture2DArray,
-    ThDataTexture3D,
     ThCompressedTexture,
     ThCubeTexture,
     ThData3DTexture,
@@ -314,7 +306,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThOrthographicCamera,
     ThCubeCamera,
     ThArrayCamera,
-    ThCamera,
     ThObject3D,
     ThSpotLightHelper,
     ThSkeletonHelper,
@@ -335,7 +326,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThHemisphereLight,
     ThDirectionalLight,
     ThAmbientLight,
-    ThLight,
     ThAmbientLightProbe,
     ThHemisphereLightProbe,
     ThLightProbe,
@@ -432,8 +422,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThVideoTexture,
     ThCompressedArrayTexture,
     ThDataTexture,
-    ThDataTexture2DArray,
-    ThDataTexture3D,
     ThCompressedTexture,
     ThCubeTexture,
     ThData3DTexture,

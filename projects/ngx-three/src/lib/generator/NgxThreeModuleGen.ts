@@ -7,6 +7,9 @@ export class NgxThreeModuleGen {
     let strClasses = '';
     const imports: string[] = [];
     classes.forEach((c) => {
+      if (c.isAbstract) {
+        return;
+      }
       strClasses += c.className + ',';
       imports.push(`import { ${c.className} } from './${c.className}';`);
       if (c.overrideStub) {

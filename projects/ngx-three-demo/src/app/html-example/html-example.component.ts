@@ -4,7 +4,6 @@ import * as THREE from 'three';
 import { Clock, Plane, Vector3 } from 'three';
 import { ASSET_PATH } from '../assets';
 
-
 /**
  * An example showing
  * - how to use the refById directive.
@@ -17,7 +16,7 @@ import { ASSET_PATH } from '../assets';
   templateUrl: './html-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HtmlExampleComponent  {
+export class HtmlExampleComponent {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   public readonly Math = Math;
   public sprite = false;
@@ -25,10 +24,10 @@ export class HtmlExampleComponent  {
   public readonly glbPath = `${ASSET_PATH}mac-draco.glb`;
   public readonly clock = new Clock(true);
 
-  public readonly plane = new Plane(new Vector3(0,1,0),3);
+  public readonly plane = new Plane(new Vector3(0, 1, 0), 3);
 
-  public rotation: [number, number, number] = [0,0,0];
-  public position: [number, number, number] = [0,0,0];
+  public rotation: [number, number, number] = [0, 0, 0];
+  public position: [number, number, number] = [0, 0, 0];
 
   constructor(dracoLoader: DRACOLoaderService) {
     // specify the draco decoder path used by the gltf loader instances
@@ -53,5 +52,4 @@ export class HtmlExampleComponent  {
 
     this.position = [0, THREE.MathUtils.lerp(this.position[1], (-2 + Math.sin(t / 2)) / 2, 0.1), 0];
   }
-
 }

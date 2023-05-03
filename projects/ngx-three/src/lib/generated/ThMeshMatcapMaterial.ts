@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import {
   Color,
   ColorRepresentation,
@@ -15,7 +9,7 @@ import {
   MeshMatcapMaterialParameters,
   NormalMapTypes,
   Texture,
-  Vector2,
+  Vector2
 } from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
@@ -27,9 +21,9 @@ import { ThMaterial } from './ThMaterial';
   providers: [
     {
       provide: ThMaterial,
-      useExisting: forwardRef(() => ThMeshMatcapMaterial),
-    },
-  ],
+      useExisting: forwardRef(() => ThMeshMatcapMaterial)
+    }
+  ]
 })
 export class ThMeshMatcapMaterial<
   T extends MeshMatcapMaterial = MeshMatcapMaterial,
@@ -140,10 +134,7 @@ export class ThMeshMatcapMaterial<
   @Input()
   public set normalScale(value: Vector2 | [x: number, y: number]) {
     if (this._objRef) {
-      this._objRef.normalScale = applyValue<Vector2>(
-        this._objRef.normalScale,
-        value
-      );
+      this._objRef.normalScale = applyValue<Vector2>(this._objRef.normalScale, value);
     }
   }
   // @ts-ignore

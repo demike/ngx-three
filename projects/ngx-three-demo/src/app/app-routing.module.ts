@@ -219,7 +219,7 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: RefByIdExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/ref-by-id-example/ref-by-id-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/ref-by-id-example/ref-by-id-example.component.ts',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/ref-by-id-example/ref-by-id-example.component.ts'
       ]
     }
   },
@@ -230,7 +230,7 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: HtmlExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-example/html-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-example/html-example.component.ts',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-example/html-example.component.ts'
       ]
     }
   },
@@ -242,7 +242,7 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/outline-pass-events-example/outline-pass-events-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/outline-pass-events-example/outline-pass-events-example.component.ts',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/outline-pass-events-example/outline-pass-events-example.component.scss',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/outline-pass-events-example/outline-pass-events-example.component.scss'
       ]
     }
   }

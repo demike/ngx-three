@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { ArrayCamera, PerspectiveCamera } from 'three';
 import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
@@ -19,8 +13,8 @@ import { ThPerspectiveCamera } from './ThPerspectiveCamera';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThArrayCamera) },
-    { provide: ThCamera, useExisting: forwardRef(() => ThArrayCamera) },
-  ],
+    { provide: ThCamera, useExisting: forwardRef(() => ThArrayCamera) }
+  ]
 })
 export class ThArrayCamera<
   T extends ArrayCamera = ArrayCamera,
@@ -30,6 +24,10 @@ export class ThArrayCamera<
     return ArrayCamera;
   }
 
+  // @ts-ignore
+  public get isArrayCamera(): true | undefined {
+    return this._objRef?.isArrayCamera;
+  }
   @Input()
   public set cameras(value: PerspectiveCamera[]) {
     if (this._objRef) {
@@ -40,9 +38,5 @@ export class ThArrayCamera<
   // @ts-ignore
   public get cameras(): PerspectiveCamera[] | undefined {
     return this._objRef?.cameras;
-  }
-  // @ts-ignore
-  public get isArrayCamera(): true | undefined {
-    return this._objRef?.isArrayCamera;
   }
 }

@@ -1,21 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  ColorRepresentation,
-  Event,
-  Light,
-  LineSegments,
-  Matrix4,
-  SpotLightHelper,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { ColorRepresentation, Event, Light, LineSegments, Matrix4, SpotLightHelper } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -23,9 +10,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-spotLightHelper',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThSpotLightHelper) },
-  ],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSpotLightHelper) }]
 })
 export class ThSpotLightHelper<
   T extends SpotLightHelper = SpotLightHelper,
@@ -35,6 +20,21 @@ export class ThSpotLightHelper<
     return SpotLightHelper;
   }
 
+  // @ts-ignore
+  public get type(): (string | 'SpotLightHelper') | undefined {
+    return this._objRef?.type;
+  }
+  @Input()
+  public set cone(value: LineSegments) {
+    if (this._objRef) {
+      this._objRef.cone = value;
+    }
+  }
+
+  // @ts-ignore
+  public get cone(): LineSegments | undefined {
+    return this._objRef?.cone;
+  }
   @Input()
   public set light(value: Light) {
     if (this._objRef) {
@@ -78,17 +78,6 @@ export class ThSpotLightHelper<
     return this._objRef?.matrix;
   }
   @Input()
-  public set matrixAutoUpdate(value: boolean) {
-    if (this._objRef) {
-      this._objRef.matrixAutoUpdate = value;
-    }
-  }
-
-  // @ts-ignore
-  public get matrixAutoUpdate(): boolean | undefined {
-    return this._objRef?.matrixAutoUpdate;
-  }
-  @Input()
   public set color(value: ColorRepresentation | undefined) {
     if (this._objRef) {
       this._objRef.color = value;
@@ -100,14 +89,14 @@ export class ThSpotLightHelper<
     return this._objRef?.color;
   }
   @Input()
-  public set cone(value: LineSegments) {
+  public set matrixAutoUpdate(value: boolean) {
     if (this._objRef) {
-      this._objRef.cone = value;
+      this._objRef.matrixAutoUpdate = value;
     }
   }
 
   // @ts-ignore
-  public get cone(): LineSegments | undefined {
-    return this._objRef?.cone;
+  public get matrixAutoUpdate(): boolean | undefined {
+    return this._objRef?.matrixAutoUpdate;
   }
 }

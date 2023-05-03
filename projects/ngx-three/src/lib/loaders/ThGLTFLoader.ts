@@ -15,9 +15,9 @@ export class GLTFLoaderService extends ThAsyncLoaderService<GLTFLoader> {
   }
 
   public createLoaderInstance(): GLTFLoader {
-      const loader = super.createLoaderInstance();
-      loader.setDRACOLoader(this.dracoLoaderService.createLoaderInstance());
-      return loader;
+    const loader = super.createLoaderInstance();
+    loader.setDRACOLoader(this.dracoLoaderService.createLoaderInstance());
+    return loader;
   }
 }
 
@@ -35,11 +35,7 @@ export class ThGLTFLoaderPipe extends ThAsyncLoaderBasePipe<GLTFLoader> implemen
   selector: '[loadGLTF]'
 })
 export class ThGLTFLoaderDirective extends ThAsyncLoaderBaseDirective<GLTFLoader> {
-  constructor(
-    @Host() protected host: ThObject3D,
-    protected zone: NgZone,
-    protected service: GLTFLoaderService,
-  ) {
+  constructor(@Host() protected host: ThObject3D, protected zone: NgZone, protected service: GLTFLoaderService) {
     super(host, zone);
   }
 

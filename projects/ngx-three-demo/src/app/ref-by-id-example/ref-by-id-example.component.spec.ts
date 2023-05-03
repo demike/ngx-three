@@ -10,8 +10,7 @@ describe('RefByIdExampleComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppModule]
-    })
-    .compileComponents();
+    }).compileComponents();
 
     fixture = TestBed.createComponent(RefByIdExampleComponent);
     component = fixture.componentInstance;

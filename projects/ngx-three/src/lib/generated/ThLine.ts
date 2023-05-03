@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { BufferGeometry, Event, Line, Material } from 'three';
 import { ThObject3D } from './ThObject3D';
 
@@ -15,7 +9,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-line',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLine) }],
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLine) }]
 })
 export class ThLine<
   TGeometry extends BufferGeometry = BufferGeometry,
@@ -27,6 +21,14 @@ export class ThLine<
     return Line;
   }
 
+  // @ts-ignore
+  public get isLine(): true | undefined {
+    return this._objRef?.isLine;
+  }
+  // @ts-ignore
+  public get type(): (string | 'Line') | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set geometry(value: TGeometry) {
     if (this._objRef) {
@@ -50,23 +52,6 @@ export class ThLine<
     return this._objRef?.material;
   }
   @Input()
-  public set type(value: 'Line' | 'LineLoop' | 'LineSegments' | string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  // @ts-ignore
-  public get type():
-    | ('Line' | 'LineLoop' | 'LineSegments' | string)
-    | undefined {
-    return this._objRef?.type;
-  }
-  // @ts-ignore
-  public get isLine(): true | undefined {
-    return this._objRef?.isLine;
-  }
-  @Input()
   public set morphTargetInfluences(value: number[] | undefined) {
     if (this._objRef) {
       this._objRef.morphTargetInfluences = value;
@@ -78,18 +63,14 @@ export class ThLine<
     return this._objRef?.morphTargetInfluences;
   }
   @Input()
-  public set morphTargetDictionary(
-    value: { [key: string]: number } | undefined
-  ) {
+  public set morphTargetDictionary(value: { [key: string]: number } | undefined) {
     if (this._objRef) {
       this._objRef.morphTargetDictionary = value;
     }
   }
 
   // @ts-ignore
-  public get morphTargetDictionary():
-    | ({ [key: string]: number } | undefined)
-    | undefined {
+  public get morphTargetDictionary(): ({ [key: string]: number } | undefined) | undefined {
     return this._objRef?.morphTargetDictionary;
   }
 }

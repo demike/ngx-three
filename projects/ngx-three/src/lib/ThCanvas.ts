@@ -11,7 +11,7 @@ import {
   isDevMode,
   OnInit,
   QueryList,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
 import { Raycaster, WebGLRenderer } from 'three';
 import { RAYCASTER, RaycasterService } from './events/raycaster.service';
@@ -31,8 +31,8 @@ import { ThView } from './ThView';
     ThAnimationLoopService,
     { provide: RAYCASTER, useValue: new Raycaster() },
     forwardRef(() => RaycasterService),
-    { provide: ThView, useExisting: forwardRef(() => ThCanvas) },
-  ],
+    { provide: ThView, useExisting: forwardRef(() => ThCanvas) }
+  ]
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThCanvas extends ThView implements OnInit, AfterViewInit, AfterContentChecked {

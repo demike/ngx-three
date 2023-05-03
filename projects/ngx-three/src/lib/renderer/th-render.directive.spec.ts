@@ -13,8 +13,11 @@ describe('ThRenderDirective', () => {
       resize$: new Subject<any>()
     };
 
-    animationLoopService = jasmine.createSpyObj<ThAnimationLoopService>('ThAnimationLoopService',['start', 'stop']);
-    directive = new ThRenderDirective(engineServiceMock as ThEngineService, animationLoopService as ThAnimationLoopService);
+    animationLoopService = jasmine.createSpyObj<ThAnimationLoopService>('ThAnimationLoopService', ['start', 'stop']);
+    directive = new ThRenderDirective(
+      engineServiceMock as ThEngineService,
+      animationLoopService as ThAnimationLoopService
+    );
   });
   it('should create an instance', () => {
     expect(directive).toBeTruthy();
@@ -33,11 +36,10 @@ describe('ThRenderDirective', () => {
       done();
     });
 
-    (engineServiceMock.resize$ as Subject<any>).next({ width: 800, height: 600});
+    (engineServiceMock.resize$ as Subject<any>).next({ width: 800, height: 600 });
   });
 
   it('should enable/disable ondemand rendering', () => {
-
     directive.renderOnDemand = true;
     expect(animationLoopService.stop).toHaveBeenCalledTimes(1);
     directive.renderOnDemand = false;
@@ -47,5 +49,4 @@ describe('ThRenderDirective', () => {
     directive.renderOnDemand = false;
     expect(animationLoopService.start).toHaveBeenCalledTimes(2);
   });
-
 });

@@ -9,9 +9,8 @@ describe('AnimationExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnimationExampleComponent, FogPipe ]
-    })
-    .compileComponents();
+      declarations: [AnimationExampleComponent, FogPipe]
+    }).compileComponents();
   });
 
   beforeEach(() => {

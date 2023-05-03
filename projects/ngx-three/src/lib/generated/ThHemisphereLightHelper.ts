@@ -1,21 +1,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
-import {
-  ColorRepresentation,
-  Event,
-  HemisphereLight,
-  HemisphereLightHelper,
-  Matrix4,
-  MeshBasicMaterial,
-} from 'three';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import { ColorRepresentation, Event, HemisphereLight, HemisphereLightHelper, Matrix4, MeshBasicMaterial } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -26,9 +13,9 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThObject3D,
-      useExisting: forwardRef(() => ThHemisphereLightHelper),
-    },
-  ],
+      useExisting: forwardRef(() => ThHemisphereLightHelper)
+    }
+  ]
 })
 export class ThHemisphereLightHelper<
   T extends HemisphereLightHelper = HemisphereLightHelper,
@@ -38,6 +25,10 @@ export class ThHemisphereLightHelper<
     return HemisphereLightHelper;
   }
 
+  // @ts-ignore
+  public get type(): (string | 'HemisphereLightHelper') | undefined {
+    return this._objRef?.type;
+  }
   @Input()
   public set light(value: HemisphereLight) {
     if (this._objRef) {

@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
 import { PolyhedronGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -18,53 +12,29 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThPolyhedronGeometry),
-    },
-  ],
+      useExisting: forwardRef(() => ThPolyhedronGeometry)
+    }
+  ]
 })
 export class ThPolyhedronGeometry<
   T extends PolyhedronGeometry = PolyhedronGeometry,
-  TARGS = [
-    vertices?: number[],
-    indices?: number[],
-    radius?: number,
-    detail?: number
-  ]
+  TARGS = [vertices?: number[], indices?: number[], radius?: number, detail?: number]
 > extends ThBufferGeometry<T, TARGS> {
   public getType(): Type<PolyhedronGeometry> {
     return PolyhedronGeometry;
   }
 
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
   // @ts-ignore
-  public get type(): string | undefined {
+  public get type(): (string | 'PolyhedronGeometry') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set parameters(value: {
-    vertices: number[];
-    indices: number[];
-    radius: number;
-    detail: number;
-  }) {
-    if (this._objRef) {
-      this._objRef.parameters = value;
-    }
-  }
-
   // @ts-ignore
   public get parameters():
     | {
-        vertices: number[];
-        indices: number[];
-        radius: number;
-        detail: number;
+        readonly vertices: number[];
+        readonly indices: number[];
+        readonly radius: number;
+        readonly detail: number;
       }
     | undefined {
     return this._objRef?.parameters;

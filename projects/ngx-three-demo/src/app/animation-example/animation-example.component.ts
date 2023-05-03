@@ -13,15 +13,14 @@ export class AnimationExampleComponent implements AfterViewInit {
 
   public readonly outputEncoding: TextureEncoding = sRGBEncoding;
 
-  @ViewChild('gridHelper', {static: true})
+  @ViewChild('gridHelper', { static: true })
   public gridHelper?: ThGridHelper;
 
-
-  constructor() { }
+  constructor() {}
 
   ngAfterViewInit(): void {
-    const material =  this.gridHelper?.objRef?.material as Material | undefined;
-    if(material) {
+    const material = this.gridHelper?.objRef?.material as Material | undefined;
+    if (material) {
       material.opacity = 0.2;
       material.transparent = true;
     }
@@ -30,5 +29,4 @@ export class AnimationExampleComponent implements AfterViewInit {
   public onBeforeRender() {
     // TODO: implement me
   }
-
 }

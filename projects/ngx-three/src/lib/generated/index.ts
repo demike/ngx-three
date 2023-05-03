@@ -41,8 +41,6 @@ export * from './ThCylinderGeometry';
 export * from './ThData3DTexture';
 export * from './ThDataArrayTexture';
 export * from './ThDataTexture';
-export * from './ThDataTexture2DArray';
-export * from './ThDataTexture3D';
 export * from './ThDecalGeometry';
 export * from './ThDepthTexture';
 export * from './ThDirectionalLight';

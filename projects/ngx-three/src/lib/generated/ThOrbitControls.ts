@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Camera, MOUSE, TOUCH, Vector3 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { ThControlBase } from '../ThControlBase';
@@ -17,9 +11,7 @@ import { applyValue } from '../util';
   selector: 'th-orbitControls',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) },
-  ],
+  providers: [{ provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) }]
 })
 export class ThOrbitControls<
   T extends OrbitControls = OrbitControls,
@@ -303,36 +295,25 @@ export class ThOrbitControls<
     return this._objRef?.autoRotateSpeed;
   }
   @Input()
-  public set keys(value: {
-    LEFT: string;
-    UP: string;
-    RIGHT: string;
-    BOTTOM: string;
-  }) {
+  public set keys(value: { LEFT: string; UP: string; RIGHT: string; BOTTOM: string }) {
     if (this._objRef) {
       this._objRef.keys = value;
     }
   }
 
   // @ts-ignore
-  public get keys():
-    | { LEFT: string; UP: string; RIGHT: string; BOTTOM: string }
-    | undefined {
+  public get keys(): { LEFT: string; UP: string; RIGHT: string; BOTTOM: string } | undefined {
     return this._objRef?.keys;
   }
   @Input()
-  public set mouseButtons(
-    value: Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>
-  ) {
+  public set mouseButtons(value: Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>) {
     if (this._objRef) {
       this._objRef.mouseButtons = value;
     }
   }
 
   // @ts-ignore
-  public get mouseButtons():
-    | Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>
-    | undefined {
+  public get mouseButtons(): Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }> | undefined {
     return this._objRef?.mouseButtons;
   }
   @Input()
@@ -359,10 +340,7 @@ export class ThOrbitControls<
   @Input()
   public set position0(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
-      this._objRef.position0 = applyValue<Vector3>(
-        this._objRef.position0,
-        value
-      );
+      this._objRef.position0 = applyValue<Vector3>(this._objRef.position0, value);
     }
   }
   // @ts-ignore
@@ -370,14 +348,14 @@ export class ThOrbitControls<
     return this._objRef?.position0;
   }
   @Input()
-  public set zoomO(value: number) {
+  public set zoom0(value: number) {
     if (this._objRef) {
-      this._objRef.zoomO = value;
+      this._objRef.zoom0 = value;
     }
   }
 
   // @ts-ignore
-  public get zoomO(): number | undefined {
-    return this._objRef?.zoomO;
+  public get zoom0(): number | undefined {
+    return this._objRef?.zoom0;
   }
 }

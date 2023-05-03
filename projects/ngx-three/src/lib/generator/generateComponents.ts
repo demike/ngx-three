@@ -92,7 +92,7 @@ class NgxThreeClassGenerator {
         singleQuote: true
       });
     } catch (e) {
-      console.log(`error creating file: ${fileName}`,e);
+      console.log(`error creating file: ${fileName}`, e);
     }
     writeFileSync(join(this.baseOutPath, fileName + '.ts'), content);
   }

@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Input,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Camera } from 'three';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
 import { ThControlBase } from '../ThControlBase';
@@ -19,9 +13,9 @@ import { ThControlBase } from '../ThControlBase';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThPointerLockControls),
-    },
-  ],
+      useExisting: forwardRef(() => ThPointerLockControls)
+    }
+  ]
 })
 export class ThPointerLockControls<
   T extends PointerLockControls = PointerLockControls,
@@ -31,6 +25,17 @@ export class ThPointerLockControls<
     return PointerLockControls;
   }
 
+  @Input()
+  public set camera(value: Camera) {
+    if (this._objRef) {
+      this._objRef.camera = value;
+    }
+  }
+
+  // @ts-ignore
+  public get camera(): Camera | undefined {
+    return this._objRef?.camera;
+  }
   @Input()
   public set domElement(value: HTMLElement) {
     if (this._objRef) {
@@ -74,5 +79,16 @@ export class ThPointerLockControls<
   // @ts-ignore
   public get maxPolarAngle(): number | undefined {
     return this._objRef?.maxPolarAngle;
+  }
+  @Input()
+  public set pointerSpeed(value: number) {
+    if (this._objRef) {
+      this._objRef.pointerSpeed = value;
+    }
+  }
+
+  // @ts-ignore
+  public get pointerSpeed(): number | undefined {
+    return this._objRef?.pointerSpeed;
   }
 }
