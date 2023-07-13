@@ -1,0 +1,39 @@
+<div id="menu">
+  <button id="table" (click)="createTablePoses()">TABLE</button>
+  <button id="sphere" (click)="createSpherePoses()">SPHERE</button>
+  <button id="helix" (click)="createHelixPoses()">HELIX</button>
+  <button id="grid" (click)="createGridPoses()">GRID</button>
+</div>
+<th-canvas [renderOnDemand]="true" class="canvas-background">
+  <th-scene [thStats]="true">
+    <th-ambientLight/>
+
+
+    <th-cSS3DObject 
+          *ngFor="let el of this.table; let i = index" 
+          [position]="poses[i].position">
+
+      <div class="element" [style.background]="'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')'">
+        <div class="number">
+          {{ i + 1 }}
+        </div>
+        <div class="symbol">
+          {{el[0]}}
+        </div>
+        <div class="details">
+          {{el[1]}} <br> {{el[2]}}
+        </div>
+      </div>
+
+    </th-cSS3DObject>
+   
+    <th-pointLight [position]="[10, 10, 10]"/>
+
+    <th-perspectiveCamera
+      [args]="[45, 2, 1, 10000]"
+      [position]="[0, 0, 3000]"
+      [lookAt]="[0, 0, 0]">
+      <th-trackballControls [minDistance]="500" [maxDistance]="6000"/>
+    </th-perspectiveCamera>
+  </th-scene>
+</th-canvas>

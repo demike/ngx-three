@@ -1,55 +1,54 @@
-import { EventEmitter, forwardRef, Inject, Injectable, NgZone, OnDestroy } from '@angular/core';
+import { EventEmitter, inject, Injectable, NgZone, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
-import { Clock, Vector4, WebGLRenderer, WebGLRendererParameters } from 'three';
-import { ThView } from './ThView';
+import { Clock, Vector4, WebGLRenderer } from 'three';
+import { HOST_ELEMENT, ThView } from './ThView';
 import { isObserved } from './util';
 import { Observable, Subject, takeUntil } from 'rxjs';
+import { RENDERER_PROVIDERS } from './renderer/renderer-providers';
 
 export interface RenderState {
   engine: ThEngineService;
   delta: number;
 }
-export interface ThRendererParameters extends Partial<WebGLRenderer> {
-  domElement: HTMLCanvasElement;
-}
-
-const RENDERER_DEFAULTS: WebGLRendererParameters = {
-  alpha: true, // transparent background
-  antialias: true, // smooth edges
-  preserveDrawingBuffer: true
-};
 
 @Injectable()
 export class ThEngineService implements OnDestroy {
   public readonly beforeRender$: Observable<RenderState>;
   public readonly resize$: Observable<{ width: number; height: number }>;
 
-  private _renderer?: THREE.WebGLRenderer;
-  private rendererParameters?: ThRendererParameters;
+  private readonly hostElement = inject(HOST_ELEMENT);
+  public readonly canvas?: HTMLCanvasElement;
+  public readonly wegblRenderer?: THREE.WebGLRenderer;
+
+  /**
+   * all injected renderers
+   */
+  public readonly renderers: THREE.Renderer[];
+
   private clock = new Clock();
   private destroyed$ = new Subject<void>();
   private readonly resizeEmitter = new EventEmitter();
   private readonly beforeRenderEmitter = new EventEmitter<RenderState>();
   private views: ThView[] = [];
 
-  public get canvas(): HTMLCanvasElement | undefined {
-    return this.rendererParameters?.domElement;
-  }
-
   private resizeObserver?: ResizeObserver;
 
   public constructor(private ngZone: NgZone) {
     this.beforeRender$ = this.beforeRenderEmitter.pipe(takeUntil(this.destroyed$));
     this.resize$ = this.resizeEmitter.pipe(takeUntil(this.destroyed$));
-  }
 
-  public get renderer() {
-    return this._renderer;
+    const args = this.initRenderer();
+    this.renderers = args.renderers;
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    this.canvas = args.canvas;
+    this.wegblRenderer = args.mainRenderer as WebGLRenderer;
+
+    this.initResizeObserver();
   }
 
   public ngOnDestroy(): void {
-    if (this.resizeObserver && this.canvas) {
-      this.resizeObserver.unobserve(this.canvas);
+    if (this.resizeObserver && this.hostElement) {
+      this.resizeObserver.unobserve(this.hostElement.nativeElement);
     }
   }
 
@@ -57,38 +56,47 @@ export class ThEngineService implements OnDestroy {
     // We have to run this outside angular zones,
     // because it could trigger heavy changeDetection cycles.
     this.ngZone.runOutsideAngular(() => {
-      if (!this.canvas) {
-        throw new Error('missing canvas element');
-      }
-
-      this.resize();
+      this.initCanvasSize();
       if (!this.resizeObserver) {
         // @ts-ignore
         this.resizeObserver = new ResizeObserver(() => {
           this.resize();
         });
       }
-      this.resizeObserver.observe(this.canvas);
+      this.resizeObserver.observe(this.hostElement.nativeElement);
     });
   }
 
-  private initRenderer(): void {
-    if (this._renderer) {
-      return;
+  private initCanvasSize() {
+    this.canvas?.style.setProperty('width', '100%');
+    this.canvas?.style.setProperty('height', '100%');
+  }
+
+  private initRenderer() {
+    const renderers = inject<THREE.Renderer[]>(RENDERER_PROVIDERS);
+    let canvas: HTMLCanvasElement | undefined;
+    let mainRenderer: THREE.Renderer | undefined;
+    for (const renderer of renderers) {
+      if (renderer.domElement instanceof HTMLCanvasElement) {
+        mainRenderer = renderer;
+        canvas = mainRenderer.domElement;
+      }
     }
-    this._renderer = new THREE.WebGLRenderer({
-      canvas: this.rendererParameters?.domElement,
-      ...RENDERER_DEFAULTS
-    });
 
-    Object.assign(this._renderer, { ...RENDERER_DEFAULTS, ...this.rendererParameters });
-    this.resize();
+    if (!renderers || renderers.length < 1) {
+      throw new Error('missing Canvas Renderer');
+    }
+
+    return {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      canvas,
+      mainRenderer,
+      renderers,
+    };
   }
 
-  public setRenderer(options: ThRendererParameters) {
-    this.rendererParameters = options;
-    this.initRenderer();
-    this.initResizeObserver();
+  public setViews(views: ThView[]) {
+    this.views = views;
   }
 
   public addView(view: ThView) {
@@ -107,10 +115,6 @@ export class ThEngineService implements OnDestroy {
   }
 
   protected renderView(view: ThView) {
-    if (!this._renderer) {
-      return;
-    }
-
     const camera = view.camera;
     const scene = view.scene;
 
@@ -118,71 +122,70 @@ export class ThEngineService implements OnDestroy {
       return;
     }
 
-    const renderer = this._renderer;
-
     if (isObserved(view.onRender)) {
       this.ngZone.run(() =>
         view.onRender.emit({
-          renderer,
+          renderer: this.renderers,
           scene,
-          camera
+          camera,
         })
       );
     }
 
-    this.applyRendererParametersFromView(view);
-    if (view.effectComposer) {
-      view.effectComposer.render();
-    } else {
-      this._renderer.render(scene.objRef, camera.objRef);
+    for (const renderer of this.renderers) {
+      if (view.effectComposer && !(renderer instanceof WebGLRenderer)) {
+        // effect composer needs a webgl renderer
+        continue;
+      }
+      this.applyRendererParametersFromView(view, renderer);
+      if (view.effectComposer) {
+        view.effectComposer.render();
+        return;
+      } else {
+        renderer.render(scene.objRef, camera.objRef);
+      }
     }
   }
 
-  protected applyRendererParametersFromView(view: ThView) {
-    if (!this._renderer) {
-      return;
-    }
-    if (view.viewPort) {
+  protected applyRendererParametersFromView(view: ThView, renderer: Partial<WebGLRenderer>) {
+    if (view.viewPort && renderer.setViewport) {
       if (view.viewPort instanceof Vector4) {
-        this._renderer.setViewport(view.viewPort);
+        renderer.setViewport(view.viewPort);
       } else {
-        this._renderer.setViewport(view.viewPort.x, view.viewPort.y, view.viewPort.width, view.viewPort.height);
+        renderer.setViewport(view.viewPort.x, view.viewPort.y, view.viewPort.width, view.viewPort.height);
       }
     }
 
-    if (view.scissor) {
+    if (view.scissor && renderer.setScissor) {
       if (view.scissor instanceof Vector4) {
-        this._renderer.setScissor(view.scissor);
+        renderer.setScissor(view.scissor);
       } else {
-        this._renderer.setScissor(view.scissor.x, view.scissor.y, view.scissor.width, view.scissor.height);
+        renderer.setScissor(view.scissor.x, view.scissor.y, view.scissor.width, view.scissor.height);
       }
     }
 
-    if (view.scissorTest !== undefined) {
-      this._renderer.setScissorTest(view.scissorTest);
+    if (view.scissorTest !== undefined && renderer.setScissorTest) {
+      renderer.setScissorTest(view.scissorTest);
     }
 
-    if (view.clearColor) {
-      this._renderer.setClearColor(view.clearColor);
+    if (view.clearColor && renderer.setClearColor) {
+      renderer.setClearColor(view.clearColor);
     }
 
-    if (view.clearAlpha !== undefined) {
-      this._renderer.setClearAlpha(view.clearAlpha);
+    if (view.clearAlpha !== undefined && renderer.setClearAlpha) {
+      renderer.setClearAlpha(view.clearAlpha);
     }
 
-    if (view.shadow !== undefined) {
-      this._renderer.shadowMap.enabled = true;
+    if (view.shadow !== undefined && renderer.shadowMap) {
+      renderer.shadowMap.enabled = true;
     }
   }
 
   public resize() {
-    if (!this._renderer || !this.canvas) {
-      return false;
-    }
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const { width, height } = this.calcRendererSize()!;
+    const { width, height } = this.calcRendererSize();
 
-    this._renderer.setSize(width, height, false);
+    // this.wegblRenderer?.setSize(width, height, false);
+    this.renderers?.forEach((renderer) => renderer.setSize(width, height, false));
 
     for (const view of this.views) {
       this.adjustViewDimensions(view, width, height);
@@ -194,14 +197,10 @@ export class ThEngineService implements OnDestroy {
   }
 
   protected calcRendererSize() {
-    if (!this._renderer || !this.canvas) {
-      return;
-    }
-
-    const pixelRatio = window.devicePixelRatio;
+    // const pixelRatio = window.devicePixelRatio;
     return {
-      width: (this.canvas.clientWidth ?? 0) * pixelRatio,
-      height: (this.canvas.clientHeight ?? 0) * pixelRatio
+      width: this.hostElement.nativeElement.clientWidth ?? 0 /* * pixelRatio */,
+      height: this.hostElement.nativeElement.clientHeight ?? 0 /* * pixelRatio */,
     };
   }
 

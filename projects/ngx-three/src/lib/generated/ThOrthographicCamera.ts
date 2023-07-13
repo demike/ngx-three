@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { OrthographicCamera } from 'three';
 import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
@@ -13,14 +19,21 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThObject3D,
-      useExisting: forwardRef(() => ThOrthographicCamera)
+      useExisting: forwardRef(() => ThOrthographicCamera),
     },
-    { provide: ThCamera, useExisting: forwardRef(() => ThOrthographicCamera) }
-  ]
+    { provide: ThCamera, useExisting: forwardRef(() => ThOrthographicCamera) },
+  ],
 })
 export class ThOrthographicCamera<
   T extends OrthographicCamera = OrthographicCamera,
-  TARGS = [left?: number, right?: number, top?: number, bottom?: number, near?: number, far?: number]
+  TARGS = [
+    left?: number,
+    right?: number,
+    top?: number,
+    bottom?: number,
+    near?: number,
+    far?: number
+  ]
 > extends ThCamera<T, TARGS> {
   public getType(): Type<OrthographicCamera> {
     return OrthographicCamera;

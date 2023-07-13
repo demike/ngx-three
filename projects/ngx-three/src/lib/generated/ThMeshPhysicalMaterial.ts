@@ -1,14 +1,20 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import {
   Color,
   ColorRepresentation,
   MeshPhysicalMaterial,
   MeshPhysicalMaterialParameters,
   Texture,
-  Vector2
+  Vector2,
 } from 'three';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
@@ -21,9 +27,9 @@ import { ThMeshStandardMaterial } from './ThMeshStandardMaterial';
   providers: [
     {
       provide: ThMaterial,
-      useExisting: forwardRef(() => ThMeshPhysicalMaterial)
-    }
-  ]
+      useExisting: forwardRef(() => ThMeshPhysicalMaterial),
+    },
+  ],
 })
 export class ThMeshPhysicalMaterial<
   T extends MeshPhysicalMaterial = MeshPhysicalMaterial,
@@ -102,7 +108,10 @@ export class ThMeshPhysicalMaterial<
   @Input()
   public set clearcoatNormalScale(value: Vector2 | [x: number, y: number]) {
     if (this._objRef) {
-      this._objRef.clearcoatNormalScale = applyValue<Vector2>(this._objRef.clearcoatNormalScale, value);
+      this._objRef.clearcoatNormalScale = applyValue<Vector2>(
+        this._objRef.clearcoatNormalScale,
+        value
+      );
     }
   }
   // @ts-ignore
@@ -156,7 +165,10 @@ export class ThMeshPhysicalMaterial<
   @Input()
   public set sheenColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
-      this._objRef.sheenColor = applyValue<Color>(this._objRef.sheenColor, value);
+      this._objRef.sheenColor = applyValue<Color>(
+        this._objRef.sheenColor,
+        value
+      );
     }
   }
   // @ts-ignore
@@ -254,7 +266,10 @@ export class ThMeshPhysicalMaterial<
   @Input()
   public set attenuationColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
-      this._objRef.attenuationColor = applyValue<Color>(this._objRef.attenuationColor, value);
+      this._objRef.attenuationColor = applyValue<Color>(
+        this._objRef.attenuationColor,
+        value
+      );
     }
   }
   // @ts-ignore
@@ -275,7 +290,10 @@ export class ThMeshPhysicalMaterial<
   @Input()
   public set specularColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
-      this._objRef.specularColor = applyValue<Color>(this._objRef.specularColor, value);
+      this._objRef.specularColor = applyValue<Color>(
+        this._objRef.specularColor,
+        value
+      );
     }
   }
   // @ts-ignore

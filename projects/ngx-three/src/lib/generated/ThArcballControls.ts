@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Camera, Scene, Vector3 } from 'three';
 import { ArcballControls } from 'three/examples/jsm/controls/ArcballControls';
 import { ThControlBase } from '../ThControlBase';
@@ -14,9 +20,9 @@ import { applyValue } from '../util';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThArcballControls)
-    }
-  ]
+      useExisting: forwardRef(() => ThArcballControls),
+    },
+  ],
 })
 export class ThArcballControls<
   T extends ArcballControls = ArcballControls,

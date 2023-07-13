@@ -2,6 +2,8 @@
           Generated, modifications will get overwritten
         */
 
+export * from './overrides/ThCSS2DObject';
+export * from './overrides/ThCSS3DObject';
 export * from './overrides/ThEffectComposer';
 export * from './overrides/ThRenderPass';
 export * from './overrides/ThTransformControls';
@@ -34,6 +36,8 @@ export * from './ThCompressedArrayTexture';
 export * from './ThCompressedTexture';
 export * from './ThConeGeometry';
 export * from './ThConvexGeometry';
+export * from './ThCSS2DObjectGen';
+export * from './ThCSS3DObjectGen';
 export * from './ThCubeCamera';
 export * from './ThCubeTexture';
 export * from './ThCubeTexturePass';

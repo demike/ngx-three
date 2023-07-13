@@ -232,9 +232,7 @@ export class ExampleComponent {
 }
 ```
 
-# Canvas / View / Scene
-
-!!! WORK IN PROGRESS !!!
+# Canvas / View / Scene / Renderers
 
 Canvas View and Scene are the main building blocks of ngx-three.
 
@@ -287,6 +285,43 @@ This combination makes it possible to render multiple scenarios
 
 `ThScene` is the ngx-three wrapper of THREE.Scene and provides all
 of its members as inputs. It is <b>mandatory</b> for rendering.
+
+## Renderers
+
+ngx-thre supports different renderers provided by three.js:
+- WebGLRenderer
+- CSS3DRenderer
+- CSS2DRenderer
+
+And they can be combined too!
+
+You can configure them in two different ways
+- by providing them:
+```ts
+  @Component({
+  selector: 'app-example',
+  providers: [provideCSS3dRenderer({...})],
+  ...
+})
+```
+
+- or by means of directives:
+```html
+<th-canvas 
+    [rendererParameters]="{ ...WebGLRendererOptions... }",
+    [css2dRendererParameters]="{...}", 
+    [css3dRendererParameters]="{...}">
+ ... 
+</th-canvas>
+```
+
+If you do not provide any renderer the WebGLRenderer is used as the default renderer with its default configuration.
+
+Examples:
+- [CSS3DRenderer Example](https://demike.github.io/ngx-three/css3d-renderer-example)
+- [Multi Renderer Example](https://demike.github.io/ngx-three/multi-renderer-example)
+
+
 
 ## ThAnimationLoop / ThEngineService / ThRenderDirective
 

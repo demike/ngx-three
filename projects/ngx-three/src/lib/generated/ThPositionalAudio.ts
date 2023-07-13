@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { AudioListener, PositionalAudio } from 'three';
 import { ThAudio } from './ThAudio';
 import { ThObject3D } from './ThObject3D';
@@ -10,7 +16,9 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-positionalAudio',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPositionalAudio) }]
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThPositionalAudio) },
+  ],
 })
 export class ThPositionalAudio<
   T extends PositionalAudio = PositionalAudio,

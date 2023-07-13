@@ -10,11 +10,11 @@ export enum RaycasterEvent {
   mouseExit = 'mouseExit',
   click = 'click',
   pointerDown = 'pointerDown',
-  pointerUp = 'pointerUp'
+  pointerUp = 'pointerUp',
 }
 
 export const RAYCASTER = new InjectionToken<Raycaster>('A reference to the raycaster object', {
-  factory: () => new Raycaster()
+  factory: () => new Raycaster(),
 });
 
 interface NearestIntersection extends Intersection {
@@ -23,7 +23,7 @@ interface NearestIntersection extends Intersection {
 
 @Injectable()
 export class RaycasterService implements OnDestroy {
-  private canvas?: HTMLCanvasElement;
+  private canvas?: HTMLElement;
   private raycaster = inject(RAYCASTER);
   private selected: RaycasterEventDirective | null = null;
   private enabled = true;
@@ -91,7 +91,7 @@ export class RaycasterService implements OnDestroy {
     return this.enabled;
   }
 
-  public init(camera: ThCamera, canvas: HTMLCanvasElement) {
+  public init(camera: ThCamera, canvas: HTMLElement) {
     // console.log('Add camera to raycaster', camera);
     this.camera = camera;
     this.canvas = canvas;
@@ -119,7 +119,7 @@ export class RaycasterService implements OnDestroy {
       if (this.selected) {
         this.selected.host.objRef?.dispatchEvent({
           type: RaycasterEvent.mouseExit,
-          component: this.selected.host
+          component: this.selected.host,
         });
         this.selected.emitOnMouseExit();
         this.selected = null;
@@ -129,7 +129,7 @@ export class RaycasterService implements OnDestroy {
         const evt = {
           type: RaycasterEvent.mouseEnter,
           component: i.target.host,
-          ...i
+          ...i,
         };
         this.selected.host.objRef?.dispatchEvent(evt);
         this.selected.emitOnMouseEnter(evt);
@@ -232,7 +232,7 @@ export class RaycasterService implements OnDestroy {
     if (nearestGroup && nearestIntersection) {
       return {
         target: nearestGroup,
-        ...nearestIntersection
+        ...nearestIntersection,
       };
     } else {
       return undefined;

@@ -7,7 +7,7 @@ import { ThCanvas, ThInstancedMesh, ThPointLight } from 'ngx-three';
 @Component({
   selector: 'app-instanced-mesh-example',
   templateUrl: './instanced-mesh-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InstancedMeshExampleComponent implements OnInit {
   readonly SIZE = 1.5;
@@ -89,11 +89,11 @@ export class InstancedMeshExampleComponent implements OnInit {
 
   @HostListener('document:mousemove', ['$event'])
   onMouseMove(event: PointerEvent) {
-    if (!this.canvas || !this.canvas.rendererCanvas) {
+    if (!this.canvas || !this.canvas.hostElement.nativeElement) {
       return;
     }
-    const el = this.canvas.rendererCanvas.nativeElement;
-    this.pointerPN.x = ((event.clientX - el.offsetLeft + window.scrollX) / el.width) * 2 - 1; //this.W;
-    this.pointerPN.y = -((event.clientY - el.offsetTop + window.scrollY) / el.height) * 2 + 1; //this.H;
+    const el = this.canvas.hostElement.nativeElement;
+    this.pointerPN.x = ((event.clientX - el.offsetLeft + window.scrollX) / el.clientWidth) * 2 - 1; //this.W;
+    this.pointerPN.y = -((event.clientY - el.offsetTop + window.scrollY) / el.clientHeight) * 2 + 1; //this.H;
   }
 }

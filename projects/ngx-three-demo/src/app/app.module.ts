@@ -39,6 +39,8 @@ import { OnDemandExampleComponent } from './on-demand-example/on-demand-example.
 import { RefByIdExampleComponent } from './ref-by-id-example/ref-by-id-example.component';
 import { HtmlExampleComponent } from './html-example/html-example.component';
 import { OutlinePassEventsExampleComponent } from './outline-pass-events-example/outline-pass-events-example.component';
+import { MultiRendererExampleComponent } from './multi-renderer-example/multi-renderer-example.component';
+import { CSS3dRendererExampleComponent } from './css3d-renderer-example/css3d-renderer-example.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +71,9 @@ import { OutlinePassEventsExampleComponent } from './outline-pass-events-example
     OnDemandExampleComponent,
     RefByIdExampleComponent,
     HtmlExampleComponent,
-    OutlinePassEventsExampleComponent
+    OutlinePassEventsExampleComponent,
+    MultiRendererExampleComponent,
+    CSS3dRendererExampleComponent,
   ],
   imports: [
     BrowserModule,
@@ -85,17 +89,17 @@ import { OutlinePassEventsExampleComponent } from './outline-pass-events-example
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
   ],
   providers: [
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: {
-        fullLibraryLoader: () => import('highlight.js')
-      }
+        fullLibraryLoader: () => import('highlight.js'),
+      },
     },
-    EditorService
+    EditorService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

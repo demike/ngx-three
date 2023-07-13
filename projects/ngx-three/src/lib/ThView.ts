@@ -1,4 +1,15 @@
-import { Component, ContentChild, EventEmitter, forwardRef, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ContentChild,
+  ElementRef,
+  EventEmitter,
+  forwardRef,
+  inject,
+  InjectionToken,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { Color, Object3D, Raycaster, Vector4 } from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RAYCASTER, RaycasterService } from './events/raycaster.service';
@@ -7,17 +18,20 @@ import { ThObject3D } from './generated/ThObject3D';
 import { ThScene } from './generated/ThScene';
 import { ThEngineService } from './ThEngine.service';
 
+export const HOST_ELEMENT = new InjectionToken<ElementRef<HTMLElement>>('HOST_ELEMENT');
+
 @Component({
   selector: 'th-view',
   template: '<ng-content/>',
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThView) },
     { provide: RAYCASTER, useValue: new Raycaster() },
-    RaycasterService
-  ]
+    RaycasterService,
+  ],
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThView implements OnInit {
+  public readonly hostElement = inject(HOST_ELEMENT);
   // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   protected _camera?: ThCamera;
   protected _viewPort?: Vector4 | { x: number; y: number; width: number; height: number };
@@ -107,7 +121,7 @@ export class ThView implements OnInit {
   // eslint-disable-next-line @angular-eslint/no-output-on-prefix
   @Output()
   public readonly onRender = new EventEmitter<{
-    renderer: THREE.WebGLRenderer;
+    renderer: THREE.Renderer[];
     scene: ThScene;
     camera: ThCamera;
   }>();
@@ -117,8 +131,8 @@ export class ThView implements OnInit {
   }
 
   private initRaycaster() {
-    if (this.camera && this.engServ.canvas) {
-      this.raycaster.init(this.camera, this.engServ.canvas);
+    if (this.camera) {
+      this.raycaster.init(this.camera, this.hostElement.nativeElement);
     }
   }
 

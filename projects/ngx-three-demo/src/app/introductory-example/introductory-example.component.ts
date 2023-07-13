@@ -14,7 +14,7 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       <th-meshBasicMaterial [args]="{color: 'purple'}"/>
   </th-mesh>
     `,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Box {
   public selected = false;
@@ -36,7 +36,7 @@ export class Box {
         <th-perspectiveCamera [args]="[75, 2, 0.1, 1000]" [position]="[1,1,5]"/>
       </th-scene>
     </th-canvas>`,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IntroductoryExampleComponent {
   public rotation: [x: number, y: number, z: number] = [0, 0, 0];

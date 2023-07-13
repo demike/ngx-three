@@ -32,7 +32,7 @@
         <th-mapControls *ngSwitchCase="'map'"/>
         <th-arcballControls *ngSwitchCase="'arcball'"/>
         <th-transformControls *ngSwitchCase="'transform'" [object]="model.objRef"/>
-        <th-dragControls *ngSwitchCase="'drag'" [args]="[[model.objRef], camera.objRef, canvas.rendererCanvas?.nativeElement ]"/>
+        <th-dragControls *ngSwitchCase="'drag'" [args]="[[model.objRef], camera.objRef, canvas.hostElement.nativeElement]"/>
         <th-flyControls *ngSwitchCase="'fly'"/>
         <th-trackballControls *ngSwitchCase="'trackball'"/>
         <th-firstPersonControls *ngSwitchCase="'firstpersion'"/>

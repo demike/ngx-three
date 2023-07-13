@@ -2,14 +2,15 @@ import { Directive, Input, OnDestroy, OnInit } from '@angular/core';
 import { ThEngineService } from '../ThEngine.service';
 import Stats from 'three/examples/jsm/libs/stats.module';
 import { Subscription } from 'rxjs';
+import { ThCanvas } from '../ThCanvas';
 
 @Directive({
-  selector: '[thStats]'
+  selector: '[thStats]',
 })
 export class StatsDirective implements OnInit, OnDestroy {
   private stats: Stats;
   private renderSubscription?: Subscription;
-  constructor(private engineService: ThEngineService) {
+  constructor(private engineService: ThEngineService, private canvas: ThCanvas) {
     this.stats = new Stats();
   }
   ngOnDestroy(): void {
@@ -18,16 +19,16 @@ export class StatsDirective implements OnInit, OnDestroy {
     }
   }
   ngOnInit(): void {
-    if (!this.engineService.canvas) {
+    if (!this.canvas.elementRef) {
       throw new Error('No canvas present');
     }
 
-    const parentElement = this.engineService.canvas.parentElement;
+    const parentElement = this.canvas.elementRef.nativeElement;
     if (parentElement) {
       parentElement.style.position = 'relative';
       this.stats.dom.style.position = 'absolute';
       this.stats.showPanel(0);
-      this.engineService.canvas.parentElement?.appendChild(this.stats.dom);
+      parentElement.appendChild(this.stats.dom);
       this.renderSubscription = this.engineService.beforeRender$.subscribe(() => {
         this.stats.update();
       });

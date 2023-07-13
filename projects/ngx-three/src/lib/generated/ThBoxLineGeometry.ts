@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Type,
+} from '@angular/core';
 import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -12,9 +17,9 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThBoxLineGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThBoxLineGeometry),
+    },
+  ],
 })
 export class ThBoxLineGeometry<
   T extends BoxLineGeometry = BoxLineGeometry,

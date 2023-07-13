@@ -1,4 +1,4 @@
-<th-canvas [rendererParameters]="{ outputEncoding }"  (onRender)="this.onBeforeRender()" [thStats]="true" [shadow]="true" >
+<th-canvas *rendererParameters="{ outputEncoding }"  (onRender)="this.onBeforeRender()" [thStats]="true" [shadow]="true" >
   <th-scene [background]="['#e0e0e0']" [fog]="['#e0e0e0', 20, 100] | fog" >
       <th-perspectiveCamera
         [args]="[45, 2, 0.25, 100]"

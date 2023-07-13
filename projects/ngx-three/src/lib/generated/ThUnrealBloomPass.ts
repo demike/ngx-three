@@ -2,7 +2,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import {
   Color,
   ColorRepresentation,
@@ -10,7 +16,7 @@ import {
   ShaderMaterial,
   Vector2,
   Vector3,
-  WebGLRenderTarget
+  WebGLRenderTarget,
 } from 'three';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
@@ -22,11 +28,18 @@ import { ThPass } from './ThPass';
   selector: 'th-unrealBloomPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThUnrealBloomPass) }]
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThUnrealBloomPass) },
+  ],
 })
 export class ThUnrealBloomPass<
   T extends UnrealBloomPass = UnrealBloomPass,
-  TARGS = [resolution: Vector2, strength: number, radius: number, threshold: number]
+  TARGS = [
+    resolution: Vector2,
+    strength: number,
+    radius: number,
+    threshold: number
+  ]
 > extends ThPass<T, TARGS> {
   public getType(): Type<UnrealBloomPass> {
     return UnrealBloomPass;
@@ -35,7 +48,10 @@ export class ThUnrealBloomPass<
   @Input()
   public set resolution(value: Vector2 | [x: number, y: number]) {
     if (this._objRef) {
-      this._objRef.resolution = applyValue<Vector2>(this._objRef.resolution, value);
+      this._objRef.resolution = applyValue<Vector2>(
+        this._objRef.resolution,
+        value
+      );
     }
   }
   // @ts-ignore
@@ -78,7 +94,10 @@ export class ThUnrealBloomPass<
   @Input()
   public set clearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
-      this._objRef.clearColor = applyValue<Color>(this._objRef.clearColor, value);
+      this._objRef.clearColor = applyValue<Color>(
+        this._objRef.clearColor,
+        value
+      );
     }
   }
   // @ts-ignore
@@ -209,7 +228,10 @@ export class ThUnrealBloomPass<
   @Input()
   public set oldClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
-      this._objRef.oldClearColor = applyValue<Color>(this._objRef.oldClearColor, value);
+      this._objRef.oldClearColor = applyValue<Color>(
+        this._objRef.oldClearColor,
+        value
+      );
     }
   }
   // @ts-ignore

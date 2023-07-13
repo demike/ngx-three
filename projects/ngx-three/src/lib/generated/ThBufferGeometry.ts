@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import { ChangeDetectionStrategy, Component, Input, SkipSelf, Type } from '@angular/core';
 import {
@@ -9,7 +9,7 @@ import {
   GLBufferAttribute,
   InterleavedBufferAttribute,
   Sphere,
-  Vector3
+  Vector3,
 } from 'three';
 import { ThGeometryBase } from '../ThGeometryBase';
 import { applyValue } from '../util';
@@ -19,7 +19,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-bufferGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: []
+  providers: [],
 })
 export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS = []> extends ThGeometryBase<T, TARGS> {
   public getType(): Type<BufferGeometry> {
@@ -123,19 +123,16 @@ export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS =
     value: Array<{
       /**
        * Specifies the first element in this draw call – the first vertex for non-indexed geometry, otherwise the first triangle index.
-       *
        * @remarks Expects a `Integer`
        */
       start: number;
       /**
        * Specifies how many vertices (or indices) are included.
-       *
        * @remarks Expects a `Integer`
        */
       count: number;
       /**
        * Specifies the material array index to use.
-       *
        * @remarks Expects a `Integer`
        */
       materialIndex?: number | undefined;
@@ -151,19 +148,16 @@ export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS =
     | Array<{
         /**
          * Specifies the first element in this draw call – the first vertex for non-indexed geometry, otherwise the first triangle index.
-         *
          * @remarks Expects a `Integer`
          */
         start: number;
         /**
          * Specifies how many vertices (or indices) are included.
-         *
          * @remarks Expects a `Integer`
          */
         count: number;
         /**
          * Specifies the material array index to use.
-         *
          * @remarks Expects a `Integer`
          */
         materialIndex?: number | undefined;

@@ -1,4 +1,6 @@
 import { NgModule } from '@angular/core';
+import { ThCSS2DObject } from './overrides/ThCSS2DObject';
+import { ThCSS3DObject } from './overrides/ThCSS3DObject';
 import { ThEffectComposer } from './overrides/ThEffectComposer';
 import { ThRenderPass } from './overrides/ThRenderPass';
 import { ThTransformControls } from './overrides/ThTransformControls';
@@ -30,6 +32,8 @@ import { ThCompressedArrayTexture } from './ThCompressedArrayTexture';
 import { ThCompressedTexture } from './ThCompressedTexture';
 import { ThConeGeometry } from './ThConeGeometry';
 import { ThConvexGeometry } from './ThConvexGeometry';
+import { ThCSS2DObjectGen } from './ThCSS2DObjectGen';
+import { ThCSS3DObjectGen } from './ThCSS3DObjectGen';
 import { ThCubeCamera } from './ThCubeCamera';
 import { ThCubeTexture } from './ThCubeTexture';
 import { ThCubeTexturePass } from './ThCubeTexturePass';
@@ -197,6 +201,10 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThPoints,
     ThGroup,
     ThScene,
+    ThCSS3DObjectGen,
+    ThCSS3DObject,
+    ThCSS2DObjectGen,
+    ThCSS2DObject,
     ThShadowMaterial,
     ThSpriteMaterial,
     ThRawShaderMaterial,
@@ -341,6 +349,10 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThPoints,
     ThGroup,
     ThScene,
+    ThCSS3DObjectGen,
+    ThCSS3DObject,
+    ThCSS2DObjectGen,
+    ThCSS2DObject,
     ThShadowMaterial,
     ThSpriteMaterial,
     ThRawShaderMaterial,

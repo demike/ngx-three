@@ -20,6 +20,8 @@ import { PostProcessingExampleComponent } from './post-processing-example/post-p
 import { RefByIdExampleComponent } from './ref-by-id-example/ref-by-id-example.component';
 import { SimpleExampleComponent } from './simple-example/simple-example.component';
 import { ViewsExampleComponent } from './views-example/views-example.component';
+import { MultiRendererExampleComponent } from './multi-renderer-example/multi-renderer-example.component';
+import { CSS3dRendererExampleComponent } from './css3d-renderer-example/css3d-renderer-example.component';
 
 export const EXAMPLE_ROUTES: (Route & {
   data: {
@@ -35,9 +37,9 @@ export const EXAMPLE_ROUTES: (Route & {
       title: 'Basic Example',
       exampleComponent: BasicExampleComponent,
       codeUrls: [
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/basic-example/basic-example.component.ts'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/basic-example/basic-example.component.ts',
+      ],
+    },
   },
   {
     path: 'simple-example',
@@ -47,9 +49,9 @@ export const EXAMPLE_ROUTES: (Route & {
       declarations: ['SimpleExampleComponent', 'Box'],
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/simple-example/simple-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/simple-example/simple-example.component.ts'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/simple-example/simple-example.component.ts',
+      ],
+    },
   },
   {
     path: 'introductory-example',
@@ -58,9 +60,9 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: IntroductoryExampleComponent,
       declarations: ['IntroductoryExampleComponent', 'Box'],
       codeUrls: [
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/introductory-example/introductory-example.component.ts'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/introductory-example/introductory-example.component.ts',
+      ],
+    },
   },
   {
     path: 'controls-example',
@@ -69,9 +71,9 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: ControlsExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/controls-example/controls-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/controls-example/controls-example.component.ts'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/controls-example/controls-example.component.ts',
+      ],
+    },
   },
   {
     path: 'loader-example',
@@ -80,9 +82,9 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: LoaderExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/loader-example/loader-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/loader-example/loader-example.component.ts'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/loader-example/loader-example.component.ts',
+      ],
+    },
   },
   {
     path: 'dynamic loader-example',
@@ -91,9 +93,9 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: DynamicLoaderExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/dynamic-loader-example/dynamic-loader-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/dynamic-loader-example/dynamic-loader-example.component.ts'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/dynamic-loader-example/dynamic-loader-example.component.ts',
+      ],
+    },
   },
   {
     path: 'events-example',
@@ -103,9 +105,9 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/events-example/events-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/events-example/events-example.component.ts',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/events-example/events-example.component.scss'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/events-example/events-example.component.scss',
+      ],
+    },
   },
   {
     path: 'instanced-mesh-example',
@@ -114,9 +116,9 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: InstancedMeshExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/instanced-mesh-example/instanced-mesh-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/instanced-mesh-example/instanced-mesh-example.component.ts'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/instanced-mesh-example/instanced-mesh-example.component.ts',
+      ],
+    },
   },
   {
     path: 'post-processing-example',
@@ -126,9 +128,9 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/post-processing-example/post-processing-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/post-processing-example/post-processing-example.component.ts',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/post-processing-example/post-processing-example.component.scss'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/post-processing-example/post-processing-example.component.scss',
+      ],
+    },
   },
   {
     path: 'views-example',
@@ -138,9 +140,9 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/views-example/views-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/views-example/views-example.component.ts',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/views-example/views-example.component.scss'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/views-example/views-example.component.scss',
+      ],
+    },
   },
   {
     path: 'multi-scene-example',
@@ -149,10 +151,10 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-scene-example/multi-scene-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-scene-example/multi-scene-example.component.ts',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-scene-example/multi-scene-example.component.scss'
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-scene-example/multi-scene-example.component.scss',
       ],
-      exampleComponent: MultiSceneExampleComponent
-    }
+      exampleComponent: MultiSceneExampleComponent,
+    },
   },
   {
     path: 'multi-view-postprocessing-example',
@@ -161,9 +163,9 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: MultiViewPostprocessingExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-view-postprocessing-example/multi-view-postprocessing-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-view-postprocessing-example/multi-view-postprocessing-example.component.ts'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-view-postprocessing-example/multi-view-postprocessing-example.component.ts',
+      ],
+    },
   },
   {
     path: 'animation-example',
@@ -172,9 +174,9 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: AnimationExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/animation-example/animation-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/animation-example/animation-example.component.ts'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/animation-example/animation-example.component.ts',
+      ],
+    },
   },
   /*
   {
@@ -196,9 +198,9 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: PLYLoaderExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/plyloader-example/plyloader-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/plyloader-example/plyloader-example.component.ts'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/plyloader-example/plyloader-example.component.ts',
+      ],
+    },
   },
   {
     path: 'on-demand-example',
@@ -208,9 +210,9 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.ts',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.scss'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/on-demand-example/on-demand-example.component.scss',
+      ],
+    },
   },
   {
     path: 'ref-by-id-example',
@@ -219,9 +221,9 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: RefByIdExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/ref-by-id-example/ref-by-id-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/ref-by-id-example/ref-by-id-example.component.ts'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/ref-by-id-example/ref-by-id-example.component.ts',
+      ],
+    },
   },
   {
     path: 'html-example',
@@ -230,9 +232,9 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: HtmlExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-example/html-example.component.html',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-example/html-example.component.ts'
-      ]
-    }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-example/html-example.component.ts',
+      ],
+    },
   },
   {
     path: 'outline-pass-events-example',
@@ -242,10 +244,33 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/outline-pass-events-example/outline-pass-events-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/outline-pass-events-example/outline-pass-events-example.component.ts',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/outline-pass-events-example/outline-pass-events-example.component.scss'
-      ]
-    }
-  }
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/outline-pass-events-example/outline-pass-events-example.component.scss',
+      ],
+    },
+  },
+  {
+    path: 'multi-renderer-example',
+    data: {
+      title: 'Multi Renderer Example: WebGL + CSS2D',
+      exampleComponent: MultiRendererExampleComponent,
+      codeUrls: [
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-renderer-example/multi-renderer-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/multi-renderer-example/multi-renderer-example.component.ts',
+      ],
+    },
+  },
+  {
+    path: 'css3d-renderer-example',
+    data: {
+      title: 'CSS3D Renderer Example',
+      exampleComponent: CSS3dRendererExampleComponent,
+      codeUrls: [
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/css3d-renderer-example/css3d-renderer-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/css3d-renderer-example/css3d-renderer-example.component.ts',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/css3d-renderer-example/css3d-renderer-example.component.scss',
+      ],
+    },
+  },
 ];
 
 EXAMPLE_ROUTES.forEach((route) => (route.component = ExamplePageComponent));
@@ -257,6 +282,6 @@ EXAMPLE_ROUTES.forEach((route) => {
 
 @NgModule({
   imports: [RouterModule.forRoot(EXAMPLE_ROUTES)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
