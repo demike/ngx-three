@@ -31,6 +31,7 @@ export const WEBGL_RENDERER = new InjectionToken<WebGLRenderer>('WebGLRenderer')
 
 @Directive({
   selector:
+    // eslint-disable-next-line max-len
     'ng-template[rendererParameters], ng-template[css2dRendererParameters], ng-template[css3dRendererParameters], ng-template[webgpuRendererParameters]',
 })
 export class RendererProviderDirective implements OnChanges {

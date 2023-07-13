@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  SkipSelf,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, SkipSelf, Type } from '@angular/core';
 import {
   Box3,
   BufferAttribute,
@@ -27,10 +21,7 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [],
 })
-export class ThBufferGeometry<
-  T extends BufferGeometry = BufferGeometry,
-  TARGS = []
-> extends ThGeometryBase<T, TARGS> {
+export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS = []> extends ThGeometryBase<T, TARGS> {
   public getType(): Type<BufferGeometry> {
     return BufferGeometry;
   }
@@ -73,17 +64,9 @@ export class ThBufferGeometry<
     return this._objRef?.type;
   }
   @Input()
-  public set index(
-    value:
-      | BufferAttribute
-      | null
-      | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
-  ) {
+  public set index(value: BufferAttribute | null | [value: ArrayLike<number> | ArrayBufferView, offset?: number]) {
     if (this._objRef) {
-      this._objRef.index = applyValue<BufferAttribute | null>(
-        this._objRef.index,
-        value
-      );
+      this._objRef.index = applyValue<BufferAttribute | null>(this._objRef.index, value);
     }
   }
   // @ts-ignore
@@ -92,10 +75,7 @@ export class ThBufferGeometry<
   }
   @Input()
   public set attributes(value: {
-    [name: string]:
-      | BufferAttribute
-      | InterleavedBufferAttribute
-      | GLBufferAttribute; // TODO Replace for 'Record<>'
+    [name: string]: BufferAttribute | InterleavedBufferAttribute | GLBufferAttribute; // TODO Replace for 'Record<>'
   }) {
     if (this._objRef) {
       this._objRef.attributes = value;
@@ -105,10 +85,7 @@ export class ThBufferGeometry<
   // @ts-ignore
   public get attributes():
     | {
-        [name: string]:
-          | BufferAttribute
-          | InterleavedBufferAttribute
-          | GLBufferAttribute; // TODO Replace for 'Record<>'
+        [name: string]: BufferAttribute | InterleavedBufferAttribute | GLBufferAttribute; // TODO Replace for 'Record<>'
       }
     | undefined {
     return this._objRef?.attributes;
@@ -191,10 +168,7 @@ export class ThBufferGeometry<
   @Input()
   public set boundingBox(value: Box3 | null | [min: Vector3, max: Vector3]) {
     if (this._objRef) {
-      this._objRef.boundingBox = applyValue<Box3 | null>(
-        this._objRef.boundingBox,
-        value
-      );
+      this._objRef.boundingBox = applyValue<Box3 | null>(this._objRef.boundingBox, value);
     }
   }
   // @ts-ignore
@@ -202,14 +176,9 @@ export class ThBufferGeometry<
     return this._objRef?.boundingBox;
   }
   @Input()
-  public set boundingSphere(
-    value: Sphere | null | [center: Vector3, radius: number]
-  ) {
+  public set boundingSphere(value: Sphere | null | [center: Vector3, radius: number]) {
     if (this._objRef) {
-      this._objRef.boundingSphere = applyValue<Sphere | null>(
-        this._objRef.boundingSphere,
-        value
-      );
+      this._objRef.boundingSphere = applyValue<Sphere | null>(this._objRef.boundingSphere, value);
     }
   }
   // @ts-ignore
