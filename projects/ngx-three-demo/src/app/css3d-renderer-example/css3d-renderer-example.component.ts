@@ -4,7 +4,7 @@ import { provideCSS3dRenderer } from 'projects/ngx-three/src/lib/renderer/render
 import { Object3D, Vector3 } from 'three';
 
 @Component({
-  selector: 'css3d-multi-renderer-example',
+  selector: 'app-css3d-multi-renderer-example',
   templateUrl: './css3d-renderer-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./css3d-renderer-example.component.scss'],
