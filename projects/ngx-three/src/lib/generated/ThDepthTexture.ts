@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import {
   DeepTexturePixelFormat,
   DepthTexture,
@@ -9,7 +15,7 @@ import {
   Mapping,
   MinificationTextureFilter,
   TextureDataType,
-  Wrapping
+  Wrapping,
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
@@ -18,7 +24,9 @@ import { ThTexture } from './ThTexture';
   selector: 'th-depthTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThTextureBase, useExisting: forwardRef(() => ThDepthTexture) }]
+  providers: [
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThDepthTexture) },
+  ],
 })
 export class ThDepthTexture<
   T extends DepthTexture = DepthTexture,

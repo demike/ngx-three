@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { LightProbe, LightShadow, SphericalHarmonics3, Vector3 } from 'three';
 import { applyValue } from '../util';
 import { ThLight } from './ThLight';
@@ -11,7 +17,9 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-lightProbe',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLightProbe) }]
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThLightProbe) },
+  ],
 })
 export class ThLightProbe<
   T extends LightProbe = LightProbe,

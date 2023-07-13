@@ -6,7 +6,7 @@ import { Color } from 'three';
   selector: 'app-multi-scene-example',
   templateUrl: './multi-scene-example.component.html',
   styleUrls: ['./multi-scene-example.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MultiSceneExampleComponent implements OnInit {
   public sliderPos = 0;
@@ -24,11 +24,11 @@ export class MultiSceneExampleComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    if (!this.slider || !this.canvas) {
+    if (!this.slider || !this.canvas || !this.canvas.rendererCanvas) {
       return;
     }
     this.slider.nativeElement.style.touchAction = 'none'; // disable touch scroll
-    this.sliderPos = (this.canvas.rendererCanvas?.nativeElement.clientWidth || 0) / 2;
+    this.sliderPos = (this.canvas.rendererCanvas.clientWidth || 0) / 2;
   }
 
   @HostListener('window:pointermove', ['$event'])
@@ -41,7 +41,7 @@ export class MultiSceneExampleComponent implements OnInit {
       return;
     }
 
-    const el = this.canvas.rendererCanvas.nativeElement;
+    const el = this.canvas.rendererCanvas;
     const rect = el.getBoundingClientRect();
 
     this.sliderPos = Math.max(rect.left, Math.min(rect.right, e.pageX)) - rect.left;

@@ -2,7 +2,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { ShaderMaterial } from 'three';
 import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
@@ -13,9 +19,14 @@ import { ThPass } from './ThPass';
   selector: 'th-glitchPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThGlitchPass) }]
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThGlitchPass) },
+  ],
 })
-export class ThGlitchPass<T extends GlitchPass = GlitchPass, TARGS = /* dt_size? */ number> extends ThPass<T, TARGS> {
+export class ThGlitchPass<
+  T extends GlitchPass = GlitchPass,
+  TARGS = /* dt_size? */ number
+> extends ThPass<T, TARGS> {
   public getType(): Type<GlitchPass> {
     return GlitchPass;
   }

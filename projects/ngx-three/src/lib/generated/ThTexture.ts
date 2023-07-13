@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import {
   AnyMapping,
   AnyPixelFormat,
@@ -17,7 +23,7 @@ import {
   TextureDataType,
   TextureEncoding,
   Vector2,
-  Wrapping
+  Wrapping,
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { applyValue } from '../util';
@@ -26,7 +32,9 @@ import { applyValue } from '../util';
   selector: 'th-texture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThTextureBase, useExisting: forwardRef(() => ThTexture) }]
+  providers: [
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThTexture) },
+  ],
 })
 export class ThTexture<
   T extends Texture = Texture,

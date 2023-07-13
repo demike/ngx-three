@@ -2,7 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { UniformsUtils, Vector4, WebGLRenderer, WebGLRenderTarget } from 'three';
+import { Vector4, WebGLRenderer, WebGLRenderTarget } from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { ThEngineService } from '../../ThEngine.service';
 import { ThView } from '../../ThView';
@@ -12,7 +12,7 @@ import { ThEffectComposerGen } from '../ThEffectComposerGen';
   selector: 'th-effectComposer',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: []
+  providers: [],
 })
 export class ThEffectComposer<
   T extends EffectComposer = EffectComposer,
@@ -27,7 +27,7 @@ export class ThEffectComposer<
       args = new Array(5) as TARGS;
     }
 
-    args[0] = args[0] ?? this.engineService.renderer;
+    args[0] = args[0] ?? this.engineService.wegblRenderer;
     args[1] = args[1] ?? this.initRenderTarget();
 
     return super.createThreeInstance(args);

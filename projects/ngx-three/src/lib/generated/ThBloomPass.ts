@@ -2,7 +2,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { ShaderMaterial, WebGLRenderTarget } from 'three';
 import { BloomPass } from 'three/examples/jsm/postprocessing/BloomPass';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
@@ -13,7 +19,9 @@ import { ThPass } from './ThPass';
   selector: 'th-bloomPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThBloomPass) }]
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThBloomPass) },
+  ],
 })
 export class ThBloomPass<
   T extends BloomPass = BloomPass,

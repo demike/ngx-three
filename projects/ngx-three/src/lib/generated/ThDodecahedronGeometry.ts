@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Type,
+} from '@angular/core';
 import { DodecahedronGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
@@ -13,9 +18,9 @@ import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
   providers: [
     {
       provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThDodecahedronGeometry)
-    }
-  ]
+      useExisting: forwardRef(() => ThDodecahedronGeometry),
+    },
+  ],
 })
 export class ThDodecahedronGeometry<
   T extends DodecahedronGeometry = DodecahedronGeometry,

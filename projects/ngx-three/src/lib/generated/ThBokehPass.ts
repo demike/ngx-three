@@ -2,9 +2,26 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { Camera, Color, ColorRepresentation, MeshDepthMaterial, Scene, ShaderMaterial, WebGLRenderTarget } from 'three';
-import { BokehPass, BokehPassParamters } from 'three/examples/jsm/postprocessing/BokehPass';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  Camera,
+  Color,
+  ColorRepresentation,
+  MeshDepthMaterial,
+  Scene,
+  ShaderMaterial,
+  WebGLRenderTarget,
+} from 'three';
+import {
+  BokehPass,
+  BokehPassParamters,
+} from 'three/examples/jsm/postprocessing/BokehPass';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
@@ -14,7 +31,9 @@ import { ThPass } from './ThPass';
   selector: 'th-bokehPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThBokehPass) }]
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThBokehPass) },
+  ],
 })
 export class ThBokehPass<
   T extends BokehPass = BokehPass,
@@ -116,7 +135,10 @@ export class ThBokehPass<
   @Input()
   public set oldClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
-      this._objRef.oldClearColor = applyValue<Color>(this._objRef.oldClearColor, value);
+      this._objRef.oldClearColor = applyValue<Color>(
+        this._objRef.oldClearColor,
+        value
+      );
     }
   }
   // @ts-ignore

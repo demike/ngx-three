@@ -2,9 +2,18 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { Data3DTexture, DataTexture } from 'three';
-import { LUTPass, LUTPassParameters } from 'three/examples/jsm/postprocessing/LUTPass';
+import {
+  LUTPass,
+  LUTPassParameters,
+} from 'three/examples/jsm/postprocessing/LUTPass';
 import { ThPassBase } from '../ThPassBase';
 import { ThShaderPass } from './ThShaderPass';
 
@@ -12,12 +21,14 @@ import { ThShaderPass } from './ThShaderPass';
   selector: 'th-lUTPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThLUTPass) }]
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThLUTPass) },
+  ],
 })
-export class ThLUTPass<T extends LUTPass = LUTPass, TARGS = /* params */ LUTPassParameters> extends ThShaderPass<
-  T,
-  TARGS
-> {
+export class ThLUTPass<
+  T extends LUTPass = LUTPass,
+  TARGS = /* params */ LUTPassParameters
+> extends ThShaderPass<T, TARGS> {
   public getType(): Type<LUTPass> {
     return LUTPass;
   }

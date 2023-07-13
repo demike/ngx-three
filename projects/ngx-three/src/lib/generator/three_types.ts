@@ -30,8 +30,18 @@ type __ngxThreeObjects = {
     : never;
 };
 
+// renderer extra types
+type ExtraObjects = typeof import('./object_extra_types');
+type __ngxThreeExtraObjects = {
+  [O in keyof ExtraObjects]: ExtraObjects[O] extends abstract new (...args: any) => any
+    ? InstanceType<ExtraObjects[O]> extends InstanceType<Three['Object3D']>
+      ? InstanceType<ExtraObjects[O]>
+      : never
+    : never;
+};
+
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface NgxThreeObjects extends OmitByValue<__ngxThreeObjects, never> {}
+export interface NgxThreeObjects extends OmitByValue<__ngxThreeObjects & __ngxThreeExtraObjects, never> {}
 
 // ------ materials ------
 

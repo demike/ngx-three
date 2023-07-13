@@ -1,8 +1,19 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
-import { FramebufferTexture, MagnificationTextureFilter, MinificationTextureFilter, PixelFormat } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
+import {
+  FramebufferTexture,
+  MagnificationTextureFilter,
+  MinificationTextureFilter,
+  PixelFormat,
+} from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
@@ -13,9 +24,9 @@ import { ThTexture } from './ThTexture';
   providers: [
     {
       provide: ThTextureBase,
-      useExisting: forwardRef(() => ThFramebufferTexture)
-    }
-  ]
+      useExisting: forwardRef(() => ThFramebufferTexture),
+    },
+  ],
 })
 export class ThFramebufferTexture<
   T extends FramebufferTexture = FramebufferTexture,

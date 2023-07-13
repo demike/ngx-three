@@ -2,7 +2,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+  Type,
+} from '@angular/core';
 import { ShaderMaterial, WebGLRenderTarget } from 'three';
 import { AdaptiveToneMappingPass } from 'three/examples/jsm/postprocessing/AdaptiveToneMappingPass';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
@@ -16,9 +22,9 @@ import { ThPass } from './ThPass';
   providers: [
     {
       provide: ThPassBase,
-      useExisting: forwardRef(() => ThAdaptiveToneMappingPass)
-    }
-  ]
+      useExisting: forwardRef(() => ThAdaptiveToneMappingPass),
+    },
+  ],
 })
 export class ThAdaptiveToneMappingPass<
   T extends AdaptiveToneMappingPass = AdaptiveToneMappingPass,

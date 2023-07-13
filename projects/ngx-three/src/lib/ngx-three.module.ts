@@ -32,6 +32,7 @@ import { HtmlComponent } from './extra/web/html.component';
 import { CommonModule } from '@angular/common';
 import { RefByIdDirective } from './directives/ref-by-id.directive';
 import { PlanePipe } from './pipes/plane.pipe';
+import { RendererProviderDirective } from './renderer/renderer-providers';
 
 @NgModule({
   declarations: [
@@ -86,8 +87,9 @@ import { PlanePipe } from './pipes/plane.pipe';
     ThLogLuvLoaderPipe,
     // directives
     RefByIdDirective,
+    RendererProviderDirective,
     //extras
-    HtmlComponent
+    HtmlComponent,
   ],
   imports: [NgxThreeGeneratedModule, CommonModule],
   exports: [
@@ -140,8 +142,9 @@ import { PlanePipe } from './pipes/plane.pipe';
     ThLogLuvLoaderPipe,
     // directives
     RefByIdDirective,
+    RendererProviderDirective,
     // extra
-    HtmlComponent
-  ]
+    HtmlComponent,
+  ],
 })
 export class NgxThreeModule {}

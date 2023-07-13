@@ -7,7 +7,7 @@ import { ThCanvas } from './ThCanvas';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
   selector: 'th-abs-control',
-  template: ''
+  template: '',
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements OnDestroy {
@@ -21,7 +21,7 @@ export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements On
 
   public createThreeInstance(args?: Iterable<any>) {
     if (!args) {
-      args = [this._camera.objRef, this.canvas?.rendererCanvas?.nativeElement];
+      args = [this._camera.objRef, this.canvas?.elementRef.nativeElement];
     }
     const instance: Partial<EventDispatcher> = super.createThreeInstance(args);
     this.patchDispatchEvent(instance);

@@ -6,46 +6,62 @@ import {
   ContentChildren,
   ElementRef,
   forwardRef,
+  inject,
   Inject,
   Input,
   isDevMode,
   OnInit,
   QueryList,
-  ViewChild
+  StaticProvider,
 } from '@angular/core';
-import { Raycaster, WebGLRenderer } from 'three';
+import { Raycaster } from 'three';
 import { RAYCASTER, RaycasterService } from './events/raycaster.service';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThAnimationLoopService } from './renderer/th-animation-loop.service';
 import { ThEngineService } from './ThEngine.service';
-import { ThView } from './ThView';
+import { HOST_ELEMENT, ThView } from './ThView';
+import { provideWebGLRenderer, RENDERER_PROVIDERS, RendererProviderDirective } from './renderer/renderer-providers';
+
+function provideDefaultRenderer(): StaticProvider {
+  return {
+    provide: RENDERER_PROVIDERS,
+    useFactory: () => {
+      const renderers = inject(RENDERER_PROVIDERS, { skipSelf: true, optional: true });
+      const localRendererProvider = inject(RendererProviderDirective, { optional: true });
+      if (localRendererProvider) {
+        return localRendererProvider.getInjectedRenderers();
+      }
+      if (renderers) {
+        return renderers;
+      }
+      return [provideWebGLRenderer().useValue];
+    },
+  };
+}
 
 @Component({
   selector: 'th-canvas',
   styleUrls: ['./ThCanvas.scss'],
-  template: '<canvas #rendererCanvas id="rendererCanvas"><ng-content *ngIf="isDevMode()" ></ng-content></canvas>',
+  template: '<ng-content *ngIf="isDevMode()" ></ng-content>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
+    { provide: HOST_ELEMENT, useFactory: () => inject(ElementRef) },
     { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
     ThEngineService,
     ThAnimationLoopService,
     { provide: RAYCASTER, useValue: new Raycaster() },
     forwardRef(() => RaycasterService),
-    { provide: ThView, useExisting: forwardRef(() => ThCanvas) }
-  ]
+    { provide: ThView, useExisting: forwardRef(() => ThCanvas) },
+
+    // default provider for webgl renderer
+    provideDefaultRenderer(),
+  ],
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThCanvas extends ThView implements OnInit, AfterViewInit, AfterContentChecked {
   public readonly isDevMode = isDevMode;
   private static instanceCnt = 0;
   public readonly nid = ThCanvas.instanceCnt++;
-
-  /**
-   * renderer parameters
-   * those will be applied to the renderer during construction / initialization
-   */
-  @Input()
-  rendererParameters?: Partial<WebGLRenderer>;
 
   /**
    * if true does not use the ThCanvas as view
@@ -62,30 +78,22 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit, AfterCont
 
   @ContentChildren(ThView)
   public set views(viewList: QueryList<ThView>) {
-    viewList.forEach((v) => this.engServ.addView(v));
-  }
-
-  protected _rendererCanvas?: ElementRef<HTMLCanvasElement>;
-  @ViewChild('rendererCanvas', { static: true })
-  public set rendererCanvas(canvas: ElementRef<HTMLCanvasElement> | undefined) {
-    if (!canvas) {
-      return;
-    }
-    this._rendererCanvas = canvas;
-    canvas.nativeElement.id += this.nid;
+    this.setViews(viewList);
   }
 
   public get rendererCanvas() {
-    return this._rendererCanvas;
+    return this.engServ.canvas;
   }
 
   constructor(
     protected engServ: ThEngineService,
     protected animationLoop: ThAnimationLoopService,
     @Inject(forwardRef(() => RaycasterService))
-    protected raycaster: RaycasterService
+    protected raycaster: RaycasterService,
+    public readonly elementRef: ElementRef<HTMLElement>
   ) {
     super(engServ, raycaster);
+    this.engServ.renderers.forEach((renderer) => this.elementRef.nativeElement.appendChild(renderer.domElement));
   }
   ngAfterContentChecked(): void {
     this.animationLoop.requestAnimationFrame();
@@ -96,19 +104,17 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit, AfterCont
   }
 
   public ngOnInit(): void {
-    this.applyRendererParameters();
+    this.engServ.resize();
 
     super.ngOnInit();
+    this.setViews();
+  }
+
+  protected setViews(viewList?: QueryList<ThView>) {
+    this.engServ.setViews([]);
     if (!this.disableDefaultView) {
       this.engServ.addView(this);
     }
-  }
-
-  private applyRendererParameters() {
-    if (!this.rendererCanvas) {
-      throw new Error('Missing Canvas');
-    }
-
-    this.engServ.setRenderer({ ...this.rendererParameters, domElement: this.rendererCanvas.nativeElement });
+    viewList?.forEach((v) => this.engServ.addView(v));
   }
 }

@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Type,
+} from '@angular/core';
 import { AxesHelper, BufferGeometry, Material } from 'three';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
@@ -10,14 +15,14 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-axesHelper',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThAxesHelper) }]
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThAxesHelper) },
+  ],
 })
-export class ThAxesHelper<T extends AxesHelper = AxesHelper, TARGS = /* size? */ number> extends ThLineSegments<
-  BufferGeometry,
-  Material | Material[],
-  T,
-  TARGS
-> {
+export class ThAxesHelper<
+  T extends AxesHelper = AxesHelper,
+  TARGS = /* size? */ number
+> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<AxesHelper> {
     return AxesHelper;
   }

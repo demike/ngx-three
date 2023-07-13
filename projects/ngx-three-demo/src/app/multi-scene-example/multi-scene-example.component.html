@@ -13,7 +13,7 @@
       x: 0,
       y: 0,
       width: sliderPos,
-      height: thecanvas.rendererCanvas?.nativeElement?.height || 0
+      height: thecanvas.rendererCanvas?.height || 0
     }"
     [scissorTest]="true"
     [clearColor]="colorLeft"
@@ -33,8 +33,8 @@
     [scissor]="{
       x: sliderPos,
       y: 0,
-      width: thecanvas.rendererCanvas?.nativeElement?.width || 0,
-      height: thecanvas.rendererCanvas?.nativeElement?.height || 0
+      width: thecanvas.rendererCanvas?.width || 0,
+      height: thecanvas.rendererCanvas?.height || 0
     }"
     [scissorTest]="true"
     [clearColor]="colorRight"

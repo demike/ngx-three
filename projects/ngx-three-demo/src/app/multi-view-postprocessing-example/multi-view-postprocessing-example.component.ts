@@ -8,7 +8,7 @@ import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader';
 @Component({
   selector: 'app-multi-view-postprocessing-example',
   templateUrl: './multi-view-postprocessing-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MultiViewPostprocessingExampleComponent implements OnInit {
   public Math = Math;
@@ -37,7 +37,7 @@ export class MultiViewPostprocessingExampleComponent implements OnInit {
       camera.position.x = Math.max(Math.min(camera.position.x, 2000), -2000);
       camera.lookAt(scene.position);
       camera.updateProjectionMatrix();
-    }
+    },
   };
   public view2 = {
     left: 0.5,
@@ -54,7 +54,7 @@ export class MultiViewPostprocessingExampleComponent implements OnInit {
       camera.position.x = Math.max(Math.min(camera.position.x, 2000), -2000);
       camera.lookAt(camera.position.clone().setY(0));
       camera.updateProjectionMatrix();
-    }
+    },
   };
 
   public view3 = {
@@ -72,7 +72,7 @@ export class MultiViewPostprocessingExampleComponent implements OnInit {
       camera.position.y = Math.max(Math.min(camera.position.y, 1600), -1600);
       camera.lookAt(scene.position);
       camera.updateProjectionMatrix();
-    }
+    },
   };
 
   @ViewChild('thecanvas', { static: true })
@@ -84,7 +84,7 @@ export class MultiViewPostprocessingExampleComponent implements OnInit {
     if (!this.canvas || !this.canvas.rendererCanvas) {
       return;
     }
-    this.shadowTexture = new CanvasTexture(this.canvas.rendererCanvas.nativeElement);
+    this.shadowTexture = new CanvasTexture(this.canvas.rendererCanvas);
   }
 
   public updateSize() {
@@ -92,8 +92,8 @@ export class MultiViewPostprocessingExampleComponent implements OnInit {
       return;
     }
 
-    this.canvasWidth = this.canvas.rendererCanvas.nativeElement.width;
-    this.canvasHeight = this.canvas.rendererCanvas.nativeElement.height;
+    this.canvasWidth = this.canvas.rendererCanvas.width;
+    this.canvasHeight = this.canvas.rendererCanvas.height;
   }
 
   @HostListener('document:mousemove', ['$event'])
@@ -101,7 +101,7 @@ export class MultiViewPostprocessingExampleComponent implements OnInit {
     if (!this.canvas || !this.canvas.rendererCanvas) {
       return;
     }
-    const rect = this.canvas.rendererCanvas.nativeElement.getBoundingClientRect();
+    const rect = this.canvas.rendererCanvas.getBoundingClientRect();
     this.mouseX = e.clientX - rect.left - rect.width / 2;
     this.mouseY = e.clientY - rect.right - rect.height / 2;
   }

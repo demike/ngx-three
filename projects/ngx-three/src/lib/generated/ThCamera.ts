@@ -1,7 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, forwardRef, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+} from '@angular/core';
 import { Camera, Event, Layers, Matrix4 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -10,9 +15,12 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-camera',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }]
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
 })
-export abstract class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<Event, T, TARGS> {
+export abstract class ThCamera<
+  T extends Camera = Camera,
+  TARGS = []
+> extends ThObject3D<Event, T, TARGS> {
   // @ts-ignore
   public get isCamera(): true | undefined {
     return this._objRef?.isCamera;
@@ -55,7 +63,10 @@ export abstract class ThCamera<T extends Camera = Camera, TARGS = []> extends Th
         ]
   ) {
     if (this._objRef) {
-      this._objRef.matrixWorldInverse = applyValue<Matrix4>(this._objRef.matrixWorldInverse, value);
+      this._objRef.matrixWorldInverse = applyValue<Matrix4>(
+        this._objRef.matrixWorldInverse,
+        value
+      );
     }
   }
   // @ts-ignore
@@ -86,7 +97,10 @@ export abstract class ThCamera<T extends Camera = Camera, TARGS = []> extends Th
         ]
   ) {
     if (this._objRef) {
-      this._objRef.projectionMatrix = applyValue<Matrix4>(this._objRef.projectionMatrix, value);
+      this._objRef.projectionMatrix = applyValue<Matrix4>(
+        this._objRef.projectionMatrix,
+        value
+      );
     }
   }
   // @ts-ignore
@@ -117,7 +131,10 @@ export abstract class ThCamera<T extends Camera = Camera, TARGS = []> extends Th
         ]
   ) {
     if (this._objRef) {
-      this._objRef.projectionMatrixInverse = applyValue<Matrix4>(this._objRef.projectionMatrixInverse, value);
+      this._objRef.projectionMatrixInverse = applyValue<Matrix4>(
+        this._objRef.projectionMatrixInverse,
+        value
+      );
     }
   }
   // @ts-ignore

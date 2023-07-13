@@ -6,7 +6,7 @@ import { Camera, CanvasTexture, Color, PerspectiveCamera, Scene, WebGLRenderer }
   selector: 'app-views-example',
   templateUrl: './views-example.component.html',
   styleUrls: ['./views-example.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ViewsExampleComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -34,7 +34,7 @@ export class ViewsExampleComponent implements OnInit {
         camera.position.x = Math.max(Math.min(camera.position.x, 2000), -2000);
         camera.lookAt(scene.position);
         camera.updateProjectionMatrix();
-      }
+      },
     },
     {
       left: 0.5,
@@ -51,7 +51,7 @@ export class ViewsExampleComponent implements OnInit {
         camera.position.x = Math.max(Math.min(camera.position.x, 2000), -2000);
         camera.lookAt(camera.position.clone().setY(0));
         camera.updateProjectionMatrix();
-      }
+      },
     },
     {
       left: 0.5,
@@ -68,8 +68,8 @@ export class ViewsExampleComponent implements OnInit {
         camera.position.y = Math.max(Math.min(camera.position.y, 1600), -1600);
         camera.lookAt(scene.position);
         camera.updateProjectionMatrix();
-      }
-    }
+      },
+    },
   ];
 
   @ViewChild('thecanvas', { static: true })
@@ -81,33 +81,7 @@ export class ViewsExampleComponent implements OnInit {
     if (!this.canvas || !this.canvas.rendererCanvas) {
       return;
     }
-    this.shadowTexture = new CanvasTexture(this.canvas.rendererCanvas.nativeElement);
-  }
-
-  public animate(event: { renderer: WebGLRenderer; scene: ThScene; camera: ThCamera }) {
-    /*
-     this.updateSize();
-    for (let view of this.views) {
-      const view = views[ii];
-
-      view.updateCamera(camera, scene, mouseX, mouseY);
-
-      const left = Math.floor(this.canvasWidth * view.left);
-      const bottom = Math.floor(this.canvasHeight * view.bottom);
-      const width = Math.floor(this.canvasWidth * view.width);
-      const height = Math.floor(this.canvasHeight * view.height);
-
-      renderer.setViewport(left, bottom, width, height);
-      renderer.setScissor(left, bottom, width, height);
-      renderer.setScissorTest(true);
-      renderer.setClearColor(view.background);
-
-      camera.aspect = width / height;
-      camera.updateProjectionMatrix();
-
-      renderer.render(scene, camera);
-    }
-*/
+    this.shadowTexture = new CanvasTexture(this.canvas.rendererCanvas);
   }
 
   public updateSize() {
@@ -115,8 +89,8 @@ export class ViewsExampleComponent implements OnInit {
       return;
     }
 
-    this.canvasWidth = this.canvas.rendererCanvas.nativeElement.width;
-    this.canvasHeight = this.canvas.rendererCanvas.nativeElement.height;
+    this.canvasWidth = this.canvas.rendererCanvas.width;
+    this.canvasHeight = this.canvas.rendererCanvas.height;
   }
 
   @HostListener('document:mousemove', ['$event'])
@@ -124,7 +98,7 @@ export class ViewsExampleComponent implements OnInit {
     if (!this.canvas || !this.canvas.rendererCanvas) {
       return;
     }
-    const rect = this.canvas.rendererCanvas.nativeElement.getBoundingClientRect();
+    const rect = this.canvas.rendererCanvas.getBoundingClientRect();
     this.mouseX = e.clientX - rect.left - rect.width / 2;
     this.mouseY = e.clientY - rect.right - rect.height / 2;
   }
