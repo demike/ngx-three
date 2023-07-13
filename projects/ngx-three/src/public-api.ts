@@ -8,6 +8,8 @@ export * from './lib/ngx-three.module';
 export * from './lib/ThCanvas';
 export * from './lib/ThEngine.service';
 export * from './lib/ThView';
+export * from './lib/renderer/renderer-providers';
+export * from './lib/renderer/th-animation-loop.service';
 export * from './lib/renderer/th-render.directive';
 
 // loaders
