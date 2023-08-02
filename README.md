@@ -296,7 +296,7 @@ ngx-thre supports different renderers provided by three.js:
 And they can be combined too!
 
 You can configure them in two different ways
-- by providing them:
+- by providing them with the helper functions `provideWebGLRenderer`, `provideCSS2dRenderer` and `provideCSS3dRenderer`:
   ```ts
     @Component({
     selector: 'app-example',
@@ -306,7 +306,7 @@ You can configure them in two different ways
   ```
   or `provideWebGLRenderer({...})` or `provideCSS2dRenderer({...})` 
 
-- or by means of directives:
+- or by means of structural directives:
   ```html
   <th-canvas 
       *rendererParameters="{ ...WebGLRendererOptions... }">
@@ -320,6 +320,7 @@ If you do not provide any renderer the WebGLRenderer is used as the default rend
 Examples:
 - [CSS3DRenderer Example](https://demike.github.io/ngx-three/css3d-renderer-example)
 - [Multi Renderer Example](https://demike.github.io/ngx-three/multi-renderer-example)
+- [Html with CSS3D Renderer Example](https://demike.github.io/ngx-three/html-with-css3d-example)
 
 
 
