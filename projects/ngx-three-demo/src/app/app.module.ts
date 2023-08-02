@@ -41,6 +41,7 @@ import { HtmlExampleComponent } from './html-example/html-example.component';
 import { OutlinePassEventsExampleComponent } from './outline-pass-events-example/outline-pass-events-example.component';
 import { MultiRendererExampleComponent } from './multi-renderer-example/multi-renderer-example.component';
 import { CSS3dRendererExampleComponent } from './css3d-renderer-example/css3d-renderer-example.component';
+import { HtmlWithCSS3dExampleComponent } from './html-with-css3d-example/html-with-css3d-example.component';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,7 @@ import { CSS3dRendererExampleComponent } from './css3d-renderer-example/css3d-re
     OutlinePassEventsExampleComponent,
     MultiRendererExampleComponent,
     CSS3dRendererExampleComponent,
+    HtmlWithCSS3dExampleComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,43 @@
+<!--<div>sprite: <input type="checkbox" [checked]="sprite" (change)="sprite = !sprite" /></div>
+-->
+<th-canvas [thStats]="true" (onRender)="this.onBeforeRender()" [shadow]="true" >
+    <th-scene>
+      <th-ambientLight/>
+        <th-group [rotation]="[0, Math.PI,0]" [position]="[0,1,0]">
+          <th-object3D
+              [castShadow]="true"
+              loadGLTF
+              [url]="glbPath"
+              [position]="position"
+              [rotation]="rotation"
+          >
+            <th-mesh [refById]="'Cube008_2'">
+              <th-group #holder [rotation]="[-1 * Math.PI / 2,0,0]" [position]="[0.00, 0.04, -0.02]" [scale]="[0.0043,0.0043,0.0043]">
+                <th-mesh>
+                  <!-- a placeholder for the css3d element, NoBlending lets the Css3DObject's dom elements visible -->
+                  <th-planeGeometry [args]="[1960,1280]" />
+                  <th-meshBasicMaterial [opacity]="0" [blending]="THREE.NoBlending" [side]="THREE.DoubleSide" [color]="'black' | color" />
+                </th-mesh>
+              <th-cSS3DObject>
+                <iframe src="./multi-view-postprocessing-example" style="width:1960px; height:1280px;"></iframe>
+              </th-cSS3DObject>
+            </th-group>
+            </th-mesh>
+          </th-object3D>
+        </th-group>
+      
+      <th-directionalLight #light [castShadow]="true" [position]="[4,10,2]" [lookAt]="[0,-3,0]" [color]="'#ffffff' | color" [intensity]="0.75"/>
+      
+      <th-mesh [receiveShadow]="true" [rotation]="[3*Math.PI / 2, 0,0]" [position]="[0,-3,0]">
+        <th-planeGeometry [args]="[100,100]"/>
+        <th-meshBasicMaterial [color]="'#efefef' | color"/>
+      </th-mesh>
+      <th-perspectiveCamera
+        [args]="[55, 2, 0.1, 100]"
+        [position]="[-5, 0, -15]"
+        [lookAt]="[0, 0, 0]"
+      >
+          <th-orbitControls/>
+      </th-perspectiveCamera>
+    </th-scene>
+  </th-canvas>

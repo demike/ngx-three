@@ -4,7 +4,7 @@ import { ASSET_PATH } from '../assets';
   selector: 'app-events-example',
   templateUrl: './events-example.component.html',
   styleUrls: ['./events-example.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EventsExampleComponent {
   public readonly id = 'CID';

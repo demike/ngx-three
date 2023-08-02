@@ -297,23 +297,23 @@ And they can be combined too!
 
 You can configure them in two different ways
 - by providing them:
-```ts
-  @Component({
-  selector: 'app-example',
-  providers: [provideCSS3dRenderer({...})],
-  ...
-})
-```
+  ```ts
+    @Component({
+    selector: 'app-example',
+    providers: [provideCSS3dRenderer({...})],
+    ...
+  })
+  ```
+  or `provideWebGLRenderer({...})` or `provideCSS2dRenderer({...})` 
 
 - or by means of directives:
-```html
-<th-canvas 
-    [rendererParameters]="{ ...WebGLRendererOptions... }",
-    [css2dRendererParameters]="{...}", 
-    [css3dRendererParameters]="{...}">
- ... 
-</th-canvas>
-```
+  ```html
+  <th-canvas 
+      *rendererParameters="{ ...WebGLRendererOptions... }">
+  ... 
+  </th-canvas>
+  ```
+  or `*css2dRendererParameters]="{...}"`, `*css3dRendererParameters]="{...}"`
 
 If you do not provide any renderer the WebGLRenderer is used as the default renderer with its default configuration.
 
