@@ -14,29 +14,43 @@ import {
   QueryList,
   StaticProvider,
 } from '@angular/core';
-import { Raycaster } from 'three';
+import { Raycaster, WebGLRenderer } from 'three';
 import { RAYCASTER, RaycasterService } from './events/raycaster.service';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThAnimationLoopService } from './renderer/th-animation-loop.service';
 import { ThEngineService } from './ThEngine.service';
 import { HOST_ELEMENT, ThView } from './ThView';
-import { provideWebGLRenderer, RENDERER_PROVIDERS, RendererProviderDirective } from './renderer/renderer-providers';
+import { provideWebGLRenderer, RENDERER_PROVIDERS, WEBGL_RENDERER } from './renderer/renderer-providers';
 
-function provideDefaultRenderer(): StaticProvider {
-  return {
-    provide: RENDERER_PROVIDERS,
-    useFactory: () => {
-      const renderers = inject(RENDERER_PROVIDERS, { skipSelf: true, optional: true });
-      const localRendererProvider = inject(RendererProviderDirective, { optional: true });
-      if (localRendererProvider) {
-        return localRendererProvider.getInjectedRenderers();
-      }
-      if (renderers) {
-        return renderers;
-      }
-      return [provideWebGLRenderer().useValue];
+function provideDefaultRenderer(): StaticProvider[] {
+  return [
+    {
+      provide: RENDERER_PROVIDERS,
+      useFactory: () => {
+        const renderers = inject(RENDERER_PROVIDERS, { skipSelf: true, optional: true });
+        if (renderers) {
+          return renderers;
+        }
+        return [(provideWebGLRenderer()[0] as any).useValue];
+      },
     },
-  };
+    {
+      provide: WEBGL_RENDERER,
+      useFactory: () => {
+        const webGlRenderer = inject(WEBGL_RENDERER, { skipSelf: true, optional: true });
+        if (webGlRenderer) {
+          return webGlRenderer;
+        }
+        const renderers = inject(RENDERER_PROVIDERS);
+        const renderer = renderers[0];
+        if (renderers.length === 1 && renderer instanceof WebGLRenderer) {
+          return renderer;
+        }
+
+        return undefined;
+      },
+    },
+  ];
 }
 
 @Component({

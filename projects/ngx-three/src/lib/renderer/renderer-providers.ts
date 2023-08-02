@@ -95,12 +95,14 @@ export function provideWebGLRenderer(parameters?: ThRendererParameters) {
   const renderer = new WebGLRenderer({ ...RENDERER_DEFAULTS, ...parameters });
 
   Object.assign(renderer, { ...RENDERER_DEFAULTS, ...parameters });
-
-  const provider: Provider = {
-    provide: RENDERER_PROVIDERS,
-    multi: true,
-    useValue: renderer,
-  };
+  const provider: Provider[] = [
+    { provide: WEBGL_RENDERER, useValue: renderer },
+    {
+      provide: RENDERER_PROVIDERS,
+      multi: true,
+      useExisting: WEBGL_RENDERER,
+    },
+  ];
   return provider;
 }
 

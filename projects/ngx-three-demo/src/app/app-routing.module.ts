@@ -22,6 +22,7 @@ import { SimpleExampleComponent } from './simple-example/simple-example.componen
 import { ViewsExampleComponent } from './views-example/views-example.component';
 import { MultiRendererExampleComponent } from './multi-renderer-example/multi-renderer-example.component';
 import { CSS3dRendererExampleComponent } from './css3d-renderer-example/css3d-renderer-example.component';
+import { HtmlWithCSS3dExampleComponent } from './html-with-css3d-example/html-with-css3d-example.component';
 
 export const EXAMPLE_ROUTES: (Route & {
   data: {
@@ -268,6 +269,18 @@ export const EXAMPLE_ROUTES: (Route & {
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/css3d-renderer-example/css3d-renderer-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/css3d-renderer-example/css3d-renderer-example.component.ts',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/css3d-renderer-example/css3d-renderer-example.component.scss',
+      ],
+    },
+  },
+  {
+    path: 'html-with-css3d-example',
+    data: {
+      title: 'Html with CSS3D Example',
+      exampleComponent: HtmlWithCSS3dExampleComponent,
+      codeUrls: [
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-with-css3d-example/html-with-css3d-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-with-css3d-example/html-with-css3d-example.component.ts',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-with-css3d-example/html-with-css3d-example.component.scss',
       ],
     },
   },
