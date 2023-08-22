@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Box3,
@@ -39,8 +39,8 @@ export class ThInstancedMesh<
   TARGS = [
     geometry: TGeometry | undefined,
     material: TMaterial | undefined,
-    count: number
-  ]
+    count: number,
+  ],
 > extends ThMesh<TGeometry, TMaterial, T, TARGS> {
   public getType(): Type<InstancedMesh<TGeometry, TMaterial>> {
     return InstancedMesh;
@@ -55,7 +55,7 @@ export class ThInstancedMesh<
     if (this._objRef) {
       this._objRef.boundingBox = applyValue<Box3 | null>(
         this._objRef.boundingBox,
-        value
+        value,
       );
     }
   }
@@ -65,12 +65,12 @@ export class ThInstancedMesh<
   }
   @Input()
   public set boundingSphere(
-    value: Sphere | null | [center: Vector3, radius: number]
+    value: Sphere | null | [center: Vector3, radius: number],
   ) {
     if (this._objRef) {
       this._objRef.boundingSphere = applyValue<Sphere | null>(
         this._objRef.boundingSphere,
-        value
+        value,
       );
     }
   }
@@ -94,12 +94,12 @@ export class ThInstancedMesh<
     value:
       | InstancedBufferAttribute
       | null
-      | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
   ) {
     if (this._objRef) {
       this._objRef.instanceColor = applyValue<InstancedBufferAttribute | null>(
         this._objRef.instanceColor,
-        value
+        value,
       );
     }
   }
@@ -111,12 +111,12 @@ export class ThInstancedMesh<
   public set instanceMatrix(
     value:
       | InstancedBufferAttribute
-      | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
   ) {
     if (this._objRef) {
       this._objRef.instanceMatrix = applyValue<InstancedBufferAttribute>(
         this._objRef.instanceMatrix,
-        value
+        value,
       );
     }
   }

@@ -1,18 +1,19 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   GLSLVersion,
   IUniform,
   ShaderMaterial,
   ShaderMaterialParameters,
+  UniformsGroup,
 } from 'three';
 import { ThMaterial } from './ThMaterial';
 
@@ -26,7 +27,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThShaderMaterial<
   T extends ShaderMaterial = ShaderMaterial,
-  TARGS = /* parameters? */ ShaderMaterialParameters
+  TARGS = /* parameters? */ ShaderMaterialParameters,
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<ShaderMaterial> {
     return ShaderMaterial;
@@ -64,6 +65,17 @@ export class ThShaderMaterial<
   // @ts-ignore
   public get uniforms(): { [uniform: string]: IUniform } | undefined {
     return this._objRef?.uniforms;
+  }
+  @Input()
+  public set uniformsGroups(value: UniformsGroup[]) {
+    if (this._objRef) {
+      this._objRef.uniformsGroups = value;
+    }
+  }
+
+  // @ts-ignore
+  public get uniformsGroups(): UniformsGroup[] | undefined {
+    return this._objRef?.uniformsGroups;
   }
   @Input()
   public set vertexShader(value: string) {

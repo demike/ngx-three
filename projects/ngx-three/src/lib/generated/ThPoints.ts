@@ -1,14 +1,20 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { BufferGeometry, Event, Material, Points } from 'three';
+import {
+  BufferGeometry,
+  Event,
+  Material,
+  NormalOrGLBufferAttributes,
+  Points,
+} from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -18,10 +24,10 @@ import { ThObject3D } from './ThObject3D';
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPoints) }],
 })
 export class ThPoints<
-  TGeometry extends BufferGeometry = BufferGeometry,
+  TGeometry extends BufferGeometry<NormalOrGLBufferAttributes> = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   T extends Points<TGeometry, TMaterial> = Points<TGeometry, TMaterial>,
-  TARGS = [geometry?: TGeometry, material?: TMaterial]
+  TARGS = [geometry?: TGeometry, material?: TMaterial],
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Points<TGeometry, TMaterial>> {
     return Points;
@@ -48,7 +54,7 @@ export class ThPoints<
   }
   @Input()
   public set morphTargetDictionary(
-    value: { [key: string]: number } | undefined
+    value: { [key: string]: number } | undefined,
   ) {
     if (this._objRef) {
       this._objRef.morphTargetDictionary = value;

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -16,7 +16,7 @@ import {
   ShaderMaterial,
   WebGLRenderTarget,
 } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { SSAARenderPass } from 'three/examples/jsm/postprocessing/SSAARenderPass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
@@ -35,8 +35,8 @@ export class ThSSAARenderPass<
     scene: Scene,
     camera: Camera,
     clearColor?: ColorRepresentation,
-    clearAlpha?: number
-  ]
+    clearAlpha?: number,
+  ],
 > extends ThPass<T, TARGS> {
   public getType(): Type<SSAARenderPass> {
     return SSAARenderPass;

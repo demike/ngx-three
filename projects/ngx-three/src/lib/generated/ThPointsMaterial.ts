@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -28,7 +28,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThPointsMaterial<
   T extends PointsMaterial = PointsMaterial,
-  TARGS = /* parameters? */ PointsMaterialParameters
+  TARGS = /* parameters? */ PointsMaterialParameters,
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<PointsMaterial> {
     return PointsMaterial;

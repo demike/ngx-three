@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Color, ColorRepresentation, HemisphereLight, Vector3 } from 'three';
 import { applyValue } from '../util';
@@ -26,8 +26,8 @@ export class ThHemisphereLight<
   TARGS = [
     skyColor?: ColorRepresentation,
     groundColor?: ColorRepresentation,
-    intensity?: number
-  ]
+    intensity?: number,
+  ],
 > extends ThLight<undefined, T, TARGS> {
   public getType(): Type<HemisphereLight> {
     return HemisphereLight;
@@ -66,7 +66,7 @@ export class ThHemisphereLight<
     if (this._objRef) {
       this._objRef.groundColor = applyValue<Color>(
         this._objRef.groundColor,
-        value
+        value,
       );
     }
   }

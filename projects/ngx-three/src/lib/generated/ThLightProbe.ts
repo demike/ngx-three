@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { LightProbe, LightShadow, SphericalHarmonics3, Vector3 } from 'three';
 import { applyValue } from '../util';
@@ -23,7 +23,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThLightProbe<
   T extends LightProbe = LightProbe,
-  TARGS = [sh?: SphericalHarmonics3, intensity?: number]
+  TARGS = [sh?: SphericalHarmonics3, intensity?: number],
 > extends ThLight<LightShadow | undefined, T, TARGS> {
   public getType(): Type<LightProbe> {
     return LightProbe;

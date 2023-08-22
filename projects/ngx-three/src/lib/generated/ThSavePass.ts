@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, WebGLRenderTarget } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { SavePass } from 'three/examples/jsm/postprocessing/SavePass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
@@ -25,7 +25,7 @@ import { ThPass } from './ThPass';
 })
 export class ThSavePass<
   T extends SavePass = SavePass,
-  TARGS = /* renderTarget? */ WebGLRenderTarget
+  TARGS = /* renderTarget? */ WebGLRenderTarget,
 > extends ThPass<T, TARGS> {
   public getType(): Type<SavePass> {
     return SavePass;

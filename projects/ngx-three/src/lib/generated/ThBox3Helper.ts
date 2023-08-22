@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Box3,
@@ -30,7 +30,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThBox3Helper<
   T extends Box3Helper = Box3Helper,
-  TARGS = [box: Box3, color?: Color]
+  TARGS = [box: Box3, color?: Color],
 > extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<Box3Helper> {
     return Box3Helper;

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -97,7 +97,7 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
   }
   @Input()
   public set background(
-    value: Color | Texture | CubeTexture | null | [color: ColorRepresentation]
+    value: Color | Texture | CubeTexture | null | [color: ColorRepresentation],
   ) {
     if (this._objRef) {
       this._objRef.background = applyValue<

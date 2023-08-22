@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { AmbientLight, ColorRepresentation } from 'three';
 import { ThLight } from './ThLight';
@@ -21,7 +21,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThAmbientLight<
   T extends AmbientLight = AmbientLight,
-  TARGS = [color?: ColorRepresentation, intensity?: number]
+  TARGS = [color?: ColorRepresentation, intensity?: number],
 > extends ThLight<undefined, T, TARGS> {
   public getType(): Type<AmbientLight> {
     return AmbientLight;

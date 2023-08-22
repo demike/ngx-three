@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { Vector3 } from 'three';
+import { NormalBufferAttributes, Vector3 } from 'three';
 import { ConvexGeometry } from 'three/examples/jsm/geometries/ConvexGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -24,8 +24,8 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThConvexGeometry<
   T extends ConvexGeometry = ConvexGeometry,
-  TARGS = /* points? */ Vector3[]
-> extends ThBufferGeometry<T, TARGS> {
+  TARGS = /* points? */ Vector3[],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<ConvexGeometry> {
     return ConvexGeometry;
   }

@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Shape } from 'three';
 import {
@@ -28,7 +28,7 @@ import { ThExtrudeGeometry } from './ThExtrudeGeometry';
 })
 export class ThTextGeometry<
   T extends TextGeometry = TextGeometry,
-  TARGS = [text: string, parameters?: TextGeometryParameters]
+  TARGS = [text: string, parameters?: TextGeometryParameters],
 > extends ThExtrudeGeometry<T, TARGS> {
   public getType(): Type<TextGeometry> {
     return TextGeometry;

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Data3DTexture,
@@ -31,8 +31,8 @@ export class ThData3DTexture<
     data?: BufferSource | null,
     width?: number,
     height?: number,
-    depth?: number
-  ]
+    depth?: number,
+  ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<Data3DTexture> {
     return Data3DTexture;

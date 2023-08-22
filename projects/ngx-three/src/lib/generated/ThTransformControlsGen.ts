@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera, MOUSE, Object3D } from 'three';
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
@@ -25,7 +25,7 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThTransformControlsGen<
   T extends TransformControls = TransformControls,
-  TARGS = [object: Camera, domElement?: HTMLElement]
+  TARGS = [object: Camera, domElement?: HTMLElement],
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<TransformControls> {
     return TransformControls;
@@ -77,7 +77,7 @@ export class ThTransformControlsGen<
   }
   @Input()
   public set axis(
-    value: 'X' | 'Y' | 'Z' | 'E' | 'XY' | 'YZ' | 'XZ' | 'XYZ' | 'XYZE' | null
+    value: 'X' | 'Y' | 'Z' | 'E' | 'XY' | 'YZ' | 'XZ' | 'XYZ' | 'XYZE' | null,
   ) {
     if (this._objRef) {
       this._objRef.axis = value;

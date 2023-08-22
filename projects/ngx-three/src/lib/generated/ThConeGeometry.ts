@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ConeGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
@@ -31,8 +31,8 @@ export class ThConeGeometry<
     heightSegments?: number,
     openEnded?: boolean,
     thetaStart?: number,
-    thetaLength?: number
-  ]
+    thetaLength?: number,
+  ],
 > extends ThCylinderGeometry<T, TARGS> {
   public getType(): Type<ConeGeometry> {
     return ConeGeometry;

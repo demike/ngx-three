@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   MeshNormalMaterial,
@@ -31,7 +31,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThMeshNormalMaterial<
   T extends MeshNormalMaterial = MeshNormalMaterial,
-  TARGS = /* parameters? */ MeshNormalMaterialParameters
+  TARGS = /* parameters? */ MeshNormalMaterialParameters,
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<MeshNormalMaterial> {
     return MeshNormalMaterial;
@@ -97,7 +97,7 @@ export class ThMeshNormalMaterial<
     if (this._objRef) {
       this._objRef.normalScale = applyValue<Vector2>(
         this._objRef.normalScale,
-        value
+        value,
       );
     }
   }

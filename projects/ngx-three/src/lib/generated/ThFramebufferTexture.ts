@@ -1,18 +1,17 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   FramebufferTexture,
   MagnificationTextureFilter,
   MinificationTextureFilter,
-  PixelFormat,
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
@@ -30,7 +29,7 @@ import { ThTexture } from './ThTexture';
 })
 export class ThFramebufferTexture<
   T extends FramebufferTexture = FramebufferTexture,
-  TARGS = [width: number, height: number, format: PixelFormat]
+  TARGS = [width: number, height: number],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<FramebufferTexture> {
     return FramebufferTexture;

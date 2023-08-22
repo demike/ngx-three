@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -33,7 +33,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThMeshMatcapMaterial<
   T extends MeshMatcapMaterial = MeshMatcapMaterial,
-  TARGS = /* parameters? */ MeshMatcapMaterialParameters
+  TARGS = /* parameters? */ MeshMatcapMaterialParameters,
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<MeshMatcapMaterial> {
     return MeshMatcapMaterial;
@@ -142,7 +142,7 @@ export class ThMeshMatcapMaterial<
     if (this._objRef) {
       this._objRef.normalScale = applyValue<Vector2>(
         this._objRef.normalScale,
-        value
+        value,
       );
     }
   }

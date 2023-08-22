@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { Curve, TubeGeometry, Vector3 } from 'three';
+import { Curve, NormalBufferAttributes, TubeGeometry, Vector3 } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -29,9 +29,9 @@ export class ThTubeGeometry<
     tubularSegments?: number,
     radius?: number,
     radialSegments?: number,
-    closed?: boolean
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    closed?: boolean,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<TubeGeometry> {
     return TubeGeometry;
   }

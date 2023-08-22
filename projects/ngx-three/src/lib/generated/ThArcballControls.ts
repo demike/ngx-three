@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera, Scene, Vector3 } from 'three';
 import { ArcballControls } from 'three/examples/jsm/controls/ArcballControls';
@@ -26,7 +26,7 @@ import { applyValue } from '../util';
 })
 export class ThArcballControls<
   T extends ArcballControls = ArcballControls,
-  TARGS = [camera: Camera, domElement: HTMLElement, scene?: Scene | null]
+  TARGS = [camera: Camera, domElement: HTMLElement, scene?: Scene | null],
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<ArcballControls> {
     return ArcballControls;
@@ -294,5 +294,16 @@ export class ThArcballControls<
   // @ts-ignore
   public get radiusFactor(): number | undefined {
     return this._objRef?.radiusFactor;
+  }
+  @Input()
+  public set rotateSpeed(value: number) {
+    if (this._objRef) {
+      this._objRef.rotateSpeed = value;
+    }
+  }
+
+  // @ts-ignore
+  public get rotateSpeed(): number | undefined {
+    return this._objRef?.rotateSpeed;
   }
 }

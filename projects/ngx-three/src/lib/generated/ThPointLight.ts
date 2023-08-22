@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ColorRepresentation, PointLight, PointLightShadow } from 'three';
 import { ThLight } from './ThLight';
@@ -26,8 +26,8 @@ export class ThPointLight<
     color?: ColorRepresentation,
     intensity?: number,
     distance?: number,
-    decay?: number
-  ]
+    decay?: number,
+  ],
 > extends ThLight<PointLightShadow, T, TARGS> {
   public getType(): Type<PointLight> {
     return PointLight;

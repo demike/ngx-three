@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera } from 'three';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
@@ -25,7 +25,7 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThPointerLockControls<
   T extends PointerLockControls = PointerLockControls,
-  TARGS = [camera: Camera, domElement?: HTMLElement]
+  TARGS = [camera: Camera, domElement?: HTMLElement],
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<PointerLockControls> {
     return PointerLockControls;

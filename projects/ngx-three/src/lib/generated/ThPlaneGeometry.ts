@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { PlaneGeometry } from 'three';
+import { NormalBufferAttributes, PlaneGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -27,9 +27,9 @@ export class ThPlaneGeometry<
     width?: number,
     height?: number,
     widthSegments?: number,
-    heightSegments?: number
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    heightSegments?: number,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<PlaneGeometry> {
     return PlaneGeometry;
   }

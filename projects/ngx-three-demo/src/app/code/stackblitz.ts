@@ -2,7 +2,7 @@
 
 import { Type } from '@angular/core';
 import sdk from '@stackblitz/sdk';
-import { Project } from '@stackblitz/sdk/typings/interfaces';
+import { Project } from '@stackblitz/sdk/';
 import { GITHUB_ASSET_PATH } from '../assets';
 import {
   createIndexHtml,

@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { BufferGeometry, LineSegments, Material } from 'three';
 import { ThLine } from './ThLine';
@@ -26,7 +26,7 @@ export class ThLineSegments<
     TGeometry,
     TMaterial
   >,
-  TARGS = [geometry?: TGeometry, material?: TMaterial]
+  TARGS = [geometry?: TGeometry, material?: TMaterial],
 > extends ThLine<TGeometry, TMaterial, T, TARGS> {
   public getType(): Type<LineSegments<TGeometry, TMaterial>> {
     return LineSegments;

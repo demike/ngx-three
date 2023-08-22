@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
@@ -25,7 +25,7 @@ import { ThPass } from './ThPass';
 })
 export class ThShaderPass<
   T extends ShaderPass = ShaderPass,
-  TARGS = [shader: object, textureID?: string]
+  TARGS = [shader: object, textureID?: string],
 > extends ThPass<T, TARGS> {
   public getType(): Type<ShaderPass> {
     return ShaderPass;

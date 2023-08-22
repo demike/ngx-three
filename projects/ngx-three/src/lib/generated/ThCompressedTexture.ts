@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
+  ColorSpace,
   CompressedPixelFormat,
   CompressedTexture,
   MagnificationTextureFilter,
   Mapping,
   MinificationTextureFilter,
   TextureDataType,
-  TextureEncoding,
   Wrapping,
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
@@ -46,8 +46,8 @@ export class ThCompressedTexture<
     magFilter?: MagnificationTextureFilter,
     minFilter?: MinificationTextureFilter,
     anisotropy?: number,
-    encoding?: TextureEncoding
-  ]
+    colorSpace?: ColorSpace,
+  ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<CompressedTexture> {
     return CompressedTexture;

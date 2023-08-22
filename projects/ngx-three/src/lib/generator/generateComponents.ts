@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, writeFileSync } from 'fs';
+import { existsSync, readFileSync, promises, writeFileSync } from 'fs';
 import { join } from 'path';
 import * as ts from 'typescript';
 import { NgxThreeClass } from './NgxThreeClass';
@@ -21,45 +21,61 @@ class NgxThreeClassGenerator {
 
   constructor() {}
 
+  async execute() {
+    await Promise.allSettled([
+      generator.generateControls(),
+      generator.generateObjects(),
+      generator.generateMaterials(),
+      generator.generateGeometries(),
+      generator.generatePasses(),
+      generator.generateTextures(),
+      ]);
+
+      return  Promise.allSettled([
+      generator.generateNgxModule(Array.from(generator.ngxThreeClassMap.values())),
+      generator.generateNgxBarrelFile(Array.from(generator.ngxThreeClassMap.values())),
+      ]);
+  }
+
   generateObjects() {
-    this.generate('NgxThreeObjects', NgxThreeObject);
+    return this.generate('NgxThreeObjects', NgxThreeObject);
   }
 
   generateMaterials() {
-    this.generate('NgxThreeMaterials', NgxThreeMaterial);
+    return this.generate('NgxThreeMaterials', NgxThreeMaterial);
   }
 
   generateGeometries() {
-    this.generate('NgxThreeBufferGeometries', NgxThreeBufferGeometry);
+    return this.generate('NgxThreeBufferGeometries', NgxThreeBufferGeometry);
   }
 
   generateControls() {
-    this.generate('NgxThreeControls', NgxThreeControl);
+    return this.generate('NgxThreeControls', NgxThreeControl);
   }
 
   generatePasses() {
-    this.generate('NgxThreePasses', NgxThreePass);
+    return this.generate('NgxThreePasses', NgxThreePass);
   }
 
   generateTextures() {
-    this.generate('NgxThreeTextures', NgxThreeTexture);
+    return this.generate('NgxThreeTextures', NgxThreeTexture);
   }
 
   protected generate(exportTypeName: string, generatorType: Type<NgxThreeClass>) {
     const threeTypes = this.getInterfacePropertyNames(exportTypeName);
-    threeTypes.forEach((type) => {
+    return Promise.allSettled(threeTypes.map(async (type) => {
       const cls = this.generateNgxThreeClass(type, generatorType);
       if (cls.content.length === 0) {
         return;
       }
 
       this.ngxThreeClassMap.set(cls.className, cls);
-      this.writeFile(cls.className, cls.content);
+      await this.writeFile(cls.className, cls.content);
 
       if (cls.overrideStub && !this.doesFileExist('overrides/' + cls.overrideStub.className)) {
-        this.writeFile('overrides/' + cls.overrideStub.className, cls.overrideStub.content);
+        await this.writeFile('overrides/' + cls.overrideStub.className, cls.overrideStub.content);
       }
-    });
+    }));
   }
 
   private generateNgxThreeClass(classSymbol: ts.Symbol, generatorType: Type<NgxThreeClass>): NgxThreeClass {
@@ -73,28 +89,29 @@ class NgxThreeClassGenerator {
     const ngxModule = new NgxThreeModuleGen();
     ngxModule.generate(classes);
 
-    this.writeFile('ngx-three-generated.module', ngxModule.content);
+    return this.writeFile('ngx-three-generated.module', ngxModule.content);
   }
 
   public generateNgxBarrelFile(classes: NgxThreeClass[]) {
     const ngxBarrel = new NgxThreeBarrelGen();
     ngxBarrel.generate(classes);
 
-    this.writeFile('index', ngxBarrel.content);
+    return this.writeFile('index', ngxBarrel.content);
   }
 
-  private writeFile(fileName: string, content: string) {
+  private async writeFile(fileName: string, content: string) {
     try {
       const organizer = new ImportOrganizer();
       content = organizer.organizeImports(this.baseOutPath + fileName + '.ts', content);
-      content = prettier.format(content, {
+      content = await prettier.format(content, {
         parser: 'babel-ts',
         singleQuote: true
       });
     } catch (e) {
       console.log(`error creating file: ${fileName}`, e);
     }
-    writeFileSync(join(this.baseOutPath, fileName + '.ts'), content);
+
+    return promises.writeFile(join(this.baseOutPath, fileName + '.ts'), content);
   }
 
   private doesFileExist(fileName: string): boolean {
@@ -161,12 +178,4 @@ class NgxThreeClassGenerator {
 // ---------------------------------------------------
 
 const generator = new NgxThreeClassGenerator();
-
-generator.generateControls();
-generator.generateObjects();
-generator.generateMaterials();
-generator.generateGeometries();
-generator.generatePasses();
-generator.generateTextures();
-generator.generateNgxModule(Array.from(generator.ngxThreeClassMap.values()));
-generator.generateNgxBarrelFile(Array.from(generator.ngxThreeClassMap.values()));
+generator.execute()

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   ColorRepresentation,
@@ -29,7 +29,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThDirectionalLight<
   T extends DirectionalLight = DirectionalLight,
-  TARGS = [color?: ColorRepresentation, intensity?: number]
+  TARGS = [color?: ColorRepresentation, intensity?: number],
 > extends ThLight<DirectionalLightShadow, T, TARGS> {
   public getType(): Type<DirectionalLight> {
     return DirectionalLight;

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
@@ -39,7 +39,7 @@ import { applyValue } from '../util';
 export class ThObject3D<
   E extends BaseEvent = Event,
   T extends Object3D<E> = Object3D<E>,
-  TARGS = []
+  TARGS = [],
 > extends ThObjectBase<T, TARGS> {
   public getType(): Type<Object3D<E>> {
     return Object3D;
@@ -112,7 +112,7 @@ export class ThObject3D<
   }
   @Input()
   public set rotation(
-    value: Euler | [x: number, y: number, z: number, order?: EulerOrder]
+    value: Euler | [x: number, y: number, z: number, order?: EulerOrder],
   ) {
     if (this._objRef) {
       applyValue<Euler>(this._objRef.rotation, value);
@@ -124,7 +124,7 @@ export class ThObject3D<
   }
   @Input()
   public set quaternion(
-    value: Quaternion | [x: number, y: number, z: number, w: number]
+    value: Quaternion | [x: number, y: number, z: number, w: number],
   ) {
     if (this._objRef) {
       applyValue<Quaternion>(this._objRef.quaternion, value);
@@ -164,8 +164,8 @@ export class ThObject3D<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       applyValue<Matrix4>(this._objRef.modelViewMatrix, value);
@@ -188,8 +188,8 @@ export class ThObject3D<
           n23: number,
           n31: number,
           n32: number,
-          n33: number
-        ]
+          n33: number,
+        ],
   ) {
     if (this._objRef) {
       applyValue<Matrix3>(this._objRef.normalMatrix, value);
@@ -219,8 +219,8 @@ export class ThObject3D<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
@@ -250,13 +250,13 @@ export class ThObject3D<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.matrixWorld = applyValue<Matrix4>(
         this._objRef.matrixWorld,
-        value
+        value,
       );
     }
   }
@@ -414,8 +414,8 @@ export class ThObject3D<
       camera: Camera,
       geometry: BufferGeometry,
       material: Material,
-      group: Group
-    ) => void
+      group: Group,
+    ) => void,
   ) {
     if (this._objRef) {
       this._objRef.onBeforeRender = value;
@@ -430,7 +430,7 @@ export class ThObject3D<
         camera: Camera,
         geometry: BufferGeometry,
         material: Material,
-        group: Group
+        group: Group,
       ) => void)
     | undefined {
     return this._objRef?.onBeforeRender;
@@ -443,8 +443,8 @@ export class ThObject3D<
       camera: Camera,
       geometry: BufferGeometry,
       material: Material,
-      group: Group
-    ) => void
+      group: Group,
+    ) => void,
   ) {
     if (this._objRef) {
       this._objRef.onAfterRender = value;
@@ -459,7 +459,7 @@ export class ThObject3D<
         camera: Camera,
         geometry: BufferGeometry,
         material: Material,
-        group: Group
+        group: Group,
       ) => void)
     | undefined {
     return this._objRef?.onAfterRender;

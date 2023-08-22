@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { InstancedBufferGeometry } from 'three';
+import { InstancedBufferGeometry, NormalBufferAttributes } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -24,8 +24,8 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThInstancedBufferGeometry<
   T extends InstancedBufferGeometry = InstancedBufferGeometry,
-  TARGS = []
-> extends ThBufferGeometry<T, TARGS> {
+  TARGS = [],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<InstancedBufferGeometry> {
     return InstancedBufferGeometry;
   }

@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
+  forwardRef,
 } from '@angular/core';
 import { Color, ColorRepresentation, Event, Light, LightShadow } from 'three';
 import { applyValue } from '../util';
@@ -20,7 +20,7 @@ import { ThObject3D } from './ThObject3D';
 export abstract class ThLight<
   TShadowSupport extends LightShadow | undefined = LightShadow | undefined,
   T extends Light<TShadowSupport> = Light<TShadowSupport>,
-  TARGS = [color?: ColorRepresentation, intensity?: number]
+  TARGS = [color?: ColorRepresentation, intensity?: number],
 > extends ThObject3D<Event, T, TARGS> {
   // @ts-ignore
   public get isLight(): true | undefined {

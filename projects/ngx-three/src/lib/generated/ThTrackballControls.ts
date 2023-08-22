@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera, MOUSE, Vector3 } from 'three';
 import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls';
@@ -26,7 +26,7 @@ import { applyValue } from '../util';
 })
 export class ThTrackballControls<
   T extends TrackballControls = TrackballControls,
-  TARGS = [object: Camera, domElement?: HTMLElement]
+  TARGS = [object: Camera, domElement?: HTMLElement],
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<TrackballControls> {
     return TrackballControls;
@@ -265,7 +265,7 @@ export class ThTrackballControls<
     if (this._objRef) {
       this._objRef.position0 = applyValue<Vector3>(
         this._objRef.position0,
-        value
+        value,
       );
     }
   }

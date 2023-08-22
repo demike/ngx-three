@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   AnyMapping,
   AnyPixelFormat,
+  ColorSpace,
   MagnificationTextureFilter,
   Mapping,
   Matrix3,
@@ -38,18 +39,31 @@ import { applyValue } from '../util';
 })
 export class ThTexture<
   T extends Texture = Texture,
-  TARGS = [
-    image?: TexImageSource | OffscreenCanvas,
-    mapping?: Mapping,
-    wrapS?: Wrapping,
-    wrapT?: Wrapping,
-    magFilter?: MagnificationTextureFilter,
-    minFilter?: MinificationTextureFilter,
-    format?: PixelFormat,
-    type?: TextureDataType,
-    anisotropy?: number,
-    encoding?: TextureEncoding
-  ]
+  TARGS =
+    | [
+        image?: TexImageSource | OffscreenCanvas,
+        mapping?: Mapping,
+        wrapS?: Wrapping,
+        wrapT?: Wrapping,
+        magFilter?: MagnificationTextureFilter,
+        minFilter?: MinificationTextureFilter,
+        format?: PixelFormat,
+        type?: TextureDataType,
+        anisotropy?: number,
+        colorSpace?: ColorSpace,
+      ]
+    | [
+        image: TexImageSource | OffscreenCanvas,
+        mapping: Mapping,
+        wrapS: Wrapping,
+        wrapT: Wrapping,
+        magFilter: MagnificationTextureFilter,
+        minFilter: MinificationTextureFilter,
+        format: PixelFormat,
+        type: TextureDataType,
+        anisotropy: number,
+        encoding: TextureEncoding,
+      ],
 > extends ThTextureBase<T, TARGS> {
   public getType(): Type<Texture> {
     return Texture;
@@ -230,8 +244,8 @@ export class ThTexture<
           n23: number,
           n31: number,
           n32: number,
-          n33: number
-        ]
+          n33: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.matrix = applyValue<Matrix3>(this._objRef.matrix, value);
@@ -347,6 +361,17 @@ export class ThTexture<
   // @ts-ignore
   public get encoding(): TextureEncoding | undefined {
     return this._objRef?.encoding;
+  }
+  @Input()
+  public set colorSpace(value: ColorSpace) {
+    if (this._objRef) {
+      this._objRef.colorSpace = value;
+    }
+  }
+
+  // @ts-ignore
+  public get colorSpace(): ColorSpace | undefined {
+    return this._objRef?.colorSpace;
   }
   @Input()
   public set isRenderTargetTexture(value: boolean) {

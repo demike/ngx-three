@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   CompressedArrayTexture,
@@ -36,8 +36,8 @@ export class ThCompressedArrayTexture<
     height: number,
     depth: number,
     format: CompressedPixelFormat,
-    type?: TextureDataType
-  ]
+    type?: TextureDataType,
+  ],
 > extends ThCompressedTexture<T, TARGS> {
   public getType(): Type<CompressedArrayTexture> {
     return CompressedArrayTexture;

@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, Vector2 } from 'three';
 import { DotScreenPass } from 'three/examples/jsm/postprocessing/DotScreenPass';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
@@ -25,7 +25,7 @@ import { ThPass } from './ThPass';
 })
 export class ThDotScreenPass<
   T extends DotScreenPass = DotScreenPass,
-  TARGS = [center?: Vector2, angle?: number, scale?: number]
+  TARGS = [center?: Vector2, angle?: number, scale?: number],
 > extends ThPass<T, TARGS> {
   public getType(): Type<DotScreenPass> {
     return DotScreenPass;

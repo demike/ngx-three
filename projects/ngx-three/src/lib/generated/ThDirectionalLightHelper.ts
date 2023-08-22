@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   ColorRepresentation,
@@ -32,7 +32,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThDirectionalLightHelper<
   T extends DirectionalLightHelper = DirectionalLightHelper,
-  TARGS = [light: DirectionalLight, size?: number, color?: ColorRepresentation]
+  TARGS = [light: DirectionalLight, size?: number, color?: ColorRepresentation],
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<DirectionalLightHelper> {
     return DirectionalLightHelper;
@@ -84,8 +84,8 @@ export class ThDirectionalLightHelper<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);

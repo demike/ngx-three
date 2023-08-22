@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { BufferGeometry, Event, Sprite, SpriteMaterial, Vector2 } from 'three';
 import { applyValue } from '../util';
@@ -20,7 +20,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThSprite<
   T extends Sprite = Sprite,
-  TARGS = /* material? */ SpriteMaterial
+  TARGS = /* material? */ SpriteMaterial,
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Sprite> {
     return Sprite;

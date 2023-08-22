@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -24,7 +24,7 @@ import {
   WebGLRenderTarget,
 } from 'three';
 import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';
@@ -43,8 +43,8 @@ export class ThOutlinePass<
     resolution: Vector2,
     scene: Scene,
     camera: Camera,
-    selectedObjects?: Object3D[]
-  ]
+    selectedObjects?: Object3D[],
+  ],
 > extends ThPass<T, TARGS> {
   public getType(): Type<OutlinePass> {
     return OutlinePass;
@@ -88,7 +88,7 @@ export class ThOutlinePass<
     if (this._objRef) {
       this._objRef.visibleEdgeColor = applyValue<Color>(
         this._objRef.visibleEdgeColor,
-        value
+        value,
       );
     }
   }
@@ -101,7 +101,7 @@ export class ThOutlinePass<
     if (this._objRef) {
       this._objRef.hiddenEdgeColor = applyValue<Color>(
         this._objRef.hiddenEdgeColor,
-        value
+        value,
       );
     }
   }
@@ -180,7 +180,7 @@ export class ThOutlinePass<
     if (this._objRef) {
       this._objRef.resolution = applyValue<Vector2>(
         this._objRef.resolution,
-        value
+        value,
       );
     }
   }
@@ -380,7 +380,7 @@ export class ThOutlinePass<
     if (this._objRef) {
       this._objRef.oldClearColor = applyValue<Color>(
         this._objRef.oldClearColor,
-        value
+        value,
       );
     }
   }
@@ -415,7 +415,7 @@ export class ThOutlinePass<
     if (this._objRef) {
       this._objRef.tempPulseColor1 = applyValue<Color>(
         this._objRef.tempPulseColor1,
-        value
+        value,
       );
     }
   }
@@ -428,7 +428,7 @@ export class ThOutlinePass<
     if (this._objRef) {
       this._objRef.tempPulseColor2 = applyValue<Color>(
         this._objRef.tempPulseColor2,
-        value
+        value,
       );
     }
   }
@@ -456,13 +456,13 @@ export class ThOutlinePass<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.textureMatrix = applyValue<Matrix4>(
         this._objRef.textureMatrix,
-        value
+        value,
       );
     }
   }

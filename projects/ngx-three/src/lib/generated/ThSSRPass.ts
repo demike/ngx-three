@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -18,11 +18,11 @@ import {
   MeshNormalMaterial,
   Scene,
   ShaderMaterial,
-  WebGLRenderer,
   WebGLRenderTarget,
+  WebGLRenderer,
 } from 'three';
-import { ReflectorForSSRPass } from 'three/examples/jsm/objects/ReflectorForSSRPass';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { ReflectorForSSRPass } from 'three/examples/jsm/objects/ReflectorForSSRPass.js';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import {
   SSRPass,
   SSRPassParams,
@@ -41,7 +41,7 @@ import { ThPass } from './ThPass';
 })
 export class ThSSRPass<
   T extends SSRPass = SSRPass,
-  TARGS = /* params */ SSRPassParams
+  TARGS = /* params */ SSRPassParams,
 > extends ThPass<T, TARGS> {
   public getType(): Type<SSRPass> {
     return SSRPass;
@@ -199,17 +199,6 @@ export class ThSSRPass<
   // @ts-ignore
   public get blur(): boolean | undefined {
     return this._objRef?.blur;
-  }
-  @Input()
-  public set thickTolerance(value: number) {
-    if (this._objRef) {
-      this._objRef.thickTolerance = value;
-    }
-  }
-
-  // @ts-ignore
-  public get thickTolerance(): number | undefined {
-    return this._objRef?.thickTolerance;
   }
   @Input()
   public set beautyRenderTarget(value: WebGLRenderTarget) {
@@ -392,7 +381,7 @@ export class ThSSRPass<
     if (this._objRef) {
       this._objRef.originalClearColor = applyValue<Color>(
         this._objRef.originalClearColor,
-        value
+        value,
       );
     }
   }
@@ -421,8 +410,8 @@ export class ThSSRPass<
       passMaterial: Material,
       renderTarget: WebGLRenderTarget,
       clearColor: ColorRepresentation,
-      clearAlpha: ColorRepresentation
-    ) => void
+      clearAlpha: ColorRepresentation,
+    ) => void,
   ) {
     if (this._objRef) {
       this._objRef.renderPass = value;
@@ -436,7 +425,7 @@ export class ThSSRPass<
         passMaterial: Material,
         renderTarget: WebGLRenderTarget,
         clearColor: ColorRepresentation,
-        clearAlpha: ColorRepresentation
+        clearAlpha: ColorRepresentation,
       ) => void)
     | undefined {
     return this._objRef?.renderPass;
@@ -448,8 +437,8 @@ export class ThSSRPass<
       passMaterial: Material,
       renderTarget: WebGLRenderTarget,
       clearColor: ColorRepresentation,
-      clearAlpha: ColorRepresentation
-    ) => void
+      clearAlpha: ColorRepresentation,
+    ) => void,
   ) {
     if (this._objRef) {
       this._objRef.renderOverride = value;
@@ -463,7 +452,7 @@ export class ThSSRPass<
         passMaterial: Material,
         renderTarget: WebGLRenderTarget,
         clearColor: ColorRepresentation,
-        clearAlpha: ColorRepresentation
+        clearAlpha: ColorRepresentation,
       ) => void)
     | undefined {
     return this._objRef?.renderOverride;
@@ -475,8 +464,8 @@ export class ThSSRPass<
       passMaterial: Material,
       renderTarget: WebGLRenderTarget,
       clearColor: ColorRepresentation,
-      clearAlpha: ColorRepresentation
-    ) => void
+      clearAlpha: ColorRepresentation,
+    ) => void,
   ) {
     if (this._objRef) {
       this._objRef.renderMetalness = value;
@@ -490,7 +479,7 @@ export class ThSSRPass<
         passMaterial: Material,
         renderTarget: WebGLRenderTarget,
         clearColor: ColorRepresentation,
-        clearAlpha: ColorRepresentation
+        clearAlpha: ColorRepresentation,
       ) => void)
     | undefined {
     return this._objRef?.renderMetalness;

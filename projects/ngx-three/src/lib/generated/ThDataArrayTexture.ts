@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   DataArrayTexture,
@@ -29,7 +29,12 @@ import { ThTexture } from './ThTexture';
 })
 export class ThDataArrayTexture<
   T extends DataArrayTexture = DataArrayTexture,
-  TARGS = [data?: BufferSource, width?: number, height?: number, depth?: number]
+  TARGS = [
+    data?: BufferSource,
+    width?: number,
+    height?: number,
+    depth?: number,
+  ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<DataArrayTexture> {
     return DataArrayTexture;

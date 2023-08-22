@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Bone,
@@ -31,7 +31,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThSkeletonHelper<
   T extends SkeletonHelper = SkeletonHelper,
-  TARGS = /* object */ SkinnedMesh | Object3D
+  TARGS = /* object */ SkinnedMesh | Object3D,
 > extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<SkeletonHelper> {
     return SkeletonHelper;
@@ -83,8 +83,8 @@ export class ThSkeletonHelper<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -22,7 +22,7 @@ import {
   BokehPass,
   BokehPassParamters,
 } from 'three/examples/jsm/postprocessing/BokehPass';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';
@@ -37,7 +37,7 @@ import { ThPass } from './ThPass';
 })
 export class ThBokehPass<
   T extends BokehPass = BokehPass,
-  TARGS = [scene: Scene, camera: Camera, params: BokehPassParamters]
+  TARGS = [scene: Scene, camera: Camera, params: BokehPassParamters],
 > extends ThPass<T, TARGS> {
   public getType(): Type<BokehPass> {
     return BokehPass;
@@ -137,7 +137,7 @@ export class ThBokehPass<
     if (this._objRef) {
       this._objRef.oldClearColor = applyValue<Color>(
         this._objRef.oldClearColor,
-        value
+        value,
       );
     }
   }

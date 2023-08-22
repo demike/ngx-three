@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera, Event, Scene } from 'three';
 import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer';
@@ -22,7 +22,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThCSS3DObjectGen<
   T extends CSS3DObject = CSS3DObject,
-  TARGS = /* element */ HTMLElement
+  TARGS = /* element */ HTMLElement,
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<CSS3DObject> {
     return CSS3DObject;
@@ -41,7 +41,7 @@ export class ThCSS3DObjectGen<
   }
   @Input()
   public set onBeforeRender(
-    value: (renderer: unknown, scene: Scene, camera: Camera) => void
+    value: (renderer: unknown, scene: Scene, camera: Camera) => void,
   ) {
     if (this._objRef) {
       this._objRef.onBeforeRender = value;
@@ -56,7 +56,7 @@ export class ThCSS3DObjectGen<
   }
   @Input()
   public set onAfterRender(
-    value: (renderer: unknown, scene: Scene, camera: Camera) => void
+    value: (renderer: unknown, scene: Scene, camera: Camera) => void,
   ) {
     if (this._objRef) {
       this._objRef.onAfterRender = value;

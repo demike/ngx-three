@@ -1,14 +1,19 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { CubeCamera, Event, WebGLCubeRenderTarget } from 'three';
+import {
+  CoordinateSystem,
+  CubeCamera,
+  Event,
+  WebGLCubeRenderTarget,
+} from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -21,7 +26,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThCubeCamera<
   T extends CubeCamera = CubeCamera,
-  TARGS = [near: number, far: number, renderTarget: WebGLCubeRenderTarget]
+  TARGS = [near: number, far: number, renderTarget: WebGLCubeRenderTarget],
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<CubeCamera> {
     return CubeCamera;
@@ -41,5 +46,16 @@ export class ThCubeCamera<
   // @ts-ignore
   public get renderTarget(): WebGLCubeRenderTarget | undefined {
     return this._objRef?.renderTarget;
+  }
+  @Input()
+  public set coordinateSystem(value: CoordinateSystem) {
+    if (this._objRef) {
+      this._objRef.coordinateSystem = value;
+    }
+  }
+
+  // @ts-ignore
+  public get coordinateSystem(): CoordinateSystem | undefined {
+    return this._objRef?.coordinateSystem;
   }
 }

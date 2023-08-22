@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   MagnificationTextureFilter,
@@ -39,8 +39,8 @@ export class ThVideoTexture<
     minFilter?: MinificationTextureFilter,
     format?: PixelFormat,
     type?: TextureDataType,
-    anisotropy?: number
-  ]
+    anisotropy?: number,
+  ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<VideoTexture> {
     return VideoTexture;

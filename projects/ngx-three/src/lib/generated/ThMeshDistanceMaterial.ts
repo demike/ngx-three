@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   MeshDistanceMaterial,
@@ -28,7 +28,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThMeshDistanceMaterial<
   T extends MeshDistanceMaterial = MeshDistanceMaterial,
-  TARGS = /* parameters? */ MeshDistanceMaterialParameters
+  TARGS = /* parameters? */ MeshDistanceMaterialParameters,
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<MeshDistanceMaterial> {
     return MeshDistanceMaterial;

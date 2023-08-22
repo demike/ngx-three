@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Audio, AudioContext, AudioListener, Event } from 'three';
 import { ThObject3D } from './ThObject3D';
@@ -20,7 +20,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThAudio<
   NodeType extends AudioNode = GainNode,
   T extends Audio<NodeType> = Audio<NodeType>,
-  TARGS = /* listener */ AudioListener
+  TARGS = /* listener */ AudioListener,
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Audio<NodeType>> {
     return Audio;
@@ -196,14 +196,14 @@ export class ThAudio<
     return this._objRef?.sourceType;
   }
   @Input()
-  public set source(value: AudioBufferSourceNode | null) {
+  public set source(value: AudioScheduledSourceNode | null) {
     if (this._objRef) {
       this._objRef.source = value;
     }
   }
 
   // @ts-ignore
-  public get source(): (AudioBufferSourceNode | null) | undefined {
+  public get source(): (AudioScheduledSourceNode | null) | undefined {
     return this._objRef?.source;
   }
   @Input()

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   ColorRepresentation,
@@ -36,8 +36,8 @@ export class ThSpotLight<
     distance?: number,
     angle?: number,
     penumbra?: number,
-    decay?: number
-  ]
+    decay?: number,
+  ],
 > extends ThLight<SpotLightShadow, T, TARGS> {
   public getType(): Type<SpotLight> {
     return SpotLight;
@@ -54,7 +54,7 @@ export class ThSpotLight<
   @Input()
   public set position(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
-      this._objRef.position = applyValue<Vector3>(this._objRef.position, value);
+      applyValue<Vector3>(this._objRef.position, value);
     }
   }
   // @ts-ignore

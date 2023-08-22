@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -27,7 +27,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThShadowMaterial<
   T extends ShadowMaterial = ShadowMaterial,
-  TARGS = /* parameters? */ ShadowMaterialParameters
+  TARGS = /* parameters? */ ShadowMaterialParameters,
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<ShadowMaterial> {
     return ShadowMaterial;

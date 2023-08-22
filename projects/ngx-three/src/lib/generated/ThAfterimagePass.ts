@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, WebGLRenderTarget } from 'three';
 import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
@@ -25,7 +25,7 @@ import { ThPass } from './ThPass';
 })
 export class ThAfterimagePass<
   T extends AfterimagePass = AfterimagePass,
-  TARGS = /* damp? */ number
+  TARGS = /* damp? */ number,
 > extends ThPass<T, TARGS> {
   public getType(): Type<AfterimagePass> {
     return AfterimagePass;

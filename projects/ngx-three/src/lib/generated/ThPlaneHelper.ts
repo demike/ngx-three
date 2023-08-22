@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { BufferGeometry, Material, Plane, PlaneHelper, Vector3 } from 'three';
 import { applyValue } from '../util';
@@ -23,7 +23,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThPlaneHelper<
   T extends PlaneHelper = PlaneHelper,
-  TARGS = [plane: Plane, size?: number, hex?: number]
+  TARGS = [plane: Plane, size?: number, hex?: number],
 > extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<PlaneHelper> {
     return PlaneHelper;

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera, ColorRepresentation, Scene } from 'three';
 import { TAARenderPass } from 'three/examples/jsm/postprocessing/TAARenderPass';
@@ -27,9 +27,9 @@ export class ThTAARenderPass<
   TARGS = [
     scene: Scene,
     camera: Camera,
-    clearColor: ColorRepresentation,
-    clearAlpha: number
-  ]
+    clearColor?: ColorRepresentation,
+    clearAlpha?: number,
+  ],
 > extends ThSSAARenderPass<T, TARGS> {
   public getType(): Type<TAARenderPass> {
     return TAARenderPass;

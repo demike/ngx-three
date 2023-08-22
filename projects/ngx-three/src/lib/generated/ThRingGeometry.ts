@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { RingGeometry } from 'three';
+import { NormalBufferAttributes, RingGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -29,9 +29,9 @@ export class ThRingGeometry<
     thetaSegments?: number,
     phiSegments?: number,
     thetaStart?: number,
-    thetaLength?: number
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    thetaLength?: number,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<RingGeometry> {
     return RingGeometry;
   }

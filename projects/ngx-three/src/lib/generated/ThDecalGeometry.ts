@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { Euler, Mesh, Vector3 } from 'three';
+import { Euler, Mesh, NormalBufferAttributes, Vector3 } from 'three';
 import { DecalGeometry } from 'three/examples/jsm/geometries/DecalGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -24,8 +24,8 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThDecalGeometry<
   T extends DecalGeometry = DecalGeometry,
-  TARGS = [mesh: Mesh, position: Vector3, orientation: Euler, size: Vector3]
-> extends ThBufferGeometry<T, TARGS> {
+  TARGS = [mesh: Mesh, position: Vector3, orientation: Euler, size: Vector3],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<DecalGeometry> {
     return DecalGeometry;
   }

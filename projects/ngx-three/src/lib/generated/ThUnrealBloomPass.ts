@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -18,7 +18,7 @@ import {
   Vector3,
   WebGLRenderTarget,
 } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
@@ -38,8 +38,8 @@ export class ThUnrealBloomPass<
     resolution: Vector2,
     strength: number,
     radius: number,
-    threshold: number
-  ]
+    threshold: number,
+  ],
 > extends ThPass<T, TARGS> {
   public getType(): Type<UnrealBloomPass> {
     return UnrealBloomPass;
@@ -50,7 +50,7 @@ export class ThUnrealBloomPass<
     if (this._objRef) {
       this._objRef.resolution = applyValue<Vector2>(
         this._objRef.resolution,
-        value
+        value,
       );
     }
   }
@@ -96,7 +96,7 @@ export class ThUnrealBloomPass<
     if (this._objRef) {
       this._objRef.clearColor = applyValue<Color>(
         this._objRef.clearColor,
-        value
+        value,
       );
     }
   }
@@ -215,22 +215,22 @@ export class ThUnrealBloomPass<
     return this._objRef?.copyUniforms;
   }
   @Input()
-  public set materialCopy(value: ShaderMaterial) {
+  public set blendMaterial(value: ShaderMaterial) {
     if (this._objRef) {
-      this._objRef.materialCopy = value;
+      this._objRef.blendMaterial = value;
     }
   }
 
   // @ts-ignore
-  public get materialCopy(): ShaderMaterial | undefined {
-    return this._objRef?.materialCopy;
+  public get blendMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.blendMaterial;
   }
   @Input()
   public set oldClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.oldClearColor = applyValue<Color>(
         this._objRef.oldClearColor,
-        value
+        value,
       );
     }
   }

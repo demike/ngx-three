@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { LatheGeometry, Vector2 } from 'three';
+import { LatheGeometry, NormalBufferAttributes, Vector2 } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -27,9 +27,9 @@ export class ThLatheGeometry<
     points?: Vector2[],
     segments?: number,
     phiStart?: number,
-    phiLength?: number
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    phiLength?: number,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<LatheGeometry> {
     return LatheGeometry;
   }

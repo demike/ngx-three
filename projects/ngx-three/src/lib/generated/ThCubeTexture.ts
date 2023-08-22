@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
+  ColorSpace,
   CubeTexture,
   CubeTextureMapping,
   MagnificationTextureFilter,
   MinificationTextureFilter,
   PixelFormat,
   TextureDataType,
-  TextureEncoding,
   Wrapping,
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
@@ -41,8 +41,8 @@ export class ThCubeTexture<
     format?: PixelFormat,
     type?: TextureDataType,
     anisotropy?: number,
-    encoding?: TextureEncoding
-  ]
+    colorSpace?: ColorSpace,
+  ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<CubeTexture> {
     return CubeTexture;

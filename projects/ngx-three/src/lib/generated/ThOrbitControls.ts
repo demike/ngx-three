@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera, MOUSE, TOUCH, Vector3 } from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -23,7 +23,7 @@ import { applyValue } from '../util';
 })
 export class ThOrbitControls<
   T extends OrbitControls = OrbitControls,
-  TARGS = [object: Camera, domElement?: HTMLElement]
+  TARGS = [object: Camera, domElement?: HTMLElement],
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<OrbitControls> {
     return OrbitControls;
@@ -215,6 +215,17 @@ export class ThOrbitControls<
     return this._objRef?.zoomSpeed;
   }
   @Input()
+  public set zoomToCursor(value: boolean) {
+    if (this._objRef) {
+      this._objRef.zoomToCursor = value;
+    }
+  }
+
+  // @ts-ignore
+  public get zoomToCursor(): boolean | undefined {
+    return this._objRef?.zoomToCursor;
+  }
+  @Input()
   public set enableRotate(value: boolean) {
     if (this._objRef) {
       this._objRef.enableRotate = value;
@@ -322,7 +333,7 @@ export class ThOrbitControls<
   }
   @Input()
   public set mouseButtons(
-    value: Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>
+    value: Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>,
   ) {
     if (this._objRef) {
       this._objRef.mouseButtons = value;
@@ -361,7 +372,7 @@ export class ThOrbitControls<
     if (this._objRef) {
       this._objRef.position0 = applyValue<Vector3>(
         this._objRef.position0,
-        value
+        value,
       );
     }
   }

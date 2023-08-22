@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { IcosahedronGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
@@ -24,7 +24,7 @@ import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
 })
 export class ThIcosahedronGeometry<
   T extends IcosahedronGeometry = IcosahedronGeometry,
-  TARGS = [radius?: number, detail?: number]
+  TARGS = [radius?: number, detail?: number],
 > extends ThPolyhedronGeometry<T, TARGS> {
   public getType(): Type<IcosahedronGeometry> {
     return IcosahedronGeometry;

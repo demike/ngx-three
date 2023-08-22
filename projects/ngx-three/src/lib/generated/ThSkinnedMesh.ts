@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Box3,
@@ -40,8 +40,8 @@ export class ThSkinnedMesh<
   TARGS = [
     geometry?: TGeometry,
     material?: TMaterial,
-    useVertexTexture?: boolean
-  ]
+    useVertexTexture?: boolean,
+  ],
 > extends ThMesh<TGeometry, TMaterial, T, TARGS> {
   public getType(): Type<SkinnedMesh<TGeometry, TMaterial>> {
     return SkinnedMesh;
@@ -86,13 +86,13 @@ export class ThSkinnedMesh<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.bindMatrix = applyValue<Matrix4>(
         this._objRef.bindMatrix,
-        value
+        value,
       );
     }
   }
@@ -120,13 +120,13 @@ export class ThSkinnedMesh<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.bindMatrixInverse = applyValue<Matrix4>(
         this._objRef.bindMatrixInverse,
-        value
+        value,
       );
     }
   }
@@ -139,7 +139,7 @@ export class ThSkinnedMesh<
     if (this._objRef) {
       this._objRef.boundingBox = applyValue<Box3>(
         this._objRef.boundingBox,
-        value
+        value,
       );
     }
   }
@@ -152,7 +152,7 @@ export class ThSkinnedMesh<
     if (this._objRef) {
       this._objRef.boundingSphere = applyValue<Sphere>(
         this._objRef.boundingSphere,
-        value
+        value,
       );
     }
   }

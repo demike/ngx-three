@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -33,7 +33,7 @@ import { ThMeshStandardMaterial } from './ThMeshStandardMaterial';
 })
 export class ThMeshPhysicalMaterial<
   T extends MeshPhysicalMaterial = MeshPhysicalMaterial,
-  TARGS = /* parameters? */ MeshPhysicalMaterialParameters
+  TARGS = /* parameters? */ MeshPhysicalMaterialParameters,
 > extends ThMeshStandardMaterial<T, TARGS> {
   public getType(): Type<MeshPhysicalMaterial> {
     return MeshPhysicalMaterial;
@@ -110,7 +110,7 @@ export class ThMeshPhysicalMaterial<
     if (this._objRef) {
       this._objRef.clearcoatNormalScale = applyValue<Vector2>(
         this._objRef.clearcoatNormalScale,
-        value
+        value,
       );
     }
   }
@@ -167,7 +167,7 @@ export class ThMeshPhysicalMaterial<
     if (this._objRef) {
       this._objRef.sheenColor = applyValue<Color>(
         this._objRef.sheenColor,
-        value
+        value,
       );
     }
   }
@@ -268,7 +268,7 @@ export class ThMeshPhysicalMaterial<
     if (this._objRef) {
       this._objRef.attenuationColor = applyValue<Color>(
         this._objRef.attenuationColor,
-        value
+        value,
       );
     }
   }
@@ -292,7 +292,7 @@ export class ThMeshPhysicalMaterial<
     if (this._objRef) {
       this._objRef.specularColor = applyValue<Color>(
         this._objRef.specularColor,
-        value
+        value,
       );
     }
   }
@@ -376,5 +376,38 @@ export class ThMeshPhysicalMaterial<
   // @ts-ignore
   public get iridescenceThicknessMap(): (Texture | null) | undefined {
     return this._objRef?.iridescenceThicknessMap;
+  }
+  @Input()
+  public set anisotropy(value: number) {
+    if (this._objRef) {
+      this._objRef.anisotropy = value;
+    }
+  }
+
+  // @ts-ignore
+  public get anisotropy(): number | undefined {
+    return this._objRef?.anisotropy;
+  }
+  @Input()
+  public set anisotropyRotation(value: number) {
+    if (this._objRef) {
+      this._objRef.anisotropyRotation = value;
+    }
+  }
+
+  // @ts-ignore
+  public get anisotropyRotation(): number | undefined {
+    return this._objRef?.anisotropyRotation;
+  }
+  @Input()
+  public set anisotropyMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.anisotropyMap = value;
+    }
+  }
+
+  // @ts-ignore
+  public get anisotropyMap(): (Texture | null) | undefined {
+    return this._objRef?.anisotropyMap;
   }
 }

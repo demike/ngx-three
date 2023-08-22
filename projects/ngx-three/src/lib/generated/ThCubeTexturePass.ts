@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { CubeTexture, Mesh, PerspectiveCamera, Scene } from 'three';
 import { CubeTexturePass } from 'three/examples/jsm/postprocessing/CubeTexturePass';
@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThCubeTexturePass<
   T extends CubeTexturePass = CubeTexturePass,
-  TARGS = [camera: PerspectiveCamera, envMap?: CubeTexture, opacity?: number]
+  TARGS = [camera: PerspectiveCamera, envMap?: CubeTexture, opacity?: number],
 > extends ThPass<T, TARGS> {
   public getType(): Type<CubeTexturePass> {
     return CubeTexturePass;

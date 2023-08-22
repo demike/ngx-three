@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { BufferGeometry, Event, Line, Material } from 'three';
 import { ThObject3D } from './ThObject3D';
@@ -21,7 +21,7 @@ export class ThLine<
   TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   T extends Line<TGeometry, TMaterial> = Line<TGeometry, TMaterial>,
-  TARGS = [geometry?: TGeometry, material?: TMaterial]
+  TARGS = [geometry?: TGeometry, material?: TMaterial],
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Line<TGeometry, TMaterial>> {
     return Line;
@@ -70,7 +70,7 @@ export class ThLine<
   }
   @Input()
   public set morphTargetDictionary(
-    value: { [key: string]: number } | undefined
+    value: { [key: string]: number } | undefined,
   ) {
     if (this._objRef) {
       this._objRef.morphTargetDictionary = value;

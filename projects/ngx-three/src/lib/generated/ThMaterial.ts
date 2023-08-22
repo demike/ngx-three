@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
@@ -15,6 +15,7 @@ import {
   BlendingSrcFactor,
   DepthModes,
   Material,
+  Plane,
   Side,
   StencilFunc,
   StencilOp,
@@ -30,12 +31,23 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThMaterial<
   T extends Material = Material,
-  TARGS = []
+  TARGS = [],
 > extends ThMaterialBase<T, TARGS> {
   public getType(): Type<Material> {
     return Material;
   }
 
+  @Input()
+  public set alphaHash(value: boolean) {
+    if (this._objRef) {
+      this._objRef.alphaHash = value;
+    }
+  }
+
+  // @ts-ignore
+  public get alphaHash(): boolean | undefined {
+    return this._objRef?.alphaHash;
+  }
   @Input()
   public set alphaTest(value: number) {
     if (this._objRef) {
@@ -147,14 +159,14 @@ export class ThMaterial<
     return this._objRef?.clipIntersection;
   }
   @Input()
-  public set clippingPlanes(value: any) {
+  public set clippingPlanes(value: Plane[]) {
     if (this._objRef) {
       this._objRef.clippingPlanes = value;
     }
   }
 
   // @ts-ignore
-  public get clippingPlanes(): any | undefined {
+  public get clippingPlanes(): Plane[] | undefined {
     return this._objRef?.clippingPlanes;
   }
   @Input()

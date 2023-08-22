@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { PerspectiveCamera } from 'three';
 import { ThCamera } from './ThCamera';
@@ -23,7 +23,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThPerspectiveCamera<
   T extends PerspectiveCamera = PerspectiveCamera,
-  TARGS = [fov?: number, aspect?: number, near?: number, far?: number]
+  TARGS = [fov?: number, aspect?: number, near?: number, far?: number],
 > extends ThCamera<T, TARGS> {
   public getType(): Type<PerspectiveCamera> {
     return PerspectiveCamera;
@@ -113,7 +113,7 @@ export class ThPerspectiveCamera<
       offsetY: number;
       width: number;
       height: number;
-    }
+    },
   ) {
     if (this._objRef) {
       this._objRef.view = value;

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -20,7 +20,7 @@ import {
   Vector2,
   WebGLRenderTarget,
 } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import {
   SAOPass,
   SAOPassParams,
@@ -44,8 +44,8 @@ export class ThSAOPass<
     camera: Camera,
     depthTexture?: boolean,
     useNormals?: boolean,
-    resolution?: Vector2
-  ]
+    resolution?: Vector2,
+  ],
 > extends ThPass<T, TARGS> {
   public getType(): Type<SAOPass> {
     return SAOPass;
@@ -100,7 +100,7 @@ export class ThSAOPass<
     if (this._objRef) {
       this._objRef.originalClearColor = applyValue<Color>(
         this._objRef.originalClearColor,
-        value
+        value,
       );
     }
   }
@@ -113,7 +113,7 @@ export class ThSAOPass<
     if (this._objRef) {
       this._objRef.oldClearColor = applyValue<Color>(
         this._objRef.oldClearColor,
-        value
+        value,
       );
     }
   }
@@ -137,7 +137,7 @@ export class ThSAOPass<
     if (this._objRef) {
       this._objRef.resolution = applyValue<Vector2>(
         this._objRef.resolution,
-        value
+        value,
       );
     }
   }

@@ -9,50 +9,28 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { ShaderMaterial, Texture } from 'three';
+import { ShaderMaterial } from 'three';
+import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
-import { TexturePass } from 'three/examples/jsm/postprocessing/TexturePass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-texturePass',
+  selector: 'th-outputPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThTexturePass) },
+    { provide: ThPassBase, useExisting: forwardRef(() => ThOutputPass) },
   ],
 })
-export class ThTexturePass<
-  T extends TexturePass = TexturePass,
-  TARGS = [map?: Texture, opacity?: number],
+export class ThOutputPass<
+  T extends OutputPass = OutputPass,
+  TARGS = [],
 > extends ThPass<T, TARGS> {
-  public getType(): Type<TexturePass> {
-    return TexturePass;
+  public getType(): Type<OutputPass> {
+    return OutputPass;
   }
 
-  @Input()
-  public set map(value: Texture | undefined) {
-    if (this._objRef) {
-      this._objRef.map = value;
-    }
-  }
-
-  // @ts-ignore
-  public get map(): (Texture | undefined) | undefined {
-    return this._objRef?.map;
-  }
-  @Input()
-  public set opacity(value: number) {
-    if (this._objRef) {
-      this._objRef.opacity = value;
-    }
-  }
-
-  // @ts-ignore
-  public get opacity(): number | undefined {
-    return this._objRef?.opacity;
-  }
   @Input()
   public set uniforms(map: { [name: string]: { value: any } }) {
     if (this._objRef) {

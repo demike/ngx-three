@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   DeepTexturePixelFormat,
@@ -14,6 +14,7 @@ import {
   MagnificationTextureFilter,
   Mapping,
   MinificationTextureFilter,
+  TextureComparisonFunction,
   TextureDataType,
   Wrapping,
 } from 'three';
@@ -40,8 +41,8 @@ export class ThDepthTexture<
     magFilter?: MagnificationTextureFilter,
     minFilter?: MinificationTextureFilter,
     anisotropy?: number,
-    format?: DeepTexturePixelFormat
-  ]
+    format?: DeepTexturePixelFormat,
+  ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<DepthTexture> {
     return DepthTexture;
@@ -116,5 +117,16 @@ export class ThDepthTexture<
   // @ts-ignore
   public get type(): TextureDataType | undefined {
     return this._objRef?.type;
+  }
+  @Input()
+  public set compareFunction(value: TextureComparisonFunction | null) {
+    if (this._objRef) {
+      this._objRef.compareFunction = value;
+    }
+  }
+
+  // @ts-ignore
+  public get compareFunction(): (TextureComparisonFunction | null) | undefined {
+    return this._objRef?.compareFunction;
   }
 }

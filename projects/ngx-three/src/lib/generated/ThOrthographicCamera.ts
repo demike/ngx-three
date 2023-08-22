@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { OrthographicCamera } from 'three';
 import { ThCamera } from './ThCamera';
@@ -32,8 +32,8 @@ export class ThOrthographicCamera<
     top?: number,
     bottom?: number,
     near?: number,
-    far?: number
-  ]
+    far?: number,
+  ],
 > extends ThCamera<T, TARGS> {
   public getType(): Type<OrthographicCamera> {
     return OrthographicCamera;
@@ -68,7 +68,7 @@ export class ThOrthographicCamera<
       offsetY: number;
       width: number;
       height: number;
-    }
+    },
   ) {
     if (this._objRef) {
       this._objRef.view = value;

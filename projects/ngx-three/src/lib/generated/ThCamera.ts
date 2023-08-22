@@ -1,13 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
+  Type,
+  forwardRef,
 } from '@angular/core';
-import { Camera, Event, Layers, Matrix4 } from 'three';
+import { Camera, CoordinateSystem, Event, Layers, Matrix4 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -17,10 +18,15 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
 })
-export abstract class ThCamera<
-  T extends Camera = Camera,
-  TARGS = []
-> extends ThObject3D<Event, T, TARGS> {
+export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
+  Event,
+  T,
+  TARGS
+> {
+  public getType(): Type<Camera> {
+    return Camera;
+  }
+
   // @ts-ignore
   public get isCamera(): true | undefined {
     return this._objRef?.isCamera;
@@ -59,13 +65,13 @@ export abstract class ThCamera<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.matrixWorldInverse = applyValue<Matrix4>(
         this._objRef.matrixWorldInverse,
-        value
+        value,
       );
     }
   }
@@ -93,13 +99,13 @@ export abstract class ThCamera<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.projectionMatrix = applyValue<Matrix4>(
         this._objRef.projectionMatrix,
-        value
+        value,
       );
     }
   }
@@ -127,18 +133,29 @@ export abstract class ThCamera<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.projectionMatrixInverse = applyValue<Matrix4>(
         this._objRef.projectionMatrixInverse,
-        value
+        value,
       );
     }
   }
   // @ts-ignore
   public get projectionMatrixInverse(): Matrix4 | undefined {
     return this._objRef?.projectionMatrixInverse;
+  }
+  @Input()
+  public set coordinateSystem(value: CoordinateSystem) {
+    if (this._objRef) {
+      this._objRef.coordinateSystem = value;
+    }
+  }
+
+  // @ts-ignore
+  public get coordinateSystem(): CoordinateSystem | undefined {
+    return this._objRef?.coordinateSystem;
   }
 }

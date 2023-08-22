@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { AudioContext, AudioListener, Event } from 'three';
 import { ThObject3D } from './ThObject3D';
@@ -21,7 +21,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThAudioListener<
   T extends AudioListener = AudioListener,
-  TARGS = []
+  TARGS = [],
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<AudioListener> {
     return AudioListener;
