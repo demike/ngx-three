@@ -22,7 +22,7 @@ const RENDERER_DEFAULTS: WebGLRendererParameters = {
   preserveDrawingBuffer: true,
 };
 
-export type ThRendererParameters = Partial<WebGLRenderer>;
+export type ThRendererParameters = Partial<WebGLRendererParameters>;
 
 export const RENDERER_PROVIDERS = new InjectionToken<Renderer[]>('Renderer Providers');
 export const CSS3D_RENDERER = new InjectionToken<CSS3DRenderer>('CSS3DRenderer');

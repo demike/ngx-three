@@ -5,7 +5,7 @@ import { Material, sRGBEncoding, TextureEncoding } from 'three';
 @Component({
   selector: 'app-animation-example',
   templateUrl: './animation-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AnimationExampleComponent implements AfterViewInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention
