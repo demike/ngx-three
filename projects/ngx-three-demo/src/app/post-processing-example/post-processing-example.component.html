@@ -7,17 +7,22 @@
     <th-unrealBloomPass [strength]="1" />
     <th-shaderPass [args]="[RGBShiftShader]" [uniforms]="{ amount: { value: shiftAmount } }" />
   </th-effectComposer>
-  
+
   <th-scene [background]="['#ffffff']">
     <th-perspectiveCamera [position]="[0, 0, zDist]" [fov]="70" [near]="1" [far]="1000" />
 
-    <th-ambientLight [color]="['#222222']" />
+    <th-ambientLight [color]="['#333333']" [intensity]="6" />
     <th-directionalLight #light [color]="['#ffffff']" />
 
     <th-sphereGeometry #geometry [args]="[1, 4, 4]" />
     <th-object3D #object>
-      <th-mesh *ngFor="let data of meshData" [geometry]="geometry.objRef" [position]="data.pos"
-        [rotation]="data.rotation" [scale]="data.scale">
+      <th-mesh
+        *ngFor="let data of meshData"
+        [geometry]="geometry.objRef"
+        [position]="data.pos"
+        [rotation]="data.rotation"
+        [scale]="data.scale"
+      >
         <th-meshPhongMaterial [flatShading]="true" [color]="data.color" />
       </th-mesh>
     </th-object3D>

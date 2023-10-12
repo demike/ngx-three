@@ -50,7 +50,7 @@ export class SimpleExampleComponent implements OnInit {
         this.material = new THREE.MeshStandardMaterial();
         this.material.color.set('red');
       }
-    }, 200);
+    }, 400);
   }
 
   // eslint-disable-next-line @typescript-eslint/naming-convention

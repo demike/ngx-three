@@ -9,28 +9,30 @@
   }"
 >
   <th-scene #scene>
-    <th-directionalLight [position]="[0, 0, 1]" [args]="['#ffffff']"/>
+    <th-directionalLight [position]="[0, 0, 1]" [args]="['#ffffff']" [intensity]="3" />
     <th-mesh [position]="[0, 0, 0]" [rotation]="[-Math.PI / 2, 0, 0]">
-      <th-sphereGeometry #geo [args]="[200, 32, 16]"/>
+      <th-sphereGeometry #geo [args]="[200, 32, 16]" />
       <th-meshPhongMaterial
         #mat
         [flatShading]="false"
         [shininess]="30"
         [specular]="['#fac400']"
-        [color]="['#f83f0d']"/>
+        [color]="['#f83f0d']"
+      />
     </th-mesh>
     <th-mesh
       [position]="[-400, 0, 0]"
       [rotation]="[-Math.PI / 2, 0, 0]"
       [geometry]="geo.objRef"
-      [material]="mat.objRef"/>
+      [material]="mat.objRef"
+    />
 
     <th-mesh
       [position]="[400, 0, 0]"
       [rotation]="[-Math.PI / 2, 0, 0]"
       [geometry]="geo.objRef"
-      [material]="mat.objRef"/>
-
+      [material]="mat.objRef"
+    />
   </th-scene>
 
   <th-view
@@ -53,15 +55,14 @@
       [fov]="view1.fov"
       [aspect]="(view1.width * canvasWidth) / (view1.height * canvasHeight)"
       [near]="1"
-      [far]="10000"/>
-    
+      [far]="10000"
+    />
+
     <th-effectComposer>
-        <th-renderPass [clearColor]="view1.background"/>
-        <th-unrealBloomPass [strength]="0.2"/>
-        <th-shaderPass
-          [args]="[RGBShiftShader]"
-          [uniforms]="{ amount: { value: 0.055 } }"/>
-        <th-glitchPass/>
+      <th-renderPass [clearColor]="view1.background" />
+      <th-unrealBloomPass [strength]="0.2" />
+      <th-shaderPass [args]="[RGBShiftShader]" [uniforms]="{ amount: { value: 0.055 } }" />
+      <th-glitchPass />
     </th-effectComposer>
   </th-view>
 
@@ -86,13 +87,13 @@
       [fov]="view2.fov"
       [aspect]="(view2.width * canvasWidth) / (view2.height * canvasHeight)"
       [near]="1"
-      [far]="10000"/>
+      [far]="10000"
+    />
 
-    
     <th-effectComposer>
-        <th-renderPass/>
-        <th-filmPass [args]="[0.35, 0.5, 2048, true]"/>   
-    </th-effectComposer>  
+      <th-renderPass />
+      <th-filmPass [args]="[0.35, 0.5, 2048, true]" />
+    </th-effectComposer>
   </th-view>
 
   <th-view
@@ -116,8 +117,7 @@
       [fov]="view3.fov"
       [aspect]="(view3.width * canvasWidth) / (view3.height * canvasHeight)"
       [near]="1"
-      [far]="10000"/>
-
+      [far]="10000"
+    />
   </th-view>
-
 </th-canvas>
