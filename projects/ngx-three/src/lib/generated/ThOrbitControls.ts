@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -36,7 +36,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get object(): Camera | undefined {
     return this._objRef?.object;
   }
@@ -47,7 +46,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get domElement(): (HTMLElement | Document) | undefined {
     return this._objRef?.domElement;
   }
@@ -58,7 +56,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get enabled(): boolean | undefined {
     return this._objRef?.enabled;
   }
@@ -68,7 +65,6 @@ export class ThOrbitControls<
       this._objRef.target = applyValue<Vector3>(this._objRef.target, value);
     }
   }
-  // @ts-ignore
   public get target(): Vector3 | undefined {
     return this._objRef?.target;
   }
@@ -78,7 +74,6 @@ export class ThOrbitControls<
       this._objRef.center = applyValue<Vector3>(this._objRef.center, value);
     }
   }
-  // @ts-ignore
   public get center(): Vector3 | undefined {
     return this._objRef?.center;
   }
@@ -89,7 +84,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get minDistance(): number | undefined {
     return this._objRef?.minDistance;
   }
@@ -100,7 +94,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get maxDistance(): number | undefined {
     return this._objRef?.maxDistance;
   }
@@ -111,7 +104,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get minZoom(): number | undefined {
     return this._objRef?.minZoom;
   }
@@ -122,7 +114,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get maxZoom(): number | undefined {
     return this._objRef?.maxZoom;
   }
@@ -133,7 +124,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get minPolarAngle(): number | undefined {
     return this._objRef?.minPolarAngle;
   }
@@ -144,7 +134,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get maxPolarAngle(): number | undefined {
     return this._objRef?.maxPolarAngle;
   }
@@ -155,7 +144,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get minAzimuthAngle(): number | undefined {
     return this._objRef?.minAzimuthAngle;
   }
@@ -166,7 +154,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get maxAzimuthAngle(): number | undefined {
     return this._objRef?.maxAzimuthAngle;
   }
@@ -177,7 +164,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get enableDamping(): boolean | undefined {
     return this._objRef?.enableDamping;
   }
@@ -188,7 +174,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get dampingFactor(): number | undefined {
     return this._objRef?.dampingFactor;
   }
@@ -199,7 +184,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get enableZoom(): boolean | undefined {
     return this._objRef?.enableZoom;
   }
@@ -210,7 +194,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get zoomSpeed(): number | undefined {
     return this._objRef?.zoomSpeed;
   }
@@ -221,7 +204,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get zoomToCursor(): boolean | undefined {
     return this._objRef?.zoomToCursor;
   }
@@ -232,7 +214,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get enableRotate(): boolean | undefined {
     return this._objRef?.enableRotate;
   }
@@ -243,7 +224,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get rotateSpeed(): number | undefined {
     return this._objRef?.rotateSpeed;
   }
@@ -254,7 +234,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get enablePan(): boolean | undefined {
     return this._objRef?.enablePan;
   }
@@ -265,7 +244,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get panSpeed(): number | undefined {
     return this._objRef?.panSpeed;
   }
@@ -276,7 +254,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get screenSpacePanning(): boolean | undefined {
     return this._objRef?.screenSpacePanning;
   }
@@ -287,7 +264,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get keyPanSpeed(): number | undefined {
     return this._objRef?.keyPanSpeed;
   }
@@ -298,7 +274,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get autoRotate(): boolean | undefined {
     return this._objRef?.autoRotate;
   }
@@ -309,7 +284,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get autoRotateSpeed(): number | undefined {
     return this._objRef?.autoRotateSpeed;
   }
@@ -325,7 +299,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get keys():
     | { LEFT: string; UP: string; RIGHT: string; BOTTOM: string }
     | undefined {
@@ -340,7 +313,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get mouseButtons():
     | Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>
     | undefined {
@@ -353,7 +325,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get touches(): Partial<{ ONE: TOUCH; TWO: TOUCH }> | undefined {
     return this._objRef?.touches;
   }
@@ -363,7 +334,6 @@ export class ThOrbitControls<
       this._objRef.target0 = applyValue<Vector3>(this._objRef.target0, value);
     }
   }
-  // @ts-ignore
   public get target0(): Vector3 | undefined {
     return this._objRef?.target0;
   }
@@ -376,7 +346,6 @@ export class ThOrbitControls<
       );
     }
   }
-  // @ts-ignore
   public get position0(): Vector3 | undefined {
     return this._objRef?.position0;
   }
@@ -387,7 +356,6 @@ export class ThOrbitControls<
     }
   }
 
-  // @ts-ignore
   public get zoom0(): number | undefined {
     return this._objRef?.zoom0;
   }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -47,11 +47,9 @@ export class ThSkinnedMesh<
     return SkinnedMesh;
   }
 
-  // @ts-ignore
   public get isSkinnedMesh(): true | undefined {
     return this._objRef?.isSkinnedMesh;
   }
-  // @ts-ignore
   public get type(): (string | 'SkinnedMesh') | undefined {
     return this._objRef?.type;
   }
@@ -62,7 +60,6 @@ export class ThSkinnedMesh<
     }
   }
 
-  // @ts-ignore
   public get bindMode(): ('attached' | 'detached') | undefined {
     return this._objRef?.bindMode;
   }
@@ -96,7 +93,6 @@ export class ThSkinnedMesh<
       );
     }
   }
-  // @ts-ignore
   public get bindMatrix(): Matrix4 | undefined {
     return this._objRef?.bindMatrix;
   }
@@ -130,7 +126,6 @@ export class ThSkinnedMesh<
       );
     }
   }
-  // @ts-ignore
   public get bindMatrixInverse(): Matrix4 | undefined {
     return this._objRef?.bindMatrixInverse;
   }
@@ -143,7 +138,6 @@ export class ThSkinnedMesh<
       );
     }
   }
-  // @ts-ignore
   public get boundingBox(): Box3 | undefined {
     return this._objRef?.boundingBox;
   }
@@ -156,7 +150,6 @@ export class ThSkinnedMesh<
       );
     }
   }
-  // @ts-ignore
   public get boundingSphere(): Sphere | undefined {
     return this._objRef?.boundingSphere;
   }
@@ -167,7 +160,6 @@ export class ThSkinnedMesh<
     }
   }
 
-  // @ts-ignore
   public get skeleton(): Skeleton | undefined {
     return this._objRef?.skeleton;
   }

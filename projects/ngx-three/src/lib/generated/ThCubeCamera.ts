@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -32,7 +32,6 @@ export class ThCubeCamera<
     return CubeCamera;
   }
 
-  // @ts-ignore
   public get type(): (string | 'CubeCamera') | undefined {
     return this._objRef?.type;
   }
@@ -43,7 +42,6 @@ export class ThCubeCamera<
     }
   }
 
-  // @ts-ignore
   public get renderTarget(): WebGLCubeRenderTarget | undefined {
     return this._objRef?.renderTarget;
   }
@@ -54,7 +52,6 @@ export class ThCubeCamera<
     }
   }
 
-  // @ts-ignore
   public get coordinateSystem(): CoordinateSystem | undefined {
     return this._objRef?.coordinateSystem;
   }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -36,7 +36,6 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
     return Scene;
   }
 
-  // @ts-ignore
   public get isScene(): true | undefined {
     return this._objRef?.isScene;
   }
@@ -47,7 +46,6 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get type(): 'Scene' | undefined {
     return this._objRef?.type;
   }
@@ -58,7 +56,6 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get fog(): (FogBase | null) | undefined {
     return this._objRef?.fog;
   }
@@ -69,7 +66,6 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get backgroundBlurriness(): number | undefined {
     return this._objRef?.backgroundBlurriness;
   }
@@ -80,7 +76,6 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get backgroundIntensity(): number | undefined {
     return this._objRef?.backgroundIntensity;
   }
@@ -91,7 +86,6 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get overrideMaterial(): (Material | null) | undefined {
     return this._objRef?.overrideMaterial;
   }
@@ -105,7 +99,6 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
       >(this._objRef.background, value);
     }
   }
-  // @ts-ignore
   public get background(): (Color | Texture | CubeTexture | null) | undefined {
     return this._objRef?.background;
   }
@@ -116,7 +109,6 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get environment(): (Texture | null) | undefined {
     return this._objRef?.environment;
   }

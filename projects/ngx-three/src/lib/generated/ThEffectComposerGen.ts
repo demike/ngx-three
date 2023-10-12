@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ChangeDetectionStrategy, Component, Input, Type } from '@angular/core';
 import { Clock, WebGLRenderTarget, WebGLRenderer } from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
@@ -30,7 +30,6 @@ export class ThEffectComposerGen<
     }
   }
 
-  // @ts-ignore
   public get renderer(): WebGLRenderer | undefined {
     return this._objRef?.renderer;
   }
@@ -41,7 +40,6 @@ export class ThEffectComposerGen<
     }
   }
 
-  // @ts-ignore
   public get renderTarget1(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTarget1;
   }
@@ -52,7 +50,6 @@ export class ThEffectComposerGen<
     }
   }
 
-  // @ts-ignore
   public get renderTarget2(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTarget2;
   }
@@ -63,7 +60,6 @@ export class ThEffectComposerGen<
     }
   }
 
-  // @ts-ignore
   public get writeBuffer(): WebGLRenderTarget | undefined {
     return this._objRef?.writeBuffer;
   }
@@ -74,7 +70,6 @@ export class ThEffectComposerGen<
     }
   }
 
-  // @ts-ignore
   public get readBuffer(): WebGLRenderTarget | undefined {
     return this._objRef?.readBuffer;
   }
@@ -85,7 +80,6 @@ export class ThEffectComposerGen<
     }
   }
 
-  // @ts-ignore
   public get passes(): Pass[] | undefined {
     return this._objRef?.passes;
   }
@@ -96,7 +90,6 @@ export class ThEffectComposerGen<
     }
   }
 
-  // @ts-ignore
   public get copyPass(): ShaderPass | undefined {
     return this._objRef?.copyPass;
   }
@@ -107,7 +100,6 @@ export class ThEffectComposerGen<
     }
   }
 
-  // @ts-ignore
   public get clock(): Clock | undefined {
     return this._objRef?.clock;
   }
@@ -118,7 +110,6 @@ export class ThEffectComposerGen<
     }
   }
 
-  // @ts-ignore
   public get renderToScreen(): boolean | undefined {
     return this._objRef?.renderToScreen;
   }

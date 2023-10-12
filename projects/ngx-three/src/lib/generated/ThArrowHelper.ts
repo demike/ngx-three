@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -41,7 +41,6 @@ export class ThArrowHelper<
     return ArrowHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'ArrowHelper') | undefined {
     return this._objRef?.type;
   }
@@ -52,7 +51,6 @@ export class ThArrowHelper<
     }
   }
 
-  // @ts-ignore
   public get line(): Line | undefined {
     return this._objRef?.line;
   }
@@ -63,7 +61,6 @@ export class ThArrowHelper<
     }
   }
 
-  // @ts-ignore
   public get cone(): Mesh | undefined {
     return this._objRef?.cone;
   }

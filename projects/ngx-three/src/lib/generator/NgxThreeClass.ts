@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import { ParameterDeclaration, AbstractKeyword, SyntaxKind } from 'typescript';
+import { ParameterDeclaration, SyntaxKind } from 'typescript';
 import * as path from 'path';
 import { pascalToCamelCase } from './utils';
 import { NgxThreeOverrideStub } from './NgxThreeOverrideStub';
@@ -87,8 +87,8 @@ export abstract class NgxThreeClass {
 
     const ngxClassDeclarationString = `
     /* eslint-disable @typescript-eslint/naming-convention */
-    /* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-    /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+    /* eslint-disable no-underscore-dangle */
+    /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
         ${[...this.imports].join('')}
 
         @Component({
@@ -207,7 +207,7 @@ export abstract class NgxThreeClass {
     return members;
   }
 
-  protected generateSetterInput(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
+  protected generateSetterInput(memberName: string, member: ts.PropertyDeclaration, _memberType: ts.Type) {
     const isReadonly = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.ReadonlyKeyword);
 
     const isStatic = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.StaticKeyword);
@@ -282,7 +282,7 @@ export abstract class NgxThreeClass {
     return setters;
   }
 
-  public generateGetter(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
+  public generateGetter(memberName: string, member: ts.PropertyDeclaration, _memberType: ts.Type) {
     const isStatic = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.StaticKeyword);
 
     if (isStatic) {

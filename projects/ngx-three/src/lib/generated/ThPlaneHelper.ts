@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -29,7 +29,6 @@ export class ThPlaneHelper<
     return PlaneHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'PlaneHelper') | undefined {
     return this._objRef?.type;
   }
@@ -39,7 +38,6 @@ export class ThPlaneHelper<
       this._objRef.plane = applyValue<Plane>(this._objRef.plane, value);
     }
   }
-  // @ts-ignore
   public get plane(): Plane | undefined {
     return this._objRef?.plane;
   }
@@ -50,7 +48,6 @@ export class ThPlaneHelper<
     }
   }
 
-  // @ts-ignore
   public get size(): number | undefined {
     return this._objRef?.size;
   }

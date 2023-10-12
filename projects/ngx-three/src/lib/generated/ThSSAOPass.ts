@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -52,7 +52,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get scene(): Scene | undefined {
     return this._objRef?.scene;
   }
@@ -63,7 +62,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get camera(): Camera | undefined {
     return this._objRef?.camera;
   }
@@ -74,7 +72,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get width(): number | undefined {
     return this._objRef?.width;
   }
@@ -85,7 +82,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get height(): boolean | undefined {
     return this._objRef?.height;
   }
@@ -96,7 +92,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get clear(): boolean | undefined {
     return this._objRef?.clear;
   }
@@ -107,7 +102,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get kernelRadius(): number | undefined {
     return this._objRef?.kernelRadius;
   }
@@ -118,7 +112,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get kernelSize(): number | undefined {
     return this._objRef?.kernelSize;
   }
@@ -129,7 +122,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get kernel(): Vector3[] | undefined {
     return this._objRef?.kernel;
   }
@@ -140,7 +132,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get noiseTexture(): DataTexture | undefined {
     return this._objRef?.noiseTexture;
   }
@@ -151,7 +142,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get output(): SSAOPassOUTPUT | undefined {
     return this._objRef?.output;
   }
@@ -162,7 +152,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get minDistance(): number | undefined {
     return this._objRef?.minDistance;
   }
@@ -173,7 +162,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get maxDistance(): number | undefined {
     return this._objRef?.maxDistance;
   }
@@ -184,7 +172,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get beautyRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.beautyRenderTarget;
   }
@@ -195,7 +182,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get normalRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.normalRenderTarget;
   }
@@ -206,7 +192,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get ssaoRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.ssaoRenderTarget;
   }
@@ -217,7 +202,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get blurRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.blurRenderTarget;
   }
@@ -228,7 +212,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get ssaoMaterial(): ShaderMaterial | undefined {
     return this._objRef?.ssaoMaterial;
   }
@@ -239,7 +222,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get normalMaterial(): MeshNormalMaterial | undefined {
     return this._objRef?.normalMaterial;
   }
@@ -250,7 +232,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get blurMaterial(): ShaderMaterial | undefined {
     return this._objRef?.blurMaterial;
   }
@@ -261,7 +242,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get depthRenderMaterial(): ShaderMaterial | undefined {
     return this._objRef?.depthRenderMaterial;
   }
@@ -272,7 +252,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get copyMaterial(): ShaderMaterial | undefined {
     return this._objRef?.copyMaterial;
   }
@@ -283,7 +262,6 @@ export class ThSSAOPass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }
@@ -296,7 +274,6 @@ export class ThSSAOPass<
       );
     }
   }
-  // @ts-ignore
   public get originalClearColor(): Color | undefined {
     return this._objRef?.originalClearColor;
   }

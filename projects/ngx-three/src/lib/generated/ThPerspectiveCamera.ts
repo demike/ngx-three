@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -29,11 +29,9 @@ export class ThPerspectiveCamera<
     return PerspectiveCamera;
   }
 
-  // @ts-ignore
   public get isPerspectiveCamera(): true | undefined {
     return this._objRef?.isPerspectiveCamera;
   }
-  // @ts-ignore
   public get type(): (string | 'PerspectiveCamera') | undefined {
     return this._objRef?.type;
   }
@@ -44,7 +42,6 @@ export class ThPerspectiveCamera<
     }
   }
 
-  // @ts-ignore
   public get zoom(): number | undefined {
     return this._objRef?.zoom;
   }
@@ -55,7 +52,6 @@ export class ThPerspectiveCamera<
     }
   }
 
-  // @ts-ignore
   public get fov(): number | undefined {
     return this._objRef?.fov;
   }
@@ -66,7 +62,6 @@ export class ThPerspectiveCamera<
     }
   }
 
-  // @ts-ignore
   public get aspect(): number | undefined {
     return this._objRef?.aspect;
   }
@@ -77,7 +72,6 @@ export class ThPerspectiveCamera<
     }
   }
 
-  // @ts-ignore
   public get near(): number | undefined {
     return this._objRef?.near;
   }
@@ -88,7 +82,6 @@ export class ThPerspectiveCamera<
     }
   }
 
-  // @ts-ignore
   public get far(): number | undefined {
     return this._objRef?.far;
   }
@@ -99,7 +92,6 @@ export class ThPerspectiveCamera<
     }
   }
 
-  // @ts-ignore
   public get focus(): number | undefined {
     return this._objRef?.focus;
   }
@@ -120,7 +112,6 @@ export class ThPerspectiveCamera<
     }
   }
 
-  // @ts-ignore
   public get view():
     | (null | {
         enabled: boolean;
@@ -141,7 +132,6 @@ export class ThPerspectiveCamera<
     }
   }
 
-  // @ts-ignore
   public get filmGauge(): number | undefined {
     return this._objRef?.filmGauge;
   }
@@ -152,7 +142,6 @@ export class ThPerspectiveCamera<
     }
   }
 
-  // @ts-ignore
   public get filmOffset(): number | undefined {
     return this._objRef?.filmOffset;
   }

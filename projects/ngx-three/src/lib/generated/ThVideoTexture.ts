@@ -1,7 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, Input, Type, forwardRef } from '@angular/core';
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Type,
+  forwardRef,
+} from '@angular/core';
 import {
   MagnificationTextureFilter,
   Mapping,
@@ -18,7 +24,9 @@ import { ThTexture } from './ThTexture';
   selector: 'th-videoTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) }],
+  providers: [
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) },
+  ],
 })
 export class ThVideoTexture<
   T extends VideoTexture = VideoTexture,
@@ -58,7 +66,6 @@ export class ThVideoTexture<
     }
   }
 
-  // @ts-ignore
   public get minFilter(): MinificationTextureFilter | undefined {
     return this._objRef?.minFilter;
   }
@@ -69,7 +76,6 @@ export class ThVideoTexture<
     }
   }
 
-  // @ts-ignore
   public get generateMipmaps(): boolean | undefined {
     return this._objRef?.generateMipmaps;
   }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Event, Object3D } from 'three';
 import { TransformControlsGizmo } from 'three/examples/jsm/controls/TransformControls';
@@ -14,13 +14,13 @@ import { ThObject3D } from './ThObject3D';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThTransformControlsGizmo)
-    }
-  ]
+      useExisting: forwardRef(() => ThTransformControlsGizmo),
+    },
+  ],
 })
 export class ThTransformControlsGizmo<
   T extends TransformControlsGizmo = TransformControlsGizmo,
-  TARGS = []
+  TARGS = [],
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<TransformControlsGizmo> {
     return TransformControlsGizmo;

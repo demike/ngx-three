@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -46,7 +46,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -57,7 +56,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get defines(): { [key: string]: any } | undefined {
     return this._objRef?.defines;
   }
@@ -67,7 +65,6 @@ export class ThMeshStandardMaterial<
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
   }
-  // @ts-ignore
   public get color(): Color | undefined {
     return this._objRef?.color;
   }
@@ -78,7 +75,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get roughness(): number | undefined {
     return this._objRef?.roughness;
   }
@@ -89,7 +85,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get metalness(): number | undefined {
     return this._objRef?.metalness;
   }
@@ -100,7 +95,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get map(): (Texture | null) | undefined {
     return this._objRef?.map;
   }
@@ -111,7 +105,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get lightMap(): (Texture | null) | undefined {
     return this._objRef?.lightMap;
   }
@@ -122,7 +115,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get lightMapIntensity(): number | undefined {
     return this._objRef?.lightMapIntensity;
   }
@@ -133,7 +125,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get aoMap(): (Texture | null) | undefined {
     return this._objRef?.aoMap;
   }
@@ -144,7 +135,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get aoMapIntensity(): number | undefined {
     return this._objRef?.aoMapIntensity;
   }
@@ -154,7 +144,6 @@ export class ThMeshStandardMaterial<
       this._objRef.emissive = applyValue<Color>(this._objRef.emissive, value);
     }
   }
-  // @ts-ignore
   public get emissive(): Color | undefined {
     return this._objRef?.emissive;
   }
@@ -165,7 +154,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get emissiveIntensity(): number | undefined {
     return this._objRef?.emissiveIntensity;
   }
@@ -176,7 +164,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get emissiveMap(): (Texture | null) | undefined {
     return this._objRef?.emissiveMap;
   }
@@ -187,7 +174,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get bumpMap(): (Texture | null) | undefined {
     return this._objRef?.bumpMap;
   }
@@ -198,7 +184,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get bumpScale(): number | undefined {
     return this._objRef?.bumpScale;
   }
@@ -209,7 +194,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get normalMap(): (Texture | null) | undefined {
     return this._objRef?.normalMap;
   }
@@ -220,7 +204,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get normalMapType(): NormalMapTypes | undefined {
     return this._objRef?.normalMapType;
   }
@@ -233,7 +216,6 @@ export class ThMeshStandardMaterial<
       );
     }
   }
-  // @ts-ignore
   public get normalScale(): Vector2 | undefined {
     return this._objRef?.normalScale;
   }
@@ -244,7 +226,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementMap(): (Texture | null) | undefined {
     return this._objRef?.displacementMap;
   }
@@ -255,7 +236,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementScale(): number | undefined {
     return this._objRef?.displacementScale;
   }
@@ -266,7 +246,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementBias(): number | undefined {
     return this._objRef?.displacementBias;
   }
@@ -277,7 +256,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get roughnessMap(): (Texture | null) | undefined {
     return this._objRef?.roughnessMap;
   }
@@ -288,7 +266,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get metalnessMap(): (Texture | null) | undefined {
     return this._objRef?.metalnessMap;
   }
@@ -299,7 +276,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get alphaMap(): (Texture | null) | undefined {
     return this._objRef?.alphaMap;
   }
@@ -310,7 +286,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get envMap(): (Texture | null) | undefined {
     return this._objRef?.envMap;
   }
@@ -321,7 +296,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get envMapIntensity(): number | undefined {
     return this._objRef?.envMapIntensity;
   }
@@ -332,7 +306,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframe(): boolean | undefined {
     return this._objRef?.wireframe;
   }
@@ -343,7 +316,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframeLinewidth(): number | undefined {
     return this._objRef?.wireframeLinewidth;
   }
@@ -354,7 +326,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframeLinecap(): string | undefined {
     return this._objRef?.wireframeLinecap;
   }
@@ -365,7 +336,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframeLinejoin(): string | undefined {
     return this._objRef?.wireframeLinejoin;
   }
@@ -376,7 +346,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get flatShading(): boolean | undefined {
     return this._objRef?.flatShading;
   }
@@ -387,7 +356,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get fog(): boolean | undefined {
     return this._objRef?.fog;
   }
@@ -398,7 +366,6 @@ export class ThMeshStandardMaterial<
     }
   }
 
-  // @ts-ignore
   public get isMeshStandardMaterial(): boolean | undefined {
     return this._objRef?.isMeshStandardMaterial;
   }

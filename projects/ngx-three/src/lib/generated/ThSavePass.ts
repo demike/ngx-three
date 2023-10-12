@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -38,7 +38,6 @@ export class ThSavePass<
     }
   }
 
-  // @ts-ignore
   public get textureID(): string | undefined {
     return this._objRef?.textureID;
   }
@@ -49,7 +48,6 @@ export class ThSavePass<
     }
   }
 
-  // @ts-ignore
   public get renderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTarget;
   }
@@ -60,10 +58,10 @@ export class ThSavePass<
     }
   }
 
-  // @ts-ignore
   public get uniforms(): { [name: string]: { value: any } } | undefined {
-    // @ts-ignore
-    return this._objRef?.uniforms;
+    return this._objRef?.uniforms as
+      | { [name: string]: { value: any } }
+      | undefined;
   }
   @Input()
   public set material(value: ShaderMaterial) {
@@ -72,7 +70,6 @@ export class ThSavePass<
     }
   }
 
-  // @ts-ignore
   public get material(): ShaderMaterial | undefined {
     return this._objRef?.material;
   }
@@ -83,7 +80,6 @@ export class ThSavePass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }

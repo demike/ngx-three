@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -33,11 +33,9 @@ export class ThRectAreaLight<
     return RectAreaLight;
   }
 
-  // @ts-ignore
   public get isRectAreaLight(): true | undefined {
     return this._objRef?.isRectAreaLight;
   }
-  // @ts-ignore
   public get type(): (string | 'RectAreaLight') | undefined {
     return this._objRef?.type;
   }
@@ -48,7 +46,6 @@ export class ThRectAreaLight<
     }
   }
 
-  // @ts-ignore
   public get width(): number | undefined {
     return this._objRef?.width;
   }
@@ -59,7 +56,6 @@ export class ThRectAreaLight<
     }
   }
 
-  // @ts-ignore
   public get height(): number | undefined {
     return this._objRef?.height;
   }
@@ -70,7 +66,6 @@ export class ThRectAreaLight<
     }
   }
 
-  // @ts-ignore
   public get intensity(): number | undefined {
     return this._objRef?.intensity;
   }
@@ -81,7 +76,6 @@ export class ThRectAreaLight<
     }
   }
 
-  // @ts-ignore
   public get power(): number | undefined {
     return this._objRef?.power;
   }

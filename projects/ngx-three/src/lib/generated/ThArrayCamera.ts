@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -30,7 +30,6 @@ export class ThArrayCamera<
     return ArrayCamera;
   }
 
-  // @ts-ignore
   public get isArrayCamera(): true | undefined {
     return this._objRef?.isArrayCamera;
   }
@@ -41,7 +40,6 @@ export class ThArrayCamera<
     }
   }
 
-  // @ts-ignore
   public get cameras(): PerspectiveCamera[] | undefined {
     return this._objRef?.cameras;
   }

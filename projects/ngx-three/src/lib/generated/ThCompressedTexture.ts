@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -53,7 +53,6 @@ export class ThCompressedTexture<
     return CompressedTexture;
   }
 
-  // @ts-ignore
   public get isCompressedTexture(): true | undefined {
     return this._objRef?.isCompressedTexture;
   }
@@ -64,7 +63,6 @@ export class ThCompressedTexture<
     }
   }
 
-  // @ts-ignore
   public get mipmaps(): ImageData[] | undefined {
     return this._objRef?.mipmaps;
   }
@@ -75,7 +73,6 @@ export class ThCompressedTexture<
     }
   }
 
-  // @ts-ignore
   public get format(): CompressedPixelFormat | undefined {
     return this._objRef?.format;
   }
@@ -86,7 +83,6 @@ export class ThCompressedTexture<
     }
   }
 
-  // @ts-ignore
   public get flipY(): boolean | undefined {
     return this._objRef?.flipY;
   }
@@ -97,7 +93,6 @@ export class ThCompressedTexture<
     }
   }
 
-  // @ts-ignore
   public get generateMipmaps(): boolean | undefined {
     return this._objRef?.generateMipmaps;
   }

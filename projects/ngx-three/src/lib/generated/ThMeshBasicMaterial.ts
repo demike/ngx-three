@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -42,7 +42,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -52,7 +51,6 @@ export class ThMeshBasicMaterial<
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
   }
-  // @ts-ignore
   public get color(): Color | undefined {
     return this._objRef?.color;
   }
@@ -63,7 +61,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get map(): (Texture | null) | undefined {
     return this._objRef?.map;
   }
@@ -74,7 +71,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get lightMap(): (Texture | null) | undefined {
     return this._objRef?.lightMap;
   }
@@ -85,7 +81,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get lightMapIntensity(): number | undefined {
     return this._objRef?.lightMapIntensity;
   }
@@ -96,7 +91,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get aoMap(): (Texture | null) | undefined {
     return this._objRef?.aoMap;
   }
@@ -107,7 +101,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get aoMapIntensity(): number | undefined {
     return this._objRef?.aoMapIntensity;
   }
@@ -118,7 +111,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get specularMap(): (Texture | null) | undefined {
     return this._objRef?.specularMap;
   }
@@ -129,7 +121,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get alphaMap(): (Texture | null) | undefined {
     return this._objRef?.alphaMap;
   }
@@ -140,7 +131,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get envMap(): (Texture | null) | undefined {
     return this._objRef?.envMap;
   }
@@ -151,7 +141,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get combine(): Combine | undefined {
     return this._objRef?.combine;
   }
@@ -162,7 +151,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get reflectivity(): number | undefined {
     return this._objRef?.reflectivity;
   }
@@ -173,7 +161,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get refractionRatio(): number | undefined {
     return this._objRef?.refractionRatio;
   }
@@ -184,7 +171,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframe(): boolean | undefined {
     return this._objRef?.wireframe;
   }
@@ -195,7 +181,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframeLinewidth(): number | undefined {
     return this._objRef?.wireframeLinewidth;
   }
@@ -206,7 +191,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframeLinecap(): string | undefined {
     return this._objRef?.wireframeLinecap;
   }
@@ -217,7 +201,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframeLinejoin(): string | undefined {
     return this._objRef?.wireframeLinejoin;
   }
@@ -228,7 +211,6 @@ export class ThMeshBasicMaterial<
     }
   }
 
-  // @ts-ignore
   public get fog(): boolean | undefined {
     return this._objRef?.fog;
   }

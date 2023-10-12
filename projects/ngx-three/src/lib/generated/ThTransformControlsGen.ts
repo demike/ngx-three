@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -38,7 +38,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get domElement(): HTMLElement | undefined {
     return this._objRef?.domElement;
   }
@@ -49,7 +48,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get camera(): Camera | undefined {
     return this._objRef?.camera;
   }
@@ -60,7 +58,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get object(): (Object3D | undefined) | undefined {
     return this._objRef?.object;
   }
@@ -71,7 +68,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get enabled(): boolean | undefined {
     return this._objRef?.enabled;
   }
@@ -84,7 +80,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get axis():
     | ('X' | 'Y' | 'Z' | 'E' | 'XY' | 'YZ' | 'XZ' | 'XYZ' | 'XYZE' | null)
     | undefined {
@@ -97,7 +92,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get mode(): ('translate' | 'rotate' | 'scale') | undefined {
     return this._objRef?.mode;
   }
@@ -108,7 +102,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get translationSnap(): (number | null) | undefined {
     return this._objRef?.translationSnap;
   }
@@ -119,7 +112,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get rotationSnap(): (number | null) | undefined {
     return this._objRef?.rotationSnap;
   }
@@ -130,7 +122,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get space(): ('world' | 'local') | undefined {
     return this._objRef?.space;
   }
@@ -141,7 +132,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get size(): number | undefined {
     return this._objRef?.size;
   }
@@ -152,7 +142,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get dragging(): boolean | undefined {
     return this._objRef?.dragging;
   }
@@ -163,7 +152,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get showX(): boolean | undefined {
     return this._objRef?.showX;
   }
@@ -174,7 +162,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get showY(): boolean | undefined {
     return this._objRef?.showY;
   }
@@ -185,11 +172,9 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get showZ(): boolean | undefined {
     return this._objRef?.showZ;
   }
-  // @ts-ignore
   public get isTransformControls(): true | undefined {
     return this._objRef?.isTransformControls;
   }
@@ -200,7 +185,6 @@ export class ThTransformControlsGen<
     }
   }
 
-  // @ts-ignore
   public get mouseButtons():
     | { LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }
     | undefined {

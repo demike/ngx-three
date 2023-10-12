@@ -12,7 +12,7 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
   protected eventListener: { [key: string]: ((event: Event) => void)[] } = {};
   protected loaded = false;
 
-  get(_target: unknown, p: keyof LazyObject3DProxy, receiver: any): any {
+  get(_target: unknown, p: keyof LazyObject3DProxy, _receiver: any): any {
     switch (p) {
       case '__isProxy':
         return true;

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix,  */
 import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { Camera, Object3D } from 'three';
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
@@ -14,13 +14,13 @@ import { ThTransformControlsGen } from '../ThTransformControlsGen';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThTransformControls)
-    }
-  ]
+      useExisting: forwardRef(() => ThTransformControls),
+    },
+  ],
 })
 export class ThTransformControls<
   T extends TransformControls = TransformControls,
-  TARGS = [object: Camera, domElement?: HTMLElement]
+  TARGS = [object: Camera, domElement?: HTMLElement],
 > extends ThTransformControlsGen<T, TARGS> {
   public getType(): Type<TransformControls> {
     return TransformControls;

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -33,11 +33,9 @@ export class ThPoints<
     return Points;
   }
 
-  // @ts-ignore
   public get isPoints(): true | undefined {
     return this._objRef?.isPoints;
   }
-  // @ts-ignore
   public get type(): (string | 'Points') | undefined {
     return this._objRef?.type;
   }
@@ -48,7 +46,6 @@ export class ThPoints<
     }
   }
 
-  // @ts-ignore
   public get morphTargetInfluences(): (number[] | undefined) | undefined {
     return this._objRef?.morphTargetInfluences;
   }
@@ -61,7 +58,6 @@ export class ThPoints<
     }
   }
 
-  // @ts-ignore
   public get morphTargetDictionary():
     | ({ [key: string]: number } | undefined)
     | undefined {
@@ -74,7 +70,6 @@ export class ThPoints<
     }
   }
 
-  // @ts-ignore
   public get geometry(): TGeometry | undefined {
     return this._objRef?.geometry;
   }
@@ -85,7 +80,6 @@ export class ThPoints<
     }
   }
 
-  // @ts-ignore
   public get material(): TMaterial | undefined {
     return this._objRef?.material;
   }

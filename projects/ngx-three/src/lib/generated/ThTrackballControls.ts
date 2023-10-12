@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -39,7 +39,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get object(): Camera | undefined {
     return this._objRef?.object;
   }
@@ -50,7 +49,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get domElement(): HTMLElement | undefined {
     return this._objRef?.domElement;
   }
@@ -61,7 +59,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get enabled(): boolean | undefined {
     return this._objRef?.enabled;
   }
@@ -77,7 +74,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get screen():
     | { left: number; top: number; width: number; height: number }
     | undefined {
@@ -90,7 +86,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get rotateSpeed(): number | undefined {
     return this._objRef?.rotateSpeed;
   }
@@ -101,7 +96,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get zoomSpeed(): number | undefined {
     return this._objRef?.zoomSpeed;
   }
@@ -112,7 +106,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get panSpeed(): number | undefined {
     return this._objRef?.panSpeed;
   }
@@ -123,7 +116,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get noRotate(): boolean | undefined {
     return this._objRef?.noRotate;
   }
@@ -134,7 +126,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get noZoom(): boolean | undefined {
     return this._objRef?.noZoom;
   }
@@ -145,7 +136,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get noPan(): boolean | undefined {
     return this._objRef?.noPan;
   }
@@ -156,7 +146,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get noRoll(): boolean | undefined {
     return this._objRef?.noRoll;
   }
@@ -167,7 +156,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get staticMoving(): boolean | undefined {
     return this._objRef?.staticMoving;
   }
@@ -178,7 +166,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get dynamicDampingFactor(): number | undefined {
     return this._objRef?.dynamicDampingFactor;
   }
@@ -189,7 +176,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get minDistance(): number | undefined {
     return this._objRef?.minDistance;
   }
@@ -200,7 +186,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get maxDistance(): number | undefined {
     return this._objRef?.maxDistance;
   }
@@ -211,7 +196,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get minZoom(): number | undefined {
     return this._objRef?.minZoom;
   }
@@ -222,7 +206,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get maxZoom(): number | undefined {
     return this._objRef?.maxZoom;
   }
@@ -233,7 +216,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get keys(): string[] | undefined {
     return this._objRef?.keys;
   }
@@ -244,7 +226,6 @@ export class ThTrackballControls<
     }
   }
 
-  // @ts-ignore
   public get mouseButtons():
     | { LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }
     | undefined {
@@ -256,7 +237,6 @@ export class ThTrackballControls<
       this._objRef.target = applyValue<Vector3>(this._objRef.target, value);
     }
   }
-  // @ts-ignore
   public get target(): Vector3 | undefined {
     return this._objRef?.target;
   }
@@ -269,7 +249,6 @@ export class ThTrackballControls<
       );
     }
   }
-  // @ts-ignore
   public get position0(): Vector3 | undefined {
     return this._objRef?.position0;
   }
@@ -279,7 +258,6 @@ export class ThTrackballControls<
       this._objRef.target0 = applyValue<Vector3>(this._objRef.target0, value);
     }
   }
-  // @ts-ignore
   public get target0(): Vector3 | undefined {
     return this._objRef?.target0;
   }
@@ -289,7 +267,6 @@ export class ThTrackballControls<
       this._objRef.up0 = applyValue<Vector3>(this._objRef.up0, value);
     }
   }
-  // @ts-ignore
   public get up0(): Vector3 | undefined {
     return this._objRef?.up0;
   }

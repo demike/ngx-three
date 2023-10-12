@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -38,7 +38,6 @@ export class ThDirectionalLightHelper<
     return DirectionalLightHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'DirectionalLightHelper') | undefined {
     return this._objRef?.type;
   }
@@ -49,7 +48,6 @@ export class ThDirectionalLightHelper<
     }
   }
 
-  // @ts-ignore
   public get lightPlane(): Line | undefined {
     return this._objRef?.lightPlane;
   }
@@ -60,7 +58,6 @@ export class ThDirectionalLightHelper<
     }
   }
 
-  // @ts-ignore
   public get light(): DirectionalLight | undefined {
     return this._objRef?.light;
   }
@@ -91,7 +88,6 @@ export class ThDirectionalLightHelper<
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
     }
   }
-  // @ts-ignore
   public get matrix(): Matrix4 | undefined {
     return this._objRef?.matrix;
   }
@@ -102,7 +98,6 @@ export class ThDirectionalLightHelper<
     }
   }
 
-  // @ts-ignore
   public get matrixAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixAutoUpdate;
   }
@@ -113,7 +108,6 @@ export class ThDirectionalLightHelper<
     }
   }
 
-  // @ts-ignore
   public get color(): (ColorRepresentation | undefined) | undefined {
     return this._objRef?.color;
   }
@@ -124,7 +118,6 @@ export class ThDirectionalLightHelper<
     }
   }
 
-  // @ts-ignore
   public get targetLine(): Line | undefined {
     return this._objRef?.targetLine;
   }

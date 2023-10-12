@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -36,7 +36,6 @@ export class ThBox3Helper<
     return Box3Helper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'Box3Helper') | undefined {
     return this._objRef?.type;
   }
@@ -46,7 +45,6 @@ export class ThBox3Helper<
       this._objRef.box = applyValue<Box3>(this._objRef.box, value);
     }
   }
-  // @ts-ignore
   public get box(): Box3 | undefined {
     return this._objRef?.box;
   }

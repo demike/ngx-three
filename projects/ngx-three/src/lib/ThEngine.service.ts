@@ -58,7 +58,6 @@ export class ThEngineService implements OnDestroy {
     this.ngZone.runOutsideAngular(() => {
       this.initCanvasSize();
       if (!this.resizeObserver) {
-        // @ts-ignore
         this.resizeObserver = new ResizeObserver(() => {
           this.resize();
         });
@@ -128,7 +127,7 @@ export class ThEngineService implements OnDestroy {
           renderer: this.renderers,
           scene,
           camera,
-        })
+        }),
       );
     }
 

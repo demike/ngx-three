@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -26,11 +26,9 @@ export class ThSprite<
     return Sprite;
   }
 
-  // @ts-ignore
   public get isSprite(): true | undefined {
     return this._objRef?.isSprite;
   }
-  // @ts-ignore
   public get type(): (string | 'Sprite') | undefined {
     return this._objRef?.type;
   }
@@ -41,7 +39,6 @@ export class ThSprite<
     }
   }
 
-  // @ts-ignore
   public get castShadow(): false | undefined {
     return this._objRef?.castShadow;
   }
@@ -52,7 +49,6 @@ export class ThSprite<
     }
   }
 
-  // @ts-ignore
   public get geometry(): BufferGeometry | undefined {
     return this._objRef?.geometry;
   }
@@ -63,7 +59,6 @@ export class ThSprite<
     }
   }
 
-  // @ts-ignore
   public get material(): SpriteMaterial | undefined {
     return this._objRef?.material;
   }
@@ -73,7 +68,6 @@ export class ThSprite<
       this._objRef.center = applyValue<Vector2>(this._objRef.center, value);
     }
   }
-  // @ts-ignore
   public get center(): Vector2 | undefined {
     return this._objRef?.center;
   }

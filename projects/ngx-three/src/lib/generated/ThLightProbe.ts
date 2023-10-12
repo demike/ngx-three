@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -29,7 +29,6 @@ export class ThLightProbe<
     return LightProbe;
   }
 
-  // @ts-ignore
   public get isLightProbe(): true | undefined {
     return this._objRef?.isLightProbe;
   }
@@ -39,7 +38,6 @@ export class ThLightProbe<
       this._objRef.sh = applyValue<SphericalHarmonics3>(this._objRef.sh, value);
     }
   }
-  // @ts-ignore
   public get sh(): SphericalHarmonics3 | undefined {
     return this._objRef?.sh;
   }

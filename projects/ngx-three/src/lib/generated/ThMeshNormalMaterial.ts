@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -44,7 +44,6 @@ export class ThMeshNormalMaterial<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -55,7 +54,6 @@ export class ThMeshNormalMaterial<
     }
   }
 
-  // @ts-ignore
   public get bumpMap(): (Texture | null) | undefined {
     return this._objRef?.bumpMap;
   }
@@ -66,7 +64,6 @@ export class ThMeshNormalMaterial<
     }
   }
 
-  // @ts-ignore
   public get bumpScale(): number | undefined {
     return this._objRef?.bumpScale;
   }
@@ -77,7 +74,6 @@ export class ThMeshNormalMaterial<
     }
   }
 
-  // @ts-ignore
   public get normalMap(): (Texture | null) | undefined {
     return this._objRef?.normalMap;
   }
@@ -88,7 +84,6 @@ export class ThMeshNormalMaterial<
     }
   }
 
-  // @ts-ignore
   public get normalMapType(): NormalMapTypes | undefined {
     return this._objRef?.normalMapType;
   }
@@ -101,7 +96,6 @@ export class ThMeshNormalMaterial<
       );
     }
   }
-  // @ts-ignore
   public get normalScale(): Vector2 | undefined {
     return this._objRef?.normalScale;
   }
@@ -112,7 +106,6 @@ export class ThMeshNormalMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementMap(): (Texture | null) | undefined {
     return this._objRef?.displacementMap;
   }
@@ -123,7 +116,6 @@ export class ThMeshNormalMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementScale(): number | undefined {
     return this._objRef?.displacementScale;
   }
@@ -134,7 +126,6 @@ export class ThMeshNormalMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementBias(): number | undefined {
     return this._objRef?.displacementBias;
   }
@@ -145,7 +136,6 @@ export class ThMeshNormalMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframe(): boolean | undefined {
     return this._objRef?.wireframe;
   }
@@ -156,7 +146,6 @@ export class ThMeshNormalMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframeLinewidth(): number | undefined {
     return this._objRef?.wireframeLinewidth;
   }
@@ -167,7 +156,6 @@ export class ThMeshNormalMaterial<
     }
   }
 
-  // @ts-ignore
   public get flatShading(): boolean | undefined {
     return this._objRef?.flatShading;
   }

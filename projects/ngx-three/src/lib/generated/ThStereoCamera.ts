@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -36,7 +36,6 @@ export class ThStereoCamera<
     }
   }
 
-  // @ts-ignore
   public get type(): 'StereoCamera' | undefined {
     return this._objRef?.type;
   }
@@ -47,7 +46,6 @@ export class ThStereoCamera<
     }
   }
 
-  // @ts-ignore
   public get aspect(): number | undefined {
     return this._objRef?.aspect;
   }
@@ -58,7 +56,6 @@ export class ThStereoCamera<
     }
   }
 
-  // @ts-ignore
   public get eyeSep(): number | undefined {
     return this._objRef?.eyeSep;
   }
@@ -69,7 +66,6 @@ export class ThStereoCamera<
     }
   }
 
-  // @ts-ignore
   public get cameraL(): PerspectiveCamera | undefined {
     return this._objRef?.cameraL;
   }
@@ -80,7 +76,6 @@ export class ThStereoCamera<
     }
   }
 
-  // @ts-ignore
   public get cameraR(): PerspectiveCamera | undefined {
     return this._objRef?.cameraR;
   }

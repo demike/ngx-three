@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -38,7 +38,6 @@ export class ThPointerLockControls<
     }
   }
 
-  // @ts-ignore
   public get camera(): Camera | undefined {
     return this._objRef?.camera;
   }
@@ -49,7 +48,6 @@ export class ThPointerLockControls<
     }
   }
 
-  // @ts-ignore
   public get domElement(): HTMLElement | undefined {
     return this._objRef?.domElement;
   }
@@ -60,7 +58,6 @@ export class ThPointerLockControls<
     }
   }
 
-  // @ts-ignore
   public get isLocked(): boolean | undefined {
     return this._objRef?.isLocked;
   }
@@ -71,7 +68,6 @@ export class ThPointerLockControls<
     }
   }
 
-  // @ts-ignore
   public get minPolarAngle(): number | undefined {
     return this._objRef?.minPolarAngle;
   }
@@ -82,7 +78,6 @@ export class ThPointerLockControls<
     }
   }
 
-  // @ts-ignore
   public get maxPolarAngle(): number | undefined {
     return this._objRef?.maxPolarAngle;
   }
@@ -93,7 +88,6 @@ export class ThPointerLockControls<
     }
   }
 
-  // @ts-ignore
   public get pointerSpeed(): number | undefined {
     return this._objRef?.pointerSpeed;
   }

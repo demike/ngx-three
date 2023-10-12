@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -34,7 +34,6 @@ export class ThPointLightHelper<
     return PointLightHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'PointLightHelper') | undefined {
     return this._objRef?.type;
   }
@@ -45,7 +44,6 @@ export class ThPointLightHelper<
     }
   }
 
-  // @ts-ignore
   public get light(): PointLight | undefined {
     return this._objRef?.light;
   }
@@ -76,7 +74,6 @@ export class ThPointLightHelper<
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
     }
   }
-  // @ts-ignore
   public get matrix(): Matrix4 | undefined {
     return this._objRef?.matrix;
   }
@@ -87,7 +84,6 @@ export class ThPointLightHelper<
     }
   }
 
-  // @ts-ignore
   public get color(): (ColorRepresentation | undefined) | undefined {
     return this._objRef?.color;
   }
@@ -98,7 +94,6 @@ export class ThPointLightHelper<
     }
   }
 
-  // @ts-ignore
   public get matrixAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixAutoUpdate;
   }

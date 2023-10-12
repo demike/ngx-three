@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -27,7 +27,6 @@ export class ThAudioListener<
     return AudioListener;
   }
 
-  // @ts-ignore
   public get type(): (string | 'AudioListener') | undefined {
     return this._objRef?.type;
   }
@@ -38,7 +37,6 @@ export class ThAudioListener<
     }
   }
 
-  // @ts-ignore
   public get context(): AudioContext | undefined {
     return this._objRef?.context;
   }
@@ -49,7 +47,6 @@ export class ThAudioListener<
     }
   }
 
-  // @ts-ignore
   public get gain(): GainNode | undefined {
     return this._objRef?.gain;
   }
@@ -60,7 +57,6 @@ export class ThAudioListener<
     }
   }
 
-  // @ts-ignore
   public get filter(): AudioNode | undefined {
     return this._objRef?.filter;
   }
@@ -71,7 +67,6 @@ export class ThAudioListener<
     }
   }
 
-  // @ts-ignore
   public get timeDelta(): number | undefined {
     return this._objRef?.timeDelta;
   }

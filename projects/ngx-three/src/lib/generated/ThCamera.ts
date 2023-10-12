@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -27,11 +27,9 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
     return Camera;
   }
 
-  // @ts-ignore
   public get isCamera(): true | undefined {
     return this._objRef?.isCamera;
   }
-  // @ts-ignore
   public get type(): (string | 'Camera') | undefined {
     return this._objRef?.type;
   }
@@ -41,7 +39,6 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
       this._objRef.layers = applyValue<Layers>(this._objRef.layers, value);
     }
   }
-  // @ts-ignore
   public get layers(): Layers | undefined {
     return this._objRef?.layers;
   }
@@ -75,7 +72,6 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
       );
     }
   }
-  // @ts-ignore
   public get matrixWorldInverse(): Matrix4 | undefined {
     return this._objRef?.matrixWorldInverse;
   }
@@ -109,7 +105,6 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
       );
     }
   }
-  // @ts-ignore
   public get projectionMatrix(): Matrix4 | undefined {
     return this._objRef?.projectionMatrix;
   }
@@ -143,7 +138,6 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
       );
     }
   }
-  // @ts-ignore
   public get projectionMatrixInverse(): Matrix4 | undefined {
     return this._objRef?.projectionMatrixInverse;
   }
@@ -154,7 +148,6 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get coordinateSystem(): CoordinateSystem | undefined {
     return this._objRef?.coordinateSystem;
   }

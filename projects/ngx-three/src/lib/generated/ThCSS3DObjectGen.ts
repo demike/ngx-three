@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -35,7 +35,6 @@ export class ThCSS3DObjectGen<
     }
   }
 
-  // @ts-ignore
   public get element(): HTMLElement | undefined {
     return this._objRef?.element;
   }
@@ -48,7 +47,6 @@ export class ThCSS3DObjectGen<
     }
   }
 
-  // @ts-ignore
   public get onBeforeRender():
     | ((renderer: unknown, scene: Scene, camera: Camera) => void)
     | undefined {
@@ -63,7 +61,6 @@ export class ThCSS3DObjectGen<
     }
   }
 
-  // @ts-ignore
   public get onAfterRender():
     | ((renderer: unknown, scene: Scene, camera: Camera) => void)
     | undefined {

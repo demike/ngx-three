@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -35,7 +35,6 @@ export class ThDragControls<
     }
   }
 
-  // @ts-ignore
   public get object(): Camera | undefined {
     return this._objRef?.object;
   }
@@ -46,7 +45,6 @@ export class ThDragControls<
     }
   }
 
-  // @ts-ignore
   public get enabled(): boolean | undefined {
     return this._objRef?.enabled;
   }
@@ -57,7 +55,6 @@ export class ThDragControls<
     }
   }
 
-  // @ts-ignore
   public get transformGroup(): boolean | undefined {
     return this._objRef?.transformGroup;
   }

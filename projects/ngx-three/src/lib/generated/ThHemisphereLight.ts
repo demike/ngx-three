@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -33,11 +33,9 @@ export class ThHemisphereLight<
     return HemisphereLight;
   }
 
-  // @ts-ignore
   public get isHemisphereLight(): true | undefined {
     return this._objRef?.isHemisphereLight;
   }
-  // @ts-ignore
   public get type(): (string | 'HemisphereLight') | undefined {
     return this._objRef?.type;
   }
@@ -47,7 +45,6 @@ export class ThHemisphereLight<
       applyValue<Vector3>(this._objRef.position, value);
     }
   }
-  // @ts-ignore
   public get position(): Vector3 | undefined {
     return this._objRef?.position;
   }
@@ -57,7 +54,6 @@ export class ThHemisphereLight<
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
   }
-  // @ts-ignore
   public get color(): Color | undefined {
     return this._objRef?.color;
   }
@@ -70,7 +66,6 @@ export class ThHemisphereLight<
       );
     }
   }
-  // @ts-ignore
   public get groundColor(): Color | undefined {
     return this._objRef?.groundColor;
   }

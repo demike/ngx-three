@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Vector4, WebGLRenderer, WebGLRenderTarget } from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
@@ -16,9 +16,12 @@ import { ThEffectComposerGen } from '../ThEffectComposerGen';
 })
 export class ThEffectComposer<
   T extends EffectComposer = EffectComposer,
-  TARGS extends any[] = [renderer: WebGLRenderer, renderTarget?: WebGLRenderTarget]
+  TARGS extends any[] = [renderer: WebGLRenderer, renderTarget?: WebGLRenderTarget],
 > extends ThEffectComposerGen<T, TARGS> {
-  constructor(protected view: ThView, protected engineService: ThEngineService) {
+  constructor(
+    protected view: ThView,
+    protected engineService: ThEngineService,
+  ) {
     super();
   }
 

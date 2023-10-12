@@ -16,7 +16,7 @@ export class NgxThreeOverrideStub {
       wrappedClassGenericTypeNames: string;
       constructorArgs: string;
       imports: Set<string>;
-    }
+    },
   ) {
     this.className = 'Th' + origClass.wrappedClassName;
     this.directiveName = 'th-' + pascalToCamelCase(origClass.wrappedClassName);
@@ -26,8 +26,8 @@ export class NgxThreeOverrideStub {
   generate() {
     this.content = `
     /* eslint-disable @typescript-eslint/naming-convention */
-    /* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-    /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+    /* eslint-disable no-underscore-dangle */
+    /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
     ${this.generateGenClassImports()}
     import { ${this.className}Gen } from '../${this.className}Gen';
 

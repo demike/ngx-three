@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -33,7 +33,6 @@ export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<
     }
   }
 
-  // @ts-ignore
   public get isPass(): boolean | undefined {
     return this._objRef?.isPass;
   }
@@ -44,7 +43,6 @@ export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<
     }
   }
 
-  // @ts-ignore
   public get enabled(): boolean | undefined {
     return this._objRef?.enabled;
   }
@@ -55,7 +53,6 @@ export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<
     }
   }
 
-  // @ts-ignore
   public get needsSwap(): boolean | undefined {
     return this._objRef?.needsSwap;
   }
@@ -66,7 +63,6 @@ export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<
     }
   }
 
-  // @ts-ignore
   public get clear(): boolean | undefined {
     return this._objRef?.clear;
   }
@@ -77,7 +73,6 @@ export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<
     }
   }
 
-  // @ts-ignore
   public get renderToScreen(): boolean | undefined {
     return this._objRef?.renderToScreen;
   }

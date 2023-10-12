@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -46,7 +46,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -57,7 +56,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get defines(): { [key: string]: any } | undefined {
     return this._objRef?.defines;
   }
@@ -68,7 +66,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get clearcoat(): number | undefined {
     return this._objRef?.clearcoat;
   }
@@ -79,7 +76,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get clearcoatMap(): (Texture | null) | undefined {
     return this._objRef?.clearcoatMap;
   }
@@ -90,7 +86,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get clearcoatRoughness(): number | undefined {
     return this._objRef?.clearcoatRoughness;
   }
@@ -101,7 +96,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get clearcoatRoughnessMap(): (Texture | null) | undefined {
     return this._objRef?.clearcoatRoughnessMap;
   }
@@ -114,7 +108,6 @@ export class ThMeshPhysicalMaterial<
       );
     }
   }
-  // @ts-ignore
   public get clearcoatNormalScale(): Vector2 | undefined {
     return this._objRef?.clearcoatNormalScale;
   }
@@ -125,7 +118,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get clearcoatNormalMap(): (Texture | null) | undefined {
     return this._objRef?.clearcoatNormalMap;
   }
@@ -136,7 +128,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get reflectivity(): number | undefined {
     return this._objRef?.reflectivity;
   }
@@ -147,7 +138,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get ior(): number | undefined {
     return this._objRef?.ior;
   }
@@ -158,7 +148,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get sheen(): number | undefined {
     return this._objRef?.sheen;
   }
@@ -171,7 +160,6 @@ export class ThMeshPhysicalMaterial<
       );
     }
   }
-  // @ts-ignore
   public get sheenColor(): Color | undefined {
     return this._objRef?.sheenColor;
   }
@@ -182,7 +170,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get sheenColorMap(): (Texture | null) | undefined {
     return this._objRef?.sheenColorMap;
   }
@@ -193,7 +180,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get sheenRoughness(): number | undefined {
     return this._objRef?.sheenRoughness;
   }
@@ -204,7 +190,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get sheenRoughnessMap(): (Texture | null) | undefined {
     return this._objRef?.sheenRoughnessMap;
   }
@@ -215,7 +200,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get transmission(): number | undefined {
     return this._objRef?.transmission;
   }
@@ -226,7 +210,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get transmissionMap(): (Texture | null) | undefined {
     return this._objRef?.transmissionMap;
   }
@@ -237,7 +220,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get thickness(): number | undefined {
     return this._objRef?.thickness;
   }
@@ -248,7 +230,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get thicknessMap(): (Texture | null) | undefined {
     return this._objRef?.thicknessMap;
   }
@@ -259,7 +240,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get attenuationDistance(): number | undefined {
     return this._objRef?.attenuationDistance;
   }
@@ -272,7 +252,6 @@ export class ThMeshPhysicalMaterial<
       );
     }
   }
-  // @ts-ignore
   public get attenuationColor(): Color | undefined {
     return this._objRef?.attenuationColor;
   }
@@ -283,7 +262,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get specularIntensity(): number | undefined {
     return this._objRef?.specularIntensity;
   }
@@ -296,7 +274,6 @@ export class ThMeshPhysicalMaterial<
       );
     }
   }
-  // @ts-ignore
   public get specularColor(): Color | undefined {
     return this._objRef?.specularColor;
   }
@@ -307,7 +284,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get specularIntensityMap(): (Texture | null) | undefined {
     return this._objRef?.specularIntensityMap;
   }
@@ -318,7 +294,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get specularColorMap(): (Texture | null) | undefined {
     return this._objRef?.specularColorMap;
   }
@@ -329,7 +304,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get iridescenceMap(): (Texture | null) | undefined {
     return this._objRef?.iridescenceMap;
   }
@@ -340,7 +314,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get iridescenceIOR(): number | undefined {
     return this._objRef?.iridescenceIOR;
   }
@@ -351,7 +324,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get iridescence(): number | undefined {
     return this._objRef?.iridescence;
   }
@@ -362,7 +334,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get iridescenceThicknessRange(): [number, number] | undefined {
     return this._objRef?.iridescenceThicknessRange;
   }
@@ -373,7 +344,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get iridescenceThicknessMap(): (Texture | null) | undefined {
     return this._objRef?.iridescenceThicknessMap;
   }
@@ -384,7 +354,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get anisotropy(): number | undefined {
     return this._objRef?.anisotropy;
   }
@@ -395,7 +364,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get anisotropyRotation(): number | undefined {
     return this._objRef?.anisotropyRotation;
   }
@@ -406,7 +374,6 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  // @ts-ignore
   public get anisotropyMap(): (Texture | null) | undefined {
     return this._objRef?.anisotropyMap;
   }

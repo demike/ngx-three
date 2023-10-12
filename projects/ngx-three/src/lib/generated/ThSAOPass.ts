@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -58,7 +58,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get scene(): Scene | undefined {
     return this._objRef?.scene;
   }
@@ -69,7 +68,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get camera(): Camera | undefined {
     return this._objRef?.camera;
   }
@@ -80,7 +78,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get supportsDepthTextureExtension(): boolean | undefined {
     return this._objRef?.supportsDepthTextureExtension;
   }
@@ -91,7 +88,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get supportsNormalTexture(): boolean | undefined {
     return this._objRef?.supportsNormalTexture;
   }
@@ -104,7 +100,6 @@ export class ThSAOPass<
       );
     }
   }
-  // @ts-ignore
   public get originalClearColor(): Color | undefined {
     return this._objRef?.originalClearColor;
   }
@@ -117,7 +112,6 @@ export class ThSAOPass<
       );
     }
   }
-  // @ts-ignore
   public get oldClearColor(): Color | undefined {
     return this._objRef?.oldClearColor;
   }
@@ -128,7 +122,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get oldClearAlpha(): number | undefined {
     return this._objRef?.oldClearAlpha;
   }
@@ -141,7 +134,6 @@ export class ThSAOPass<
       );
     }
   }
-  // @ts-ignore
   public get resolution(): Vector2 | undefined {
     return this._objRef?.resolution;
   }
@@ -152,7 +144,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get saoRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.saoRenderTarget;
   }
@@ -163,7 +154,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get blurIntermediateRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.blurIntermediateRenderTarget;
   }
@@ -174,7 +164,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get beautyRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.beautyRenderTarget;
   }
@@ -185,7 +174,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get normalRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.normalRenderTarget;
   }
@@ -196,7 +184,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get depthRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.depthRenderTarget;
   }
@@ -207,7 +194,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get depthMaterial(): MeshDepthMaterial | undefined {
     return this._objRef?.depthMaterial;
   }
@@ -218,7 +204,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get normalMaterial(): MeshNormalMaterial | undefined {
     return this._objRef?.normalMaterial;
   }
@@ -229,7 +214,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get saoMaterial(): ShaderMaterial | undefined {
     return this._objRef?.saoMaterial;
   }
@@ -240,7 +224,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get vBlurMaterial(): ShaderMaterial | undefined {
     return this._objRef?.vBlurMaterial;
   }
@@ -251,7 +234,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get hBlurMaterial(): ShaderMaterial | undefined {
     return this._objRef?.hBlurMaterial;
   }
@@ -262,7 +244,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get materialCopy(): ShaderMaterial | undefined {
     return this._objRef?.materialCopy;
   }
@@ -273,7 +254,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get depthCopy(): ShaderMaterial | undefined {
     return this._objRef?.depthCopy;
   }
@@ -284,7 +264,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }
@@ -295,7 +274,6 @@ export class ThSAOPass<
     }
   }
 
-  // @ts-ignore
   public get params(): SAOPassParams | undefined {
     return this._objRef?.params;
   }

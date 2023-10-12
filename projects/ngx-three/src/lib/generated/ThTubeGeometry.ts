@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -36,11 +36,9 @@ export class ThTubeGeometry<
     return TubeGeometry;
   }
 
-  // @ts-ignore
   public get type(): (string | 'TubeGeometry') | undefined {
     return this._objRef?.type;
   }
-  // @ts-ignore
   public get parameters():
     | {
         readonly path: Curve<Vector3>;
@@ -59,7 +57,6 @@ export class ThTubeGeometry<
     }
   }
 
-  // @ts-ignore
   public get tangents(): Vector3[] | undefined {
     return this._objRef?.tangents;
   }
@@ -70,7 +67,6 @@ export class ThTubeGeometry<
     }
   }
 
-  // @ts-ignore
   public get normals(): Vector3[] | undefined {
     return this._objRef?.normals;
   }
@@ -81,7 +77,6 @@ export class ThTubeGeometry<
     }
   }
 
-  // @ts-ignore
   public get binormals(): Vector3[] | undefined {
     return this._objRef?.binormals;
   }

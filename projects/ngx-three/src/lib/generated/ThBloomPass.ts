@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -38,7 +38,6 @@ export class ThBloomPass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetX(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTargetX;
   }
@@ -49,7 +48,6 @@ export class ThBloomPass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetY(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTargetY;
   }
@@ -60,7 +58,6 @@ export class ThBloomPass<
     }
   }
 
-  // @ts-ignore
   public get copyUniforms(): object | undefined {
     return this._objRef?.copyUniforms;
   }
@@ -71,7 +68,6 @@ export class ThBloomPass<
     }
   }
 
-  // @ts-ignore
   public get materialCopy(): ShaderMaterial | undefined {
     return this._objRef?.materialCopy;
   }
@@ -82,7 +78,6 @@ export class ThBloomPass<
     }
   }
 
-  // @ts-ignore
   public get convolutionUniforms(): object | undefined {
     return this._objRef?.convolutionUniforms;
   }
@@ -93,7 +88,6 @@ export class ThBloomPass<
     }
   }
 
-  // @ts-ignore
   public get materialConvolution(): ShaderMaterial | undefined {
     return this._objRef?.materialConvolution;
   }
@@ -104,7 +98,6 @@ export class ThBloomPass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }

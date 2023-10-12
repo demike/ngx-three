@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -37,7 +37,6 @@ export class ThSkeletonHelper<
     return SkeletonHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'SkeletonHelper') | undefined {
     return this._objRef?.type;
   }
@@ -48,7 +47,6 @@ export class ThSkeletonHelper<
     }
   }
 
-  // @ts-ignore
   public get bones(): Bone[] | undefined {
     return this._objRef?.bones;
   }
@@ -59,7 +57,6 @@ export class ThSkeletonHelper<
     }
   }
 
-  // @ts-ignore
   public get root(): (SkinnedMesh | Object3D) | undefined {
     return this._objRef?.root;
   }
@@ -90,7 +87,6 @@ export class ThSkeletonHelper<
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
     }
   }
-  // @ts-ignore
   public get matrix(): Matrix4 | undefined {
     return this._objRef?.matrix;
   }
@@ -101,7 +97,6 @@ export class ThSkeletonHelper<
     }
   }
 
-  // @ts-ignore
   public get matrixAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixAutoUpdate;
   }

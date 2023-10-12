@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -44,7 +44,6 @@ export class ThRenderPassGen<
     }
   }
 
-  // @ts-ignore
   public get scene(): Scene | undefined {
     return this._objRef?.scene;
   }
@@ -55,7 +54,6 @@ export class ThRenderPassGen<
     }
   }
 
-  // @ts-ignore
   public get camera(): Camera | undefined {
     return this._objRef?.camera;
   }
@@ -66,7 +64,6 @@ export class ThRenderPassGen<
     }
   }
 
-  // @ts-ignore
   public get overrideMaterial(): Material | undefined {
     return this._objRef?.overrideMaterial;
   }
@@ -79,7 +76,6 @@ export class ThRenderPassGen<
       );
     }
   }
-  // @ts-ignore
   public get clearColor(): Color | undefined {
     return this._objRef?.clearColor;
   }
@@ -90,7 +86,6 @@ export class ThRenderPassGen<
     }
   }
 
-  // @ts-ignore
   public get clearAlpha(): number | undefined {
     return this._objRef?.clearAlpha;
   }
@@ -101,7 +96,6 @@ export class ThRenderPassGen<
     }
   }
 
-  // @ts-ignore
   public get clearDepth(): boolean | undefined {
     return this._objRef?.clearDepth;
   }

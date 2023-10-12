@@ -38,7 +38,10 @@ export class ThView implements OnInit {
 
   protected _effectComposer?: EffectComposer;
 
-  constructor(protected engServ: ThEngineService, protected raycaster: RaycasterService) {}
+  constructor(
+    protected engServ: ThEngineService,
+    protected raycaster: RaycasterService,
+  ) {}
 
   @Input()
   public scene?: ThScene;
@@ -136,11 +139,11 @@ export class ThView implements OnInit {
     }
   }
 
-  add(scene: Object3D) {
+  add(_scene: Object3D) {
     // nothing to do here
   }
 
-  remove(scene: Object3D) {
+  remove(_scene: Object3D) {
     // norhing to do
   }
 

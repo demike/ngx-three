@@ -9,7 +9,6 @@ import {
   OnInit,
   Output,
   PipeTransform,
-  Type
 } from '@angular/core';
 import { Loader } from 'three';
 import { ThAnimationLoopService } from '../renderer/th-animation-loop.service';
@@ -82,7 +81,10 @@ export abstract class ThAsyncLoaderBaseDirective<T extends AsyncLoader> implemen
     return this.onProgress$;
   }
 
-  constructor(@Host() protected host: { objRef: any }, protected zone: NgZone) {
+  constructor(
+    @Host() protected host: { objRef: any },
+    protected zone: NgZone,
+  ) {
     this.proxy = createLazyObject3DProxy();
     host.objRef = this.proxy;
   }
@@ -117,7 +119,7 @@ export abstract class ThAsyncLoaderBaseDirective<T extends AsyncLoader> implemen
       : undefined;
 
     const result = await this.zone.runOutsideAngular(() =>
-      (this.service as ThAsyncLoaderService<AsyncLoader>).load(url, onProgress)
+      (this.service as ThAsyncLoaderService<AsyncLoader>).load(url, onProgress),
     );
 
     this.animationLoop.requestAnimationFrame();

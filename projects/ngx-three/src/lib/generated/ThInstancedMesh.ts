@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -46,7 +46,6 @@ export class ThInstancedMesh<
     return InstancedMesh;
   }
 
-  // @ts-ignore
   public get isInstancedMesh(): true | undefined {
     return this._objRef?.isInstancedMesh;
   }
@@ -59,7 +58,6 @@ export class ThInstancedMesh<
       );
     }
   }
-  // @ts-ignore
   public get boundingBox(): (Box3 | null) | undefined {
     return this._objRef?.boundingBox;
   }
@@ -74,7 +72,6 @@ export class ThInstancedMesh<
       );
     }
   }
-  // @ts-ignore
   public get boundingSphere(): (Sphere | null) | undefined {
     return this._objRef?.boundingSphere;
   }
@@ -85,7 +82,6 @@ export class ThInstancedMesh<
     }
   }
 
-  // @ts-ignore
   public get count(): number | undefined {
     return this._objRef?.count;
   }
@@ -103,7 +99,6 @@ export class ThInstancedMesh<
       );
     }
   }
-  // @ts-ignore
   public get instanceColor(): (InstancedBufferAttribute | null) | undefined {
     return this._objRef?.instanceColor;
   }
@@ -120,7 +115,6 @@ export class ThInstancedMesh<
       );
     }
   }
-  // @ts-ignore
   public get instanceMatrix(): InstancedBufferAttribute | undefined {
     return this._objRef?.instanceMatrix;
   }

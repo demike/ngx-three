@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -38,7 +38,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get edgesRT(): WebGLRenderTarget | undefined {
     return this._objRef?.edgesRT;
   }
@@ -49,7 +48,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get weightsRT(): WebGLRenderTarget | undefined {
     return this._objRef?.weightsRT;
   }
@@ -60,7 +58,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get areaTexture(): Texture | undefined {
     return this._objRef?.areaTexture;
   }
@@ -71,7 +68,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get searchTexture(): Texture | undefined {
     return this._objRef?.searchTexture;
   }
@@ -82,7 +78,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get uniformsEdges(): object | undefined {
     return this._objRef?.uniformsEdges;
   }
@@ -93,7 +88,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get materialEdges(): ShaderMaterial | undefined {
     return this._objRef?.materialEdges;
   }
@@ -104,7 +98,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get uniformsWeights(): object | undefined {
     return this._objRef?.uniformsWeights;
   }
@@ -115,7 +108,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get materialWeights(): ShaderMaterial | undefined {
     return this._objRef?.materialWeights;
   }
@@ -126,7 +118,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get uniformsBlend(): object | undefined {
     return this._objRef?.uniformsBlend;
   }
@@ -137,7 +128,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get materialBlend(): ShaderMaterial | undefined {
     return this._objRef?.materialBlend;
   }
@@ -148,7 +138,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -48,7 +48,6 @@ export class ThCubeTexture<
     return CubeTexture;
   }
 
-  // @ts-ignore
   public get isCubeTexture(): true | undefined {
     return this._objRef?.isCubeTexture;
   }
@@ -59,7 +58,6 @@ export class ThCubeTexture<
     }
   }
 
-  // @ts-ignore
   public get mapping(): CubeTextureMapping | undefined {
     return this._objRef?.mapping;
   }
@@ -70,7 +68,6 @@ export class ThCubeTexture<
     }
   }
 
-  // @ts-ignore
   public get flipY(): boolean | undefined {
     return this._objRef?.flipY;
   }

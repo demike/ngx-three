@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -29,7 +29,6 @@ export class ThCameraHelper<
     return CameraHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'CameraHelper') | undefined {
     return this._objRef?.type;
   }
@@ -40,7 +39,6 @@ export class ThCameraHelper<
     }
   }
 
-  // @ts-ignore
   public get camera(): Camera | undefined {
     return this._objRef?.camera;
   }
@@ -51,7 +49,6 @@ export class ThCameraHelper<
     }
   }
 
-  // @ts-ignore
   public get pointMap(): { [id: string]: number[] } | undefined {
     return this._objRef?.pointMap;
   }
@@ -82,7 +79,6 @@ export class ThCameraHelper<
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
     }
   }
-  // @ts-ignore
   public get matrix(): Matrix4 | undefined {
     return this._objRef?.matrix;
   }
@@ -93,7 +89,6 @@ export class ThCameraHelper<
     }
   }
 
-  // @ts-ignore
   public get matrixAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixAutoUpdate;
   }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -41,7 +41,6 @@ export class ThPointsMaterial<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -51,7 +50,6 @@ export class ThPointsMaterial<
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
   }
-  // @ts-ignore
   public get color(): Color | undefined {
     return this._objRef?.color;
   }
@@ -62,7 +60,6 @@ export class ThPointsMaterial<
     }
   }
 
-  // @ts-ignore
   public get map(): (Texture | null) | undefined {
     return this._objRef?.map;
   }
@@ -73,7 +70,6 @@ export class ThPointsMaterial<
     }
   }
 
-  // @ts-ignore
   public get alphaMap(): (Texture | null) | undefined {
     return this._objRef?.alphaMap;
   }
@@ -84,7 +80,6 @@ export class ThPointsMaterial<
     }
   }
 
-  // @ts-ignore
   public get size(): number | undefined {
     return this._objRef?.size;
   }
@@ -95,7 +90,6 @@ export class ThPointsMaterial<
     }
   }
 
-  // @ts-ignore
   public get sizeAttenuation(): boolean | undefined {
     return this._objRef?.sizeAttenuation;
   }
@@ -106,7 +100,6 @@ export class ThPointsMaterial<
     }
   }
 
-  // @ts-ignore
   public get fog(): boolean | undefined {
     return this._objRef?.fog;
   }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -44,7 +44,6 @@ export class ThBufferGeometry<
     }
   }
 
-  // @ts-ignore
   public get id(): number | undefined {
     return this._objRef?.id;
   }
@@ -55,7 +54,6 @@ export class ThBufferGeometry<
     }
   }
 
-  // @ts-ignore
   public get uuid(): string | undefined {
     return this._objRef?.uuid;
   }
@@ -66,11 +64,9 @@ export class ThBufferGeometry<
     }
   }
 
-  // @ts-ignore
   public get name(): string | undefined {
     return this._objRef?.name;
   }
-  // @ts-ignore
   public get type(): (string | 'BufferGeometry') | undefined {
     return this._objRef?.type;
   }
@@ -88,7 +84,6 @@ export class ThBufferGeometry<
       );
     }
   }
-  // @ts-ignore
   public get index(): (BufferAttribute | null) | undefined {
     return this._objRef?.index;
   }
@@ -99,7 +94,6 @@ export class ThBufferGeometry<
     }
   }
 
-  // @ts-ignore
   public get attributes(): Attributes | undefined {
     return this._objRef?.attributes;
   }
@@ -112,7 +106,6 @@ export class ThBufferGeometry<
     }
   }
 
-  // @ts-ignore
   public get morphAttributes():
     | {
         [name: string]: Array<BufferAttribute | InterleavedBufferAttribute>; // TODO Replace for 'Record<>'
@@ -127,7 +120,6 @@ export class ThBufferGeometry<
     }
   }
 
-  // @ts-ignore
   public get morphTargetsRelative(): boolean | undefined {
     return this._objRef?.morphTargetsRelative;
   }
@@ -156,7 +148,6 @@ export class ThBufferGeometry<
     }
   }
 
-  // @ts-ignore
   public get groups():
     | Array<{
         /**
@@ -187,7 +178,6 @@ export class ThBufferGeometry<
       );
     }
   }
-  // @ts-ignore
   public get boundingBox(): (Box3 | null) | undefined {
     return this._objRef?.boundingBox;
   }
@@ -202,7 +192,6 @@ export class ThBufferGeometry<
       );
     }
   }
-  // @ts-ignore
   public get boundingSphere(): (Sphere | null) | undefined {
     return this._objRef?.boundingSphere;
   }
@@ -213,7 +202,6 @@ export class ThBufferGeometry<
     }
   }
 
-  // @ts-ignore
   public get drawRange(): { start: number; count: number } | undefined {
     return this._objRef?.drawRange;
   }
@@ -224,11 +212,9 @@ export class ThBufferGeometry<
     }
   }
 
-  // @ts-ignore
   public get userData(): { [key: string]: any } | undefined {
     return this._objRef?.userData;
   }
-  // @ts-ignore
   public get isBufferGeometry(): true | undefined {
     return this._objRef?.isBufferGeometry;
   }

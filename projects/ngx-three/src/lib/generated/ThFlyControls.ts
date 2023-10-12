@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -35,7 +35,6 @@ export class ThFlyControls<
     }
   }
 
-  // @ts-ignore
   public get autoForward(): boolean | undefined {
     return this._objRef?.autoForward;
   }
@@ -46,7 +45,6 @@ export class ThFlyControls<
     }
   }
 
-  // @ts-ignore
   public get domElement(): (HTMLElement | Document) | undefined {
     return this._objRef?.domElement;
   }
@@ -57,7 +55,6 @@ export class ThFlyControls<
     }
   }
 
-  // @ts-ignore
   public get dragToLook(): boolean | undefined {
     return this._objRef?.dragToLook;
   }
@@ -68,7 +65,6 @@ export class ThFlyControls<
     }
   }
 
-  // @ts-ignore
   public get enabled(): boolean | undefined {
     return this._objRef?.enabled;
   }
@@ -79,7 +75,6 @@ export class ThFlyControls<
     }
   }
 
-  // @ts-ignore
   public get movementSpeed(): number | undefined {
     return this._objRef?.movementSpeed;
   }
@@ -90,7 +85,6 @@ export class ThFlyControls<
     }
   }
 
-  // @ts-ignore
   public get object(): Camera | undefined {
     return this._objRef?.object;
   }
@@ -101,7 +95,6 @@ export class ThFlyControls<
     }
   }
 
-  // @ts-ignore
   public get rollSpeed(): number | undefined {
     return this._objRef?.rollSpeed;
   }

@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ChangeDetectionStrategy, Component, forwardRef, Input, Type } from '@angular/core';
 import { BufferGeometry, Material, Quaternion, Vector3 } from 'three';
 import { TransformControlsPlane } from 'three/examples/jsm/controls/TransformControls';
@@ -15,13 +15,13 @@ import { ThMesh } from './ThMesh';
   providers: [
     {
       provide: ThControlBase,
-      useExisting: forwardRef(() => ThTransformControlsPlane)
-    }
-  ]
+      useExisting: forwardRef(() => ThTransformControlsPlane),
+    },
+  ],
 })
 export class ThTransformControlsPlane<
   T extends TransformControlsPlane = TransformControlsPlane,
-  TARGS = []
+  TARGS = [],
 > extends ThMesh<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<TransformControlsPlane> {
     return TransformControlsPlane;

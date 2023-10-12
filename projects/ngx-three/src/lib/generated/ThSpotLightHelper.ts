@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -35,7 +35,6 @@ export class ThSpotLightHelper<
     return SpotLightHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'SpotLightHelper') | undefined {
     return this._objRef?.type;
   }
@@ -46,7 +45,6 @@ export class ThSpotLightHelper<
     }
   }
 
-  // @ts-ignore
   public get cone(): LineSegments | undefined {
     return this._objRef?.cone;
   }
@@ -57,7 +55,6 @@ export class ThSpotLightHelper<
     }
   }
 
-  // @ts-ignore
   public get light(): Light | undefined {
     return this._objRef?.light;
   }
@@ -88,7 +85,6 @@ export class ThSpotLightHelper<
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
     }
   }
-  // @ts-ignore
   public get matrix(): Matrix4 | undefined {
     return this._objRef?.matrix;
   }
@@ -99,7 +95,6 @@ export class ThSpotLightHelper<
     }
   }
 
-  // @ts-ignore
   public get color(): (ColorRepresentation | undefined) | undefined {
     return this._objRef?.color;
   }
@@ -110,7 +105,6 @@ export class ThSpotLightHelper<
     }
   }
 
-  // @ts-ignore
   public get matrixAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixAutoUpdate;
   }

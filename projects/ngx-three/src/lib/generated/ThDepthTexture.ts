@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -48,7 +48,6 @@ export class ThDepthTexture<
     return DepthTexture;
   }
 
-  // @ts-ignore
   public get isDepthTexture(): true | undefined {
     return this._objRef?.isDepthTexture;
   }
@@ -59,7 +58,6 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get flipY(): boolean | undefined {
     return this._objRef?.flipY;
   }
@@ -70,7 +68,6 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get magFilter(): MagnificationTextureFilter | undefined {
     return this._objRef?.magFilter;
   }
@@ -81,7 +78,6 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get minFilter(): MinificationTextureFilter | undefined {
     return this._objRef?.minFilter;
   }
@@ -92,7 +88,6 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get generateMipmaps(): boolean | undefined {
     return this._objRef?.generateMipmaps;
   }
@@ -103,7 +98,6 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get format(): DeepTexturePixelFormat | undefined {
     return this._objRef?.format;
   }
@@ -114,7 +108,6 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get type(): TextureDataType | undefined {
     return this._objRef?.type;
   }
@@ -125,7 +118,6 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get compareFunction(): (TextureComparisonFunction | null) | undefined {
     return this._objRef?.compareFunction;
   }

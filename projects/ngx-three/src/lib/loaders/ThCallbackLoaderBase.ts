@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, Host, Input, NgZone, OnInit, Output, PipeTransform, Type } from '@angular/core';
+import { Directive, EventEmitter, Host, Input, NgZone, OnInit, Output, PipeTransform } from '@angular/core';
 import { Loader } from 'three';
 import { isObserved } from '../util';
 import { ThLoader } from './ThLoaderBase';
@@ -8,7 +8,7 @@ interface CallBackLoader extends Loader {
     url: string | string[],
     onLoad?: (...args: any) => void,
     onProgress?: (event: ProgressEvent) => void,
-    onError?: (event: ErrorEvent) => void
+    onError?: (event: ErrorEvent) => void,
   ): any;
 }
 
@@ -61,7 +61,10 @@ export abstract class ThCallbackLoaderBaseDirective<T extends CallBackLoader> im
     return this.onProgress$;
   }
 
-  constructor(@Host() protected host: { objRef: any }, protected zone: NgZone) {}
+  constructor(
+    @Host() protected host: { objRef: any },
+    protected zone: NgZone,
+  ) {}
 
   ngOnInit(): void {
     this.initialized = true;
@@ -93,7 +96,7 @@ export abstract class ThCallbackLoaderBaseDirective<T extends CallBackLoader> im
       : undefined;
 
     this.host.objRef = this.zone.runOutsideAngular(() =>
-      (this.service as ThCallbackLoaderService<CallBackLoader>).load(url, onProgress, onLoad)
+      (this.service as ThCallbackLoaderService<CallBackLoader>).load(url, onProgress, onLoad),
     );
   }
 }

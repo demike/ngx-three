@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -35,11 +35,9 @@ export class ThDirectionalLight<
     return DirectionalLight;
   }
 
-  // @ts-ignore
   public get isDirectionalLight(): true | undefined {
     return this._objRef?.isDirectionalLight;
   }
-  // @ts-ignore
   public get type(): (string | 'DirectionalLight') | undefined {
     return this._objRef?.type;
   }
@@ -50,7 +48,6 @@ export class ThDirectionalLight<
     }
   }
 
-  // @ts-ignore
   public get castShadow(): boolean | undefined {
     return this._objRef?.castShadow;
   }
@@ -60,7 +57,6 @@ export class ThDirectionalLight<
       applyValue<Vector3>(this._objRef.position, value);
     }
   }
-  // @ts-ignore
   public get position(): Vector3 | undefined {
     return this._objRef?.position;
   }
@@ -71,7 +67,6 @@ export class ThDirectionalLight<
     }
   }
 
-  // @ts-ignore
   public get shadow(): DirectionalLightShadow | undefined {
     return this._objRef?.shadow;
   }
@@ -82,7 +77,6 @@ export class ThDirectionalLight<
     }
   }
 
-  // @ts-ignore
   public get target(): Object3D | undefined {
     return this._objRef?.target;
   }
