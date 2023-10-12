@@ -28,7 +28,10 @@ export abstract class NgxThreeClass {
   public wrappedClassGenericTypeNames = ''; // i.e.: "<T,U>"
   private inputs = '';
 
-  constructor(protected classSymbol: ts.Symbol, protected typeChecker: ts.TypeChecker) {
+  constructor(
+    protected classSymbol: ts.Symbol,
+    protected typeChecker: ts.TypeChecker,
+  ) {
     this.classDecl = this.fetchClassDecleration();
     this.wrappedClassName = this.classSymbol.escapedName as string;
     this.isAbstract = this.classDecl.modifiers?.find((m) => m.kind === SyntaxKind.AbstractKeyword) !== undefined;
@@ -60,7 +63,7 @@ export abstract class NgxThreeClass {
       this.imports.add(
         `import { Th${this.getBaseClassName()} } from './${
           isOverriddenClass(this.getBaseClassName()) ? NgxThreeOverrideStub.OVERRIDE_SUB_PATH : ''
-        }Th${this.getBaseClassName()}';`
+        }Th${this.getBaseClassName()}';`,
       );
     }
 
@@ -186,7 +189,7 @@ export abstract class NgxThreeClass {
         if (
           INGORED_MEMBERS.find((m) => m === memberName) ||
           member.modifiers?.find(
-            (m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword
+            (m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword,
           )
         ) {
           // it's private or protected, or in the ingore list --> do not expose
@@ -290,7 +293,6 @@ export abstract class NgxThreeClass {
     }
 
     return `
-    // @ts-ignore
     public get ${memberName}(): ( ${member.type?.getText()}) | undefined {
       return this._objRef?.${memberName};
     }`;
@@ -410,23 +412,23 @@ export abstract class NgxThreeClass {
                 if (ts.isTypeReferenceNode(type)) {
                   this.imports.add(
                     `import { ${type.typeName.getText()} } from '${this.getImportPathForSourceFile(
-                      type.getSourceFile()
-                    )}';`
+                      type.getSourceFile(),
+                    )}';`,
                   );
                 } else if (ts.isArrayTypeNode(type)) {
                   const typeRefNode = type.elementType as any as ts.TypeReferenceNode;
                   this.imports.add(
                     `import { ${typeRefNode.typeName.getText()} } from '${this.getImportPathForSourceFile(
-                      typeRefNode.getSourceFile()
-                    )}';`
+                      typeRefNode.getSourceFile(),
+                    )}';`,
                   );
                 }
               });
             } else if (typeNode && ts.isTypeReferenceNode(typeNode)) {
               this.imports.add(
                 `import { ${typeNode.typeName.getText()} } from '${this.getImportPathForSourceFile(
-                  typeNode.getSourceFile()
-                )}';`
+                  typeNode.getSourceFile(),
+                )}';`,
               );
             } else {
               // TODO:

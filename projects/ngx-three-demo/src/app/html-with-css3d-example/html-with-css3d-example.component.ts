@@ -1,13 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import {
-  CSS3D_RENDERER,
-  DRACOLoaderService,
-  WEBGL_RENDERER,
-  provideCSS3dRenderer,
-  provideWebGLRenderer,
-} from 'ngx-three';
+import { DRACOLoaderService, WEBGL_RENDERER, provideCSS3dRenderer, provideWebGLRenderer } from 'ngx-three';
 import * as THREE from 'three';
-import { Clock, Plane, Vector3 } from 'three';
+import { Clock } from 'three';
 import { ASSET_PATH } from '../assets';
 
 /**

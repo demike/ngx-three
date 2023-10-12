@@ -1,15 +1,14 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
 import { KTXLoader } from 'three/examples/jsm/loaders/KTXLoader';
 import { ThCompressedTexture } from '../../generated/ThCompressedTexture';
-import { ThTexture } from '../../generated/ThTexture';
 import {
   ThCallbackLoaderService,
   ThCallbackLoaderBaseDirective,
-  ThCallbackLoaderBasePipe
+  ThCallbackLoaderBasePipe,
 } from '../ThCallbackLoaderBase';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class KTXLoaderService extends ThCallbackLoaderService<KTXLoader> {
   public clazz = KTXLoader;
@@ -17,7 +16,7 @@ export class KTXLoaderService extends ThCallbackLoaderService<KTXLoader> {
 
 @Pipe({
   name: 'loadKTXTexture',
-  pure: true
+  pure: true,
 })
 export class ThKTXLoaderPipe extends ThCallbackLoaderBasePipe<KTXLoader> implements PipeTransform {
   constructor(protected service: KTXLoaderService) {
@@ -26,13 +25,13 @@ export class ThKTXLoaderPipe extends ThCallbackLoaderBasePipe<KTXLoader> impleme
 }
 
 @Directive({
-  selector: '[loadKTXTexture]'
+  selector: '[loadKTXTexture]',
 })
 export class ThKTXLoaderDirective extends ThCallbackLoaderBaseDirective<KTXLoader> {
   constructor(
     @Host() protected host: ThCompressedTexture,
     protected zone: NgZone,
-    protected service: KTXLoaderService
+    protected service: KTXLoaderService,
   ) {
     super(host, zone);
   }

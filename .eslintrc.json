@@ -17,15 +17,25 @@
       },
       "extends": [
         "plugin:@angular-eslint/recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
         "prefer-arrow/prefer-arrow-functions": "off",
         "@typescript-eslint/member-ordering": "off",
+        "@typescript-eslint/no-explicit-any": "off",
         "no-underscore-dangle": [
           "error",
           {
             "allowAfterThis": true
+          }
+        ],
+        "@typescript-eslint/no-unused-vars": [
+          "error", 
+          { 
+            "argsIgnorePattern": "^_"
+            // "varsIgnorePattern": "^_",
+            // "caughtErrorsIgnorePattern": "^_"
           }
         ]
       }

@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgZone, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { Object3D } from 'three';
 import { ASSET_PATH } from '../assets';
 
 @Component({
   selector: 'app-dynamic-loader-example',
   templateUrl: './dynamic-loader-example.component.html',
-  changeDetection: ChangeDetectionStrategy.Default
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class DynamicLoaderExampleComponent implements OnDestroy {
   public modelUrl: string;
@@ -41,7 +41,7 @@ export class DynamicLoaderExampleComponent implements OnDestroy {
     }
   }
 
-  public onRefChange(newRef: Object3D) {
+  public onRefChange(_newRef: Object3D) {
     // objRef$ emits every time a new object is set
     // ( also if a loader has loaded the new object)
   }

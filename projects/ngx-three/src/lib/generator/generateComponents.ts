@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, promises, writeFileSync } from 'fs';
+import { existsSync, readFileSync, promises } from 'fs';
 import { join } from 'path';
 import * as ts from 'typescript';
 import { NgxThreeClass } from './NgxThreeClass';
@@ -29,12 +29,12 @@ class NgxThreeClassGenerator {
       generator.generateGeometries(),
       generator.generatePasses(),
       generator.generateTextures(),
-      ]);
+    ]);
 
-      return  Promise.allSettled([
+    return Promise.allSettled([
       generator.generateNgxModule(Array.from(generator.ngxThreeClassMap.values())),
       generator.generateNgxBarrelFile(Array.from(generator.ngxThreeClassMap.values())),
-      ]);
+    ]);
   }
 
   generateObjects() {
@@ -63,19 +63,21 @@ class NgxThreeClassGenerator {
 
   protected generate(exportTypeName: string, generatorType: Type<NgxThreeClass>) {
     const threeTypes = this.getInterfacePropertyNames(exportTypeName);
-    return Promise.allSettled(threeTypes.map(async (type) => {
-      const cls = this.generateNgxThreeClass(type, generatorType);
-      if (cls.content.length === 0) {
-        return;
-      }
+    return Promise.allSettled(
+      threeTypes.map(async (type) => {
+        const cls = this.generateNgxThreeClass(type, generatorType);
+        if (cls.content.length === 0) {
+          return;
+        }
 
-      this.ngxThreeClassMap.set(cls.className, cls);
-      await this.writeFile(cls.className, cls.content);
+        this.ngxThreeClassMap.set(cls.className, cls);
+        await this.writeFile(cls.className, cls.content);
 
-      if (cls.overrideStub && !this.doesFileExist('overrides/' + cls.overrideStub.className)) {
-        await this.writeFile('overrides/' + cls.overrideStub.className, cls.overrideStub.content);
-      }
-    }));
+        if (cls.overrideStub && !this.doesFileExist('overrides/' + cls.overrideStub.className)) {
+          await this.writeFile('overrides/' + cls.overrideStub.className, cls.overrideStub.content);
+        }
+      }),
+    );
   }
 
   private generateNgxThreeClass(classSymbol: ts.Symbol, generatorType: Type<NgxThreeClass>): NgxThreeClass {
@@ -105,7 +107,7 @@ class NgxThreeClassGenerator {
       content = organizer.organizeImports(this.baseOutPath + fileName + '.ts', content);
       content = await prettier.format(content, {
         parser: 'babel-ts',
-        singleQuote: true
+        singleQuote: true,
       });
     } catch (e) {
       console.log(`error creating file: ${fileName}`, e);
@@ -134,7 +136,7 @@ class NgxThreeClassGenerator {
     const { options } = ts.convertCompilerOptionsFromJson(config.compilerOptions, '..');
     const program = ts.createProgram([componentsRecordPath], {
       ...options,
-      baseUrl: '..'
+      baseUrl: '..',
     });
 
     const sourceFile = program.getSourceFile(componentsRecordPath);
@@ -145,7 +147,7 @@ class NgxThreeClassGenerator {
     const typeChecker = program.getTypeChecker();
     this.typeChecker = typeChecker;
 
-    const visit = <T extends unknown>(node: ts.Node, f: (n: ts.Node) => T[]): T[] => {
+    const visit = <T>(node: ts.Node, f: (n: ts.Node) => T[]): T[] => {
       const results = f(node);
       node.forEachChild((child) => {
         results.push(...visit(child, f));
@@ -163,7 +165,7 @@ class NgxThreeClassGenerator {
             typeChecker
               .getTypeAtLocation(declaration)
               .getProperties()
-              .map((symbol) => symbol.escapedName)
+              .map((symbol) => symbol.escapedName),
           );
           const type = typeChecker.getTypeAtLocation(declaration);
           return type.getProperties();
@@ -178,4 +180,4 @@ class NgxThreeClassGenerator {
 // ---------------------------------------------------
 
 const generator = new NgxThreeClassGenerator();
-generator.execute()
+generator.execute();

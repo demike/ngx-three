@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 
-import { Type } from '@angular/core';
 import sdk from '@stackblitz/sdk';
 import { Project } from '@stackblitz/sdk/';
 import { GITHUB_ASSET_PATH } from '../assets';
@@ -12,7 +11,7 @@ import {
   getMainTsUrl,
   getTagNameFromFileName,
   PACKAGE,
-  polyfillTs
+  polyfillTs,
 } from './codesandbox';
 
 export async function toStackblitz(fileUrls: string[], declarations?: string[]) {
@@ -30,15 +29,15 @@ export async function toStackblitz(fileUrls: string[], declarations?: string[]) 
       'src/index.html': createIndexHtml(tagName),
       'src/main.ts': createMainTs(fileName, declarations),
       'src/polyfills.ts': polyfillTs,
-      'src/assets.ts': `export const ASSET_PATH = \'${GITHUB_ASSET_PATH}\';`
+      'src/assets.ts': `export const ASSET_PATH = \'${GITHUB_ASSET_PATH}\';`,
     },
 
     dependencies: {
       'ngx-three': 'latest',
       '@types/three': PACKAGE.devDependencies['@types/three'],
-      ...PACKAGE.dependencies
+      ...PACKAGE.dependencies,
     },
-    devDependencies: { ...PACKAGE.devDependencies }
+    devDependencies: { ...PACKAGE.devDependencies },
   };
 
   await applySources(fileUrls, project.files);
@@ -53,7 +52,7 @@ function applySources(fileUrls: string[], fileMap: { [key: string]: string }) {
       fetch(url).then(async (response) => {
         const content = await response.text();
         fileMap[`src/app/${getFileNameFromFullPath(url)}`] = content;
-      })
-    )
+      }),
+    ),
   );
 }

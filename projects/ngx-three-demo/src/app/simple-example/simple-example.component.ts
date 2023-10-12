@@ -37,7 +37,7 @@ export class Box extends ThMesh implements OnInit {
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [provideWebGLRenderer()],
 })
-export class SimpleExampleComponent implements OnInit {
+export class SimpleExampleComponent {
   constructor() {
     this.material.color.set('green');
 
@@ -68,6 +68,4 @@ export class SimpleExampleComponent implements OnInit {
   public onBeforeRender() {
     this.rotation = [0, this.rotation[2] + 0.01, this.rotation[2] + 0.01];
   }
-
-  ngOnInit(): void {}
 }

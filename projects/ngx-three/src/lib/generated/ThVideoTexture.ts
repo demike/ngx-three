@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  Type,
-  forwardRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Type, forwardRef } from '@angular/core';
 import {
   MagnificationTextureFilter,
   Mapping,
@@ -24,9 +18,7 @@ import { ThTexture } from './ThTexture';
   selector: 'th-videoTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) },
-  ],
+  providers: [{ provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) }],
 })
 export class ThVideoTexture<
   T extends VideoTexture = VideoTexture,
@@ -46,7 +38,6 @@ export class ThVideoTexture<
     return VideoTexture;
   }
 
-  // @ts-ignore
   public get isVideoTexture(): true | undefined {
     return this._objRef?.isVideoTexture;
   }
@@ -57,7 +48,6 @@ export class ThVideoTexture<
     }
   }
 
-  // @ts-ignore
   public get magFilter(): MagnificationTextureFilter | undefined {
     return this._objRef?.magFilter;
   }
