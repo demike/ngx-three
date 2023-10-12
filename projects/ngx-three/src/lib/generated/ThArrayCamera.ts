@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ArrayCamera, PerspectiveCamera } from 'three';
 import { ThCamera } from './ThCamera';
@@ -24,13 +24,12 @@ import { ThPerspectiveCamera } from './ThPerspectiveCamera';
 })
 export class ThArrayCamera<
   T extends ArrayCamera = ArrayCamera,
-  TARGS = /* cameras? */ PerspectiveCamera[]
+  TARGS = /* cameras? */ PerspectiveCamera[],
 > extends ThPerspectiveCamera<T, TARGS> {
   public getType(): Type<ArrayCamera> {
     return ArrayCamera;
   }
 
-  // @ts-ignore
   public get isArrayCamera(): true | undefined {
     return this._objRef?.isArrayCamera;
   }
@@ -41,7 +40,6 @@ export class ThArrayCamera<
     }
   }
 
-  // @ts-ignore
   public get cameras(): PerspectiveCamera[] | undefined {
     return this._objRef?.cameras;
   }

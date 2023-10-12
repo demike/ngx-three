@@ -6,34 +6,27 @@
 </div>
 <th-canvas [renderOnDemand]="true" class="canvas-background">
   <th-scene [thStats]="true">
-    <th-ambientLight/>
+    <th-ambientLight [intensity]="3" />
 
-
-    <th-cSS3DObject 
-          *ngFor="let el of this.table; let i = index" 
-          [position]="poses[i].position">
-
-      <div class="element" [style.background]="'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')'">
+    <th-cSS3DObject *ngFor="let el of this.table; let i = index" [position]="poses[i].position">
+      <div class="element" [style.background]="'rgba(0,127,127,' + (Math.random() * 0.5 + 0.25) + ')'">
         <div class="number">
           {{ i + 1 }}
         </div>
         <div class="symbol">
-          {{el[0]}}
+          {{ el[0] }}
         </div>
         <div class="details">
-          {{el[1]}} <br> {{el[2]}}
+          {{ el[1] }} <br />
+          {{ el[2] }}
         </div>
       </div>
-
     </th-cSS3DObject>
-   
-    <th-pointLight [position]="[10, 10, 10]"/>
 
-    <th-perspectiveCamera
-      [args]="[45, 2, 1, 10000]"
-      [position]="[0, 0, 3000]"
-      [lookAt]="[0, 0, 0]">
-      <th-trackballControls [minDistance]="500" [maxDistance]="6000"/>
+    <th-pointLight [position]="[10, 10, 10]" [intensity]="3" />
+
+    <th-perspectiveCamera [args]="[45, 2, 1, 10000]" [position]="[0, 0, 3000]" [lookAt]="[0, 0, 0]">
+      <th-trackballControls [minDistance]="500" [maxDistance]="6000" />
     </th-perspectiveCamera>
   </th-scene>
 </th-canvas>

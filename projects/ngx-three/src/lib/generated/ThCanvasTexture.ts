@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   CanvasTexture,
@@ -39,14 +39,13 @@ export class ThCanvasTexture<
     minFilter?: MinificationTextureFilter,
     format?: PixelFormat,
     type?: TextureDataType,
-    anisotropy?: number
-  ]
+    anisotropy?: number,
+  ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<CanvasTexture> {
     return CanvasTexture;
   }
 
-  // @ts-ignore
   public get isCanvasTexture(): true | undefined {
     return this._objRef?.isCanvasTexture;
   }

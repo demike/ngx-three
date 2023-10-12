@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { LineDashedMaterial, LineDashedMaterialParameters } from 'three';
 import { ThLineBasicMaterial } from './ThLineBasicMaterial';
@@ -25,7 +25,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThLineDashedMaterial<
   T extends LineDashedMaterial = LineDashedMaterial,
-  TARGS = /* parameters? */ LineDashedMaterialParameters
+  TARGS = /* parameters? */ LineDashedMaterialParameters,
 > extends ThLineBasicMaterial<T, TARGS> {
   public getType(): Type<LineDashedMaterial> {
     return LineDashedMaterial;
@@ -38,7 +38,6 @@ export class ThLineDashedMaterial<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -49,7 +48,6 @@ export class ThLineDashedMaterial<
     }
   }
 
-  // @ts-ignore
   public get scale(): number | undefined {
     return this._objRef?.scale;
   }
@@ -60,7 +58,6 @@ export class ThLineDashedMaterial<
     }
   }
 
-  // @ts-ignore
   public get dashSize(): number | undefined {
     return this._objRef?.dashSize;
   }
@@ -71,11 +68,9 @@ export class ThLineDashedMaterial<
     }
   }
 
-  // @ts-ignore
   public get gapSize(): number | undefined {
     return this._objRef?.gapSize;
   }
-  // @ts-ignore
   public get isLineDashedMaterial(): true | undefined {
     return this._objRef?.isLineDashedMaterial;
   }

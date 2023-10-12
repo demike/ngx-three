@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { AudioListener, PositionalAudio } from 'three';
 import { ThAudio } from './ThAudio';
@@ -22,7 +22,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThPositionalAudio<
   T extends PositionalAudio = PositionalAudio,
-  TARGS = /* listener */ AudioListener
+  TARGS = /* listener */ AudioListener,
 > extends ThAudio<PannerNode, T, TARGS> {
   public getType(): Type<PositionalAudio> {
     return PositionalAudio;
@@ -35,7 +35,6 @@ export class ThPositionalAudio<
     }
   }
 
-  // @ts-ignore
   public get panner(): PannerNode | undefined {
     return this._objRef?.panner;
   }

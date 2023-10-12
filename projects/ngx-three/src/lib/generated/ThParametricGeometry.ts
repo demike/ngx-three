@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { Vector3 } from 'three';
+import { NormalBufferAttributes, Vector3 } from 'three';
 import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -28,9 +28,9 @@ export class ThParametricGeometry<
   TARGS = [
     func?: (u: number, v: number, target: Vector3) => void,
     slices?: number,
-    stacks?: number
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    stacks?: number,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<ParametricGeometry> {
     return ParametricGeometry;
   }
@@ -42,7 +42,6 @@ export class ThParametricGeometry<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -57,7 +56,6 @@ export class ThParametricGeometry<
     }
   }
 
-  // @ts-ignore
   public get parameters():
     | {
         func: (u: number, v: number, dest: Vector3) => void;

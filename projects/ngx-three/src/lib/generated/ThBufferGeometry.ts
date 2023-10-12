@@ -1,13 +1,20 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
-import { ChangeDetectionStrategy, Component, Input, SkipSelf, Type } from '@angular/core';
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  SkipSelf,
+  Type,
+} from '@angular/core';
 import {
   Box3,
   BufferAttribute,
   BufferGeometry,
-  GLBufferAttribute,
   InterleavedBufferAttribute,
+  NormalBufferAttributes,
+  NormalOrGLBufferAttributes,
   Sphere,
   Vector3,
 } from 'three';
@@ -21,8 +28,12 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [],
 })
-export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS = []> extends ThGeometryBase<T, TARGS> {
-  public getType(): Type<BufferGeometry> {
+export class ThBufferGeometry<
+  Attributes extends NormalOrGLBufferAttributes = NormalBufferAttributes,
+  T extends BufferGeometry<Attributes> = BufferGeometry<Attributes>,
+  TARGS = [],
+> extends ThGeometryBase<T, TARGS> {
+  public getType(): Type<BufferGeometry<Attributes>> {
     return BufferGeometry;
   }
 
@@ -33,7 +44,6 @@ export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS =
     }
   }
 
-  // @ts-ignore
   public get id(): number | undefined {
     return this._objRef?.id;
   }
@@ -44,7 +54,6 @@ export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS =
     }
   }
 
-  // @ts-ignore
   public get uuid(): string | undefined {
     return this._objRef?.uuid;
   }
@@ -55,39 +64,37 @@ export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS =
     }
   }
 
-  // @ts-ignore
   public get name(): string | undefined {
     return this._objRef?.name;
   }
-  // @ts-ignore
   public get type(): (string | 'BufferGeometry') | undefined {
     return this._objRef?.type;
   }
   @Input()
-  public set index(value: BufferAttribute | null | [value: ArrayLike<number> | ArrayBufferView, offset?: number]) {
+  public set index(
+    value:
+      | BufferAttribute
+      | null
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
+  ) {
     if (this._objRef) {
-      this._objRef.index = applyValue<BufferAttribute | null>(this._objRef.index, value);
+      this._objRef.index = applyValue<BufferAttribute | null>(
+        this._objRef.index,
+        value,
+      );
     }
   }
-  // @ts-ignore
   public get index(): (BufferAttribute | null) | undefined {
     return this._objRef?.index;
   }
   @Input()
-  public set attributes(value: {
-    [name: string]: BufferAttribute | InterleavedBufferAttribute | GLBufferAttribute; // TODO Replace for 'Record<>'
-  }) {
+  public set attributes(value: Attributes) {
     if (this._objRef) {
       this._objRef.attributes = value;
     }
   }
 
-  // @ts-ignore
-  public get attributes():
-    | {
-        [name: string]: BufferAttribute | InterleavedBufferAttribute | GLBufferAttribute; // TODO Replace for 'Record<>'
-      }
-    | undefined {
+  public get attributes(): Attributes | undefined {
     return this._objRef?.attributes;
   }
   @Input()
@@ -99,7 +106,6 @@ export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS =
     }
   }
 
-  // @ts-ignore
   public get morphAttributes():
     | {
         [name: string]: Array<BufferAttribute | InterleavedBufferAttribute>; // TODO Replace for 'Record<>'
@@ -114,7 +120,6 @@ export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS =
     }
   }
 
-  // @ts-ignore
   public get morphTargetsRelative(): boolean | undefined {
     return this._objRef?.morphTargetsRelative;
   }
@@ -136,14 +141,13 @@ export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS =
        * @remarks Expects a `Integer`
        */
       materialIndex?: number | undefined;
-    }>
+    }>,
   ) {
     if (this._objRef) {
       this._objRef.groups = value;
     }
   }
 
-  // @ts-ignore
   public get groups():
     | Array<{
         /**
@@ -168,20 +172,26 @@ export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS =
   @Input()
   public set boundingBox(value: Box3 | null | [min: Vector3, max: Vector3]) {
     if (this._objRef) {
-      this._objRef.boundingBox = applyValue<Box3 | null>(this._objRef.boundingBox, value);
+      this._objRef.boundingBox = applyValue<Box3 | null>(
+        this._objRef.boundingBox,
+        value,
+      );
     }
   }
-  // @ts-ignore
   public get boundingBox(): (Box3 | null) | undefined {
     return this._objRef?.boundingBox;
   }
   @Input()
-  public set boundingSphere(value: Sphere | null | [center: Vector3, radius: number]) {
+  public set boundingSphere(
+    value: Sphere | null | [center: Vector3, radius: number],
+  ) {
     if (this._objRef) {
-      this._objRef.boundingSphere = applyValue<Sphere | null>(this._objRef.boundingSphere, value);
+      this._objRef.boundingSphere = applyValue<Sphere | null>(
+        this._objRef.boundingSphere,
+        value,
+      );
     }
   }
-  // @ts-ignore
   public get boundingSphere(): (Sphere | null) | undefined {
     return this._objRef?.boundingSphere;
   }
@@ -192,7 +202,6 @@ export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS =
     }
   }
 
-  // @ts-ignore
   public get drawRange(): { start: number; count: number } | undefined {
     return this._objRef?.drawRange;
   }
@@ -203,11 +212,9 @@ export class ThBufferGeometry<T extends BufferGeometry = BufferGeometry, TARGS =
     }
   }
 
-  // @ts-ignore
   public get userData(): { [key: string]: any } | undefined {
     return this._objRef?.userData;
   }
-  // @ts-ignore
   public get isBufferGeometry(): true | undefined {
     return this._objRef?.isBufferGeometry;
   }

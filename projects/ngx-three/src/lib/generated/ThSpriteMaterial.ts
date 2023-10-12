@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -28,7 +28,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThSpriteMaterial<
   T extends SpriteMaterial = SpriteMaterial,
-  TARGS = /* parameters? */ SpriteMaterialParameters
+  TARGS = /* parameters? */ SpriteMaterialParameters,
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<SpriteMaterial> {
     return SpriteMaterial;
@@ -41,7 +41,6 @@ export class ThSpriteMaterial<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -51,7 +50,6 @@ export class ThSpriteMaterial<
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
   }
-  // @ts-ignore
   public get color(): Color | undefined {
     return this._objRef?.color;
   }
@@ -62,7 +60,6 @@ export class ThSpriteMaterial<
     }
   }
 
-  // @ts-ignore
   public get map(): (Texture | null) | undefined {
     return this._objRef?.map;
   }
@@ -73,7 +70,6 @@ export class ThSpriteMaterial<
     }
   }
 
-  // @ts-ignore
   public get alphaMap(): (Texture | null) | undefined {
     return this._objRef?.alphaMap;
   }
@@ -84,7 +80,6 @@ export class ThSpriteMaterial<
     }
   }
 
-  // @ts-ignore
   public get rotation(): number | undefined {
     return this._objRef?.rotation;
   }
@@ -95,7 +90,6 @@ export class ThSpriteMaterial<
     }
   }
 
-  // @ts-ignore
   public get sizeAttenuation(): boolean | undefined {
     return this._objRef?.sizeAttenuation;
   }
@@ -106,7 +100,6 @@ export class ThSpriteMaterial<
     }
   }
 
-  // @ts-ignore
   public get transparent(): boolean | undefined {
     return this._objRef?.transparent;
   }
@@ -117,11 +110,9 @@ export class ThSpriteMaterial<
     }
   }
 
-  // @ts-ignore
   public get fog(): boolean | undefined {
     return this._objRef?.fog;
   }
-  // @ts-ignore
   public get isSpriteMaterial(): true | undefined {
     return this._objRef?.isSpriteMaterial;
   }

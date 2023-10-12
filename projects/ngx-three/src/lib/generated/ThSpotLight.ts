@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   ColorRepresentation,
@@ -36,28 +36,25 @@ export class ThSpotLight<
     distance?: number,
     angle?: number,
     penumbra?: number,
-    decay?: number
-  ]
+    decay?: number,
+  ],
 > extends ThLight<SpotLightShadow, T, TARGS> {
   public getType(): Type<SpotLight> {
     return SpotLight;
   }
 
-  // @ts-ignore
   public get isSpotLight(): true | undefined {
     return this._objRef?.isSpotLight;
   }
-  // @ts-ignore
   public get type(): (string | 'SpotLight') | undefined {
     return this._objRef?.type;
   }
   @Input()
   public set position(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
-      this._objRef.position = applyValue<Vector3>(this._objRef.position, value);
+      applyValue<Vector3>(this._objRef.position, value);
     }
   }
-  // @ts-ignore
   public get position(): Vector3 | undefined {
     return this._objRef?.position;
   }
@@ -68,7 +65,6 @@ export class ThSpotLight<
     }
   }
 
-  // @ts-ignore
   public get target(): Object3D | undefined {
     return this._objRef?.target;
   }
@@ -79,7 +75,6 @@ export class ThSpotLight<
     }
   }
 
-  // @ts-ignore
   public get castShadow(): boolean | undefined {
     return this._objRef?.castShadow;
   }
@@ -90,7 +85,6 @@ export class ThSpotLight<
     }
   }
 
-  // @ts-ignore
   public get intensity(): number | undefined {
     return this._objRef?.intensity;
   }
@@ -101,7 +95,6 @@ export class ThSpotLight<
     }
   }
 
-  // @ts-ignore
   public get distance(): number | undefined {
     return this._objRef?.distance;
   }
@@ -112,7 +105,6 @@ export class ThSpotLight<
     }
   }
 
-  // @ts-ignore
   public get angle(): number | undefined {
     return this._objRef?.angle;
   }
@@ -123,7 +115,6 @@ export class ThSpotLight<
     }
   }
 
-  // @ts-ignore
   public get decay(): number | undefined {
     return this._objRef?.decay;
   }
@@ -134,7 +125,6 @@ export class ThSpotLight<
     }
   }
 
-  // @ts-ignore
   public get shadow(): SpotLightShadow | undefined {
     return this._objRef?.shadow;
   }
@@ -145,7 +135,6 @@ export class ThSpotLight<
     }
   }
 
-  // @ts-ignore
   public get power(): number | undefined {
     return this._objRef?.power;
   }
@@ -156,7 +145,6 @@ export class ThSpotLight<
     }
   }
 
-  // @ts-ignore
   public get penumbra(): number | undefined {
     return this._objRef?.penumbra;
   }
@@ -167,7 +155,6 @@ export class ThSpotLight<
     }
   }
 
-  // @ts-ignore
   public get map(): (Texture | null) | undefined {
     return this._objRef?.map;
   }

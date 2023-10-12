@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { PolyhedronGeometry } from 'three';
+import { NormalBufferAttributes, PolyhedronGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -27,18 +27,16 @@ export class ThPolyhedronGeometry<
     vertices?: number[],
     indices?: number[],
     radius?: number,
-    detail?: number
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    detail?: number,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<PolyhedronGeometry> {
     return PolyhedronGeometry;
   }
 
-  // @ts-ignore
   public get type(): (string | 'PolyhedronGeometry') | undefined {
     return this._objRef?.type;
   }
-  // @ts-ignore
   public get parameters():
     | {
         readonly vertices: number[];

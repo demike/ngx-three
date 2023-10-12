@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
+  ColorSpace,
   DataTexture,
   MagnificationTextureFilter,
   Mapping,
   MinificationTextureFilter,
   PixelFormat,
   TextureDataType,
-  TextureEncoding,
   Wrapping,
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
@@ -43,14 +43,13 @@ export class ThDataTexture<
     magFilter?: MagnificationTextureFilter,
     minFilter?: MinificationTextureFilter,
     anisotropy?: number,
-    encoding?: TextureEncoding
-  ]
+    colorSpace?: ColorSpace,
+  ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<DataTexture> {
     return DataTexture;
   }
 
-  // @ts-ignore
   public get isDataTexture(): true | undefined {
     return this._objRef?.isDataTexture;
   }
@@ -61,7 +60,6 @@ export class ThDataTexture<
     }
   }
 
-  // @ts-ignore
   public get magFilter(): MagnificationTextureFilter | undefined {
     return this._objRef?.magFilter;
   }
@@ -72,7 +70,6 @@ export class ThDataTexture<
     }
   }
 
-  // @ts-ignore
   public get minFilter(): MinificationTextureFilter | undefined {
     return this._objRef?.minFilter;
   }
@@ -83,7 +80,6 @@ export class ThDataTexture<
     }
   }
 
-  // @ts-ignore
   public get flipY(): boolean | undefined {
     return this._objRef?.flipY;
   }
@@ -94,7 +90,6 @@ export class ThDataTexture<
     }
   }
 
-  // @ts-ignore
   public get generateMipmaps(): boolean | undefined {
     return this._objRef?.generateMipmaps;
   }
@@ -105,7 +100,6 @@ export class ThDataTexture<
     }
   }
 
-  // @ts-ignore
   public get unpackAlignment(): number | undefined {
     return this._objRef?.unpackAlignment;
   }

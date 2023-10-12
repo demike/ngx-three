@@ -1,5 +1,5 @@
 import * as ts from 'typescript';
-import { ParameterDeclaration, AbstractKeyword, SyntaxKind } from 'typescript';
+import { ParameterDeclaration, SyntaxKind } from 'typescript';
 import * as path from 'path';
 import { pascalToCamelCase } from './utils';
 import { NgxThreeOverrideStub } from './NgxThreeOverrideStub';
@@ -28,7 +28,10 @@ export abstract class NgxThreeClass {
   public wrappedClassGenericTypeNames = ''; // i.e.: "<T,U>"
   private inputs = '';
 
-  constructor(protected classSymbol: ts.Symbol, protected typeChecker: ts.TypeChecker) {
+  constructor(
+    protected classSymbol: ts.Symbol,
+    protected typeChecker: ts.TypeChecker,
+  ) {
     this.classDecl = this.fetchClassDecleration();
     this.wrappedClassName = this.classSymbol.escapedName as string;
     this.isAbstract = this.classDecl.modifiers?.find((m) => m.kind === SyntaxKind.AbstractKeyword) !== undefined;
@@ -60,7 +63,7 @@ export abstract class NgxThreeClass {
       this.imports.add(
         `import { Th${this.getBaseClassName()} } from './${
           isOverriddenClass(this.getBaseClassName()) ? NgxThreeOverrideStub.OVERRIDE_SUB_PATH : ''
-        }Th${this.getBaseClassName()}';`
+        }Th${this.getBaseClassName()}';`,
       );
     }
 
@@ -84,8 +87,8 @@ export abstract class NgxThreeClass {
 
     const ngxClassDeclarationString = `
     /* eslint-disable @typescript-eslint/naming-convention */
-    /* eslint-disable no-underscore-dangle, jsdoc/newline-after-description */
-    /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+    /* eslint-disable no-underscore-dangle */
+    /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
         ${[...this.imports].join('')}
 
         @Component({
@@ -186,7 +189,7 @@ export abstract class NgxThreeClass {
         if (
           INGORED_MEMBERS.find((m) => m === memberName) ||
           member.modifiers?.find(
-            (m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword
+            (m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword,
           )
         ) {
           // it's private or protected, or in the ingore list --> do not expose
@@ -204,7 +207,7 @@ export abstract class NgxThreeClass {
     return members;
   }
 
-  protected generateSetterInput(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
+  protected generateSetterInput(memberName: string, member: ts.PropertyDeclaration, _memberType: ts.Type) {
     const isReadonly = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.ReadonlyKeyword);
 
     const isStatic = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.StaticKeyword);
@@ -279,7 +282,7 @@ export abstract class NgxThreeClass {
     return setters;
   }
 
-  public generateGetter(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
+  public generateGetter(memberName: string, member: ts.PropertyDeclaration, _memberType: ts.Type) {
     const isStatic = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.StaticKeyword);
 
     if (isStatic) {
@@ -290,7 +293,6 @@ export abstract class NgxThreeClass {
     }
 
     return `
-    // @ts-ignore
     public get ${memberName}(): ( ${member.type?.getText()}) | undefined {
       return this._objRef?.${memberName};
     }`;
@@ -410,23 +412,23 @@ export abstract class NgxThreeClass {
                 if (ts.isTypeReferenceNode(type)) {
                   this.imports.add(
                     `import { ${type.typeName.getText()} } from '${this.getImportPathForSourceFile(
-                      type.getSourceFile()
-                    )}';`
+                      type.getSourceFile(),
+                    )}';`,
                   );
                 } else if (ts.isArrayTypeNode(type)) {
                   const typeRefNode = type.elementType as any as ts.TypeReferenceNode;
                   this.imports.add(
                     `import { ${typeRefNode.typeName.getText()} } from '${this.getImportPathForSourceFile(
-                      typeRefNode.getSourceFile()
-                    )}';`
+                      typeRefNode.getSourceFile(),
+                    )}';`,
                   );
                 }
               });
             } else if (typeNode && ts.isTypeReferenceNode(typeNode)) {
               this.imports.add(
                 `import { ${typeNode.typeName.getText()} } from '${this.getImportPathForSourceFile(
-                  typeNode.getSourceFile()
-                )}';`
+                  typeNode.getSourceFile(),
+                )}';`,
               );
             } else {
               // TODO:

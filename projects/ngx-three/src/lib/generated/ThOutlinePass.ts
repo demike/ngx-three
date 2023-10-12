@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -24,7 +24,7 @@ import {
   WebGLRenderTarget,
 } from 'three';
 import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';
@@ -43,8 +43,8 @@ export class ThOutlinePass<
     resolution: Vector2,
     scene: Scene,
     camera: Camera,
-    selectedObjects?: Object3D[]
-  ]
+    selectedObjects?: Object3D[],
+  ],
 > extends ThPass<T, TARGS> {
   public getType(): Type<OutlinePass> {
     return OutlinePass;
@@ -57,7 +57,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get renderScene(): Scene | undefined {
     return this._objRef?.renderScene;
   }
@@ -68,7 +67,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get renderCamera(): Camera | undefined {
     return this._objRef?.renderCamera;
   }
@@ -79,7 +77,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get selectedObjects(): Object3D[] | undefined {
     return this._objRef?.selectedObjects;
   }
@@ -88,11 +85,10 @@ export class ThOutlinePass<
     if (this._objRef) {
       this._objRef.visibleEdgeColor = applyValue<Color>(
         this._objRef.visibleEdgeColor,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get visibleEdgeColor(): Color | undefined {
     return this._objRef?.visibleEdgeColor;
   }
@@ -101,11 +97,10 @@ export class ThOutlinePass<
     if (this._objRef) {
       this._objRef.hiddenEdgeColor = applyValue<Color>(
         this._objRef.hiddenEdgeColor,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get hiddenEdgeColor(): Color | undefined {
     return this._objRef?.hiddenEdgeColor;
   }
@@ -116,7 +111,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get edgeGlow(): number | undefined {
     return this._objRef?.edgeGlow;
   }
@@ -127,7 +121,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get usePatternTexture(): boolean | undefined {
     return this._objRef?.usePatternTexture;
   }
@@ -138,7 +131,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get edgeThickness(): number | undefined {
     return this._objRef?.edgeThickness;
   }
@@ -149,7 +141,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get edgeStrength(): number | undefined {
     return this._objRef?.edgeStrength;
   }
@@ -160,7 +151,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get downSampleRatio(): number | undefined {
     return this._objRef?.downSampleRatio;
   }
@@ -171,7 +161,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get pulsePeriod(): number | undefined {
     return this._objRef?.pulsePeriod;
   }
@@ -180,11 +169,10 @@ export class ThOutlinePass<
     if (this._objRef) {
       this._objRef.resolution = applyValue<Vector2>(
         this._objRef.resolution,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get resolution(): Vector2 | undefined {
     return this._objRef?.resolution;
   }
@@ -195,7 +183,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get patternTexture(): Texture | undefined {
     return this._objRef?.patternTexture;
   }
@@ -206,7 +193,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get maskBufferMaterial(): MeshBasicMaterial | undefined {
     return this._objRef?.maskBufferMaterial;
   }
@@ -217,7 +203,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetMaskBuffer(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTargetMaskBuffer;
   }
@@ -228,7 +213,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get depthMaterial(): MeshDepthMaterial | undefined {
     return this._objRef?.depthMaterial;
   }
@@ -239,7 +223,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get prepareMaskMaterial(): ShaderMaterial | undefined {
     return this._objRef?.prepareMaskMaterial;
   }
@@ -250,7 +233,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetDepthBuffer(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTargetDepthBuffer;
   }
@@ -261,7 +243,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetMaskDownSampleBuffer(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTargetMaskDownSampleBuffer;
   }
@@ -272,7 +253,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetBlurBuffer1(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTargetBlurBuffer1;
   }
@@ -283,7 +263,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetBlurBuffer2(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTargetBlurBuffer2;
   }
@@ -294,7 +273,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get edgeDetectionMaterial(): ShaderMaterial | undefined {
     return this._objRef?.edgeDetectionMaterial;
   }
@@ -305,7 +283,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetEdgeBuffer1(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTargetEdgeBuffer1;
   }
@@ -316,7 +293,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetEdgeBuffer2(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTargetEdgeBuffer2;
   }
@@ -327,7 +303,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get separableBlurMaterial1(): ShaderMaterial | undefined {
     return this._objRef?.separableBlurMaterial1;
   }
@@ -338,7 +313,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get separableBlurMaterial2(): ShaderMaterial | undefined {
     return this._objRef?.separableBlurMaterial2;
   }
@@ -349,7 +323,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get overlayMaterial(): ShaderMaterial | undefined {
     return this._objRef?.overlayMaterial;
   }
@@ -360,7 +333,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get copyUniforms(): object | undefined {
     return this._objRef?.copyUniforms;
   }
@@ -371,7 +343,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get materialCopy(): ShaderMaterial | undefined {
     return this._objRef?.materialCopy;
   }
@@ -380,11 +351,10 @@ export class ThOutlinePass<
     if (this._objRef) {
       this._objRef.oldClearColor = applyValue<Color>(
         this._objRef.oldClearColor,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get oldClearColor(): Color | undefined {
     return this._objRef?.oldClearColor;
   }
@@ -395,7 +365,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get oldClearAlpha(): number | undefined {
     return this._objRef?.oldClearAlpha;
   }
@@ -406,7 +375,6 @@ export class ThOutlinePass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }
@@ -415,11 +383,10 @@ export class ThOutlinePass<
     if (this._objRef) {
       this._objRef.tempPulseColor1 = applyValue<Color>(
         this._objRef.tempPulseColor1,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get tempPulseColor1(): Color | undefined {
     return this._objRef?.tempPulseColor1;
   }
@@ -428,11 +395,10 @@ export class ThOutlinePass<
     if (this._objRef) {
       this._objRef.tempPulseColor2 = applyValue<Color>(
         this._objRef.tempPulseColor2,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get tempPulseColor2(): Color | undefined {
     return this._objRef?.tempPulseColor2;
   }
@@ -456,17 +422,16 @@ export class ThOutlinePass<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.textureMatrix = applyValue<Matrix4>(
         this._objRef.textureMatrix,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get textureMatrix(): Matrix4 | undefined {
     return this._objRef?.textureMatrix;
   }

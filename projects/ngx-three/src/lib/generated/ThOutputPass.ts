@@ -9,48 +9,28 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { ShaderMaterial, WebGLRenderTarget } from 'three';
+import { ShaderMaterial } from 'three';
+import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
-import { SavePass } from 'three/examples/jsm/postprocessing/SavePass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-savePass',
+  selector: 'th-outputPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThSavePass) },
+    { provide: ThPassBase, useExisting: forwardRef(() => ThOutputPass) },
   ],
 })
-export class ThSavePass<
-  T extends SavePass = SavePass,
-  TARGS = /* renderTarget? */ WebGLRenderTarget,
+export class ThOutputPass<
+  T extends OutputPass = OutputPass,
+  TARGS = [],
 > extends ThPass<T, TARGS> {
-  public getType(): Type<SavePass> {
-    return SavePass;
+  public getType(): Type<OutputPass> {
+    return OutputPass;
   }
 
-  @Input()
-  public set textureID(value: string) {
-    if (this._objRef) {
-      this._objRef.textureID = value;
-    }
-  }
-
-  public get textureID(): string | undefined {
-    return this._objRef?.textureID;
-  }
-  @Input()
-  public set renderTarget(value: WebGLRenderTarget) {
-    if (this._objRef) {
-      this._objRef.renderTarget = value;
-    }
-  }
-
-  public get renderTarget(): WebGLRenderTarget | undefined {
-    return this._objRef?.renderTarget;
-  }
   @Input()
   public set uniforms(map: { [name: string]: { value: any } }) {
     if (this._objRef) {

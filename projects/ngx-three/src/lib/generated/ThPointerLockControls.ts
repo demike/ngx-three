@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera } from 'three';
 import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
@@ -25,7 +25,7 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThPointerLockControls<
   T extends PointerLockControls = PointerLockControls,
-  TARGS = [camera: Camera, domElement?: HTMLElement]
+  TARGS = [camera: Camera, domElement?: HTMLElement],
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<PointerLockControls> {
     return PointerLockControls;
@@ -38,7 +38,6 @@ export class ThPointerLockControls<
     }
   }
 
-  // @ts-ignore
   public get camera(): Camera | undefined {
     return this._objRef?.camera;
   }
@@ -49,7 +48,6 @@ export class ThPointerLockControls<
     }
   }
 
-  // @ts-ignore
   public get domElement(): HTMLElement | undefined {
     return this._objRef?.domElement;
   }
@@ -60,7 +58,6 @@ export class ThPointerLockControls<
     }
   }
 
-  // @ts-ignore
   public get isLocked(): boolean | undefined {
     return this._objRef?.isLocked;
   }
@@ -71,7 +68,6 @@ export class ThPointerLockControls<
     }
   }
 
-  // @ts-ignore
   public get minPolarAngle(): number | undefined {
     return this._objRef?.minPolarAngle;
   }
@@ -82,7 +78,6 @@ export class ThPointerLockControls<
     }
   }
 
-  // @ts-ignore
   public get maxPolarAngle(): number | undefined {
     return this._objRef?.maxPolarAngle;
   }
@@ -93,7 +88,6 @@ export class ThPointerLockControls<
     }
   }
 
-  // @ts-ignore
   public get pointerSpeed(): number | undefined {
     return this._objRef?.pointerSpeed;
   }

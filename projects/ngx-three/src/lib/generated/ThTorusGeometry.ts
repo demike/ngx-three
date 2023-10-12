@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { TorusGeometry } from 'three';
+import { NormalBufferAttributes, TorusGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -28,18 +28,16 @@ export class ThTorusGeometry<
     tube?: number,
     radialSegments?: number,
     tubularSegments?: number,
-    arc?: number
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    arc?: number,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<TorusGeometry> {
     return TorusGeometry;
   }
 
-  // @ts-ignore
   public get type(): (string | 'TorusGeometry') | undefined {
     return this._objRef?.type;
   }
-  // @ts-ignore
   public get parameters():
     | {
         readonly radius: number;

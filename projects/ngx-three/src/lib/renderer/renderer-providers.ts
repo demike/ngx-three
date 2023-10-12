@@ -50,14 +50,14 @@ export class RendererProviderDirective implements OnChanges {
   constructor(
     private viewContainer: ViewContainerRef,
     private templateRef: TemplateRef<unknown>,
-    private parentInjector: Injector
+    private parentInjector: Injector,
   ) {}
 
   public getInjectedRenderers() {
     return this.injector?.get(RENDERER_PROVIDERS);
   }
 
-  public ngOnChanges(changes: SimpleChanges) {
+  public ngOnChanges(_changes: SimpleChanges) {
     this.createInjector();
     this.createView();
   }

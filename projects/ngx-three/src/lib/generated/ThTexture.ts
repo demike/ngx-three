@@ -1,16 +1,17 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   AnyMapping,
   AnyPixelFormat,
+  ColorSpace,
   MagnificationTextureFilter,
   Mapping,
   Matrix3,
@@ -38,28 +39,39 @@ import { applyValue } from '../util';
 })
 export class ThTexture<
   T extends Texture = Texture,
-  TARGS = [
-    image?: TexImageSource | OffscreenCanvas,
-    mapping?: Mapping,
-    wrapS?: Wrapping,
-    wrapT?: Wrapping,
-    magFilter?: MagnificationTextureFilter,
-    minFilter?: MinificationTextureFilter,
-    format?: PixelFormat,
-    type?: TextureDataType,
-    anisotropy?: number,
-    encoding?: TextureEncoding
-  ]
+  TARGS =
+    | [
+        image?: TexImageSource | OffscreenCanvas,
+        mapping?: Mapping,
+        wrapS?: Wrapping,
+        wrapT?: Wrapping,
+        magFilter?: MagnificationTextureFilter,
+        minFilter?: MinificationTextureFilter,
+        format?: PixelFormat,
+        type?: TextureDataType,
+        anisotropy?: number,
+        colorSpace?: ColorSpace,
+      ]
+    | [
+        image: TexImageSource | OffscreenCanvas,
+        mapping: Mapping,
+        wrapS: Wrapping,
+        wrapT: Wrapping,
+        magFilter: MagnificationTextureFilter,
+        minFilter: MinificationTextureFilter,
+        format: PixelFormat,
+        type: TextureDataType,
+        anisotropy: number,
+        encoding: TextureEncoding,
+      ],
 > extends ThTextureBase<T, TARGS> {
   public getType(): Type<Texture> {
     return Texture;
   }
 
-  // @ts-ignore
   public get isTexture(): true | undefined {
     return this._objRef?.isTexture;
   }
-  // @ts-ignore
   public get id(): number | undefined {
     return this._objRef?.id;
   }
@@ -70,7 +82,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get uuid(): string | undefined {
     return this._objRef?.uuid;
   }
@@ -81,7 +92,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get name(): string | undefined {
     return this._objRef?.name;
   }
@@ -92,7 +102,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get source(): Source | undefined {
     return this._objRef?.source;
   }
@@ -103,7 +112,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get mipmaps(): any[] | undefined {
     return this._objRef?.mipmaps;
   }
@@ -114,7 +122,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get mapping(): AnyMapping | undefined {
     return this._objRef?.mapping;
   }
@@ -125,7 +132,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get channel(): number | undefined {
     return this._objRef?.channel;
   }
@@ -136,7 +142,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get wrapS(): Wrapping | undefined {
     return this._objRef?.wrapS;
   }
@@ -147,7 +152,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get wrapT(): Wrapping | undefined {
     return this._objRef?.wrapT;
   }
@@ -158,7 +162,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get magFilter(): MagnificationTextureFilter | undefined {
     return this._objRef?.magFilter;
   }
@@ -169,7 +172,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get minFilter(): MinificationTextureFilter | undefined {
     return this._objRef?.minFilter;
   }
@@ -180,7 +182,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get anisotropy(): number | undefined {
     return this._objRef?.anisotropy;
   }
@@ -191,7 +192,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get format(): AnyPixelFormat | undefined {
     return this._objRef?.format;
   }
@@ -202,7 +202,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get type(): TextureDataType | undefined {
     return this._objRef?.type;
   }
@@ -213,7 +212,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get internalFormat(): (PixelFormatGPU | null) | undefined {
     return this._objRef?.internalFormat;
   }
@@ -230,14 +228,13 @@ export class ThTexture<
           n23: number,
           n31: number,
           n32: number,
-          n33: number
-        ]
+          n33: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.matrix = applyValue<Matrix3>(this._objRef.matrix, value);
     }
   }
-  // @ts-ignore
   public get matrix(): Matrix3 | undefined {
     return this._objRef?.matrix;
   }
@@ -248,7 +245,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get matrixAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixAutoUpdate;
   }
@@ -258,7 +254,6 @@ export class ThTexture<
       this._objRef.offset = applyValue<Vector2>(this._objRef.offset, value);
     }
   }
-  // @ts-ignore
   public get offset(): Vector2 | undefined {
     return this._objRef?.offset;
   }
@@ -268,7 +263,6 @@ export class ThTexture<
       this._objRef.repeat = applyValue<Vector2>(this._objRef.repeat, value);
     }
   }
-  // @ts-ignore
   public get repeat(): Vector2 | undefined {
     return this._objRef?.repeat;
   }
@@ -278,7 +272,6 @@ export class ThTexture<
       this._objRef.center = applyValue<Vector2>(this._objRef.center, value);
     }
   }
-  // @ts-ignore
   public get center(): Vector2 | undefined {
     return this._objRef?.center;
   }
@@ -289,7 +282,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get rotation(): number | undefined {
     return this._objRef?.rotation;
   }
@@ -300,7 +292,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get generateMipmaps(): boolean | undefined {
     return this._objRef?.generateMipmaps;
   }
@@ -311,7 +302,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get premultiplyAlpha(): boolean | undefined {
     return this._objRef?.premultiplyAlpha;
   }
@@ -322,7 +312,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get flipY(): boolean | undefined {
     return this._objRef?.flipY;
   }
@@ -333,7 +322,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get unpackAlignment(): number | undefined {
     return this._objRef?.unpackAlignment;
   }
@@ -344,9 +332,18 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get encoding(): TextureEncoding | undefined {
     return this._objRef?.encoding;
+  }
+  @Input()
+  public set colorSpace(value: ColorSpace) {
+    if (this._objRef) {
+      this._objRef.colorSpace = value;
+    }
+  }
+
+  public get colorSpace(): ColorSpace | undefined {
+    return this._objRef?.colorSpace;
   }
   @Input()
   public set isRenderTargetTexture(value: boolean) {
@@ -355,7 +352,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get isRenderTargetTexture(): boolean | undefined {
     return this._objRef?.isRenderTargetTexture;
   }
@@ -366,7 +362,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get needsPMREMUpdate(): boolean | undefined {
     return this._objRef?.needsPMREMUpdate;
   }
@@ -377,7 +372,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get userData(): any | undefined {
     return this._objRef?.userData;
   }
@@ -388,7 +382,6 @@ export class ThTexture<
     }
   }
 
-  // @ts-ignore
   public get version(): number | undefined {
     return this._objRef?.version;
   }

@@ -1,15 +1,14 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
 import { PVRLoader } from 'three/examples/jsm/loaders/PVRLoader';
 import { ThCompressedTexture } from '../../generated/ThCompressedTexture';
-import { ThTexture } from '../../generated/ThTexture';
 import {
   ThCallbackLoaderService,
   ThCallbackLoaderBaseDirective,
-  ThCallbackLoaderBasePipe
+  ThCallbackLoaderBasePipe,
 } from '../ThCallbackLoaderBase';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PVRLoaderService extends ThCallbackLoaderService<PVRLoader> {
   public clazz = PVRLoader;
@@ -17,7 +16,7 @@ export class PVRLoaderService extends ThCallbackLoaderService<PVRLoader> {
 
 @Pipe({
   name: 'loadPVRTexture',
-  pure: true
+  pure: true,
 })
 export class ThPVRLoaderPipe extends ThCallbackLoaderBasePipe<PVRLoader> implements PipeTransform {
   constructor(protected service: PVRLoaderService) {
@@ -26,13 +25,13 @@ export class ThPVRLoaderPipe extends ThCallbackLoaderBasePipe<PVRLoader> impleme
 }
 
 @Directive({
-  selector: '[loadPVRTexture]'
+  selector: '[loadPVRTexture]',
 })
 export class ThPVRLoaderDirective extends ThCallbackLoaderBaseDirective<PVRLoader> {
   constructor(
     @Host() protected host: ThCompressedTexture,
     protected zone: NgZone,
-    protected service: PVRLoaderService
+    protected service: PVRLoaderService,
   ) {
     super(host, zone);
   }

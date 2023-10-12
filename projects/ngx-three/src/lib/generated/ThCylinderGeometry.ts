@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { CylinderGeometry } from 'three';
+import { CylinderGeometry, NormalBufferAttributes } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -31,18 +31,16 @@ export class ThCylinderGeometry<
     heightSegments?: number,
     openEnded?: boolean,
     thetaStart?: number,
-    thetaLength?: number
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    thetaLength?: number,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<CylinderGeometry> {
     return CylinderGeometry;
   }
 
-  // @ts-ignore
   public get type(): (string | 'CylinderGeometry') | undefined {
     return this._objRef?.type;
   }
-  // @ts-ignore
   public get parameters():
     | {
         readonly radiusTop: number;

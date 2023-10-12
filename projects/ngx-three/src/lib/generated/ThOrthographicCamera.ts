@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { OrthographicCamera } from 'three';
 import { ThCamera } from './ThCamera';
@@ -32,18 +32,16 @@ export class ThOrthographicCamera<
     top?: number,
     bottom?: number,
     near?: number,
-    far?: number
-  ]
+    far?: number,
+  ],
 > extends ThCamera<T, TARGS> {
   public getType(): Type<OrthographicCamera> {
     return OrthographicCamera;
   }
 
-  // @ts-ignore
   public get isOrthographicCamera(): true | undefined {
     return this._objRef?.isOrthographicCamera;
   }
-  // @ts-ignore
   public get type(): (string | 'OrthographicCamera') | undefined {
     return this._objRef?.type;
   }
@@ -54,7 +52,6 @@ export class ThOrthographicCamera<
     }
   }
 
-  // @ts-ignore
   public get zoom(): number | undefined {
     return this._objRef?.zoom;
   }
@@ -68,14 +65,13 @@ export class ThOrthographicCamera<
       offsetY: number;
       width: number;
       height: number;
-    }
+    },
   ) {
     if (this._objRef) {
       this._objRef.view = value;
     }
   }
 
-  // @ts-ignore
   public get view():
     | (null | {
         enabled: boolean;
@@ -96,7 +92,6 @@ export class ThOrthographicCamera<
     }
   }
 
-  // @ts-ignore
   public get left(): number | undefined {
     return this._objRef?.left;
   }
@@ -107,7 +102,6 @@ export class ThOrthographicCamera<
     }
   }
 
-  // @ts-ignore
   public get right(): number | undefined {
     return this._objRef?.right;
   }
@@ -118,7 +112,6 @@ export class ThOrthographicCamera<
     }
   }
 
-  // @ts-ignore
   public get top(): number | undefined {
     return this._objRef?.top;
   }
@@ -129,7 +122,6 @@ export class ThOrthographicCamera<
     }
   }
 
-  // @ts-ignore
   public get bottom(): number | undefined {
     return this._objRef?.bottom;
   }
@@ -140,7 +132,6 @@ export class ThOrthographicCamera<
     }
   }
 
-  // @ts-ignore
   public get near(): number | undefined {
     return this._objRef?.near;
   }
@@ -151,7 +142,6 @@ export class ThOrthographicCamera<
     }
   }
 
-  // @ts-ignore
   public get far(): number | undefined {
     return this._objRef?.far;
   }

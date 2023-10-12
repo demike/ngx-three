@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera, Scene, Vector3 } from 'three';
 import { ArcballControls } from 'three/examples/jsm/controls/ArcballControls';
@@ -26,7 +26,7 @@ import { applyValue } from '../util';
 })
 export class ThArcballControls<
   T extends ArcballControls = ArcballControls,
-  TARGS = [camera: Camera, domElement: HTMLElement, scene?: Scene | null]
+  TARGS = [camera: Camera, domElement: HTMLElement, scene?: Scene | null],
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<ArcballControls> {
     return ArcballControls;
@@ -39,7 +39,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get camera(): (Camera | null) | undefined {
     return this._objRef?.camera;
   }
@@ -50,7 +49,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get domElement(): HTMLElement | undefined {
     return this._objRef?.domElement;
   }
@@ -61,7 +59,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get scene(): (Scene | null | undefined) | undefined {
     return this._objRef?.scene;
   }
@@ -72,7 +69,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get focusAnimationTime(): number | undefined {
     return this._objRef?.focusAnimationTime;
   }
@@ -83,7 +79,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get enabled(): boolean | undefined {
     return this._objRef?.enabled;
   }
@@ -94,7 +89,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get enablePan(): boolean | undefined {
     return this._objRef?.enablePan;
   }
@@ -105,7 +99,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get enableRotate(): boolean | undefined {
     return this._objRef?.enableRotate;
   }
@@ -116,7 +109,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get enableZoom(): boolean | undefined {
     return this._objRef?.enableZoom;
   }
@@ -127,7 +119,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get enableGizmos(): boolean | undefined {
     return this._objRef?.enableGizmos;
   }
@@ -138,7 +129,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get adjustNearFar(): boolean | undefined {
     return this._objRef?.adjustNearFar;
   }
@@ -149,7 +139,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get scaleFactor(): number | undefined {
     return this._objRef?.scaleFactor;
   }
@@ -160,7 +149,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get dampingFactor(): number | undefined {
     return this._objRef?.dampingFactor;
   }
@@ -171,7 +159,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get wMax(): number | undefined {
     return this._objRef?.wMax;
   }
@@ -182,7 +169,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get enableAnimations(): boolean | undefined {
     return this._objRef?.enableAnimations;
   }
@@ -193,7 +179,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get enableGrid(): boolean | undefined {
     return this._objRef?.enableGrid;
   }
@@ -204,7 +189,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get cursorZoom(): boolean | undefined {
     return this._objRef?.cursorZoom;
   }
@@ -215,7 +199,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get minFov(): number | undefined {
     return this._objRef?.minFov;
   }
@@ -226,7 +209,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get maxFov(): number | undefined {
     return this._objRef?.maxFov;
   }
@@ -237,7 +219,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get minDistance(): number | undefined {
     return this._objRef?.minDistance;
   }
@@ -248,7 +229,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get maxDistance(): number | undefined {
     return this._objRef?.maxDistance;
   }
@@ -259,7 +239,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get minZoom(): number | undefined {
     return this._objRef?.minZoom;
   }
@@ -270,7 +249,6 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get maxZoom(): number | undefined {
     return this._objRef?.maxZoom;
   }
@@ -280,7 +258,6 @@ export class ThArcballControls<
       this._objRef.target = applyValue<Vector3>(this._objRef.target, value);
     }
   }
-  // @ts-ignore
   public get target(): Vector3 | undefined {
     return this._objRef?.target;
   }
@@ -291,8 +268,17 @@ export class ThArcballControls<
     }
   }
 
-  // @ts-ignore
   public get radiusFactor(): number | undefined {
     return this._objRef?.radiusFactor;
+  }
+  @Input()
+  public set rotateSpeed(value: number) {
+    if (this._objRef) {
+      this._objRef.rotateSpeed = value;
+    }
+  }
+
+  public get rotateSpeed(): number | undefined {
+    return this._objRef?.rotateSpeed;
   }
 }

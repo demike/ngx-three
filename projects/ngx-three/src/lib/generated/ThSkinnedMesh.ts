@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Box3,
@@ -40,18 +40,16 @@ export class ThSkinnedMesh<
   TARGS = [
     geometry?: TGeometry,
     material?: TMaterial,
-    useVertexTexture?: boolean
-  ]
+    useVertexTexture?: boolean,
+  ],
 > extends ThMesh<TGeometry, TMaterial, T, TARGS> {
   public getType(): Type<SkinnedMesh<TGeometry, TMaterial>> {
     return SkinnedMesh;
   }
 
-  // @ts-ignore
   public get isSkinnedMesh(): true | undefined {
     return this._objRef?.isSkinnedMesh;
   }
-  // @ts-ignore
   public get type(): (string | 'SkinnedMesh') | undefined {
     return this._objRef?.type;
   }
@@ -62,7 +60,6 @@ export class ThSkinnedMesh<
     }
   }
 
-  // @ts-ignore
   public get bindMode(): ('attached' | 'detached') | undefined {
     return this._objRef?.bindMode;
   }
@@ -86,17 +83,16 @@ export class ThSkinnedMesh<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.bindMatrix = applyValue<Matrix4>(
         this._objRef.bindMatrix,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get bindMatrix(): Matrix4 | undefined {
     return this._objRef?.bindMatrix;
   }
@@ -120,17 +116,16 @@ export class ThSkinnedMesh<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.bindMatrixInverse = applyValue<Matrix4>(
         this._objRef.bindMatrixInverse,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get bindMatrixInverse(): Matrix4 | undefined {
     return this._objRef?.bindMatrixInverse;
   }
@@ -139,11 +134,10 @@ export class ThSkinnedMesh<
     if (this._objRef) {
       this._objRef.boundingBox = applyValue<Box3>(
         this._objRef.boundingBox,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get boundingBox(): Box3 | undefined {
     return this._objRef?.boundingBox;
   }
@@ -152,11 +146,10 @@ export class ThSkinnedMesh<
     if (this._objRef) {
       this._objRef.boundingSphere = applyValue<Sphere>(
         this._objRef.boundingSphere,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get boundingSphere(): Sphere | undefined {
     return this._objRef?.boundingSphere;
   }
@@ -167,7 +160,6 @@ export class ThSkinnedMesh<
     }
   }
 
-  // @ts-ignore
   public get skeleton(): Skeleton | undefined {
     return this._objRef?.skeleton;
   }

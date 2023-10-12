@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable prefer-arrow/prefer-arrow-functions */
 export const polyfillTs = `
 import "zone.js";`;
 
@@ -15,15 +14,15 @@ export async function toCodeSandbox(fileUrls: string[], declarations?: string[])
   const files: { [key: string]: any } = {
     'package.json': createPackageJson(),
     'src/index.html': {
-      content: createIndexHtml(tagName)
+      content: createIndexHtml(tagName),
     },
     'src/main.ts': {
-      content: createMainTs(fileName, declarations)
+      content: createMainTs(fileName, declarations),
     },
     'src/polyfills.ts': {
-      content: polyfillTs
+      content: polyfillTs,
     },
-    'src/assets.ts': { content: `export const ASSET_PATH = \'${GITHUB_ASSET_PATH}\';` }
+    'src/assets.ts': { content: `export const ASSET_PATH = \'${GITHUB_ASSET_PATH}\';` },
   };
 
   await applySources(fileUrls, files);
@@ -34,9 +33,9 @@ export async function toCodeSandbox(fileUrls: string[], declarations?: string[])
       // eslint-disable-next-line @typescript-eslint/naming-convention
       'Content-Type': 'application/json',
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      Accept: 'application/json'
+      Accept: 'application/json',
     },
-    body: JSON.stringify({ files })
+    body: JSON.stringify({ files }),
   })
     .then((x) => x.json())
     .then((response) => window.open(`https://codesandbox.io/s/${response.sandbox_id}`, '_blank'));
@@ -47,10 +46,10 @@ function applySources(fileUrls: string[], fileMap: { [key: string]: any }) {
     fileUrls.map((url) =>
       fetch(url).then(async (response) => {
         fileMap[`src/app/${getFileNameFromFullPath(url)}`] = {
-          content: await response.text()
+          content: await response.text(),
         };
-      })
-    )
+      }),
+    ),
   );
 }
 
@@ -61,10 +60,10 @@ function createPackageJson() {
       dependencies: {
         'ngx-three': 'latest',
         '@types/three': PACKAGE.devDependencies['@types/three'],
-        ...PACKAGE.dependencies
+        ...PACKAGE.dependencies,
       },
-      devDependencies: { ...PACKAGE.devDependencies }
-    }
+      devDependencies: { ...PACKAGE.devDependencies },
+    },
   };
 }
 
@@ -121,7 +120,7 @@ export function createIndexHtml(mainTagName: string) {
 export function getComponentNameFromFileName(fileName: string) {
   return fileName
     .replace('.ts', '')
-    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, index) => word.toUpperCase())
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, (word, _index) => word.toUpperCase())
     .replace(/[-.]/g, '');
 }
 

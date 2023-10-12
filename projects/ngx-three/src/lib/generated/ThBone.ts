@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Bone, Event } from 'three';
 import { ThObject3D } from './ThObject3D';
@@ -25,11 +25,9 @@ export class ThBone<T extends Bone = Bone, TARGS = []> extends ThObject3D<
     return Bone;
   }
 
-  // @ts-ignore
   public get isBone(): true | undefined {
     return this._objRef?.isBone;
   }
-  // @ts-ignore
   public get type(): (string | 'Bone') | undefined {
     return this._objRef?.type;
   }

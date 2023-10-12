@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { BufferGeometry, Event, Line, Material } from 'three';
 import { ThObject3D } from './ThObject3D';
@@ -21,17 +21,15 @@ export class ThLine<
   TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
   T extends Line<TGeometry, TMaterial> = Line<TGeometry, TMaterial>,
-  TARGS = [geometry?: TGeometry, material?: TMaterial]
+  TARGS = [geometry?: TGeometry, material?: TMaterial],
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Line<TGeometry, TMaterial>> {
     return Line;
   }
 
-  // @ts-ignore
   public get isLine(): true | undefined {
     return this._objRef?.isLine;
   }
-  // @ts-ignore
   public get type(): (string | 'Line') | undefined {
     return this._objRef?.type;
   }
@@ -42,7 +40,6 @@ export class ThLine<
     }
   }
 
-  // @ts-ignore
   public get geometry(): TGeometry | undefined {
     return this._objRef?.geometry;
   }
@@ -53,7 +50,6 @@ export class ThLine<
     }
   }
 
-  // @ts-ignore
   public get material(): TMaterial | undefined {
     return this._objRef?.material;
   }
@@ -64,20 +60,18 @@ export class ThLine<
     }
   }
 
-  // @ts-ignore
   public get morphTargetInfluences(): (number[] | undefined) | undefined {
     return this._objRef?.morphTargetInfluences;
   }
   @Input()
   public set morphTargetDictionary(
-    value: { [key: string]: number } | undefined
+    value: { [key: string]: number } | undefined,
   ) {
     if (this._objRef) {
       this._objRef.morphTargetDictionary = value;
     }
   }
 
-  // @ts-ignore
   public get morphTargetDictionary():
     | ({ [key: string]: number } | undefined)
     | undefined {

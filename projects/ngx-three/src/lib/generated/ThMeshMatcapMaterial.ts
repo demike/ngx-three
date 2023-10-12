@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -33,7 +33,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThMeshMatcapMaterial<
   T extends MeshMatcapMaterial = MeshMatcapMaterial,
-  TARGS = /* parameters? */ MeshMatcapMaterialParameters
+  TARGS = /* parameters? */ MeshMatcapMaterialParameters,
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<MeshMatcapMaterial> {
     return MeshMatcapMaterial;
@@ -46,7 +46,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -57,7 +56,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get defines(): { [key: string]: any } | undefined {
     return this._objRef?.defines;
   }
@@ -67,7 +65,6 @@ export class ThMeshMatcapMaterial<
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
   }
-  // @ts-ignore
   public get color(): Color | undefined {
     return this._objRef?.color;
   }
@@ -78,7 +75,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get matcap(): (Texture | null) | undefined {
     return this._objRef?.matcap;
   }
@@ -89,7 +85,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get map(): (Texture | null) | undefined {
     return this._objRef?.map;
   }
@@ -100,7 +95,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get bumpMap(): (Texture | null) | undefined {
     return this._objRef?.bumpMap;
   }
@@ -111,7 +105,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get bumpScale(): number | undefined {
     return this._objRef?.bumpScale;
   }
@@ -122,7 +115,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get normalMap(): (Texture | null) | undefined {
     return this._objRef?.normalMap;
   }
@@ -133,7 +125,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get normalMapType(): NormalMapTypes | undefined {
     return this._objRef?.normalMapType;
   }
@@ -142,11 +133,10 @@ export class ThMeshMatcapMaterial<
     if (this._objRef) {
       this._objRef.normalScale = applyValue<Vector2>(
         this._objRef.normalScale,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get normalScale(): Vector2 | undefined {
     return this._objRef?.normalScale;
   }
@@ -157,7 +147,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementMap(): (Texture | null) | undefined {
     return this._objRef?.displacementMap;
   }
@@ -168,7 +157,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementScale(): number | undefined {
     return this._objRef?.displacementScale;
   }
@@ -179,7 +167,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementBias(): number | undefined {
     return this._objRef?.displacementBias;
   }
@@ -190,7 +177,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get alphaMap(): (Texture | null) | undefined {
     return this._objRef?.alphaMap;
   }
@@ -201,7 +187,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get flatShading(): boolean | undefined {
     return this._objRef?.flatShading;
   }
@@ -212,7 +197,6 @@ export class ThMeshMatcapMaterial<
     }
   }
 
-  // @ts-ignore
   public get fog(): boolean | undefined {
     return this._objRef?.fog;
   }

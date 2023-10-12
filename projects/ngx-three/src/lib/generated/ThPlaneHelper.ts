@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { BufferGeometry, Material, Plane, PlaneHelper, Vector3 } from 'three';
 import { applyValue } from '../util';
@@ -23,13 +23,12 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThPlaneHelper<
   T extends PlaneHelper = PlaneHelper,
-  TARGS = [plane: Plane, size?: number, hex?: number]
+  TARGS = [plane: Plane, size?: number, hex?: number],
 > extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<PlaneHelper> {
     return PlaneHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'PlaneHelper') | undefined {
     return this._objRef?.type;
   }
@@ -39,7 +38,6 @@ export class ThPlaneHelper<
       this._objRef.plane = applyValue<Plane>(this._objRef.plane, value);
     }
   }
-  // @ts-ignore
   public get plane(): Plane | undefined {
     return this._objRef?.plane;
   }
@@ -50,7 +48,6 @@ export class ThPlaneHelper<
     }
   }
 
-  // @ts-ignore
   public get size(): number | undefined {
     return this._objRef?.size;
   }

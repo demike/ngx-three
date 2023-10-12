@@ -68,10 +68,8 @@ export class NgxThreePass extends NgxThreeClass {
   public generateGetter(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
     if (memberName === 'uniforms') {
       return `
-      // @ts-ignore
       public get uniforms(): { [name: string]: { value: any } } | undefined {
-        // @ts-ignore
-        return this._objRef?.uniforms;
+        return this._objRef?.uniforms as { [name: string]: { value: any } } | undefined;
       }`;
     }
 

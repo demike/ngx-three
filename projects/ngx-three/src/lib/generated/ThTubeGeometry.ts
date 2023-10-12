@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { Curve, TubeGeometry, Vector3 } from 'three';
+import { Curve, NormalBufferAttributes, TubeGeometry, Vector3 } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -29,18 +29,16 @@ export class ThTubeGeometry<
     tubularSegments?: number,
     radius?: number,
     radialSegments?: number,
-    closed?: boolean
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    closed?: boolean,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<TubeGeometry> {
     return TubeGeometry;
   }
 
-  // @ts-ignore
   public get type(): (string | 'TubeGeometry') | undefined {
     return this._objRef?.type;
   }
-  // @ts-ignore
   public get parameters():
     | {
         readonly path: Curve<Vector3>;
@@ -59,7 +57,6 @@ export class ThTubeGeometry<
     }
   }
 
-  // @ts-ignore
   public get tangents(): Vector3[] | undefined {
     return this._objRef?.tangents;
   }
@@ -70,7 +67,6 @@ export class ThTubeGeometry<
     }
   }
 
-  // @ts-ignore
   public get normals(): Vector3[] | undefined {
     return this._objRef?.normals;
   }
@@ -81,7 +77,6 @@ export class ThTubeGeometry<
     }
   }
 
-  // @ts-ignore
   public get binormals(): Vector3[] | undefined {
     return this._objRef?.binormals;
   }

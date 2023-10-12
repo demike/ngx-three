@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { TorusKnotGeometry } from 'three';
+import { NormalBufferAttributes, TorusKnotGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -29,18 +29,16 @@ export class ThTorusKnotGeometry<
     tubularSegments?: number,
     radialSegments?: number,
     p?: number,
-    q?: number
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    q?: number,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<TorusKnotGeometry> {
     return TorusKnotGeometry;
   }
 
-  // @ts-ignore
   public get type(): (string | 'TorusKnotGeometry') | undefined {
     return this._objRef?.type;
   }
-  // @ts-ignore
   public get parameters():
     | {
         readonly radius: number;

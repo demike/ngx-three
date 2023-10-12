@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -39,17 +39,15 @@ import { applyValue } from '../util';
 export class ThObject3D<
   E extends BaseEvent = Event,
   T extends Object3D<E> = Object3D<E>,
-  TARGS = []
+  TARGS = [],
 > extends ThObjectBase<T, TARGS> {
   public getType(): Type<Object3D<E>> {
     return Object3D;
   }
 
-  // @ts-ignore
   public get isObject3D(): true | undefined {
     return this._objRef?.isObject3D;
   }
-  // @ts-ignore
   public get id(): number | undefined {
     return this._objRef?.id;
   }
@@ -60,7 +58,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get uuid(): string | undefined {
     return this._objRef?.uuid;
   }
@@ -71,11 +68,9 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get name(): string | undefined {
     return this._objRef?.name;
   }
-  // @ts-ignore
   public get type(): (string | 'Object3D') | undefined {
     return this._objRef?.type;
   }
@@ -86,7 +81,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get children(): Object3D[] | undefined {
     return this._objRef?.children;
   }
@@ -96,7 +90,6 @@ export class ThObject3D<
       this._objRef.up = applyValue<Vector3>(this._objRef.up, value);
     }
   }
-  // @ts-ignore
   public get up(): Vector3 | undefined {
     return this._objRef?.up;
   }
@@ -106,31 +99,28 @@ export class ThObject3D<
       applyValue<Vector3>(this._objRef.position, value);
     }
   }
-  // @ts-ignore
   public get position(): Vector3 | undefined {
     return this._objRef?.position;
   }
   @Input()
   public set rotation(
-    value: Euler | [x: number, y: number, z: number, order?: EulerOrder]
+    value: Euler | [x: number, y: number, z: number, order?: EulerOrder],
   ) {
     if (this._objRef) {
       applyValue<Euler>(this._objRef.rotation, value);
     }
   }
-  // @ts-ignore
   public get rotation(): Euler | undefined {
     return this._objRef?.rotation;
   }
   @Input()
   public set quaternion(
-    value: Quaternion | [x: number, y: number, z: number, w: number]
+    value: Quaternion | [x: number, y: number, z: number, w: number],
   ) {
     if (this._objRef) {
       applyValue<Quaternion>(this._objRef.quaternion, value);
     }
   }
-  // @ts-ignore
   public get quaternion(): Quaternion | undefined {
     return this._objRef?.quaternion;
   }
@@ -140,7 +130,6 @@ export class ThObject3D<
       applyValue<Vector3>(this._objRef.scale, value);
     }
   }
-  // @ts-ignore
   public get scale(): Vector3 | undefined {
     return this._objRef?.scale;
   }
@@ -164,14 +153,13 @@ export class ThObject3D<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       applyValue<Matrix4>(this._objRef.modelViewMatrix, value);
     }
   }
-  // @ts-ignore
   public get modelViewMatrix(): Matrix4 | undefined {
     return this._objRef?.modelViewMatrix;
   }
@@ -188,14 +176,13 @@ export class ThObject3D<
           n23: number,
           n31: number,
           n32: number,
-          n33: number
-        ]
+          n33: number,
+        ],
   ) {
     if (this._objRef) {
       applyValue<Matrix3>(this._objRef.normalMatrix, value);
     }
   }
-  // @ts-ignore
   public get normalMatrix(): Matrix3 | undefined {
     return this._objRef?.normalMatrix;
   }
@@ -219,14 +206,13 @@ export class ThObject3D<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
     }
   }
-  // @ts-ignore
   public get matrix(): Matrix4 | undefined {
     return this._objRef?.matrix;
   }
@@ -250,17 +236,16 @@ export class ThObject3D<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.matrixWorld = applyValue<Matrix4>(
         this._objRef.matrixWorld,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get matrixWorld(): Matrix4 | undefined {
     return this._objRef?.matrixWorld;
   }
@@ -271,7 +256,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get matrixAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixAutoUpdate;
   }
@@ -282,7 +266,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get matrixWorldAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixWorldAutoUpdate;
   }
@@ -293,7 +276,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get matrixWorldNeedsUpdate(): boolean | undefined {
     return this._objRef?.matrixWorldNeedsUpdate;
   }
@@ -303,7 +285,6 @@ export class ThObject3D<
       this._objRef.layers = applyValue<Layers>(this._objRef.layers, value);
     }
   }
-  // @ts-ignore
   public get layers(): Layers | undefined {
     return this._objRef?.layers;
   }
@@ -314,7 +295,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get visible(): boolean | undefined {
     return this._objRef?.visible;
   }
@@ -325,7 +305,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get castShadow(): boolean | undefined {
     return this._objRef?.castShadow;
   }
@@ -336,7 +315,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get receiveShadow(): boolean | undefined {
     return this._objRef?.receiveShadow;
   }
@@ -347,7 +325,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get frustumCulled(): boolean | undefined {
     return this._objRef?.frustumCulled;
   }
@@ -358,7 +335,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get renderOrder(): number | undefined {
     return this._objRef?.renderOrder;
   }
@@ -369,7 +345,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get animations(): AnimationClip[] | undefined {
     return this._objRef?.animations;
   }
@@ -380,7 +355,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get userData(): { [key: string]: any } | undefined {
     return this._objRef?.userData;
   }
@@ -391,7 +365,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get customDepthMaterial(): (Material | undefined) | undefined {
     return this._objRef?.customDepthMaterial;
   }
@@ -402,7 +375,6 @@ export class ThObject3D<
     }
   }
 
-  // @ts-ignore
   public get customDistanceMaterial(): (Material | undefined) | undefined {
     return this._objRef?.customDistanceMaterial;
   }
@@ -414,15 +386,14 @@ export class ThObject3D<
       camera: Camera,
       geometry: BufferGeometry,
       material: Material,
-      group: Group
-    ) => void
+      group: Group,
+    ) => void,
   ) {
     if (this._objRef) {
       this._objRef.onBeforeRender = value;
     }
   }
 
-  // @ts-ignore
   public get onBeforeRender():
     | ((
         renderer: WebGLRenderer,
@@ -430,7 +401,7 @@ export class ThObject3D<
         camera: Camera,
         geometry: BufferGeometry,
         material: Material,
-        group: Group
+        group: Group,
       ) => void)
     | undefined {
     return this._objRef?.onBeforeRender;
@@ -443,15 +414,14 @@ export class ThObject3D<
       camera: Camera,
       geometry: BufferGeometry,
       material: Material,
-      group: Group
-    ) => void
+      group: Group,
+    ) => void,
   ) {
     if (this._objRef) {
       this._objRef.onAfterRender = value;
     }
   }
 
-  // @ts-ignore
   public get onAfterRender():
     | ((
         renderer: WebGLRenderer,
@@ -459,7 +429,7 @@ export class ThObject3D<
         camera: Camera,
         geometry: BufferGeometry,
         material: Material,
-        group: Group
+        group: Group,
       ) => void)
     | undefined {
     return this._objRef?.onAfterRender;

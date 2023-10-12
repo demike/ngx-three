@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
@@ -15,6 +15,7 @@ import {
   BlendingSrcFactor,
   DepthModes,
   Material,
+  Plane,
   Side,
   StencilFunc,
   StencilOp,
@@ -30,12 +31,22 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThMaterial<
   T extends Material = Material,
-  TARGS = []
+  TARGS = [],
 > extends ThMaterialBase<T, TARGS> {
   public getType(): Type<Material> {
     return Material;
   }
 
+  @Input()
+  public set alphaHash(value: boolean) {
+    if (this._objRef) {
+      this._objRef.alphaHash = value;
+    }
+  }
+
+  public get alphaHash(): boolean | undefined {
+    return this._objRef?.alphaHash;
+  }
   @Input()
   public set alphaTest(value: number) {
     if (this._objRef) {
@@ -43,7 +54,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get alphaTest(): number | undefined {
     return this._objRef?.alphaTest;
   }
@@ -54,7 +64,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get alphaToCoverage(): boolean | undefined {
     return this._objRef?.alphaToCoverage;
   }
@@ -65,7 +74,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get blendDst(): BlendingDstFactor | undefined {
     return this._objRef?.blendDst;
   }
@@ -76,7 +84,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get blendDstAlpha(): (number | null) | undefined {
     return this._objRef?.blendDstAlpha;
   }
@@ -87,7 +94,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get blendEquation(): BlendingEquation | undefined {
     return this._objRef?.blendEquation;
   }
@@ -98,7 +104,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get blendEquationAlpha(): (number | null) | undefined {
     return this._objRef?.blendEquationAlpha;
   }
@@ -109,7 +114,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get blending(): Blending | undefined {
     return this._objRef?.blending;
   }
@@ -120,7 +124,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get blendSrc(): (BlendingSrcFactor | BlendingDstFactor) | undefined {
     return this._objRef?.blendSrc;
   }
@@ -131,7 +134,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get blendSrcAlpha(): (number | null) | undefined {
     return this._objRef?.blendSrcAlpha;
   }
@@ -142,19 +144,17 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get clipIntersection(): boolean | undefined {
     return this._objRef?.clipIntersection;
   }
   @Input()
-  public set clippingPlanes(value: any) {
+  public set clippingPlanes(value: Plane[]) {
     if (this._objRef) {
       this._objRef.clippingPlanes = value;
     }
   }
 
-  // @ts-ignore
-  public get clippingPlanes(): any | undefined {
+  public get clippingPlanes(): Plane[] | undefined {
     return this._objRef?.clippingPlanes;
   }
   @Input()
@@ -164,7 +164,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get clipShadows(): boolean | undefined {
     return this._objRef?.clipShadows;
   }
@@ -175,7 +174,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get colorWrite(): boolean | undefined {
     return this._objRef?.colorWrite;
   }
@@ -186,7 +184,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get defines(): (undefined | { [key: string]: any }) | undefined {
     return this._objRef?.defines;
   }
@@ -197,7 +194,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get depthFunc(): DepthModes | undefined {
     return this._objRef?.depthFunc;
   }
@@ -208,7 +204,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get depthTest(): boolean | undefined {
     return this._objRef?.depthTest;
   }
@@ -219,7 +214,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get depthWrite(): boolean | undefined {
     return this._objRef?.depthWrite;
   }
@@ -230,7 +224,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get id(): number | undefined {
     return this._objRef?.id;
   }
@@ -241,7 +234,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get stencilWrite(): boolean | undefined {
     return this._objRef?.stencilWrite;
   }
@@ -252,7 +244,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get stencilFunc(): StencilFunc | undefined {
     return this._objRef?.stencilFunc;
   }
@@ -263,7 +254,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get stencilRef(): number | undefined {
     return this._objRef?.stencilRef;
   }
@@ -274,7 +264,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get stencilWriteMask(): number | undefined {
     return this._objRef?.stencilWriteMask;
   }
@@ -285,7 +274,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get stencilFuncMask(): number | undefined {
     return this._objRef?.stencilFuncMask;
   }
@@ -296,7 +284,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get stencilFail(): StencilOp | undefined {
     return this._objRef?.stencilFail;
   }
@@ -307,7 +294,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get stencilZFail(): StencilOp | undefined {
     return this._objRef?.stencilZFail;
   }
@@ -318,11 +304,9 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get stencilZPass(): StencilOp | undefined {
     return this._objRef?.stencilZPass;
   }
-  // @ts-ignore
   public get isMaterial(): true | undefined {
     return this._objRef?.isMaterial;
   }
@@ -333,7 +317,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get name(): string | undefined {
     return this._objRef?.name;
   }
@@ -344,7 +327,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get needsUpdate(): boolean | undefined {
     return this._objRef?.needsUpdate;
   }
@@ -355,7 +337,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get opacity(): number | undefined {
     return this._objRef?.opacity;
   }
@@ -366,7 +347,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get polygonOffset(): boolean | undefined {
     return this._objRef?.polygonOffset;
   }
@@ -377,7 +357,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get polygonOffsetFactor(): number | undefined {
     return this._objRef?.polygonOffsetFactor;
   }
@@ -388,7 +367,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get polygonOffsetUnits(): number | undefined {
     return this._objRef?.polygonOffsetUnits;
   }
@@ -399,7 +377,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get precision(): ('highp' | 'mediump' | 'lowp' | null) | undefined {
     return this._objRef?.precision;
   }
@@ -410,7 +387,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get premultipliedAlpha(): boolean | undefined {
     return this._objRef?.premultipliedAlpha;
   }
@@ -421,7 +397,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get forceSinglePass(): boolean | undefined {
     return this._objRef?.forceSinglePass;
   }
@@ -432,7 +407,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get dithering(): boolean | undefined {
     return this._objRef?.dithering;
   }
@@ -443,7 +417,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get side(): Side | undefined {
     return this._objRef?.side;
   }
@@ -454,7 +427,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get shadowSide(): (Side | null) | undefined {
     return this._objRef?.shadowSide;
   }
@@ -465,7 +437,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get toneMapped(): boolean | undefined {
     return this._objRef?.toneMapped;
   }
@@ -476,7 +447,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get transparent(): boolean | undefined {
     return this._objRef?.transparent;
   }
@@ -487,7 +457,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -498,7 +467,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get uuid(): string | undefined {
     return this._objRef?.uuid;
   }
@@ -509,7 +477,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get vertexColors(): boolean | undefined {
     return this._objRef?.vertexColors;
   }
@@ -520,7 +487,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get visible(): boolean | undefined {
     return this._objRef?.visible;
   }
@@ -531,7 +497,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get userData(): any | undefined {
     return this._objRef?.userData;
   }
@@ -542,7 +507,6 @@ export class ThMaterial<
     }
   }
 
-  // @ts-ignore
   public get version(): number | undefined {
     return this._objRef?.version;
   }

@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { InstancedBufferGeometry } from 'three';
+import { InstancedBufferGeometry, NormalBufferAttributes } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -24,8 +24,8 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThInstancedBufferGeometry<
   T extends InstancedBufferGeometry = InstancedBufferGeometry,
-  TARGS = []
-> extends ThBufferGeometry<T, TARGS> {
+  TARGS = [],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<InstancedBufferGeometry> {
     return InstancedBufferGeometry;
   }
@@ -37,11 +37,9 @@ export class ThInstancedBufferGeometry<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
-  // @ts-ignore
   public get isInstancedBufferGeometry(): true | undefined {
     return this._objRef?.isInstancedBufferGeometry;
   }
@@ -52,7 +50,6 @@ export class ThInstancedBufferGeometry<
     }
   }
 
-  // @ts-ignore
   public get instanceCount(): number | undefined {
     return this._objRef?.instanceCount;
   }

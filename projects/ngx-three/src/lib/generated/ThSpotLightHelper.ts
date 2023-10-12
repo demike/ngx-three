@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   ColorRepresentation,
@@ -29,13 +29,12 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThSpotLightHelper<
   T extends SpotLightHelper = SpotLightHelper,
-  TARGS = [light: Light, color?: ColorRepresentation]
+  TARGS = [light: Light, color?: ColorRepresentation],
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<SpotLightHelper> {
     return SpotLightHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'SpotLightHelper') | undefined {
     return this._objRef?.type;
   }
@@ -46,7 +45,6 @@ export class ThSpotLightHelper<
     }
   }
 
-  // @ts-ignore
   public get cone(): LineSegments | undefined {
     return this._objRef?.cone;
   }
@@ -57,7 +55,6 @@ export class ThSpotLightHelper<
     }
   }
 
-  // @ts-ignore
   public get light(): Light | undefined {
     return this._objRef?.light;
   }
@@ -81,14 +78,13 @@ export class ThSpotLightHelper<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
     }
   }
-  // @ts-ignore
   public get matrix(): Matrix4 | undefined {
     return this._objRef?.matrix;
   }
@@ -99,7 +95,6 @@ export class ThSpotLightHelper<
     }
   }
 
-  // @ts-ignore
   public get color(): (ColorRepresentation | undefined) | undefined {
     return this._objRef?.color;
   }
@@ -110,7 +105,6 @@ export class ThSpotLightHelper<
     }
   }
 
-  // @ts-ignore
   public get matrixAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixAutoUpdate;
   }

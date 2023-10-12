@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { AxesHelper, BufferGeometry, Material } from 'three';
 import { ThLineSegments } from './ThLineSegments';
@@ -21,13 +21,12 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThAxesHelper<
   T extends AxesHelper = AxesHelper,
-  TARGS = /* size? */ number
+  TARGS = /* size? */ number,
 > extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<AxesHelper> {
     return AxesHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'AxesHelper') | undefined {
     return this._objRef?.type;
   }

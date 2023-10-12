@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
@@ -25,7 +25,7 @@ import { ThPass } from './ThPass';
 })
 export class ThShaderPass<
   T extends ShaderPass = ShaderPass,
-  TARGS = [shader: object, textureID?: string]
+  TARGS = [shader: object, textureID?: string],
 > extends ThPass<T, TARGS> {
   public getType(): Type<ShaderPass> {
     return ShaderPass;
@@ -38,7 +38,6 @@ export class ThShaderPass<
     }
   }
 
-  // @ts-ignore
   public get textureID(): string | undefined {
     return this._objRef?.textureID;
   }
@@ -49,10 +48,10 @@ export class ThShaderPass<
     }
   }
 
-  // @ts-ignore
   public get uniforms(): { [name: string]: { value: any } } | undefined {
-    // @ts-ignore
-    return this._objRef?.uniforms;
+    return this._objRef?.uniforms as
+      | { [name: string]: { value: any } }
+      | undefined;
   }
   @Input()
   public set material(value: ShaderMaterial) {
@@ -61,7 +60,6 @@ export class ThShaderPass<
     }
   }
 
-  // @ts-ignore
   public get material(): ShaderMaterial | undefined {
     return this._objRef?.material;
   }
@@ -72,7 +70,6 @@ export class ThShaderPass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }

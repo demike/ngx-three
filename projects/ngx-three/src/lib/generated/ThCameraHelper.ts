@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { BufferGeometry, Camera, CameraHelper, Material, Matrix4 } from 'three';
 import { applyValue } from '../util';
@@ -23,13 +23,12 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThCameraHelper<
   T extends CameraHelper = CameraHelper,
-  TARGS = /* camera */ Camera
+  TARGS = /* camera */ Camera,
 > extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
   public getType(): Type<CameraHelper> {
     return CameraHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'CameraHelper') | undefined {
     return this._objRef?.type;
   }
@@ -40,7 +39,6 @@ export class ThCameraHelper<
     }
   }
 
-  // @ts-ignore
   public get camera(): Camera | undefined {
     return this._objRef?.camera;
   }
@@ -51,7 +49,6 @@ export class ThCameraHelper<
     }
   }
 
-  // @ts-ignore
   public get pointMap(): { [id: string]: number[] } | undefined {
     return this._objRef?.pointMap;
   }
@@ -75,14 +72,13 @@ export class ThCameraHelper<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
     }
   }
-  // @ts-ignore
   public get matrix(): Matrix4 | undefined {
     return this._objRef?.matrix;
   }
@@ -93,7 +89,6 @@ export class ThCameraHelper<
     }
   }
 
-  // @ts-ignore
   public get matrixAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixAutoUpdate;
   }

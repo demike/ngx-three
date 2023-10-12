@@ -11,7 +11,7 @@ import { EventsExampleComponent } from './events-example/events-example.componen
 import { CodeComponent } from './code/code.component';
 import { MaterialModule } from './material/material.module';
 
-import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
+import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
 import { HighlightPlusModule } from 'ngx-highlightjs/plus';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DynamicLoaderExampleComponent } from './dynamic-loader-example/dynamic-loader-example.component';
@@ -83,7 +83,7 @@ import { HtmlWithCSS3dExampleComponent } from './html-with-css3d-example/html-wi
     NgxThreeModule,
     MaterialModule,
     FormsModule,
-    //  HighlightModule,
+    HighlightModule,
     HighlightPlusModule,
     BrowserAnimationsModule,
     LayoutModule,

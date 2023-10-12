@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ColorRepresentation, PointLight, PointLightShadow } from 'three';
 import { ThLight } from './ThLight';
@@ -26,8 +26,8 @@ export class ThPointLight<
     color?: ColorRepresentation,
     intensity?: number,
     distance?: number,
-    decay?: number
-  ]
+    decay?: number,
+  ],
 > extends ThLight<PointLightShadow, T, TARGS> {
   public getType(): Type<PointLight> {
     return PointLight;
@@ -40,7 +40,6 @@ export class ThPointLight<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -51,7 +50,6 @@ export class ThPointLight<
     }
   }
 
-  // @ts-ignore
   public get intensity(): number | undefined {
     return this._objRef?.intensity;
   }
@@ -62,7 +60,6 @@ export class ThPointLight<
     }
   }
 
-  // @ts-ignore
   public get distance(): number | undefined {
     return this._objRef?.distance;
   }
@@ -73,7 +70,6 @@ export class ThPointLight<
     }
   }
 
-  // @ts-ignore
   public get castShadow(): boolean | undefined {
     return this._objRef?.castShadow;
   }
@@ -84,7 +80,6 @@ export class ThPointLight<
     }
   }
 
-  // @ts-ignore
   public get decay(): number | undefined {
     return this._objRef?.decay;
   }
@@ -95,7 +90,6 @@ export class ThPointLight<
     }
   }
 
-  // @ts-ignore
   public get shadow(): PointLightShadow | undefined {
     return this._objRef?.shadow;
   }
@@ -106,7 +100,6 @@ export class ThPointLight<
     }
   }
 
-  // @ts-ignore
   public get power(): number | undefined {
     return this._objRef?.power;
   }

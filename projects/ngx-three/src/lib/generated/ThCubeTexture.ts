@@ -1,21 +1,21 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
+  ColorSpace,
   CubeTexture,
   CubeTextureMapping,
   MagnificationTextureFilter,
   MinificationTextureFilter,
   PixelFormat,
   TextureDataType,
-  TextureEncoding,
   Wrapping,
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
@@ -41,14 +41,13 @@ export class ThCubeTexture<
     format?: PixelFormat,
     type?: TextureDataType,
     anisotropy?: number,
-    encoding?: TextureEncoding
-  ]
+    colorSpace?: ColorSpace,
+  ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<CubeTexture> {
     return CubeTexture;
   }
 
-  // @ts-ignore
   public get isCubeTexture(): true | undefined {
     return this._objRef?.isCubeTexture;
   }
@@ -59,7 +58,6 @@ export class ThCubeTexture<
     }
   }
 
-  // @ts-ignore
   public get mapping(): CubeTextureMapping | undefined {
     return this._objRef?.mapping;
   }
@@ -70,7 +68,6 @@ export class ThCubeTexture<
     }
   }
 
-  // @ts-ignore
   public get flipY(): boolean | undefined {
     return this._objRef?.flipY;
   }

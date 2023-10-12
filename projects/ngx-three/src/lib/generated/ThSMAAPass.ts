@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, Texture, WebGLRenderTarget } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { SMAAPass } from 'three/examples/jsm/postprocessing/SMAAPass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
@@ -25,7 +25,7 @@ import { ThPass } from './ThPass';
 })
 export class ThSMAAPass<
   T extends SMAAPass = SMAAPass,
-  TARGS = [width: number, height: number]
+  TARGS = [width: number, height: number],
 > extends ThPass<T, TARGS> {
   public getType(): Type<SMAAPass> {
     return SMAAPass;
@@ -38,7 +38,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get edgesRT(): WebGLRenderTarget | undefined {
     return this._objRef?.edgesRT;
   }
@@ -49,7 +48,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get weightsRT(): WebGLRenderTarget | undefined {
     return this._objRef?.weightsRT;
   }
@@ -60,7 +58,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get areaTexture(): Texture | undefined {
     return this._objRef?.areaTexture;
   }
@@ -71,7 +68,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get searchTexture(): Texture | undefined {
     return this._objRef?.searchTexture;
   }
@@ -82,7 +78,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get uniformsEdges(): object | undefined {
     return this._objRef?.uniformsEdges;
   }
@@ -93,7 +88,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get materialEdges(): ShaderMaterial | undefined {
     return this._objRef?.materialEdges;
   }
@@ -104,7 +98,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get uniformsWeights(): object | undefined {
     return this._objRef?.uniformsWeights;
   }
@@ -115,7 +108,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get materialWeights(): ShaderMaterial | undefined {
     return this._objRef?.materialWeights;
   }
@@ -126,7 +118,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get uniformsBlend(): object | undefined {
     return this._objRef?.uniformsBlend;
   }
@@ -137,7 +128,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get materialBlend(): ShaderMaterial | undefined {
     return this._objRef?.materialBlend;
   }
@@ -148,7 +138,6 @@ export class ThSMAAPass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }

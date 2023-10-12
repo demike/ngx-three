@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -30,7 +30,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThMeshToonMaterial<
   T extends MeshToonMaterial = MeshToonMaterial,
-  TARGS = /* parameters? */ MeshToonMaterialParameters
+  TARGS = /* parameters? */ MeshToonMaterialParameters,
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<MeshToonMaterial> {
     return MeshToonMaterial;
@@ -43,7 +43,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -54,7 +53,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get defines(): { [key: string]: any } | undefined {
     return this._objRef?.defines;
   }
@@ -64,7 +62,6 @@ export class ThMeshToonMaterial<
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
   }
-  // @ts-ignore
   public get color(): Color | undefined {
     return this._objRef?.color;
   }
@@ -75,7 +72,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get gradientMap(): (Texture | null) | undefined {
     return this._objRef?.gradientMap;
   }
@@ -86,7 +82,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get map(): (Texture | null) | undefined {
     return this._objRef?.map;
   }
@@ -97,7 +92,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get lightMap(): (Texture | null) | undefined {
     return this._objRef?.lightMap;
   }
@@ -108,7 +102,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get lightMapIntensity(): number | undefined {
     return this._objRef?.lightMapIntensity;
   }
@@ -119,7 +112,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get aoMap(): (Texture | null) | undefined {
     return this._objRef?.aoMap;
   }
@@ -130,7 +122,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get aoMapIntensity(): number | undefined {
     return this._objRef?.aoMapIntensity;
   }
@@ -140,7 +131,6 @@ export class ThMeshToonMaterial<
       this._objRef.emissive = applyValue<Color>(this._objRef.emissive, value);
     }
   }
-  // @ts-ignore
   public get emissive(): Color | undefined {
     return this._objRef?.emissive;
   }
@@ -151,7 +141,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get emissiveIntensity(): number | undefined {
     return this._objRef?.emissiveIntensity;
   }
@@ -162,7 +151,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get emissiveMap(): (Texture | null) | undefined {
     return this._objRef?.emissiveMap;
   }
@@ -173,7 +161,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get bumpMap(): (Texture | null) | undefined {
     return this._objRef?.bumpMap;
   }
@@ -184,7 +171,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get bumpScale(): number | undefined {
     return this._objRef?.bumpScale;
   }
@@ -195,7 +181,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get normalMap(): (Texture | null) | undefined {
     return this._objRef?.normalMap;
   }
@@ -206,7 +191,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get normalMapType(): NormalMapTypes | undefined {
     return this._objRef?.normalMapType;
   }
@@ -215,11 +199,10 @@ export class ThMeshToonMaterial<
     if (this._objRef) {
       this._objRef.normalScale = applyValue<Vector2>(
         this._objRef.normalScale,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get normalScale(): Vector2 | undefined {
     return this._objRef?.normalScale;
   }
@@ -230,7 +213,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementMap(): (Texture | null) | undefined {
     return this._objRef?.displacementMap;
   }
@@ -241,7 +223,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementScale(): number | undefined {
     return this._objRef?.displacementScale;
   }
@@ -252,7 +233,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementBias(): number | undefined {
     return this._objRef?.displacementBias;
   }
@@ -263,7 +243,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get alphaMap(): (Texture | null) | undefined {
     return this._objRef?.alphaMap;
   }
@@ -274,7 +253,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframe(): boolean | undefined {
     return this._objRef?.wireframe;
   }
@@ -285,7 +263,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframeLinewidth(): number | undefined {
     return this._objRef?.wireframeLinewidth;
   }
@@ -296,7 +273,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframeLinecap(): string | undefined {
     return this._objRef?.wireframeLinecap;
   }
@@ -307,7 +283,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframeLinejoin(): string | undefined {
     return this._objRef?.wireframeLinejoin;
   }
@@ -318,7 +293,6 @@ export class ThMeshToonMaterial<
     }
   }
 
-  // @ts-ignore
   public get fog(): boolean | undefined {
     return this._objRef?.fog;
   }

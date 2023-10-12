@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, Vector2 } from 'three';
 import { DotScreenPass } from 'three/examples/jsm/postprocessing/DotScreenPass';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
@@ -25,7 +25,7 @@ import { ThPass } from './ThPass';
 })
 export class ThDotScreenPass<
   T extends DotScreenPass = DotScreenPass,
-  TARGS = [center?: Vector2, angle?: number, scale?: number]
+  TARGS = [center?: Vector2, angle?: number, scale?: number],
 > extends ThPass<T, TARGS> {
   public getType(): Type<DotScreenPass> {
     return DotScreenPass;
@@ -38,10 +38,10 @@ export class ThDotScreenPass<
     }
   }
 
-  // @ts-ignore
   public get uniforms(): { [name: string]: { value: any } } | undefined {
-    // @ts-ignore
-    return this._objRef?.uniforms;
+    return this._objRef?.uniforms as
+      | { [name: string]: { value: any } }
+      | undefined;
   }
   @Input()
   public set material(value: ShaderMaterial) {
@@ -50,7 +50,6 @@ export class ThDotScreenPass<
     }
   }
 
-  // @ts-ignore
   public get material(): ShaderMaterial | undefined {
     return this._objRef?.material;
   }
@@ -61,7 +60,6 @@ export class ThDotScreenPass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }

@@ -1,13 +1,17 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { BufferGeometry, WireframeGeometry } from 'three';
+import {
+  BufferGeometry,
+  NormalBufferAttributes,
+  WireframeGeometry,
+} from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -23,18 +27,17 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThWireframeGeometry<
   TBufferGeometry extends BufferGeometry = BufferGeometry,
-  T extends WireframeGeometry<TBufferGeometry> = WireframeGeometry<TBufferGeometry>,
-  TARGS = /* geometry? */ TBufferGeometry
-> extends ThBufferGeometry<T, TARGS> {
+  T extends
+    WireframeGeometry<TBufferGeometry> = WireframeGeometry<TBufferGeometry>,
+  TARGS = /* geometry? */ TBufferGeometry,
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<WireframeGeometry<TBufferGeometry>> {
     return WireframeGeometry;
   }
 
-  // @ts-ignore
   public get type(): (string | 'WireframeGeometry') | undefined {
     return this._objRef?.type;
   }
-  // @ts-ignore
   public get parameters():
     | {
         readonly geometry: TBufferGeometry;

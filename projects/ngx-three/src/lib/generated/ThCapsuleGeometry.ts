@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { CapsuleGeometry } from 'three';
+import { CapsuleGeometry, NormalBufferAttributes } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -27,18 +27,16 @@ export class ThCapsuleGeometry<
     radius?: number,
     length?: number,
     capSegments?: number,
-    radialSegments?: number
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    radialSegments?: number,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<CapsuleGeometry> {
     return CapsuleGeometry;
   }
 
-  // @ts-ignore
   public get type(): (string | 'CapsuleGeometry') | undefined {
     return this._objRef?.type;
   }
-  // @ts-ignore
   public get parameters():
     | {
         readonly radius: number;

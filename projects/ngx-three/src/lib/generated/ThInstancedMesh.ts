@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Box3,
@@ -39,14 +39,13 @@ export class ThInstancedMesh<
   TARGS = [
     geometry: TGeometry | undefined,
     material: TMaterial | undefined,
-    count: number
-  ]
+    count: number,
+  ],
 > extends ThMesh<TGeometry, TMaterial, T, TARGS> {
   public getType(): Type<InstancedMesh<TGeometry, TMaterial>> {
     return InstancedMesh;
   }
 
-  // @ts-ignore
   public get isInstancedMesh(): true | undefined {
     return this._objRef?.isInstancedMesh;
   }
@@ -55,26 +54,24 @@ export class ThInstancedMesh<
     if (this._objRef) {
       this._objRef.boundingBox = applyValue<Box3 | null>(
         this._objRef.boundingBox,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get boundingBox(): (Box3 | null) | undefined {
     return this._objRef?.boundingBox;
   }
   @Input()
   public set boundingSphere(
-    value: Sphere | null | [center: Vector3, radius: number]
+    value: Sphere | null | [center: Vector3, radius: number],
   ) {
     if (this._objRef) {
       this._objRef.boundingSphere = applyValue<Sphere | null>(
         this._objRef.boundingSphere,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get boundingSphere(): (Sphere | null) | undefined {
     return this._objRef?.boundingSphere;
   }
@@ -85,7 +82,6 @@ export class ThInstancedMesh<
     }
   }
 
-  // @ts-ignore
   public get count(): number | undefined {
     return this._objRef?.count;
   }
@@ -94,16 +90,15 @@ export class ThInstancedMesh<
     value:
       | InstancedBufferAttribute
       | null
-      | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
   ) {
     if (this._objRef) {
       this._objRef.instanceColor = applyValue<InstancedBufferAttribute | null>(
         this._objRef.instanceColor,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get instanceColor(): (InstancedBufferAttribute | null) | undefined {
     return this._objRef?.instanceColor;
   }
@@ -111,16 +106,15 @@ export class ThInstancedMesh<
   public set instanceMatrix(
     value:
       | InstancedBufferAttribute
-      | [value: ArrayLike<number> | ArrayBufferView, offset?: number]
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
   ) {
     if (this._objRef) {
       this._objRef.instanceMatrix = applyValue<InstancedBufferAttribute>(
         this._objRef.instanceMatrix,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get instanceMatrix(): InstancedBufferAttribute | undefined {
     return this._objRef?.instanceMatrix;
   }

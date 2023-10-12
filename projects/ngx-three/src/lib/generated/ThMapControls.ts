@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera } from 'three';
 import { MapControls } from 'three/examples/jsm/controls/MapControls';
@@ -22,7 +22,7 @@ import { ThOrbitControls } from './ThOrbitControls';
 })
 export class ThMapControls<
   T extends MapControls = MapControls,
-  TARGS = [object: Camera, domElement?: HTMLElement]
+  TARGS = [object: Camera, domElement?: HTMLElement],
 > extends ThOrbitControls<T, TARGS> {
   public getType(): Type<MapControls> {
     return MapControls;

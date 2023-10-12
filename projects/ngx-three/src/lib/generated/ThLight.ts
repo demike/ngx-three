@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
+  forwardRef,
 } from '@angular/core';
 import { Color, ColorRepresentation, Event, Light, LightShadow } from 'three';
 import { applyValue } from '../util';
@@ -20,13 +20,11 @@ import { ThObject3D } from './ThObject3D';
 export abstract class ThLight<
   TShadowSupport extends LightShadow | undefined = LightShadow | undefined,
   T extends Light<TShadowSupport> = Light<TShadowSupport>,
-  TARGS = [color?: ColorRepresentation, intensity?: number]
+  TARGS = [color?: ColorRepresentation, intensity?: number],
 > extends ThObject3D<Event, T, TARGS> {
-  // @ts-ignore
   public get isLight(): true | undefined {
     return this._objRef?.isLight;
   }
-  // @ts-ignore
   public get type(): (string | 'Light') | undefined {
     return this._objRef?.type;
   }
@@ -36,7 +34,6 @@ export abstract class ThLight<
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
   }
-  // @ts-ignore
   public get color(): Color | undefined {
     return this._objRef?.color;
   }
@@ -47,7 +44,6 @@ export abstract class ThLight<
     }
   }
 
-  // @ts-ignore
   public get intensity(): number | undefined {
     return this._objRef?.intensity;
   }
@@ -58,7 +54,6 @@ export abstract class ThLight<
     }
   }
 
-  // @ts-ignore
   public get shadow(): TShadowSupport | undefined {
     return this._objRef?.shadow;
   }

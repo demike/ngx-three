@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ASSET_PATH } from '../assets';
 import { provideCSS3dRenderer } from 'projects/ngx-three/src/lib/renderer/renderer-providers';
 import { Object3D, Vector3 } from 'three';
 
@@ -189,7 +188,6 @@ export class CSS3dRendererExampleComponent {
   }
 
   public createGridPoses() {
-    const vector = new Vector3();
     this.poses = this.table.map((el, i) => {
       const object = new Object3D();
       object.position.x = (i % 5) * 400 - 800;

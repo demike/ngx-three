@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera, Object3D } from 'three';
 import { DragControls } from 'three/examples/jsm/controls/DragControls';
@@ -22,7 +22,7 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThDragControls<
   T extends DragControls = DragControls,
-  TARGS = [objects: Object3D[], camera: Camera, domElement?: HTMLElement]
+  TARGS = [objects: Object3D[], camera: Camera, domElement?: HTMLElement],
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<DragControls> {
     return DragControls;
@@ -35,7 +35,6 @@ export class ThDragControls<
     }
   }
 
-  // @ts-ignore
   public get object(): Camera | undefined {
     return this._objRef?.object;
   }
@@ -46,7 +45,6 @@ export class ThDragControls<
     }
   }
 
-  // @ts-ignore
   public get enabled(): boolean | undefined {
     return this._objRef?.enabled;
   }
@@ -57,7 +55,6 @@ export class ThDragControls<
     }
   }
 
-  // @ts-ignore
   public get transformGroup(): boolean | undefined {
     return this._objRef?.transformGroup;
   }

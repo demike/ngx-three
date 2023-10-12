@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ColorRepresentation } from 'three';
 import { ClearPass } from 'three/examples/jsm/postprocessing/ClearPass';
@@ -24,7 +24,7 @@ import { ThPass } from './ThPass';
 })
 export class ThClearPass<
   T extends ClearPass = ClearPass,
-  TARGS = [clearColor?: ColorRepresentation, clearAlpha?: number]
+  TARGS = [clearColor?: ColorRepresentation, clearAlpha?: number],
 > extends ThPass<T, TARGS> {
   public getType(): Type<ClearPass> {
     return ClearPass;
@@ -37,7 +37,6 @@ export class ThClearPass<
     }
   }
 
-  // @ts-ignore
   public get clearColor(): ColorRepresentation | undefined {
     return this._objRef?.clearColor;
   }
@@ -48,7 +47,6 @@ export class ThClearPass<
     }
   }
 
-  // @ts-ignore
   public get clearAlpha(): number | undefined {
     return this._objRef?.clearAlpha;
   }

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   DepthPackingStrategies,
@@ -26,7 +26,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThMeshDepthMaterial<
   T extends MeshDepthMaterial = MeshDepthMaterial,
-  TARGS = /* parameters? */ MeshDepthMaterialParameters
+  TARGS = /* parameters? */ MeshDepthMaterialParameters,
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<MeshDepthMaterial> {
     return MeshDepthMaterial;
@@ -39,7 +39,6 @@ export class ThMeshDepthMaterial<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -50,7 +49,6 @@ export class ThMeshDepthMaterial<
     }
   }
 
-  // @ts-ignore
   public get map(): (Texture | null) | undefined {
     return this._objRef?.map;
   }
@@ -61,7 +59,6 @@ export class ThMeshDepthMaterial<
     }
   }
 
-  // @ts-ignore
   public get alphaMap(): (Texture | null) | undefined {
     return this._objRef?.alphaMap;
   }
@@ -72,7 +69,6 @@ export class ThMeshDepthMaterial<
     }
   }
 
-  // @ts-ignore
   public get depthPacking(): DepthPackingStrategies | undefined {
     return this._objRef?.depthPacking;
   }
@@ -83,7 +79,6 @@ export class ThMeshDepthMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementMap(): (Texture | null) | undefined {
     return this._objRef?.displacementMap;
   }
@@ -94,7 +89,6 @@ export class ThMeshDepthMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementScale(): number | undefined {
     return this._objRef?.displacementScale;
   }
@@ -105,7 +99,6 @@ export class ThMeshDepthMaterial<
     }
   }
 
-  // @ts-ignore
   public get displacementBias(): number | undefined {
     return this._objRef?.displacementBias;
   }
@@ -116,7 +109,6 @@ export class ThMeshDepthMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframe(): boolean | undefined {
     return this._objRef?.wireframe;
   }
@@ -127,7 +119,6 @@ export class ThMeshDepthMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframeLinewidth(): number | undefined {
     return this._objRef?.wireframeLinewidth;
   }
@@ -138,7 +129,6 @@ export class ThMeshDepthMaterial<
     }
   }
 
-  // @ts-ignore
   public get fog(): boolean | undefined {
     return this._objRef?.fog;
   }

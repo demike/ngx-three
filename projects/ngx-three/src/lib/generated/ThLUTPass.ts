@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Data3DTexture, DataTexture } from 'three';
 import {
@@ -27,7 +27,7 @@ import { ThShaderPass } from './ThShaderPass';
 })
 export class ThLUTPass<
   T extends LUTPass = LUTPass,
-  TARGS = /* params */ LUTPassParameters
+  TARGS = /* params */ LUTPassParameters,
 > extends ThShaderPass<T, TARGS> {
   public getType(): Type<LUTPass> {
     return LUTPass;
@@ -40,7 +40,6 @@ export class ThLUTPass<
     }
   }
 
-  // @ts-ignore
   public get lut(): (DataTexture | Data3DTexture) | undefined {
     return this._objRef?.lut;
   }
@@ -51,7 +50,6 @@ export class ThLUTPass<
     }
   }
 
-  // @ts-ignore
   public get intensity(): number | undefined {
     return this._objRef?.intensity;
   }

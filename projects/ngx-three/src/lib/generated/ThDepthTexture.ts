@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   DeepTexturePixelFormat,
@@ -14,6 +14,7 @@ import {
   MagnificationTextureFilter,
   Mapping,
   MinificationTextureFilter,
+  TextureComparisonFunction,
   TextureDataType,
   Wrapping,
 } from 'three';
@@ -40,14 +41,13 @@ export class ThDepthTexture<
     magFilter?: MagnificationTextureFilter,
     minFilter?: MinificationTextureFilter,
     anisotropy?: number,
-    format?: DeepTexturePixelFormat
-  ]
+    format?: DeepTexturePixelFormat,
+  ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<DepthTexture> {
     return DepthTexture;
   }
 
-  // @ts-ignore
   public get isDepthTexture(): true | undefined {
     return this._objRef?.isDepthTexture;
   }
@@ -58,7 +58,6 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get flipY(): boolean | undefined {
     return this._objRef?.flipY;
   }
@@ -69,7 +68,6 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get magFilter(): MagnificationTextureFilter | undefined {
     return this._objRef?.magFilter;
   }
@@ -80,7 +78,6 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get minFilter(): MinificationTextureFilter | undefined {
     return this._objRef?.minFilter;
   }
@@ -91,7 +88,6 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get generateMipmaps(): boolean | undefined {
     return this._objRef?.generateMipmaps;
   }
@@ -102,7 +98,6 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get format(): DeepTexturePixelFormat | undefined {
     return this._objRef?.format;
   }
@@ -113,8 +108,17 @@ export class ThDepthTexture<
     }
   }
 
-  // @ts-ignore
   public get type(): TextureDataType | undefined {
     return this._objRef?.type;
+  }
+  @Input()
+  public set compareFunction(value: TextureComparisonFunction | null) {
+    if (this._objRef) {
+      this._objRef.compareFunction = value;
+    }
+  }
+
+  public get compareFunction(): (TextureComparisonFunction | null) | undefined {
+    return this._objRef?.compareFunction;
   }
 }

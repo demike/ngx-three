@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { SphereGeometry } from 'three';
+import { NormalBufferAttributes, SphereGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -30,18 +30,16 @@ export class ThSphereGeometry<
     phiStart?: number,
     phiLength?: number,
     thetaStart?: number,
-    thetaLength?: number
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    thetaLength?: number,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<SphereGeometry> {
     return SphereGeometry;
   }
 
-  // @ts-ignore
   public get type(): (string | 'SphereGeometry') | undefined {
     return this._objRef?.type;
   }
-  // @ts-ignore
   public get parameters():
     | {
         readonly radius: number;

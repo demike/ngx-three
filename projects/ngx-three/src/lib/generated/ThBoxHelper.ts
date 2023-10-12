@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   BoxHelper,
   BufferGeometry,
   ColorRepresentation,
-  Material,
+  LineBasicMaterial,
   Object3D,
 } from 'three';
 import { ThLineSegments } from './ThLineSegments';
@@ -27,13 +27,12 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThBoxHelper<
   T extends BoxHelper = BoxHelper,
-  TARGS = [object: Object3D, color?: ColorRepresentation]
-> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
+  TARGS = [object: Object3D, color?: ColorRepresentation],
+> extends ThLineSegments<BufferGeometry, LineBasicMaterial, T, TARGS> {
   public getType(): Type<BoxHelper> {
     return BoxHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'BoxHelper') | undefined {
     return this._objRef?.type;
   }

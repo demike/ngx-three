@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -18,7 +18,7 @@ import {
   Vector3,
   WebGLRenderTarget,
 } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
@@ -38,8 +38,8 @@ export class ThUnrealBloomPass<
     resolution: Vector2,
     strength: number,
     radius: number,
-    threshold: number
-  ]
+    threshold: number,
+  ],
 > extends ThPass<T, TARGS> {
   public getType(): Type<UnrealBloomPass> {
     return UnrealBloomPass;
@@ -50,11 +50,10 @@ export class ThUnrealBloomPass<
     if (this._objRef) {
       this._objRef.resolution = applyValue<Vector2>(
         this._objRef.resolution,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get resolution(): Vector2 | undefined {
     return this._objRef?.resolution;
   }
@@ -65,7 +64,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get strength(): number | undefined {
     return this._objRef?.strength;
   }
@@ -76,7 +74,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get radius(): number | undefined {
     return this._objRef?.radius;
   }
@@ -87,7 +84,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get threshold(): number | undefined {
     return this._objRef?.threshold;
   }
@@ -96,11 +92,10 @@ export class ThUnrealBloomPass<
     if (this._objRef) {
       this._objRef.clearColor = applyValue<Color>(
         this._objRef.clearColor,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get clearColor(): Color | undefined {
     return this._objRef?.clearColor;
   }
@@ -111,7 +106,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetsHorizontal(): WebGLRenderTarget[] | undefined {
     return this._objRef?.renderTargetsHorizontal;
   }
@@ -122,7 +116,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetsVertical(): WebGLRenderTarget[] | undefined {
     return this._objRef?.renderTargetsVertical;
   }
@@ -133,7 +126,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get nMips(): number | undefined {
     return this._objRef?.nMips;
   }
@@ -144,7 +136,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetBright(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTargetBright;
   }
@@ -155,7 +146,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get highPassUniforms(): object | undefined {
     return this._objRef?.highPassUniforms;
   }
@@ -166,7 +156,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get materialHighPassFilter(): ShaderMaterial | undefined {
     return this._objRef?.materialHighPassFilter;
   }
@@ -177,7 +166,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get separableBlurMaterials(): ShaderMaterial[] | undefined {
     return this._objRef?.separableBlurMaterials;
   }
@@ -188,7 +176,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get compositeMaterial(): ShaderMaterial | undefined {
     return this._objRef?.compositeMaterial;
   }
@@ -199,7 +186,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get bloomTintColors(): Vector3[] | undefined {
     return this._objRef?.bloomTintColors;
   }
@@ -210,31 +196,28 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get copyUniforms(): object | undefined {
     return this._objRef?.copyUniforms;
   }
   @Input()
-  public set materialCopy(value: ShaderMaterial) {
+  public set blendMaterial(value: ShaderMaterial) {
     if (this._objRef) {
-      this._objRef.materialCopy = value;
+      this._objRef.blendMaterial = value;
     }
   }
 
-  // @ts-ignore
-  public get materialCopy(): ShaderMaterial | undefined {
-    return this._objRef?.materialCopy;
+  public get blendMaterial(): ShaderMaterial | undefined {
+    return this._objRef?.blendMaterial;
   }
   @Input()
   public set oldClearColor(value: Color | [color: ColorRepresentation]) {
     if (this._objRef) {
       this._objRef.oldClearColor = applyValue<Color>(
         this._objRef.oldClearColor,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get oldClearColor(): Color | undefined {
     return this._objRef?.oldClearColor;
   }
@@ -245,7 +228,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get oldClearAlpha(): number | undefined {
     return this._objRef?.oldClearAlpha;
   }
@@ -256,7 +238,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get basic(): MeshBasicMaterial | undefined {
     return this._objRef?.basic;
   }
@@ -267,7 +248,6 @@ export class ThUnrealBloomPass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }

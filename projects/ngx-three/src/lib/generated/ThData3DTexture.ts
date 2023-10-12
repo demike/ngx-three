@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Data3DTexture,
@@ -31,14 +31,13 @@ export class ThData3DTexture<
     data?: BufferSource | null,
     width?: number,
     height?: number,
-    depth?: number
-  ]
+    depth?: number,
+  ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<Data3DTexture> {
     return Data3DTexture;
   }
 
-  // @ts-ignore
   public get isData3DTexture(): true | undefined {
     return this._objRef?.isData3DTexture;
   }
@@ -49,7 +48,6 @@ export class ThData3DTexture<
     }
   }
 
-  // @ts-ignore
   public get magFilter(): MagnificationTextureFilter | undefined {
     return this._objRef?.magFilter;
   }
@@ -60,7 +58,6 @@ export class ThData3DTexture<
     }
   }
 
-  // @ts-ignore
   public get minFilter(): MinificationTextureFilter | undefined {
     return this._objRef?.minFilter;
   }
@@ -71,7 +68,6 @@ export class ThData3DTexture<
     }
   }
 
-  // @ts-ignore
   public get wrapR(): Wrapping | undefined {
     return this._objRef?.wrapR;
   }
@@ -82,7 +78,6 @@ export class ThData3DTexture<
     }
   }
 
-  // @ts-ignore
   public get flipY(): boolean | undefined {
     return this._objRef?.flipY;
   }
@@ -93,7 +88,6 @@ export class ThData3DTexture<
     }
   }
 
-  // @ts-ignore
   public get generateMipmaps(): boolean | undefined {
     return this._objRef?.generateMipmaps;
   }
@@ -104,7 +98,6 @@ export class ThData3DTexture<
     }
   }
 
-  // @ts-ignore
   public get unpackAlignment(): number | undefined {
     return this._objRef?.unpackAlignment;
   }

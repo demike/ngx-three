@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -22,7 +22,7 @@ import {
   BokehPass,
   BokehPassParamters,
 } from 'three/examples/jsm/postprocessing/BokehPass';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';
@@ -37,7 +37,7 @@ import { ThPass } from './ThPass';
 })
 export class ThBokehPass<
   T extends BokehPass = BokehPass,
-  TARGS = [scene: Scene, camera: Camera, params: BokehPassParamters]
+  TARGS = [scene: Scene, camera: Camera, params: BokehPassParamters],
 > extends ThPass<T, TARGS> {
   public getType(): Type<BokehPass> {
     return BokehPass;
@@ -50,7 +50,6 @@ export class ThBokehPass<
     }
   }
 
-  // @ts-ignore
   public get scene(): Scene | undefined {
     return this._objRef?.scene;
   }
@@ -61,7 +60,6 @@ export class ThBokehPass<
     }
   }
 
-  // @ts-ignore
   public get camera(): Camera | undefined {
     return this._objRef?.camera;
   }
@@ -72,7 +70,6 @@ export class ThBokehPass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetColor(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTargetColor;
   }
@@ -83,7 +80,6 @@ export class ThBokehPass<
     }
   }
 
-  // @ts-ignore
   public get renderTargetDepth(): WebGLRenderTarget | undefined {
     return this._objRef?.renderTargetDepth;
   }
@@ -94,7 +90,6 @@ export class ThBokehPass<
     }
   }
 
-  // @ts-ignore
   public get materialDepth(): MeshDepthMaterial | undefined {
     return this._objRef?.materialDepth;
   }
@@ -105,7 +100,6 @@ export class ThBokehPass<
     }
   }
 
-  // @ts-ignore
   public get materialBokeh(): ShaderMaterial | undefined {
     return this._objRef?.materialBokeh;
   }
@@ -116,10 +110,10 @@ export class ThBokehPass<
     }
   }
 
-  // @ts-ignore
   public get uniforms(): { [name: string]: { value: any } } | undefined {
-    // @ts-ignore
-    return this._objRef?.uniforms;
+    return this._objRef?.uniforms as
+      | { [name: string]: { value: any } }
+      | undefined;
   }
   @Input()
   public set fsQuad(value: FullScreenQuad) {
@@ -128,7 +122,6 @@ export class ThBokehPass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }
@@ -137,11 +130,10 @@ export class ThBokehPass<
     if (this._objRef) {
       this._objRef.oldClearColor = applyValue<Color>(
         this._objRef.oldClearColor,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get oldClearColor(): Color | undefined {
     return this._objRef?.oldClearColor;
   }

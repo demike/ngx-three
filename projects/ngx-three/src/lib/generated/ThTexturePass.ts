@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, Texture } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { TexturePass } from 'three/examples/jsm/postprocessing/TexturePass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
@@ -25,21 +25,20 @@ import { ThPass } from './ThPass';
 })
 export class ThTexturePass<
   T extends TexturePass = TexturePass,
-  TARGS = [map: Texture, opacity?: number]
+  TARGS = [map?: Texture, opacity?: number],
 > extends ThPass<T, TARGS> {
   public getType(): Type<TexturePass> {
     return TexturePass;
   }
 
   @Input()
-  public set map(value: Texture) {
+  public set map(value: Texture | undefined) {
     if (this._objRef) {
       this._objRef.map = value;
     }
   }
 
-  // @ts-ignore
-  public get map(): Texture | undefined {
+  public get map(): (Texture | undefined) | undefined {
     return this._objRef?.map;
   }
   @Input()
@@ -49,7 +48,6 @@ export class ThTexturePass<
     }
   }
 
-  // @ts-ignore
   public get opacity(): number | undefined {
     return this._objRef?.opacity;
   }
@@ -60,10 +58,10 @@ export class ThTexturePass<
     }
   }
 
-  // @ts-ignore
   public get uniforms(): { [name: string]: { value: any } } | undefined {
-    // @ts-ignore
-    return this._objRef?.uniforms;
+    return this._objRef?.uniforms as
+      | { [name: string]: { value: any } }
+      | undefined;
   }
   @Input()
   public set material(value: ShaderMaterial) {
@@ -72,7 +70,6 @@ export class ThTexturePass<
     }
   }
 
-  // @ts-ignore
   public get material(): ShaderMaterial | undefined {
     return this._objRef?.material;
   }
@@ -83,7 +80,6 @@ export class ThTexturePass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }

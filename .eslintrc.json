@@ -1,36 +1,58 @@
 {
   "root": true,
-  "ignorePatterns": ["projects/**/*"],
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "parserOptions": {
-        "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "project": [
+          "tsconfig.json",
+          "e2e/tsconfig.json"
+        ],
         "createDefaultProgram": true
       },
       "extends": [
-        "plugin:@angular-eslint/ng-cli-compat",
-        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
         "prefer-arrow/prefer-arrow-functions": "off",
         "@typescript-eslint/member-ordering": "off",
-        "@typescript-eslint/quotes": [
+        "@typescript-eslint/no-explicit-any": "off",
+        "no-underscore-dangle": [
           "error",
-          "single",
-          { "avoidEscape": true }
+          {
+            "allowAfterThis": true
+          }
         ],
-        "no-underscore-dangle": ["error", { "allowAfterThis": true }]
+        "@typescript-eslint/no-unused-vars": [
+          "error", 
+          { 
+            "argsIgnorePattern": "^_"
+            // "varsIgnorePattern": "^_",
+            // "caughtErrorsIgnorePattern": "^_"
+          }
+        ]
       }
     },
     {
-      "files": ["*.html"],
-      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
       "rules": {}
     }
   ],
   "settings": {
-    "import/ignore": ["node_modules"]
+    "import/ignore": [
+      "node_modules"
+    ]
   }
 }

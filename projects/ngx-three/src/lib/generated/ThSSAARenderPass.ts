@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -16,7 +16,7 @@ import {
   ShaderMaterial,
   WebGLRenderTarget,
 } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { SSAARenderPass } from 'three/examples/jsm/postprocessing/SSAARenderPass';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
@@ -35,8 +35,8 @@ export class ThSSAARenderPass<
     scene: Scene,
     camera: Camera,
     clearColor?: ColorRepresentation,
-    clearAlpha?: number
-  ]
+    clearAlpha?: number,
+  ],
 > extends ThPass<T, TARGS> {
   public getType(): Type<SSAARenderPass> {
     return SSAARenderPass;
@@ -49,7 +49,6 @@ export class ThSSAARenderPass<
     }
   }
 
-  // @ts-ignore
   public get scene(): Scene | undefined {
     return this._objRef?.scene;
   }
@@ -60,7 +59,6 @@ export class ThSSAARenderPass<
     }
   }
 
-  // @ts-ignore
   public get camera(): Camera | undefined {
     return this._objRef?.camera;
   }
@@ -71,7 +69,6 @@ export class ThSSAARenderPass<
     }
   }
 
-  // @ts-ignore
   public get sampleLevel(): number | undefined {
     return this._objRef?.sampleLevel;
   }
@@ -82,7 +79,6 @@ export class ThSSAARenderPass<
     }
   }
 
-  // @ts-ignore
   public get unbiased(): boolean | undefined {
     return this._objRef?.unbiased;
   }
@@ -93,7 +89,6 @@ export class ThSSAARenderPass<
     }
   }
 
-  // @ts-ignore
   public get clearColor(): ColorRepresentation | undefined {
     return this._objRef?.clearColor;
   }
@@ -104,7 +99,6 @@ export class ThSSAARenderPass<
     }
   }
 
-  // @ts-ignore
   public get clearAlpha(): number | undefined {
     return this._objRef?.clearAlpha;
   }
@@ -115,7 +109,6 @@ export class ThSSAARenderPass<
     }
   }
 
-  // @ts-ignore
   public get copyUniforms(): object | undefined {
     return this._objRef?.copyUniforms;
   }
@@ -126,7 +119,6 @@ export class ThSSAARenderPass<
     }
   }
 
-  // @ts-ignore
   public get copyMaterial(): ShaderMaterial | undefined {
     return this._objRef?.copyMaterial;
   }
@@ -137,7 +129,6 @@ export class ThSSAARenderPass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }
@@ -148,7 +139,6 @@ export class ThSSAARenderPass<
     }
   }
 
-  // @ts-ignore
   public get sampleRenderTarget(): (undefined | WebGLRenderTarget) | undefined {
     return this._objRef?.sampleRenderTarget;
   }

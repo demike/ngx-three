@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ClearMaskPass } from 'three/examples/jsm/postprocessing/MaskPass';
 import { ThPassBase } from '../ThPassBase';
@@ -22,7 +22,7 @@ import { ThPass } from './ThPass';
 })
 export class ThClearMaskPass<
   T extends ClearMaskPass = ClearMaskPass,
-  TARGS = []
+  TARGS = [],
 > extends ThPass<T, TARGS> {
   public getType(): Type<ClearMaskPass> {
     return ClearMaskPass;

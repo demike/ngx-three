@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera } from 'three';
 import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls';
@@ -25,7 +25,7 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThFirstPersonControls<
   T extends FirstPersonControls = FirstPersonControls,
-  TARGS = [object: Camera, domElement?: HTMLElement]
+  TARGS = [object: Camera, domElement?: HTMLElement],
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<FirstPersonControls> {
     return FirstPersonControls;
@@ -38,7 +38,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get object(): Camera | undefined {
     return this._objRef?.object;
   }
@@ -49,7 +48,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get domElement(): (HTMLElement | Document) | undefined {
     return this._objRef?.domElement;
   }
@@ -60,7 +58,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get enabled(): boolean | undefined {
     return this._objRef?.enabled;
   }
@@ -71,7 +68,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get movementSpeed(): number | undefined {
     return this._objRef?.movementSpeed;
   }
@@ -82,7 +78,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get lookSpeed(): number | undefined {
     return this._objRef?.lookSpeed;
   }
@@ -93,7 +88,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get lookVertical(): boolean | undefined {
     return this._objRef?.lookVertical;
   }
@@ -104,7 +98,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get autoForward(): boolean | undefined {
     return this._objRef?.autoForward;
   }
@@ -115,7 +108,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get activeLook(): boolean | undefined {
     return this._objRef?.activeLook;
   }
@@ -126,7 +118,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get heightSpeed(): boolean | undefined {
     return this._objRef?.heightSpeed;
   }
@@ -137,7 +128,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get heightCoef(): number | undefined {
     return this._objRef?.heightCoef;
   }
@@ -148,7 +138,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get heightMin(): number | undefined {
     return this._objRef?.heightMin;
   }
@@ -159,7 +148,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get heightMax(): number | undefined {
     return this._objRef?.heightMax;
   }
@@ -170,7 +158,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get constrainVertical(): boolean | undefined {
     return this._objRef?.constrainVertical;
   }
@@ -181,7 +168,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get verticalMin(): number | undefined {
     return this._objRef?.verticalMin;
   }
@@ -192,7 +178,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get verticalMax(): number | undefined {
     return this._objRef?.verticalMax;
   }
@@ -203,7 +188,6 @@ export class ThFirstPersonControls<
     }
   }
 
-  // @ts-ignore
   public get mouseDragOn(): boolean | undefined {
     return this._objRef?.mouseDragOn;
   }

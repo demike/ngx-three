@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
-import { ChangeDetectionStrategy, Component, NgModule, Type } from '@angular/core';
-import { Routes, RouterModule, Route } from '@angular/router';
+import { NgModule, Type } from '@angular/core';
+import { RouterModule, Route } from '@angular/router';
 import { AnimationExampleComponent } from './animation-example/animation-example.component';
 import { BasicExampleComponent } from './basic-example/basic-example.component';
 import { ControlsExampleComponent } from './controls-example/controls-example.component';
@@ -9,7 +9,7 @@ import { EventsExampleComponent } from './events-example/events-example.componen
 import { ExamplePageComponent } from './example-page/example-page.component';
 import { HtmlExampleComponent } from './html-example/html-example.component';
 import { InstancedMeshExampleComponent } from './instanced-mesh-example/instanced-mesh-example.component';
-import { Box, IntroductoryExampleComponent } from './introductory-example/introductory-example.component';
+import { IntroductoryExampleComponent } from './introductory-example/introductory-example.component';
 import { LoaderExampleComponent } from './loader-example/loader-example.component';
 import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-example.component';
 import { MultiViewPostprocessingExampleComponent } from './multi-view-postprocessing-example/multi-view-postprocessing-example.component';

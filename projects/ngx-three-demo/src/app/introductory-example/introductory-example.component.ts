@@ -10,10 +10,10 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       (onClick)="selected = !selected"
       [scale]="selected ? [2, 2, 2] : [1, 1, 1]"
     >
-      <th-boxGeometry/>
-      <th-meshBasicMaterial [args]="{color: 'purple'}"/>
-  </th-mesh>
-    `,
+      <th-boxGeometry />
+      <th-meshBasicMaterial [args]="{ color: 'purple' }" />
+    </th-mesh>
+  `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Box {
@@ -27,15 +27,14 @@ export class Box {
 
 @Component({
   selector: 'app-introductory-example',
-  template: `
-    <th-canvas (onRender)="this.onBeforeRender()">
-      <th-scene>
-        <app-box [position]="[-2,0,0]" [rotation]="rotation"/>
-        <app-box [position]="[2,0,0]" [rotation]="rotation"/>
-        <th-ambientLight/>
-        <th-perspectiveCamera [args]="[75, 2, 0.1, 1000]" [position]="[1,1,5]"/>
-      </th-scene>
-    </th-canvas>`,
+  template: ` <th-canvas (onRender)="this.onBeforeRender()">
+    <th-scene>
+      <app-box [position]="[-2, 0, 0]" [rotation]="rotation" />
+      <app-box [position]="[2, 0, 0]" [rotation]="rotation" />
+      <th-ambientLight />
+      <th-perspectiveCamera [args]="[75, 2, 0.1, 1000]" [position]="[1, 1, 5]" />
+    </th-scene>
+  </th-canvas>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IntroductoryExampleComponent {

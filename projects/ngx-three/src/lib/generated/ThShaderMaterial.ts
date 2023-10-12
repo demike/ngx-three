@@ -1,18 +1,19 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   GLSLVersion,
   IUniform,
   ShaderMaterial,
   ShaderMaterialParameters,
+  UniformsGroup,
 } from 'three';
 import { ThMaterial } from './ThMaterial';
 
@@ -26,7 +27,7 @@ import { ThMaterial } from './ThMaterial';
 })
 export class ThShaderMaterial<
   T extends ShaderMaterial = ShaderMaterial,
-  TARGS = /* parameters? */ ShaderMaterialParameters
+  TARGS = /* parameters? */ ShaderMaterialParameters,
 > extends ThMaterial<T, TARGS> {
   public getType(): Type<ShaderMaterial> {
     return ShaderMaterial;
@@ -39,7 +40,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get type(): string | undefined {
     return this._objRef?.type;
   }
@@ -50,7 +50,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get defines(): { [key: string]: any } | undefined {
     return this._objRef?.defines;
   }
@@ -61,9 +60,18 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get uniforms(): { [uniform: string]: IUniform } | undefined {
     return this._objRef?.uniforms;
+  }
+  @Input()
+  public set uniformsGroups(value: UniformsGroup[]) {
+    if (this._objRef) {
+      this._objRef.uniformsGroups = value;
+    }
+  }
+
+  public get uniformsGroups(): UniformsGroup[] | undefined {
+    return this._objRef?.uniformsGroups;
   }
   @Input()
   public set vertexShader(value: string) {
@@ -72,7 +80,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get vertexShader(): string | undefined {
     return this._objRef?.vertexShader;
   }
@@ -83,7 +90,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get fragmentShader(): string | undefined {
     return this._objRef?.fragmentShader;
   }
@@ -94,7 +100,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get linewidth(): number | undefined {
     return this._objRef?.linewidth;
   }
@@ -105,7 +110,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframe(): boolean | undefined {
     return this._objRef?.wireframe;
   }
@@ -116,7 +120,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get wireframeLinewidth(): number | undefined {
     return this._objRef?.wireframeLinewidth;
   }
@@ -127,7 +130,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get fog(): boolean | undefined {
     return this._objRef?.fog;
   }
@@ -138,7 +140,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get lights(): boolean | undefined {
     return this._objRef?.lights;
   }
@@ -149,7 +150,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get clipping(): boolean | undefined {
     return this._objRef?.clipping;
   }
@@ -160,7 +160,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get derivatives(): any | undefined {
     return this._objRef?.derivatives;
   }
@@ -176,7 +175,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get extensions():
     | {
         derivatives: boolean;
@@ -194,7 +192,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get defaultAttributeValues(): any | undefined {
     return this._objRef?.defaultAttributeValues;
   }
@@ -205,7 +202,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get index0AttributeName(): (string | undefined) | undefined {
     return this._objRef?.index0AttributeName;
   }
@@ -216,7 +212,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get uniformsNeedUpdate(): boolean | undefined {
     return this._objRef?.uniformsNeedUpdate;
   }
@@ -227,7 +222,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get glslVersion(): (GLSLVersion | null) | undefined {
     return this._objRef?.glslVersion;
   }
@@ -238,7 +232,6 @@ export class ThShaderMaterial<
     }
   }
 
-  // @ts-ignore
   public get isShaderMaterial(): boolean | undefined {
     return this._objRef?.isShaderMaterial;
   }

@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -18,11 +18,11 @@ import {
   MeshNormalMaterial,
   Scene,
   ShaderMaterial,
-  WebGLRenderer,
   WebGLRenderTarget,
+  WebGLRenderer,
 } from 'three';
-import { ReflectorForSSRPass } from 'three/examples/jsm/objects/ReflectorForSSRPass';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { ReflectorForSSRPass } from 'three/examples/jsm/objects/ReflectorForSSRPass.js';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import {
   SSRPass,
   SSRPassParams,
@@ -41,7 +41,7 @@ import { ThPass } from './ThPass';
 })
 export class ThSSRPass<
   T extends SSRPass = SSRPass,
-  TARGS = /* params */ SSRPassParams
+  TARGS = /* params */ SSRPassParams,
 > extends ThPass<T, TARGS> {
   public getType(): Type<SSRPass> {
     return SSRPass;
@@ -54,7 +54,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get width(): number | undefined {
     return this._objRef?.width;
   }
@@ -65,7 +64,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get height(): number | undefined {
     return this._objRef?.height;
   }
@@ -76,7 +74,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get clear(): boolean | undefined {
     return this._objRef?.clear;
   }
@@ -87,7 +84,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get renderer(): WebGLRenderer | undefined {
     return this._objRef?.renderer;
   }
@@ -98,7 +94,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get scene(): Scene | undefined {
     return this._objRef?.scene;
   }
@@ -109,7 +104,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get camera(): Camera | undefined {
     return this._objRef?.camera;
   }
@@ -120,7 +114,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get groundReflector(): (ReflectorForSSRPass | null) | undefined {
     return this._objRef?.groundReflector;
   }
@@ -131,7 +124,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get opacity(): number | undefined {
     return this._objRef?.opacity;
   }
@@ -142,7 +134,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get output(): number | undefined {
     return this._objRef?.output;
   }
@@ -153,7 +144,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get maxDistance(): number | undefined {
     return this._objRef?.maxDistance;
   }
@@ -164,7 +154,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get thickness(): number | undefined {
     return this._objRef?.thickness;
   }
@@ -174,7 +163,6 @@ export class ThSSRPass<
       this._objRef.tempColor = applyValue<Color>(this._objRef.tempColor, value);
     }
   }
-  // @ts-ignore
   public get tempColor(): Color | undefined {
     return this._objRef?.tempColor;
   }
@@ -185,7 +173,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get selective(): boolean | undefined {
     return this._objRef?.selective;
   }
@@ -196,20 +183,8 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get blur(): boolean | undefined {
     return this._objRef?.blur;
-  }
-  @Input()
-  public set thickTolerance(value: number) {
-    if (this._objRef) {
-      this._objRef.thickTolerance = value;
-    }
-  }
-
-  // @ts-ignore
-  public get thickTolerance(): number | undefined {
-    return this._objRef?.thickTolerance;
   }
   @Input()
   public set beautyRenderTarget(value: WebGLRenderTarget) {
@@ -218,7 +193,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get beautyRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.beautyRenderTarget;
   }
@@ -229,7 +203,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get prevRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.prevRenderTarget;
   }
@@ -240,7 +213,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get normalRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.normalRenderTarget;
   }
@@ -251,7 +223,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get metalnessRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.metalnessRenderTarget;
   }
@@ -262,7 +233,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get ssrRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.ssrRenderTarget;
   }
@@ -273,7 +243,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get blurRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.blurRenderTarget;
   }
@@ -284,7 +253,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get blurRenderTarget2(): WebGLRenderTarget | undefined {
     return this._objRef?.blurRenderTarget2;
   }
@@ -295,7 +263,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get ssrMaterial(): ShaderMaterial | undefined {
     return this._objRef?.ssrMaterial;
   }
@@ -306,7 +273,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get normalMaterial(): MeshNormalMaterial | undefined {
     return this._objRef?.normalMaterial;
   }
@@ -317,7 +283,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get metalnessOnMaterial(): MeshBasicMaterial | undefined {
     return this._objRef?.metalnessOnMaterial;
   }
@@ -328,7 +293,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get metalnessOffMaterial(): MeshBasicMaterial | undefined {
     return this._objRef?.metalnessOffMaterial;
   }
@@ -339,7 +303,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get blurMaterial(): ShaderMaterial | undefined {
     return this._objRef?.blurMaterial;
   }
@@ -350,7 +313,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get blurMaterial2(): ShaderMaterial | undefined {
     return this._objRef?.blurMaterial2;
   }
@@ -361,7 +323,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get depthRenderMaterial(): ShaderMaterial | undefined {
     return this._objRef?.depthRenderMaterial;
   }
@@ -372,7 +333,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get copyMaterial(): ShaderMaterial | undefined {
     return this._objRef?.copyMaterial;
   }
@@ -383,7 +343,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get fsQuad(): FullScreenQuad | undefined {
     return this._objRef?.fsQuad;
   }
@@ -392,11 +351,10 @@ export class ThSSRPass<
     if (this._objRef) {
       this._objRef.originalClearColor = applyValue<Color>(
         this._objRef.originalClearColor,
-        value
+        value,
       );
     }
   }
-  // @ts-ignore
   public get originalClearColor(): Color | undefined {
     return this._objRef?.originalClearColor;
   }
@@ -410,7 +368,6 @@ export class ThSSRPass<
     }
   }
 
-  // @ts-ignore
   public get dispose(): (() => void) | undefined {
     return this._objRef?.dispose;
   }
@@ -421,22 +378,21 @@ export class ThSSRPass<
       passMaterial: Material,
       renderTarget: WebGLRenderTarget,
       clearColor: ColorRepresentation,
-      clearAlpha: ColorRepresentation
-    ) => void
+      clearAlpha: ColorRepresentation,
+    ) => void,
   ) {
     if (this._objRef) {
       this._objRef.renderPass = value;
     }
   }
 
-  // @ts-ignore
   public get renderPass():
     | ((
         renderer: WebGLRenderer,
         passMaterial: Material,
         renderTarget: WebGLRenderTarget,
         clearColor: ColorRepresentation,
-        clearAlpha: ColorRepresentation
+        clearAlpha: ColorRepresentation,
       ) => void)
     | undefined {
     return this._objRef?.renderPass;
@@ -448,22 +404,21 @@ export class ThSSRPass<
       passMaterial: Material,
       renderTarget: WebGLRenderTarget,
       clearColor: ColorRepresentation,
-      clearAlpha: ColorRepresentation
-    ) => void
+      clearAlpha: ColorRepresentation,
+    ) => void,
   ) {
     if (this._objRef) {
       this._objRef.renderOverride = value;
     }
   }
 
-  // @ts-ignore
   public get renderOverride():
     | ((
         renderer: WebGLRenderer,
         passMaterial: Material,
         renderTarget: WebGLRenderTarget,
         clearColor: ColorRepresentation,
-        clearAlpha: ColorRepresentation
+        clearAlpha: ColorRepresentation,
       ) => void)
     | undefined {
     return this._objRef?.renderOverride;
@@ -475,22 +430,21 @@ export class ThSSRPass<
       passMaterial: Material,
       renderTarget: WebGLRenderTarget,
       clearColor: ColorRepresentation,
-      clearAlpha: ColorRepresentation
-    ) => void
+      clearAlpha: ColorRepresentation,
+    ) => void,
   ) {
     if (this._objRef) {
       this._objRef.renderMetalness = value;
     }
   }
 
-  // @ts-ignore
   public get renderMetalness():
     | ((
         renderer: WebGLRenderer,
         passMaterial: Material,
         renderTarget: WebGLRenderTarget,
         clearColor: ColorRepresentation,
-        clearAlpha: ColorRepresentation
+        clearAlpha: ColorRepresentation,
       ) => void)
     | undefined {
     return this._objRef?.renderMetalness;

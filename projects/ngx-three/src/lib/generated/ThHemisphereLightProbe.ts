@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ColorRepresentation, HemisphereLightProbe } from 'three';
 import { ThLightProbe } from './ThLightProbe';
@@ -27,14 +27,13 @@ export class ThHemisphereLightProbe<
   TARGS = [
     skyColor?: ColorRepresentation,
     groundColor?: ColorRepresentation,
-    intensity?: number
-  ]
+    intensity?: number,
+  ],
 > extends ThLightProbe<T, TARGS> {
   public getType(): Type<HemisphereLightProbe> {
     return HemisphereLightProbe;
   }
 
-  // @ts-ignore
   public get isHemisphereLightProbe(): true | undefined {
     return this._objRef?.isHemisphereLightProbe;
   }

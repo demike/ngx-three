@@ -18,7 +18,6 @@ describe('ClonePipe', () => {
 
   it('should return undefined on undefined | null inputs', () => {
     const pipe = new ClonePipe();
-    const vector = new Vector2(1, 2);
     let clone = pipe.transform();
     expect(clone).toBeUndefined();
     clone = pipe.transform(null);

@@ -1,13 +1,18 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { ExtrudeGeometry, ExtrudeGeometryOptions, Shape } from 'three';
+import {
+  ExtrudeGeometry,
+  ExtrudeGeometryOptions,
+  NormalBufferAttributes,
+  Shape,
+} from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -23,17 +28,15 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThExtrudeGeometry<
   T extends ExtrudeGeometry = ExtrudeGeometry,
-  TARGS = [shapes?: Shape | Shape[], options?: ExtrudeGeometryOptions]
-> extends ThBufferGeometry<T, TARGS> {
+  TARGS = [shapes?: Shape | Shape[], options?: ExtrudeGeometryOptions],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<ExtrudeGeometry> {
     return ExtrudeGeometry;
   }
 
-  // @ts-ignore
   public get type(): (string | 'ExtrudeGeometry') | undefined {
     return this._objRef?.type;
   }
-  // @ts-ignore
   public get parameters():
     | {
         readonly shapes: Shape | Shape[];

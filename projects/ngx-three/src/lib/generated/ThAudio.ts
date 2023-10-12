@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Audio, AudioContext, AudioListener, Event } from 'three';
 import { ThObject3D } from './ThObject3D';
@@ -20,13 +20,12 @@ import { ThObject3D } from './ThObject3D';
 export class ThAudio<
   NodeType extends AudioNode = GainNode,
   T extends Audio<NodeType> = Audio<NodeType>,
-  TARGS = /* listener */ AudioListener
+  TARGS = /* listener */ AudioListener,
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<Audio<NodeType>> {
     return Audio;
   }
 
-  // @ts-ignore
   public get type(): (string | 'Audio') | undefined {
     return this._objRef?.type;
   }
@@ -37,7 +36,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get listener(): AudioListener | undefined {
     return this._objRef?.listener;
   }
@@ -48,7 +46,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get context(): AudioContext | undefined {
     return this._objRef?.context;
   }
@@ -59,7 +56,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get gain(): GainNode | undefined {
     return this._objRef?.gain;
   }
@@ -70,7 +66,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get autoplay(): boolean | undefined {
     return this._objRef?.autoplay;
   }
@@ -81,7 +76,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get buffer(): (AudioBuffer | null) | undefined {
     return this._objRef?.buffer;
   }
@@ -92,7 +86,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get detune(): number | undefined {
     return this._objRef?.detune;
   }
@@ -103,7 +96,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get loop(): boolean | undefined {
     return this._objRef?.loop;
   }
@@ -114,7 +106,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get loopStart(): number | undefined {
     return this._objRef?.loopStart;
   }
@@ -125,7 +116,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get loopEnd(): number | undefined {
     return this._objRef?.loopEnd;
   }
@@ -136,7 +126,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get offset(): number | undefined {
     return this._objRef?.offset;
   }
@@ -147,7 +136,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get duration(): (number | undefined) | undefined {
     return this._objRef?.duration;
   }
@@ -158,7 +146,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get playbackRate(): number | undefined {
     return this._objRef?.playbackRate;
   }
@@ -169,7 +156,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get isPlaying(): boolean | undefined {
     return this._objRef?.isPlaying;
   }
@@ -180,7 +166,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get hasPlaybackControl(): boolean | undefined {
     return this._objRef?.hasPlaybackControl;
   }
@@ -191,19 +176,17 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get sourceType(): string | undefined {
     return this._objRef?.sourceType;
   }
   @Input()
-  public set source(value: AudioBufferSourceNode | null) {
+  public set source(value: AudioScheduledSourceNode | null) {
     if (this._objRef) {
       this._objRef.source = value;
     }
   }
 
-  // @ts-ignore
-  public get source(): (AudioBufferSourceNode | null) | undefined {
+  public get source(): (AudioScheduledSourceNode | null) | undefined {
     return this._objRef?.source;
   }
   @Input()
@@ -213,7 +196,6 @@ export class ThAudio<
     }
   }
 
-  // @ts-ignore
   public get filters(): AudioNode[] | undefined {
     return this._objRef?.filters;
   }

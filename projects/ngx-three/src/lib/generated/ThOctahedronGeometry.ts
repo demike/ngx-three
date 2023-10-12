@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { OctahedronGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
@@ -24,13 +24,12 @@ import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
 })
 export class ThOctahedronGeometry<
   T extends OctahedronGeometry = OctahedronGeometry,
-  TARGS = [radius?: number, detail?: number]
+  TARGS = [radius?: number, detail?: number],
 > extends ThPolyhedronGeometry<T, TARGS> {
   public getType(): Type<OctahedronGeometry> {
     return OctahedronGeometry;
   }
 
-  // @ts-ignore
   public get type(): (string | 'OctahedronGeometry') | undefined {
     return this._objRef?.type;
   }

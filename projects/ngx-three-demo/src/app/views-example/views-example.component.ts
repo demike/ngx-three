@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { ThCamera, ThCanvas, ThScene } from 'ngx-three';
-import { Camera, CanvasTexture, Color, PerspectiveCamera, Scene, WebGLRenderer } from 'three';
+import { ThCanvas } from 'ngx-three';
+import { CanvasTexture, Color, PerspectiveCamera, Scene } from 'three';
 
 @Component({
   selector: 'app-views-example',

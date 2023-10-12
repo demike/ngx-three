@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   ColorRepresentation,
@@ -32,13 +32,12 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThHemisphereLightHelper<
   T extends HemisphereLightHelper = HemisphereLightHelper,
-  TARGS = [light: HemisphereLight, size: number, color?: ColorRepresentation]
+  TARGS = [light: HemisphereLight, size: number, color?: ColorRepresentation],
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<HemisphereLightHelper> {
     return HemisphereLightHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'HemisphereLightHelper') | undefined {
     return this._objRef?.type;
   }
@@ -49,7 +48,6 @@ export class ThHemisphereLightHelper<
     }
   }
 
-  // @ts-ignore
   public get light(): HemisphereLight | undefined {
     return this._objRef?.light;
   }
@@ -73,14 +71,13 @@ export class ThHemisphereLightHelper<
           n41: number,
           n42: number,
           n43: number,
-          n44: number
-        ]
+          n44: number,
+        ],
   ) {
     if (this._objRef) {
       this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
     }
   }
-  // @ts-ignore
   public get matrix(): Matrix4 | undefined {
     return this._objRef?.matrix;
   }
@@ -91,7 +88,6 @@ export class ThHemisphereLightHelper<
     }
   }
 
-  // @ts-ignore
   public get matrixAutoUpdate(): boolean | undefined {
     return this._objRef?.matrixAutoUpdate;
   }
@@ -102,7 +98,6 @@ export class ThHemisphereLightHelper<
     }
   }
 
-  // @ts-ignore
   public get material(): MeshBasicMaterial | undefined {
     return this._objRef?.material;
   }
@@ -113,7 +108,6 @@ export class ThHemisphereLightHelper<
     }
   }
 
-  // @ts-ignore
   public get color(): (ColorRepresentation | undefined) | undefined {
     return this._objRef?.color;
   }

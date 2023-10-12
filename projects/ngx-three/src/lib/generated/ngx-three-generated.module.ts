@@ -1,10 +1,4 @@
 import { NgModule } from '@angular/core';
-import { ThCSS2DObject } from './overrides/ThCSS2DObject';
-import { ThCSS3DObject } from './overrides/ThCSS3DObject';
-import { ThEffectComposer } from './overrides/ThEffectComposer';
-import { ThRenderPass } from './overrides/ThRenderPass';
-import { ThTransformControls } from './overrides/ThTransformControls';
-import { ThAdaptiveToneMappingPass } from './ThAdaptiveToneMappingPass';
 import { ThAfterimagePass } from './ThAfterimagePass';
 import { ThAmbientLight } from './ThAmbientLight';
 import { ThAmbientLightProbe } from './ThAmbientLightProbe';
@@ -22,6 +16,9 @@ import { ThBoxGeometry } from './ThBoxGeometry';
 import { ThBoxHelper } from './ThBoxHelper';
 import { ThBoxLineGeometry } from './ThBoxLineGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
+import { ThCSS2DObjectGen } from './ThCSS2DObjectGen';
+import { ThCSS3DObjectGen } from './ThCSS3DObjectGen';
+import { ThCamera } from './ThCamera';
 import { ThCameraHelper } from './ThCameraHelper';
 import { ThCanvasTexture } from './ThCanvasTexture';
 import { ThCapsuleGeometry } from './ThCapsuleGeometry';
@@ -32,8 +29,6 @@ import { ThCompressedArrayTexture } from './ThCompressedArrayTexture';
 import { ThCompressedTexture } from './ThCompressedTexture';
 import { ThConeGeometry } from './ThConeGeometry';
 import { ThConvexGeometry } from './ThConvexGeometry';
-import { ThCSS2DObjectGen } from './ThCSS2DObjectGen';
-import { ThCSS3DObjectGen } from './ThCSS3DObjectGen';
 import { ThCubeCamera } from './ThCubeCamera';
 import { ThCubeTexture } from './ThCubeTexture';
 import { ThCubeTexturePass } from './ThCubeTexturePass';
@@ -65,16 +60,15 @@ import { ThHemisphereLightProbe } from './ThHemisphereLightProbe';
 import { ThIcosahedronGeometry } from './ThIcosahedronGeometry';
 import { ThInstancedBufferGeometry } from './ThInstancedBufferGeometry';
 import { ThInstancedMesh } from './ThInstancedMesh';
+import { ThLOD } from './ThLOD';
+import { ThLUTPass } from './ThLUTPass';
 import { ThLatheGeometry } from './ThLatheGeometry';
-import { ThLightningStrike } from './ThLightningStrike';
 import { ThLightProbe } from './ThLightProbe';
 import { ThLine } from './ThLine';
 import { ThLineBasicMaterial } from './ThLineBasicMaterial';
 import { ThLineDashedMaterial } from './ThLineDashedMaterial';
 import { ThLineLoop } from './ThLineLoop';
 import { ThLineSegments } from './ThLineSegments';
-import { ThLOD } from './ThLOD';
-import { ThLUTPass } from './ThLUTPass';
 import { ThMapControls } from './ThMapControls';
 import { ThMaskPass } from './ThMaskPass';
 import { ThMaterial } from './ThMaterial';
@@ -94,14 +88,15 @@ import { ThOctahedronGeometry } from './ThOctahedronGeometry';
 import { ThOrbitControls } from './ThOrbitControls';
 import { ThOrthographicCamera } from './ThOrthographicCamera';
 import { ThOutlinePass } from './ThOutlinePass';
+import { ThOutputPass } from './ThOutputPass';
 import { ThParametricGeometry } from './ThParametricGeometry';
 import { ThPass } from './ThPass';
 import { ThPerspectiveCamera } from './ThPerspectiveCamera';
 import { ThPlaneGeometry } from './ThPlaneGeometry';
 import { ThPlaneHelper } from './ThPlaneHelper';
-import { ThPointerLockControls } from './ThPointerLockControls';
 import { ThPointLight } from './ThPointLight';
 import { ThPointLightHelper } from './ThPointLightHelper';
+import { ThPointerLockControls } from './ThPointerLockControls';
 import { ThPoints } from './ThPoints';
 import { ThPointsMaterial } from './ThPointsMaterial';
 import { ThPolarGridHelper } from './ThPolarGridHelper';
@@ -113,6 +108,10 @@ import { ThRenderPassGen } from './ThRenderPassGen';
 import { ThRingGeometry } from './ThRingGeometry';
 import { ThRoundedBoxGeometry } from './ThRoundedBoxGeometry';
 import { ThSAOPass } from './ThSAOPass';
+import { ThSMAAPass } from './ThSMAAPass';
+import { ThSSAARenderPass } from './ThSSAARenderPass';
+import { ThSSAOPass } from './ThSSAOPass';
+import { ThSSRPass } from './ThSSRPass';
 import { ThSavePass } from './ThSavePass';
 import { ThScene } from './ThScene';
 import { ThShaderMaterial } from './ThShaderMaterial';
@@ -121,15 +120,11 @@ import { ThShadowMaterial } from './ThShadowMaterial';
 import { ThShapeGeometry } from './ThShapeGeometry';
 import { ThSkeletonHelper } from './ThSkeletonHelper';
 import { ThSkinnedMesh } from './ThSkinnedMesh';
-import { ThSMAAPass } from './ThSMAAPass';
 import { ThSphereGeometry } from './ThSphereGeometry';
 import { ThSpotLight } from './ThSpotLight';
 import { ThSpotLightHelper } from './ThSpotLightHelper';
 import { ThSprite } from './ThSprite';
 import { ThSpriteMaterial } from './ThSpriteMaterial';
-import { ThSSAARenderPass } from './ThSSAARenderPass';
-import { ThSSAOPass } from './ThSSAOPass';
-import { ThSSRPass } from './ThSSRPass';
 import { ThStereoCamera } from './ThStereoCamera';
 import { ThTAARenderPass } from './ThTAARenderPass';
 import { ThTeapotGeometry } from './ThTeapotGeometry';
@@ -145,6 +140,11 @@ import { ThTubeGeometry } from './ThTubeGeometry';
 import { ThUnrealBloomPass } from './ThUnrealBloomPass';
 import { ThVideoTexture } from './ThVideoTexture';
 import { ThWireframeGeometry } from './ThWireframeGeometry';
+import { ThCSS2DObject } from './overrides/ThCSS2DObject';
+import { ThCSS3DObject } from './overrides/ThCSS3DObject';
+import { ThEffectComposer } from './overrides/ThEffectComposer';
+import { ThRenderPass } from './overrides/ThRenderPass';
+import { ThTransformControls } from './overrides/ThTransformControls';
 
 @NgModule({
   declarations: [
@@ -166,6 +166,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThOrthographicCamera,
     ThCubeCamera,
     ThArrayCamera,
+    ThCamera,
     ThObject3D,
     ThSpotLightHelper,
     ThSkeletonHelper,
@@ -249,7 +250,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThBoxLineGeometry,
     ThConvexGeometry,
     ThDecalGeometry,
-    ThLightningStrike,
     ThParametricGeometry,
     ThRoundedBoxGeometry,
     ThTeapotGeometry,
@@ -257,7 +257,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThPass,
     ThEffectComposerGen,
     ThEffectComposer,
-    ThAdaptiveToneMappingPass,
     ThAfterimagePass,
     ThBloomPass,
     ThBokehPass,
@@ -271,6 +270,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThMaskPass,
     ThClearMaskPass,
     ThOutlinePass,
+    ThOutputPass,
     ThRenderPassGen,
     ThRenderPass,
     ThSAOPass,
@@ -314,6 +314,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThOrthographicCamera,
     ThCubeCamera,
     ThArrayCamera,
+    ThCamera,
     ThObject3D,
     ThSpotLightHelper,
     ThSkeletonHelper,
@@ -397,7 +398,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThBoxLineGeometry,
     ThConvexGeometry,
     ThDecalGeometry,
-    ThLightningStrike,
     ThParametricGeometry,
     ThRoundedBoxGeometry,
     ThTeapotGeometry,
@@ -405,7 +405,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThPass,
     ThEffectComposerGen,
     ThEffectComposer,
-    ThAdaptiveToneMappingPass,
     ThAfterimagePass,
     ThBloomPass,
     ThBokehPass,
@@ -419,6 +418,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThMaskPass,
     ThClearMaskPass,
     ThOutlinePass,
+    ThOutputPass,
     ThRenderPassGen,
     ThRenderPass,
     ThSAOPass,

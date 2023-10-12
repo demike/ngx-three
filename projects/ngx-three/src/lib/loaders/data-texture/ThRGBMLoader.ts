@@ -1,15 +1,14 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
 import { RGBMLoader } from 'three/examples/jsm/loaders/RGBMLoader';
 import { ThDataTexture } from '../../generated/ThDataTexture';
-import { ThTexture } from '../../generated/ThTexture';
 import {
   ThCallbackLoaderService,
   ThCallbackLoaderBaseDirective,
-  ThCallbackLoaderBasePipe
+  ThCallbackLoaderBasePipe,
 } from '../ThCallbackLoaderBase';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RGBMLoaderService extends ThCallbackLoaderService<RGBMLoader> {
   public clazz = RGBMLoader;
@@ -17,7 +16,7 @@ export class RGBMLoaderService extends ThCallbackLoaderService<RGBMLoader> {
 
 @Pipe({
   name: 'loadRGBMTexture',
-  pure: true
+  pure: true,
 })
 export class ThRGBMLoaderPipe extends ThCallbackLoaderBasePipe<RGBMLoader> implements PipeTransform {
   constructor(protected service: RGBMLoaderService) {
@@ -26,10 +25,14 @@ export class ThRGBMLoaderPipe extends ThCallbackLoaderBasePipe<RGBMLoader> imple
 }
 
 @Directive({
-  selector: '[loadRGBMTexture]'
+  selector: '[loadRGBMTexture]',
 })
 export class ThRGBMLoaderDirective extends ThCallbackLoaderBaseDirective<RGBMLoader> {
-  constructor(@Host() protected host: ThDataTexture, protected zone: NgZone, protected service: RGBMLoaderService) {
+  constructor(
+    @Host() protected host: ThDataTexture,
+    protected zone: NgZone,
+    protected service: RGBMLoaderService,
+  ) {
     super(host, zone);
   }
 }

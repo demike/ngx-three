@@ -1,9 +1,14 @@
 {
   "extends": "../../.eslintrc.json",
-  "ignorePatterns": ["!**/*"],
+  "ignorePatterns": [
+    "!**/*",
+    "**/environment.prod.ts"
+  ],
   "overrides": [
     {
-      "files": ["*.ts"],
+      "files": [
+        "*.ts"
+      ],
       "parserOptions": {
         "project": [
           "projects/ngx-three-demo/tsconfig.app.json",
@@ -32,7 +37,9 @@
       }
     },
     {
-      "files": ["*.html"],
+      "files": [
+        "*.html"
+      ],
       "rules": {}
     }
   ]

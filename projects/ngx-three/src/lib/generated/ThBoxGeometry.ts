@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
-import { BoxGeometry } from 'three';
+import { BoxGeometry, NormalBufferAttributes } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
@@ -26,18 +26,16 @@ export class ThBoxGeometry<
     depth?: number,
     widthSegments?: number,
     heightSegments?: number,
-    depthSegments?: number
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    depthSegments?: number,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<BoxGeometry> {
     return BoxGeometry;
   }
 
-  // @ts-ignore
   public get type(): (string | 'BoxGeometry') | undefined {
     return this._objRef?.type;
   }
-  // @ts-ignore
   public get parameters():
     | {
         readonly width: number;

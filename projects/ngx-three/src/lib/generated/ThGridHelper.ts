@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   BufferGeometry,
   ColorRepresentation,
   GridHelper,
-  Material,
+  LineBasicMaterial,
 } from 'three';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
@@ -30,14 +30,13 @@ export class ThGridHelper<
     size?: number,
     divisions?: number,
     color1?: ColorRepresentation,
-    color2?: ColorRepresentation
-  ]
-> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
+    color2?: ColorRepresentation,
+  ],
+> extends ThLineSegments<BufferGeometry, LineBasicMaterial, T, TARGS> {
   public getType(): Type<GridHelper> {
     return GridHelper;
   }
 
-  // @ts-ignore
   public get type(): (string | 'GridHelper') | undefined {
     return this._objRef?.type;
   }

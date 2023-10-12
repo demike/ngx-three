@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Event, Group } from 'three';
 import { ThObject3D } from './ThObject3D';
@@ -25,11 +25,9 @@ export class ThGroup<T extends Group = Group, TARGS = []> extends ThObject3D<
     return Group;
   }
 
-  // @ts-ignore
   public get isGroup(): true | undefined {
     return this._objRef?.isGroup;
   }
-  // @ts-ignore
   public get type(): (string | 'Group') | undefined {
     return this._objRef?.type;
   }

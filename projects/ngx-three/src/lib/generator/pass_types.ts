@@ -1,5 +1,4 @@
 export { Pass } from 'three/examples/jsm/postprocessing/Pass';
-export * from 'three/examples/jsm/postprocessing/AdaptiveToneMappingPass';
 export * from 'three/examples/jsm/postprocessing/AfterimagePass';
 export * from 'three/examples/jsm/postprocessing/BloomPass';
 export * from 'three/examples/jsm/postprocessing/BokehPass';
@@ -12,6 +11,7 @@ export * from 'three/examples/jsm/postprocessing/HalftonePass';
 export * from 'three/examples/jsm/postprocessing/LUTPass';
 export * from 'three/examples/jsm/postprocessing/MaskPass';
 export * from 'three/examples/jsm/postprocessing/OutlinePass';
+export * from 'three/examples/jsm/postprocessing/OutputPass';
 export * from 'three/examples/jsm/postprocessing/RenderPass';
 export * from 'three/examples/jsm/postprocessing/SAOPass';
 export * from 'three/examples/jsm/postprocessing/SMAAPass';

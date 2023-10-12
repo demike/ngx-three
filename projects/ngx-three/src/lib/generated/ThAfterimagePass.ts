@@ -1,17 +1,17 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, WebGLRenderTarget } from 'three';
 import { AfterimagePass } from 'three/examples/jsm/postprocessing/AfterimagePass';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass';
+import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
@@ -25,7 +25,7 @@ import { ThPass } from './ThPass';
 })
 export class ThAfterimagePass<
   T extends AfterimagePass = AfterimagePass,
-  TARGS = /* damp? */ number
+  TARGS = /* damp? */ number,
 > extends ThPass<T, TARGS> {
   public getType(): Type<AfterimagePass> {
     return AfterimagePass;
@@ -38,7 +38,6 @@ export class ThAfterimagePass<
     }
   }
 
-  // @ts-ignore
   public get shader(): object | undefined {
     return this._objRef?.shader;
   }
@@ -49,10 +48,10 @@ export class ThAfterimagePass<
     }
   }
 
-  // @ts-ignore
   public get uniforms(): { [name: string]: { value: any } } | undefined {
-    // @ts-ignore
-    return this._objRef?.uniforms;
+    return this._objRef?.uniforms as
+      | { [name: string]: { value: any } }
+      | undefined;
   }
   @Input()
   public set textureComp(value: WebGLRenderTarget) {
@@ -61,7 +60,6 @@ export class ThAfterimagePass<
     }
   }
 
-  // @ts-ignore
   public get textureComp(): WebGLRenderTarget | undefined {
     return this._objRef?.textureComp;
   }
@@ -72,7 +70,6 @@ export class ThAfterimagePass<
     }
   }
 
-  // @ts-ignore
   public get textureOld(): WebGLRenderTarget | undefined {
     return this._objRef?.textureOld;
   }
@@ -83,7 +80,6 @@ export class ThAfterimagePass<
     }
   }
 
-  // @ts-ignore
   public get shaderMaterial(): ShaderMaterial | undefined {
     return this._objRef?.shaderMaterial;
   }
@@ -94,7 +90,6 @@ export class ThAfterimagePass<
     }
   }
 
-  // @ts-ignore
   public get compFsQuad(): FullScreenQuad | undefined {
     return this._objRef?.compFsQuad;
   }
@@ -105,7 +100,6 @@ export class ThAfterimagePass<
     }
   }
 
-  // @ts-ignore
   public get copyFsQuad(): FullScreenQuad | undefined {
     return this._objRef?.copyFsQuad;
   }

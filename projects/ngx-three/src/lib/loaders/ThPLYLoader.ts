@@ -1,6 +1,5 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
 
-import { ThObject3D } from '../generated/ThObject3D';
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader';
 import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';
 import { BufferGeometry } from 'three';
@@ -8,7 +7,7 @@ import { ThBufferGeometry } from '../generated';
 import { isObserved } from '../util';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PLYLoaderService extends ThAsyncLoaderService<PLYLoader> {
   public clazz = PLYLoader;
@@ -16,7 +15,7 @@ export class PLYLoaderService extends ThAsyncLoaderService<PLYLoader> {
 
 @Pipe({
   name: 'loadPLY',
-  pure: true
+  pure: true,
 })
 export class ThPLYLoaderPipe extends ThAsyncLoaderBasePipe<PLYLoader> implements PipeTransform {
   constructor(protected service: PLYLoaderService) {
@@ -25,10 +24,14 @@ export class ThPLYLoaderPipe extends ThAsyncLoaderBasePipe<PLYLoader> implements
 }
 
 @Directive({
-  selector: '[loadPLY]'
+  selector: '[loadPLY]',
 })
 export class ThPLYLoaderDirective extends ThAsyncLoaderBaseDirective<PLYLoader> {
-  constructor(@Host() protected host: ThBufferGeometry, protected zone: NgZone, protected service: PLYLoaderService) {
+  constructor(
+    @Host() protected host: ThBufferGeometry,
+    protected zone: NgZone,
+    protected service: PLYLoaderService,
+  ) {
     super(host, zone);
   }
 

@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { AudioContext, AudioListener, Event } from 'three';
 import { ThObject3D } from './ThObject3D';
@@ -21,13 +21,12 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThAudioListener<
   T extends AudioListener = AudioListener,
-  TARGS = []
+  TARGS = [],
 > extends ThObject3D<Event, T, TARGS> {
   public getType(): Type<AudioListener> {
     return AudioListener;
   }
 
-  // @ts-ignore
   public get type(): (string | 'AudioListener') | undefined {
     return this._objRef?.type;
   }
@@ -38,7 +37,6 @@ export class ThAudioListener<
     }
   }
 
-  // @ts-ignore
   public get context(): AudioContext | undefined {
     return this._objRef?.context;
   }
@@ -49,7 +47,6 @@ export class ThAudioListener<
     }
   }
 
-  // @ts-ignore
   public get gain(): GainNode | undefined {
     return this._objRef?.gain;
   }
@@ -60,7 +57,6 @@ export class ThAudioListener<
     }
   }
 
-  // @ts-ignore
   public get filter(): AudioNode | undefined {
     return this._objRef?.filter;
   }
@@ -71,7 +67,6 @@ export class ThAudioListener<
     }
   }
 
-  // @ts-ignore
   public get timeDelta(): number | undefined {
     return this._objRef?.timeDelta;
   }

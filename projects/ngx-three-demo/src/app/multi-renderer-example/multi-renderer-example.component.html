@@ -1,31 +1,21 @@
 <th-canvas (onRender)="this.onBeforeRender()">
   <th-scene [thStats]="true">
-    <th-ambientLight/>
+    <th-ambientLight [intensity]="3" />
 
-    <th-object3D
-      loadGLTF
-      [url]="assetPath1"
-      [rotation]="this.rotation"
-      [position]="[0, 1, 0]"
-    >
-    <th-cSS2DObject [position]="[0,0,0.2]" [center]="[0,0]">
-      <div class="label">
-        A Helmet
-        <button (pointerdown)="this.resetRotation()">Reset</button>
-      </div>
-    </th-cSS2DObject> 
+    <th-object3D loadGLTF [url]="assetPath1" [rotation]="this.rotation" [position]="[0, 1, 0]">
+      <th-cSS2DObject [position]="[0, 0, 0.2]" [center]="[0, 0]">
+        <div class="label">
+          A Helmet
+          <button (pointerdown)="this.resetRotation()">Reset</button>
+        </div>
+      </th-cSS2DObject>
     </th-object3D>
 
+    <th-gridHelper [args]="[10, 10]" />
+    <th-pointLight [position]="[10, 10, 10]" [decay]="0" />
 
-
-    <th-gridHelper [args]="[10, 10]"/>
-    <th-pointLight [position]="[10, 10, 10]"/>
-
-    <th-perspectiveCamera
-      [args]="[45, 2, 0.1, 100]"
-      [position]="[10, 10, 10]"
-      [lookAt]="[0, 0, 0]">
-      <th-orbitControls/>
+    <th-perspectiveCamera [args]="[45, 2, 0.1, 100]" [position]="[10, 10, 10]" [lookAt]="[0, 0, 0]">
+      <th-orbitControls />
     </th-perspectiveCamera>
   </th-scene>
 </th-canvas>

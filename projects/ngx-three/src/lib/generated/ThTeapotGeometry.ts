@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
-/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix, jsdoc/no-types, import/no-deprecated */
+/* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
+import { NormalBufferAttributes } from 'three';
 import { TeapotGeometry } from 'three/examples/jsm/geometries/TeapotGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -30,9 +31,9 @@ export class ThTeapotGeometry<
     lid?: boolean,
     body?: boolean,
     fitLid?: boolean,
-    blinn?: number
-  ]
-> extends ThBufferGeometry<T, TARGS> {
+    blinn?: boolean,
+  ],
+> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<TeapotGeometry> {
     return TeapotGeometry;
   }
