@@ -28,7 +28,7 @@
     "@angular/platform-browser-dynamic": "^16.2.1",
     "@angular/router": "^16.2.1",
     "@stackblitz/sdk": "^1.9.0",
-    "@types/webxr": ">=^0.5.3",
+    "@types/webxr": "^0.5.5",
     "lil-gui": "^0.18.2",
     "ngx-highlightjs": "^10.0.0",
     "normalize.css": "^8.0.1",
