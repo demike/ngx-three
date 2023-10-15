@@ -158,7 +158,15 @@ export class ThSSRPass<
     return this._objRef?.thickness;
   }
   @Input()
-  public set tempColor(value: Color | [color: ColorRepresentation]) {
+  public set tempColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.tempColor = applyValue<Color>(this._objRef.tempColor, value);
     }
@@ -347,7 +355,15 @@ export class ThSSRPass<
     return this._objRef?.fsQuad;
   }
   @Input()
-  public set originalClearColor(value: Color | [color: ColorRepresentation]) {
+  public set originalClearColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.originalClearColor = applyValue<Color>(
         this._objRef.originalClearColor,

@@ -11,9 +11,9 @@ import {
 import {
   ArrowHelper,
   ColorRepresentation,
-  Event,
   Line,
   Mesh,
+  Object3DEventMap,
   Vector3,
 } from 'three';
 import { ThObject3D } from './ThObject3D';
@@ -36,7 +36,7 @@ export class ThArrowHelper<
     headLength?: number,
     headWidth?: number,
   ],
-> extends ThObject3D<Event, T, TARGS> {
+> extends ThObject3D<Object3DEventMap, T, TARGS> {
   public getType(): Type<ArrowHelper> {
     return ArrowHelper;
   }

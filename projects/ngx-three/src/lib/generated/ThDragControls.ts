@@ -49,6 +49,16 @@ export class ThDragControls<
     return this._objRef?.enabled;
   }
   @Input()
+  public set recursive(value: boolean) {
+    if (this._objRef) {
+      this._objRef.recursive = value;
+    }
+  }
+
+  public get recursive(): boolean | undefined {
+    return this._objRef?.recursive;
+  }
+  @Input()
   public set transformGroup(value: boolean) {
     if (this._objRef) {
       this._objRef.transformGroup = value;

@@ -7,7 +7,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Bone, Event } from 'three';
+import { Bone, Object3DEventMap } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -17,7 +17,7 @@ import { ThObject3D } from './ThObject3D';
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThBone) }],
 })
 export class ThBone<T extends Bone = Bone, TARGS = []> extends ThObject3D<
-  Event,
+  Object3DEventMap,
   T,
   TARGS
 > {

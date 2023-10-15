@@ -25,12 +25,7 @@ import { ThPass } from './ThPass';
 })
 export class ThFilmPass<
   T extends FilmPass = FilmPass,
-  TARGS = [
-    noiseIntensity?: number,
-    scanlinesIntensity?: number,
-    scanlinesCount?: number,
-    grayscale?: boolean,
-  ],
+  TARGS = [intensity?: number, grayscale?: boolean],
 > extends ThPass<T, TARGS> {
   public getType(): Type<FilmPass> {
     return FilmPass;

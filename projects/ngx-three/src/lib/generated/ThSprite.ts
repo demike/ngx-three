@@ -8,7 +8,13 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { BufferGeometry, Event, Sprite, SpriteMaterial, Vector2 } from 'three';
+import {
+  BufferGeometry,
+  Object3DEventMap,
+  Sprite,
+  SpriteMaterial,
+  Vector2,
+} from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -21,7 +27,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThSprite<
   T extends Sprite = Sprite,
   TARGS = /* material? */ SpriteMaterial,
-> extends ThObject3D<Event, T, TARGS> {
+> extends ThObject3D<Object3DEventMap, T, TARGS> {
   public getType(): Type<Sprite> {
     return Sprite;
   }

@@ -152,7 +152,15 @@ export class ThMeshPhysicalMaterial<
     return this._objRef?.sheen;
   }
   @Input()
-  public set sheenColor(value: Color | [color: ColorRepresentation]) {
+  public set sheenColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.sheenColor = applyValue<Color>(
         this._objRef.sheenColor,
@@ -244,7 +252,15 @@ export class ThMeshPhysicalMaterial<
     return this._objRef?.attenuationDistance;
   }
   @Input()
-  public set attenuationColor(value: Color | [color: ColorRepresentation]) {
+  public set attenuationColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.attenuationColor = applyValue<Color>(
         this._objRef.attenuationColor,
@@ -266,7 +282,15 @@ export class ThMeshPhysicalMaterial<
     return this._objRef?.specularIntensity;
   }
   @Input()
-  public set specularColor(value: Color | [color: ColorRepresentation]) {
+  public set specularColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.specularColor = applyValue<Color>(
         this._objRef.specularColor,

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { ThAfterimagePass } from './ThAfterimagePass';
 import { ThAmbientLight } from './ThAmbientLight';
-import { ThAmbientLightProbe } from './ThAmbientLightProbe';
 import { ThArcballControls } from './ThArcballControls';
 import { ThArrayCamera } from './ThArrayCamera';
 import { ThArrowHelper } from './ThArrowHelper';
@@ -56,7 +55,6 @@ import { ThGroup } from './ThGroup';
 import { ThHalftonePass } from './ThHalftonePass';
 import { ThHemisphereLight } from './ThHemisphereLight';
 import { ThHemisphereLightHelper } from './ThHemisphereLightHelper';
-import { ThHemisphereLightProbe } from './ThHemisphereLightProbe';
 import { ThIcosahedronGeometry } from './ThIcosahedronGeometry';
 import { ThInstancedBufferGeometry } from './ThInstancedBufferGeometry';
 import { ThInstancedMesh } from './ThInstancedMesh';
@@ -187,8 +185,6 @@ import { ThTransformControls } from './overrides/ThTransformControls';
     ThHemisphereLight,
     ThDirectionalLight,
     ThAmbientLight,
-    ThAmbientLightProbe,
-    ThHemisphereLightProbe,
     ThLightProbe,
     ThSprite,
     ThLOD,
@@ -335,8 +331,6 @@ import { ThTransformControls } from './overrides/ThTransformControls';
     ThHemisphereLight,
     ThDirectionalLight,
     ThAmbientLight,
-    ThAmbientLightProbe,
-    ThHemisphereLightProbe,
     ThLightProbe,
     ThSprite,
     ThLOD,

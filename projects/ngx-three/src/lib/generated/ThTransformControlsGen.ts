@@ -9,8 +9,12 @@ import {
   forwardRef,
 } from '@angular/core';
 import { Camera, MOUSE, Object3D } from 'three';
-import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
+import {
+  TransformControls,
+  TransformControlsEventMap,
+} from 'three/examples/jsm/controls/TransformControls';
 import { ThControlBase } from '../ThControlBase';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
   selector: 'th-transformControlsGen',
@@ -26,7 +30,7 @@ import { ThControlBase } from '../ThControlBase';
 export class ThTransformControlsGen<
   T extends TransformControls = TransformControls,
   TARGS = [object: Camera, domElement?: HTMLElement],
-> extends ThControlBase<T, TARGS> {
+> extends ThObject3D<TransformControlsEventMap, T, TARGS> {
   public getType(): Type<TransformControls> {
     return TransformControls;
   }
@@ -179,14 +183,22 @@ export class ThTransformControlsGen<
     return this._objRef?.isTransformControls;
   }
   @Input()
-  public set mouseButtons(value: { LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }) {
+  public set mouseButtons(value: {
+    LEFT?: MOUSE | null | undefined;
+    MIDDLE?: MOUSE | null | undefined;
+    RIGHT?: MOUSE | null | undefined;
+  }) {
     if (this._objRef) {
       this._objRef.mouseButtons = value;
     }
   }
 
   public get mouseButtons():
-    | { LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }
+    | {
+        LEFT?: MOUSE | null | undefined;
+        MIDDLE?: MOUSE | null | undefined;
+        RIGHT?: MOUSE | null | undefined;
+      }
     | undefined {
     return this._objRef?.mouseButtons;
   }

@@ -12,9 +12,9 @@ import {
   Color,
   ColorRepresentation,
   CubeTexture,
-  Event,
   FogBase,
   Material,
+  Object3DEventMap,
   Scene,
   Texture,
 } from 'three';
@@ -28,7 +28,7 @@ import { ThObject3D } from './ThObject3D';
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }],
 })
 export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
-  Event,
+  Object3DEventMap,
   T,
   TARGS
 > {
@@ -91,7 +91,16 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
   }
   @Input()
   public set background(
-    value: Color | Texture | CubeTexture | null | [color: ColorRepresentation],
+    value:
+      | Color
+      | Texture
+      | CubeTexture
+      | null
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
   ) {
     if (this._objRef) {
       this._objRef.background = applyValue<

@@ -8,7 +8,13 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera, CoordinateSystem, Event, Layers, Matrix4 } from 'three';
+import {
+  Camera,
+  CoordinateSystem,
+  Layers,
+  Matrix4,
+  Object3DEventMap,
+} from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -19,7 +25,7 @@ import { ThObject3D } from './ThObject3D';
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
 })
 export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
-  Event,
+  Object3DEventMap,
   T,
   TARGS
 > {

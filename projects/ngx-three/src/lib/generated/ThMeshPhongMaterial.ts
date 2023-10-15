@@ -48,7 +48,15 @@ export class ThMeshPhongMaterial<
     return this._objRef?.type;
   }
   @Input()
-  public set color(value: Color | [color: ColorRepresentation]) {
+  public set color(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
@@ -57,7 +65,15 @@ export class ThMeshPhongMaterial<
     return this._objRef?.color;
   }
   @Input()
-  public set specular(value: Color | [color: ColorRepresentation]) {
+  public set specular(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.specular = applyValue<Color>(this._objRef.specular, value);
     }
@@ -126,7 +142,15 @@ export class ThMeshPhongMaterial<
     return this._objRef?.aoMapIntensity;
   }
   @Input()
-  public set emissive(value: Color | [color: ColorRepresentation]) {
+  public set emissive(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.emissive = applyValue<Color>(this._objRef.emissive, value);
     }

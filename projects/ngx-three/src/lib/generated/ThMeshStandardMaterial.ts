@@ -60,7 +60,15 @@ export class ThMeshStandardMaterial<
     return this._objRef?.defines;
   }
   @Input()
-  public set color(value: Color | [color: ColorRepresentation]) {
+  public set color(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
@@ -139,7 +147,15 @@ export class ThMeshStandardMaterial<
     return this._objRef?.aoMapIntensity;
   }
   @Input()
-  public set emissive(value: Color | [color: ColorRepresentation]) {
+  public set emissive(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.emissive = applyValue<Color>(this._objRef.emissive, value);
     }

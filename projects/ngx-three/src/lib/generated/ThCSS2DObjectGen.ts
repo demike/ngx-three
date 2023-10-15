@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera, Event, Scene, Vector2 } from 'three';
+import { Camera, Object3DEventMap, Scene, Vector2 } from 'three';
 import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -24,7 +24,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThCSS2DObjectGen<
   T extends CSS2DObject = CSS2DObject,
   TARGS = /* element */ HTMLElement,
-> extends ThObject3D<Event, T, TARGS> {
+> extends ThObject3D<Object3DEventMap, T, TARGS> {
   public getType(): Type<CSS2DObject> {
     return CSS2DObject;
   }

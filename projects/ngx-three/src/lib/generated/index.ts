@@ -4,7 +4,6 @@
 
 export * from './ThAfterimagePass';
 export * from './ThAmbientLight';
-export * from './ThAmbientLightProbe';
 export * from './ThArcballControls';
 export * from './ThArrayCamera';
 export * from './ThArrowHelper';
@@ -59,7 +58,6 @@ export * from './ThGroup';
 export * from './ThHalftonePass';
 export * from './ThHemisphereLight';
 export * from './ThHemisphereLightHelper';
-export * from './ThHemisphereLightProbe';
 export * from './ThIcosahedronGeometry';
 export * from './ThInstancedBufferGeometry';
 export * from './ThInstancedMesh';

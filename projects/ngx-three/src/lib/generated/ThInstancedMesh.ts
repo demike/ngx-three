@@ -13,6 +13,7 @@ import {
   BufferGeometry,
   InstancedBufferAttribute,
   InstancedMesh,
+  InstancedMeshEventMap,
   Material,
   Sphere,
   Vector3,
@@ -41,7 +42,7 @@ export class ThInstancedMesh<
     material: TMaterial | undefined,
     count: number,
   ],
-> extends ThMesh<TGeometry, TMaterial, T, TARGS> {
+> extends ThMesh<TGeometry, TMaterial, InstancedMeshEventMap, T, TARGS> {
   public getType(): Type<InstancedMesh<TGeometry, TMaterial>> {
     return InstancedMesh;
   }

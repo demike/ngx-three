@@ -7,7 +7,13 @@ import {
   Input,
   forwardRef,
 } from '@angular/core';
-import { Color, ColorRepresentation, Event, Light, LightShadow } from 'three';
+import {
+  Color,
+  ColorRepresentation,
+  Light,
+  LightShadow,
+  Object3DEventMap,
+} from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -21,7 +27,7 @@ export abstract class ThLight<
   TShadowSupport extends LightShadow | undefined = LightShadow | undefined,
   T extends Light<TShadowSupport> = Light<TShadowSupport>,
   TARGS = [color?: ColorRepresentation, intensity?: number],
-> extends ThObject3D<Event, T, TARGS> {
+> extends ThObject3D<Object3DEventMap, T, TARGS> {
   public get isLight(): true | undefined {
     return this._objRef?.isLight;
   }
@@ -29,7 +35,15 @@ export abstract class ThLight<
     return this._objRef?.type;
   }
   @Input()
-  public set color(value: Color | [color: ColorRepresentation]) {
+  public set color(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }

@@ -10,18 +10,17 @@ import {
 } from '@angular/core';
 import {
   AnimationClip,
-  BaseEvent,
   BufferGeometry,
   Camera,
   Euler,
   EulerOrder,
-  Event,
   Group,
   Layers,
   Material,
   Matrix3,
   Matrix4,
   Object3D,
+  Object3DEventMap,
   Quaternion,
   Scene,
   Vector3,
@@ -37,11 +36,11 @@ import { applyValue } from '../util';
   providers: [],
 })
 export class ThObject3D<
-  E extends BaseEvent = Event,
-  T extends Object3D<E> = Object3D<E>,
+  TEventMap extends Object3DEventMap = Object3DEventMap,
+  T extends Object3D<TEventMap> = Object3D<TEventMap>,
   TARGS = [],
 > extends ThObjectBase<T, TARGS> {
-  public getType(): Type<Object3D<E>> {
+  public getType(): Type<Object3D<TEventMap>> {
     return Object3D;
   }
 

@@ -305,27 +305,38 @@ export class ThOrbitControls<
     return this._objRef?.keys;
   }
   @Input()
-  public set mouseButtons(
-    value: Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>,
-  ) {
+  public set mouseButtons(value: {
+    LEFT?: MOUSE | null | undefined;
+    MIDDLE?: MOUSE | null | undefined;
+    RIGHT?: MOUSE | null | undefined;
+  }) {
     if (this._objRef) {
       this._objRef.mouseButtons = value;
     }
   }
 
   public get mouseButtons():
-    | Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>
+    | {
+        LEFT?: MOUSE | null | undefined;
+        MIDDLE?: MOUSE | null | undefined;
+        RIGHT?: MOUSE | null | undefined;
+      }
     | undefined {
     return this._objRef?.mouseButtons;
   }
   @Input()
-  public set touches(value: Partial<{ ONE: TOUCH; TWO: TOUCH }>) {
+  public set touches(value: {
+    ONE?: TOUCH | null | undefined;
+    TWO?: TOUCH | null | undefined;
+  }) {
     if (this._objRef) {
       this._objRef.touches = value;
     }
   }
 
-  public get touches(): Partial<{ ONE: TOUCH; TWO: TOUCH }> | undefined {
+  public get touches():
+    | { ONE?: TOUCH | null | undefined; TWO?: TOUCH | null | undefined }
+    | undefined {
     return this._objRef?.touches;
   }
   @Input()

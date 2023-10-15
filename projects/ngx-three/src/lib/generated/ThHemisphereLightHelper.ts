@@ -10,11 +10,11 @@ import {
 } from '@angular/core';
 import {
   ColorRepresentation,
-  Event,
   HemisphereLight,
   HemisphereLightHelper,
   Matrix4,
   MeshBasicMaterial,
+  Object3DEventMap,
 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -33,7 +33,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThHemisphereLightHelper<
   T extends HemisphereLightHelper = HemisphereLightHelper,
   TARGS = [light: HemisphereLight, size: number, color?: ColorRepresentation],
-> extends ThObject3D<Event, T, TARGS> {
+> extends ThObject3D<Object3DEventMap, T, TARGS> {
   public getType(): Type<HemisphereLightHelper> {
     return HemisphereLightHelper;
   }
