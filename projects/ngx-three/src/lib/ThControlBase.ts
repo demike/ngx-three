@@ -11,11 +11,14 @@ import { ThWrapperBase } from './ThWrapperBase';
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements OnDestroy {
-  protected origDispatchEventMethod?: (event: any) => void;
+  protected origDispatchEventMethod?: EventDispatcher['dispatchEvent'];
   protected beforeRenderSubscription?: Subscription;
   protected renderLoop = inject(ThAnimationLoopService);
 
-  constructor(protected _camera: ThObject3D<any>, protected canvas?: ThCanvas) {
+  constructor(
+    protected _camera: ThObject3D<any>,
+    protected canvas?: ThCanvas,
+  ) {
     super();
   }
 
@@ -31,8 +34,9 @@ export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements On
 
   protected patchDispatchEvent(dispatcher: Partial<EventDispatcher>) {
     if (dispatcher.dispatchEvent) {
-      const origMethod = (this.origDispatchEventMethod = dispatcher.dispatchEvent);
-      dispatcher.dispatchEvent = (event: any) => {
+      this.origDispatchEventMethod = dispatcher.dispatchEvent;
+      const origMethod = this.origDispatchEventMethod;
+      dispatcher.dispatchEvent = (event) => {
         origMethod.call(dispatcher, event);
         // request an animation frame after an event was emitted;
         this.renderLoop.requestAnimationFrame();
