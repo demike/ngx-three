@@ -6,27 +6,31 @@ import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService
 import { Group } from 'three';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class OBJLoaderService extends ThAsyncLoaderService<OBJLoader> {
+export class OBJLoaderService extends ThAsyncLoaderService<Group> {
   public clazz = OBJLoader;
 }
 
 @Pipe({
   name: 'loadObj',
-  pure: true
+  pure: true,
 })
-export class ThObjLoaderPipe extends ThAsyncLoaderBasePipe<OBJLoader> implements PipeTransform {
+export class ThObjLoaderPipe extends ThAsyncLoaderBasePipe<Group> implements PipeTransform {
   constructor(protected service: OBJLoaderService) {
     super();
   }
 }
 
 @Directive({
-  selector: '[loadObj]'
+  selector: '[loadObj]',
 })
-export class ThObjLoaderDirective extends ThAsyncLoaderBaseDirective<OBJLoader> {
-  constructor(@Host() protected host: ThObject3D, protected zone: NgZone, protected service: OBJLoaderService) {
+export class ThObjLoaderDirective extends ThAsyncLoaderBaseDirective<Group> {
+  constructor(
+    @Host() protected host: ThObject3D,
+    protected zone: NgZone,
+    protected service: OBJLoaderService,
+  ) {
     super(host, zone);
   }
 

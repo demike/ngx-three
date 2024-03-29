@@ -1,8 +1,8 @@
 import { Type } from '@angular/core';
 import { Loader } from 'three';
 
-export abstract class ThLoader<T extends Loader> {
-  public abstract readonly clazz: Type<T>;
+export abstract class ThLoader<TData = unknown, TUrl extends string | string[] = string> {
+  public abstract readonly clazz: Type<Loader<TData, TUrl>>;
 
   protected crossOrigin?: string;
   protected withCredentials?: boolean;
@@ -15,7 +15,7 @@ export abstract class ThLoader<T extends Loader> {
     this.withCredentials = credentials;
   }
 
-  public createLoaderInstance(): T {
+  public createLoaderInstance(): Loader<TData, TUrl> {
     const loader = new this.clazz();
     if (this.crossOrigin) {
       loader.setCrossOrigin(this.crossOrigin);

@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 import { ThCallbackLoaderService } from '../ThCallbackLoaderBase';
+import { BufferGeometry } from 'three';
 
 export interface DRACODecoderConfig {
   type: 'js' | 'wasm';
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class DRACOLoaderService extends ThCallbackLoaderService<DRACOLoader> {
+export class DRACOLoaderService extends ThCallbackLoaderService<BufferGeometry> {
   public readonly clazz = DRACOLoader;
   protected decoderPath = '';
   protected decoderConfig?: DRACODecoderConfig;
@@ -39,7 +40,7 @@ export class DRACOLoaderService extends ThCallbackLoaderService<DRACOLoader> {
       return this.instance;
     }
 
-    const loader = super.createLoaderInstance();
+    const loader = super.createLoaderInstance() as DRACOLoader;
     loader.setDecoderPath(this.decoderPath);
 
     if (this.decoderConfig) {

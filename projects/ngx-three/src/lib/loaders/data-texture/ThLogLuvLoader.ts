@@ -4,31 +4,36 @@ import { LogLuvLoader } from 'three/examples/jsm/loaders/LogLuvLoader';
 import {
   ThCallbackLoaderBaseDirective,
   ThCallbackLoaderBasePipe,
-  ThCallbackLoaderService
+  ThCallbackLoaderService,
 } from '../ThCallbackLoaderBase';
+import { DataTexture } from 'three';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class LogLuvLoaderService extends ThCallbackLoaderService<LogLuvLoader> {
+export class LogLuvLoaderService extends ThCallbackLoaderService<DataTexture> {
   public clazz = LogLuvLoader;
 }
 
 @Pipe({
   name: 'loadLogLuvTexture',
-  pure: true
+  pure: true,
 })
-export class ThLogLuvLoaderPipe extends ThCallbackLoaderBasePipe<LogLuvLoader> implements PipeTransform {
+export class ThLogLuvLoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> implements PipeTransform {
   constructor(protected service: LogLuvLoaderService) {
     super();
   }
 }
 
 @Directive({
-  selector: '[loadLogLuvTexture]'
+  selector: '[loadLogLuvTexture]',
 })
-export class ThLogLuvLoaderDirective extends ThCallbackLoaderBaseDirective<LogLuvLoader> {
-  constructor(@Host() protected host: ThDataTexture, protected zone: NgZone, protected service: LogLuvLoaderService) {
+export class ThLogLuvLoaderDirective extends ThCallbackLoaderBaseDirective<DataTexture> {
+  constructor(
+    @Host() protected host: ThDataTexture,
+    protected zone: NgZone,
+    protected service: LogLuvLoaderService,
+  ) {
     super(host, zone);
   }
 }

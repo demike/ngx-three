@@ -6,11 +6,12 @@ import {
   ThCallbackLoaderBaseDirective,
   ThCallbackLoaderBasePipe,
 } from '../ThCallbackLoaderBase';
+import { DataTexture } from 'three';
 
 @Injectable({
   providedIn: 'root',
 })
-export class RGBMLoaderService extends ThCallbackLoaderService<RGBMLoader> {
+export class RGBMLoaderService extends ThCallbackLoaderService<DataTexture> {
   public clazz = RGBMLoader;
 }
 
@@ -18,7 +19,7 @@ export class RGBMLoaderService extends ThCallbackLoaderService<RGBMLoader> {
   name: 'loadRGBMTexture',
   pure: true,
 })
-export class ThRGBMLoaderPipe extends ThCallbackLoaderBasePipe<RGBMLoader> implements PipeTransform {
+export class ThRGBMLoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> implements PipeTransform {
   constructor(protected service: RGBMLoaderService) {
     super();
   }
@@ -27,7 +28,7 @@ export class ThRGBMLoaderPipe extends ThCallbackLoaderBasePipe<RGBMLoader> imple
 @Directive({
   selector: '[loadRGBMTexture]',
 })
-export class ThRGBMLoaderDirective extends ThCallbackLoaderBaseDirective<RGBMLoader> {
+export class ThRGBMLoaderDirective extends ThCallbackLoaderBaseDirective<DataTexture> {
   constructor(
     @Host() protected host: ThDataTexture,
     protected zone: NgZone,

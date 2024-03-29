@@ -6,11 +6,12 @@ import {
   ThCallbackLoaderBaseDirective,
   ThCallbackLoaderBasePipe,
 } from '../ThCallbackLoaderBase';
+import { CompressedTexture } from 'three';
 
 @Injectable({
   providedIn: 'root',
 })
-export class DDSLoaderService extends ThCallbackLoaderService<DDSLoader> {
+export class DDSLoaderService extends ThCallbackLoaderService<CompressedTexture> {
   public clazz = DDSLoader;
 }
 
@@ -18,7 +19,7 @@ export class DDSLoaderService extends ThCallbackLoaderService<DDSLoader> {
   name: 'loadDDSTexture',
   pure: true,
 })
-export class ThDDSLoaderPipe extends ThCallbackLoaderBasePipe<DDSLoader> implements PipeTransform {
+export class ThDDSLoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture> implements PipeTransform {
   constructor(protected service: DDSLoaderService) {
     super();
   }
@@ -27,7 +28,7 @@ export class ThDDSLoaderPipe extends ThCallbackLoaderBasePipe<DDSLoader> impleme
 @Directive({
   selector: '[loadDDSTexture]',
 })
-export class ThDDSLoaderDirective extends ThCallbackLoaderBaseDirective<DDSLoader> {
+export class ThDDSLoaderDirective extends ThCallbackLoaderBaseDirective<CompressedTexture> {
   constructor(
     @Host() protected host: ThCompressedTexture,
     protected zone: NgZone,

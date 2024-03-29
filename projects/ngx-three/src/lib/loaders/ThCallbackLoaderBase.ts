@@ -3,42 +3,40 @@ import { Loader } from 'three';
 import { isObserved } from '../util';
 import { ThLoader } from './ThLoaderBase';
 
-interface CallBackLoader extends Loader {
-  load(
-    url: string | string[],
-    onLoad?: (...args: any) => void,
-    onProgress?: (event: ProgressEvent) => void,
-    onError?: (event: ErrorEvent) => void,
-  ): any;
-}
-
-export abstract class ThCallbackLoaderService<T extends CallBackLoader> extends ThLoader<T> {
-  public load(...args: Parameters<T['load']>): ReturnType<T['load']> {
+export abstract class ThCallbackLoaderService<
+  TData = unknown,
+  TUrl extends string | string[] = string,
+> extends ThLoader<TData, TUrl> {
+  public load(...args: Parameters<Loader<TData, TUrl>['load']>): ReturnType<Loader<TData, TUrl>['load']> {
     const loader = this.createLoaderInstance();
-    return loader.load(...(args as Parameters<CallBackLoader['load']>));
+    return loader.load(...args);
   }
 }
 
-export abstract class ThCallbackLoaderBasePipe<T extends CallBackLoader> implements PipeTransform {
-  protected abstract service: ThCallbackLoaderService<T>;
+export abstract class ThCallbackLoaderBasePipe<TData = unknown, TUrl extends string | string[] = string>
+  implements PipeTransform
+{
+  protected abstract service: ThCallbackLoaderService<TData, TUrl>;
 
-  public transform(...args: Parameters<T['load']>) {
+  public transform(...args: Parameters<Loader<TData, TUrl>['load']>) {
     return this.service.load(...args);
   }
 }
 
 @Directive({})
-export abstract class ThCallbackLoaderBaseDirective<T extends CallBackLoader> implements OnInit {
-  protected abstract service: ThCallbackLoaderService<T>;
+export abstract class ThCallbackLoaderBaseDirective<TData = unknown, TUrl extends string | string[] = string>
+  implements OnInit
+{
+  protected abstract service: ThCallbackLoaderService<TData, TUrl>;
 
   private initialized = false;
-  private _url?: Parameters<T['load']>[0];
+  private _url?: TUrl;
 
-  protected onLoaded$?: EventEmitter<ReturnType<T['load']>>;
+  protected onLoaded$?: EventEmitter<ReturnType<Loader<TData, TUrl>['load']>>;
   protected onProgress$?: EventEmitter<ProgressEvent>;
 
   @Input()
-  set url(url: Parameters<T['load']>[0] | undefined) {
+  set url(url: TUrl | undefined) {
     this._url = url;
     this.load();
   }
@@ -96,7 +94,7 @@ export abstract class ThCallbackLoaderBaseDirective<T extends CallBackLoader> im
       : undefined;
 
     this.host.objRef = this.zone.runOutsideAngular(() =>
-      (this.service as ThCallbackLoaderService<CallBackLoader>).load(url, onProgress, onLoad),
+      (this.service as ThCallbackLoaderService<TData, TUrl>).load(url, onLoad!, onProgress),
     );
   }
 }

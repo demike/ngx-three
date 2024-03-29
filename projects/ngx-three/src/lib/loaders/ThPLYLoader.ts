@@ -9,7 +9,7 @@ import { isObserved } from '../util';
 @Injectable({
   providedIn: 'root',
 })
-export class PLYLoaderService extends ThAsyncLoaderService<PLYLoader> {
+export class PLYLoaderService extends ThAsyncLoaderService<BufferGeometry> {
   public clazz = PLYLoader;
 }
 
@@ -17,7 +17,7 @@ export class PLYLoaderService extends ThAsyncLoaderService<PLYLoader> {
   name: 'loadPLY',
   pure: true,
 })
-export class ThPLYLoaderPipe extends ThAsyncLoaderBasePipe<PLYLoader> implements PipeTransform {
+export class ThPLYLoaderPipe extends ThAsyncLoaderBasePipe<BufferGeometry> implements PipeTransform {
   constructor(protected service: PLYLoaderService) {
     super();
   }
@@ -26,7 +26,7 @@ export class ThPLYLoaderPipe extends ThAsyncLoaderBasePipe<PLYLoader> implements
 @Directive({
   selector: '[loadPLY]',
 })
-export class ThPLYLoaderDirective extends ThAsyncLoaderBaseDirective<PLYLoader> {
+export class ThPLYLoaderDirective extends ThAsyncLoaderBaseDirective<BufferGeometry> {
   constructor(
     @Host() protected host: ThBufferGeometry,
     protected zone: NgZone,

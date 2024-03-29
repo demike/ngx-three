@@ -6,11 +6,12 @@ import {
   ThCallbackLoaderBaseDirective,
   ThCallbackLoaderBasePipe,
 } from '../ThCallbackLoaderBase';
+import { CompressedTexture } from 'three';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PVRLoaderService extends ThCallbackLoaderService<PVRLoader> {
+export class PVRLoaderService extends ThCallbackLoaderService<CompressedTexture> {
   public clazz = PVRLoader;
 }
 
@@ -18,7 +19,7 @@ export class PVRLoaderService extends ThCallbackLoaderService<PVRLoader> {
   name: 'loadPVRTexture',
   pure: true,
 })
-export class ThPVRLoaderPipe extends ThCallbackLoaderBasePipe<PVRLoader> implements PipeTransform {
+export class ThPVRLoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture> implements PipeTransform {
   constructor(protected service: PVRLoaderService) {
     super();
   }
@@ -27,7 +28,7 @@ export class ThPVRLoaderPipe extends ThCallbackLoaderBasePipe<PVRLoader> impleme
 @Directive({
   selector: '[loadPVRTexture]',
 })
-export class ThPVRLoaderDirective extends ThCallbackLoaderBaseDirective<PVRLoader> {
+export class ThPVRLoaderDirective extends ThCallbackLoaderBaseDirective<CompressedTexture> {
   constructor(
     @Host() protected host: ThCompressedTexture,
     protected zone: NgZone,

@@ -4,31 +4,36 @@ import { ThDataTexture } from '../../generated/ThDataTexture';
 import {
   ThCallbackLoaderBaseDirective,
   ThCallbackLoaderBasePipe,
-  ThCallbackLoaderService
+  ThCallbackLoaderService,
 } from '../ThCallbackLoaderBase';
+import { DataTexture } from 'three';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class EXRLoaderService extends ThCallbackLoaderService<EXRLoader> {
+export class EXRLoaderService extends ThCallbackLoaderService<DataTexture> {
   public clazz = EXRLoader;
 }
 
 @Pipe({
   name: 'loadEXRTexture',
-  pure: true
+  pure: true,
 })
-export class ThEXRLoaderPipe extends ThCallbackLoaderBasePipe<EXRLoader> implements PipeTransform {
+export class ThEXRLoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> implements PipeTransform {
   constructor(protected service: EXRLoaderService) {
     super();
   }
 }
 
 @Directive({
-  selector: '[loadEXRTexture]'
+  selector: '[loadEXRTexture]',
 })
-export class ThEXRLoaderDirective extends ThCallbackLoaderBaseDirective<EXRLoader> {
-  constructor(@Host() protected host: ThDataTexture, protected zone: NgZone, protected service: EXRLoaderService) {
+export class ThEXRLoaderDirective extends ThCallbackLoaderBaseDirective<DataTexture> {
+  constructor(
+    @Host() protected host: ThDataTexture,
+    protected zone: NgZone,
+    protected service: EXRLoaderService,
+  ) {
     super(host, zone);
   }
 }
