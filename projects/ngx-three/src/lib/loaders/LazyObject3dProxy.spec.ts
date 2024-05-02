@@ -1,4 +1,4 @@
-import { Object3D } from 'three';
+import { Object3D, Object3DEventMap } from 'three';
 import { createLazyObject3DProxy, LazyObject3DProxy } from './LazyObject3dProxy';
 
 describe('LazyObj3DProxy', () => {
@@ -72,7 +72,7 @@ describe('LazyObj3DProxy', () => {
   });
 
   it('should apply event listeners to the real object3D when it is applied', (done) => {
-    const obj = new Object3D();
+    const obj = new Object3D<{ click: { customAttr: string } } & Object3DEventMap>();
     expect(obj.children.length).toBe(0);
 
     const listener = () => {
