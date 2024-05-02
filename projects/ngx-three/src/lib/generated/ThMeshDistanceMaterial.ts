@@ -34,6 +34,9 @@ export class ThMeshDistanceMaterial<
     return MeshDistanceMaterial;
   }
 
+  public get isMeshDistanceMaterial(): true | undefined {
+    return this._objRef?.isMeshDistanceMaterial;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {

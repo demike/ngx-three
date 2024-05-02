@@ -7,7 +7,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { BufferGeometry, LineLoop, Material } from 'three';
+import { BufferGeometry, LineLoop, Material, Object3DEventMap } from 'three';
 import { ThLine } from './ThLine';
 import { ThObject3D } from './ThObject3D';
 
@@ -22,10 +22,15 @@ import { ThObject3D } from './ThObject3D';
 export class ThLineLoop<
   TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
-  T extends LineLoop<TGeometry, TMaterial> = LineLoop<TGeometry, TMaterial>,
+  TEventMap extends Object3DEventMap = Object3DEventMap,
+  T extends LineLoop<TGeometry, TMaterial, TEventMap> = LineLoop<
+    TGeometry,
+    TMaterial,
+    TEventMap
+  >,
   TARGS = [geometry?: TGeometry, material?: TMaterial],
-> extends ThLine<TGeometry, TMaterial, T, TARGS> {
-  public getType(): Type<LineLoop<TGeometry, TMaterial>> {
+> extends ThLine<TGeometry, TMaterial, TEventMap, T, TARGS> {
+  public getType(): Type<LineLoop<TGeometry, TMaterial, TEventMap>> {
     return LineLoop;
   }
 

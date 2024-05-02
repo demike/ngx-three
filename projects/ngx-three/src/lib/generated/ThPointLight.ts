@@ -33,6 +33,9 @@ export class ThPointLight<
     return PointLight;
   }
 
+  public get isPointLight(): true | undefined {
+    return this._objRef?.isPointLight;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {

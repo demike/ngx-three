@@ -3,14 +3,23 @@ import * as THREE from 'three';
 import { Intersection, Raycaster } from 'three';
 import { ThCamera } from '../generated/ThCamera';
 import { RaycasterEventDirective } from './raycaster.events.directive';
+import { ThObject3D } from '../generated';
 
-// eslint-disable-next-line no-shadow
-export enum RaycasterEvent {
+export const enum RaycasterEvent {
   mouseEnter = 'mouseEnter',
   mouseExit = 'mouseExit',
   click = 'click',
   pointerDown = 'pointerDown',
   pointerUp = 'pointerUp',
+}
+
+// eslint-disable-next-line no-shadow
+export interface RaycasterEventMap {
+  mouseEnter: { component: ThObject3D<THREE.Object3DEventMap & RaycasterEventMap> };
+  mouseExit: { component: ThObject3D<THREE.Object3DEventMap & RaycasterEventMap> };
+  click: { component: ThObject3D<THREE.Object3DEventMap & RaycasterEventMap> };
+  pointerDown: { component: ThObject3D<THREE.Object3DEventMap & RaycasterEventMap> };
+  pointerUp: { component: ThObject3D<THREE.Object3DEventMap & RaycasterEventMap> };
 }
 
 export const RAYCASTER = new InjectionToken<Raycaster>('A reference to the raycaster object', {
@@ -201,7 +210,11 @@ export class RaycasterService implements OnDestroy {
     return Math.sqrt(xDist * xDist + yDist * yDist);
   }
 
-  private getFirstIntersectedGroup(x: number, y: number, event: RaycasterEvent): NearestIntersection | undefined {
+  private getFirstIntersectedGroup(
+    x: number,
+    y: number,
+    event: keyof RaycasterEventMap,
+  ): NearestIntersection | undefined {
     if (!this.camera || !this.canvas || !this.camera.objRef) {
       return;
     }

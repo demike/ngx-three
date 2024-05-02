@@ -26,4 +26,11 @@ export class ThRawShaderMaterial<
   public getType(): Type<RawShaderMaterial> {
     return RawShaderMaterial;
   }
+
+  public get isRawShaderMaterial(): true | undefined {
+    return this._objRef?.isRawShaderMaterial;
+  }
+  public get type(): 'RawShaderMaterial' | undefined {
+    return this._objRef?.type;
+  }
 }

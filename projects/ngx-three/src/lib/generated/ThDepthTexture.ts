@@ -9,8 +9,8 @@ import {
   forwardRef,
 } from '@angular/core';
 import {
-  DeepTexturePixelFormat,
   DepthTexture,
+  DepthTexturePixelFormat,
   MagnificationTextureFilter,
   Mapping,
   MinificationTextureFilter,
@@ -41,7 +41,7 @@ export class ThDepthTexture<
     magFilter?: MagnificationTextureFilter,
     minFilter?: MinificationTextureFilter,
     anisotropy?: number,
-    format?: DeepTexturePixelFormat,
+    format?: DepthTexturePixelFormat,
   ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<DepthTexture> {
@@ -92,13 +92,13 @@ export class ThDepthTexture<
     return this._objRef?.generateMipmaps;
   }
   @Input()
-  public set format(value: DeepTexturePixelFormat) {
+  public set format(value: DepthTexturePixelFormat) {
     if (this._objRef) {
       this._objRef.format = value;
     }
   }
 
-  public get format(): DeepTexturePixelFormat | undefined {
+  public get format(): DepthTexturePixelFormat | undefined {
     return this._objRef?.format;
   }
   @Input()

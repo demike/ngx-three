@@ -206,13 +206,13 @@ export class ThBufferGeometry<
     return this._objRef?.drawRange;
   }
   @Input()
-  public set userData(value: { [key: string]: any }) {
+  public set userData(value: Record<string, any>) {
     if (this._objRef) {
       this._objRef.userData = value;
     }
   }
 
-  public get userData(): { [key: string]: any } | undefined {
+  public get userData(): Record<string, any> | undefined {
     return this._objRef?.userData;
   }
   public get isBufferGeometry(): true | undefined {

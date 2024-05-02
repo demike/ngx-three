@@ -88,7 +88,15 @@ export class ThUnrealBloomPass<
     return this._objRef?.threshold;
   }
   @Input()
-  public set clearColor(value: Color | [color: ColorRepresentation]) {
+  public set clearColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.clearColor = applyValue<Color>(
         this._objRef.clearColor,
@@ -210,7 +218,15 @@ export class ThUnrealBloomPass<
     return this._objRef?.blendMaterial;
   }
   @Input()
-  public set oldClearColor(value: Color | [color: ColorRepresentation]) {
+  public set oldClearColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.oldClearColor = applyValue<Color>(
         this._objRef.oldClearColor,

@@ -32,7 +32,7 @@ export class NgxThreeControl extends NgxThreeClass {
 
     return constructSignatures[0].parameters.map((param) =>
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      (param.declarations![0] as ParameterDeclaration).type!.getText()
+      (param.declarations![0] as ParameterDeclaration).type!.getText(),
     );
   }
 
@@ -46,6 +46,10 @@ export class NgxThreeControl extends NgxThreeClass {
 
   public getWrapperBaseClassName(): string {
     return 'ThControlBase';
+  }
+
+  public override useWrapperBaseClassNameForBaseClass(potentialBaseClass: string) {
+    return 'EventDispatcher' === potentialBaseClass || 'Object3D' === potentialBaseClass;
   }
 
   protected generateClassHeader() {

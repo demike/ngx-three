@@ -37,6 +37,9 @@ export class ThMeshNormalMaterial<
     return MeshNormalMaterial;
   }
 
+  public get isMeshNormalMaterial(): true | undefined {
+    return this._objRef?.isMeshNormalMaterial;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {

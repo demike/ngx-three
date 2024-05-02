@@ -10,7 +10,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
-import { Color, Object3D, Raycaster, Vector4 } from 'three';
+import { Color, Object3D, Raycaster, Renderer, Vector4 } from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
 import { RAYCASTER, RaycasterService } from './events/raycaster.service';
 import { ThCamera } from './generated/ThCamera';
@@ -124,7 +124,7 @@ export class ThView implements OnInit {
   // eslint-disable-next-line @angular-eslint/no-output-on-prefix
   @Output()
   public readonly onRender = new EventEmitter<{
-    renderer: THREE.Renderer[];
+    renderer: Renderer[];
     scene: ThScene;
     camera: ThCamera;
   }>();

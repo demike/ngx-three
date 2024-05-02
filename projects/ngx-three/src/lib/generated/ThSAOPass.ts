@@ -13,7 +13,6 @@ import {
   Camera,
   Color,
   ColorRepresentation,
-  MeshDepthMaterial,
   MeshNormalMaterial,
   Scene,
   ShaderMaterial,
@@ -39,13 +38,7 @@ import { ThPass } from './ThPass';
 })
 export class ThSAOPass<
   T extends SAOPass = SAOPass,
-  TARGS = [
-    scene: Scene,
-    camera: Camera,
-    depthTexture?: boolean,
-    useNormals?: boolean,
-    resolution?: Vector2,
-  ],
+  TARGS = [scene: Scene, camera: Camera, resolution?: Vector2],
 > extends ThPass<T, TARGS> {
   public getType(): Type<SAOPass> {
     return SAOPass;
@@ -72,27 +65,15 @@ export class ThSAOPass<
     return this._objRef?.camera;
   }
   @Input()
-  public set supportsDepthTextureExtension(value: boolean) {
-    if (this._objRef) {
-      this._objRef.supportsDepthTextureExtension = value;
-    }
-  }
-
-  public get supportsDepthTextureExtension(): boolean | undefined {
-    return this._objRef?.supportsDepthTextureExtension;
-  }
-  @Input()
-  public set supportsNormalTexture(value: boolean) {
-    if (this._objRef) {
-      this._objRef.supportsNormalTexture = value;
-    }
-  }
-
-  public get supportsNormalTexture(): boolean | undefined {
-    return this._objRef?.supportsNormalTexture;
-  }
-  @Input()
-  public set originalClearColor(value: Color | [color: ColorRepresentation]) {
+  public set originalClearColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.originalClearColor = applyValue<Color>(
         this._objRef.originalClearColor,
@@ -104,7 +85,15 @@ export class ThSAOPass<
     return this._objRef?.originalClearColor;
   }
   @Input()
-  public set oldClearColor(value: Color | [color: ColorRepresentation]) {
+  public set oldClearColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.oldClearColor = applyValue<Color>(
         this._objRef.oldClearColor,
@@ -158,16 +147,6 @@ export class ThSAOPass<
     return this._objRef?.blurIntermediateRenderTarget;
   }
   @Input()
-  public set beautyRenderTarget(value: WebGLRenderTarget) {
-    if (this._objRef) {
-      this._objRef.beautyRenderTarget = value;
-    }
-  }
-
-  public get beautyRenderTarget(): WebGLRenderTarget | undefined {
-    return this._objRef?.beautyRenderTarget;
-  }
-  @Input()
   public set normalRenderTarget(value: WebGLRenderTarget) {
     if (this._objRef) {
       this._objRef.normalRenderTarget = value;
@@ -176,26 +155,6 @@ export class ThSAOPass<
 
   public get normalRenderTarget(): WebGLRenderTarget | undefined {
     return this._objRef?.normalRenderTarget;
-  }
-  @Input()
-  public set depthRenderTarget(value: WebGLRenderTarget) {
-    if (this._objRef) {
-      this._objRef.depthRenderTarget = value;
-    }
-  }
-
-  public get depthRenderTarget(): WebGLRenderTarget | undefined {
-    return this._objRef?.depthRenderTarget;
-  }
-  @Input()
-  public set depthMaterial(value: MeshDepthMaterial) {
-    if (this._objRef) {
-      this._objRef.depthMaterial = value;
-    }
-  }
-
-  public get depthMaterial(): MeshDepthMaterial | undefined {
-    return this._objRef?.depthMaterial;
   }
   @Input()
   public set normalMaterial(value: MeshNormalMaterial) {
@@ -246,16 +205,6 @@ export class ThSAOPass<
 
   public get materialCopy(): ShaderMaterial | undefined {
     return this._objRef?.materialCopy;
-  }
-  @Input()
-  public set depthCopy(value: ShaderMaterial) {
-    if (this._objRef) {
-      this._objRef.depthCopy = value;
-    }
-  }
-
-  public get depthCopy(): ShaderMaterial | undefined {
-    return this._objRef?.depthCopy;
   }
   @Input()
   public set fsQuad(value: FullScreenQuad) {

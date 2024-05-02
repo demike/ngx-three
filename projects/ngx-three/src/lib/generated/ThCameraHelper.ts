@@ -8,7 +8,14 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { BufferGeometry, Camera, CameraHelper, Material, Matrix4 } from 'three';
+import {
+  BufferGeometry,
+  Camera,
+  CameraHelper,
+  Material,
+  Matrix4,
+  Object3DEventMap,
+} from 'three';
 import { applyValue } from '../util';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
@@ -24,7 +31,13 @@ import { ThObject3D } from './ThObject3D';
 export class ThCameraHelper<
   T extends CameraHelper = CameraHelper,
   TARGS = /* camera */ Camera,
-> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
+> extends ThLineSegments<
+  BufferGeometry,
+  Material | Material[],
+  Object3DEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<CameraHelper> {
     return CameraHelper;
   }

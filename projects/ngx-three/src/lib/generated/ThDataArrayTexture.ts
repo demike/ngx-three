@@ -30,7 +30,7 @@ import { ThTexture } from './ThTexture';
 export class ThDataArrayTexture<
   T extends DataArrayTexture = DataArrayTexture,
   TARGS = [
-    data?: BufferSource,
+    data?: BufferSource | null,
     width?: number,
     height?: number,
     depth?: number,

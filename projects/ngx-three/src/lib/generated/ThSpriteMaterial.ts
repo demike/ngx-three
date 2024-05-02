@@ -34,6 +34,9 @@ export class ThSpriteMaterial<
     return SpriteMaterial;
   }
 
+  public get isSpriteMaterial(): true | undefined {
+    return this._objRef?.isSpriteMaterial;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {
@@ -45,7 +48,15 @@ export class ThSpriteMaterial<
     return this._objRef?.type;
   }
   @Input()
-  public set color(value: Color | [color: ColorRepresentation]) {
+  public set color(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
@@ -112,8 +123,5 @@ export class ThSpriteMaterial<
 
   public get fog(): boolean | undefined {
     return this._objRef?.fog;
-  }
-  public get isSpriteMaterial(): true | undefined {
-    return this._objRef?.isSpriteMaterial;
   }
 }

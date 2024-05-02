@@ -22,7 +22,6 @@ import {
   Source,
   Texture,
   TextureDataType,
-  TextureEncoding,
   Vector2,
   Wrapping,
 } from 'three';
@@ -62,7 +61,6 @@ export class ThTexture<
         format: PixelFormat,
         type: TextureDataType,
         anisotropy: number,
-        encoding: TextureEncoding,
       ],
 > extends ThTextureBase<T, TARGS> {
   public getType(): Type<Texture> {
@@ -326,16 +324,6 @@ export class ThTexture<
     return this._objRef?.unpackAlignment;
   }
   @Input()
-  public set encoding(value: TextureEncoding) {
-    if (this._objRef) {
-      this._objRef.encoding = value;
-    }
-  }
-
-  public get encoding(): TextureEncoding | undefined {
-    return this._objRef?.encoding;
-  }
-  @Input()
   public set colorSpace(value: ColorSpace) {
     if (this._objRef) {
       this._objRef.colorSpace = value;
@@ -356,23 +344,13 @@ export class ThTexture<
     return this._objRef?.isRenderTargetTexture;
   }
   @Input()
-  public set needsPMREMUpdate(value: boolean) {
-    if (this._objRef) {
-      this._objRef.needsPMREMUpdate = value;
-    }
-  }
-
-  public get needsPMREMUpdate(): boolean | undefined {
-    return this._objRef?.needsPMREMUpdate;
-  }
-  @Input()
-  public set userData(value: any) {
+  public set userData(value: Record<string, any>) {
     if (this._objRef) {
       this._objRef.userData = value;
     }
   }
 
-  public get userData(): any | undefined {
+  public get userData(): Record<string, any> | undefined {
     return this._objRef?.userData;
   }
   @Input()
@@ -384,6 +362,16 @@ export class ThTexture<
 
   public get version(): number | undefined {
     return this._objRef?.version;
+  }
+  @Input()
+  public set pmremVersion(value: number) {
+    if (this._objRef) {
+      this._objRef.pmremVersion = value;
+    }
+  }
+
+  public get pmremVersion(): number | undefined {
+    return this._objRef?.pmremVersion;
   }
 
   public static readonly DEFAULT_ANISOTROPY = Texture.DEFAULT_ANISOTROPY;

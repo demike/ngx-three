@@ -7,7 +7,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { AxesHelper, BufferGeometry, Material } from 'three';
+import { AxesHelper, BufferGeometry, Material, Object3DEventMap } from 'three';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
@@ -22,7 +22,13 @@ import { ThObject3D } from './ThObject3D';
 export class ThAxesHelper<
   T extends AxesHelper = AxesHelper,
   TARGS = /* size? */ number,
-> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
+> extends ThLineSegments<
+  BufferGeometry,
+  Material | Material[],
+  Object3DEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<AxesHelper> {
     return AxesHelper;
   }
