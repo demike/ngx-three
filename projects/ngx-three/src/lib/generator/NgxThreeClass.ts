@@ -146,9 +146,10 @@ export abstract class NgxThreeClass {
     if (this.classDecl.heritageClauses) {
       // if we have a base class and we are not Object3D
       const clause = this.classDecl.heritageClauses[0].getText();
+
       baseClassName = clause.replace('extends ', '').split('<')[0];
 
-      if ('EventDispatcher' === baseClassName) {
+      if ('EventDispatcher' === baseClassName || 'Object3D' === baseClassName) {
         this.imports.add(`import { ${wrapperBaseClassName} } from '../${wrapperBaseClassName}';`);
         header = `${header} extends ${wrapperBaseClassName}<T,TARGS>`;
         return header;
@@ -162,18 +163,22 @@ export abstract class NgxThreeClass {
       return header;
     }
 
+    let defaultParams = this.generateDefaultTypParametersForParentClass();
+
     if (header.endsWith('>')) {
       header = header.slice(0, -1);
-      header += ',T,TARGS>';
+      header += ',';
+
+      defaultParams = defaultParams.slice(this.classDecl.heritageClauses[0].types[0].typeArguments?.length ?? 0);
     } else {
       // find out the parent class default type parameters
-      const defaultParams = this.generateDefaultTypParametersForParentClass();
-      defaultParams.push('T');
-      defaultParams.push('TARGS');
 
-      header += `<${defaultParams.join(',')}>`;
+      header += '<';
     }
 
+    defaultParams.push('T');
+    defaultParams.push('TARGS');
+    header += `${defaultParams.join(',')}>`;
     return header;
   }
 
