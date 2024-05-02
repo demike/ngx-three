@@ -9,10 +9,12 @@ import {
   forwardRef,
 } from '@angular/core';
 import {
+  BindMode,
   Box3,
   BufferGeometry,
   Material,
   Matrix4,
+  Object3DEventMap,
   Skeleton,
   SkinnedMesh,
   Sphere,
@@ -33,17 +35,19 @@ import { ThObject3D } from './ThObject3D';
 export class ThSkinnedMesh<
   TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
-  T extends SkinnedMesh<TGeometry, TMaterial> = SkinnedMesh<
+  TEventMap extends Object3DEventMap = Object3DEventMap,
+  T extends SkinnedMesh<TGeometry, TMaterial, TEventMap> = SkinnedMesh<
     TGeometry,
-    TMaterial
+    TMaterial,
+    TEventMap
   >,
   TARGS = [
     geometry?: TGeometry,
     material?: TMaterial,
     useVertexTexture?: boolean,
   ],
-> extends ThMesh<TGeometry, TMaterial, T, TARGS> {
-  public getType(): Type<SkinnedMesh<TGeometry, TMaterial>> {
+> extends ThMesh<TGeometry, TMaterial, TEventMap, T, TARGS> {
+  public getType(): Type<SkinnedMesh<TGeometry, TMaterial, TEventMap>> {
     return SkinnedMesh;
   }
 
@@ -54,13 +58,13 @@ export class ThSkinnedMesh<
     return this._objRef?.type;
   }
   @Input()
-  public set bindMode(value: 'attached' | 'detached') {
+  public set bindMode(value: BindMode) {
     if (this._objRef) {
       this._objRef.bindMode = value;
     }
   }
 
-  public get bindMode(): ('attached' | 'detached') | undefined {
+  public get bindMode(): BindMode | undefined {
     return this._objRef?.bindMode;
   }
   @Input()

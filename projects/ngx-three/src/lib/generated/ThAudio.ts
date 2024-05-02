@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Audio, AudioContext, AudioListener, Event } from 'three';
+import { Audio, AudioContext, AudioListener, Object3DEventMap } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -21,7 +21,7 @@ export class ThAudio<
   NodeType extends AudioNode = GainNode,
   T extends Audio<NodeType> = Audio<NodeType>,
   TARGS = /* listener */ AudioListener,
-> extends ThObject3D<Event, T, TARGS> {
+> extends ThObject3D<Object3DEventMap, T, TARGS> {
   public getType(): Type<Audio<NodeType>> {
     return Audio;
   }

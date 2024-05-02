@@ -14,6 +14,7 @@ import {
   Material,
   Matrix4,
   Object3D,
+  Object3DEventMap,
   SkeletonHelper,
   SkinnedMesh,
 } from 'three';
@@ -32,7 +33,13 @@ import { ThObject3D } from './ThObject3D';
 export class ThSkeletonHelper<
   T extends SkeletonHelper = SkeletonHelper,
   TARGS = /* object */ SkinnedMesh | Object3D,
-> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
+> extends ThLineSegments<
+  BufferGeometry,
+  Material | Material[],
+  Object3DEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<SkeletonHelper> {
     return SkeletonHelper;
   }

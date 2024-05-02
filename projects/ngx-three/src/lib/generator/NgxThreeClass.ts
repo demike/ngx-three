@@ -125,6 +125,10 @@ export abstract class NgxThreeClass {
    */
   public abstract getWrapperBaseClassName(): string;
 
+  public useWrapperBaseClassNameForBaseClass(potentialBaseClass: string) {
+    return 'EventDispatcher' === potentialBaseClass;
+  }
+
   public getWrappedClassImportPath() {
     return this.getImportPathForSourceFile(this.classDecl.getSourceFile());
   }
@@ -149,7 +153,7 @@ export abstract class NgxThreeClass {
 
       baseClassName = clause.replace('extends ', '').split('<')[0];
 
-      if ('EventDispatcher' === baseClassName || 'Object3D' === baseClassName) {
+      if (this.useWrapperBaseClassNameForBaseClass(baseClassName)) {
         this.imports.add(`import { ${wrapperBaseClassName} } from '../${wrapperBaseClassName}';`);
         header = `${header} extends ${wrapperBaseClassName}<T,TARGS>`;
         return header;
@@ -247,9 +251,10 @@ export abstract class NgxThreeClass {
     }
 
     if (!isReadonly) {
+      const optionalToken = member.questionToken ? ' | undefined' : '';
       str += `) {
       if(this._objRef) {
-       this._objRef.${memberName} = applyValue<${member.type?.getText()}>(this._objRef.${memberName}, value);
+       this._objRef.${memberName} = applyValue<${member.type?.getText()}${optionalToken}>(this._objRef.${memberName}, value);
       }
     }`;
     } else {
@@ -357,9 +362,13 @@ export abstract class NgxThreeClass {
 
   protected getImportPathForImportStatement(srcFilePath: string, importStatement: string) {
     const fromPos = importStatement.search(' from ');
-    const importPath = path
-      .normalize(path.join(path.dirname(srcFilePath), importStatement.substr(fromPos + 6).replace(/("|'|;)/g, '')))
-      .replace(/\\/g, '/');
+    const importStatementFrom = importStatement.substr(fromPos + 6).replace(/("|'|;)/g, '');
+
+    if (importStatementFrom === 'three') {
+      return importStatement;
+    }
+
+    const importPath = path.normalize(path.join(path.dirname(srcFilePath), importStatementFrom)).replace(/\\/g, '/');
     let strFrom = ' "three";';
     if (importPath.search('node_modules/@types/three/examples') >= 0) {
       strFrom = " '" + importPath.substr(importPath.search('three/examples/jsm')).replace('.d.ts', '') + "';";

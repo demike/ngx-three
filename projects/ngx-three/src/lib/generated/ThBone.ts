@@ -7,7 +7,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Bone, Event } from 'three';
+import { Bone, Object3DEventMap } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -16,12 +16,12 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThBone) }],
 })
-export class ThBone<T extends Bone = Bone, TARGS = []> extends ThObject3D<
-  Event,
-  T,
-  TARGS
-> {
-  public getType(): Type<Bone> {
+export class ThBone<
+  TEventMap extends Object3DEventMap = Object3DEventMap,
+  T extends Bone<TEventMap> = Bone<TEventMap>,
+  TARGS = [],
+> extends ThObject3D<TEventMap, T, TARGS> {
+  public getType(): Type<Bone<TEventMap>> {
     return Bone;
   }
 

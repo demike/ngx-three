@@ -11,6 +11,7 @@ import {
   BufferGeometry,
   ColorRepresentation,
   Material,
+  Object3DEventMap,
   PolarGridHelper,
 } from 'three';
 import { ThLineSegments } from './ThLineSegments';
@@ -34,7 +35,13 @@ export class ThPolarGridHelper<
     color1?: ColorRepresentation,
     color2?: ColorRepresentation,
   ],
-> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
+> extends ThLineSegments<
+  BufferGeometry,
+  Material | Material[],
+  Object3DEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<PolarGridHelper> {
     return PolarGridHelper;
   }

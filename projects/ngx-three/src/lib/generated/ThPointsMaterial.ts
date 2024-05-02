@@ -34,6 +34,9 @@ export class ThPointsMaterial<
     return PointsMaterial;
   }
 
+  public get isPointsMaterial(): true | undefined {
+    return this._objRef?.isPointsMaterial;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {
@@ -45,7 +48,15 @@ export class ThPointsMaterial<
     return this._objRef?.type;
   }
   @Input()
-  public set color(value: Color | [color: ColorRepresentation]) {
+  public set color(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }

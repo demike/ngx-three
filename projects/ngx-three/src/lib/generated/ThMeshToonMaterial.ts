@@ -36,6 +36,9 @@ export class ThMeshToonMaterial<
     return MeshToonMaterial;
   }
 
+  public get isMeshToonMaterial(): true | undefined {
+    return this._objRef?.isMeshToonMaterial;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {
@@ -57,7 +60,15 @@ export class ThMeshToonMaterial<
     return this._objRef?.defines;
   }
   @Input()
-  public set color(value: Color | [color: ColorRepresentation]) {
+  public set color(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
@@ -126,7 +137,15 @@ export class ThMeshToonMaterial<
     return this._objRef?.aoMapIntensity;
   }
   @Input()
-  public set emissive(value: Color | [color: ColorRepresentation]) {
+  public set emissive(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.emissive = applyValue<Color>(this._objRef.emissive, value);
     }

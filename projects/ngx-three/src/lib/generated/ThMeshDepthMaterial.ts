@@ -32,6 +32,9 @@ export class ThMeshDepthMaterial<
     return MeshDepthMaterial;
   }
 
+  public get isMeshDepthMaterial(): true | undefined {
+    return this._objRef?.isMeshDepthMaterial;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {

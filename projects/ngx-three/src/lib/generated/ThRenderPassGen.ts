@@ -28,9 +28,9 @@ export class ThRenderPassGen<
   TARGS = [
     scene: Scene,
     camera: Camera,
-    overrideMaterial?: Material,
-    clearColor?: Color,
-    clearAlpha?: number,
+    overrideMaterial?: Material | null,
+    clearColor?: Color | null,
+    clearAlpha?: number | null,
   ],
 > extends ThPass<T, TARGS> {
   public getType(): Type<RenderPass> {
@@ -58,35 +58,44 @@ export class ThRenderPassGen<
     return this._objRef?.camera;
   }
   @Input()
-  public set overrideMaterial(value: Material) {
+  public set overrideMaterial(value: Material | null) {
     if (this._objRef) {
       this._objRef.overrideMaterial = value;
     }
   }
 
-  public get overrideMaterial(): Material | undefined {
+  public get overrideMaterial(): (Material | null) | undefined {
     return this._objRef?.overrideMaterial;
   }
   @Input()
-  public set clearColor(value: Color | [color: ColorRepresentation]) {
+  public set clearColor(
+    value:
+      | Color
+      | null
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
-      this._objRef.clearColor = applyValue<Color>(
+      this._objRef.clearColor = applyValue<Color | null>(
         this._objRef.clearColor,
         value,
       );
     }
   }
-  public get clearColor(): Color | undefined {
+  public get clearColor(): (Color | null) | undefined {
     return this._objRef?.clearColor;
   }
   @Input()
-  public set clearAlpha(value: number) {
+  public set clearAlpha(value: number | null) {
     if (this._objRef) {
       this._objRef.clearAlpha = value;
     }
   }
 
-  public get clearAlpha(): number | undefined {
+  public get clearAlpha(): (number | null) | undefined {
     return this._objRef?.clearAlpha;
   }
   @Input()

@@ -8,7 +8,14 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera, CoordinateSystem, Event, Layers, Matrix4 } from 'three';
+import {
+  Camera,
+  CoordinateSystem,
+  Layers,
+  Matrix4,
+  Object3DEventMap,
+  Vector4,
+} from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -19,7 +26,7 @@ import { ThObject3D } from './ThObject3D';
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
 })
 export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
-  Event,
+  Object3DEventMap,
   T,
   TARGS
 > {
@@ -150,5 +157,19 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
 
   public get coordinateSystem(): CoordinateSystem | undefined {
     return this._objRef?.coordinateSystem;
+  }
+  @Input()
+  public set viewport(
+    value: Vector4 | [x: number, y: number, z: number, w: number],
+  ) {
+    if (this._objRef) {
+      this._objRef.viewport = applyValue<Vector4 | undefined>(
+        this._objRef.viewport,
+        value,
+      );
+    }
+  }
+  public get viewport(): Vector4 | undefined {
+    return this._objRef?.viewport;
   }
 }

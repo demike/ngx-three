@@ -220,14 +220,22 @@ export class ThTrackballControls<
     return this._objRef?.keys;
   }
   @Input()
-  public set mouseButtons(value: { LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }) {
+  public set mouseButtons(value: {
+    LEFT?: MOUSE | null | undefined;
+    MIDDLE?: MOUSE | null | undefined;
+    RIGHT?: MOUSE | null | undefined;
+  }) {
     if (this._objRef) {
       this._objRef.mouseButtons = value;
     }
   }
 
   public get mouseButtons():
-    | { LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }
+    | {
+        LEFT?: MOUSE | null | undefined;
+        MIDDLE?: MOUSE | null | undefined;
+        RIGHT?: MOUSE | null | undefined;
+      }
     | undefined {
     return this._objRef?.mouseButtons;
   }

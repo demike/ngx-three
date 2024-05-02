@@ -7,7 +7,12 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { BufferGeometry, LineSegments, Material } from 'three';
+import {
+  BufferGeometry,
+  LineSegments,
+  Material,
+  Object3DEventMap,
+} from 'three';
 import { ThLine } from './ThLine';
 import { ThObject3D } from './ThObject3D';
 
@@ -22,13 +27,15 @@ import { ThObject3D } from './ThObject3D';
 export class ThLineSegments<
   TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
-  T extends LineSegments<TGeometry, TMaterial> = LineSegments<
+  TEventMap extends Object3DEventMap = Object3DEventMap,
+  T extends LineSegments<TGeometry, TMaterial, TEventMap> = LineSegments<
     TGeometry,
-    TMaterial
+    TMaterial,
+    TEventMap
   >,
   TARGS = [geometry?: TGeometry, material?: TMaterial],
-> extends ThLine<TGeometry, TMaterial, T, TARGS> {
-  public getType(): Type<LineSegments<TGeometry, TMaterial>> {
+> extends ThLine<TGeometry, TMaterial, TEventMap, T, TARGS> {
+  public getType(): Type<LineSegments<TGeometry, TMaterial, TEventMap>> {
     return LineSegments;
   }
 

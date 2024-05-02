@@ -31,6 +31,9 @@ export class ThLineDashedMaterial<
     return LineDashedMaterial;
   }
 
+  public get isLineDashedMaterial(): true | undefined {
+    return this._objRef?.isLineDashedMaterial;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {
@@ -70,8 +73,5 @@ export class ThLineDashedMaterial<
 
   public get gapSize(): number | undefined {
     return this._objRef?.gapSize;
-  }
-  public get isLineDashedMaterial(): true | undefined {
-    return this._objRef?.isLineDashedMaterial;
   }
 }

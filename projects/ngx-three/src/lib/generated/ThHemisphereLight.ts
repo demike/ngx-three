@@ -49,7 +49,15 @@ export class ThHemisphereLight<
     return this._objRef?.position;
   }
   @Input()
-  public set color(value: Color | [color: ColorRepresentation]) {
+  public set color(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
@@ -58,7 +66,15 @@ export class ThHemisphereLight<
     return this._objRef?.color;
   }
   @Input()
-  public set groundColor(value: Color | [color: ColorRepresentation]) {
+  public set groundColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.groundColor = applyValue<Color>(
         this._objRef.groundColor,

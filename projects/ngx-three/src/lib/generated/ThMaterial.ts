@@ -13,6 +13,8 @@ import {
   BlendingDstFactor,
   BlendingEquation,
   BlendingSrcFactor,
+  Color,
+  ColorRepresentation,
   DepthModes,
   Material,
   Plane,
@@ -21,6 +23,7 @@ import {
   StencilOp,
 } from 'three';
 import { ThMaterialBase } from '../ThMaterialBase';
+import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -37,6 +40,9 @@ export class ThMaterial<
     return Material;
   }
 
+  public get isMaterial(): true | undefined {
+    return this._objRef?.isMaterial;
+  }
   @Input()
   public set alphaHash(value: boolean) {
     if (this._objRef) {
@@ -48,16 +54,6 @@ export class ThMaterial<
     return this._objRef?.alphaHash;
   }
   @Input()
-  public set alphaTest(value: number) {
-    if (this._objRef) {
-      this._objRef.alphaTest = value;
-    }
-  }
-
-  public get alphaTest(): number | undefined {
-    return this._objRef?.alphaTest;
-  }
-  @Input()
   public set alphaToCoverage(value: boolean) {
     if (this._objRef) {
       this._objRef.alphaToCoverage = value;
@@ -66,6 +62,36 @@ export class ThMaterial<
 
   public get alphaToCoverage(): boolean | undefined {
     return this._objRef?.alphaToCoverage;
+  }
+  @Input()
+  public set blendAlpha(value: number) {
+    if (this._objRef) {
+      this._objRef.blendAlpha = value;
+    }
+  }
+
+  public get blendAlpha(): number | undefined {
+    return this._objRef?.blendAlpha;
+  }
+  @Input()
+  public set blendColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
+    if (this._objRef) {
+      this._objRef.blendColor = applyValue<Color>(
+        this._objRef.blendColor,
+        value,
+      );
+    }
+  }
+  public get blendColor(): Color | undefined {
+    return this._objRef?.blendColor;
   }
   @Input()
   public set blendDst(value: BlendingDstFactor) {
@@ -148,13 +174,13 @@ export class ThMaterial<
     return this._objRef?.clipIntersection;
   }
   @Input()
-  public set clippingPlanes(value: Plane[]) {
+  public set clippingPlanes(value: Plane[] | null) {
     if (this._objRef) {
       this._objRef.clippingPlanes = value;
     }
   }
 
-  public get clippingPlanes(): Plane[] | undefined {
+  public get clippingPlanes(): (Plane[] | null) | undefined {
     return this._objRef?.clippingPlanes;
   }
   @Input()
@@ -307,9 +333,6 @@ export class ThMaterial<
   public get stencilZPass(): StencilOp | undefined {
     return this._objRef?.stencilZPass;
   }
-  public get isMaterial(): true | undefined {
-    return this._objRef?.isMaterial;
-  }
   @Input()
   public set name(value: string) {
     if (this._objRef) {
@@ -319,16 +342,6 @@ export class ThMaterial<
 
   public get name(): string | undefined {
     return this._objRef?.name;
-  }
-  @Input()
-  public set needsUpdate(value: boolean) {
-    if (this._objRef) {
-      this._objRef.needsUpdate = value;
-    }
-  }
-
-  public get needsUpdate(): boolean | undefined {
-    return this._objRef?.needsUpdate;
   }
   @Input()
   public set opacity(value: number) {
@@ -491,13 +504,13 @@ export class ThMaterial<
     return this._objRef?.visible;
   }
   @Input()
-  public set userData(value: any) {
+  public set userData(value: Record<string, any>) {
     if (this._objRef) {
       this._objRef.userData = value;
     }
   }
 
-  public get userData(): any | undefined {
+  public get userData(): Record<string, any> | undefined {
     return this._objRef?.userData;
   }
   @Input()

@@ -10,9 +10,9 @@ import {
 } from '@angular/core';
 import {
   BufferGeometry,
-  Event,
   Material,
   NormalOrGLBufferAttributes,
+  Object3DEventMap,
   Points,
 } from 'three';
 import { ThObject3D } from './ThObject3D';
@@ -26,10 +26,15 @@ import { ThObject3D } from './ThObject3D';
 export class ThPoints<
   TGeometry extends BufferGeometry<NormalOrGLBufferAttributes> = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
-  T extends Points<TGeometry, TMaterial> = Points<TGeometry, TMaterial>,
+  TEventMap extends Object3DEventMap = Object3DEventMap,
+  T extends Points<TGeometry, TMaterial, TEventMap> = Points<
+    TGeometry,
+    TMaterial,
+    TEventMap
+  >,
   TARGS = [geometry?: TGeometry, material?: TMaterial],
-> extends ThObject3D<Event, T, TARGS> {
-  public getType(): Type<Points<TGeometry, TMaterial>> {
+> extends ThObject3D<TEventMap, T, TARGS> {
+  public getType(): Type<Points<TGeometry, TMaterial, TEventMap>> {
     return Points;
   }
 

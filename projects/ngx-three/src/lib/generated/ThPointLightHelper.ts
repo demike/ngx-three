@@ -10,8 +10,8 @@ import {
 } from '@angular/core';
 import {
   ColorRepresentation,
-  Event,
   Matrix4,
+  Object3DEventMap,
   PointLight,
   PointLightHelper,
 } from 'three';
@@ -29,7 +29,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThPointLightHelper<
   T extends PointLightHelper = PointLightHelper,
   TARGS = [light: PointLight, sphereSize?: number, color?: ColorRepresentation],
-> extends ThObject3D<Event, T, TARGS> {
+> extends ThObject3D<Object3DEventMap, T, TARGS> {
   public getType(): Type<PointLightHelper> {
     return PointLightHelper;
   }

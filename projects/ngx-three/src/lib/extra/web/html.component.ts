@@ -22,7 +22,6 @@ import { Subscription } from 'rxjs';
 import {
   Camera,
   DoubleSide,
-  Group,
   Matrix4,
   Object3D,
   OrthographicCamera,
@@ -142,7 +141,7 @@ type PointerEventsProperties =
   templateUrl: './html.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, OnChanges, AfterViewInit {
+export class HtmlComponent extends ThGroup implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   protected readonly DoubleSide = DoubleSide;
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -197,7 +196,10 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
   private frameSubscription?: Subscription;
   private raycaster = inject(RAYCASTER);
 
-  constructor(private view: ThView, @SkipSelf() parent: ThObject3D) {
+  constructor(
+    private view: ThView,
+    @SkipSelf() parent: ThObject3D,
+  ) {
     super(parent);
   }
 
@@ -328,7 +330,7 @@ export class HtmlComponent extends ThGroup<Group> implements OnInit, OnDestroy, 
           this.transformOuterRef.nativeElement.style.transform = `${cameraTransform}${cameraMatrix}translate(${widthHalf}px,${heightHalf}px)`;
           this.transformInnerRef.nativeElement.style.transform = getObjectCSSMatrix(
             matrix,
-            1 / ((this.distanceFactor || 10) / 400)
+            1 / ((this.distanceFactor || 10) / 400),
           );
         }
       } else {

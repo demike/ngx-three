@@ -12,9 +12,9 @@ import {
   ColorRepresentation,
   DirectionalLight,
   DirectionalLightHelper,
-  Event,
   Line,
   Matrix4,
+  Object3DEventMap,
 } from 'three';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -33,7 +33,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThDirectionalLightHelper<
   T extends DirectionalLightHelper = DirectionalLightHelper,
   TARGS = [light: DirectionalLight, size?: number, color?: ColorRepresentation],
-> extends ThObject3D<Event, T, TARGS> {
+> extends ThObject3D<Object3DEventMap, T, TARGS> {
   public getType(): Type<DirectionalLightHelper> {
     return DirectionalLightHelper;
   }

@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Event, LOD, Object3D } from 'three';
+import { LOD, Object3D, Object3DEventMap } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -17,12 +17,12 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLOD) }],
 })
-export class ThLOD<T extends LOD = LOD, TARGS = []> extends ThObject3D<
-  Event,
-  T,
-  TARGS
-> {
-  public getType(): Type<LOD> {
+export class ThLOD<
+  TEventMap extends Object3DEventMap = Object3DEventMap,
+  T extends LOD<TEventMap> = LOD<TEventMap>,
+  TARGS = [],
+> extends ThObject3D<TEventMap, T, TARGS> {
+  public getType(): Type<LOD<TEventMap>> {
     return LOD;
   }
 

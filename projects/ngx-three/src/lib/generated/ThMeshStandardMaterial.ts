@@ -11,6 +11,8 @@ import {
 import {
   Color,
   ColorRepresentation,
+  Euler,
+  EulerOrder,
   MeshStandardMaterial,
   MeshStandardMaterialParameters,
   NormalMapTypes,
@@ -39,6 +41,9 @@ export class ThMeshStandardMaterial<
     return MeshStandardMaterial;
   }
 
+  public get isMeshStandardMaterial(): true | undefined {
+    return this._objRef?.isMeshStandardMaterial;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {
@@ -60,7 +65,15 @@ export class ThMeshStandardMaterial<
     return this._objRef?.defines;
   }
   @Input()
-  public set color(value: Color | [color: ColorRepresentation]) {
+  public set color(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.color = applyValue<Color>(this._objRef.color, value);
     }
@@ -139,7 +152,15 @@ export class ThMeshStandardMaterial<
     return this._objRef?.aoMapIntensity;
   }
   @Input()
-  public set emissive(value: Color | [color: ColorRepresentation]) {
+  public set emissive(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.emissive = applyValue<Color>(this._objRef.emissive, value);
     }
@@ -290,6 +311,20 @@ export class ThMeshStandardMaterial<
     return this._objRef?.envMap;
   }
   @Input()
+  public set envMapRotation(
+    value: Euler | [x: number, y: number, z: number, order?: EulerOrder],
+  ) {
+    if (this._objRef) {
+      this._objRef.envMapRotation = applyValue<Euler>(
+        this._objRef.envMapRotation,
+        value,
+      );
+    }
+  }
+  public get envMapRotation(): Euler | undefined {
+    return this._objRef?.envMapRotation;
+  }
+  @Input()
   public set envMapIntensity(value: number) {
     if (this._objRef) {
       this._objRef.envMapIntensity = value;
@@ -358,15 +393,5 @@ export class ThMeshStandardMaterial<
 
   public get fog(): boolean | undefined {
     return this._objRef?.fog;
-  }
-  @Input()
-  public set isMeshStandardMaterial(value: boolean) {
-    if (this._objRef) {
-      this._objRef.isMeshStandardMaterial = value;
-    }
-  }
-
-  public get isMeshStandardMaterial(): boolean | undefined {
-    return this._objRef?.isMeshStandardMaterial;
   }
 }

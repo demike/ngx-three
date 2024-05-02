@@ -12,9 +12,11 @@ import {
   Color,
   ColorRepresentation,
   CubeTexture,
-  Event,
+  Euler,
+  EulerOrder,
   FogBase,
   Material,
+  Object3DEventMap,
   Scene,
   Texture,
 } from 'three';
@@ -28,7 +30,7 @@ import { ThObject3D } from './ThObject3D';
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }],
 })
 export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
-  Event,
+  Object3DEventMap,
   T,
   TARGS
 > {
@@ -91,7 +93,16 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
   }
   @Input()
   public set background(
-    value: Color | Texture | CubeTexture | null | [color: ColorRepresentation],
+    value:
+      | Color
+      | Texture
+      | CubeTexture
+      | null
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
   ) {
     if (this._objRef) {
       this._objRef.background = applyValue<
@@ -103,6 +114,20 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
     return this._objRef?.background;
   }
   @Input()
+  public set backgroundRotation(
+    value: Euler | [x: number, y: number, z: number, order?: EulerOrder],
+  ) {
+    if (this._objRef) {
+      this._objRef.backgroundRotation = applyValue<Euler>(
+        this._objRef.backgroundRotation,
+        value,
+      );
+    }
+  }
+  public get backgroundRotation(): Euler | undefined {
+    return this._objRef?.backgroundRotation;
+  }
+  @Input()
   public set environment(value: Texture | null) {
     if (this._objRef) {
       this._objRef.environment = value;
@@ -111,5 +136,29 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
 
   public get environment(): (Texture | null) | undefined {
     return this._objRef?.environment;
+  }
+  @Input()
+  public set environmentIntensity(value: number) {
+    if (this._objRef) {
+      this._objRef.environmentIntensity = value;
+    }
+  }
+
+  public get environmentIntensity(): number | undefined {
+    return this._objRef?.environmentIntensity;
+  }
+  @Input()
+  public set environmentRotation(
+    value: Euler | [x: number, y: number, z: number, order?: EulerOrder],
+  ) {
+    if (this._objRef) {
+      this._objRef.environmentRotation = applyValue<Euler>(
+        this._objRef.environmentRotation,
+        value,
+      );
+    }
+  }
+  public get environmentRotation(): Euler | undefined {
+    return this._objRef?.environmentRotation;
   }
 }

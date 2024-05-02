@@ -23,7 +23,7 @@ import { applyValue } from '../util';
 })
 export class ThOrbitControls<
   T extends OrbitControls = OrbitControls,
-  TARGS = [object: Camera, domElement?: HTMLElement],
+  TARGS = [object: Camera, domElement: HTMLElement],
 > extends ThControlBase<T, TARGS> {
   public getType(): Type<OrbitControls> {
     return OrbitControls;
@@ -78,6 +78,15 @@ export class ThOrbitControls<
     return this._objRef?.center;
   }
   @Input()
+  public set cursor(value: Vector3 | [x: number, y: number, z: number]) {
+    if (this._objRef) {
+      this._objRef.cursor = applyValue<Vector3>(this._objRef.cursor, value);
+    }
+  }
+  public get cursor(): Vector3 | undefined {
+    return this._objRef?.cursor;
+  }
+  @Input()
   public set minDistance(value: number) {
     if (this._objRef) {
       this._objRef.minDistance = value;
@@ -116,6 +125,26 @@ export class ThOrbitControls<
 
   public get maxZoom(): number | undefined {
     return this._objRef?.maxZoom;
+  }
+  @Input()
+  public set minTargetRadius(value: number) {
+    if (this._objRef) {
+      this._objRef.minTargetRadius = value;
+    }
+  }
+
+  public get minTargetRadius(): number | undefined {
+    return this._objRef?.minTargetRadius;
+  }
+  @Input()
+  public set maxTargetRadius(value: number) {
+    if (this._objRef) {
+      this._objRef.maxTargetRadius = value;
+    }
+  }
+
+  public get maxTargetRadius(): number | undefined {
+    return this._objRef?.maxTargetRadius;
   }
   @Input()
   public set minPolarAngle(value: number) {
@@ -305,27 +334,38 @@ export class ThOrbitControls<
     return this._objRef?.keys;
   }
   @Input()
-  public set mouseButtons(
-    value: Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>,
-  ) {
+  public set mouseButtons(value: {
+    LEFT?: MOUSE | null | undefined;
+    MIDDLE?: MOUSE | null | undefined;
+    RIGHT?: MOUSE | null | undefined;
+  }) {
     if (this._objRef) {
       this._objRef.mouseButtons = value;
     }
   }
 
   public get mouseButtons():
-    | Partial<{ LEFT: MOUSE; MIDDLE: MOUSE; RIGHT: MOUSE }>
+    | {
+        LEFT?: MOUSE | null | undefined;
+        MIDDLE?: MOUSE | null | undefined;
+        RIGHT?: MOUSE | null | undefined;
+      }
     | undefined {
     return this._objRef?.mouseButtons;
   }
   @Input()
-  public set touches(value: Partial<{ ONE: TOUCH; TWO: TOUCH }>) {
+  public set touches(value: {
+    ONE?: TOUCH | null | undefined;
+    TWO?: TOUCH | null | undefined;
+  }) {
     if (this._objRef) {
       this._objRef.touches = value;
     }
   }
 
-  public get touches(): Partial<{ ONE: TOUCH; TWO: TOUCH }> | undefined {
+  public get touches():
+    | { ONE?: TOUCH | null | undefined; TWO?: TOUCH | null | undefined }
+    | undefined {
     return this._objRef?.touches;
   }
   @Input()

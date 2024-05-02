@@ -126,7 +126,15 @@ export class ThBokehPass<
     return this._objRef?.fsQuad;
   }
   @Input()
-  public set oldClearColor(value: Color | [color: ColorRepresentation]) {
+  public set oldClearColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.oldClearColor = applyValue<Color>(
         this._objRef.oldClearColor,

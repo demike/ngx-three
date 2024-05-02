@@ -12,8 +12,9 @@ import {
   Box3,
   Box3Helper,
   BufferGeometry,
-  Color,
+  ColorRepresentation,
   Material,
+  Object3DEventMap,
   Vector3,
 } from 'three';
 import { applyValue } from '../util';
@@ -30,8 +31,14 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThBox3Helper<
   T extends Box3Helper = Box3Helper,
-  TARGS = [box: Box3, color?: Color],
-> extends ThLineSegments<BufferGeometry, Material | Material[], T, TARGS> {
+  TARGS = [box: Box3, color?: ColorRepresentation],
+> extends ThLineSegments<
+  BufferGeometry,
+  Material | Material[],
+  Object3DEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<Box3Helper> {
     return Box3Helper;
   }

@@ -11,8 +11,10 @@ import {
 import {
   Box3,
   BufferGeometry,
+  DataTexture,
   InstancedBufferAttribute,
   InstancedMesh,
+  InstancedMeshEventMap,
   Material,
   Sphere,
   Vector3,
@@ -32,17 +34,19 @@ import { ThObject3D } from './ThObject3D';
 export class ThInstancedMesh<
   TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
-  T extends InstancedMesh<TGeometry, TMaterial> = InstancedMesh<
+  TEventMap extends InstancedMeshEventMap = InstancedMeshEventMap,
+  T extends InstancedMesh<TGeometry, TMaterial, TEventMap> = InstancedMesh<
     TGeometry,
-    TMaterial
+    TMaterial,
+    TEventMap
   >,
   TARGS = [
     geometry: TGeometry | undefined,
     material: TMaterial | undefined,
     count: number,
   ],
-> extends ThMesh<TGeometry, TMaterial, T, TARGS> {
-  public getType(): Type<InstancedMesh<TGeometry, TMaterial>> {
+> extends ThMesh<TGeometry, TMaterial, TEventMap, T, TARGS> {
+  public getType(): Type<InstancedMesh<TGeometry, TMaterial, TEventMap>> {
     return InstancedMesh;
   }
 
@@ -117,5 +121,15 @@ export class ThInstancedMesh<
   }
   public get instanceMatrix(): InstancedBufferAttribute | undefined {
     return this._objRef?.instanceMatrix;
+  }
+  @Input()
+  public set morphTexture(value: DataTexture | null) {
+    if (this._objRef) {
+      this._objRef.morphTexture = value;
+    }
+  }
+
+  public get morphTexture(): (DataTexture | null) | undefined {
+    return this._objRef?.morphTexture;
   }
 }

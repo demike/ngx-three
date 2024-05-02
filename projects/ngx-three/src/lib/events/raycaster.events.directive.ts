@@ -1,12 +1,12 @@
 import { AfterViewInit, Directive, EventEmitter, Host, OnDestroy, Output } from '@angular/core';
-import { Intersection } from 'three';
+import { Intersection, Object3DEventMap } from 'three';
 import { ThObject3D } from '../generated/ThObject3D';
 
-import { RaycasterEvent, RaycasterService } from './raycaster.service';
+import { RaycasterEvent, RaycasterEventMap, RaycasterService } from './raycaster.service';
 
 export interface RaycasterEmitEvent extends Intersection {
   type: RaycasterEvent;
-  component: ThObject3D;
+  component: ThObject3D<RaycasterEventMap & Object3DEventMap>;
 }
 
 @Directive({ selector: '[onClick], [onMouseEnter], [onMouseExit], [onPointerDown], [onPointerUp]' })
@@ -19,13 +19,22 @@ export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
   }
   protected mouseEnter?: EventEmitter<RaycasterEmitEvent>;
 
-  @Output() get onMouseExit(): EventEmitter<{ component: ThObject3D; type: RaycasterEvent }> {
+  @Output() get onMouseExit(): EventEmitter<{
+    component: ThObject3D<Object3DEventMap & RaycasterEventMap>;
+    type: RaycasterEvent;
+  }> {
     if (!this.mouseExit) {
-      this.mouseExit = new EventEmitter<{ component: ThObject3D; type: RaycasterEvent }>();
+      this.mouseExit = new EventEmitter<{
+        component: ThObject3D<Object3DEventMap & RaycasterEventMap>;
+        type: RaycasterEvent;
+      }>();
     }
     return this.mouseExit;
   }
-  protected mouseExit?: EventEmitter<{ component: ThObject3D; type: RaycasterEvent }>;
+  protected mouseExit?: EventEmitter<{
+    component: ThObject3D<Object3DEventMap & RaycasterEventMap>;
+    type: RaycasterEvent;
+  }>;
 
   @Output() get onClick(): EventEmitter<RaycasterEmitEvent> {
     if (!this.click) {
@@ -51,7 +60,10 @@ export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
   }
   protected pointerUp?: EventEmitter<RaycasterEmitEvent>;
 
-  constructor(@Host() public readonly host: ThObject3D, private raycasterService: RaycasterService) {
+  constructor(
+    @Host() public readonly host: ThObject3D<RaycasterEventMap & Object3DEventMap>,
+    private raycasterService: RaycasterService,
+  ) {
     this.emitOnMouseEnter = this.emitOnMouseEnter.bind(this);
     this.emitOnMouseExit = this.emitOnMouseExit.bind(this);
     this.emitOnClick = this.emitOnClick.bind(this);
@@ -72,7 +84,7 @@ export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
   public emitOnMouseExit() {
     this.mouseExit?.emit({
       component: this.host,
-      type: RaycasterEvent.mouseExit
+      type: RaycasterEvent.mouseExit,
     });
   }
 

@@ -12,6 +12,7 @@ import {
   ColorRepresentation,
   GridHelper,
   LineBasicMaterial,
+  Object3DEventMap,
 } from 'three';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
@@ -32,7 +33,13 @@ export class ThGridHelper<
     color1?: ColorRepresentation,
     color2?: ColorRepresentation,
   ],
-> extends ThLineSegments<BufferGeometry, LineBasicMaterial, T, TARGS> {
+> extends ThLineSegments<
+  BufferGeometry,
+  LineBasicMaterial,
+  Object3DEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<GridHelper> {
     return GridHelper;
   }

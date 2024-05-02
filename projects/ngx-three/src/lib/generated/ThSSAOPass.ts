@@ -39,7 +39,13 @@ import { ThPass } from './ThPass';
 })
 export class ThSSAOPass<
   T extends SSAOPass = SSAOPass,
-  TARGS = [scene: Scene, camera: Camera, width?: number, height?: number],
+  TARGS = [
+    scene: Scene,
+    camera: Camera,
+    width?: number,
+    height?: number,
+    kernelSize?: number,
+  ],
 > extends ThPass<T, TARGS> {
   public getType(): Type<SSAOPass> {
     return SSAOPass;
@@ -76,13 +82,13 @@ export class ThSSAOPass<
     return this._objRef?.width;
   }
   @Input()
-  public set height(value: boolean) {
+  public set height(value: number) {
     if (this._objRef) {
       this._objRef.height = value;
     }
   }
 
-  public get height(): boolean | undefined {
+  public get height(): number | undefined {
     return this._objRef?.height;
   }
   @Input()
@@ -104,16 +110,6 @@ export class ThSSAOPass<
 
   public get kernelRadius(): number | undefined {
     return this._objRef?.kernelRadius;
-  }
-  @Input()
-  public set kernelSize(value: number) {
-    if (this._objRef) {
-      this._objRef.kernelSize = value;
-    }
-  }
-
-  public get kernelSize(): number | undefined {
-    return this._objRef?.kernelSize;
   }
   @Input()
   public set kernel(value: Vector3[]) {
@@ -164,16 +160,6 @@ export class ThSSAOPass<
 
   public get maxDistance(): number | undefined {
     return this._objRef?.maxDistance;
-  }
-  @Input()
-  public set beautyRenderTarget(value: WebGLRenderTarget) {
-    if (this._objRef) {
-      this._objRef.beautyRenderTarget = value;
-    }
-  }
-
-  public get beautyRenderTarget(): WebGLRenderTarget | undefined {
-    return this._objRef?.beautyRenderTarget;
   }
   @Input()
   public set normalRenderTarget(value: WebGLRenderTarget) {
@@ -266,7 +252,15 @@ export class ThSSAOPass<
     return this._objRef?.fsQuad;
   }
   @Input()
-  public set originalClearColor(value: Color | [color: ColorRepresentation]) {
+  public set originalClearColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
       this._objRef.originalClearColor = applyValue<Color>(
         this._objRef.originalClearColor,

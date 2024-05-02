@@ -7,7 +7,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Event, Group } from 'three';
+import { Group, Object3DEventMap } from 'three';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -16,12 +16,12 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThGroup) }],
 })
-export class ThGroup<T extends Group = Group, TARGS = []> extends ThObject3D<
-  Event,
-  T,
-  TARGS
-> {
-  public getType(): Type<Group> {
+export class ThGroup<
+  TEventMap extends Object3DEventMap = Object3DEventMap,
+  T extends Group<TEventMap> = Group<TEventMap>,
+  TARGS = [],
+> extends ThObject3D<TEventMap, T, TARGS> {
+  public getType(): Type<Group<TEventMap>> {
     return Group;
   }
 

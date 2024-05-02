@@ -33,6 +33,9 @@ export class ThShaderMaterial<
     return ShaderMaterial;
   }
 
+  public get isShaderMaterial(): true | undefined {
+    return this._objRef?.isShaderMaterial;
+  }
   @Input()
   public set type(value: string) {
     if (this._objRef) {
@@ -154,21 +157,9 @@ export class ThShaderMaterial<
     return this._objRef?.clipping;
   }
   @Input()
-  public set derivatives(value: any) {
-    if (this._objRef) {
-      this._objRef.derivatives = value;
-    }
-  }
-
-  public get derivatives(): any | undefined {
-    return this._objRef?.derivatives;
-  }
-  @Input()
   public set extensions(value: {
-    derivatives: boolean;
-    fragDepth: boolean;
-    drawBuffers: boolean;
-    shaderTextureLOD: boolean;
+    clipCullDistance: boolean;
+    multiDraw: boolean;
   }) {
     if (this._objRef) {
       this._objRef.extensions = value;
@@ -177,10 +168,8 @@ export class ThShaderMaterial<
 
   public get extensions():
     | {
-        derivatives: boolean;
-        fragDepth: boolean;
-        drawBuffers: boolean;
-        shaderTextureLOD: boolean;
+        clipCullDistance: boolean;
+        multiDraw: boolean;
       }
     | undefined {
     return this._objRef?.extensions;
@@ -224,15 +213,5 @@ export class ThShaderMaterial<
 
   public get glslVersion(): (GLSLVersion | null) | undefined {
     return this._objRef?.glslVersion;
-  }
-  @Input()
-  public set isShaderMaterial(value: boolean) {
-    if (this._objRef) {
-      this._objRef.isShaderMaterial = value;
-    }
-  }
-
-  public get isShaderMaterial(): boolean | undefined {
-    return this._objRef?.isShaderMaterial;
   }
 }

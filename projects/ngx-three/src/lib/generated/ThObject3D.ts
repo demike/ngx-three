@@ -10,22 +10,16 @@ import {
 } from '@angular/core';
 import {
   AnimationClip,
-  BaseEvent,
-  BufferGeometry,
-  Camera,
   Euler,
   EulerOrder,
-  Event,
-  Group,
   Layers,
   Material,
   Matrix3,
   Matrix4,
   Object3D,
+  Object3DEventMap,
   Quaternion,
-  Scene,
   Vector3,
-  WebGLRenderer,
 } from 'three';
 import { ThObjectBase } from '../ThObjectBase';
 import { applyValue } from '../util';
@@ -37,11 +31,11 @@ import { applyValue } from '../util';
   providers: [],
 })
 export class ThObject3D<
-  E extends BaseEvent = Event,
-  T extends Object3D<E> = Object3D<E>,
+  TEventMap extends Object3DEventMap = Object3DEventMap,
+  T extends Object3D<TEventMap> = Object3D<TEventMap>,
   TARGS = [],
 > extends ThObjectBase<T, TARGS> {
-  public getType(): Type<Object3D<E>> {
+  public getType(): Type<Object3D<TEventMap>> {
     return Object3D;
   }
 
@@ -349,13 +343,13 @@ export class ThObject3D<
     return this._objRef?.animations;
   }
   @Input()
-  public set userData(value: { [key: string]: any }) {
+  public set userData(value: Record<string, any>) {
     if (this._objRef) {
       this._objRef.userData = value;
     }
   }
 
-  public get userData(): { [key: string]: any } | undefined {
+  public get userData(): Record<string, any> | undefined {
     return this._objRef?.userData;
   }
   @Input()
@@ -377,62 +371,6 @@ export class ThObject3D<
 
   public get customDistanceMaterial(): (Material | undefined) | undefined {
     return this._objRef?.customDistanceMaterial;
-  }
-  @Input()
-  public set onBeforeRender(
-    value: (
-      renderer: WebGLRenderer,
-      scene: Scene,
-      camera: Camera,
-      geometry: BufferGeometry,
-      material: Material,
-      group: Group,
-    ) => void,
-  ) {
-    if (this._objRef) {
-      this._objRef.onBeforeRender = value;
-    }
-  }
-
-  public get onBeforeRender():
-    | ((
-        renderer: WebGLRenderer,
-        scene: Scene,
-        camera: Camera,
-        geometry: BufferGeometry,
-        material: Material,
-        group: Group,
-      ) => void)
-    | undefined {
-    return this._objRef?.onBeforeRender;
-  }
-  @Input()
-  public set onAfterRender(
-    value: (
-      renderer: WebGLRenderer,
-      scene: Scene,
-      camera: Camera,
-      geometry: BufferGeometry,
-      material: Material,
-      group: Group,
-    ) => void,
-  ) {
-    if (this._objRef) {
-      this._objRef.onAfterRender = value;
-    }
-  }
-
-  public get onAfterRender():
-    | ((
-        renderer: WebGLRenderer,
-        scene: Scene,
-        camera: Camera,
-        geometry: BufferGeometry,
-        material: Material,
-        group: Group,
-      ) => void)
-    | undefined {
-    return this._objRef?.onAfterRender;
   }
 
   public static readonly DEFAULT_UP = Object3D.DEFAULT_UP;

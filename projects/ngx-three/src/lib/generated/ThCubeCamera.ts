@@ -11,7 +11,7 @@ import {
 import {
   CoordinateSystem,
   CubeCamera,
-  Event,
+  Object3DEventMap,
   WebGLCubeRenderTarget,
 } from 'three';
 import { ThObject3D } from './ThObject3D';
@@ -27,7 +27,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThCubeCamera<
   T extends CubeCamera = CubeCamera,
   TARGS = [near: number, far: number, renderTarget: WebGLCubeRenderTarget],
-> extends ThObject3D<Event, T, TARGS> {
+> extends ThObject3D<Object3DEventMap, T, TARGS> {
   public getType(): Type<CubeCamera> {
     return CubeCamera;
   }
@@ -54,5 +54,15 @@ export class ThCubeCamera<
 
   public get coordinateSystem(): CoordinateSystem | undefined {
     return this._objRef?.coordinateSystem;
+  }
+  @Input()
+  public set activeMipmapLevel(value: number) {
+    if (this._objRef) {
+      this._objRef.activeMipmapLevel = value;
+    }
+  }
+
+  public get activeMipmapLevel(): number | undefined {
+    return this._objRef?.activeMipmapLevel;
   }
 }
