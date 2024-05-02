@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { EventDispatcher } from 'three';
+import { EventDispatcher, Object3DEventMap } from 'three';
 import { ThWrapperBase } from './ThWrapperBase';
 
-class ExampleObj extends EventDispatcher {
+interface ExampleEventMap {
+  event1: object;
+  event2: { data: number };
+}
+
+class ExampleObj extends EventDispatcher<Object3DEventMap & ExampleEventMap> {
   public dispose() {
     // do nothing
   }
@@ -11,7 +16,7 @@ class ExampleObj extends EventDispatcher {
 
 @Component({
   selector: 'th-wrapper-impl',
-  template: ''
+  template: '',
 })
 class ThWrapperImplComponent extends ThWrapperBase<ExampleObj, any> {
   getType() {
@@ -25,7 +30,7 @@ describe('ThWrapperBase', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ThWrapperBase]
+      declarations: [ThWrapperBase],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ThWrapperImplComponent);
@@ -59,11 +64,11 @@ describe('ThWrapperBase', () => {
 
       component.threeEvents = {
         event1: callback,
-        event2: callback
+        event2: callback,
       };
 
       component.objRef?.dispatchEvent({ type: 'event1' });
-      component.objRef?.dispatchEvent({ type: 'event2' });
+      component.objRef?.dispatchEvent({ type: 'event2', data: 42 });
       expect(callCnt).toBe(2);
     });
 
@@ -79,7 +84,7 @@ describe('ThWrapperBase', () => {
 
       const events = {
         event1: callback,
-        event2: callback
+        event2: callback,
       };
       component.threeEvents = events;
 
