@@ -116,10 +116,10 @@
           "options": {},
           "configurations": {
             "production": {
-              "browserTarget": "ngx-three-demo:build:production"
+              "buildTarget": "ngx-three-demo:build:production"
             },
             "development": {
-              "browserTarget": "ngx-three-demo:build:development"
+              "buildTarget": "ngx-three-demo:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -127,7 +127,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-three-demo:build"
+            "buildTarget": "ngx-three-demo:build"
           }
         },
         "test": {
