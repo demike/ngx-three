@@ -29,6 +29,7 @@
     "@angular/router": "^17.3.7",
     "@stackblitz/sdk": "^1.9.0",
     "@types/webxr": "^0.5.5",
+    "highlight.js": "^11.9.0",
     "lil-gui": "^0.18.2",
     "ngx-highlightjs": "^11.0.0-beta.1",
     "normalize.css": "^8.0.1",

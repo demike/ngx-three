@@ -1,34 +1,23 @@
-<mat-card >
+<mat-card>
   <mat-card-content>
     <div class="code-wrapper hljs">
       <mat-tab-group dynamicHeight color="primary" backgroundColor="primary">
-        <mat-tab
-          *ngFor="let codeUrl of codeUrls; let i = index"
-          [label]="fileNames[i]"
-        >
+        <mat-tab *ngFor="let codeUrl of codeUrls; let i = index" [label]="fileNames[i]">
           <pre>
-            <code [highlight]="$any(codeUrl | codeFromUrl | async ) " [lineNumbers]="lineNumbers"></code>
+            <code [highlight]="$any(codeUrl | codeFromUrl | async ) " [language]="getLanguage(fileNames[i])"></code>
         </pre>
         </mat-tab>
       </mat-tab-group>
     </div>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-button
-      class="gist-url"
-      (click)="this.editorService.toCodeSandbox($event)"
-      href="#"
-    >
+    <button mat-button class="gist-url" (click)="this.editorService.toCodeSandbox($event)" href="#">
       <mat-icon>crop_din</mat-icon>
       CodeSandbox
-  </button>
-    <button mat-button
-      class="gist-url"
-      (click)="this.editorService.toStackblitz($event)"
-      href="#"
-    >
+    </button>
+    <button mat-button class="gist-url" (click)="this.editorService.toStackblitz($event)" href="#">
       <mat-icon>bolt</mat-icon>
       Stackblitz
-  </button>
+    </button>
   </mat-card-actions>
 </mat-card>
