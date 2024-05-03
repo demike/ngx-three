@@ -11,7 +11,7 @@ import { EventsExampleComponent } from './events-example/events-example.componen
 import { CodeComponent } from './code/code.component';
 import { MaterialModule } from './material/material.module';
 
-import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
+import { HighlightModule, provideHighlightOptions } from 'ngx-highlightjs';
 import { HighlightPlusModule } from 'ngx-highlightjs/plus';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DynamicLoaderExampleComponent } from './dynamic-loader-example/dynamic-loader-example.component';
@@ -42,6 +42,7 @@ import { OutlinePassEventsExampleComponent } from './outline-pass-events-example
 import { MultiRendererExampleComponent } from './multi-renderer-example/multi-renderer-example.component';
 import { CSS3dRendererExampleComponent } from './css3d-renderer-example/css3d-renderer-example.component';
 import { HtmlWithCSS3dExampleComponent } from './html-with-css3d-example/html-with-css3d-example.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -92,14 +93,12 @@ import { HtmlWithCSS3dExampleComponent } from './html-with-css3d-example/html-wi
     MatSidenavModule,
     MatIconModule,
     MatListModule,
+    HttpClientModule,
   ],
   providers: [
-    {
-      provide: HIGHLIGHT_OPTIONS,
-      useValue: {
-        fullLibraryLoader: () => import('highlight.js'),
-      },
-    },
+    provideHighlightOptions({
+      fullLibraryLoader: () => import('highlight.js'),
+    }),
     EditorService,
   ],
   bootstrap: [AppComponent],

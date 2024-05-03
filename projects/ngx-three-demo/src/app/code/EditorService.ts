@@ -24,4 +24,20 @@ export class EditorService {
     event?.preventDefault();
     toCodeSandbox(this.urls, this.declarations);
   }
+
+  public getLanguage(fileName: string) {
+    const fileEnding = fileName.substring(fileName.lastIndexOf('.') + 1);
+    switch (fileEnding) {
+      case 'ts':
+        return 'typescript';
+      case 'js':
+        return 'javascript';
+      case 'html':
+        return 'html';
+      case 'css':
+        return 'css';
+      default:
+        return 'typescript';
+    }
+  }
 }

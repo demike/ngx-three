@@ -22,5 +22,9 @@ export class CodeComponent {
     return this.editorService.urls;
   }
 
+  public getLanguage(fileName: string) {
+    return this.editorService.getLanguage(fileName);
+  }
+
   @Input() lineNumbers = false;
 }
