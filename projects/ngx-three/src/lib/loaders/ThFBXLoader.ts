@@ -1,7 +1,7 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
 
 import { ThObject3D } from '../generated/ThObject3D';
-import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader';
+import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';
 import { Group } from 'three';
 

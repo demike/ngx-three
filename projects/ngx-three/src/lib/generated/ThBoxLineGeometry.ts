@@ -8,7 +8,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { NormalBufferAttributes } from 'three';
-import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry';
+import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({

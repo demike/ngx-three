@@ -1,5 +1,5 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
-import { EXRLoader } from 'three/examples/jsm/loaders/EXRLoader';
+import { EXRLoader } from 'three/examples/jsm/loaders/EXRLoader.js';
 import { ThDataTexture } from '../../generated/ThDataTexture';
 import {
   ThCallbackLoaderBaseDirective,

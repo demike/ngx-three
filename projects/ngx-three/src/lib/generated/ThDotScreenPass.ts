@@ -10,7 +10,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, Vector2 } from 'three';
-import { DotScreenPass } from 'three/examples/jsm/postprocessing/DotScreenPass';
+import { DotScreenPass } from 'three/examples/jsm/postprocessing/DotScreenPass.js';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';

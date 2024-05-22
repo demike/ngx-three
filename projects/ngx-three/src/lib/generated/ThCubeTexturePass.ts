@@ -10,7 +10,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { CubeTexture, Mesh, PerspectiveCamera, Scene } from 'three';
-import { CubeTexturePass } from 'three/examples/jsm/postprocessing/CubeTexturePass';
+import { CubeTexturePass } from 'three/examples/jsm/postprocessing/CubeTexturePass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 

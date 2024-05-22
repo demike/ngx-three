@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { ThObject3D } from 'ngx-three';
 import { Color, Euler, Light, Vector3 } from 'three';
-import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader';
-import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader';
+import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader.js';
+import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader.js';
 
 @Component({
   selector: 'app-post-processing-example',
   templateUrl: './post-processing-example.component.html',
   styleUrls: ['./post-processing-example.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostProcessingExampleComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -41,7 +41,7 @@ export class PostProcessingExampleComponent implements OnInit {
           .multiplyScalar(Math.random() * this.zDist),
         rotation: new Euler(Math.random() * 2, Math.random() * 2, Math.random() * 2),
         scale: new Vector3(scale, scale, scale),
-        color: new Color(0xffffff * Math.random())
+        color: new Color(0xffffff * Math.random()),
       });
     }
   }

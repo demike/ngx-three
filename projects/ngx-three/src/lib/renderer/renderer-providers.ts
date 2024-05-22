@@ -11,8 +11,8 @@ import {
   TemplateRef,
   ViewContainerRef,
 } from '@angular/core';
-import { CSS3DParameters, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer';
-import { CSS2DParameters, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer';
+import { CSS3DParameters, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
+import { CSS2DParameters, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 
 import { Renderer, WebGLRenderer, WebGLRendererParameters } from 'three';
 

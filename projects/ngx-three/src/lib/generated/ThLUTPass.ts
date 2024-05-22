@@ -13,7 +13,7 @@ import { Data3DTexture, DataTexture } from 'three';
 import {
   LUTPass,
   LUTPassParameters,
-} from 'three/examples/jsm/postprocessing/LUTPass';
+} from 'three/examples/jsm/postprocessing/LUTPass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThShaderPass } from './ThShaderPass';
 

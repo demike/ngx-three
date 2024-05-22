@@ -1,5 +1,5 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
-import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader';
+import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js';
 import { ThTexture } from '../../generated/ThTexture';
 import {
   ThCallbackLoaderService,

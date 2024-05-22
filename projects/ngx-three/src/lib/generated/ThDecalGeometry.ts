@@ -8,7 +8,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { Euler, Mesh, NormalBufferAttributes, Vector3 } from 'three';
-import { DecalGeometry } from 'three/examples/jsm/geometries/DecalGeometry';
+import { DecalGeometry } from 'three/examples/jsm/geometries/DecalGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({

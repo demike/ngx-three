@@ -9,7 +9,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { Camera } from 'three';
-import { FlyControls } from 'three/examples/jsm/controls/FlyControls';
+import { FlyControls } from 'three/examples/jsm/controls/FlyControls.js';
 import { ThControlBase } from '../ThControlBase';
 
 @Component({

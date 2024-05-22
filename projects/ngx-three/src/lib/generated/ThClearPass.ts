@@ -10,7 +10,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { ColorRepresentation } from 'three';
-import { ClearPass } from 'three/examples/jsm/postprocessing/ClearPass';
+import { ClearPass } from 'three/examples/jsm/postprocessing/ClearPass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 

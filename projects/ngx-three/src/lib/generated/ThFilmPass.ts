@@ -10,7 +10,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { ShaderMaterial } from 'three';
-import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass';
+import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';

@@ -384,7 +384,7 @@ export abstract class NgxThreeClass {
       const importPath = fileName
         .substr(fileName.indexOf('/node_modules/@types/three/'))
         .replace('/node_modules/@types/', '')
-        .replace('.d.ts', '');
+        .replace('.d.ts', '.js');
       return importPath;
     }
     return 'three';

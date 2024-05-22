@@ -3,7 +3,7 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { AfterContentChecked, ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
 import { Camera, Color, Material, Scene } from 'three';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { ThPassBase } from '../../ThPassBase';
 import { ThView } from '../../ThView';
 import { ThRenderPassGen } from '../ThRenderPassGen';

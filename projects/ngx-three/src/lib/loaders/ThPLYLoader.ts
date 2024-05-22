@@ -1,6 +1,6 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
 
-import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader';
+import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js';
 import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';
 import { BufferGeometry } from 'three';
 import { ThBufferGeometry } from '../generated';

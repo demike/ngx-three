@@ -9,7 +9,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { Camera } from 'three';
-import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls';
+import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js';
 import { ThControlBase } from '../ThControlBase';
 
 @Component({

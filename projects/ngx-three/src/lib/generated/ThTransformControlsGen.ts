@@ -9,7 +9,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { Camera, MOUSE, Object3D } from 'three';
-import { TransformControls } from 'three/examples/jsm/controls/TransformControls';
+import { TransformControls } from 'three/examples/jsm/controls/TransformControls.js';
 import { ThControlBase } from '../ThControlBase';
 
 @Component({

@@ -2,8 +2,8 @@
 import { Component, OnInit, ChangeDetectionStrategy, HostListener, ViewChild } from '@angular/core';
 import { ThCanvas } from 'ngx-three';
 import { CanvasTexture, Color, PerspectiveCamera, Scene } from 'three';
-import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader';
-import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader';
+import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader.js';
+import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader.js';
 
 @Component({
   selector: 'app-multi-view-postprocessing-example',

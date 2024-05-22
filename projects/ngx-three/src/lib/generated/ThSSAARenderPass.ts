@@ -17,7 +17,7 @@ import {
   WebGLRenderTarget,
 } from 'three';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
-import { SSAARenderPass } from 'three/examples/jsm/postprocessing/SSAARenderPass';
+import { SSAARenderPass } from 'three/examples/jsm/postprocessing/SSAARenderPass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 

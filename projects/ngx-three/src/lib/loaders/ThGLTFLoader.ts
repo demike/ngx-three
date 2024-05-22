@@ -1,5 +1,5 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
-import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { ThObject3D } from '../generated/ThObject3D';
 import { DRACOLoaderService } from './compressed-texture/ThDRACOLoader';
 import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';

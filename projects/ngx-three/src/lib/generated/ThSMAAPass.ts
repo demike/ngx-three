@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { ShaderMaterial, Texture, WebGLRenderTarget } from 'three';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
-import { SMAAPass } from 'three/examples/jsm/postprocessing/SMAAPass';
+import { SMAAPass } from 'three/examples/jsm/postprocessing/SMAAPass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 

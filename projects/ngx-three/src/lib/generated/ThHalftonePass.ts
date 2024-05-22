@@ -13,7 +13,7 @@ import { ShaderMaterial } from 'three';
 import {
   HalftonePass,
   HalftonePassParameters,
-} from 'three/examples/jsm/postprocessing/HalftonePass';
+} from 'three/examples/jsm/postprocessing/HalftonePass.js';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
