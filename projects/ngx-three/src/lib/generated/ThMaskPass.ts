@@ -10,7 +10,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { Camera, Scene } from 'three';
-import { MaskPass } from 'three/examples/jsm/postprocessing/MaskPass';
+import { MaskPass } from 'three/examples/jsm/postprocessing/MaskPass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 

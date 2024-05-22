@@ -10,7 +10,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { Camera, Color, ColorRepresentation, Material, Scene } from 'three';
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';

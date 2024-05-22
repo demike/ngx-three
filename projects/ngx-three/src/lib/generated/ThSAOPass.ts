@@ -23,7 +23,7 @@ import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import {
   SAOPass,
   SAOPassParams,
-} from 'three/examples/jsm/postprocessing/SAOPass';
+} from 'three/examples/jsm/postprocessing/SAOPass.js';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';

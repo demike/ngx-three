@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { ShaderMaterial, Texture } from 'three';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
-import { TexturePass } from 'three/examples/jsm/postprocessing/TexturePass';
+import { TexturePass } from 'three/examples/jsm/postprocessing/TexturePass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 

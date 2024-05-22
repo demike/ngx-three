@@ -10,7 +10,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { Camera, ColorRepresentation, Scene } from 'three';
-import { TAARenderPass } from 'three/examples/jsm/postprocessing/TAARenderPass';
+import { TAARenderPass } from 'three/examples/jsm/postprocessing/TAARenderPass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThSSAARenderPass } from './ThSSAARenderPass';
 

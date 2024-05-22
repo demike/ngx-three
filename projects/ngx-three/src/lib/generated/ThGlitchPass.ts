@@ -10,7 +10,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { ShaderMaterial } from 'three';
-import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass';
+import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';

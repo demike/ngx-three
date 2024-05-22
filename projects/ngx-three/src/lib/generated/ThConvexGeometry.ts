@@ -8,7 +8,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { NormalBufferAttributes, Vector3 } from 'three';
-import { ConvexGeometry } from 'three/examples/jsm/geometries/ConvexGeometry';
+import { ConvexGeometry } from 'three/examples/jsm/geometries/ConvexGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({

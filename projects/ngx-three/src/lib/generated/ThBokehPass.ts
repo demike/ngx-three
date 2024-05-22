@@ -21,7 +21,7 @@ import {
 import {
   BokehPass,
   BokehPassParamters,
-} from 'three/examples/jsm/postprocessing/BokehPass';
+} from 'three/examples/jsm/postprocessing/BokehPass.js';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';

@@ -26,7 +26,7 @@ import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import {
   SSRPass,
   SSRPassParams,
-} from 'three/examples/jsm/postprocessing/SSRPass';
+} from 'three/examples/jsm/postprocessing/SSRPass.js';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';

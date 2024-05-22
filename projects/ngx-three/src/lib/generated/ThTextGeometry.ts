@@ -11,7 +11,7 @@ import { Shape } from 'three';
 import {
   TextGeometry,
   TextGeometryParameters,
-} from 'three/examples/jsm/geometries/TextGeometry';
+} from 'three/examples/jsm/geometries/TextGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThExtrudeGeometry } from './ThExtrudeGeometry';
 

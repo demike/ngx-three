@@ -9,7 +9,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { Camera, Scene, Vector3 } from 'three';
-import { ArcballControls } from 'three/examples/jsm/controls/ArcballControls';
+import { ArcballControls } from 'three/examples/jsm/controls/ArcballControls.js';
 import { ThControlBase } from '../ThControlBase';
 import { applyValue } from '../util';
 

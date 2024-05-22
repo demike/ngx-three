@@ -24,7 +24,7 @@ import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import {
   SSAOPass,
   SSAOPassOUTPUT,
-} from 'three/examples/jsm/postprocessing/SSAOPass';
+} from 'three/examples/jsm/postprocessing/SSAOPass.js';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';

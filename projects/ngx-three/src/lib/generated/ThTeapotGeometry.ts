@@ -8,7 +8,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { NormalBufferAttributes } from 'three';
-import { TeapotGeometry } from 'three/examples/jsm/geometries/TeapotGeometry';
+import { TeapotGeometry } from 'three/examples/jsm/geometries/TeapotGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({

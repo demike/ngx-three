@@ -12,7 +12,7 @@ import { Camera, Object3D, Raycaster } from 'three';
 import {
   DragControls,
   DragControlsMode,
-} from 'three/examples/jsm/controls/DragControls';
+} from 'three/examples/jsm/controls/DragControls.js';
 import { ThControlBase } from '../ThControlBase';
 
 @Component({

@@ -9,7 +9,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import { NormalBufferAttributes, Vector3 } from 'three';
-import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry';
+import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
