@@ -1,5 +1,5 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
-import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader';
+import { DDSLoader } from 'three/examples/jsm/loaders/DDSLoader.js';
 import { ThCompressedTexture } from '../../generated/ThCompressedTexture';
 import {
   ThCallbackLoaderService,

@@ -1,6 +1,6 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
 import { ThDataTexture } from '../../generated/ThDataTexture';
-import { LogLuvLoader } from 'three/examples/jsm/loaders/LogLuvLoader';
+import { LogLuvLoader } from 'three/examples/jsm/loaders/LogLuvLoader.js';
 import {
   ThCallbackLoaderBaseDirective,
   ThCallbackLoaderBasePipe,

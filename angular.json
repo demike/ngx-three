@@ -54,12 +54,15 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/ngx-three-demo",
+            "outputPath": {
+              "base": "dist/ngx-three-demo"
+            },
             "index": "projects/ngx-three-demo/src/index.html",
-            "main": "projects/ngx-three-demo/src/main.ts",
-            "polyfills": "projects/ngx-three-demo/src/polyfills.ts",
+            "polyfills": [
+              "projects/ngx-three-demo/src/polyfills.ts"
+            ],
             "tsConfig": "projects/ngx-three-demo/tsconfig.app.json",
             "assets": [
               "projects/ngx-three-demo/src/favicon.ico",
@@ -72,12 +75,11 @@
             "allowedCommonJsDependencies": [
               "highlight.js"
             ],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/ngx-three-demo/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -92,8 +94,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",

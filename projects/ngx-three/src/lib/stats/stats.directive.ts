@@ -1,6 +1,6 @@
 import { Directive, Input, OnDestroy, OnInit } from '@angular/core';
 import { ThEngineService } from '../ThEngine.service';
-import Stats from 'three/examples/jsm/libs/stats.module';
+import Stats from 'three/examples/jsm/libs/stats.module.js';
 import { Subscription } from 'rxjs';
 import { ThCanvas } from '../ThCanvas';
 
@@ -10,7 +10,10 @@ import { ThCanvas } from '../ThCanvas';
 export class StatsDirective implements OnInit, OnDestroy {
   private stats: Stats;
   private renderSubscription?: Subscription;
-  constructor(private engineService: ThEngineService, private canvas: ThCanvas) {
+  constructor(
+    private engineService: ThEngineService,
+    private canvas: ThCanvas,
+  ) {
     this.stats = new Stats();
   }
   ngOnDestroy(): void {

@@ -2,7 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ChangeDetectionStrategy, Component, ElementRef, forwardRef, inject, Type } from '@angular/core';
-import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer';
+import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { ThObject3D } from '../ThObject3D';
 import { ThCSS3DObjectGen } from '../ThCSS3DObjectGen';
 

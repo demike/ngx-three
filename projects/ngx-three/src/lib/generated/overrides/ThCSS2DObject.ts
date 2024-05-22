@@ -2,7 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ChangeDetectionStrategy, Component, ElementRef, forwardRef, inject, Type } from '@angular/core';
-import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
+import { CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 import { ThCSS2DObjectGen } from '../ThCSS2DObjectGen';
 import { ThObject3D } from '../ThObject3D';
 

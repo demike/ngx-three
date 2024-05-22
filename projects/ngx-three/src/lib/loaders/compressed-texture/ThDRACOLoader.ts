@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 import { ThCallbackLoaderService } from '../ThCallbackLoaderBase';
 import { BufferGeometry } from 'three';
 
