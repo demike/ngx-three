@@ -11,7 +11,7 @@ import {
   Output,
 } from '@angular/core';
 import { Color, Object3D, Raycaster, Renderer, Vector4 } from 'three';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RAYCASTER, RaycasterService } from './events/raycaster.service';
 import { ThCamera } from './generated/ThCamera';
 import { ThObject3D } from './generated/ThObject3D';

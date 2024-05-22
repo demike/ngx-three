@@ -3,7 +3,7 @@
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Vector4, WebGLRenderer, WebGLRenderTarget } from 'three';
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { ThEngineService } from '../../ThEngine.service';
 import { ThView } from '../../ThView';
 import { ThEffectComposerGen } from '../ThEffectComposerGen';
