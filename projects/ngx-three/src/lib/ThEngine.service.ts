@@ -137,6 +137,9 @@ export class ThEngineService implements OnDestroy {
         continue;
       }
       this.applyRendererParametersFromView(view, renderer);
+      if (isObserved(view.onCurrentRendererPass)) {
+        this.ngZone.run(() => view.onCurrentRendererPass.emit({ renderer, scene, camera, engine: this }));
+      }
       if (view.effectComposer) {
         view.effectComposer.render();
         return;
