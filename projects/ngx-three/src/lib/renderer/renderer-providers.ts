@@ -13,6 +13,8 @@ import {
 } from '@angular/core';
 import { CSS3DParameters, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { CSS2DParameters, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
+import { WebGPURendererParameters } from 'three/examples/jsm/renderers/webgpu/WebGPURenderer.js';
+import WebGPURenderer from 'three/examples/jsm/renderers/webgpu/WebGPURenderer.js';
 
 import { Renderer, WebGLRenderer, WebGLRendererParameters } from 'three';
 
@@ -22,12 +24,18 @@ const RENDERER_DEFAULTS: WebGLRendererParameters = {
   preserveDrawingBuffer: true,
 };
 
+const WEBGPU_RENDERER_DEFAULTS: WebGPURendererParameters = {
+  alpha: true, // transparent background
+  antialias: true, // smooth edges
+};
+
 export type ThRendererParameters = Partial<WebGLRendererParameters>;
 
 export const RENDERER_PROVIDERS = new InjectionToken<Renderer[]>('Renderer Providers');
 export const CSS3D_RENDERER = new InjectionToken<CSS3DRenderer>('CSS3DRenderer');
 export const CSS2D_RENDERER = new InjectionToken<CSS2DRenderer>('CSS2DRenderer');
 export const WEBGL_RENDERER = new InjectionToken<WebGLRenderer>('WebGLRenderer');
+export const WEBGPU_RENDERER = new InjectionToken<WebGLRenderer>('WebGPURenderer');
 
 @Directive({
   selector:
@@ -148,10 +156,11 @@ export function provideCSS2dRenderer(parameters?: CSS2DParameters) {
   return provider;
 }
 
-export function provideWebGPURenderer(parameters?: WebGLRendererParameters) {
+export function provideWebGPURenderer(parameters?: WebGPURendererParameters) {
+  const renderer = new WebGPURenderer({ ...WEBGPU_RENDERER_DEFAULTS, ...parameters });
   const provider: Provider[] = [
-    { provide: WEBGL_RENDERER, useValue: new WebGLRenderer(parameters) },
-    { provide: RENDERER_PROVIDERS, multi: true, useExisting: WEBGL_RENDERER },
+    { provide: WEBGPU_RENDERER, useValue: renderer },
+    { provide: RENDERER_PROVIDERS, multi: true, useExisting: WEBGPU_RENDERER },
   ];
   return provider;
 }
