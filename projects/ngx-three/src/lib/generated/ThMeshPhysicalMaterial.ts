@@ -235,6 +235,16 @@ export class ThMeshPhysicalMaterial<
     return this._objRef?.sheenRoughnessMap;
   }
   @Input()
+  public set transmission(value: number) {
+    if (this._objRef) {
+      this._objRef.transmission = value;
+    }
+  }
+
+  public get transmission(): number | undefined {
+    return this._objRef?.transmission;
+  }
+  @Input()
   public set transmissionMap(value: Texture | null) {
     if (this._objRef) {
       this._objRef.transmissionMap = value;
