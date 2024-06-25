@@ -523,6 +523,22 @@ export class ThMaterial<
   public get version(): number | undefined {
     return this._objRef?.version;
   }
+  public get alphaTest(): number | undefined {
+    return this._objRef?.alphaTest;
+  }
+  @Input()
+  public set alphaTest(value: number) {
+    if (this._objRef) {
+      this._objRef.alphaTest = value;
+    }
+  }
+
+  @Input()
+  public set needsUpdate(value: boolean) {
+    if (this._objRef) {
+      this._objRef.needsUpdate = value;
+    }
+  }
 
   constructor(@SkipSelf() hostObject: ThObject3D) {
     super(hostObject);

@@ -103,6 +103,16 @@ export class ThTexture<
   public get source(): Source | undefined {
     return this._objRef?.source;
   }
+  public get image(): any | undefined {
+    return this._objRef?.image;
+  }
+  @Input()
+  public set image(value: any) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
   @Input()
   public set mipmaps(value: any[]) {
     if (this._objRef) {
@@ -372,6 +382,19 @@ export class ThTexture<
 
   public get pmremVersion(): number | undefined {
     return this._objRef?.pmremVersion;
+  }
+  @Input()
+  public set needsUpdate(value: boolean) {
+    if (this._objRef) {
+      this._objRef.needsUpdate = value;
+    }
+  }
+
+  @Input()
+  public set needsPMREMUpdate(value: boolean) {
+    if (this._objRef) {
+      this._objRef.needsPMREMUpdate = value;
+    }
   }
 
   public static readonly DEFAULT_ANISOTROPY = Texture.DEFAULT_ANISOTROPY;

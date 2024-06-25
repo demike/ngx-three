@@ -1,38 +1,21 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  Type,
-  forwardRef,
-} from '@angular/core';
-import {
-  Data3DTexture,
-  MagnificationTextureFilter,
-  MinificationTextureFilter,
-  Wrapping,
-} from 'three';
+import { ChangeDetectionStrategy, Component, Input, Type, forwardRef } from '@angular/core';
+import { Data3DTexture, MagnificationTextureFilter, MinificationTextureFilter, Wrapping } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
+import { Texture3DImageData } from 'three/src/textures/types';
 
 @Component({
   selector: 'th-data3DTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThData3DTexture) },
-  ],
+  providers: [{ provide: ThTextureBase, useExisting: forwardRef(() => ThData3DTexture) }],
 })
 export class ThData3DTexture<
   T extends Data3DTexture = Data3DTexture,
-  TARGS = [
-    data?: BufferSource | null,
-    width?: number,
-    height?: number,
-    depth?: number,
-  ],
+  TARGS = [data?: BufferSource | null, width?: number, height?: number, depth?: number],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<Data3DTexture> {
     return Data3DTexture;
@@ -41,6 +24,16 @@ export class ThData3DTexture<
   public get isData3DTexture(): true | undefined {
     return this._objRef?.isData3DTexture;
   }
+  public get image(): Texture3DImageData | undefined {
+    return this._objRef?.image;
+  }
+  @Input()
+  public set image(value: Texture3DImageData) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
   @Input()
   public set magFilter(value: MagnificationTextureFilter) {
     if (this._objRef) {

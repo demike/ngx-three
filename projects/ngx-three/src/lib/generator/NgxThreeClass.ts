@@ -193,30 +193,40 @@ export abstract class NgxThreeClass {
     }
 
     for (const member of classDeclaration.members) {
+      const memberName = (member.name as ts.Identifier | undefined)?.escapedText as string;
+
+      if (
+        !memberName ||
+        INGORED_MEMBERS.find((m) => m === memberName) ||
+        (member as ts.PropertyDeclaration).modifiers?.find(
+          (m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword,
+        )
+      ) {
+        // it's private or protected, or in the ingore list --> do not expose
+        continue;
+      }
+
       if (ts.isPropertyDeclaration(member) && member.type) {
-        const memberName = (member.name as ts.Identifier).escapedText as string;
-        if (
-          INGORED_MEMBERS.find((m) => m === memberName) ||
-          member.modifiers?.find(
-            (m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword,
-          )
-        ) {
-          // it's private or protected, or in the ingore list --> do not expose
-          continue;
-        }
-
-        const type = this.typeChecker.getTypeAtLocation(member.type);
-
         // generate the setter
-        members += this.generateSetterInput(memberName, member, type);
+        members += this.generateSetterInput(memberName, member);
         // gerate the getter
-        members += this.generateGetter(memberName, member, type);
+        members += this.generateGetter(memberName, member);
+      } else if (ts.isSetAccessor(member) && member.parameters[0]?.type) {
+        member.parameters[0].type;
+        // member.parameters
+        members += this.generateSetterInput(memberName, member, member.parameters[0]?.type.getText());
+      } else if (ts.isGetAccessor(member) && member.type) {
+        members += this.generateGetter(memberName, member);
       }
     }
     return members;
   }
 
-  protected generateSetterInput(memberName: string, member: ts.PropertyDeclaration, _memberType: ts.Type) {
+  protected generateSetterInput(
+    memberName: string,
+    member: ts.PropertyDeclaration | ts.SetAccessorDeclaration,
+    typeName?: string,
+  ) {
     const isReadonly = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.ReadonlyKeyword);
 
     const isStatic = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.StaticKeyword);
@@ -233,7 +243,7 @@ export abstract class NgxThreeClass {
 
     let str = `
     @Input()
-    public set ${memberName}( value: ${member.type?.getText()}`;
+    public set ${memberName}( value: ${typeName ?? member.type?.getText()}`;
 
     if (setters.length === 0) {
       // no setter just set it
@@ -254,13 +264,15 @@ export abstract class NgxThreeClass {
       const optionalToken = member.questionToken ? ' | undefined' : '';
       str += `) {
       if(this._objRef) {
-       this._objRef.${memberName} = applyValue<${member.type?.getText()}${optionalToken}>(this._objRef.${memberName}, value);
+       this._objRef.${memberName} = applyValue<${
+         typeName ?? member.type?.getText()
+       }${optionalToken}>(this._objRef.${memberName}, value);
       }
     }`;
     } else {
       str += `) {
         if(this._objRef) {
-         applyValue<${member.type?.getText()}>(this._objRef.${memberName}, value);
+         applyValue<${typeName ?? member.type?.getText()}>(this._objRef.${memberName}, value);
         }
       }`;
     }
@@ -268,7 +280,7 @@ export abstract class NgxThreeClass {
     return str;
   }
 
-  private getSettersOfMember(member: ts.PropertyDeclaration) {
+  private getSettersOfMember(member: ts.PropertyDeclaration | ts.SetAccessorDeclaration) {
     const setters: ts.MethodDeclaration[] = [];
     if (!member.type) {
       return setters;
@@ -292,7 +304,7 @@ export abstract class NgxThreeClass {
     return setters;
   }
 
-  public generateGetter(memberName: string, member: ts.PropertyDeclaration, _memberType: ts.Type) {
+  public generateGetter(memberName: string, member: ts.PropertyDeclaration | ts.GetAccessorDeclaration) {
     const isStatic = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.StaticKeyword);
 
     if (isStatic) {

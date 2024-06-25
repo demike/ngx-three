@@ -5,6 +5,7 @@ import { ChangeDetectionStrategy, Component, Input, Type, forwardRef } from '@an
 import { DataArrayTexture, MagnificationTextureFilter, MinificationTextureFilter } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
+import { Texture3DImageData } from 'three/src/textures/types';
 
 @Component({
   selector: 'th-dataArrayTexture',
@@ -28,6 +29,16 @@ export class ThDataArrayTexture<
   public get isDataArrayTexture(): true | undefined {
     return this._objRef?.isDataArrayTexture;
   }
+  public get image(): Texture3DImageData | undefined {
+    return this._objRef?.image;
+  }
+  @Input()
+  public set image(value: Texture3DImageData) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
   @Input()
   public set magFilter(value: MagnificationTextureFilter) {
     if (this._objRef) {

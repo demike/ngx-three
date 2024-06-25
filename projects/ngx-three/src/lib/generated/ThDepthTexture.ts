@@ -51,6 +51,16 @@ export class ThDepthTexture<
   public get isDepthTexture(): true | undefined {
     return this._objRef?.isDepthTexture;
   }
+  public get image(): { width: number; height: number } | undefined {
+    return this._objRef?.image;
+  }
+  @Input()
+  public set image(value: { width: number; height: number }) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
   @Input()
   public set flipY(value: boolean) {
     if (this._objRef) {

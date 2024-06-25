@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  Type,
-  forwardRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Type, forwardRef } from '@angular/core';
 import {
   ColorSpace,
   DataTexture,
@@ -20,14 +14,13 @@ import {
 } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
+import { TextureImageData } from 'three/src/textures/types';
 
 @Component({
   selector: 'th-dataTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThDataTexture) },
-  ],
+  providers: [{ provide: ThTextureBase, useExisting: forwardRef(() => ThDataTexture) }],
 })
 export class ThDataTexture<
   T extends DataTexture = DataTexture,
@@ -53,6 +46,16 @@ export class ThDataTexture<
   public get isDataTexture(): true | undefined {
     return this._objRef?.isDataTexture;
   }
+  public get image(): TextureImageData | undefined {
+    return this._objRef?.image;
+  }
+  @Input()
+  public set image(value: TextureImageData) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
   @Input()
   public set magFilter(value: MagnificationTextureFilter) {
     if (this._objRef) {

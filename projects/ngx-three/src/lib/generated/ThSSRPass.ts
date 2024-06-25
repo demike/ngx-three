@@ -14,6 +14,7 @@ import {
   Color,
   ColorRepresentation,
   Material,
+  Mesh,
   MeshBasicMaterial,
   MeshNormalMaterial,
   Scene,
@@ -174,6 +175,16 @@ export class ThSSRPass<
   public get tempColor(): Color | undefined {
     return this._objRef?.tempColor;
   }
+  public get selects(): (Mesh[] | null) | undefined {
+    return this._objRef?.selects;
+  }
+  @Input()
+  public set selects(value: Mesh[] | null) {
+    if (this._objRef) {
+      this._objRef.selects = value;
+    }
+  }
+
   @Input()
   public set selective(value: boolean) {
     if (this._objRef) {
@@ -184,6 +195,16 @@ export class ThSSRPass<
   public get selective(): boolean | undefined {
     return this._objRef?.selective;
   }
+  public get bouncing(): boolean | undefined {
+    return this._objRef?.bouncing;
+  }
+  @Input()
+  public set bouncing(value: boolean) {
+    if (this._objRef) {
+      this._objRef.bouncing = value;
+    }
+  }
+
   @Input()
   public set blur(value: boolean) {
     if (this._objRef) {
@@ -194,6 +215,36 @@ export class ThSSRPass<
   public get blur(): boolean | undefined {
     return this._objRef?.blur;
   }
+  public get distanceAttenuation(): boolean | undefined {
+    return this._objRef?.distanceAttenuation;
+  }
+  @Input()
+  public set distanceAttenuation(value: boolean) {
+    if (this._objRef) {
+      this._objRef.distanceAttenuation = value;
+    }
+  }
+
+  public get fresnel(): boolean | undefined {
+    return this._objRef?.fresnel;
+  }
+  @Input()
+  public set fresnel(value: boolean) {
+    if (this._objRef) {
+      this._objRef.fresnel = value;
+    }
+  }
+
+  public get infiniteThick(): boolean | undefined {
+    return this._objRef?.infiniteThick;
+  }
+  @Input()
+  public set infiniteThick(value: boolean) {
+    if (this._objRef) {
+      this._objRef.infiniteThick = value;
+    }
+  }
+
   @Input()
   public set beautyRenderTarget(value: WebGLRenderTarget) {
     if (this._objRef) {
