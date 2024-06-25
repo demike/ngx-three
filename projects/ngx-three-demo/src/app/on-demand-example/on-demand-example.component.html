@@ -12,7 +12,7 @@
     <option class="needs-loop">firstpersion</option>
   </select>
 </div>
-<button (click)="changeMode()">Change Mode</button>
+
 <th-canvas [thStats]="true" [renderOnDemand]="renderOnDemand" #canvas>
   <th-scene>
     <th-ambientLight [intensity]="3" />
@@ -37,7 +37,7 @@
       <th-orbitControls *ngSwitchCase="'orbit'" />
       <th-mapControls *ngSwitchCase="'map'" />
       <th-arcballControls *ngSwitchCase="'arcball'" />
-      <th-transformControls *ngSwitchCase="'transform'" [object]="model.objRef" [mode]="mode" />
+      <th-transformControls *ngSwitchCase="'transform'" [object]="model.objRef" />
       <th-dragControls
         *ngSwitchCase="'drag'"
         [args]="[[model.objRef], camera.objRef, canvas.hostElement.nativeElement]"
