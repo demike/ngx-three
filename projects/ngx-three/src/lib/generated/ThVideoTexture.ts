@@ -79,4 +79,10 @@ export class ThVideoTexture<
   public get generateMipmaps(): boolean | undefined {
     return this._objRef?.generateMipmaps;
   }
+  @Input()
+  public set needsUpdate(value: boolean) {
+    if (this._objRef) {
+      this._objRef.needsUpdate = value;
+    }
+  }
 }

@@ -56,6 +56,16 @@ export class ThCompressedTexture<
   public get isCompressedTexture(): true | undefined {
     return this._objRef?.isCompressedTexture;
   }
+  public get image(): { width: number; height: number } | undefined {
+    return this._objRef?.image;
+  }
+  @Input()
+  public set image(value: { width: number; height: number }) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
   @Input()
   public set mipmaps(value: ImageData[]) {
     if (this._objRef) {

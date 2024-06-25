@@ -51,6 +51,26 @@ export class ThCubeTexture<
   public get isCubeTexture(): true | undefined {
     return this._objRef?.isCubeTexture;
   }
+  public get image(): any | undefined {
+    return this._objRef?.image;
+  }
+  @Input()
+  public set image(value: any) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
+  public get images(): any | undefined {
+    return this._objRef?.images;
+  }
+  @Input()
+  public set images(value: any) {
+    if (this._objRef) {
+      this._objRef.images = value;
+    }
+  }
+
   @Input()
   public set mapping(value: CubeTextureMapping) {
     if (this._objRef) {

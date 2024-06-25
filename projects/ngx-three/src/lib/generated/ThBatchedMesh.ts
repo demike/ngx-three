@@ -73,6 +73,9 @@ export class ThBatchedMesh<
   public get sortObjects(): boolean | undefined {
     return this._objRef?.sortObjects;
   }
+  public get maxGeometryCount(): number | undefined {
+    return this._objRef?.maxGeometryCount;
+  }
   @Input()
   public set isBatchedMesh(value: true) {
     if (this._objRef) {
