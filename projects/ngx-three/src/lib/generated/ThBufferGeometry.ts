@@ -12,6 +12,7 @@ import {
   Box3,
   BufferAttribute,
   BufferGeometry,
+  GeometryGroup,
   InterleavedBufferAttribute,
   NormalBufferAttributes,
   NormalOrGLBufferAttributes,
@@ -124,49 +125,13 @@ export class ThBufferGeometry<
     return this._objRef?.morphTargetsRelative;
   }
   @Input()
-  public set groups(
-    value: Array<{
-      /**
-       * Specifies the first element in this draw call – the first vertex for non-indexed geometry, otherwise the first triangle index.
-       * @remarks Expects a `Integer`
-       */
-      start: number;
-      /**
-       * Specifies how many vertices (or indices) are included.
-       * @remarks Expects a `Integer`
-       */
-      count: number;
-      /**
-       * Specifies the material array index to use.
-       * @remarks Expects a `Integer`
-       */
-      materialIndex?: number | undefined;
-    }>,
-  ) {
+  public set groups(value: GeometryGroup[]) {
     if (this._objRef) {
       this._objRef.groups = value;
     }
   }
 
-  public get groups():
-    | Array<{
-        /**
-         * Specifies the first element in this draw call – the first vertex for non-indexed geometry, otherwise the first triangle index.
-         * @remarks Expects a `Integer`
-         */
-        start: number;
-        /**
-         * Specifies how many vertices (or indices) are included.
-         * @remarks Expects a `Integer`
-         */
-        count: number;
-        /**
-         * Specifies the material array index to use.
-         * @remarks Expects a `Integer`
-         */
-        materialIndex?: number | undefined;
-      }>
-    | undefined {
+  public get groups(): GeometryGroup[] | undefined {
     return this._objRef?.groups;
   }
   @Input()

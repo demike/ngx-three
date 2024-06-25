@@ -35,7 +35,7 @@
     "normalize.css": "^8.0.1",
     "rxjs": "~7.8.1",
     "simplex-noise": "^4.0.1",
-    "three": "~0.164.1",
+    "three": "~0.165.0",
     "tslib": "^2.6.2",
     "zone.js": "~0.14.5"
   },
@@ -50,7 +50,7 @@
     "@angular/compiler-cli": "^17.3.7",
     "@types/jasmine": "^4.3.5",
     "@types/node": "^20.5.3",
-    "@types/three": "^0.164.0",
+    "@types/three": "^0.165.0",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "acorn": ">=8",

@@ -56,4 +56,14 @@ export class ThCompressedArrayTexture<
   public get wrapR(): Wrapping | undefined {
     return this._objRef?.wrapR;
   }
+  @Input()
+  public set layerUpdates(value: Set<number>) {
+    if (this._objRef) {
+      this._objRef.layerUpdates = value;
+    }
+  }
+
+  public get layerUpdates(): Set<number> | undefined {
+    return this._objRef?.layerUpdates;
+  }
 }

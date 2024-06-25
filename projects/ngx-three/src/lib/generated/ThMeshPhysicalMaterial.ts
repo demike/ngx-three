@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  Type,
-  forwardRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Type, forwardRef } from '@angular/core';
 import {
   Color,
   ColorRepresentation,
@@ -115,10 +109,7 @@ export class ThMeshPhysicalMaterial<
   @Input()
   public set clearcoatNormalScale(value: Vector2 | [x: number, y: number]) {
     if (this._objRef) {
-      this._objRef.clearcoatNormalScale = applyValue<Vector2>(
-        this._objRef.clearcoatNormalScale,
-        value,
-      );
+      this._objRef.clearcoatNormalScale = applyValue<Vector2>(this._objRef.clearcoatNormalScale, value);
     }
   }
   public get clearcoatNormalScale(): Vector2 | undefined {
@@ -185,20 +176,9 @@ export class ThMeshPhysicalMaterial<
     return this._objRef?.iridescenceThicknessMap;
   }
   @Input()
-  public set sheenColor(
-    value:
-      | Color
-      | [
-          ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
-        ],
-  ) {
+  public set sheenColor(value: Color | [...args: [color: ColorRepresentation] | [r: number, g: number, b: number]]) {
     if (this._objRef) {
-      this._objRef.sheenColor = applyValue<Color>(
-        this._objRef.sheenColor,
-        value,
-      );
+      this._objRef.sheenColor = applyValue<Color>(this._objRef.sheenColor, value);
     }
   }
   public get sheenColor(): Color | undefined {
@@ -286,19 +266,10 @@ export class ThMeshPhysicalMaterial<
   }
   @Input()
   public set attenuationColor(
-    value:
-      | Color
-      | [
-          ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
-        ],
+    value: Color | [...args: [color: ColorRepresentation] | [r: number, g: number, b: number]],
   ) {
     if (this._objRef) {
-      this._objRef.attenuationColor = applyValue<Color>(
-        this._objRef.attenuationColor,
-        value,
-      );
+      this._objRef.attenuationColor = applyValue<Color>(this._objRef.attenuationColor, value);
     }
   }
   public get attenuationColor(): Color | undefined {
@@ -325,20 +296,9 @@ export class ThMeshPhysicalMaterial<
     return this._objRef?.specularIntensityMap;
   }
   @Input()
-  public set specularColor(
-    value:
-      | Color
-      | [
-          ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
-        ],
-  ) {
+  public set specularColor(value: Color | [...args: [color: ColorRepresentation] | [r: number, g: number, b: number]]) {
     if (this._objRef) {
-      this._objRef.specularColor = applyValue<Color>(
-        this._objRef.specularColor,
-        value,
-      );
+      this._objRef.specularColor = applyValue<Color>(this._objRef.specularColor, value);
     }
   }
   public get specularColor(): Color | undefined {
