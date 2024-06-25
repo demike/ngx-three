@@ -9,7 +9,10 @@ import {
   forwardRef,
 } from '@angular/core';
 import { Camera, MOUSE, Object3D } from 'three';
-import { TransformControls } from 'three/examples/jsm/controls/TransformControls.js';
+import {
+  TransformControls,
+  TransformControlsMode,
+} from 'three/examples/jsm/controls/TransformControls.js';
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
@@ -86,13 +89,13 @@ export class ThTransformControlsGen<
     return this._objRef?.axis;
   }
   @Input()
-  public set mode(value: 'translate' | 'rotate' | 'scale') {
+  public set mode(value: TransformControlsMode) {
     if (this._objRef) {
       this._objRef.mode = value;
     }
   }
 
-  public get mode(): ('translate' | 'rotate' | 'scale') | undefined {
+  public get mode(): TransformControlsMode | undefined {
     return this._objRef?.mode;
   }
   @Input()
