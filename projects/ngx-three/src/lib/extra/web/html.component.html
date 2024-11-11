@@ -1,16 +1,17 @@
-<div [ngStyle]="styles" #outerRef *ngIf="transform;  else noTransform" (onResize)="onResize()">
+@if (transform) {
+  <div [ngStyle]="styles" #outerRef (onResize)="onResize()">
     <div #innerRef [ngStyle]="transformInnerStyles" >
-        <div [style]="style" [className]="className">
-            <ng-container *ngTemplateOutlet="tempOutlet" ></ng-container>
-        </div>
-    </div>
-</div>
-<ng-template #noTransform>
-    <div [ngStyle]="styles" [className]="className" #outerRef>
+      <div [style]="style" [className]="className">
         <ng-container *ngTemplateOutlet="tempOutlet" ></ng-container>
+      </div>
     </div>
-</ng-template>
+  </div>
+} @else {
+  <div [ngStyle]="styles" [className]="className" #outerRef>
+    <ng-container *ngTemplateOutlet="tempOutlet" ></ng-container>
+  </div>
+}
 
 <ng-template #tempOutlet>
-    <ng-content></ng-content>
+  <ng-content></ng-content>
 </ng-template>

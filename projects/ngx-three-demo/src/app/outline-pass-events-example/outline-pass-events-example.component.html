@@ -8,19 +8,20 @@
     <th-directionalLight #light [color]="['#ddffdd']" [intensity]="1.8" />
 
     <th-sphereGeometry #geometry [args]="[3, 48, 24]" />
-    <th-mesh
-      *ngFor="let data of meshData"
-      [geometry]="geometry.objRef"
-      [position]="[data.x, data.y, data.z]"
-      [scale]="[data.scale, data.scale, data.scale]"
-      [receiveShadow]="true"
-      [castShadow]="true"
-      (onMouseEnter)="onHover($event)"
-      (onMouseExit)="onBlur()"
-      (onPointerDown)="onPointerDown($event)"
-    >
-      <th-meshPhongMaterial [flatShading]="true" [color]="data.color" />
-    </th-mesh>
+    @for (data of meshData; track data) {
+      <th-mesh
+        [geometry]="geometry.objRef"
+        [position]="[data.x, data.y, data.z]"
+        [scale]="[data.scale, data.scale, data.scale]"
+        [receiveShadow]="true"
+        [castShadow]="true"
+        (onMouseEnter)="onHover($event)"
+        (onMouseExit)="onBlur()"
+        (onPointerDown)="onPointerDown($event)"
+        >
+        <th-meshPhongMaterial [flatShading]="true" [color]="data.color" />
+      </th-mesh>
+    }
   </th-scene>
   <th-effectComposer>
     <th-renderPass />
@@ -33,6 +34,6 @@
       [edgeGlow]="edgeGlow"
       [edgeThickness]="edgeThickness"
       [pulsePeriod]="pulsePeriod"
-    />
+      />
   </th-effectComposer>
 </th-canvas>

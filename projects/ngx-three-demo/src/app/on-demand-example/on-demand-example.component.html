@@ -27,24 +27,24 @@
     <th-gridHelper [args]="[10, 10]" />
     <th-pointLight [position]="[10, 10, 10]" [decay]="0" />
 
-    <th-perspectiveCamera
-      [ngSwitch]="controlType"
-      #camera
-      [args]="[45, 2, 0.1, 100]"
-      [position]="[10, 10, 10]"
-      [lookAt]="[0, 0, 0]"
-    >
-      <th-orbitControls *ngSwitchCase="'orbit'" />
-      <th-mapControls *ngSwitchCase="'map'" />
-      <th-arcballControls *ngSwitchCase="'arcball'" />
-      <th-transformControls *ngSwitchCase="'transform'" [object]="model.objRef" />
-      <th-dragControls
-        *ngSwitchCase="'drag'"
-        [args]="[[model.objRef], camera.objRef, canvas.hostElement.nativeElement]"
-      />
-      <th-flyControls *ngSwitchCase="'fly'" />
-      <th-trackballControls *ngSwitchCase="'trackball'" />
-      <th-firstPersonControls *ngSwitchCase="'firstpersion'" />
+    <th-perspectiveCamera #camera [args]="[45, 2, 0.1, 100]" [position]="[10, 10, 10]" [lookAt]="[0, 0, 0]">
+      @switch (controlType) { @case ('orbit') {
+      <th-orbitControls />
+      } @case ('map') {
+      <th-mapControls />
+      } @case ('arcball') {
+      <th-arcballControls />
+      } @case ('transform') {
+      <th-transformControls [object]="model.objRef" />
+      } @case ('drag') {
+      <th-dragControls [args]="[[model.objRef], camera.objRef, canvas.hostElement.nativeElement]" />
+      } @case ('fly') {
+      <th-flyControls />
+      } @case ('trackball') {
+      <th-trackballControls />
+      } @case ('firstpersion') {
+      <th-firstPersonControls />
+      } }
     </th-perspectiveCamera>
   </th-scene>
 </th-canvas>
