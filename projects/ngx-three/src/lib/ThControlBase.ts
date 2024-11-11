@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { EventDispatcher } from 'three';
 import { ThObject3D } from './generated/ThObject3D';
@@ -8,6 +8,7 @@ import { ThWrapperBase } from './ThWrapperBase';
 @Component({
   selector: 'th-abs-control',
   template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements OnDestroy {

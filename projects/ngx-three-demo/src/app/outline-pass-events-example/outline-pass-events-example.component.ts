@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { RaycasterEmitEvent, ThMesh, ThObject3D, ThOutlinePass } from 'ngx-three';
 import { Color, MeshPhongMaterial, Vector2 } from 'three';
 import GUI from 'lil-gui';
@@ -6,7 +6,8 @@ import GUI from 'lil-gui';
 @Component({
   selector: 'app-outline-pass-events-example',
   templateUrl: './outline-pass-events-example.component.html',
-  styleUrls: ['./outline-pass-events-example.component.scss']
+  styleUrls: ['./outline-pass-events-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OutlinePassEventsExampleComponent implements OnInit {
   protected outlinePassResolution = new Vector2(window.innerWidth, window.innerHeight);
@@ -53,7 +54,7 @@ export class OutlinePassEventsExampleComponent implements OnInit {
         x: Math.random() * 4 - 2,
         y: Math.random() * 4 - 2,
         z: Math.random() * 4 - 2,
-        scale: Math.random() * 0.3 + 0.1
+        scale: Math.random() * 0.3 + 0.1,
       });
     }
   }

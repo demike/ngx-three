@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Object3D, Vector3 } from 'three';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
   selector: 'th-abs-object',
-  template: '<ng-content/>'
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThObjectBase<T extends Object3D, ARGS = unknown> extends ThWrapperBase<T, ARGS> implements OnInit {

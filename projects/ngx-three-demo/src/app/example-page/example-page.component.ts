@@ -1,4 +1,4 @@
-import { Component, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Type } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EditorService } from '../code/EditorService';
 
@@ -6,6 +6,7 @@ import { EditorService } from '../code/EditorService';
   selector: 'app-example-page',
   templateUrl: './example-page.component.html',
   styleUrls: ['./example-page.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExamplePageComponent {
   public exampleComponent: Type<any> | null = null;

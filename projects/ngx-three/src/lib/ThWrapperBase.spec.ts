@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { EventDispatcher, Object3DEventMap } from 'three';
 import { ThWrapperBase } from './ThWrapperBase';
@@ -17,6 +17,7 @@ class ExampleObj extends EventDispatcher<Object3DEventMap & ExampleEventMap> {
 @Component({
   selector: 'th-wrapper-impl',
   template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ThWrapperImplComponent extends ThWrapperBase<ExampleObj, any> {
   getType() {
