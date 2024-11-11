@@ -16,15 +16,16 @@
 
     <th-sphereGeometry #geometry [args]="[1, 4, 4]" />
     <th-object3D #object>
-      <th-mesh
-        *ngFor="let data of meshData"
-        [geometry]="geometry.objRef"
-        [position]="data.pos"
-        [rotation]="data.rotation"
-        [scale]="data.scale"
-      >
-        <th-meshPhongMaterial [flatShading]="true" [color]="data.color" />
-      </th-mesh>
+      @for (data of meshData; track data) {
+        <th-mesh
+          [geometry]="geometry.objRef"
+          [position]="data.pos"
+          [rotation]="data.rotation"
+          [scale]="data.scale"
+          >
+          <th-meshPhongMaterial [flatShading]="true" [color]="data.color" />
+        </th-mesh>
+      }
     </th-object3D>
   </th-scene>
 </th-canvas>

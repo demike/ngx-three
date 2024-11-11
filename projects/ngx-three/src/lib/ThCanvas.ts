@@ -56,7 +56,7 @@ function provideDefaultRenderer(): StaticProvider[] {
 @Component({
   selector: 'th-canvas',
   styleUrls: ['./ThCanvas.scss'],
-  template: '<ng-content *ngIf="isDevMode()" ></ng-content>',
+  template: '@if (isDevMode()) {<ng-content ></ng-content>}',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: HOST_ELEMENT, useFactory: () => inject(ElementRef) },

@@ -8,20 +8,22 @@
   <th-scene [thStats]="true">
     <th-ambientLight [intensity]="3" />
 
-    <th-cSS3DObject *ngFor="let el of this.table; let i = index" [position]="poses[i].position">
-      <div class="element" [style.background]="'rgba(0,127,127,' + (Math.random() * 0.5 + 0.25) + ')'">
-        <div class="number">
-          {{ i + 1 }}
+    @for (el of this.table; track el; let i = $index) {
+      <th-cSS3DObject [position]="poses[i].position">
+        <div class="element" [style.background]="'rgba(0,127,127,' + (Math.random() * 0.5 + 0.25) + ')'">
+          <div class="number">
+            {{ i + 1 }}
+          </div>
+          <div class="symbol">
+            {{ el[0] }}
+          </div>
+          <div class="details">
+            {{ el[1] }} <br />
+            {{ el[2] }}
+          </div>
         </div>
-        <div class="symbol">
-          {{ el[0] }}
-        </div>
-        <div class="details">
-          {{ el[1] }} <br />
-          {{ el[2] }}
-        </div>
-      </div>
-    </th-cSS3DObject>
+      </th-cSS3DObject>
+    }
 
     <th-pointLight [position]="[10, 10, 10]" [intensity]="3" />
 

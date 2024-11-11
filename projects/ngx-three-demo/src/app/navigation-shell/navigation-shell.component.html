@@ -6,45 +6,50 @@
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
-  >
+    >
     <mat-toolbar>ngx-three</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item *ngFor="let route of routes" [routerLink]="route.path">{{
-        route.data.title
-      }}</a>
+      @for (route of routes; track route) {
+        <a mat-list-item [routerLink]="route.path">{{
+          route.data.title
+        }}</a>
+      }
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="content">
     <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async"
-      >
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
+      @if (isHandset$ | async) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
       <span>ngx-three-demo</span>
       <span class="toolbar-spacer"></span>
-      <button
-        mat-button
-        *ngIf="this.editorService.urls.length"
-        (click)="this.editorService.toCodeSandbox($event)"
-        href="#"
-      >
-        <mat-icon>crop_din</mat-icon>
-        CodeSandbox
-      </button>
-      <button
-        mat-button
-        *ngIf="this.editorService.urls.length"
-        (click)="this.editorService.toStackblitz($event)"
-        href="#"
-      >
-        <mat-icon>bolt</mat-icon>
-        Stackblitz
-      </button>
+      @if (this.editorService.urls.length) {
+        <button
+          mat-button
+          (click)="this.editorService.toCodeSandbox($event)"
+          href="#"
+          >
+          <mat-icon>crop_din</mat-icon>
+          CodeSandbox
+        </button>
+      }
+      @if (this.editorService.urls.length) {
+        <button
+          mat-button
+          (click)="this.editorService.toStackblitz($event)"
+          href="#"
+          >
+          <mat-icon>bolt</mat-icon>
+          Stackblitz
+        </button>
+      }
     </mat-toolbar>
     <!-- Add Content Here -->
     <div class="main-route-content">

@@ -2,11 +2,13 @@
   <mat-card-content>
     <div class="code-wrapper hljs">
       <mat-tab-group dynamicHeight color="primary" backgroundColor="primary">
-        <mat-tab *ngFor="let codeUrl of codeUrls; let i = index" [label]="fileNames[i]">
-          <pre>
-            <code [highlight]="$any(codeUrl | codeFromUrl | async ) " [language]="getLanguage(fileNames[i])"></code>
-        </pre>
-        </mat-tab>
+        @for (codeUrl of codeUrls; track codeUrl; let i = $index) {
+          <mat-tab [label]="fileNames[i]">
+            <pre>
+              <code [highlight]="$any(codeUrl | codeFromUrl | async ) " [language]="getLanguage(fileNames[i])"></code>
+            </pre>
+          </mat-tab>
+        }
       </mat-tab-group>
     </div>
   </mat-card-content>
