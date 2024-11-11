@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { BufferGeometry, NormalOrGLBufferAttributes } from 'three';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
   selector: 'th-abs-geometry',
-  template: ''
+  template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThGeometryBase<T extends BufferGeometry<NormalOrGLBufferAttributes>, ARGS> extends ThWrapperBase<T, ARGS> {
