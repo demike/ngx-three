@@ -8,20 +8,18 @@ import {
   SkipSelf,
   Type,
 } from '@angular/core';
+import { Color, ColorRepresentation, Material } from 'three';
 import {
   Blending,
   BlendingDstFactor,
   BlendingEquation,
   BlendingSrcFactor,
-  Color,
-  ColorRepresentation,
   DepthModes,
-  Material,
-  Plane,
   Side,
   StencilFunc,
   StencilOp,
-} from 'three';
+} from 'three/src/constants.js';
+import { Plane } from 'three/src/math/Plane.js';
 import { ThMaterialBase } from '../ThMaterialBase';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -40,6 +38,11 @@ export class ThMaterial<
     return Material;
   }
 
+  public static readonly type = Material.type;
+
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
   public get isMaterial(): true | undefined {
     return this._objRef?.isMaterial;
   }
@@ -462,16 +465,6 @@ export class ThMaterial<
 
   public get transparent(): boolean | undefined {
     return this._objRef?.transparent;
-  }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
   }
   @Input()
   public set uuid(value: string) {

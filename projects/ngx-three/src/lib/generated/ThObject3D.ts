@@ -8,19 +8,13 @@ import {
   SkipSelf,
   Type,
 } from '@angular/core';
-import {
-  AnimationClip,
-  Euler,
-  EulerOrder,
-  Layers,
-  Material,
-  Matrix3,
-  Matrix4,
-  Object3D,
-  Object3DEventMap,
-  Quaternion,
-  Vector3,
-} from 'three';
+import { EulerOrder, Layers, Object3D, Object3DEventMap, Vector3 } from 'three';
+import { AnimationClip } from 'three/src/animation/AnimationClip.js';
+import { Material } from 'three/src/materials/Material.js';
+import { Euler } from 'three/src/math/Euler.js';
+import { Matrix3 } from 'three/src/math/Matrix3.js';
+import { Matrix4 } from 'three/src/math/Matrix4.js';
+import { Quaternion } from 'three/src/math/Quaternion.js';
 import { ThObjectBase } from '../ThObjectBase';
 import { applyValue } from '../util';
 
@@ -65,7 +59,7 @@ export class ThObject3D<
   public get name(): string | undefined {
     return this._objRef?.name;
   }
-  public get type(): (string | 'Object3D') | undefined {
+  public get type(): string | undefined {
     return this._objRef?.type;
   }
   @Input()

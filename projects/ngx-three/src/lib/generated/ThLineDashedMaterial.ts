@@ -35,16 +35,6 @@ export class ThLineDashedMaterial<
     return this._objRef?.isLineDashedMaterial;
   }
   @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
-  }
-  @Input()
   public set scale(value: number) {
     if (this._objRef) {
       this._objRef.scale = value;

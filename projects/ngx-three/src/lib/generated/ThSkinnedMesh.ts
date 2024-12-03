@@ -8,18 +8,14 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  BindMode,
-  Box3,
-  BufferGeometry,
-  Material,
-  Matrix4,
-  Object3DEventMap,
-  Skeleton,
-  SkinnedMesh,
-  Sphere,
-  Vector3,
-} from 'three';
+import { Box3, Matrix4, SkinnedMesh } from 'three';
+import { BindMode } from 'three/src/constants.js';
+import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
+import { Object3DEventMap } from 'three/src/core/Object3D.js';
+import { Material } from 'three/src/materials/Material.js';
+import { Sphere } from 'three/src/math/Sphere.js';
+import { Vector3 } from 'three/src/math/Vector3.js';
+import { Skeleton } from 'three/src/objects/Skeleton.js';
 import { applyValue } from '../util';
 import { ThMesh } from './ThMesh';
 import { ThObject3D } from './ThObject3D';

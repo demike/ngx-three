@@ -11,10 +11,7 @@ type MissingInThreeRuntimeExports =
   | THREE.WebGLInfo
   | THREE.WebGLProperties
   | THREE.WebGLRenderList
-  | THREE.WebGLRenderLists
-  | THREE.WebGLColorBuffer
-  | THREE.WebGLDepthBuffer
-  | THREE.WebGLStencilBuffer;
+  | THREE.WebGLRenderLists;
 
 type InterestingThreeExports = OmitByValue<Three, MissingInThreeRuntimeExports | THREE.BufferAttribute>;
 

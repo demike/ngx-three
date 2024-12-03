@@ -8,7 +8,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { LOD, Object3D, Object3DEventMap } from 'three';
+import { LOD } from 'three';
+import { Object3D, Object3DEventMap } from 'three/src/core/Object3D.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({

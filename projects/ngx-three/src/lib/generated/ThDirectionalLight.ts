@@ -8,13 +8,10 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  ColorRepresentation,
-  DirectionalLight,
-  DirectionalLightShadow,
-  Object3D,
-  Vector3,
-} from 'three';
+import { DirectionalLight, Vector3 } from 'three';
+import { Object3D } from 'three/src/core/Object3D.js';
+import { DirectionalLightShadow } from 'three/src/lights/DirectionalLightShadow.js';
+import { ColorRepresentation } from 'three/src/math/Color.js';
 import { applyValue } from '../util';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';

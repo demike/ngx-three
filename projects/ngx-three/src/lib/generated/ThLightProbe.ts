@@ -8,7 +8,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { LightProbe, LightShadow, SphericalHarmonics3, Vector3 } from 'three';
+import { LightProbe, LightShadow, SphericalHarmonics3 } from 'three';
+import { Vector3 } from 'three/src/math/Vector3.js';
 import { applyValue } from '../util';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';

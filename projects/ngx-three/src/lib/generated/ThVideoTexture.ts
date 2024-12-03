@@ -8,15 +8,15 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
+import { VideoTexture } from 'three';
 import {
   MagnificationTextureFilter,
   Mapping,
   MinificationTextureFilter,
   PixelFormat,
   TextureDataType,
-  VideoTexture,
   Wrapping,
-} from 'three';
+} from 'three/src/constants.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 

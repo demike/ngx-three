@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, promises } from 'fs';
-import { join } from 'path';
+import { join, normalize } from 'path';
 import * as ts from 'typescript';
+
 import { NgxThreeClass } from './NgxThreeClass';
 import { NgxThreeModuleGen } from './NgxThreeModuleGen';
 import * as prettier from 'prettier';
@@ -15,9 +16,11 @@ import { NgxThreePass } from './NgxThreePass';
 import { NgxThreeTexture } from './NgxThreeTexture';
 
 class NgxThreeClassGenerator {
-  public readonly baseOutPath = join(__dirname, '../generated/');
+  public readonly baseOutPath = normalize(join(__dirname, '../generated/'));
   public readonly ngxThreeClassMap = new Map<string, NgxThreeClass>();
   private typeChecker?: ts.TypeChecker;
+
+  public readonly importOrganizer = new ImportOrganizer(this.baseOutPath);
 
   constructor() {}
 
@@ -102,10 +105,14 @@ class NgxThreeClassGenerator {
   }
 
   private async writeFile(fileName: string, content: string) {
+    const filePath = normalize(this.baseOutPath + fileName + '.ts');
     try {
-      const organizer = new ImportOrganizer();
-      content = organizer.organizeImports(this.baseOutPath + fileName + '.ts', content);
-      content = await prettier.format(content, {
+      this.importOrganizer.addFile(filePath, content);
+
+      this.importOrganizer.organizeImports(filePath);
+      // this.importOrganizer.addMissingImports(filePath);
+
+      content = await prettier.format(this.importOrganizer.getFile(filePath), {
         parser: 'babel-ts',
         singleQuote: true,
       });
@@ -113,7 +120,7 @@ class NgxThreeClassGenerator {
       console.log(`error creating file: ${fileName}`, e);
     }
 
-    return promises.writeFile(join(this.baseOutPath, fileName + '.ts'), content);
+    return promises.writeFile(filePath, content);
   }
 
   private doesFileExist(fileName: string): boolean {

@@ -17,7 +17,6 @@ import {
   MeshNormalMaterial,
   Scene,
   ShaderMaterial,
-  Vector3,
   WebGLRenderTarget,
 } from 'three';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
@@ -25,6 +24,7 @@ import {
   SSAOPass,
   SSAOPassOUTPUT,
 } from 'three/examples/jsm/postprocessing/SSAOPass.js';
+import { Vector3 } from 'three/src/math/Vector3.js';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';

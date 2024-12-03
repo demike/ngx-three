@@ -67,14 +67,14 @@ export class ThTransformControls<
   };
 
   public addToParent(): void {
-    if (this._objRef && !this._objRef.parent) {
-      this.scene?.objRef?.add(this._objRef);
+    if (this._objRef && !this._objRef.object) {
+      this.scene?.objRef?.add(this._objRef.object);
     }
   }
 
   public removeFromParent(): void {
     if (this._objRef) {
-      this.scene?.objRef?.remove(this._objRef);
+      this.scene?.objRef?.remove(this._objRef.object);
     }
   }
 

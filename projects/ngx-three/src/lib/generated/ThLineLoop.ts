@@ -7,7 +7,10 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { BufferGeometry, LineLoop, Material, Object3DEventMap } from 'three';
+import { LineLoop } from 'three';
+import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
+import { Object3DEventMap } from 'three/src/core/Object3D.js';
+import { Material } from 'three/src/materials/Material.js';
 import { ThLine } from './ThLine';
 import { ThObject3D } from './ThObject3D';
 

@@ -8,14 +8,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  Camera,
-  CoordinateSystem,
-  Layers,
-  Matrix4,
-  Object3DEventMap,
-  Vector4,
-} from 'three';
+import { Camera, Layers, Matrix4, Object3DEventMap, Vector4 } from 'three';
+import { CoordinateSystem } from 'three/src/constants.js';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 

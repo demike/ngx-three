@@ -8,7 +8,10 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { BufferGeometry, Line, Material, Object3DEventMap } from 'three';
+import { Line } from 'three';
+import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
+import { Object3DEventMap } from 'three/src/core/Object3D.js';
+import { Material } from 'three/src/materials/Material.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({

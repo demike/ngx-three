@@ -8,11 +8,11 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
+import { FramebufferTexture } from 'three';
 import {
-  FramebufferTexture,
   MagnificationTextureFilter,
   MinificationTextureFilter,
-} from 'three';
+} from 'three/src/constants.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 

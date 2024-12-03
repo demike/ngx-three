@@ -1,4 +1,4 @@
-import { Object3D, Event } from 'three';
+import { Object3D, Event, Object3DEventMap } from 'three';
 import { applyValue, isSettable } from '../util';
 
 class Object3DProxyHandler implements ProxyHandler<Object3D> {
@@ -111,7 +111,10 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
    * @param type The type of event to listen to.
    * @param listener The function that gets called when the event is fired.
    */
-  addEventListener = (type: string, listener: (event: Event) => void): void => {
+  addEventListener = <T extends Extract<keyof Object3DEventMap, string>>(
+    type: T,
+    listener: (event: Event) => void,
+  ): void => {
     let arr = this.eventListener[type];
     if (!arr) {
       arr = [];

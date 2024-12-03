@@ -8,7 +8,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { AudioListener, PositionalAudio } from 'three';
+import { PositionalAudio } from 'three';
+import { AudioListener } from 'three/src/audio/AudioListener.js';
 import { ThAudio } from './ThAudio';
 import { ThObject3D } from './ThObject3D';
 

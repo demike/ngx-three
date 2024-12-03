@@ -13,12 +13,13 @@ import {
   BufferAttribute,
   BufferGeometry,
   GeometryGroup,
-  InterleavedBufferAttribute,
   NormalBufferAttributes,
   NormalOrGLBufferAttributes,
-  Sphere,
-  Vector3,
 } from 'three';
+import { InterleavedBufferAttribute } from 'three/src/core/InterleavedBufferAttribute.js';
+import { Sphere } from 'three/src/math/Sphere.js';
+import { Vector3 } from 'three/src/math/Vector3.js';
+import IndirectStorageBufferAttribute from 'three/src/renderers/common/IndirectStorageBufferAttribute.js';
 import { ThGeometryBase } from '../ThGeometryBase';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -87,6 +88,23 @@ export class ThBufferGeometry<
   }
   public get index(): (BufferAttribute | null) | undefined {
     return this._objRef?.index;
+  }
+  @Input()
+  public set indirect(
+    value:
+      | IndirectStorageBufferAttribute
+      | null
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
+  ) {
+    if (this._objRef) {
+      this._objRef.indirect = applyValue<IndirectStorageBufferAttribute | null>(
+        this._objRef.indirect,
+        value,
+      );
+    }
+  }
+  public get indirect(): (IndirectStorageBufferAttribute | null) | undefined {
+    return this._objRef?.indirect;
   }
   @Input()
   public set attributes(value: Attributes) {

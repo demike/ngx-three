@@ -13,10 +13,10 @@ import {
   ColorRepresentation,
   MeshToonMaterial,
   MeshToonMaterialParameters,
-  NormalMapTypes,
-  Texture,
   Vector2,
 } from 'three';
+import { NormalMapTypes } from 'three/src/constants.js';
+import { Texture } from 'three/src/textures/Texture.js';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -38,16 +38,6 @@ export class ThMeshToonMaterial<
 
   public get isMeshToonMaterial(): true | undefined {
     return this._objRef?.isMeshToonMaterial;
-  }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
   }
   @Input()
   public set defines(value: { [key: string]: any }) {

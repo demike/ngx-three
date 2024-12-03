@@ -25,7 +25,7 @@ import { ThObjectBase } from './ThObjectBase';
 import { ThView } from './ThView';
 import { ThWrapperBase } from './ThWrapperBase';
 import { ThFBXLoaderDirective, ThFBXLoaderPipe } from './loaders/ThFBXLoader';
-import { ThLogLuvLoaderDirective, ThLogLuvLoaderPipe } from './loaders/data-texture/ThLogLuvLoader';
+import { ThUltraHDRLoaderDirective, ThUltraHDRLoaderPipe } from './loaders/data-texture/ThUltraHDRLoader';
 import { ThPLYLoaderDirective, ThPLYLoaderPipe } from './loaders/ThPLYLoader';
 import { BindPipe } from './pipes/bind.pipe';
 import { HtmlComponent } from './extra/web/html.component';
@@ -83,8 +83,8 @@ import { RendererProviderDirective } from './renderer/renderer-providers';
     ThRGBMLoaderPipe,
     ThTGALoaderDirective,
     ThTGALoaderPipe,
-    ThLogLuvLoaderDirective,
-    ThLogLuvLoaderPipe,
+    ThUltraHDRLoaderDirective,
+    ThUltraHDRLoaderPipe,
     // directives
     RefByIdDirective,
     RendererProviderDirective,
@@ -138,8 +138,8 @@ import { RendererProviderDirective } from './renderer/renderer-providers';
     ThRGBMLoaderPipe,
     ThTGALoaderDirective,
     ThTGALoaderPipe,
-    ThLogLuvLoaderDirective,
-    ThLogLuvLoaderPipe,
+    ThUltraHDRLoaderDirective,
+    ThUltraHDRLoaderPipe,
     // directives
     RefByIdDirective,
     RendererProviderDirective,

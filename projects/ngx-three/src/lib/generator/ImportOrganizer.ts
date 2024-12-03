@@ -1,59 +1,74 @@
 import { existsSync, readFileSync } from 'fs';
 import * as ts from 'typescript';
+import { normalize } from 'path';
 
 class LanguageServiceHostImpl implements ts.LanguageServiceHost {
-  public name: string;
-  public content: string;
+  private files: { [fileName: string]: { content: string; version: number } } = {};
+
   public options: ts.CompilerOptions;
-  public getDefaultLibFileName = ts.getDefaultLibFileName;
-  /**
-   * Create a service host instance.
-   *
-   * @param name path to file
-   * @param content file content
-   */
-  constructor(name: string, content: string) {
-    const tsconfig = ts.findConfigFile(name, ts.sys.fileExists);
+  constructor(public readonly basePath: string) {
+    // this.basePath = path.normalize(basePath);
+    const tsconfig = ts.findConfigFile(this.basePath, ts.sys.fileExists, 'tsconfig.lib.json');
 
     const compilerOptions = tsconfig
-      ? ts.convertCompilerOptionsFromJson(ts.readConfigFile(tsconfig, ts.sys.readFile).config.compilerOptions, '..')
-          .options
+      ? ts.convertCompilerOptionsFromJson(
+          ts.readConfigFile(tsconfig, ts.sys.readFile).config.compilerOptions,
+          this.basePath,
+        ).options
       : ts.getDefaultCompilerOptions();
 
-    this.name = name;
-    this.content = content;
     this.options = compilerOptions;
   }
-  readFile(path: string, encoding?: string | undefined): string | undefined {
-    const options = encoding !== undefined ? { encoding: encoding as BufferEncoding } : 'utf8';
-    return readFileSync(path, options) as string | undefined;
-  }
-  fileExists(path: string): boolean {
-    return existsSync(path);
+
+  readFile(path: string, encoding?: string | undefined): string {
+    path = normalize(path);
+    const file = this.files[path];
+    if (!file) {
+      const options = encoding !== undefined ? { encoding: encoding as BufferEncoding } : 'utf8';
+      const content = readFileSync(path, options);
+      this.addFile(path, content);
+      return content;
+    }
+
+    return file.content;
   }
 
-  getNewLine() {
-    return '\n';
+  addFile(fileName: string, content: string) {
+    this.files[fileName] = { content, version: 0 };
   }
 
-  getCurrentDirectory() {
-    return process.cwd();
+  getScriptFileNames(): string[] {
+    return Object.keys(this.files);
   }
 
-  getCompilationSettings() {
+  getScriptVersion(fileName: string): string {
+    return this.files[fileName]?.version.toString() || '0';
+  }
+
+  getScriptSnapshot(fileName: string): ts.IScriptSnapshot | undefined {
+    fileName = normalize(fileName);
+    const file = this.files[fileName];
+    if (file) {
+      return ts.ScriptSnapshot.fromString(file.content);
+    }
+    return undefined;
+  }
+
+  getCurrentDirectory(): string {
+    return this.basePath; // process.cwd();
+  }
+
+  getCompilationSettings(): ts.CompilerOptions {
     return this.options;
   }
 
-  getScriptFileNames() {
-    return [this.name];
+  getDefaultLibFileName(options: ts.CompilerOptions): string {
+    return ts.getDefaultLibFilePath(options);
   }
 
-  getScriptVersion() {
-    return ts.version;
-  }
-
-  getScriptSnapshot() {
-    return ts.ScriptSnapshot.fromString(this.content);
+  fileExists(fileName: string): boolean {
+    fileName = normalize(fileName);
+    return !!this.files[fileName] || existsSync(fileName);
   }
 }
 
@@ -66,12 +81,39 @@ const applyChanges = (input: string, changes: readonly ts.TextChange[]) =>
   }, input);
 
 export class ImportOrganizer {
-  organizeImports(fileName: string, content: string) {
-    const host = new LanguageServiceHostImpl(fileName, content);
-    const ls = ts.createLanguageService(host);
+  private ls: ts.LanguageService;
+  private host: LanguageServiceHostImpl;
+  constructor(basePath: string) {
+    this.host = new LanguageServiceHostImpl(basePath);
+    this.ls = ts.createLanguageService(this.host);
+  }
 
-    const fileChanges = ls.organizeImports({ type: 'file', fileName }, {}, {});
+  addFile(fileName: string, content: string) {
+    this.host.addFile(fileName, content);
+  }
 
-    return fileChanges.length > 0 ? applyChanges(content, fileChanges[0].textChanges) : content;
+  getFile(fileName: string) {
+    return this.host.readFile(fileName);
+  }
+
+  organizeImports(fileName: string) {
+    fileName = normalize(fileName);
+    const fileChanges = this.ls.organizeImports({ type: 'file', fileName }, {}, {});
+    const content = this.host.readFile(fileName);
+    if (fileChanges.length > 0 && content) {
+      this.host.addFile(fileName, applyChanges(content, fileChanges[0].textChanges));
+    }
+  }
+
+  addMissingImports(fileName: string) {
+    fileName = normalize(fileName);
+    const combinedCodeFix = this.ls.getCombinedCodeFix({ type: 'file', fileName }, 'fixMissingImport', {}, {});
+
+    if (combinedCodeFix?.changes.length > 0) {
+      const content = this.host.readFile(fileName);
+      if (content) {
+        this.host.addFile(fileName, applyChanges(content, combinedCodeFix.changes[0].textChanges));
+      }
+    }
   }
 }

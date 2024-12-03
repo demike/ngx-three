@@ -14,8 +14,8 @@ import {
   Object3DEventMap,
   Plane,
   PlaneHelper,
-  Vector3,
 } from 'three';
+import { Vector3 } from 'three/src/math/Vector3.js';
 import { applyValue } from '../util';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';

@@ -1,26 +1,33 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { ChangeDetectionStrategy, Component, Input, Type, forwardRef } from '@angular/core';
 import {
-  ColorSpace,
-  DataTexture,
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Type,
+  forwardRef,
+} from '@angular/core';
+import { DataTexture } from 'three';
+import {
   MagnificationTextureFilter,
   Mapping,
   MinificationTextureFilter,
   PixelFormat,
   TextureDataType,
   Wrapping,
-} from 'three';
+} from 'three/src/constants.js';
+import { TextureImageData } from 'three/src/textures/types.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
-import { TextureImageData } from 'three/src/textures/types';
 
 @Component({
   selector: 'th-dataTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThTextureBase, useExisting: forwardRef(() => ThDataTexture) }],
+  providers: [
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThDataTexture) },
+  ],
 })
 export class ThDataTexture<
   T extends DataTexture = DataTexture,
@@ -36,7 +43,7 @@ export class ThDataTexture<
     magFilter?: MagnificationTextureFilter,
     minFilter?: MinificationTextureFilter,
     anisotropy?: number,
-    colorSpace?: ColorSpace,
+    colorSpace?: string,
   ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<DataTexture> {

@@ -8,7 +8,9 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { ColorRepresentation, PointLight, PointLightShadow } from 'three';
+import { PointLight } from 'three';
+import { PointLightShadow } from 'three/src/lights/PointLightShadow.js';
+import { ColorRepresentation } from 'three/src/math/Color.js';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 

@@ -13,8 +13,8 @@ import {
   ColorRepresentation,
   SpriteMaterial,
   SpriteMaterialParameters,
-  Texture,
 } from 'three';
+import { Texture } from 'three/src/textures/Texture.js';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -36,16 +36,6 @@ export class ThSpriteMaterial<
 
   public get isSpriteMaterial(): true | undefined {
     return this._objRef?.isSpriteMaterial;
-  }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
   }
   @Input()
   public set color(

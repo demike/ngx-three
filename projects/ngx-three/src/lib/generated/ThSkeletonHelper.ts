@@ -9,15 +9,15 @@ import {
   forwardRef,
 } from '@angular/core';
 import {
-  Bone,
   BufferGeometry,
   Material,
   Matrix4,
-  Object3D,
   Object3DEventMap,
   SkeletonHelper,
-  SkinnedMesh,
 } from 'three';
+import { Object3D } from 'three/src/core/Object3D.js';
+import { Bone } from 'three/src/objects/Bone.js';
+import { SkinnedMesh } from 'three/src/objects/SkinnedMesh.js';
 import { applyValue } from '../util';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
