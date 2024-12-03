@@ -9,7 +9,10 @@ import {
   forwardRef,
 } from '@angular/core';
 import { Camera } from 'three';
-import { FlyControls } from 'three/examples/jsm/controls/FlyControls.js';
+import {
+  FlyControls,
+  FlyControlsEventMap,
+} from 'three/examples/jsm/controls/FlyControls.js';
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
@@ -22,31 +25,31 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThFlyControls<
   T extends FlyControls = FlyControls,
-  TARGS = [object: Camera, domElement?: HTMLElement],
-> extends ThControlBase<T, TARGS> {
+  TARGS = [object: Camera, domElement?: HTMLElement | null],
+> extends ThControlBase<FlyControlsEventMap, T, TARGS> {
   public getType(): Type<FlyControls> {
     return FlyControls;
   }
 
   @Input()
-  public set autoForward(value: boolean) {
+  public set movementSpeed(value: number) {
     if (this._objRef) {
-      this._objRef.autoForward = value;
+      this._objRef.movementSpeed = value;
     }
   }
 
-  public get autoForward(): boolean | undefined {
-    return this._objRef?.autoForward;
+  public get movementSpeed(): number | undefined {
+    return this._objRef?.movementSpeed;
   }
   @Input()
-  public set domElement(value: HTMLElement | Document) {
+  public set rollSpeed(value: number) {
     if (this._objRef) {
-      this._objRef.domElement = value;
+      this._objRef.rollSpeed = value;
     }
   }
 
-  public get domElement(): (HTMLElement | Document) | undefined {
-    return this._objRef?.domElement;
+  public get rollSpeed(): number | undefined {
+    return this._objRef?.rollSpeed;
   }
   @Input()
   public set dragToLook(value: boolean) {
@@ -59,43 +62,13 @@ export class ThFlyControls<
     return this._objRef?.dragToLook;
   }
   @Input()
-  public set enabled(value: boolean) {
+  public set autoForward(value: boolean) {
     if (this._objRef) {
-      this._objRef.enabled = value;
+      this._objRef.autoForward = value;
     }
   }
 
-  public get enabled(): boolean | undefined {
-    return this._objRef?.enabled;
-  }
-  @Input()
-  public set movementSpeed(value: number) {
-    if (this._objRef) {
-      this._objRef.movementSpeed = value;
-    }
-  }
-
-  public get movementSpeed(): number | undefined {
-    return this._objRef?.movementSpeed;
-  }
-  @Input()
-  public set object(value: Camera) {
-    if (this._objRef) {
-      this._objRef.object = value;
-    }
-  }
-
-  public get object(): Camera | undefined {
-    return this._objRef?.object;
-  }
-  @Input()
-  public set rollSpeed(value: number) {
-    if (this._objRef) {
-      this._objRef.rollSpeed = value;
-    }
-  }
-
-  public get rollSpeed(): number | undefined {
-    return this._objRef?.rollSpeed;
+  public get autoForward(): boolean | undefined {
+    return this._objRef?.autoForward;
   }
 }

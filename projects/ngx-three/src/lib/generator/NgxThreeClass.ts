@@ -125,7 +125,7 @@ export abstract class NgxThreeClass {
    */
   public abstract getWrapperBaseClassName(): string;
 
-  public useWrapperBaseClassNameForBaseClass(potentialBaseClass: string) {
+  public useWrapperBaseClassNameForBaseClass(potentialBaseClass: string): boolean {
     return 'EventDispatcher' === potentialBaseClass;
   }
 
@@ -243,7 +243,7 @@ export abstract class NgxThreeClass {
 
     let str = `
     @Input()
-    public set ${memberName}( value: ${typeName ?? member.type?.getText()}`;
+    public set ${memberName}( value: ${this.sanitizeMemberType(typeName ?? member.type?.getText())}`;
 
     if (setters.length === 0) {
       // no setter just set it
@@ -315,7 +315,7 @@ export abstract class NgxThreeClass {
     }
 
     return `
-    public get ${memberName}(): ( ${member.type?.getText()}) | undefined {
+    public get ${memberName}(): ( ${this.sanitizeMemberType(member.type?.getText())}) | undefined {
       return this._objRef?.${memberName};
     }`;
   }
@@ -381,6 +381,10 @@ export abstract class NgxThreeClass {
     }
 
     const importPath = path.normalize(path.join(path.dirname(srcFilePath), importStatementFrom)).replace(/\\/g, '/');
+    return `${importStatement.substring(0, fromPos)} from "${importPath.substring(
+      importPath.search('@types/three/') + 7,
+    )}";`;
+    /*
     let strFrom = ' "three";';
     if (importPath.search('node_modules/@types/three/examples') >= 0) {
       strFrom = " '" + importPath.substr(importPath.search('three/examples/jsm')).replace('.d.ts', '') + "';";
@@ -388,6 +392,7 @@ export abstract class NgxThreeClass {
 
     importStatement = importStatement.substr(0, fromPos) + ' from ' + strFrom;
     return importStatement;
+    */
   }
 
   protected getImportPathForSourceFile(srcFile: ts.SourceFile) {
@@ -476,5 +481,9 @@ export abstract class NgxThreeClass {
     }
 
     return `public getType(): Type<${this.wrappedClassName}${this.wrappedClassGenericTypeNames}> { return ${this.wrappedClassName}; };`;
+  }
+
+  protected sanitizeMemberType(type?: string) {
+    return type?.replace(': this', ': T');
   }
 }

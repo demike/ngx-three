@@ -12,11 +12,11 @@ import {
   Box3,
   Box3Helper,
   BufferGeometry,
-  ColorRepresentation,
   Material,
   Object3DEventMap,
-  Vector3,
 } from 'three';
+import { ColorRepresentation } from 'three/src/math/Color.js';
+import { Vector3 } from 'three/src/math/Vector3.js';
 import { applyValue } from '../util';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';

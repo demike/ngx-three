@@ -11,8 +11,8 @@ import {
   ExtrudeGeometry,
   ExtrudeGeometryOptions,
   NormalBufferAttributes,
-  Shape,
 } from 'three';
+import { Shape } from 'three/src/extras/core/Shape.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({

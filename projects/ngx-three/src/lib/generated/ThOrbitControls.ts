@@ -8,8 +8,12 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera, MOUSE, TOUCH, Vector3 } from 'three';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { MOUSE, TOUCH, Vector3 } from 'three';
+import {
+  OrbitControls,
+  OrbitControlsEventMap,
+} from 'three/examples/jsm/controls/OrbitControls.js';
+import { Camera } from 'three/src/cameras/Camera.js';
 import { ThControlBase } from '../ThControlBase';
 import { applyValue } from '../util';
 
@@ -23,42 +27,12 @@ import { applyValue } from '../util';
 })
 export class ThOrbitControls<
   T extends OrbitControls = OrbitControls,
-  TARGS = [object: Camera, domElement: HTMLElement],
-> extends ThControlBase<T, TARGS> {
+  TARGS = [object: Camera, domElement?: HTMLElement | null],
+> extends ThControlBase<OrbitControlsEventMap, T, TARGS> {
   public getType(): Type<OrbitControls> {
     return OrbitControls;
   }
 
-  @Input()
-  public set object(value: Camera) {
-    if (this._objRef) {
-      this._objRef.object = value;
-    }
-  }
-
-  public get object(): Camera | undefined {
-    return this._objRef?.object;
-  }
-  @Input()
-  public set domElement(value: HTMLElement | Document) {
-    if (this._objRef) {
-      this._objRef.domElement = value;
-    }
-  }
-
-  public get domElement(): (HTMLElement | Document) | undefined {
-    return this._objRef?.domElement;
-  }
-  @Input()
-  public set enabled(value: boolean) {
-    if (this._objRef) {
-      this._objRef.enabled = value;
-    }
-  }
-
-  public get enabled(): boolean | undefined {
-    return this._objRef?.enabled;
-  }
   @Input()
   public set target(value: Vector3 | [x: number, y: number, z: number]) {
     if (this._objRef) {
@@ -67,15 +41,6 @@ export class ThOrbitControls<
   }
   public get target(): Vector3 | undefined {
     return this._objRef?.target;
-  }
-  @Input()
-  public set center(value: Vector3 | [x: number, y: number, z: number]) {
-    if (this._objRef) {
-      this._objRef.center = applyValue<Vector3>(this._objRef.center, value);
-    }
-  }
-  public get center(): Vector3 | undefined {
-    return this._objRef?.center;
   }
   @Input()
   public set cursor(value: Vector3 | [x: number, y: number, z: number]) {
@@ -227,16 +192,6 @@ export class ThOrbitControls<
     return this._objRef?.zoomSpeed;
   }
   @Input()
-  public set zoomToCursor(value: boolean) {
-    if (this._objRef) {
-      this._objRef.zoomToCursor = value;
-    }
-  }
-
-  public get zoomToCursor(): boolean | undefined {
-    return this._objRef?.zoomToCursor;
-  }
-  @Input()
   public set enableRotate(value: boolean) {
     if (this._objRef) {
       this._objRef.enableRotate = value;
@@ -295,6 +250,16 @@ export class ThOrbitControls<
 
   public get keyPanSpeed(): number | undefined {
     return this._objRef?.keyPanSpeed;
+  }
+  @Input()
+  public set zoomToCursor(value: boolean) {
+    if (this._objRef) {
+      this._objRef.zoomToCursor = value;
+    }
+  }
+
+  public get zoomToCursor(): boolean | undefined {
+    return this._objRef?.zoomToCursor;
   }
   @Input()
   public set autoRotate(value: boolean) {

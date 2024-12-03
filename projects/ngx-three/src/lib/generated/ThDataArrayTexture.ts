@@ -1,11 +1,21 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { ChangeDetectionStrategy, Component, Input, Type, forwardRef } from '@angular/core';
-import { DataArrayTexture, MagnificationTextureFilter, MinificationTextureFilter } from 'three';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Type,
+  forwardRef,
+} from '@angular/core';
+import { DataArrayTexture } from 'three';
+import {
+  MagnificationTextureFilter,
+  MinificationTextureFilter,
+} from 'three/src/constants.js';
+import { Texture3DImageData } from 'three/src/textures/types.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
-import { Texture3DImageData } from 'three/src/textures/types';
 
 @Component({
   selector: 'th-dataArrayTexture',
@@ -20,7 +30,12 @@ import { Texture3DImageData } from 'three/src/textures/types';
 })
 export class ThDataArrayTexture<
   T extends DataArrayTexture = DataArrayTexture,
-  TARGS = [data?: BufferSource | null, width?: number, height?: number, depth?: number],
+  TARGS = [
+    data?: BufferSource | null,
+    width?: number,
+    height?: number,
+    depth?: number,
+  ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<DataArrayTexture> {
     return DataArrayTexture;

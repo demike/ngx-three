@@ -7,7 +7,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { LatheGeometry, NormalBufferAttributes, Vector2 } from 'three';
+import { LatheGeometry, NormalBufferAttributes } from 'three';
+import { Vector2 } from 'three/src/math/Vector2.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({

@@ -8,23 +8,22 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
+import { Matrix3, OffscreenCanvas, Texture } from 'three';
 import {
   AnyMapping,
   AnyPixelFormat,
-  ColorSpace,
   MagnificationTextureFilter,
   Mapping,
-  Matrix3,
   MinificationTextureFilter,
-  OffscreenCanvas,
   PixelFormat,
   PixelFormatGPU,
-  Source,
-  Texture,
   TextureDataType,
-  Vector2,
   Wrapping,
-} from 'three';
+} from 'three/src/constants.js';
+import { Vector2 } from 'three/src/math/Vector2.js';
+import { CompressedTextureMipmap } from 'three/src/textures/CompressedTexture.js';
+import { CubeTexture } from 'three/src/textures/CubeTexture.js';
+import { Source } from 'three/src/textures/Source.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { applyValue } from '../util';
 
@@ -49,7 +48,7 @@ export class ThTexture<
         format?: PixelFormat,
         type?: TextureDataType,
         anisotropy?: number,
-        colorSpace?: ColorSpace,
+        colorSpace?: string,
       ]
     | [
         image: TexImageSource | OffscreenCanvas,
@@ -114,13 +113,26 @@ export class ThTexture<
   }
 
   @Input()
-  public set mipmaps(value: any[]) {
+  public set mipmaps(
+    value:
+      | CompressedTextureMipmap[]
+      | CubeTexture[]
+      | HTMLCanvasElement[]
+      | undefined,
+  ) {
     if (this._objRef) {
       this._objRef.mipmaps = value;
     }
   }
 
-  public get mipmaps(): any[] | undefined {
+  public get mipmaps():
+    | (
+        | CompressedTextureMipmap[]
+        | CubeTexture[]
+        | HTMLCanvasElement[]
+        | undefined
+      )
+    | undefined {
     return this._objRef?.mipmaps;
   }
   @Input()
@@ -334,13 +346,13 @@ export class ThTexture<
     return this._objRef?.unpackAlignment;
   }
   @Input()
-  public set colorSpace(value: ColorSpace) {
+  public set colorSpace(value: string) {
     if (this._objRef) {
       this._objRef.colorSpace = value;
     }
   }
 
-  public get colorSpace(): ColorSpace | undefined {
+  public get colorSpace(): string | undefined {
     return this._objRef?.colorSpace;
   }
   @Input()

@@ -8,7 +8,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { PerspectiveCamera, StereoCamera } from 'three';
+import { StereoCamera } from 'three';
+import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js';
 import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
 

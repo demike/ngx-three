@@ -7,7 +7,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { AmbientLight, ColorRepresentation } from 'three';
+import { AmbientLight } from 'three';
+import { ColorRepresentation } from 'three/src/math/Color.js';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 

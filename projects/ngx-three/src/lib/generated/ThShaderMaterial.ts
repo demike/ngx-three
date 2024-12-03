@@ -8,13 +8,10 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  GLSLVersion,
-  IUniform,
-  ShaderMaterial,
-  ShaderMaterialParameters,
-  UniformsGroup,
-} from 'three';
+import { ShaderMaterial, ShaderMaterialParameters } from 'three';
+import { GLSLVersion } from 'three/src/constants.js';
+import { UniformsGroup } from 'three/src/core/UniformsGroup.js';
+import { IUniform } from 'three/src/renderers/shaders/UniformsLib.js';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
@@ -35,16 +32,6 @@ export class ThShaderMaterial<
 
   public get isShaderMaterial(): true | undefined {
     return this._objRef?.isShaderMaterial;
-  }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
   }
   @Input()
   public set defines(value: { [key: string]: any }) {

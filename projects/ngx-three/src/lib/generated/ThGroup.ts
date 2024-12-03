@@ -7,7 +7,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Group, Object3DEventMap } from 'three';
+import { Group } from 'three';
+import { Object3DEventMap } from 'three/src/core/Object3D.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -27,8 +28,5 @@ export class ThGroup<
 
   public get isGroup(): true | undefined {
     return this._objRef?.isGroup;
-  }
-  public get type(): (string | 'Group') | undefined {
-    return this._objRef?.type;
   }
 }

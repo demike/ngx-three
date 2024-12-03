@@ -8,7 +8,9 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Curve, NormalBufferAttributes, TubeGeometry, Vector3 } from 'three';
+import { NormalBufferAttributes, TubeGeometry } from 'three';
+import { Curve } from 'three/src/extras/core/Curve.js';
+import { Vector3 } from 'three/src/math/Vector3.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({

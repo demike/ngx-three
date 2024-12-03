@@ -7,7 +7,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Bone, Object3DEventMap } from 'three';
+import { Bone } from 'three';
+import { Object3DEventMap } from 'three/src/core/Object3D.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({

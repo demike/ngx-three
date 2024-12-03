@@ -7,16 +7,16 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
+import { CanvasTexture } from 'three';
 import {
-  CanvasTexture,
   MagnificationTextureFilter,
   Mapping,
   MinificationTextureFilter,
-  OffscreenCanvas,
   PixelFormat,
   TextureDataType,
   Wrapping,
-} from 'three';
+} from 'three/src/constants.js';
+import { OffscreenCanvas } from 'three/src/textures/Texture.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 

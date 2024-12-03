@@ -37,16 +37,6 @@ export class ThShadowMaterial<
     return this._objRef?.isShadowMaterial;
   }
   @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
-  }
-  @Input()
   public set color(
     value:
       | Color

@@ -7,11 +7,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  CompressedCubeTexture,
-  CompressedPixelFormat,
-  TextureDataType,
-} from 'three';
+import { CompressedCubeTexture } from 'three';
+import { CompressedPixelFormat, TextureDataType } from 'three/src/constants.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThCompressedTexture } from './ThCompressedTexture';
 

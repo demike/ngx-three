@@ -13,8 +13,8 @@ import {
   ColorRepresentation,
   LineBasicMaterial,
   LineBasicMaterialParameters,
-  Texture,
 } from 'three';
+import { Texture } from 'three/src/textures/Texture.js';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -36,16 +36,6 @@ export class ThLineBasicMaterial<
 
   public get isLineBasicMaterial(): true | undefined {
     return this._objRef?.isLineBasicMaterial;
-  }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
   }
   @Input()
   public set color(

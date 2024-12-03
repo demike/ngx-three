@@ -8,7 +8,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { AudioContext, AudioListener, Object3DEventMap } from 'three';
+import { AudioListener, Object3DEventMap } from 'three';
+import { AudioContext } from 'three/src/audio/AudioContext.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({

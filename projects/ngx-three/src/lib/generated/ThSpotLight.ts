@@ -8,14 +8,11 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  ColorRepresentation,
-  Object3D,
-  SpotLight,
-  SpotLightShadow,
-  Texture,
-  Vector3,
-} from 'three';
+import { SpotLight, Vector3 } from 'three';
+import { Object3D } from 'three/src/core/Object3D.js';
+import { SpotLightShadow } from 'three/src/lights/SpotLightShadow.js';
+import { ColorRepresentation } from 'three/src/math/Color.js';
+import { Texture } from 'three/src/textures/Texture.js';
 import { applyValue } from '../util';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';

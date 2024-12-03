@@ -10,12 +10,12 @@ import {
 } from '@angular/core';
 import {
   BufferGeometry,
-  Camera,
   CameraHelper,
   Material,
   Matrix4,
   Object3DEventMap,
 } from 'three';
+import { Camera } from 'three/src/cameras/Camera.js';
 import { applyValue } from '../util';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';

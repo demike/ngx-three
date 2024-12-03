@@ -8,16 +8,15 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
+import { CubeTexture } from 'three';
 import {
-  ColorSpace,
-  CubeTexture,
   CubeTextureMapping,
   MagnificationTextureFilter,
   MinificationTextureFilter,
   PixelFormat,
   TextureDataType,
   Wrapping,
-} from 'three';
+} from 'three/src/constants.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
@@ -41,7 +40,7 @@ export class ThCubeTexture<
     format?: PixelFormat,
     type?: TextureDataType,
     anisotropy?: number,
-    colorSpace?: ColorSpace,
+    colorSpace?: string,
   ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<CubeTexture> {

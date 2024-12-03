@@ -7,13 +7,10 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  BufferGeometry,
-  ColorRepresentation,
-  GridHelper,
-  LineBasicMaterial,
-  Object3DEventMap,
-} from 'three';
+import { GridHelper, Object3DEventMap } from 'three';
+import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
+import { LineBasicMaterial } from 'three/src/materials/LineBasicMaterial.js';
+import { ColorRepresentation } from 'three/src/math/Color.js';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 

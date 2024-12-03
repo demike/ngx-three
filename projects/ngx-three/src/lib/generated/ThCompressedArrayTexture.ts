@@ -8,12 +8,13 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
+import { CompressedArrayTexture } from 'three';
 import {
-  CompressedArrayTexture,
   CompressedPixelFormat,
   TextureDataType,
   Wrapping,
-} from 'three';
+} from 'three/src/constants.js';
+import { CompressedTextureMipmap } from 'three/src/textures/CompressedTexture.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThCompressedTexture } from './ThCompressedTexture';
 
@@ -31,7 +32,7 @@ import { ThCompressedTexture } from './ThCompressedTexture';
 export class ThCompressedArrayTexture<
   T extends CompressedArrayTexture = CompressedArrayTexture,
   TARGS = [
-    mipmaps: ImageData[],
+    mipmaps: CompressedTextureMipmap[],
     width: number,
     height: number,
     depth: number,

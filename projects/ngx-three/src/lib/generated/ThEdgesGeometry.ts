@@ -7,7 +7,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { BufferGeometry, EdgesGeometry, NormalBufferAttributes } from 'three';
+import { EdgesGeometry, NormalBufferAttributes } from 'three';
+import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({

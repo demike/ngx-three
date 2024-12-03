@@ -8,14 +8,10 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  ColorRepresentation,
-  Light,
-  LineSegments,
-  Matrix4,
-  Object3DEventMap,
-  SpotLightHelper,
-} from 'three';
+import { Matrix4, Object3DEventMap, SpotLightHelper } from 'three';
+import { Light } from 'three/src/lights/Light.js';
+import { ColorRepresentation } from 'three/src/math/Color.js';
+import { LineSegments } from 'three/src/objects/LineSegments.js';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 

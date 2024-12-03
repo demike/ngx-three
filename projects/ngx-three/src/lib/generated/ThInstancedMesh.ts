@@ -8,17 +8,13 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  Box3,
-  BufferGeometry,
-  DataTexture,
-  InstancedBufferAttribute,
-  InstancedMesh,
-  InstancedMeshEventMap,
-  Material,
-  Sphere,
-  Vector3,
-} from 'three';
+import { Box3, InstancedMesh, InstancedMeshEventMap } from 'three';
+import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
+import { InstancedBufferAttribute } from 'three/src/core/InstancedBufferAttribute.js';
+import { Material } from 'three/src/materials/Material.js';
+import { Sphere } from 'three/src/math/Sphere.js';
+import { Vector3 } from 'three/src/math/Vector3.js';
+import { DataTexture } from 'three/src/textures/DataTexture.js';
 import { applyValue } from '../util';
 import { ThMesh } from './ThMesh';
 import { ThObject3D } from './ThObject3D';
