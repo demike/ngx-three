@@ -147,16 +147,18 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
   };
 }
 
-export interface LazyObject3DProxy extends Object3D {
+export interface LazyObject3DProxy<TEventMap extends Object3DEventMap = Object3DEventMap> extends Object3D<TEventMap> {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   readonly __isProxy?: boolean;
   objRef?: Object3D;
   applyToObject3D(real: Object3D): void;
 }
 
-export function createLazyObject3DProxy(target = new Object3D()): LazyObject3DProxy {
+export function createLazyObject3DProxy<TEventMap extends Object3DEventMap = Object3DEventMap>(
+  target = new Object3D<TEventMap>(),
+): LazyObject3DProxy<TEventMap> {
   const handler = new Object3DProxyHandler(target);
-  return new Proxy<LazyObject3DProxy>(handler as unknown as LazyObject3DProxy, handler);
+  return new Proxy<LazyObject3DProxy<TEventMap>>(handler as unknown as LazyObject3DProxy<TEventMap>, handler);
 }
 
 export function isLazyObject3dProxy(object: Object3D | LazyObject3DProxy): object is LazyObject3DProxy {
