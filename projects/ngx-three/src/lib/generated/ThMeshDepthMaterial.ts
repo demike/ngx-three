@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,12 +9,9 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  DepthPackingStrategies,
-  MeshDepthMaterial,
-  MeshDepthMaterialParameters,
-  Texture,
-} from 'three';
+import { MeshDepthMaterial, MeshDepthMaterialParameters } from 'three';
+import { DepthPackingStrategies } from 'three/src/constants.js';
+import { Texture } from 'three/src/textures/Texture.js';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
@@ -34,16 +32,6 @@ export class ThMeshDepthMaterial<
 
   public get isMeshDepthMaterial(): true | undefined {
     return this._objRef?.isMeshDepthMaterial;
-  }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
   }
   @Input()
   public set map(value: Texture | null) {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,12 +9,16 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera, Object3D, Raycaster } from 'three';
+import { MOUSE, Raycaster, TOUCH } from 'three';
 import {
   DragControls,
-  DragControlsMode,
+  DragControlsEventMap,
 } from 'three/examples/jsm/controls/DragControls.js';
+import { Camera } from 'three/src/cameras/Camera.js';
+import { Object3D } from 'three/src/core/Object3D.js';
+import { Vector3 } from 'three/src/math/Vector3.js';
 import { ThControlBase } from '../ThControlBase';
+import { applyValue } from '../util';
 
 @Component({
   selector: 'th-dragControls',
@@ -25,21 +30,25 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThDragControls<
   T extends DragControls = DragControls,
-  TARGS = [objects: Object3D[], camera: Camera, domElement?: HTMLElement],
-> extends ThControlBase<T, TARGS> {
+  TARGS = [
+    objects: Object3D[],
+    camera: Camera,
+    domElement?: HTMLElement | null,
+  ],
+> extends ThControlBase<DragControlsEventMap, T, TARGS> {
   public getType(): Type<DragControls> {
     return DragControls;
   }
 
   @Input()
-  public set enabled(value: boolean) {
+  public set objects(value: Object3D[]) {
     if (this._objRef) {
-      this._objRef.enabled = value;
+      this._objRef.objects = value;
     }
   }
 
-  public get enabled(): boolean | undefined {
-    return this._objRef?.enabled;
+  public get objects(): Object3D[] | undefined {
+    return this._objRef?.objects;
   }
   @Input()
   public set recursive(value: boolean) {
@@ -62,16 +71,6 @@ export class ThDragControls<
     return this._objRef?.transformGroup;
   }
   @Input()
-  public set mode(value: DragControlsMode) {
-    if (this._objRef) {
-      this._objRef.mode = value;
-    }
-  }
-
-  public get mode(): DragControlsMode | undefined {
-    return this._objRef?.mode;
-  }
-  @Input()
   public set rotateSpeed(value: number) {
     if (this._objRef) {
       this._objRef.rotateSpeed = value;
@@ -82,65 +81,47 @@ export class ThDragControls<
     return this._objRef?.rotateSpeed;
   }
   @Input()
-  public set activate(value: () => void) {
+  public set raycaster(
+    value: Raycaster | [origin: Vector3, direction: Vector3],
+  ) {
     if (this._objRef) {
-      this._objRef.activate = value;
+      this._objRef.raycaster = applyValue<Raycaster>(
+        this._objRef.raycaster,
+        value,
+      );
     }
   }
-
-  public get activate(): (() => void) | undefined {
-    return this._objRef?.activate;
+  public get raycaster(): Raycaster | undefined {
+    return this._objRef?.raycaster;
   }
   @Input()
-  public set deactivate(value: () => void) {
+  public set mouseButtons(value: {
+    LEFT?: MOUSE | null | undefined;
+    MIDDLE?: MOUSE | null | undefined;
+    RIGHT?: MOUSE | null | undefined;
+  }) {
     if (this._objRef) {
-      this._objRef.deactivate = value;
+      this._objRef.mouseButtons = value;
     }
   }
 
-  public get deactivate(): (() => void) | undefined {
-    return this._objRef?.deactivate;
-  }
-  @Input()
-  public set dispose(value: () => void) {
-    if (this._objRef) {
-      this._objRef.dispose = value;
-    }
-  }
-
-  public get dispose(): (() => void) | undefined {
-    return this._objRef?.dispose;
-  }
-  @Input()
-  public set getObjects(value: () => Object3D[]) {
-    if (this._objRef) {
-      this._objRef.getObjects = value;
-    }
-  }
-
-  public get getObjects(): (() => Object3D[]) | undefined {
-    return this._objRef?.getObjects;
-  }
-  @Input()
-  public set getRaycaster(value: () => Raycaster) {
-    if (this._objRef) {
-      this._objRef.getRaycaster = value;
-    }
-  }
-
-  public get getRaycaster(): (() => Raycaster) | undefined {
-    return this._objRef?.getRaycaster;
-  }
-  @Input()
-  public set setObjects(value: (objects: readonly Object3D[]) => void) {
-    if (this._objRef) {
-      this._objRef.setObjects = value;
-    }
-  }
-
-  public get setObjects():
-    | ((objects: readonly Object3D[]) => void)
+  public get mouseButtons():
+    | {
+        LEFT?: MOUSE | null | undefined;
+        MIDDLE?: MOUSE | null | undefined;
+        RIGHT?: MOUSE | null | undefined;
+      }
     | undefined {
-    return this._objRef?.setObjects;
+    return this._objRef?.mouseButtons;
+  }
+  @Input()
+  public set touches(value: { ONE?: TOUCH | null | undefined }) {
+    if (this._objRef) {
+      this._objRef.touches = value;
+    }
+  }
+
+  public get touches(): { ONE?: TOUCH | null | undefined } | undefined {
+    return this._objRef?.touches;
   }
 }

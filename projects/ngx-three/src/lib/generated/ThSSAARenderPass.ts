@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -83,6 +84,16 @@ export class ThSSAARenderPass<
     return this._objRef?.unbiased;
   }
   @Input()
+  public set stencilBuffer(value: boolean) {
+    if (this._objRef) {
+      this._objRef.stencilBuffer = value;
+    }
+  }
+
+  public get stencilBuffer(): boolean | undefined {
+    return this._objRef?.stencilBuffer;
+  }
+  @Input()
   public set clearColor(value: ColorRepresentation) {
     if (this._objRef) {
       this._objRef.clearColor = value;
@@ -133,13 +144,13 @@ export class ThSSAARenderPass<
     return this._objRef?.fsQuad;
   }
   @Input()
-  public set sampleRenderTarget(value: undefined | WebGLRenderTarget) {
+  public set sampleRenderTarget(value: WebGLRenderTarget | undefined) {
     if (this._objRef) {
       this._objRef.sampleRenderTarget = value;
     }
   }
 
-  public get sampleRenderTarget(): (undefined | WebGLRenderTarget) | undefined {
+  public get sampleRenderTarget(): (WebGLRenderTarget | undefined) | undefined {
     return this._objRef?.sampleRenderTarget;
   }
 }

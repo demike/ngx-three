@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -24,7 +25,12 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThDecalGeometry<
   T extends DecalGeometry = DecalGeometry,
-  TARGS = [mesh: Mesh, position: Vector3, orientation: Euler, size: Vector3],
+  TARGS = [
+    mesh?: Mesh,
+    position?: Vector3,
+    orientation?: Euler,
+    size?: Vector3,
+  ],
 > extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
   public getType(): Type<DecalGeometry> {
     return DecalGeometry;

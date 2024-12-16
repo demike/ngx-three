@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -9,11 +10,11 @@ import {
 } from '@angular/core';
 import {
   BufferGeometry,
-  ColorRepresentation,
   Material,
   Object3DEventMap,
   PolarGridHelper,
 } from 'three';
+import { ColorRepresentation } from 'three/src/math/Color.js';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 

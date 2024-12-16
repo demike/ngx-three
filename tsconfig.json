@@ -1,6 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "skipLibCheck": true,
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -22,7 +23,8 @@
     "paths": {
       "ngx-three": [
         "projects/ngx-three/src/public-api.ts"
-      ]
+      ],
+      "three/webgpu": ["./node_modules/@types/three/build/three.webgpu.d.ts"]
     },
     "useDefineForClassFields": false
   },

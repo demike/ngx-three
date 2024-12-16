@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,12 +9,9 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  CoordinateSystem,
-  CubeCamera,
-  Object3DEventMap,
-  WebGLCubeRenderTarget,
-} from 'three';
+import { CubeCamera, Object3DEventMap } from 'three';
+import { CoordinateSystem } from 'three/src/constants.js';
+import { WebGLCubeRenderTarget } from 'three/src/renderers/WebGLCubeRenderTarget.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({

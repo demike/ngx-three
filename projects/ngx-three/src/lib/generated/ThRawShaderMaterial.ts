@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -7,7 +8,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { RawShaderMaterial, ShaderMaterialParameters } from 'three';
+import { RawShaderMaterial } from 'three';
+import { ShaderMaterialParameters } from 'three/src/materials/ShaderMaterial.js';
 import { ThMaterial } from './ThMaterial';
 import { ThShaderMaterial } from './ThShaderMaterial';
 
@@ -29,8 +31,5 @@ export class ThRawShaderMaterial<
 
   public get isRawShaderMaterial(): true | undefined {
     return this._objRef?.isRawShaderMaterial;
-  }
-  public get type(): 'RawShaderMaterial' | undefined {
-    return this._objRef?.type;
   }
 }

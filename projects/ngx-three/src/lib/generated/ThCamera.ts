@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,14 +9,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  Camera,
-  CoordinateSystem,
-  Layers,
-  Matrix4,
-  Object3DEventMap,
-  Vector4,
-} from 'three';
+import { Camera, Layers, Matrix4, Object3DEventMap, Vector4 } from 'three';
+import { CoordinateSystem } from 'three/src/constants.js';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 

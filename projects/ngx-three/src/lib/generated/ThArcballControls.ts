@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,10 +9,12 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera, Scene, Vector3 } from 'three';
-import { ArcballControls } from 'three/examples/jsm/controls/ArcballControls.js';
+import { Camera, Scene } from 'three';
+import {
+  ArcballControls,
+  ArcballControlsEventMap,
+} from 'three/examples/jsm/controls/ArcballControls.js';
 import { ThControlBase } from '../ThControlBase';
-import { applyValue } from '../util';
 
 @Component({
   selector: 'th-arcballControls',
@@ -26,41 +29,35 @@ import { applyValue } from '../util';
 })
 export class ThArcballControls<
   T extends ArcballControls = ArcballControls,
-  TARGS = [camera: Camera, domElement: HTMLElement, scene?: Scene | null],
-> extends ThControlBase<T, TARGS> {
+  TARGS = [
+    camera: Camera,
+    domElement?: HTMLElement | null,
+    scene?: Scene | null,
+  ],
+> extends ThControlBase<ArcballControlsEventMap, T, TARGS> {
   public getType(): Type<ArcballControls> {
     return ArcballControls;
   }
 
   @Input()
-  public set camera(value: Camera | null) {
-    if (this._objRef) {
-      this._objRef.camera = value;
-    }
-  }
-
-  public get camera(): (Camera | null) | undefined {
-    return this._objRef?.camera;
-  }
-  @Input()
-  public set domElement(value: HTMLElement) {
-    if (this._objRef) {
-      this._objRef.domElement = value;
-    }
-  }
-
-  public get domElement(): HTMLElement | undefined {
-    return this._objRef?.domElement;
-  }
-  @Input()
-  public set scene(value: Scene | null | undefined) {
+  public set scene(value: Scene | null) {
     if (this._objRef) {
       this._objRef.scene = value;
     }
   }
 
-  public get scene(): (Scene | null | undefined) | undefined {
+  public get scene(): (Scene | null) | undefined {
     return this._objRef?.scene;
+  }
+  @Input()
+  public set radiusFactor(value: number) {
+    if (this._objRef) {
+      this._objRef.radiusFactor = value;
+    }
+  }
+
+  public get radiusFactor(): number | undefined {
+    return this._objRef?.radiusFactor;
   }
   @Input()
   public set focusAnimationTime(value: number) {
@@ -71,56 +68,6 @@ export class ThArcballControls<
 
   public get focusAnimationTime(): number | undefined {
     return this._objRef?.focusAnimationTime;
-  }
-  @Input()
-  public set enabled(value: boolean) {
-    if (this._objRef) {
-      this._objRef.enabled = value;
-    }
-  }
-
-  public get enabled(): boolean | undefined {
-    return this._objRef?.enabled;
-  }
-  @Input()
-  public set enablePan(value: boolean) {
-    if (this._objRef) {
-      this._objRef.enablePan = value;
-    }
-  }
-
-  public get enablePan(): boolean | undefined {
-    return this._objRef?.enablePan;
-  }
-  @Input()
-  public set enableRotate(value: boolean) {
-    if (this._objRef) {
-      this._objRef.enableRotate = value;
-    }
-  }
-
-  public get enableRotate(): boolean | undefined {
-    return this._objRef?.enableRotate;
-  }
-  @Input()
-  public set enableZoom(value: boolean) {
-    if (this._objRef) {
-      this._objRef.enableZoom = value;
-    }
-  }
-
-  public get enableZoom(): boolean | undefined {
-    return this._objRef?.enableZoom;
-  }
-  @Input()
-  public set enableGizmos(value: boolean) {
-    if (this._objRef) {
-      this._objRef.enableGizmos = value;
-    }
-  }
-
-  public get enableGizmos(): boolean | undefined {
-    return this._objRef?.enableGizmos;
   }
   @Input()
   public set adjustNearFar(value: boolean) {
@@ -173,6 +120,16 @@ export class ThArcballControls<
     return this._objRef?.enableAnimations;
   }
   @Input()
+  public set enableFocus(value: boolean) {
+    if (this._objRef) {
+      this._objRef.enableFocus = value;
+    }
+  }
+
+  public get enableFocus(): boolean | undefined {
+    return this._objRef?.enableFocus;
+  }
+  @Input()
   public set enableGrid(value: boolean) {
     if (this._objRef) {
       this._objRef.enableGrid = value;
@@ -193,24 +150,44 @@ export class ThArcballControls<
     return this._objRef?.cursorZoom;
   }
   @Input()
-  public set minFov(value: number) {
+  public set rotateSpeed(value: number) {
     if (this._objRef) {
-      this._objRef.minFov = value;
+      this._objRef.rotateSpeed = value;
     }
   }
 
-  public get minFov(): number | undefined {
-    return this._objRef?.minFov;
+  public get rotateSpeed(): number | undefined {
+    return this._objRef?.rotateSpeed;
   }
   @Input()
-  public set maxFov(value: number) {
+  public set enablePan(value: boolean) {
     if (this._objRef) {
-      this._objRef.maxFov = value;
+      this._objRef.enablePan = value;
     }
   }
 
-  public get maxFov(): number | undefined {
-    return this._objRef?.maxFov;
+  public get enablePan(): boolean | undefined {
+    return this._objRef?.enablePan;
+  }
+  @Input()
+  public set enableRotate(value: boolean) {
+    if (this._objRef) {
+      this._objRef.enableRotate = value;
+    }
+  }
+
+  public get enableRotate(): boolean | undefined {
+    return this._objRef?.enableRotate;
+  }
+  @Input()
+  public set enableZoom(value: boolean) {
+    if (this._objRef) {
+      this._objRef.enableZoom = value;
+    }
+  }
+
+  public get enableZoom(): boolean | undefined {
+    return this._objRef?.enableZoom;
   }
   @Input()
   public set minDistance(value: number) {
@@ -251,34 +228,5 @@ export class ThArcballControls<
 
   public get maxZoom(): number | undefined {
     return this._objRef?.maxZoom;
-  }
-  @Input()
-  public set target(value: Vector3 | [x: number, y: number, z: number]) {
-    if (this._objRef) {
-      this._objRef.target = applyValue<Vector3>(this._objRef.target, value);
-    }
-  }
-  public get target(): Vector3 | undefined {
-    return this._objRef?.target;
-  }
-  @Input()
-  public set radiusFactor(value: number) {
-    if (this._objRef) {
-      this._objRef.radiusFactor = value;
-    }
-  }
-
-  public get radiusFactor(): number | undefined {
-    return this._objRef?.radiusFactor;
-  }
-  @Input()
-  public set rotateSpeed(value: number) {
-    if (this._objRef) {
-      this._objRef.rotateSpeed = value;
-    }
-  }
-
-  public get rotateSpeed(): number | undefined {
-    return this._objRef?.rotateSpeed;
   }
 }

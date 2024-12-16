@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -7,7 +8,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { NormalBufferAttributes, Shape, ShapeGeometry } from 'three';
+import { NormalBufferAttributes, ShapeGeometry } from 'three';
+import { Shape } from 'three/src/extras/core/Shape.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -7,7 +8,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Group, Object3DEventMap } from 'three';
+import { Group } from 'three';
+import { Object3DEventMap } from 'three/src/core/Object3D.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -27,8 +29,5 @@ export class ThGroup<
 
   public get isGroup(): true | undefined {
     return this._objRef?.isGroup;
-  }
-  public get type(): (string | 'Group') | undefined {
-    return this._objRef?.type;
   }
 }

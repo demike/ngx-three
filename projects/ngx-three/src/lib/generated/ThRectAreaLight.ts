@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,7 +9,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { ColorRepresentation, RectAreaLight } from 'three';
+import { RectAreaLight } from 'three';
+import { ColorRepresentation } from 'three/src/math/Color.js';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 

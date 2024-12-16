@@ -7,7 +7,7 @@ import { ASSET_PATH } from '../assets';
 @Component({
   selector: 'app-robot',
   templateUrl: './robot.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RobotComponent {
   public readonly assetPath = ASSET_PATH + 'RobotExpressive.glb';

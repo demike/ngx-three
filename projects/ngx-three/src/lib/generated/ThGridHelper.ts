@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -7,13 +8,10 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  BufferGeometry,
-  ColorRepresentation,
-  GridHelper,
-  LineBasicMaterial,
-  Object3DEventMap,
-} from 'three';
+import { GridHelper, Object3DEventMap } from 'three';
+import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
+import { LineBasicMaterial } from 'three/src/materials/LineBasicMaterial.js';
+import { ColorRepresentation } from 'three/src/math/Color.js';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 

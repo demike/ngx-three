@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -15,11 +16,11 @@ import {
   MeshBasicMaterial,
   ShaderMaterial,
   Vector2,
-  Vector3,
   WebGLRenderTarget,
 } from 'three';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
+import { Vector3 } from 'three/src/math/Vector3.js';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -9,7 +10,10 @@ import {
   forwardRef,
 } from '@angular/core';
 import { Camera } from 'three';
-import { PointerLockControls } from 'three/examples/jsm/controls/PointerLockControls.js';
+import {
+  PointerLockControls,
+  PointerLockControlsEventMap,
+} from 'three/examples/jsm/controls/PointerLockControls.js';
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
@@ -25,32 +29,12 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThPointerLockControls<
   T extends PointerLockControls = PointerLockControls,
-  TARGS = [camera: Camera, domElement?: HTMLElement],
-> extends ThControlBase<T, TARGS> {
+  TARGS = [camera: Camera, domElement?: HTMLElement | null],
+> extends ThControlBase<PointerLockControlsEventMap, T, TARGS> {
   public getType(): Type<PointerLockControls> {
     return PointerLockControls;
   }
 
-  @Input()
-  public set camera(value: Camera) {
-    if (this._objRef) {
-      this._objRef.camera = value;
-    }
-  }
-
-  public get camera(): Camera | undefined {
-    return this._objRef?.camera;
-  }
-  @Input()
-  public set domElement(value: HTMLElement) {
-    if (this._objRef) {
-      this._objRef.domElement = value;
-    }
-  }
-
-  public get domElement(): HTMLElement | undefined {
-    return this._objRef?.domElement;
-  }
   @Input()
   public set isLocked(value: boolean) {
     if (this._objRef) {
