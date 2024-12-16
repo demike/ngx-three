@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -11,8 +12,8 @@ import {
   ExtrudeGeometry,
   ExtrudeGeometryOptions,
   NormalBufferAttributes,
-  Shape,
 } from 'three';
+import { Shape } from 'three/src/extras/core/Shape.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,13 +9,10 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  BufferGeometry,
-  Object3DEventMap,
-  Sprite,
-  SpriteMaterial,
-  Vector2,
-} from 'three';
+import { Sprite, Vector2 } from 'three';
+import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
+import { Object3DEventMap } from 'three/src/core/Object3D.js';
+import { SpriteMaterial } from 'three/src/materials/Materials.js';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 

@@ -51,7 +51,7 @@ export class NgxThreePass extends NgxThreeClass {
     return 'ThPassBase';
   }
 
-  protected generateSetterInput(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
+  protected generateSetterInput(memberName: string, member: ts.PropertyDeclaration, memberTypeName?: string) {
     if (memberName === 'uniforms') {
       return `
         @Input()
@@ -62,10 +62,10 @@ export class NgxThreePass extends NgxThreeClass {
         }
       `;
     }
-    return super.generateSetterInput(memberName, member, memberType);
+    return super.generateSetterInput(memberName, member, memberTypeName);
   }
 
-  public generateGetter(memberName: string, member: ts.PropertyDeclaration, memberType: ts.Type) {
+  public generateGetter(memberName: string, member: ts.PropertyDeclaration) {
     if (memberName === 'uniforms') {
       return `
       public get uniforms(): { [name: string]: { value: any } } | undefined {
@@ -73,6 +73,6 @@ export class NgxThreePass extends NgxThreeClass {
       }`;
     }
 
-    return super.generateGetter(memberName, member, memberType);
+    return super.generateGetter(memberName, member);
   }
 }

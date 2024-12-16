@@ -53,7 +53,7 @@ export class NgxThreeControl extends NgxThreeClass {
   }
 
   protected generateClassHeader() {
-    // TransformControl is derived from object3d but we need the ThControlBase wrapper
-    return super.generateClassHeader().replace('extends ThObject3D<Event,T,TARGS>', 'extends ThControlBase<T,TARGS>');
+    // TransformControl is derived from Control but we need the ThControlBase wrapper
+    return super.generateClassHeader().replace('extends ThControls<', 'extends ThControlBase<');
   }
 }

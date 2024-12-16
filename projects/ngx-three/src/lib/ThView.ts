@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   ContentChild,
   ElementRef,
@@ -28,6 +29,7 @@ export const HOST_ELEMENT = new InjectionToken<ElementRef<HTMLElement>>('HOST_EL
     { provide: RAYCASTER, useValue: new Raycaster() },
     RaycasterService,
   ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThView implements OnInit {
@@ -45,6 +47,22 @@ export class ThView implements OnInit {
 
   @Input()
   public scene?: ThScene;
+
+  /**
+   * Emits before the render loop starts for this view (before effectComposer or main render pass, but after setting up the viewPort on the renderer).
+   * It emits for every renderer.
+   * It can be used to modify the scene, camera or renderer before rendering
+   * and to do additional render passes
+   *
+   * @Note onRender is called before this event (and only once for all renderers)
+   */
+  @Output()
+  onCurrentRendererPass = new EventEmitter<{
+    renderer: Renderer;
+    scene: ThScene;
+    camera: ThCamera;
+    engine: ThEngineService;
+  }>();
 
   @ContentChild(ThScene)
   public set contentScene(scene: ThScene | undefined) {

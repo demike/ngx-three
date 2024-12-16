@@ -5,7 +5,7 @@ import { ASSET_PATH } from '../assets';
   selector: 'app-on-demand-example',
   templateUrl: './on-demand-example.component.html',
   styleUrls: ['./on-demand-example.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OnDemandExampleComponent {
   protected controlType = 'orbit';

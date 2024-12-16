@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,11 +9,12 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
+import { DataArrayTexture } from 'three';
 import {
-  DataArrayTexture,
   MagnificationTextureFilter,
   MinificationTextureFilter,
-} from 'three';
+} from 'three/src/constants.js';
+import { Texture3DImageData } from 'three/src/textures/Data3DTexture.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
@@ -43,6 +45,16 @@ export class ThDataArrayTexture<
   public get isDataArrayTexture(): true | undefined {
     return this._objRef?.isDataArrayTexture;
   }
+  public get image(): Texture3DImageData | undefined {
+    return this._objRef?.image;
+  }
+  @Input()
+  public set image(value: Texture3DImageData) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
   @Input()
   public set magFilter(value: MagnificationTextureFilter) {
     if (this._objRef) {
@@ -74,16 +86,6 @@ export class ThDataArrayTexture<
     return this._objRef?.wrapR;
   }
   @Input()
-  public set flipY(value: boolean) {
-    if (this._objRef) {
-      this._objRef.flipY = value;
-    }
-  }
-
-  public get flipY(): boolean | undefined {
-    return this._objRef?.flipY;
-  }
-  @Input()
   public set generateMipmaps(value: boolean) {
     if (this._objRef) {
       this._objRef.generateMipmaps = value;
@@ -94,6 +96,16 @@ export class ThDataArrayTexture<
     return this._objRef?.generateMipmaps;
   }
   @Input()
+  public set flipY(value: boolean) {
+    if (this._objRef) {
+      this._objRef.flipY = value;
+    }
+  }
+
+  public get flipY(): boolean | undefined {
+    return this._objRef?.flipY;
+  }
+  @Input()
   public set unpackAlignment(value: number) {
     if (this._objRef) {
       this._objRef.unpackAlignment = value;
@@ -102,5 +114,15 @@ export class ThDataArrayTexture<
 
   public get unpackAlignment(): number | undefined {
     return this._objRef?.unpackAlignment;
+  }
+  @Input()
+  public set layerUpdates(value: Set<number>) {
+    if (this._objRef) {
+      this._objRef.layerUpdates = value;
+    }
+  }
+
+  public get layerUpdates(): Set<number> | undefined {
+    return this._objRef?.layerUpdates;
   }
 }

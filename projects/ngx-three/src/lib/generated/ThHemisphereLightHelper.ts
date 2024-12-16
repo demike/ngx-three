@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,14 +9,10 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  ColorRepresentation,
-  HemisphereLight,
-  HemisphereLightHelper,
-  Matrix4,
-  MeshBasicMaterial,
-  Object3DEventMap,
-} from 'three';
+import { HemisphereLightHelper, Matrix4, Object3DEventMap } from 'three';
+import { HemisphereLight } from 'three/src/lights/HemisphereLight.js';
+import { MeshBasicMaterial } from 'three/src/materials/MeshBasicMaterial.js';
+import { ColorRepresentation } from 'three/src/math/Color.js';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -11,15 +12,16 @@ import {
 import {
   Color,
   ColorRepresentation,
-  CubeTexture,
   Euler,
   EulerOrder,
-  FogBase,
-  Material,
   Object3DEventMap,
   Scene,
-  Texture,
 } from 'three';
+import { Material } from 'three/src/materials/Material.js';
+import { Fog } from 'three/src/scenes/Fog.js';
+import { FogExp2 } from 'three/src/scenes/FogExp2.js';
+import { CubeTexture } from 'three/src/textures/CubeTexture.js';
+import { Texture } from 'three/src/textures/Texture.js';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
@@ -52,13 +54,13 @@ export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
     return this._objRef?.type;
   }
   @Input()
-  public set fog(value: FogBase | null) {
+  public set fog(value: Fog | FogExp2 | null) {
     if (this._objRef) {
       this._objRef.fog = value;
     }
   }
 
-  public get fog(): (FogBase | null) | undefined {
+  public get fog(): (Fog | FogExp2 | null) | undefined {
     return this._objRef?.fog;
   }
   @Input()

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,14 +9,10 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  ColorRepresentation,
-  DirectionalLight,
-  DirectionalLightHelper,
-  Line,
-  Matrix4,
-  Object3DEventMap,
-} from 'three';
+import { DirectionalLightHelper, Matrix4, Object3DEventMap } from 'three';
+import { DirectionalLight } from 'three/src/lights/DirectionalLight.js';
+import { ColorRepresentation } from 'three/src/math/Color.js';
+import { Line } from 'three/src/objects/Line.js';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 

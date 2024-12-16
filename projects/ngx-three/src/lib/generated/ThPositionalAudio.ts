@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,7 +9,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { AudioListener, PositionalAudio } from 'three';
+import { PositionalAudio } from 'three';
+import { AudioListener } from 'three/src/audio/AudioListener.js';
 import { ThAudio } from './ThAudio';
 import { ThObject3D } from './ThObject3D';
 

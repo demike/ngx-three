@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,7 +9,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { ArrayCamera, PerspectiveCamera } from 'three';
+import { ArrayCamera } from 'three';
+import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js';
 import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
 import { ThPerspectiveCamera } from './ThPerspectiveCamera';

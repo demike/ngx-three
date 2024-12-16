@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,20 +9,18 @@ import {
   SkipSelf,
   Type,
 } from '@angular/core';
+import { Color, ColorRepresentation, Material } from 'three';
 import {
   Blending,
   BlendingDstFactor,
   BlendingEquation,
   BlendingSrcFactor,
-  Color,
-  ColorRepresentation,
   DepthModes,
-  Material,
-  Plane,
   Side,
   StencilFunc,
   StencilOp,
-} from 'three';
+} from 'three/src/constants.js';
+import { Plane } from 'three/src/math/Plane.js';
 import { ThMaterialBase } from '../ThMaterialBase';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -42,6 +41,16 @@ export class ThMaterial<
 
   public get isMaterial(): true | undefined {
     return this._objRef?.isMaterial;
+  }
+  @Input()
+  public set type(value: string) {
+    if (this._objRef) {
+      this._objRef.type = value;
+    }
+  }
+
+  public get type(): string | undefined {
+    return this._objRef?.type;
   }
   @Input()
   public set alphaHash(value: boolean) {
@@ -464,16 +473,6 @@ export class ThMaterial<
     return this._objRef?.transparent;
   }
   @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
-  }
-  @Input()
   public set uuid(value: string) {
     if (this._objRef) {
       this._objRef.uuid = value;
@@ -522,6 +521,22 @@ export class ThMaterial<
 
   public get version(): number | undefined {
     return this._objRef?.version;
+  }
+  public get alphaTest(): number | undefined {
+    return this._objRef?.alphaTest;
+  }
+  @Input()
+  public set alphaTest(value: number) {
+    if (this._objRef) {
+      this._objRef.alphaTest = value;
+    }
+  }
+
+  @Input()
+  public set needsUpdate(value: boolean) {
+    if (this._objRef) {
+      this._objRef.needsUpdate = value;
+    }
   }
 
   constructor(@SkipSelf() hostObject: ThObject3D) {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,12 +9,12 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
+import { Data3DTexture, Texture3DImageData } from 'three';
 import {
-  Data3DTexture,
   MagnificationTextureFilter,
   MinificationTextureFilter,
   Wrapping,
-} from 'three';
+} from 'three/src/constants.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
@@ -41,6 +42,16 @@ export class ThData3DTexture<
   public get isData3DTexture(): true | undefined {
     return this._objRef?.isData3DTexture;
   }
+  public get image(): Texture3DImageData | undefined {
+    return this._objRef?.image;
+  }
+  @Input()
+  public set image(value: Texture3DImageData) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
   @Input()
   public set magFilter(value: MagnificationTextureFilter) {
     if (this._objRef) {

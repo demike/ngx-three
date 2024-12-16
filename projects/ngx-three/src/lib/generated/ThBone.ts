@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -7,7 +8,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Bone, Object3DEventMap } from 'three';
+import { Bone } from 'three';
+import { Object3DEventMap } from 'three/src/core/Object3D.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({

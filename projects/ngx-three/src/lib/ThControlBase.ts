@@ -1,6 +1,6 @@
-import { Component, inject, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { EventDispatcher } from 'three';
+import { Controls, EventDispatcher, Object3D } from 'three';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThAnimationLoopService } from './renderer/th-animation-loop.service';
 import { ThCanvas } from './ThCanvas';
@@ -8,12 +8,52 @@ import { ThWrapperBase } from './ThWrapperBase';
 @Component({
   selector: 'th-abs-control',
   template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
-export class ThControlBase<T, ARGS> extends ThWrapperBase<T, ARGS> implements OnDestroy {
+export class ThControlBase<
+    TEventMap extends object = object,
+    T extends Controls<TEventMap> = Controls<TEventMap>,
+    TARGS = [],
+  >
+  extends ThWrapperBase<T, TARGS>
+  implements OnDestroy
+{
   protected origDispatchEventMethod?: EventDispatcher['dispatchEvent'];
   protected beforeRenderSubscription?: Subscription;
   protected renderLoop = inject(ThAnimationLoopService);
+
+  @Input()
+  public set domElement(value: HTMLElement) {
+    if (this._objRef) {
+      this._objRef.domElement = value;
+    }
+  }
+
+  public get domElement(): HTMLElement | null | undefined {
+    return this._objRef?.domElement;
+  }
+
+  @Input()
+  public set object(value: Object3D) {
+    if (this._objRef) {
+      this._objRef.object = value;
+    }
+  }
+
+  public get object(): Object3D | undefined {
+    return this._objRef?.object;
+  }
+  @Input()
+  public set enabled(value: boolean) {
+    if (this._objRef) {
+      this._objRef.enabled = value;
+    }
+  }
+
+  public get enabled(): boolean | undefined {
+    return this._objRef?.enabled;
+  }
 
   constructor(
     protected _camera: ThObject3D<any>,

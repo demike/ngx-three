@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,16 +9,15 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
+import { DataTexture, TextureImageData } from 'three';
 import {
-  ColorSpace,
-  DataTexture,
   MagnificationTextureFilter,
   Mapping,
   MinificationTextureFilter,
   PixelFormat,
   TextureDataType,
   Wrapping,
-} from 'three';
+} from 'three/src/constants.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
@@ -43,7 +43,7 @@ export class ThDataTexture<
     magFilter?: MagnificationTextureFilter,
     minFilter?: MinificationTextureFilter,
     anisotropy?: number,
-    colorSpace?: ColorSpace,
+    colorSpace?: string,
   ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<DataTexture> {
@@ -53,6 +53,16 @@ export class ThDataTexture<
   public get isDataTexture(): true | undefined {
     return this._objRef?.isDataTexture;
   }
+  public get image(): TextureImageData | undefined {
+    return this._objRef?.image;
+  }
+  @Input()
+  public set image(value: TextureImageData) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
   @Input()
   public set magFilter(value: MagnificationTextureFilter) {
     if (this._objRef) {

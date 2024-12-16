@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,8 +9,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
+import { DepthTexture } from 'three';
 import {
-  DepthTexture,
   DepthTexturePixelFormat,
   MagnificationTextureFilter,
   Mapping,
@@ -17,7 +18,7 @@ import {
   TextureComparisonFunction,
   TextureDataType,
   Wrapping,
-} from 'three';
+} from 'three/src/constants.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
@@ -51,6 +52,16 @@ export class ThDepthTexture<
   public get isDepthTexture(): true | undefined {
     return this._objRef?.isDepthTexture;
   }
+  public get image(): { width: number; height: number } | undefined {
+    return this._objRef?.image;
+  }
+  @Input()
+  public set image(value: { width: number; height: number }) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
   @Input()
   public set flipY(value: boolean) {
     if (this._objRef) {

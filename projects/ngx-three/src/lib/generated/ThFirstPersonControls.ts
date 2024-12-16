@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -26,41 +27,11 @@ import { ThControlBase } from '../ThControlBase';
 export class ThFirstPersonControls<
   T extends FirstPersonControls = FirstPersonControls,
   TARGS = [object: Camera, domElement?: HTMLElement],
-> extends ThControlBase<T, TARGS> {
+> extends ThControlBase<{}, T, TARGS> {
   public getType(): Type<FirstPersonControls> {
     return FirstPersonControls;
   }
 
-  @Input()
-  public set object(value: Camera) {
-    if (this._objRef) {
-      this._objRef.object = value;
-    }
-  }
-
-  public get object(): Camera | undefined {
-    return this._objRef?.object;
-  }
-  @Input()
-  public set domElement(value: HTMLElement | Document) {
-    if (this._objRef) {
-      this._objRef.domElement = value;
-    }
-  }
-
-  public get domElement(): (HTMLElement | Document) | undefined {
-    return this._objRef?.domElement;
-  }
-  @Input()
-  public set enabled(value: boolean) {
-    if (this._objRef) {
-      this._objRef.enabled = value;
-    }
-  }
-
-  public get enabled(): boolean | undefined {
-    return this._objRef?.enabled;
-  }
   @Input()
   public set movementSpeed(value: number) {
     if (this._objRef) {

@@ -37,7 +37,10 @@
             // "varsIgnorePattern": "^_",
             // "caughtErrorsIgnorePattern": "^_"
           }
-        ]
+        ],
+        "@angular-eslint/prefer-on-push-component-change-detection": [
+      "error"
+    ]
       }
     },
     {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,12 +9,13 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
+import { CompressedArrayTexture } from 'three';
 import {
-  CompressedArrayTexture,
   CompressedPixelFormat,
   TextureDataType,
   Wrapping,
-} from 'three';
+} from 'three/src/constants.js';
+import { CompressedTextureMipmap } from 'three/src/textures/CompressedTexture.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThCompressedTexture } from './ThCompressedTexture';
 
@@ -31,7 +33,7 @@ import { ThCompressedTexture } from './ThCompressedTexture';
 export class ThCompressedArrayTexture<
   T extends CompressedArrayTexture = CompressedArrayTexture,
   TARGS = [
-    mipmaps: ImageData[],
+    mipmaps: CompressedTextureMipmap[],
     width: number,
     height: number,
     depth: number,
@@ -46,6 +48,18 @@ export class ThCompressedArrayTexture<
   public get isCompressedArrayTexture(): true | undefined {
     return this._objRef?.isCompressedArrayTexture;
   }
+  public get image():
+    | { width: number; height: number; depth: number }
+    | undefined {
+    return this._objRef?.image;
+  }
+  @Input()
+  public set image(value: { width: number; height: number; depth: number }) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
   @Input()
   public set wrapR(value: Wrapping) {
     if (this._objRef) {
@@ -55,5 +69,15 @@ export class ThCompressedArrayTexture<
 
   public get wrapR(): Wrapping | undefined {
     return this._objRef?.wrapR;
+  }
+  @Input()
+  public set layerUpdates(value: Set<number>) {
+    if (this._objRef) {
+      this._objRef.layerUpdates = value;
+    }
+  }
+
+  public get layerUpdates(): Set<number> | undefined {
+    return this._objRef?.layerUpdates;
   }
 }

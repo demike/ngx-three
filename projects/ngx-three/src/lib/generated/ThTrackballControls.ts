@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,8 +9,12 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera, MOUSE, Vector3 } from 'three';
-import { TrackballControls } from 'three/examples/jsm/controls/TrackballControls.js';
+import { MOUSE, Vector3 } from 'three';
+import {
+  TrackballControls,
+  TrackballControlsEventMap,
+} from 'three/examples/jsm/controls/TrackballControls.js';
+import { Camera } from 'three/src/cameras/Camera.js';
 import { ThControlBase } from '../ThControlBase';
 import { applyValue } from '../util';
 
@@ -26,42 +31,12 @@ import { applyValue } from '../util';
 })
 export class ThTrackballControls<
   T extends TrackballControls = TrackballControls,
-  TARGS = [object: Camera, domElement?: HTMLElement],
-> extends ThControlBase<T, TARGS> {
+  TARGS = [camera: Camera, domElement?: HTMLElement | null],
+> extends ThControlBase<TrackballControlsEventMap, T, TARGS> {
   public getType(): Type<TrackballControls> {
     return TrackballControls;
   }
 
-  @Input()
-  public set object(value: Camera) {
-    if (this._objRef) {
-      this._objRef.object = value;
-    }
-  }
-
-  public get object(): Camera | undefined {
-    return this._objRef?.object;
-  }
-  @Input()
-  public set domElement(value: HTMLElement) {
-    if (this._objRef) {
-      this._objRef.domElement = value;
-    }
-  }
-
-  public get domElement(): HTMLElement | undefined {
-    return this._objRef?.domElement;
-  }
-  @Input()
-  public set enabled(value: boolean) {
-    if (this._objRef) {
-      this._objRef.enabled = value;
-    }
-  }
-
-  public get enabled(): boolean | undefined {
-    return this._objRef?.enabled;
-  }
   @Input()
   public set screen(value: {
     left: number;
@@ -140,16 +115,6 @@ export class ThTrackballControls<
     return this._objRef?.noPan;
   }
   @Input()
-  public set noRoll(value: boolean) {
-    if (this._objRef) {
-      this._objRef.noRoll = value;
-    }
-  }
-
-  public get noRoll(): boolean | undefined {
-    return this._objRef?.noRoll;
-  }
-  @Input()
   public set staticMoving(value: boolean) {
     if (this._objRef) {
       this._objRef.staticMoving = value;
@@ -210,13 +175,13 @@ export class ThTrackballControls<
     return this._objRef?.maxZoom;
   }
   @Input()
-  public set keys(value: string[]) {
+  public set keys(value: [string, string, string]) {
     if (this._objRef) {
       this._objRef.keys = value;
     }
   }
 
-  public get keys(): string[] | undefined {
+  public get keys(): [string, string, string] | undefined {
     return this._objRef?.keys;
   }
   @Input()
@@ -247,35 +212,5 @@ export class ThTrackballControls<
   }
   public get target(): Vector3 | undefined {
     return this._objRef?.target;
-  }
-  @Input()
-  public set position0(value: Vector3 | [x: number, y: number, z: number]) {
-    if (this._objRef) {
-      this._objRef.position0 = applyValue<Vector3>(
-        this._objRef.position0,
-        value,
-      );
-    }
-  }
-  public get position0(): Vector3 | undefined {
-    return this._objRef?.position0;
-  }
-  @Input()
-  public set target0(value: Vector3 | [x: number, y: number, z: number]) {
-    if (this._objRef) {
-      this._objRef.target0 = applyValue<Vector3>(this._objRef.target0, value);
-    }
-  }
-  public get target0(): Vector3 | undefined {
-    return this._objRef?.target0;
-  }
-  @Input()
-  public set up0(value: Vector3 | [x: number, y: number, z: number]) {
-    if (this._objRef) {
-      this._objRef.up0 = applyValue<Vector3>(this._objRef.up0, value);
-    }
-  }
-  public get up0(): Vector3 | undefined {
-    return this._objRef?.up0;
   }
 }

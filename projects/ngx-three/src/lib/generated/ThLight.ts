@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -7,13 +8,8 @@ import {
   Input,
   forwardRef,
 } from '@angular/core';
-import {
-  Color,
-  ColorRepresentation,
-  Light,
-  LightShadow,
-  Object3DEventMap,
-} from 'three';
+import { Color, ColorRepresentation, Light, Object3DEventMap } from 'three';
+import { LightShadow } from 'three/src/lights/LightShadow.js';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 

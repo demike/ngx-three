@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -9,15 +10,15 @@ import {
   forwardRef,
 } from '@angular/core';
 import {
-  Bone,
   BufferGeometry,
   Material,
   Matrix4,
-  Object3D,
   Object3DEventMap,
   SkeletonHelper,
-  SkinnedMesh,
 } from 'three';
+import { Object3D } from 'three/src/core/Object3D.js';
+import { Bone } from 'three/src/objects/Bone.js';
+import { SkinnedMesh } from 'three/src/objects/SkinnedMesh.js';
 import { applyValue } from '../util';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';

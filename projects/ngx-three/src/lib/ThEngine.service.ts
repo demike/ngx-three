@@ -5,7 +5,7 @@ import { HOST_ELEMENT, ThView } from './ThView';
 import { isObserved } from './util';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { RENDERER_PROVIDERS } from './renderer/renderer-providers';
-import WebGPURenderer from 'three/examples/jsm/renderers/webgpu/WebGPURenderer';
+import { WebGPURenderer } from 'three/webgpu';
 
 export interface RenderState {
   engine: ThEngineService;
@@ -138,7 +138,9 @@ export class ThEngineService implements OnDestroy {
         continue;
       }
       this.applyRendererParametersFromView(view, renderer);
-      // TODO emit view.beforeRender$ with engine, current renderer, scene, camera
+      if (isObserved(view.onCurrentRendererPass)) {
+        this.ngZone.run(() => view.onCurrentRendererPass.emit({ renderer, scene, camera, engine: this }));
+      }
       if (view.effectComposer) {
         view.effectComposer.render();
         return;

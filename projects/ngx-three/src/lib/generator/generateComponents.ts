@@ -1,6 +1,7 @@
 import { existsSync, readFileSync, promises } from 'fs';
-import { join } from 'path';
+import { join, normalize } from 'path';
 import * as ts from 'typescript';
+
 import { NgxThreeClass } from './NgxThreeClass';
 import { NgxThreeModuleGen } from './NgxThreeModuleGen';
 import * as prettier from 'prettier';
@@ -13,27 +14,31 @@ import { NgxThreeControl } from './NgxThreeControl';
 import { NgxThreeBarrelGen } from './NgxThreeBarrelGen';
 import { NgxThreePass } from './NgxThreePass';
 import { NgxThreeTexture } from './NgxThreeTexture';
+import { ESLint } from 'eslint';
 
 class NgxThreeClassGenerator {
-  public readonly baseOutPath = join(__dirname, '../generated/');
+  public readonly baseOutPath = normalize(join(__dirname, '../generated/'));
   public readonly ngxThreeClassMap = new Map<string, NgxThreeClass>();
   private typeChecker?: ts.TypeChecker;
+
+  public readonly importOrganizer = new ImportOrganizer(this.baseOutPath);
 
   constructor() {}
 
   async execute() {
     await Promise.allSettled([
-      generator.generateControls(),
-      generator.generateObjects(),
-      generator.generateMaterials(),
-      generator.generateGeometries(),
-      generator.generatePasses(),
-      generator.generateTextures(),
+      this.generateControls(),
+      this.generateObjects(),
+      this.generateMaterials(),
+      this.generateGeometries(),
+      this.generatePasses(),
+      this.generateTextures(),
     ]);
 
     return Promise.allSettled([
-      generator.generateNgxModule(Array.from(generator.ngxThreeClassMap.values())),
-      generator.generateNgxBarrelFile(Array.from(generator.ngxThreeClassMap.values())),
+      this.generateNgxModule(Array.from(this.ngxThreeClassMap.values())),
+      this.generateNgxBarrelFile(Array.from(this.ngxThreeClassMap.values())),
+      // this.fixLint(),
     ]);
   }
 
@@ -101,11 +106,24 @@ class NgxThreeClassGenerator {
     return this.writeFile('index', ngxBarrel.content);
   }
 
+  public async fixLint() {
+    const eslint = new ESLint({ fix: true, useEslintrc: true });
+    const results = await eslint.lintFiles(this.baseOutPath);
+
+    // Apply automatic fixes and output fixed code
+    await ESLint.outputFixes(results);
+    console.log(results);
+  }
+
   private async writeFile(fileName: string, content: string) {
+    const filePath = normalize(this.baseOutPath + fileName + '.ts');
     try {
-      const organizer = new ImportOrganizer();
-      content = organizer.organizeImports(this.baseOutPath + fileName + '.ts', content);
-      content = await prettier.format(content, {
+      this.importOrganizer.addFile(filePath, content);
+
+      this.importOrganizer.organizeImports(filePath);
+      // this.importOrganizer.addMissingImports(filePath);
+
+      content = await prettier.format(this.importOrganizer.getFile(filePath), {
         parser: 'babel-ts',
         singleQuote: true,
       });
@@ -113,7 +131,7 @@ class NgxThreeClassGenerator {
       console.log(`error creating file: ${fileName}`, e);
     }
 
-    return promises.writeFile(join(this.baseOutPath, fileName + '.ts'), content);
+    return promises.writeFile(filePath, content);
   }
 
   private doesFileExist(fileName: string): boolean {

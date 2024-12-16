@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -12,12 +13,14 @@ import {
   Box3,
   BufferAttribute,
   BufferGeometry,
-  InterleavedBufferAttribute,
+  GeometryGroup,
   NormalBufferAttributes,
   NormalOrGLBufferAttributes,
-  Sphere,
-  Vector3,
 } from 'three';
+import { InterleavedBufferAttribute } from 'three/src/core/InterleavedBufferAttribute.js';
+import { Sphere } from 'three/src/math/Sphere.js';
+import { Vector3 } from 'three/src/math/Vector3.js';
+import IndirectStorageBufferAttribute from 'three/src/renderers/common/IndirectStorageBufferAttribute.js';
 import { ThGeometryBase } from '../ThGeometryBase';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -88,6 +91,23 @@ export class ThBufferGeometry<
     return this._objRef?.index;
   }
   @Input()
+  public set indirect(
+    value:
+      | IndirectStorageBufferAttribute
+      | null
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
+  ) {
+    if (this._objRef) {
+      this._objRef.indirect = applyValue<IndirectStorageBufferAttribute | null>(
+        this._objRef.indirect,
+        value,
+      );
+    }
+  }
+  public get indirect(): (IndirectStorageBufferAttribute | null) | undefined {
+    return this._objRef?.indirect;
+  }
+  @Input()
   public set attributes(value: Attributes) {
     if (this._objRef) {
       this._objRef.attributes = value;
@@ -124,49 +144,13 @@ export class ThBufferGeometry<
     return this._objRef?.morphTargetsRelative;
   }
   @Input()
-  public set groups(
-    value: Array<{
-      /**
-       * Specifies the first element in this draw call – the first vertex for non-indexed geometry, otherwise the first triangle index.
-       * @remarks Expects a `Integer`
-       */
-      start: number;
-      /**
-       * Specifies how many vertices (or indices) are included.
-       * @remarks Expects a `Integer`
-       */
-      count: number;
-      /**
-       * Specifies the material array index to use.
-       * @remarks Expects a `Integer`
-       */
-      materialIndex?: number | undefined;
-    }>,
-  ) {
+  public set groups(value: GeometryGroup[]) {
     if (this._objRef) {
       this._objRef.groups = value;
     }
   }
 
-  public get groups():
-    | Array<{
-        /**
-         * Specifies the first element in this draw call – the first vertex for non-indexed geometry, otherwise the first triangle index.
-         * @remarks Expects a `Integer`
-         */
-        start: number;
-        /**
-         * Specifies how many vertices (or indices) are included.
-         * @remarks Expects a `Integer`
-         */
-        count: number;
-        /**
-         * Specifies the material array index to use.
-         * @remarks Expects a `Integer`
-         */
-        materialIndex?: number | undefined;
-      }>
-    | undefined {
+  public get groups(): GeometryGroup[] | undefined {
     return this._objRef?.groups;
   }
   @Input()

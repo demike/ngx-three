@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,8 +9,12 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera, MOUSE, Object3D } from 'three';
-import { TransformControls } from 'three/examples/jsm/controls/TransformControls.js';
+import { Camera } from 'three';
+import {
+  TransformControls,
+  TransformControlsEventMap,
+  TransformControlsMode,
+} from 'three/examples/jsm/controls/TransformControls.js';
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
@@ -25,22 +30,12 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThTransformControlsGen<
   T extends TransformControls = TransformControls,
-  TARGS = [object: Camera, domElement?: HTMLElement],
-> extends ThControlBase<T, TARGS> {
+  TARGS = [camera: Camera, domElement?: HTMLElement],
+> extends ThControlBase<TransformControlsEventMap, T, TARGS> {
   public getType(): Type<TransformControls> {
     return TransformControls;
   }
 
-  @Input()
-  public set domElement(value: HTMLElement) {
-    if (this._objRef) {
-      this._objRef.domElement = value;
-    }
-  }
-
-  public get domElement(): HTMLElement | undefined {
-    return this._objRef?.domElement;
-  }
   @Input()
   public set camera(value: Camera) {
     if (this._objRef) {
@@ -50,26 +45,6 @@ export class ThTransformControlsGen<
 
   public get camera(): Camera | undefined {
     return this._objRef?.camera;
-  }
-  @Input()
-  public set object(value: Object3D | undefined) {
-    if (this._objRef) {
-      this._objRef.object = value;
-    }
-  }
-
-  public get object(): (Object3D | undefined) | undefined {
-    return this._objRef?.object;
-  }
-  @Input()
-  public set enabled(value: boolean) {
-    if (this._objRef) {
-      this._objRef.enabled = value;
-    }
-  }
-
-  public get enabled(): boolean | undefined {
-    return this._objRef?.enabled;
   }
   @Input()
   public set axis(
@@ -86,13 +61,13 @@ export class ThTransformControlsGen<
     return this._objRef?.axis;
   }
   @Input()
-  public set mode(value: 'translate' | 'rotate' | 'scale') {
+  public set mode(value: TransformControlsMode) {
     if (this._objRef) {
       this._objRef.mode = value;
     }
   }
 
-  public get mode(): ('translate' | 'rotate' | 'scale') | undefined {
+  public get mode(): TransformControlsMode | undefined {
     return this._objRef?.mode;
   }
   @Input()
@@ -114,6 +89,16 @@ export class ThTransformControlsGen<
 
   public get rotationSnap(): (number | null) | undefined {
     return this._objRef?.rotationSnap;
+  }
+  @Input()
+  public set scaleSnap(value: number | null) {
+    if (this._objRef) {
+      this._objRef.scaleSnap = value;
+    }
+  }
+
+  public get scaleSnap(): (number | null) | undefined {
+    return this._objRef?.scaleSnap;
   }
   @Input()
   public set space(value: 'world' | 'local') {
@@ -175,27 +160,64 @@ export class ThTransformControlsGen<
   public get showZ(): boolean | undefined {
     return this._objRef?.showZ;
   }
-  public get isTransformControls(): true | undefined {
-    return this._objRef?.isTransformControls;
-  }
   @Input()
-  public set mouseButtons(value: {
-    LEFT?: MOUSE | null | undefined;
-    MIDDLE?: MOUSE | null | undefined;
-    RIGHT?: MOUSE | null | undefined;
-  }) {
+  public set minx(value: number) {
     if (this._objRef) {
-      this._objRef.mouseButtons = value;
+      this._objRef.minx = value;
     }
   }
 
-  public get mouseButtons():
-    | {
-        LEFT?: MOUSE | null | undefined;
-        MIDDLE?: MOUSE | null | undefined;
-        RIGHT?: MOUSE | null | undefined;
-      }
-    | undefined {
-    return this._objRef?.mouseButtons;
+  public get minx(): number | undefined {
+    return this._objRef?.minx;
+  }
+  @Input()
+  public set maxX(value: number) {
+    if (this._objRef) {
+      this._objRef.maxX = value;
+    }
+  }
+
+  public get maxX(): number | undefined {
+    return this._objRef?.maxX;
+  }
+  @Input()
+  public set minY(value: number) {
+    if (this._objRef) {
+      this._objRef.minY = value;
+    }
+  }
+
+  public get minY(): number | undefined {
+    return this._objRef?.minY;
+  }
+  @Input()
+  public set maxY(value: number) {
+    if (this._objRef) {
+      this._objRef.maxY = value;
+    }
+  }
+
+  public get maxY(): number | undefined {
+    return this._objRef?.maxY;
+  }
+  @Input()
+  public set minZ(value: number) {
+    if (this._objRef) {
+      this._objRef.minZ = value;
+    }
+  }
+
+  public get minZ(): number | undefined {
+    return this._objRef?.minZ;
+  }
+  @Input()
+  public set maxZ(value: number) {
+    if (this._objRef) {
+      this._objRef.maxZ = value;
+    }
+  }
+
+  public get maxZ(): number | undefined {
+    return this._objRef?.maxZ;
   }
 }

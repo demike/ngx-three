@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,14 +9,11 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  ArrowHelper,
-  ColorRepresentation,
-  Line,
-  Mesh,
-  Object3DEventMap,
-  Vector3,
-} from 'three';
+import { ArrowHelper, Object3DEventMap } from 'three';
+import { ColorRepresentation } from 'three/src/math/Color.js';
+import { Vector3 } from 'three/src/math/Vector3.js';
+import { Line } from 'three/src/objects/Line.js';
+import { Mesh } from 'three/src/objects/Mesh.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({

@@ -1,4 +1,5 @@
 import {
+  ChangeDetectionStrategy,
   Component,
   EventEmitter,
   Input,
@@ -18,11 +19,13 @@ import { isDisposable } from './util';
 export interface ThWrapperEventMap<T = Object3D> extends Object3DEventMap {
   changes: { changes: SimpleChanges };
   loaded: { object: T };
+  removed: { object: T };
 }
 
 @Component({
   selector: 'th-abs-wrapper',
   template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnChanges, OnInit, OnDestroy {
@@ -149,6 +152,7 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
     if (this.autoDispose) {
       this.disposeObjRef();
     }
+    this.emitRemoveEvent();
   }
 
   protected applyObjRef(objRef: T | undefined) {
@@ -168,6 +172,20 @@ export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnC
     if (this._objRef && !isLazyObject3dProxy(this._objRef as any)) {
       (this._objRef as unknown as Object3D<ThWrapperEventMap<T>>).dispatchEvent?.({
         type: 'loaded',
+        object: this._objRef,
+      });
+      if (this._objRef$) {
+        this._objRef$.next(this._objRef);
+      }
+    }
+  }
+
+  protected emitRemoveEvent() {
+    // only emit change if _objRef is no proxy,
+    // and trigger emit over objRef event emitter
+    if (this._objRef && !isLazyObject3dProxy(this._objRef as any)) {
+      (this._objRef as unknown as Object3D<ThWrapperEventMap<T>>).dispatchEvent?.({
+        type: 'removed',
         object: this._objRef,
       });
       if (this._objRef$) {

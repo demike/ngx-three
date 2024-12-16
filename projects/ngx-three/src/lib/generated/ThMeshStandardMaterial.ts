@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -15,10 +16,10 @@ import {
   EulerOrder,
   MeshStandardMaterial,
   MeshStandardMaterialParameters,
-  NormalMapTypes,
-  Texture,
   Vector2,
 } from 'three';
+import { NormalMapTypes } from 'three/src/constants.js';
+import { Texture } from 'three/src/textures/Texture.js';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
@@ -43,16 +44,6 @@ export class ThMeshStandardMaterial<
 
   public get isMeshStandardMaterial(): true | undefined {
     return this._objRef?.isMeshStandardMaterial;
-  }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
   }
   @Input()
   public set defines(value: { [key: string]: any }) {

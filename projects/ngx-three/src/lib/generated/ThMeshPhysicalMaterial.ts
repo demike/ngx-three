@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -13,9 +14,9 @@ import {
   ColorRepresentation,
   MeshPhysicalMaterial,
   MeshPhysicalMaterialParameters,
-  Texture,
   Vector2,
 } from 'three';
+import { Texture } from 'three/src/textures/Texture.js';
 import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 import { ThMeshStandardMaterial } from './ThMeshStandardMaterial';
@@ -51,16 +52,6 @@ export class ThMeshPhysicalMaterial<
 
   public get defines(): { [key: string]: any } | undefined {
     return this._objRef?.defines;
-  }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
   }
   @Input()
   public set anisotropyRotation(value: number) {
@@ -144,6 +135,16 @@ export class ThMeshPhysicalMaterial<
   public get ior(): number | undefined {
     return this._objRef?.ior;
   }
+  public get reflectivity(): number | undefined {
+    return this._objRef?.reflectivity;
+  }
+  @Input()
+  public set reflectivity(value: number) {
+    if (this._objRef) {
+      this._objRef.reflectivity = value;
+    }
+  }
+
   @Input()
   public set iridescenceMap(value: Texture | null) {
     if (this._objRef) {
@@ -343,5 +344,64 @@ export class ThMeshPhysicalMaterial<
 
   public get specularColorMap(): (Texture | null) | undefined {
     return this._objRef?.specularColorMap;
+  }
+  public get anisotropy(): number | undefined {
+    return this._objRef?.anisotropy;
+  }
+  @Input()
+  public set anisotropy(value: number) {
+    if (this._objRef) {
+      this._objRef.anisotropy = value;
+    }
+  }
+
+  public get clearcoat(): number | undefined {
+    return this._objRef?.clearcoat;
+  }
+  @Input()
+  public set clearcoat(value: number) {
+    if (this._objRef) {
+      this._objRef.clearcoat = value;
+    }
+  }
+
+  public get iridescence(): number | undefined {
+    return this._objRef?.iridescence;
+  }
+  @Input()
+  public set iridescence(value: number) {
+    if (this._objRef) {
+      this._objRef.iridescence = value;
+    }
+  }
+
+  public get dispersion(): number | undefined {
+    return this._objRef?.dispersion;
+  }
+  @Input()
+  public set dispersion(value: number) {
+    if (this._objRef) {
+      this._objRef.dispersion = value;
+    }
+  }
+
+  public get sheen(): number | undefined {
+    return this._objRef?.sheen;
+  }
+  @Input()
+  public set sheen(value: number) {
+    if (this._objRef) {
+      this._objRef.sheen = value;
+    }
+  }
+
+  public get transmission(): number | undefined {
+    return this._objRef?.transmission;
+  }
+  @Input()
+  public set transmission(value: number) {
+    if (this._objRef) {
+      this._objRef.transmission = value;
+    }
   }
 }

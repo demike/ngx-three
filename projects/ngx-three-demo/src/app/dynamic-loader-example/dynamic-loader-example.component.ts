@@ -5,7 +5,7 @@ import { ASSET_PATH } from '../assets';
 @Component({
   selector: 'app-dynamic-loader-example',
   templateUrl: './dynamic-loader-example.component.html',
-  changeDetection: ChangeDetectionStrategy.Default,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DynamicLoaderExampleComponent implements OnDestroy {
   public modelUrl: string;

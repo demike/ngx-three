@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,11 +9,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  MeshDistanceMaterial,
-  MeshDistanceMaterialParameters,
-  Texture,
-} from 'three';
+import { MeshDistanceMaterial, MeshDistanceMaterialParameters } from 'three';
+import { Texture } from 'three/src/textures/Texture.js';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
@@ -36,16 +34,6 @@ export class ThMeshDistanceMaterial<
 
   public get isMeshDistanceMaterial(): true | undefined {
     return this._objRef?.isMeshDistanceMaterial;
-  }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
   }
   @Input()
   public set map(value: Texture | null) {

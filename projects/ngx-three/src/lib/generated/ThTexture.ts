@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -8,23 +9,22 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
+import { Matrix3, OffscreenCanvas, Texture } from 'three';
 import {
   AnyMapping,
   AnyPixelFormat,
-  ColorSpace,
   MagnificationTextureFilter,
   Mapping,
-  Matrix3,
   MinificationTextureFilter,
-  OffscreenCanvas,
   PixelFormat,
   PixelFormatGPU,
-  Source,
-  Texture,
   TextureDataType,
-  Vector2,
   Wrapping,
-} from 'three';
+} from 'three/src/constants.js';
+import { Vector2 } from 'three/src/math/Vector2.js';
+import { CompressedTextureMipmap } from 'three/src/textures/CompressedTexture.js';
+import { CubeTexture } from 'three/src/textures/CubeTexture.js';
+import { Source } from 'three/src/textures/Source.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { applyValue } from '../util';
 
@@ -49,7 +49,7 @@ export class ThTexture<
         format?: PixelFormat,
         type?: TextureDataType,
         anisotropy?: number,
-        colorSpace?: ColorSpace,
+        colorSpace?: string,
       ]
     | [
         image: TexImageSource | OffscreenCanvas,
@@ -103,14 +103,37 @@ export class ThTexture<
   public get source(): Source | undefined {
     return this._objRef?.source;
   }
+  public get image(): any | undefined {
+    return this._objRef?.image;
+  }
   @Input()
-  public set mipmaps(value: any[]) {
+  public set image(value: any) {
+    if (this._objRef) {
+      this._objRef.image = value;
+    }
+  }
+
+  @Input()
+  public set mipmaps(
+    value:
+      | CompressedTextureMipmap[]
+      | CubeTexture[]
+      | HTMLCanvasElement[]
+      | undefined,
+  ) {
     if (this._objRef) {
       this._objRef.mipmaps = value;
     }
   }
 
-  public get mipmaps(): any[] | undefined {
+  public get mipmaps():
+    | (
+        | CompressedTextureMipmap[]
+        | CubeTexture[]
+        | HTMLCanvasElement[]
+        | undefined
+      )
+    | undefined {
     return this._objRef?.mipmaps;
   }
   @Input()
@@ -324,13 +347,13 @@ export class ThTexture<
     return this._objRef?.unpackAlignment;
   }
   @Input()
-  public set colorSpace(value: ColorSpace) {
+  public set colorSpace(value: string) {
     if (this._objRef) {
       this._objRef.colorSpace = value;
     }
   }
 
-  public get colorSpace(): ColorSpace | undefined {
+  public get colorSpace(): string | undefined {
     return this._objRef?.colorSpace;
   }
   @Input()
@@ -372,6 +395,19 @@ export class ThTexture<
 
   public get pmremVersion(): number | undefined {
     return this._objRef?.pmremVersion;
+  }
+  @Input()
+  public set needsUpdate(value: boolean) {
+    if (this._objRef) {
+      this._objRef.needsUpdate = value;
+    }
+  }
+
+  @Input()
+  public set needsPMREMUpdate(value: boolean) {
+    if (this._objRef) {
+      this._objRef.needsPMREMUpdate = value;
+    }
   }
 
   public static readonly DEFAULT_ANISOTROPY = Texture.DEFAULT_ANISOTROPY;
