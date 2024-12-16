@@ -13,10 +13,10 @@ import {
 } from '@angular/core';
 import { CSS3DParameters, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { CSS2DParameters, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
-import { WebGPURendererParameters } from 'three/examples/jsm/renderers/webgpu/WebGPURenderer.js';
-import WebGPURenderer from 'three/examples/jsm/renderers/webgpu/WebGPURenderer.js';
 
 import { Renderer, WebGLRenderer, WebGLRendererParameters } from 'three';
+import { WebGPURenderer } from 'three/webgpu';
+import { WebGPURendererParameters } from 'three/src/renderers/webgpu/WebGPURenderer';
 
 const RENDERER_DEFAULTS: WebGLRendererParameters = {
   alpha: true, // transparent background
