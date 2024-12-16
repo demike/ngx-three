@@ -13,7 +13,7 @@ import {
   MagnificationTextureFilter,
   MinificationTextureFilter,
 } from 'three/src/constants.js';
-import { Texture3DImageData } from 'three/src/textures/types.js';
+import { Texture3DImageData } from 'three/src/textures/Data3DTexture.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 

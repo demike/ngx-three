@@ -1,9 +1,18 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { ChangeDetectionStrategy, Component, Input, Type, forwardRef } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Type,
+  forwardRef,
+} from '@angular/core';
 import { Camera, Scene } from 'three';
-import { ArcballControls, ArcballControlsEventMap } from 'three/examples/jsm/controls/ArcballControls.js';
+import {
+  ArcballControls,
+  ArcballControlsEventMap,
+} from 'three/examples/jsm/controls/ArcballControls.js';
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
@@ -19,7 +28,11 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThArcballControls<
   T extends ArcballControls = ArcballControls,
-  TARGS = [camera: Camera, domElement?: HTMLElement | null, scene?: Scene | null],
+  TARGS = [
+    camera: Camera,
+    domElement?: HTMLElement | null,
+    scene?: Scene | null,
+  ],
 > extends ThControlBase<ArcballControlsEventMap, T, TARGS> {
   public getType(): Type<ArcballControls> {
     return ArcballControls;
@@ -104,6 +117,16 @@ export class ThArcballControls<
 
   public get enableAnimations(): boolean | undefined {
     return this._objRef?.enableAnimations;
+  }
+  @Input()
+  public set enableFocus(value: boolean) {
+    if (this._objRef) {
+      this._objRef.enableFocus = value;
+    }
+  }
+
+  public get enableFocus(): boolean | undefined {
+    return this._objRef?.enableFocus;
   }
   @Input()
   public set enableGrid(value: boolean) {

@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { DataTexture } from 'three';
+import { DataTexture, TextureImageData } from 'three';
 import {
   MagnificationTextureFilter,
   Mapping,
@@ -17,7 +17,6 @@ import {
   TextureDataType,
   Wrapping,
 } from 'three/src/constants.js';
-import { TextureImageData } from 'three/src/textures/types.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 

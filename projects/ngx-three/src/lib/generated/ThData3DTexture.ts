@@ -8,13 +8,12 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Data3DTexture } from 'three';
+import { Data3DTexture, Texture3DImageData } from 'three';
 import {
   MagnificationTextureFilter,
   MinificationTextureFilter,
   Wrapping,
 } from 'three/src/constants.js';
-import { Texture3DImageData } from 'three/src/textures/types.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
