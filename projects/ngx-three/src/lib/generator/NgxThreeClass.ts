@@ -33,7 +33,10 @@ export abstract class NgxThreeClass {
     protected typeChecker: ts.TypeChecker,
   ) {
     this.classDecl = this.fetchClassDecleration();
-    this.wrappedClassName = this.classSymbol.escapedName as string;
+    this.wrappedClassName =
+      this.classSymbol.escapedName !== 'default'
+        ? (this.classSymbol.escapedName as string)
+        : (classSymbol.escapedName as string);
     this.isAbstract = this.classDecl.modifiers?.find((m) => m.kind === SyntaxKind.AbstractKeyword) !== undefined;
     this.className = 'Th' + this.wrappedClassName;
     this.directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);

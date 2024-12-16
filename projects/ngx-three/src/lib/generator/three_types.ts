@@ -3,6 +3,8 @@ import * as THREE from 'three';
 import { OmitByValue } from 'utility-types';
 
 type Three = typeof import('three');
+// type ThreeWebGPU = typeof import('three/webgpu');
+type NodeMaterials = typeof import('three/src/materials/nodes/NodeMaterials');
 
 /** Classes exported `three/src/Three.d.ts` but not from `three/src/Three.js` */
 type MissingInThreeRuntimeExports =
@@ -52,6 +54,28 @@ type __ngxThreeMaterials = {
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface NgxThreeMaterials extends OmitByValue<__ngxThreeMaterials, never> {}
+
+// ------ node materials ------
+
+/*
+type __ngxThreeNodeMaterials = {
+  [P in keyof ThreeWebGPU]: ThreeWebGPU[P] extends abstract new (...args: any) => any
+    ? InstanceType<ThreeWebGPU[P]> extends InstanceType<Three['Material']>
+      ? InstanceType<ThreeWebGPU[P]>
+      : never // InstanceType<ThreeWebGPU[P]> //never
+    : never;
+};
+*/
+type __ngxThreeNodeMaterials = {
+  [P in keyof NodeMaterials]: NodeMaterials[P] extends abstract new (...args: any) => any
+    ? InstanceType<NodeMaterials[P]> extends InstanceType<Three['Material']>
+      ? InstanceType<NodeMaterials[P]>
+      : never
+    : never;
+};
+
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface NgxThreeNodeMaterials extends OmitByValue<__ngxThreeNodeMaterials, never> {}
 
 // ------ geometries ------
 
