@@ -2,13 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  Type,
-  forwardRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Type, forwardRef } from '@angular/core';
 import MRTNode from 'three/src/nodes/core/MRTNode.js';
 import Node from 'three/src/nodes/core/Node.js';
 import LightsNode from 'three/src/nodes/lighting/LightsNode.js';
@@ -19,19 +13,12 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-nodeMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThNodeMaterial) },
-  ],
+  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThNodeMaterial) }],
 })
-export class ThNodeMaterial<
-  T extends NodeMaterial = NodeMaterial,
-  TARGS = [],
-> extends ThMaterial<T, TARGS> {
+export class ThNodeMaterial<T extends NodeMaterial = NodeMaterial, TARGS = []> extends ThMaterial<T, TARGS> {
   public getType(): Type<NodeMaterial> {
     return NodeMaterial;
   }
-
-  public static readonly type = NodeMaterial.type;
 
   public get isNodeMaterial(): true | undefined {
     return this._objRef?.isNodeMaterial;
