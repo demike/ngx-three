@@ -60,13 +60,17 @@ import { ThHemisphereLightHelper } from './ThHemisphereLightHelper';
 import { ThIcosahedronGeometry } from './ThIcosahedronGeometry';
 import { ThInstancedBufferGeometry } from './ThInstancedBufferGeometry';
 import { ThInstancedMesh } from './ThInstancedMesh';
+import { ThInstancedPointsNodeMaterial } from './ThInstancedPointsNodeMaterial';
 import { ThLOD } from './ThLOD';
 import { ThLUTPass } from './ThLUTPass';
 import { ThLatheGeometry } from './ThLatheGeometry';
 import { ThLightProbe } from './ThLightProbe';
 import { ThLine } from './ThLine';
+import { ThLine2NodeMaterial } from './ThLine2NodeMaterial';
 import { ThLineBasicMaterial } from './ThLineBasicMaterial';
+import { ThLineBasicNodeMaterial } from './ThLineBasicNodeMaterial';
 import { ThLineDashedMaterial } from './ThLineDashedMaterial';
+import { ThLineDashedNodeMaterial } from './ThLineDashedNodeMaterial';
 import { ThLineLoop } from './ThLineLoop';
 import { ThLineSegments } from './ThLineSegments';
 import { ThMapControls } from './ThMapControls';
@@ -74,15 +78,25 @@ import { ThMaskPass } from './ThMaskPass';
 import { ThMaterial } from './ThMaterial';
 import { ThMesh } from './ThMesh';
 import { ThMeshBasicMaterial } from './ThMeshBasicMaterial';
+import { ThMeshBasicNodeMaterial } from './ThMeshBasicNodeMaterial';
 import { ThMeshDepthMaterial } from './ThMeshDepthMaterial';
 import { ThMeshDistanceMaterial } from './ThMeshDistanceMaterial';
 import { ThMeshLambertMaterial } from './ThMeshLambertMaterial';
+import { ThMeshLambertNodeMaterial } from './ThMeshLambertNodeMaterial';
 import { ThMeshMatcapMaterial } from './ThMeshMatcapMaterial';
+import { ThMeshMatcapNodeMaterial } from './ThMeshMatcapNodeMaterial';
 import { ThMeshNormalMaterial } from './ThMeshNormalMaterial';
+import { ThMeshNormalNodeMaterial } from './ThMeshNormalNodeMaterial';
 import { ThMeshPhongMaterial } from './ThMeshPhongMaterial';
+import { ThMeshPhongNodeMaterial } from './ThMeshPhongNodeMaterial';
 import { ThMeshPhysicalMaterial } from './ThMeshPhysicalMaterial';
+import { ThMeshPhysicalNodeMaterial } from './ThMeshPhysicalNodeMaterial';
+import { ThMeshSSSNodeMaterial } from './ThMeshSSSNodeMaterial';
 import { ThMeshStandardMaterial } from './ThMeshStandardMaterial';
+import { ThMeshStandardNodeMaterial } from './ThMeshStandardNodeMaterial';
 import { ThMeshToonMaterial } from './ThMeshToonMaterial';
+import { ThMeshToonNodeMaterial } from './ThMeshToonNodeMaterial';
+import { ThNodeMaterial } from './ThNodeMaterial';
 import { ThObject3D } from './ThObject3D';
 import { ThOctahedronGeometry } from './ThOctahedronGeometry';
 import { ThOrbitControls } from './ThOrbitControls';
@@ -99,6 +113,7 @@ import { ThPointLightHelper } from './ThPointLightHelper';
 import { ThPointerLockControls } from './ThPointerLockControls';
 import { ThPoints } from './ThPoints';
 import { ThPointsMaterial } from './ThPointsMaterial';
+import { ThPointsNodeMaterial } from './ThPointsNodeMaterial';
 import { ThPolarGridHelper } from './ThPolarGridHelper';
 import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
 import { ThPositionalAudio } from './ThPositionalAudio';
@@ -117,6 +132,7 @@ import { ThScene } from './ThScene';
 import { ThShaderMaterial } from './ThShaderMaterial';
 import { ThShaderPass } from './ThShaderPass';
 import { ThShadowMaterial } from './ThShadowMaterial';
+import { ThShadowNodeMaterial } from './ThShadowNodeMaterial';
 import { ThShapeGeometry } from './ThShapeGeometry';
 import { ThSkeletonHelper } from './ThSkeletonHelper';
 import { ThSkinnedMesh } from './ThSkinnedMesh';
@@ -125,6 +141,7 @@ import { ThSpotLight } from './ThSpotLight';
 import { ThSpotLightHelper } from './ThSpotLightHelper';
 import { ThSprite } from './ThSprite';
 import { ThSpriteMaterial } from './ThSpriteMaterial';
+import { ThSpriteNodeMaterial } from './ThSpriteNodeMaterial';
 import { ThStereoCamera } from './ThStereoCamera';
 import { ThTAARenderPass } from './ThTAARenderPass';
 import { ThTeapotGeometry } from './ThTeapotGeometry';
@@ -139,6 +156,7 @@ import { ThTransformControlsGen } from './ThTransformControlsGen';
 import { ThTubeGeometry } from './ThTubeGeometry';
 import { ThUnrealBloomPass } from './ThUnrealBloomPass';
 import { ThVideoTexture } from './ThVideoTexture';
+import { ThVolumeNodeMaterial } from './ThVolumeNodeMaterial';
 import { ThWireframeGeometry } from './ThWireframeGeometry';
 import { ThCSS2DObject } from './overrides/ThCSS2DObject';
 import { ThCSS3DObject } from './overrides/ThCSS3DObject';
@@ -294,6 +312,24 @@ import { ThTransformControls } from './overrides/ThTransformControls';
     ThFramebufferTexture,
     ThTexture,
     ThVideoTexture,
+    ThInstancedPointsNodeMaterial,
+    ThLine2NodeMaterial,
+    ThLineBasicNodeMaterial,
+    ThLineDashedNodeMaterial,
+    ThMeshBasicNodeMaterial,
+    ThMeshLambertNodeMaterial,
+    ThMeshMatcapNodeMaterial,
+    ThMeshNormalNodeMaterial,
+    ThMeshPhongNodeMaterial,
+    ThMeshPhysicalNodeMaterial,
+    ThMeshSSSNodeMaterial,
+    ThMeshStandardNodeMaterial,
+    ThMeshToonNodeMaterial,
+    ThNodeMaterial,
+    ThPointsNodeMaterial,
+    ThShadowNodeMaterial,
+    ThSpriteNodeMaterial,
+    ThVolumeNodeMaterial,
   ],
   exports: [
     ThTransformControlsGen,
@@ -442,6 +478,24 @@ import { ThTransformControls } from './overrides/ThTransformControls';
     ThFramebufferTexture,
     ThTexture,
     ThVideoTexture,
+    ThInstancedPointsNodeMaterial,
+    ThLine2NodeMaterial,
+    ThLineBasicNodeMaterial,
+    ThLineDashedNodeMaterial,
+    ThMeshBasicNodeMaterial,
+    ThMeshLambertNodeMaterial,
+    ThMeshMatcapNodeMaterial,
+    ThMeshNormalNodeMaterial,
+    ThMeshPhongNodeMaterial,
+    ThMeshPhysicalNodeMaterial,
+    ThMeshSSSNodeMaterial,
+    ThMeshStandardNodeMaterial,
+    ThMeshToonNodeMaterial,
+    ThNodeMaterial,
+    ThPointsNodeMaterial,
+    ThShadowNodeMaterial,
+    ThSpriteNodeMaterial,
+    ThVolumeNodeMaterial,
   ],
 })
 export class NgxThreeGeneratedModule {}

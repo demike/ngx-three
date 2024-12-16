@@ -4,7 +4,7 @@ import { ASSET_PATH } from '../assets';
 @Component({
   selector: 'app-loader-example',
   templateUrl: './loader-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoaderExampleComponent {
   public assetPath1 = `${ASSET_PATH}DamagedHelmet.glb`;
