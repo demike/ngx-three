@@ -1,6 +1,6 @@
 import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
 import { ThDataTexture } from '../../generated/ThDataTexture';
-import { UltraHDRLoader } from 'three/examples/jsm/loaders/UltraHDRLoader';
+import { UltraHDRLoader } from 'three/examples/jsm/loaders/UltraHDRLoader.js';
 import {
   ThCallbackLoaderBaseDirective,
   ThCallbackLoaderBasePipe,
