@@ -86,6 +86,7 @@ export abstract class NgxThreeClass {
     this.imports.add("import { applyValue } from '../util';");
 
     const ngxClassDeclarationString = `
+    /* eslint-disable @typescript-eslint/ban-types */
     /* eslint-disable @typescript-eslint/naming-convention */
     /* eslint-disable no-underscore-dangle */
     /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
