@@ -15,12 +15,13 @@ import { WebGLCubeRenderTarget } from 'three/src/renderers/WebGLCubeRenderTarget
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-cubeCamera',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThCubeCamera) },
-  ],
+    selector: 'th-cubeCamera',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThCubeCamera) },
+    ],
+    standalone: false
 })
 export class ThCubeCamera<
   T extends CubeCamera = CubeCamera,

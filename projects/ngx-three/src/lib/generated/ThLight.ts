@@ -14,10 +14,11 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-light',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLight) }],
+    selector: 'th-light',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLight) }],
+    standalone: false
 })
 export abstract class ThLight<
   TShadowSupport extends LightShadow | undefined = LightShadow | undefined,

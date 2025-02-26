@@ -12,15 +12,16 @@ import { CircleGeometry, NormalBufferAttributes } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-circleGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThCircleGeometry),
-    },
-  ],
+    selector: 'th-circleGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThCircleGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThCircleGeometry<
   T extends CircleGeometry = CircleGeometry,

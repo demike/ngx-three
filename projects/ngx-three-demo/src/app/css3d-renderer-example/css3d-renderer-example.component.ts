@@ -3,11 +3,12 @@ import { provideCSS3dRenderer } from 'projects/ngx-three/src/lib/renderer/render
 import { Object3D, Vector3 } from 'three';
 
 @Component({
-  selector: 'app-css3d-multi-renderer-example',
-  templateUrl: './css3d-renderer-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./css3d-renderer-example.component.scss'],
-  providers: [provideCSS3dRenderer()],
+    selector: 'app-css3d-multi-renderer-example',
+    templateUrl: './css3d-renderer-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    styleUrls: ['./css3d-renderer-example.component.scss'],
+    providers: [provideCSS3dRenderer()],
+    standalone: false
 })
 export class CSS3dRendererExampleComponent {
   // eslint-disable-next-line @typescript-eslint/naming-convention

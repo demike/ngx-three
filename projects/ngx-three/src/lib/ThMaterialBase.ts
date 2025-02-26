@@ -3,9 +3,10 @@ import { Material, Mesh } from 'three';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
-  selector: 'th-abs-material',
-  template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'th-abs-material',
+    template: '',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThMaterialBase<T extends Material, ARGS> extends ThWrapperBase<T, ARGS> {

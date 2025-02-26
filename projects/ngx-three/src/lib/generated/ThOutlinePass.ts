@@ -31,12 +31,13 @@ import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-outlinePass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThOutlinePass) },
-  ],
+    selector: 'th-outlinePass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThOutlinePass) },
+    ],
+    standalone: false
 })
 export class ThOutlinePass<
   T extends OutlinePass = OutlinePass,

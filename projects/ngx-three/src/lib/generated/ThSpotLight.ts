@@ -19,12 +19,13 @@ import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-spotLight',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThSpotLight) },
-  ],
+    selector: 'th-spotLight',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThSpotLight) },
+    ],
+    standalone: false
 })
 export class ThSpotLight<
   T extends SpotLight = SpotLight,

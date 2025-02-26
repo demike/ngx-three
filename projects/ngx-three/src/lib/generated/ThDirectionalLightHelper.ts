@@ -17,15 +17,16 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-directionalLightHelper',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThObject3D,
-      useExisting: forwardRef(() => ThDirectionalLightHelper),
-    },
-  ],
+    selector: 'th-directionalLightHelper',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThObject3D,
+            useExisting: forwardRef(() => ThDirectionalLightHelper),
+        },
+    ],
+    standalone: false
 })
 export class ThDirectionalLightHelper<
   T extends DirectionalLightHelper = DirectionalLightHelper,

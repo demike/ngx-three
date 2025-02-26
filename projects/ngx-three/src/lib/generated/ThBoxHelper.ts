@@ -17,12 +17,13 @@ import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-boxHelper',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThBoxHelper) },
-  ],
+    selector: 'th-boxHelper',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThBoxHelper) },
+    ],
+    standalone: false
 })
 export class ThBoxHelper<
   T extends BoxHelper = BoxHelper,

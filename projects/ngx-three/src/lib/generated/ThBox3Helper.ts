@@ -23,12 +23,13 @@ import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-box3Helper',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThBox3Helper) },
-  ],
+    selector: 'th-box3Helper',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThBox3Helper) },
+    ],
+    standalone: false
 })
 export class ThBox3Helper<
   T extends Box3Helper = Box3Helper,

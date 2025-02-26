@@ -18,15 +18,16 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-  selector: 'th-framebufferTexture',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThTextureBase,
-      useExisting: forwardRef(() => ThFramebufferTexture),
-    },
-  ],
+    selector: 'th-framebufferTexture',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThTextureBase,
+            useExisting: forwardRef(() => ThFramebufferTexture),
+        },
+    ],
+    standalone: false
 })
 export class ThFramebufferTexture<
   T extends FramebufferTexture = FramebufferTexture,

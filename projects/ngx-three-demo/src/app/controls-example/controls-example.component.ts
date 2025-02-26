@@ -2,9 +2,10 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { ASSET_PATH } from '../assets';
 
 @Component({
-  selector: 'app-controls-example',
-  templateUrl: './controls-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-controls-example',
+    templateUrl: './controls-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ControlsExampleComponent {
   public selected = false;

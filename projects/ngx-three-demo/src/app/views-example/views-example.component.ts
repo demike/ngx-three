@@ -3,10 +3,11 @@ import { ThCanvas } from 'ngx-three';
 import { CanvasTexture, Color, PerspectiveCamera, Scene } from 'three';
 
 @Component({
-  selector: 'app-views-example',
-  templateUrl: './views-example.component.html',
-  styleUrls: ['./views-example.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-views-example',
+    templateUrl: './views-example.component.html',
+    styleUrls: ['./views-example.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ViewsExampleComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention

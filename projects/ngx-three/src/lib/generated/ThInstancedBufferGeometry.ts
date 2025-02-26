@@ -13,15 +13,16 @@ import { InstancedBufferGeometry, NormalBufferAttributes } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-instancedBufferGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThInstancedBufferGeometry),
-    },
-  ],
+    selector: 'th-instancedBufferGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThInstancedBufferGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThInstancedBufferGeometry<
   T extends InstancedBufferGeometry = InstancedBufferGeometry,

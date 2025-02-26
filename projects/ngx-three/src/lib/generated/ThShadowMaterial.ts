@@ -19,12 +19,13 @@ import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: 'th-shadowMaterial',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThShadowMaterial) },
-  ],
+    selector: 'th-shadowMaterial',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThMaterial, useExisting: forwardRef(() => ThShadowMaterial) },
+    ],
+    standalone: false
 })
 export class ThShadowMaterial<
   T extends ShadowMaterial = ShadowMaterial,

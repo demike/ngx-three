@@ -22,12 +22,13 @@ import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-cameraHelper',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThCameraHelper) },
-  ],
+    selector: 'th-cameraHelper',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThCameraHelper) },
+    ],
+    standalone: false
 })
 export class ThCameraHelper<
   T extends CameraHelper = CameraHelper,

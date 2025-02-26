@@ -16,8 +16,9 @@ export class UltraHDRLoaderService extends ThCallbackLoaderService<DataTexture> 
 }
 
 @Pipe({
-  name: 'loadUltraHDRTexture',
-  pure: true,
+    name: 'loadUltraHDRTexture',
+    pure: true,
+    standalone: false
 })
 export class ThUltraHDRLoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> implements PipeTransform {
   constructor(protected service: UltraHDRLoaderService) {
@@ -26,7 +27,8 @@ export class ThUltraHDRLoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> 
 }
 
 @Directive({
-  selector: '[loadUltraHDRTexture]',
+    selector: '[loadUltraHDRTexture]',
+    standalone: false
 })
 export class ThUltraHDRLoaderDirective extends ThCallbackLoaderBaseDirective<DataTexture> {
   constructor(

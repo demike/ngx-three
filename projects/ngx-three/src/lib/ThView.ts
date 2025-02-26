@@ -22,14 +22,15 @@ import { ThEngineService } from './ThEngine.service';
 export const HOST_ELEMENT = new InjectionToken<ElementRef<HTMLElement>>('HOST_ELEMENT');
 
 @Component({
-  selector: 'th-view',
-  template: '<ng-content/>',
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThView) },
-    { provide: RAYCASTER, useValue: new Raycaster() },
-    RaycasterService,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'th-view',
+    template: '<ng-content/>',
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThView) },
+        { provide: RAYCASTER, useValue: new Raycaster() },
+        RaycasterService,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThView implements OnInit {

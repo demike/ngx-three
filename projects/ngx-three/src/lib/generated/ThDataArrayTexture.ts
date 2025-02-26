@@ -19,15 +19,16 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-  selector: 'th-dataArrayTexture',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThTextureBase,
-      useExisting: forwardRef(() => ThDataArrayTexture),
-    },
-  ],
+    selector: 'th-dataArrayTexture',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThTextureBase,
+            useExisting: forwardRef(() => ThDataArrayTexture),
+        },
+    ],
+    standalone: false
 })
 export class ThDataArrayTexture<
   T extends DataArrayTexture = DataArrayTexture,

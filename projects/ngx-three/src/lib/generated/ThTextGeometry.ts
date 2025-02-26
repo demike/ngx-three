@@ -17,15 +17,16 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThExtrudeGeometry } from './ThExtrudeGeometry';
 
 @Component({
-  selector: 'th-textGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThTextGeometry),
-    },
-  ],
+    selector: 'th-textGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThTextGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThTextGeometry<
   T extends TextGeometry = TextGeometry,

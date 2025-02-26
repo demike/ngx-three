@@ -22,12 +22,13 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-  selector: 'th-cubeTexture',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThCubeTexture) },
-  ],
+    selector: 'th-cubeTexture',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThTextureBase, useExisting: forwardRef(() => ThCubeTexture) },
+    ],
+    standalone: false
 })
 export class ThCubeTexture<
   T extends CubeTexture = CubeTexture,

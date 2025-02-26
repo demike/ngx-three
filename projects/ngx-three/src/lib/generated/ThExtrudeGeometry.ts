@@ -17,15 +17,16 @@ import { Shape } from 'three/src/extras/core/Shape.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-extrudeGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThExtrudeGeometry),
-    },
-  ],
+    selector: 'th-extrudeGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThExtrudeGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThExtrudeGeometry<
   T extends ExtrudeGeometry = ExtrudeGeometry,

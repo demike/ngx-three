@@ -15,12 +15,13 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-cSS2DObjectGen',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThCSS2DObjectGen) },
-  ],
+    selector: 'th-cSS2DObjectGen',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThCSS2DObjectGen) },
+    ],
+    standalone: false
 })
 export class ThCSS2DObjectGen<
   T extends CSS2DObject = CSS2DObject,

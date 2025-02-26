@@ -16,8 +16,9 @@ export class TGALoaderService extends ThCallbackLoaderService<DataTexture> {
 }
 
 @Pipe({
-  name: 'loadTGATexture',
-  pure: true,
+    name: 'loadTGATexture',
+    pure: true,
+    standalone: false
 })
 export class ThTGALoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> implements PipeTransform {
   constructor(protected service: TGALoaderService) {
@@ -26,7 +27,8 @@ export class ThTGALoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> imple
 }
 
 @Directive({
-  selector: '[loadTGATexture]',
+    selector: '[loadTGATexture]',
+    standalone: false
 })
 export class ThTGALoaderDirective extends ThCallbackLoaderBaseDirective<DataTexture> {
   constructor(

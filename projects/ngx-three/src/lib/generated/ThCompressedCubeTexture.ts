@@ -14,15 +14,16 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThCompressedTexture } from './ThCompressedTexture';
 
 @Component({
-  selector: 'th-compressedCubeTexture',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThTextureBase,
-      useExisting: forwardRef(() => ThCompressedCubeTexture),
-    },
-  ],
+    selector: 'th-compressedCubeTexture',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThTextureBase,
+            useExisting: forwardRef(() => ThCompressedCubeTexture),
+        },
+    ],
+    standalone: false
 })
 export class ThCompressedCubeTexture<
   T extends CompressedCubeTexture = CompressedCubeTexture,

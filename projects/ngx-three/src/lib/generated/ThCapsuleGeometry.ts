@@ -12,15 +12,16 @@ import { CapsuleGeometry, NormalBufferAttributes } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-capsuleGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThCapsuleGeometry),
-    },
-  ],
+    selector: 'th-capsuleGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThCapsuleGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThCapsuleGeometry<
   T extends CapsuleGeometry = CapsuleGeometry,

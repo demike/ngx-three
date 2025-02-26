@@ -5,9 +5,10 @@ import { createNoise3D } from 'simplex-noise';
 import { ThCanvas, ThInstancedMesh, ThPointLight } from 'ngx-three';
 
 @Component({
-  selector: 'app-instanced-mesh-example',
-  templateUrl: './instanced-mesh-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-instanced-mesh-example',
+    templateUrl: './instanced-mesh-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class InstancedMeshExampleComponent implements OnInit {
   readonly SIZE = 1.5;

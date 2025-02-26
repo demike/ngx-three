@@ -14,12 +14,13 @@ import { ThMaterial } from './ThMaterial';
 import { ThShaderMaterial } from './ThShaderMaterial';
 
 @Component({
-  selector: 'th-rawShaderMaterial',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThRawShaderMaterial) },
-  ],
+    selector: 'th-rawShaderMaterial',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThMaterial, useExisting: forwardRef(() => ThRawShaderMaterial) },
+    ],
+    standalone: false
 })
 export class ThRawShaderMaterial<
   T extends RawShaderMaterial = RawShaderMaterial,

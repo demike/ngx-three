@@ -21,12 +21,13 @@ import { ThControlBase } from '../ThControlBase';
 import { applyValue } from '../util';
 
 @Component({
-  selector: 'th-dragControls',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThControlBase, useExisting: forwardRef(() => ThDragControls) },
-  ],
+    selector: 'th-dragControls',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThControlBase, useExisting: forwardRef(() => ThDragControls) },
+    ],
+    standalone: false
 })
 export class ThDragControls<
   T extends DragControls = DragControls,

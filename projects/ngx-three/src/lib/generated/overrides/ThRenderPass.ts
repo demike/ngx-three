@@ -10,10 +10,11 @@ import { ThRenderPassGen } from '../ThRenderPassGen';
 import { ThEffectComposer } from './ThEffectComposer';
 
 @Component({
-  selector: 'th-renderPass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThRenderPass) }],
+    selector: 'th-renderPass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThRenderPass) }],
+    standalone: false
 })
 export class ThRenderPass<
     T extends RenderPass = RenderPass,

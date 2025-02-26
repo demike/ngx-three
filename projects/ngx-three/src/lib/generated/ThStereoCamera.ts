@@ -15,13 +15,14 @@ import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-stereoCamera',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThStereoCamera) },
-    { provide: ThCamera, useExisting: forwardRef(() => ThStereoCamera) },
-  ],
+    selector: 'th-stereoCamera',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThStereoCamera) },
+        { provide: ThCamera, useExisting: forwardRef(() => ThStereoCamera) },
+    ],
+    standalone: false
 })
 export class ThStereoCamera<
   T extends StereoCamera = StereoCamera,

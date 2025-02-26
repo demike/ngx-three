@@ -17,15 +17,16 @@ import {
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
-  selector: 'th-arcballControls',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThControlBase,
-      useExisting: forwardRef(() => ThArcballControls),
-    },
-  ],
+    selector: 'th-arcballControls',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThControlBase,
+            useExisting: forwardRef(() => ThArcballControls),
+        },
+    ],
+    standalone: false
 })
 export class ThArcballControls<
   T extends ArcballControls = ArcballControls,

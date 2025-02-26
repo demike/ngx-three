@@ -31,12 +31,13 @@ import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-sSAOPass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThSSAOPass) },
-  ],
+    selector: 'th-sSAOPass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThSSAOPass) },
+    ],
+    standalone: false
 })
 export class ThSSAOPass<
   T extends SSAOPass = SSAOPass,

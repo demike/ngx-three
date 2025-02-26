@@ -16,12 +16,13 @@ import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-gridHelper',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThGridHelper) },
-  ],
+    selector: 'th-gridHelper',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThGridHelper) },
+    ],
+    standalone: false
 })
 export class ThGridHelper<
   T extends GridHelper = GridHelper,

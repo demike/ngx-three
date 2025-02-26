@@ -2,9 +2,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ASSET_PATH } from '../assets';
 
 @Component({
-  selector: 'app-loader-example',
-  templateUrl: './loader-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-loader-example',
+    templateUrl: './loader-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LoaderExampleComponent {
   public assetPath1 = `${ASSET_PATH}DamagedHelmet.glb`;

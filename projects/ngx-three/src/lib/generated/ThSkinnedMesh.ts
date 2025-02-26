@@ -22,12 +22,13 @@ import { ThMesh } from './ThMesh';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-skinnedMesh',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThSkinnedMesh) },
-  ],
+    selector: 'th-skinnedMesh',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThSkinnedMesh) },
+    ],
+    standalone: false
 })
 export class ThSkinnedMesh<
   TGeometry extends BufferGeometry = BufferGeometry,

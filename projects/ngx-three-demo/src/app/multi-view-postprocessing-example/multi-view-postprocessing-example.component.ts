@@ -6,9 +6,10 @@ import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader.js';
 import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader.js';
 
 @Component({
-  selector: 'app-multi-view-postprocessing-example',
-  templateUrl: './multi-view-postprocessing-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-multi-view-postprocessing-example',
+    templateUrl: './multi-view-postprocessing-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MultiViewPostprocessingExampleComponent implements OnInit {
   public Math = Math;

@@ -12,15 +12,16 @@ import { NormalBufferAttributes, PolyhedronGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-polyhedronGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThPolyhedronGeometry),
-    },
-  ],
+    selector: 'th-polyhedronGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThPolyhedronGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThPolyhedronGeometry<
   T extends PolyhedronGeometry = PolyhedronGeometry,

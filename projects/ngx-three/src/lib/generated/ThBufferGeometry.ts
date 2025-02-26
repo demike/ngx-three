@@ -26,10 +26,11 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-bufferGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
+    selector: 'th-bufferGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [],
+    standalone: false
 })
 export class ThBufferGeometry<
   Attributes extends NormalOrGLBufferAttributes = NormalBufferAttributes,

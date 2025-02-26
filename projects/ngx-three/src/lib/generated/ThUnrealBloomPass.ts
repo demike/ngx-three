@@ -26,12 +26,13 @@ import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-unrealBloomPass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThUnrealBloomPass) },
-  ],
+    selector: 'th-unrealBloomPass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThUnrealBloomPass) },
+    ],
+    standalone: false
 })
 export class ThUnrealBloomPass<
   T extends UnrealBloomPass = UnrealBloomPass,

@@ -14,12 +14,13 @@ import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-ambientLight',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThAmbientLight) },
-  ],
+    selector: 'th-ambientLight',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThAmbientLight) },
+    ],
+    standalone: false
 })
 export class ThAmbientLight<
   T extends AmbientLight = AmbientLight,

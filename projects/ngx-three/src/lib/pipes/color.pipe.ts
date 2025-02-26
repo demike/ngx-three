@@ -5,8 +5,9 @@ import { Color, ColorRepresentation } from 'three';
  * constructs a color of it's constructor parameters
  */
 @Pipe({
-  name: 'color',
-  pure: true
+    name: 'color',
+    pure: true,
+    standalone: false
 })
 export class ColorPipe implements PipeTransform {
   /* ContructorProperties does not support multiple constructors --> */

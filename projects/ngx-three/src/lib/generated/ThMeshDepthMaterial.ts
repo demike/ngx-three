@@ -15,12 +15,13 @@ import { Texture } from 'three/src/textures/Texture.js';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: 'th-meshDepthMaterial',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThMeshDepthMaterial) },
-  ],
+    selector: 'th-meshDepthMaterial',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThMaterial, useExisting: forwardRef(() => ThMeshDepthMaterial) },
+    ],
+    standalone: false
 })
 export class ThMeshDepthMaterial<
   T extends MeshDepthMaterial = MeshDepthMaterial,

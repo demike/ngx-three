@@ -16,12 +16,13 @@ import { ThLine } from './ThLine';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-lineLoop',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThLineLoop) },
-  ],
+    selector: 'th-lineLoop',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThLineLoop) },
+    ],
+    standalone: false
 })
 export class ThLineLoop<
   TGeometry extends BufferGeometry = BufferGeometry,

@@ -13,15 +13,16 @@ import { DecalGeometry } from 'three/examples/jsm/geometries/DecalGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-decalGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThDecalGeometry),
-    },
-  ],
+    selector: 'th-decalGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThDecalGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThDecalGeometry<
   T extends DecalGeometry = DecalGeometry,

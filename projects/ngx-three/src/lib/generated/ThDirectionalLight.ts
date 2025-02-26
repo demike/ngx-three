@@ -18,12 +18,13 @@ import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-directionalLight',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThDirectionalLight) },
-  ],
+    selector: 'th-directionalLight',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThDirectionalLight) },
+    ],
+    standalone: false
 })
 export class ThDirectionalLight<
   T extends DirectionalLight = DirectionalLight,

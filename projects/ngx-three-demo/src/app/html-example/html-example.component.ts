@@ -12,9 +12,10 @@ import { ASSET_PATH } from '../assets';
  * It selects the screen of the notebook by id and adds the html content node as a child.
  */
 @Component({
-  selector: 'app-html-example',
-  templateUrl: './html-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-html-example',
+    templateUrl: './html-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class HtmlExampleComponent {
   // eslint-disable-next-line @typescript-eslint/naming-convention

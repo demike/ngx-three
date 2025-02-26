@@ -15,12 +15,13 @@ import { ThAudio } from './ThAudio';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-positionalAudio',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThPositionalAudio) },
-  ],
+    selector: 'th-positionalAudio',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThPositionalAudio) },
+    ],
+    standalone: false
 })
 export class ThPositionalAudio<
   T extends PositionalAudio = PositionalAudio,

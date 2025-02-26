@@ -6,9 +6,10 @@ import { ThAnimationLoopService } from './renderer/th-animation-loop.service';
 import { ThCanvas } from './ThCanvas';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
-  selector: 'th-abs-control',
-  template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'th-abs-control',
+    template: '',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThControlBase<

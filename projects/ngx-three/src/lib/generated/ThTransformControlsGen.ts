@@ -18,15 +18,16 @@ import {
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
-  selector: 'th-transformControlsGen',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThControlBase,
-      useExisting: forwardRef(() => ThTransformControlsGen),
-    },
-  ],
+    selector: 'th-transformControlsGen',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThControlBase,
+            useExisting: forwardRef(() => ThTransformControlsGen),
+        },
+    ],
+    standalone: false
 })
 export class ThTransformControlsGen<
   T extends TransformControls = TransformControls,

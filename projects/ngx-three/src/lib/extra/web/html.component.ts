@@ -137,9 +137,10 @@ type PointerEventsProperties =
  * Add Html content to any three.js object3d node
  */
 @Component({
-  selector: 'th-html',
-  templateUrl: './html.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'th-html',
+    templateUrl: './html.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class HtmlComponent extends ThGroup implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention

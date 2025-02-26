@@ -13,15 +13,16 @@ import { ThBoxGeometry } from './ThBoxGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-roundedBoxGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThRoundedBoxGeometry),
-    },
-  ],
+    selector: 'th-roundedBoxGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThRoundedBoxGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThRoundedBoxGeometry<
   T extends RoundedBoxGeometry = RoundedBoxGeometry,

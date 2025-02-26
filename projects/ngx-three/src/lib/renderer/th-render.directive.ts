@@ -3,7 +3,8 @@ import { ThEngineService } from '../ThEngine.service';
 import { ThAnimationLoopService } from './th-animation-loop.service';
 
 @Directive({
-  selector: '[beforeRender], [onResize], [renderOnDemand]'
+    selector: '[beforeRender], [onResize], [renderOnDemand]',
+    standalone: false
 })
 export class ThRenderDirective {
   constructor(private engineService: ThEngineService, private animationLoopService: ThAnimationLoopService) {}

@@ -17,12 +17,13 @@ import { Mesh } from 'three/src/objects/Mesh.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-arrowHelper',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThArrowHelper) },
-  ],
+    selector: 'th-arrowHelper',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThArrowHelper) },
+    ],
+    standalone: false
 })
 export class ThArrowHelper<
   T extends ArrowHelper = ArrowHelper,

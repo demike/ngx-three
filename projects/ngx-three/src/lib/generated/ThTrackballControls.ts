@@ -19,15 +19,16 @@ import { ThControlBase } from '../ThControlBase';
 import { applyValue } from '../util';
 
 @Component({
-  selector: 'th-trackballControls',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThControlBase,
-      useExisting: forwardRef(() => ThTrackballControls),
-    },
-  ],
+    selector: 'th-trackballControls',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThControlBase,
+            useExisting: forwardRef(() => ThTrackballControls),
+        },
+    ],
+    standalone: false
 })
 export class ThTrackballControls<
   T extends TrackballControls = TrackballControls,

@@ -21,12 +21,13 @@ import { ThMesh } from './ThMesh';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-instancedMesh',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThInstancedMesh) },
-  ],
+    selector: 'th-instancedMesh',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThInstancedMesh) },
+    ],
+    standalone: false
 })
 export class ThInstancedMesh<
   TGeometry extends BufferGeometry = BufferGeometry,

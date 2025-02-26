@@ -16,8 +16,9 @@ export class RGBMLoaderService extends ThCallbackLoaderService<DataTexture> {
 }
 
 @Pipe({
-  name: 'loadRGBMTexture',
-  pure: true,
+    name: 'loadRGBMTexture',
+    pure: true,
+    standalone: false
 })
 export class ThRGBMLoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> implements PipeTransform {
   constructor(protected service: RGBMLoaderService) {
@@ -26,7 +27,8 @@ export class ThRGBMLoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> impl
 }
 
 @Directive({
-  selector: '[loadRGBMTexture]',
+    selector: '[loadRGBMTexture]',
+    standalone: false
 })
 export class ThRGBMLoaderDirective extends ThCallbackLoaderBaseDirective<DataTexture> {
   constructor(

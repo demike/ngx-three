@@ -28,8 +28,9 @@ export class KTX2LoaderService extends ThCallbackLoaderService<CompressedTexture
 }
 
 @Pipe({
-  name: 'loadKTX2Texture',
-  pure: true,
+    name: 'loadKTX2Texture',
+    pure: true,
+    standalone: false
 })
 export class ThKTX2LoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture> implements PipeTransform {
   constructor(protected service: KTX2LoaderService) {
@@ -38,7 +39,8 @@ export class ThKTX2LoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture
 }
 
 @Directive({
-  selector: '[loadKTX2Texture]',
+    selector: '[loadKTX2Texture]',
+    standalone: false
 })
 export class ThKTX2LoaderDirective extends ThCallbackLoaderBaseDirective<CompressedTexture> {
   constructor(

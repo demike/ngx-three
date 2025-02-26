@@ -12,15 +12,16 @@ import { NormalBufferAttributes, TorusKnotGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-torusKnotGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThTorusKnotGeometry),
-    },
-  ],
+    selector: 'th-torusKnotGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThTorusKnotGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThTorusKnotGeometry<
   T extends TorusKnotGeometry = TorusKnotGeometry,

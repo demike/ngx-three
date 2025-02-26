@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
-  selector: 'app-basic-example',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  template: `
+    selector: 'app-basic-example',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    template: `
     <th-canvas>
       <th-scene>
         <th-mesh>
@@ -15,5 +15,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </th-scene>
     </th-canvas>
   `,
+    standalone: false
 })
 export class BasicExampleComponent {}

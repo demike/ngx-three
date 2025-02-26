@@ -11,10 +11,11 @@ import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { ThWrapperBase } from '../ThWrapperBase';
 
 @Component({
-  selector: 'th-effectComposerGen',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
+    selector: 'th-effectComposerGen',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [],
+    standalone: false
 })
 export class ThEffectComposerGen<
   T extends EffectComposer = EffectComposer,

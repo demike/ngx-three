@@ -16,12 +16,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-cubeTexturePass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThCubeTexturePass) },
-  ],
+    selector: 'th-cubeTexturePass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThCubeTexturePass) },
+    ],
+    standalone: false
 })
 export class ThCubeTexturePass<
   T extends CubeTexturePass = CubeTexturePass,

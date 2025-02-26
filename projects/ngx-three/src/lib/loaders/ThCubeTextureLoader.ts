@@ -15,8 +15,9 @@ export class CubeTextureLoaderService extends ThCallbackLoaderService<CubeTextur
 }
 
 @Pipe({
-  name: 'loadCubeTexture',
-  pure: true,
+    name: 'loadCubeTexture',
+    pure: true,
+    standalone: false
 })
 export class ThCubeTextureLoaderPipe extends ThCallbackLoaderBasePipe<CubeTexture, string[]> implements PipeTransform {
   constructor(protected service: CubeTextureLoaderService) {
@@ -25,7 +26,8 @@ export class ThCubeTextureLoaderPipe extends ThCallbackLoaderBasePipe<CubeTextur
 }
 
 @Directive({
-  selector: '[loadCubeTexture]',
+    selector: '[loadCubeTexture]',
+    standalone: false
 })
 export class ThCubeTextureLoaderDirective extends ThCallbackLoaderBaseDirective<CubeTexture, string[]> {
   constructor(

@@ -22,15 +22,16 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-  selector: 'th-compressedTexture',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThTextureBase,
-      useExisting: forwardRef(() => ThCompressedTexture),
-    },
-  ],
+    selector: 'th-compressedTexture',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThTextureBase,
+            useExisting: forwardRef(() => ThCompressedTexture),
+        },
+    ],
+    standalone: false
 })
 export class ThCompressedTexture<
   T extends CompressedTexture = CompressedTexture,

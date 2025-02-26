@@ -17,12 +17,13 @@ import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-renderPassGen',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThRenderPassGen) },
-  ],
+    selector: 'th-renderPassGen',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThRenderPassGen) },
+    ],
+    standalone: false
 })
 export class ThRenderPassGen<
   T extends RenderPass = RenderPass,

@@ -14,10 +14,11 @@ import { Object3D, Object3DEventMap } from 'three/src/core/Object3D.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-lOD',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLOD) }],
+    selector: 'th-lOD',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLOD) }],
+    standalone: false
 })
 export class ThLOD<
   TEventMap extends Object3DEventMap = Object3DEventMap,

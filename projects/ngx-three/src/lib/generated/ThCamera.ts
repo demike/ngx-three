@@ -15,10 +15,11 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-camera',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
+    selector: 'th-camera',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
+    standalone: false
 })
 export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
   Object3DEventMap,

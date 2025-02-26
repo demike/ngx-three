@@ -14,15 +14,16 @@ import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonCont
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
-  selector: 'th-firstPersonControls',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThControlBase,
-      useExisting: forwardRef(() => ThFirstPersonControls),
-    },
-  ],
+    selector: 'th-firstPersonControls',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThControlBase,
+            useExisting: forwardRef(() => ThFirstPersonControls),
+        },
+    ],
+    standalone: false
 })
 export class ThFirstPersonControls<
   T extends FirstPersonControls = FirstPersonControls,

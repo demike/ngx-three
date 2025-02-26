@@ -19,12 +19,13 @@ import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-polarGridHelper',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThPolarGridHelper) },
-  ],
+    selector: 'th-polarGridHelper',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThPolarGridHelper) },
+    ],
+    standalone: false
 })
 export class ThPolarGridHelper<
   T extends PolarGridHelper = PolarGridHelper,

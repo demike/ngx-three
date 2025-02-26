@@ -17,12 +17,13 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-spotLightHelper',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThSpotLightHelper) },
-  ],
+    selector: 'th-spotLightHelper',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThSpotLightHelper) },
+    ],
+    standalone: false
 })
 export class ThSpotLightHelper<
   T extends SpotLightHelper = SpotLightHelper,

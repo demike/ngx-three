@@ -14,8 +14,9 @@ export class PLYLoaderService extends ThAsyncLoaderService<BufferGeometry> {
 }
 
 @Pipe({
-  name: 'loadPLY',
-  pure: true,
+    name: 'loadPLY',
+    pure: true,
+    standalone: false
 })
 export class ThPLYLoaderPipe extends ThAsyncLoaderBasePipe<BufferGeometry> implements PipeTransform {
   constructor(protected service: PLYLoaderService) {
@@ -24,7 +25,8 @@ export class ThPLYLoaderPipe extends ThAsyncLoaderBasePipe<BufferGeometry> imple
 }
 
 @Directive({
-  selector: '[loadPLY]',
+    selector: '[loadPLY]',
+    standalone: false
 })
 export class ThPLYLoaderDirective extends ThAsyncLoaderBaseDirective<BufferGeometry> {
   constructor(

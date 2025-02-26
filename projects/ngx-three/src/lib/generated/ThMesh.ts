@@ -16,10 +16,11 @@ import { Material } from 'three/src/materials/Material.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-mesh',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThMesh) }],
+    selector: 'th-mesh',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThMesh) }],
+    standalone: false
 })
 export class ThMesh<
   TGeometry extends BufferGeometry = BufferGeometry,

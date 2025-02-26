@@ -20,12 +20,13 @@ import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: 'th-lineBasicMaterial',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThLineBasicMaterial) },
-  ],
+    selector: 'th-lineBasicMaterial',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThMaterial, useExisting: forwardRef(() => ThLineBasicMaterial) },
+    ],
+    standalone: false
 })
 export class ThLineBasicMaterial<
   T extends LineBasicMaterial = LineBasicMaterial,

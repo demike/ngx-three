@@ -20,10 +20,11 @@ import { ThObjectBase } from '../ThObjectBase';
 import { applyValue } from '../util';
 
 @Component({
-  selector: 'th-object3D',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
+    selector: 'th-object3D',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [],
+    standalone: false
 })
 export class ThObject3D<
   TEventMap extends Object3DEventMap = Object3DEventMap,

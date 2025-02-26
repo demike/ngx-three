@@ -8,15 +8,16 @@ import { ThControlBase } from '../ThControlBase';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-transformControlsGizmo',
-  template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThControlBase,
-      useExisting: forwardRef(() => ThTransformControlsGizmo),
-    },
-  ],
+    selector: 'th-transformControlsGizmo',
+    template: '',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThControlBase,
+            useExisting: forwardRef(() => ThTransformControlsGizmo),
+        },
+    ],
+    standalone: false
 })
 export class ThTransformControlsGizmo<
   T extends TransformControlsGizmo = TransformControlsGizmo,

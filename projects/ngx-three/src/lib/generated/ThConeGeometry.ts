@@ -13,15 +13,16 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThCylinderGeometry } from './ThCylinderGeometry';
 
 @Component({
-  selector: 'th-coneGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThConeGeometry),
-    },
-  ],
+    selector: 'th-coneGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThConeGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThConeGeometry<
   T extends ConeGeometry = ConeGeometry,
