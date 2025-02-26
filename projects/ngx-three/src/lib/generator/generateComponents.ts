@@ -15,6 +15,7 @@ import { NgxThreeBarrelGen } from './NgxThreeBarrelGen';
 import { NgxThreePass } from './NgxThreePass';
 import { NgxThreeTexture } from './NgxThreeTexture';
 import { ESLint } from 'eslint';
+import { NgxThreeNodeMaterial } from './NgxThreeNodeMaterial';
 
 class NgxThreeClassGenerator {
   public readonly baseOutPath = normalize(join(__dirname, '../generated/'));
@@ -33,6 +34,7 @@ class NgxThreeClassGenerator {
       this.generateGeometries(),
       this.generatePasses(),
       this.generateTextures(),
+      this.generateNodeMaterials(),
     ]);
 
     return Promise.allSettled([
@@ -48,6 +50,10 @@ class NgxThreeClassGenerator {
 
   generateMaterials() {
     return this.generate('NgxThreeMaterials', NgxThreeMaterial);
+  }
+
+  generateNodeMaterials() {
+    return this.generate('NgxThreeNodeMaterials', NgxThreeNodeMaterial);
   }
 
   generateGeometries() {

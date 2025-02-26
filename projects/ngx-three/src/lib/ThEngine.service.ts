@@ -5,6 +5,7 @@ import { HOST_ELEMENT, ThView } from './ThView';
 import { isObserved } from './util';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { RENDERER_PROVIDERS } from './renderer/renderer-providers';
+import { WebGPURenderer } from 'three/webgpu';
 
 export interface RenderState {
   engine: ThEngineService;
@@ -132,7 +133,7 @@ export class ThEngineService implements OnDestroy {
     }
 
     for (const renderer of this.renderers) {
-      if (view.effectComposer && !(renderer instanceof WebGLRenderer)) {
+      if (view.effectComposer && !(renderer instanceof WebGLRenderer || renderer instanceof WebGPURenderer)) {
         // effect composer needs a webgl renderer
         continue;
       }
