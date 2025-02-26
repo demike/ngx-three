@@ -15,12 +15,13 @@ import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-hemisphereLight',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThHemisphereLight) },
-  ],
+    selector: 'th-hemisphereLight',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThHemisphereLight) },
+    ],
+    standalone: false
 })
 export class ThHemisphereLight<
   T extends HemisphereLight = HemisphereLight,

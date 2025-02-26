@@ -17,12 +17,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-shaderPass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThShaderPass) },
-  ],
+    selector: 'th-shaderPass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThShaderPass) },
+    ],
+    standalone: false
 })
 export class ThShaderPass<
   T extends ShaderPass = ShaderPass,

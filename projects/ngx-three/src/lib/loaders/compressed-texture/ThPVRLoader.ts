@@ -16,8 +16,9 @@ export class PVRLoaderService extends ThCallbackLoaderService<CompressedTexture>
 }
 
 @Pipe({
-  name: 'loadPVRTexture',
-  pure: true,
+    name: 'loadPVRTexture',
+    pure: true,
+    standalone: false
 })
 export class ThPVRLoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture> implements PipeTransform {
   constructor(protected service: PVRLoaderService) {
@@ -26,7 +27,8 @@ export class ThPVRLoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture>
 }
 
 @Directive({
-  selector: '[loadPVRTexture]',
+    selector: '[loadPVRTexture]',
+    standalone: false
 })
 export class ThPVRLoaderDirective extends ThCallbackLoaderBaseDirective<CompressedTexture> {
   constructor(

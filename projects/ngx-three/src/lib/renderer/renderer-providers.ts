@@ -30,9 +30,10 @@ export const CSS2D_RENDERER = new InjectionToken<CSS2DRenderer>('CSS2DRenderer')
 export const WEBGL_RENDERER = new InjectionToken<WebGLRenderer>('WebGLRenderer');
 
 @Directive({
-  selector:
+    selector: 
     // eslint-disable-next-line max-len
     'ng-template[rendererParameters], ng-template[css2dRendererParameters], ng-template[css3dRendererParameters], ng-template[webgpuRendererParameters]',
+    standalone: false
 })
 export class RendererProviderDirective implements OnChanges {
   @Input()

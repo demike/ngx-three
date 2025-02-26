@@ -19,12 +19,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThShaderPass } from './ThShaderPass';
 
 @Component({
-  selector: 'th-lUTPass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThLUTPass) },
-  ],
+    selector: 'th-lUTPass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThLUTPass) },
+    ],
+    standalone: false
 })
 export class ThLUTPass<
   T extends LUTPass = LUTPass,

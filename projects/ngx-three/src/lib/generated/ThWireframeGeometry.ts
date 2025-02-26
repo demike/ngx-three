@@ -13,15 +13,16 @@ import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-wireframeGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThWireframeGeometry),
-    },
-  ],
+    selector: 'th-wireframeGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThWireframeGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThWireframeGeometry<
   TBufferGeometry extends BufferGeometry = BufferGeometry,

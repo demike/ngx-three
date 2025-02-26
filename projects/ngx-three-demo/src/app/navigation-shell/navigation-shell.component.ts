@@ -6,10 +6,11 @@ import { EXAMPLE_ROUTES } from '../app-routing.module';
 import { EditorService } from '../code/EditorService';
 
 @Component({
-  selector: 'app-navigation-shell',
-  templateUrl: './navigation-shell.component.html',
-  styleUrls: ['./navigation-shell.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-navigation-shell',
+    templateUrl: './navigation-shell.component.html',
+    styleUrls: ['./navigation-shell.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class NavigationShellComponent {
   public routes = EXAMPLE_ROUTES;

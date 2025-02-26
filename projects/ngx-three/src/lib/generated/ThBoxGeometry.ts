@@ -12,12 +12,13 @@ import { BoxGeometry, NormalBufferAttributes } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-boxGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThBufferGeometry, useExisting: forwardRef(() => ThBoxGeometry) },
-  ],
+    selector: 'th-boxGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThBufferGeometry, useExisting: forwardRef(() => ThBoxGeometry) },
+    ],
+    standalone: false
 })
 export class ThBoxGeometry<
   T extends BoxGeometry = BoxGeometry,

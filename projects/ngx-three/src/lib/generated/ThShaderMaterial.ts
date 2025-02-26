@@ -16,12 +16,13 @@ import { IUniform } from 'three/src/renderers/shaders/UniformsLib.js';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: 'th-shaderMaterial',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) },
-  ],
+    selector: 'th-shaderMaterial',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) },
+    ],
+    standalone: false
 })
 export class ThShaderMaterial<
   T extends ShaderMaterial = ShaderMaterial,

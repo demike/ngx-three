@@ -16,12 +16,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-clearPass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThClearPass) },
-  ],
+    selector: 'th-clearPass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThClearPass) },
+    ],
+    standalone: false
 })
 export class ThClearPass<
   T extends ClearPass = ClearPass,

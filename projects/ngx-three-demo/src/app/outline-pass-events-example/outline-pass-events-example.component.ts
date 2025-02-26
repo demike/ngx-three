@@ -4,10 +4,11 @@ import { Color, MeshPhongMaterial, Vector2 } from 'three';
 import GUI from 'lil-gui';
 
 @Component({
-  selector: 'app-outline-pass-events-example',
-  templateUrl: './outline-pass-events-example.component.html',
-  styleUrls: ['./outline-pass-events-example.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-outline-pass-events-example',
+    templateUrl: './outline-pass-events-example.component.html',
+    styleUrls: ['./outline-pass-events-example.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class OutlinePassEventsExampleComponent implements OnInit {
   protected outlinePassResolution = new Vector2(window.innerWidth, window.innerHeight);

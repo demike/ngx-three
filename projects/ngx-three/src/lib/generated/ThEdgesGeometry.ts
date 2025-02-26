@@ -13,15 +13,16 @@ import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-edgesGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThEdgesGeometry),
-    },
-  ],
+    selector: 'th-edgesGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThEdgesGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThEdgesGeometry<
   TBufferGeometry extends BufferGeometry = BufferGeometry,

@@ -13,15 +13,16 @@ import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry.j
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-boxLineGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThBoxLineGeometry),
-    },
-  ],
+    selector: 'th-boxLineGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThBoxLineGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThBoxLineGeometry<
   T extends BoxLineGeometry = BoxLineGeometry,

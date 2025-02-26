@@ -14,15 +14,16 @@ import { Texture } from 'three/src/textures/Texture.js';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: 'th-meshDistanceMaterial',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThMaterial,
-      useExisting: forwardRef(() => ThMeshDistanceMaterial),
-    },
-  ],
+    selector: 'th-meshDistanceMaterial',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThMaterial,
+            useExisting: forwardRef(() => ThMeshDistanceMaterial),
+        },
+    ],
+    standalone: false
 })
 export class ThMeshDistanceMaterial<
   T extends MeshDistanceMaterial = MeshDistanceMaterial,

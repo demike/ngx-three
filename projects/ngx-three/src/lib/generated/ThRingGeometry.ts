@@ -12,15 +12,16 @@ import { NormalBufferAttributes, RingGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-ringGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThRingGeometry),
-    },
-  ],
+    selector: 'th-ringGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThRingGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThRingGeometry<
   T extends RingGeometry = RingGeometry,

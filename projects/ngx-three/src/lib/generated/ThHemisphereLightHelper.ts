@@ -17,15 +17,16 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-hemisphereLightHelper',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThObject3D,
-      useExisting: forwardRef(() => ThHemisphereLightHelper),
-    },
-  ],
+    selector: 'th-hemisphereLightHelper',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThObject3D,
+            useExisting: forwardRef(() => ThHemisphereLightHelper),
+        },
+    ],
+    standalone: false
 })
 export class ThHemisphereLightHelper<
   T extends HemisphereLightHelper = HemisphereLightHelper,

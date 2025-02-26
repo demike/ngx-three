@@ -5,9 +5,10 @@ import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader';
 import { ASSET_PATH } from '../assets';
 
 @Component({
-  selector: 'app-robot',
-  templateUrl: './robot.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-robot',
+    templateUrl: './robot.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RobotComponent {
   public readonly assetPath = ASSET_PATH + 'RobotExpressive.glb';

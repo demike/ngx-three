@@ -15,12 +15,13 @@ import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-rectAreaLight',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThRectAreaLight) },
-  ],
+    selector: 'th-rectAreaLight',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThRectAreaLight) },
+    ],
+    standalone: false
 })
 export class ThRectAreaLight<
   T extends RectAreaLight = RectAreaLight,

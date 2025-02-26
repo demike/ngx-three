@@ -22,15 +22,16 @@ import { ThMaterial } from './ThMaterial';
 import { ThMeshStandardMaterial } from './ThMeshStandardMaterial';
 
 @Component({
-  selector: 'th-meshPhysicalMaterial',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThMaterial,
-      useExisting: forwardRef(() => ThMeshPhysicalMaterial),
-    },
-  ],
+    selector: 'th-meshPhysicalMaterial',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThMaterial,
+            useExisting: forwardRef(() => ThMeshPhysicalMaterial),
+        },
+    ],
+    standalone: false
 })
 export class ThMeshPhysicalMaterial<
   T extends MeshPhysicalMaterial = MeshPhysicalMaterial,

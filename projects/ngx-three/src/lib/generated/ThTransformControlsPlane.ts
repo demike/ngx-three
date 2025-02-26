@@ -9,15 +9,16 @@ import { applyValue } from '../util';
 import { ThMesh } from './ThMesh';
 
 @Component({
-  selector: 'th-transformControlsPlane',
-  template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThControlBase,
-      useExisting: forwardRef(() => ThTransformControlsPlane),
-    },
-  ],
+    selector: 'th-transformControlsPlane',
+    template: '',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThControlBase,
+            useExisting: forwardRef(() => ThTransformControlsPlane),
+        },
+    ],
+    standalone: false
 })
 export class ThTransformControlsPlane<
   T extends TransformControlsPlane = TransformControlsPlane,

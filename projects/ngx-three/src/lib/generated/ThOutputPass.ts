@@ -17,12 +17,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-outputPass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThOutputPass) },
-  ],
+    selector: 'th-outputPass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThOutputPass) },
+    ],
+    standalone: false
 })
 export class ThOutputPass<
   T extends OutputPass = OutputPass,

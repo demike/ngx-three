@@ -17,10 +17,11 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-sprite',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSprite) }],
+    selector: 'th-sprite',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSprite) }],
+    standalone: false
 })
 export class ThSprite<
   TEventMap extends Object3DEventMap = Object3DEventMap,

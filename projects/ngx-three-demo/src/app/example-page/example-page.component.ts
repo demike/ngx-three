@@ -3,10 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { EditorService } from '../code/EditorService';
 
 @Component({
-  selector: 'app-example-page',
-  templateUrl: './example-page.component.html',
-  styleUrls: ['./example-page.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-example-page',
+    templateUrl: './example-page.component.html',
+    styleUrls: ['./example-page.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ExamplePageComponent {
   public exampleComponent: Type<any> | null = null;

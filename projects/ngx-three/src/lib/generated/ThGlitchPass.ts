@@ -17,12 +17,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-glitchPass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThGlitchPass) },
-  ],
+    selector: 'th-glitchPass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThGlitchPass) },
+    ],
+    standalone: false
 })
 export class ThGlitchPass<
   T extends GlitchPass = GlitchPass,

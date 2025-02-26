@@ -13,15 +13,16 @@ import { TeapotGeometry } from 'three/examples/jsm/geometries/TeapotGeometry.js'
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-teapotGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThTeapotGeometry),
-    },
-  ],
+    selector: 'th-teapotGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThTeapotGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThTeapotGeometry<
   T extends TeapotGeometry = TeapotGeometry,

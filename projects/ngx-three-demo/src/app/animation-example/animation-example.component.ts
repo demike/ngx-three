@@ -3,9 +3,10 @@ import { ThGridHelper } from 'ngx-three';
 import { Material } from 'three';
 
 @Component({
-  selector: 'app-animation-example',
-  templateUrl: './animation-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-animation-example',
+    templateUrl: './animation-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AnimationExampleComponent implements AfterViewInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention

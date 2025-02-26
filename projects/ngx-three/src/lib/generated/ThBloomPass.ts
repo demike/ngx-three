@@ -17,12 +17,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-bloomPass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThBloomPass) },
-  ],
+    selector: 'th-bloomPass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThBloomPass) },
+    ],
+    standalone: false
 })
 export class ThBloomPass<
   T extends BloomPass = BloomPass,

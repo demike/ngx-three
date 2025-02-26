@@ -20,12 +20,13 @@ import { ThMesh } from './ThMesh';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-batchedMesh',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThBatchedMesh) },
-  ],
+    selector: 'th-batchedMesh',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThBatchedMesh) },
+    ],
+    standalone: false
 })
 export class ThBatchedMesh<
   T extends BatchedMesh = BatchedMesh,

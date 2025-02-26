@@ -19,12 +19,13 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-  selector: 'th-data3DTexture',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThData3DTexture) },
-  ],
+    selector: 'th-data3DTexture',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThTextureBase, useExisting: forwardRef(() => ThData3DTexture) },
+    ],
+    standalone: false
 })
 export class ThData3DTexture<
   T extends Data3DTexture = Data3DTexture,

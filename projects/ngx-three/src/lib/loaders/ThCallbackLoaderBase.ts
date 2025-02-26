@@ -23,7 +23,9 @@ export abstract class ThCallbackLoaderBasePipe<TData = unknown, TUrl extends str
   }
 }
 
-@Directive({})
+@Directive({
+    standalone: false
+})
 export abstract class ThCallbackLoaderBaseDirective<TData = unknown, TUrl extends string | string[] = string>
   implements OnInit
 {

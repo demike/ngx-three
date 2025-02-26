@@ -16,13 +16,14 @@ import { ThObject3D } from './ThObject3D';
 import { ThPerspectiveCamera } from './ThPerspectiveCamera';
 
 @Component({
-  selector: 'th-arrayCamera',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThArrayCamera) },
-    { provide: ThCamera, useExisting: forwardRef(() => ThArrayCamera) },
-  ],
+    selector: 'th-arrayCamera',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThArrayCamera) },
+        { provide: ThCamera, useExisting: forwardRef(() => ThArrayCamera) },
+    ],
+    standalone: false
 })
 export class ThArrayCamera<
   T extends ArrayCamera = ArrayCamera,

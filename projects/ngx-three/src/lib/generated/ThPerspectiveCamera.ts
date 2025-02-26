@@ -14,13 +14,14 @@ import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-perspectiveCamera',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThPerspectiveCamera) },
-    { provide: ThCamera, useExisting: forwardRef(() => ThPerspectiveCamera) },
-  ],
+    selector: 'th-perspectiveCamera',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThPerspectiveCamera) },
+        { provide: ThCamera, useExisting: forwardRef(() => ThPerspectiveCamera) },
+    ],
+    standalone: false
 })
 export class ThPerspectiveCamera<
   T extends PerspectiveCamera = PerspectiveCamera,

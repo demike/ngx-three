@@ -17,12 +17,13 @@ import {
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
-  selector: 'th-flyControls',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThControlBase, useExisting: forwardRef(() => ThFlyControls) },
-  ],
+    selector: 'th-flyControls',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThControlBase, useExisting: forwardRef(() => ThFlyControls) },
+    ],
+    standalone: false
 })
 export class ThFlyControls<
   T extends FlyControls = FlyControls,

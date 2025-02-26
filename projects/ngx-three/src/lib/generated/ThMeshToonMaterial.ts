@@ -22,12 +22,13 @@ import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: 'th-meshToonMaterial',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThMeshToonMaterial) },
-  ],
+    selector: 'th-meshToonMaterial',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThMaterial, useExisting: forwardRef(() => ThMeshToonMaterial) },
+    ],
+    standalone: false
 })
 export class ThMeshToonMaterial<
   T extends MeshToonMaterial = MeshToonMaterial,

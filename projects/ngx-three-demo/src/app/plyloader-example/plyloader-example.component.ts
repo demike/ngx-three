@@ -4,9 +4,10 @@ import { Vector3 } from 'three';
 import { ASSET_PATH } from '../assets';
 
 @Component({
-  selector: 'app-plyloader-example',
-  templateUrl: './plyloader-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-plyloader-example',
+    templateUrl: './plyloader-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PLYLoaderExampleComponent {
   // eslint-disable-next-line @typescript-eslint/naming-convention

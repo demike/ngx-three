@@ -13,15 +13,16 @@ import { Shape } from 'three/src/extras/core/Shape.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-shapeGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThShapeGeometry),
-    },
-  ],
+    selector: 'th-shapeGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThShapeGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThShapeGeometry<
   T extends ShapeGeometry = ShapeGeometry,

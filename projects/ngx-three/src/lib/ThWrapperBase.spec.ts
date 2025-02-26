@@ -15,9 +15,10 @@ class ExampleObj extends EventDispatcher<Object3DEventMap & ExampleEventMap> {
 }
 
 @Component({
-  selector: 'th-wrapper-impl',
-  template: '',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'th-wrapper-impl',
+    template: '',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 class ThWrapperImplComponent extends ThWrapperBase<ExampleObj, any> {
   getType() {

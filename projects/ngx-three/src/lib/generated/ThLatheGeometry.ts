@@ -13,15 +13,16 @@ import { Vector2 } from 'three/src/math/Vector2.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-latheGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThLatheGeometry),
-    },
-  ],
+    selector: 'th-latheGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThLatheGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThLatheGeometry<
   T extends LatheGeometry = LatheGeometry,

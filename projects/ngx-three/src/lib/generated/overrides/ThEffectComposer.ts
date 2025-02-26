@@ -9,10 +9,11 @@ import { ThView } from '../../ThView';
 import { ThEffectComposerGen } from '../ThEffectComposerGen';
 
 @Component({
-  selector: 'th-effectComposer',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [],
+    selector: 'th-effectComposer',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [],
+    standalone: false
 })
 export class ThEffectComposer<
   T extends EffectComposer = EffectComposer,

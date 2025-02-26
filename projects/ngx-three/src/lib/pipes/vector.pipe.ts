@@ -5,8 +5,9 @@ import { Vector2, Vector3, Vector4 } from 'three';
  * transform arrays to vectors
  */
 @Pipe({
-  name: 'vector2',
-  pure: true
+    name: 'vector2',
+    pure: true,
+    standalone: false
 })
 export class Vector2Pipe implements PipeTransform {
   transform(args: ConstructorParameters<typeof Vector2>): Vector2 {
@@ -15,8 +16,9 @@ export class Vector2Pipe implements PipeTransform {
 }
 
 @Pipe({
-  name: 'vector3',
-  pure: true
+    name: 'vector3',
+    pure: true,
+    standalone: false
 })
 export class Vector3Pipe implements PipeTransform {
   transform(args: ConstructorParameters<typeof Vector3>): Vector3 {
@@ -25,8 +27,9 @@ export class Vector3Pipe implements PipeTransform {
 }
 
 @Pipe({
-  name: 'vector4',
-  pure: true
+    name: 'vector4',
+    pure: true,
+    standalone: false
 })
 export class Vector4Pipe implements PipeTransform {
   transform(args: ConstructorParameters<typeof Vector4>): Vector4 {

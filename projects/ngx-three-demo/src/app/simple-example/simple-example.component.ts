@@ -7,12 +7,12 @@ import * as THREE from 'three';
 import { BoxGeometry, MeshStandardMaterial } from 'three';
 
 @Component({
-  template: '',
-
-  // eslint-disable-next-line @angular-eslint/component-selector
-  selector: 'th-box',
-  providers: createObj3DProviderArray(Box),
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    template: '',
+    // eslint-disable-next-line @angular-eslint/component-selector
+    selector: 'th-box',
+    providers: createObj3DProviderArray(Box),
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class Box extends ThMesh implements OnInit {
@@ -32,10 +32,11 @@ export class Box extends ThMesh implements OnInit {
 }
 
 @Component({
-  selector: 'app-simple-example',
-  templateUrl: './simple-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [provideWebGLRenderer()],
+    selector: 'app-simple-example',
+    templateUrl: './simple-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [provideWebGLRenderer()],
+    standalone: false
 })
 export class SimpleExampleComponent {
   constructor() {

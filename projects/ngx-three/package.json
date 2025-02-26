@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/demike/ngx-three#readme",
   "peerDependencies": {
-    "@angular/common": "^18.2.11",
-    "@angular/core": "^18.2.11",
+    "@angular/common": "^19.1.7",
+    "@angular/core": "^19.1.7",
     "three": "~0.171.0"
   },
   "dependencies": {

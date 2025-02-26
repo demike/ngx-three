@@ -13,8 +13,9 @@ export class OBJLoaderService extends ThAsyncLoaderService<Group> {
 }
 
 @Pipe({
-  name: 'loadObj',
-  pure: true,
+    name: 'loadObj',
+    pure: true,
+    standalone: false
 })
 export class ThObjLoaderPipe extends ThAsyncLoaderBasePipe<Group> implements PipeTransform {
   constructor(protected service: OBJLoaderService) {
@@ -23,7 +24,8 @@ export class ThObjLoaderPipe extends ThAsyncLoaderBasePipe<Group> implements Pip
 }
 
 @Directive({
-  selector: '[loadObj]',
+    selector: '[loadObj]',
+    standalone: false
 })
 export class ThObjLoaderDirective extends ThAsyncLoaderBaseDirective<Group> {
   constructor(

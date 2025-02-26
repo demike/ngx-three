@@ -16,8 +16,9 @@ export class DDSLoaderService extends ThCallbackLoaderService<CompressedTexture>
 }
 
 @Pipe({
-  name: 'loadDDSTexture',
-  pure: true,
+    name: 'loadDDSTexture',
+    pure: true,
+    standalone: false
 })
 export class ThDDSLoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture> implements PipeTransform {
   constructor(protected service: DDSLoaderService) {
@@ -26,7 +27,8 @@ export class ThDDSLoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture>
 }
 
 @Directive({
-  selector: '[loadDDSTexture]',
+    selector: '[loadDDSTexture]',
+    standalone: false
 })
 export class ThDDSLoaderDirective extends ThCallbackLoaderBaseDirective<CompressedTexture> {
   constructor(

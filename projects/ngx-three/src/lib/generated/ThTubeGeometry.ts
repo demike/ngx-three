@@ -15,15 +15,16 @@ import { Vector3 } from 'three/src/math/Vector3.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-tubeGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThTubeGeometry),
-    },
-  ],
+    selector: 'th-tubeGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThTubeGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThTubeGeometry<
   T extends TubeGeometry = TubeGeometry,

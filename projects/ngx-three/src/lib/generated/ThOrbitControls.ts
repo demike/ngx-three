@@ -19,12 +19,13 @@ import { ThControlBase } from '../ThControlBase';
 import { applyValue } from '../util';
 
 @Component({
-  selector: 'th-orbitControls',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) },
-  ],
+    selector: 'th-orbitControls',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) },
+    ],
+    standalone: false
 })
 export class ThOrbitControls<
   T extends OrbitControls = OrbitControls,

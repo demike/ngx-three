@@ -3,9 +3,10 @@ import { Object3D } from 'three';
 import { ASSET_PATH } from '../assets';
 
 @Component({
-  selector: 'app-dynamic-loader-example',
-  templateUrl: './dynamic-loader-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-dynamic-loader-example',
+    templateUrl: './dynamic-loader-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DynamicLoaderExampleComponent implements OnDestroy {
   public modelUrl: string;

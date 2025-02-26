@@ -9,7 +9,10 @@ export interface RaycasterEmitEvent extends Intersection {
   component: ThObject3D<RaycasterEventMap & Object3DEventMap>;
 }
 
-@Directive({ selector: '[onClick], [onMouseEnter], [onMouseExit], [onPointerDown], [onPointerUp]' })
+@Directive({
+    selector: '[onClick], [onMouseEnter], [onMouseExit], [onPointerDown], [onPointerUp]',
+    standalone: false
+})
 export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
   @Output() get onMouseEnter(): EventEmitter<RaycasterEmitEvent> {
     if (!this.mouseEnter) {

@@ -24,12 +24,13 @@ import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: 'th-meshPhongMaterial',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThMeshPhongMaterial) },
-  ],
+    selector: 'th-meshPhongMaterial',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThMaterial, useExisting: forwardRef(() => ThMeshPhongMaterial) },
+    ],
+    standalone: false
 })
 export class ThMeshPhongMaterial<
   T extends MeshPhongMaterial = MeshPhongMaterial,

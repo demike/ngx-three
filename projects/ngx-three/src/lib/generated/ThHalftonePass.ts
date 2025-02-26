@@ -20,12 +20,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-halftonePass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThHalftonePass) },
-  ],
+    selector: 'th-halftonePass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThHalftonePass) },
+    ],
+    standalone: false
 })
 export class ThHalftonePass<
   T extends HalftonePass = HalftonePass,

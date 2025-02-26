@@ -22,12 +22,13 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-  selector: 'th-canvasTexture',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThCanvasTexture) },
-  ],
+    selector: 'th-canvasTexture',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThTextureBase, useExisting: forwardRef(() => ThCanvasTexture) },
+    ],
+    standalone: false
 })
 export class ThCanvasTexture<
   T extends CanvasTexture = CanvasTexture,

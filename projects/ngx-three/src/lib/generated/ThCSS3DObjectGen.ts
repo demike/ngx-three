@@ -14,12 +14,13 @@ import { CSS3DObject } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-cSS3DObjectGen',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThCSS3DObjectGen) },
-  ],
+    selector: 'th-cSS3DObjectGen',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThCSS3DObjectGen) },
+    ],
+    standalone: false
 })
 export class ThCSS3DObjectGen<
   T extends CSS3DObject = CSS3DObject,

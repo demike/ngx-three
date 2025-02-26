@@ -16,8 +16,9 @@ export class EXRLoaderService extends ThCallbackLoaderService<DataTexture> {
 }
 
 @Pipe({
-  name: 'loadEXRTexture',
-  pure: true,
+    name: 'loadEXRTexture',
+    pure: true,
+    standalone: false
 })
 export class ThEXRLoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> implements PipeTransform {
   constructor(protected service: EXRLoaderService) {
@@ -26,7 +27,8 @@ export class ThEXRLoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> imple
 }
 
 @Directive({
-  selector: '[loadEXRTexture]',
+    selector: '[loadEXRTexture]',
+    standalone: false
 })
 export class ThEXRLoaderDirective extends ThCallbackLoaderBaseDirective<DataTexture> {
   constructor(

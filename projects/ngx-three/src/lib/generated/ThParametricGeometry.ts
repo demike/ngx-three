@@ -14,15 +14,16 @@ import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeom
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-parametricGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThParametricGeometry),
-    },
-  ],
+    selector: 'th-parametricGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThParametricGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThParametricGeometry<
   T extends ParametricGeometry = ParametricGeometry,

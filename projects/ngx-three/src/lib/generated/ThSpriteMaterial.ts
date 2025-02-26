@@ -20,12 +20,13 @@ import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: 'th-spriteMaterial',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThSpriteMaterial) },
-  ],
+    selector: 'th-spriteMaterial',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThMaterial, useExisting: forwardRef(() => ThSpriteMaterial) },
+    ],
+    standalone: false
 })
 export class ThSpriteMaterial<
   T extends SpriteMaterial = SpriteMaterial,

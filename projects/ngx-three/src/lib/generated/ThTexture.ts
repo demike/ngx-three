@@ -29,12 +29,13 @@ import { ThTextureBase } from '../ThTextureBase';
 import { applyValue } from '../util';
 
 @Component({
-  selector: 'th-texture',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThTexture) },
-  ],
+    selector: 'th-texture',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThTextureBase, useExisting: forwardRef(() => ThTexture) },
+    ],
+    standalone: false
 })
 export class ThTexture<
   T extends Texture = Texture,

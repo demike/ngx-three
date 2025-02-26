@@ -23,12 +23,13 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-  selector: 'th-depthTexture',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThDepthTexture) },
-  ],
+    selector: 'th-depthTexture',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThTextureBase, useExisting: forwardRef(() => ThDepthTexture) },
+    ],
+    standalone: false
 })
 export class ThDepthTexture<
   T extends DepthTexture = DepthTexture,

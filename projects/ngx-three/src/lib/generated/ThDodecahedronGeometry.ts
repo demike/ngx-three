@@ -13,15 +13,16 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
 
 @Component({
-  selector: 'th-dodecahedronGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThDodecahedronGeometry),
-    },
-  ],
+    selector: 'th-dodecahedronGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThDodecahedronGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThDodecahedronGeometry<
   T extends DodecahedronGeometry = DodecahedronGeometry,

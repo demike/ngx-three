@@ -14,15 +14,16 @@ import { ThLineBasicMaterial } from './ThLineBasicMaterial';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-  selector: 'th-lineDashedMaterial',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThMaterial,
-      useExisting: forwardRef(() => ThLineDashedMaterial),
-    },
-  ],
+    selector: 'th-lineDashedMaterial',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThMaterial,
+            useExisting: forwardRef(() => ThLineDashedMaterial),
+        },
+    ],
+    standalone: false
 })
 export class ThLineDashedMaterial<
   T extends LineDashedMaterial = LineDashedMaterial,

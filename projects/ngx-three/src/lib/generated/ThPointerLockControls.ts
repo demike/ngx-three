@@ -17,15 +17,16 @@ import {
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
-  selector: 'th-pointerLockControls',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThControlBase,
-      useExisting: forwardRef(() => ThPointerLockControls),
-    },
-  ],
+    selector: 'th-pointerLockControls',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThControlBase,
+            useExisting: forwardRef(() => ThPointerLockControls),
+        },
+    ],
+    standalone: false
 })
 export class ThPointerLockControls<
   T extends PointerLockControls = PointerLockControls,

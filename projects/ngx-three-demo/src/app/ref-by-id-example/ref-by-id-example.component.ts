@@ -13,9 +13,10 @@ import { ASSET_PATH } from '../assets';
  * By clicking on the notebook you can change the fragment shader.
  */
 @Component({
-  selector: 'app-ref-by-id-example',
-  templateUrl: './ref-by-id-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-ref-by-id-example',
+    templateUrl: './ref-by-id-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RefByIdExampleComponent {
   // eslint-disable-next-line @typescript-eslint/naming-convention

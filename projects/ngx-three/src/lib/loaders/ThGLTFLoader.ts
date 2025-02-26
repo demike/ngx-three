@@ -22,8 +22,9 @@ export class GLTFLoaderService extends ThAsyncLoaderService<GLTF> {
 }
 
 @Pipe({
-  name: 'loadGLTF',
-  pure: true,
+    name: 'loadGLTF',
+    pure: true,
+    standalone: false
 })
 export class ThGLTFLoaderPipe extends ThAsyncLoaderBasePipe<GLTF> implements PipeTransform {
   constructor(protected service: GLTFLoaderService) {
@@ -32,7 +33,8 @@ export class ThGLTFLoaderPipe extends ThAsyncLoaderBasePipe<GLTF> implements Pip
 }
 
 @Directive({
-  selector: '[loadGLTF]',
+    selector: '[loadGLTF]',
+    standalone: false
 })
 export class ThGLTFLoaderDirective extends ThAsyncLoaderBaseDirective<GLTF> {
   constructor(

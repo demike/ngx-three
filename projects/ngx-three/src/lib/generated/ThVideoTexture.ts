@@ -22,12 +22,13 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-  selector: 'th-videoTexture',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) },
-  ],
+    selector: 'th-videoTexture',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) },
+    ],
+    standalone: false
 })
 export class ThVideoTexture<
   T extends VideoTexture = VideoTexture,

@@ -16,12 +16,13 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-  selector: 'th-pointLightHelper',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThObject3D, useExisting: forwardRef(() => ThPointLightHelper) },
-  ],
+    selector: 'th-pointLightHelper',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThObject3D, useExisting: forwardRef(() => ThPointLightHelper) },
+    ],
+    standalone: false
 })
 export class ThPointLightHelper<
   T extends PointLightHelper = PointLightHelper,

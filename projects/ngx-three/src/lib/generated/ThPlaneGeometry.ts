@@ -12,15 +12,16 @@ import { NormalBufferAttributes, PlaneGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-  selector: 'th-planeGeometry',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    {
-      provide: ThBufferGeometry,
-      useExisting: forwardRef(() => ThPlaneGeometry),
-    },
-  ],
+    selector: 'th-planeGeometry',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        {
+            provide: ThBufferGeometry,
+            useExisting: forwardRef(() => ThPlaneGeometry),
+        },
+    ],
+    standalone: false
 })
 export class ThPlaneGeometry<
   T extends PlaneGeometry = PlaneGeometry,

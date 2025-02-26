@@ -16,12 +16,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThSSAARenderPass } from './ThSSAARenderPass';
 
 @Component({
-  selector: 'th-tAARenderPass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThTAARenderPass) },
-  ],
+    selector: 'th-tAARenderPass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThTAARenderPass) },
+    ],
+    standalone: false
 })
 export class ThTAARenderPass<
   T extends TAARenderPass = TAARenderPass,

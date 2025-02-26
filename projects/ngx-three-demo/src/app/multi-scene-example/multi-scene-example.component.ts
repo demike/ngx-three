@@ -3,10 +3,11 @@ import { ThCanvas } from 'ngx-three';
 import { Color } from 'three';
 
 @Component({
-  selector: 'app-multi-scene-example',
-  templateUrl: './multi-scene-example.component.html',
-  styleUrls: ['./multi-scene-example.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-multi-scene-example',
+    templateUrl: './multi-scene-example.component.html',
+    styleUrls: ['./multi-scene-example.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MultiSceneExampleComponent implements OnInit {
   public sliderPos = 0;

@@ -54,22 +54,22 @@ function provideDefaultRenderer(): StaticProvider[] {
 }
 
 @Component({
-  selector: 'th-canvas',
-  styleUrls: ['./ThCanvas.scss'],
-  template: '@if (isDevMode()) {<ng-content ></ng-content>}',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: HOST_ELEMENT, useFactory: () => inject(ElementRef) },
-    { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
-    ThEngineService,
-    ThAnimationLoopService,
-    { provide: RAYCASTER, useValue: new Raycaster() },
-    forwardRef(() => RaycasterService),
-    { provide: ThView, useExisting: forwardRef(() => ThCanvas) },
-
-    // default provider for webgl renderer
-    provideDefaultRenderer(),
-  ],
+    selector: 'th-canvas',
+    styleUrls: ['./ThCanvas.scss'],
+    template: '@if (isDevMode()) {<ng-content ></ng-content>}',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: HOST_ELEMENT, useFactory: () => inject(ElementRef) },
+        { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
+        ThEngineService,
+        ThAnimationLoopService,
+        { provide: RAYCASTER, useValue: new Raycaster() },
+        forwardRef(() => RaycasterService),
+        { provide: ThView, useExisting: forwardRef(() => ThCanvas) },
+        // default provider for webgl renderer
+        provideDefaultRenderer(),
+    ],
+    standalone: false
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThCanvas extends ThView implements OnInit, AfterViewInit, AfterContentChecked {

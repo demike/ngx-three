@@ -12,10 +12,11 @@ import { ASSET_PATH } from '../assets';
  * It selects the screen of the notebook by id and adds the html content node as a child.
  */
 @Component({
-  selector: 'app-html-with-css3d-example',
-  templateUrl: './html-with-css3d-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [provideWebGLRenderer(), provideCSS3dRenderer()],
+    selector: 'app-html-with-css3d-example',
+    templateUrl: './html-with-css3d-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [provideWebGLRenderer(), provideCSS3dRenderer()],
+    standalone: false
 })
 export class HtmlWithCSS3dExampleComponent {
   // eslint-disable-next-line @typescript-eslint/naming-convention

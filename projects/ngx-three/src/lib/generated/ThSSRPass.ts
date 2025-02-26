@@ -34,12 +34,13 @@ import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
-  selector: 'th-sSRPass',
-  template: '<ng-content/>',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThPassBase, useExisting: forwardRef(() => ThSSRPass) },
-  ],
+    selector: 'th-sSRPass',
+    template: '<ng-content/>',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    providers: [
+        { provide: ThPassBase, useExisting: forwardRef(() => ThSSRPass) },
+    ],
+    standalone: false
 })
 export class ThSSRPass<
   T extends SSRPass = SSRPass,

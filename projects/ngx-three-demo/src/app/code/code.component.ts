@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { EditorService } from './EditorService';
 
 @Component({
-  selector: 'app-code',
-  templateUrl: './code.component.html',
-  styleUrls: ['./code.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-code',
+    templateUrl: './code.component.html',
+    styleUrls: ['./code.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CodeComponent {
   public fileNames: string[] = [];

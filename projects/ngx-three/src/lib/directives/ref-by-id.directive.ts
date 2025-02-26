@@ -5,7 +5,8 @@ import { ThObject3D } from '../generated';
 import { createLazyObject3DProxy, isLazyObject3dProxy } from '../loaders/LazyObject3dProxy';
 
 @Directive({
-  selector: '[refById]'
+    selector: '[refById]',
+    standalone: false
 })
 export class RefByIdDirective implements OnDestroy {
   protected subscription?: Subscription;

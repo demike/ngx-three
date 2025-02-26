@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, SimpleChanges } from '@angular/core';
 import { ASSET_PATH } from '../assets';
 @Component({
-  selector: 'app-events-example',
-  templateUrl: './events-example.component.html',
-  styleUrls: ['./events-example.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-events-example',
+    templateUrl: './events-example.component.html',
+    styleUrls: ['./events-example.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EventsExampleComponent {
   public readonly id = 'CID';
