@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   BufferGeometry,
@@ -24,13 +24,12 @@ import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-skeletonHelper',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThSkeletonHelper) },
-    ],
-    standalone: false
+  selector: 'th-skeletonHelper',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThSkeletonHelper) },
+  ],
 })
 export class ThSkeletonHelper<
   T extends SkeletonHelper = SkeletonHelper,

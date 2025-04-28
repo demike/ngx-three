@@ -17,8 +17,7 @@ import { ThCSS3DObjectGen } from '../ThCSS3DObjectGen';
       }
     `,
     ],
-    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCSS3DObject) }],
-    standalone: false
+    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCSS3DObject) }]
 })
 export class ThCSS3DObject<
   T extends CSS3DObject = CSS3DObject,

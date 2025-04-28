@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { VideoTexture } from 'three';
 import {
@@ -22,13 +22,12 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-    selector: 'th-videoTexture',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) },
-    ],
-    standalone: false
+  selector: 'th-videoTexture',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) },
+  ],
 })
 export class ThVideoTexture<
   T extends VideoTexture = VideoTexture,

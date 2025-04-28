@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Box3, InstancedMesh, InstancedMeshEventMap } from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
@@ -21,13 +21,12 @@ import { ThMesh } from './ThMesh';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-instancedMesh',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThInstancedMesh) },
-    ],
-    standalone: false
+  selector: 'th-instancedMesh',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThInstancedMesh) },
+  ],
 })
 export class ThInstancedMesh<
   TGeometry extends BufferGeometry = BufferGeometry,

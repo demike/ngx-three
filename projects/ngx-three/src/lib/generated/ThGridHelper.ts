@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { GridHelper, Object3DEventMap } from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
@@ -16,13 +16,12 @@ import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-gridHelper',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThGridHelper) },
-    ],
-    standalone: false
+  selector: 'th-gridHelper',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThGridHelper) },
+  ],
 })
 export class ThGridHelper<
   T extends GridHelper = GridHelper,

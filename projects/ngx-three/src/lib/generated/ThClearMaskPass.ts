@@ -6,21 +6,20 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { ClearMaskPass } from 'three/examples/jsm/postprocessing/MaskPass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-    selector: 'th-clearMaskPass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThClearMaskPass) },
-    ],
-    standalone: false
+  selector: 'th-clearMaskPass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThClearMaskPass) },
+  ],
 })
 export class ThClearMaskPass<
   T extends ClearMaskPass = ClearMaskPass,

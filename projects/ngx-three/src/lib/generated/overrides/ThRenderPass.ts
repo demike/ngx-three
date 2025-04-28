@@ -14,7 +14,6 @@ import { ThEffectComposer } from './ThEffectComposer';
     template: '<ng-content/>',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThRenderPass) }],
-    standalone: false
 })
 export class ThRenderPass<
     T extends RenderPass = RenderPass,

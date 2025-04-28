@@ -18,7 +18,6 @@ import { ThObject3D } from '../ThObject3D';
     ],
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCSS2DObject) }],
-    standalone: false
 })
 export class ThCSS2DObject<
   T extends CSS2DObject = CSS2DObject,

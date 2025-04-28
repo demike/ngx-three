@@ -5,24 +5,23 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { NormalBufferAttributes, WireframeGeometry } from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-    selector: 'th-wireframeGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThWireframeGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-wireframeGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThWireframeGeometry),
+    },
+  ],
 })
 export class ThWireframeGeometry<
   TBufferGeometry extends BufferGeometry = BufferGeometry,

@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -26,11 +26,10 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-scene',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }],
-    standalone: false
+  selector: 'th-scene',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }],
 })
 export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
   Object3DEventMap,

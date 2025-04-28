@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { DataTexture, TextureImageData } from 'three';
 import {
@@ -22,18 +22,17 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-    selector: 'th-dataTexture',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThTextureBase, useExisting: forwardRef(() => ThDataTexture) },
-    ],
-    standalone: false
+  selector: 'th-dataTexture',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThDataTexture) },
+  ],
 })
 export class ThDataTexture<
   T extends DataTexture = DataTexture,
   TARGS = [
-    data?: BufferSource | null,
+    data?: ArrayBufferView | null,
     width?: number,
     height?: number,
     format?: PixelFormat,

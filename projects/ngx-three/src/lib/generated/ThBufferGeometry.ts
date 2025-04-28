@@ -26,11 +26,10 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-bufferGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [],
-    standalone: false
+  selector: 'th-bufferGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [],
 })
 export class ThBufferGeometry<
   Attributes extends NormalOrGLBufferAttributes = NormalBufferAttributes,
@@ -119,18 +118,22 @@ export class ThBufferGeometry<
     return this._objRef?.attributes;
   }
   @Input()
-  public set morphAttributes(value: {
-    [name: string]: Array<BufferAttribute | InterleavedBufferAttribute>; // TODO Replace for 'Record<>'
-  }) {
+  public set morphAttributes(
+    value: Record<
+      'position' | 'normal' | 'color',
+      Array<BufferAttribute | InterleavedBufferAttribute>
+    >,
+  ) {
     if (this._objRef) {
       this._objRef.morphAttributes = value;
     }
   }
 
   public get morphAttributes():
-    | {
-        [name: string]: Array<BufferAttribute | InterleavedBufferAttribute>; // TODO Replace for 'Record<>'
-      }
+    | Record<
+        'position' | 'normal' | 'color',
+        Array<BufferAttribute | InterleavedBufferAttribute>
+      >
     | undefined {
     return this._objRef?.morphAttributes;
   }

@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { MOUSE, Raycaster, TOUCH } from 'three';
 import {
@@ -21,13 +21,12 @@ import { ThControlBase } from '../ThControlBase';
 import { applyValue } from '../util';
 
 @Component({
-    selector: 'th-dragControls',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThControlBase, useExisting: forwardRef(() => ThDragControls) },
-    ],
-    standalone: false
+  selector: 'th-dragControls',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThControlBase, useExisting: forwardRef(() => ThDragControls) },
+  ],
 })
 export class ThDragControls<
   T extends DragControls = DragControls,

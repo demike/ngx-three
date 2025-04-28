@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Matrix3, OffscreenCanvas, Texture } from 'three';
 import {
@@ -21,6 +21,7 @@ import {
   TextureDataType,
   Wrapping,
 } from 'three/src/constants.js';
+import { RenderTarget } from 'three/src/core/RenderTarget.js';
 import { Vector2 } from 'three/src/math/Vector2.js';
 import { CompressedTextureMipmap } from 'three/src/textures/CompressedTexture.js';
 import { CubeTexture } from 'three/src/textures/CubeTexture.js';
@@ -29,13 +30,12 @@ import { ThTextureBase } from '../ThTextureBase';
 import { applyValue } from '../util';
 
 @Component({
-    selector: 'th-texture',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThTextureBase, useExisting: forwardRef(() => ThTexture) },
-    ],
-    standalone: false
+  selector: 'th-texture',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThTexture) },
+  ],
 })
 export class ThTexture<
   T extends Texture = Texture,
@@ -368,6 +368,16 @@ export class ThTexture<
     return this._objRef?.isRenderTargetTexture;
   }
   @Input()
+  public set isTextureArray(value: boolean) {
+    if (this._objRef) {
+      this._objRef.isTextureArray = value;
+    }
+  }
+
+  public get isTextureArray(): boolean | undefined {
+    return this._objRef?.isTextureArray;
+  }
+  @Input()
   public set userData(value: Record<string, any>) {
     if (this._objRef) {
       this._objRef.userData = value;
@@ -416,4 +426,15 @@ export class ThTexture<
   public static readonly DEFAULT_IMAGE = Texture.DEFAULT_IMAGE;
 
   public static readonly DEFAULT_MAPPING = Texture.DEFAULT_MAPPING;
+
+  @Input()
+  public set renderTarget(value: RenderTarget | null) {
+    if (this._objRef) {
+      this._objRef.renderTarget = value;
+    }
+  }
+
+  public get renderTarget(): (RenderTarget | null) | undefined {
+    return this._objRef?.renderTarget;
+  }
 }

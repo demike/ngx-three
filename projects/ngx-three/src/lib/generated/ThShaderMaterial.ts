@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, ShaderMaterialParameters } from 'three';
 import { GLSLVersion } from 'three/src/constants.js';
@@ -16,13 +16,12 @@ import { IUniform } from 'three/src/renderers/shaders/UniformsLib.js';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-    selector: 'th-shaderMaterial',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) },
-    ],
-    standalone: false
+  selector: 'th-shaderMaterial',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) },
+  ],
 })
 export class ThShaderMaterial<
   T extends ShaderMaterial = ShaderMaterial,

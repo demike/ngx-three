@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { PointLight } from 'three';
 import { PointLightShadow } from 'three/src/lights/PointLightShadow.js';
@@ -16,13 +16,12 @@ import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-pointLight',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThPointLight) },
-    ],
-    standalone: false
+  selector: 'th-pointLight',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThPointLight) },
+  ],
 })
 export class ThPointLight<
   T extends PointLight = PointLight,

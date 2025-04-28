@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -30,13 +30,12 @@ import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
-    selector: 'th-sAOPass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThSAOPass) },
-    ],
-    standalone: false
+  selector: 'th-sAOPass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThSAOPass) },
+  ],
 })
 export class ThSAOPass<
   T extends SAOPass = SAOPass,

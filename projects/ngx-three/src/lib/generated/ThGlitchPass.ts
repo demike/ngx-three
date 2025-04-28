@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial } from 'three';
 import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js';
@@ -17,13 +17,12 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-    selector: 'th-glitchPass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThGlitchPass) },
-    ],
-    standalone: false
+  selector: 'th-glitchPass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThGlitchPass) },
+  ],
 })
 export class ThGlitchPass<
   T extends GlitchPass = GlitchPass,

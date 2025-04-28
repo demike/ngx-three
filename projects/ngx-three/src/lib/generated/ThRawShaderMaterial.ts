@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { RawShaderMaterial } from 'three';
 import { ShaderMaterialParameters } from 'three/src/materials/ShaderMaterial.js';
@@ -14,13 +14,12 @@ import { ThMaterial } from './ThMaterial';
 import { ThShaderMaterial } from './ThShaderMaterial';
 
 @Component({
-    selector: 'th-rawShaderMaterial',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThMaterial, useExisting: forwardRef(() => ThRawShaderMaterial) },
-    ],
-    standalone: false
+  selector: 'th-rawShaderMaterial',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThRawShaderMaterial) },
+  ],
 })
 export class ThRawShaderMaterial<
   T extends RawShaderMaterial = RawShaderMaterial,

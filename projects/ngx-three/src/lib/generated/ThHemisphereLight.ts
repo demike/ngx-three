@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Color, ColorRepresentation, HemisphereLight, Vector3 } from 'three';
 import { applyValue } from '../util';
@@ -15,13 +15,12 @@ import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-hemisphereLight',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThHemisphereLight) },
-    ],
-    standalone: false
+  selector: 'th-hemisphereLight',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThHemisphereLight) },
+  ],
 })
 export class ThHemisphereLight<
   T extends HemisphereLight = HemisphereLight,

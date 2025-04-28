@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -29,13 +29,12 @@ import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
-    selector: 'th-bokehPass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThBokehPass) },
-    ],
-    standalone: false
+  selector: 'th-bokehPass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThBokehPass) },
+  ],
 })
 export class ThBokehPass<
   T extends BokehPass = BokehPass,

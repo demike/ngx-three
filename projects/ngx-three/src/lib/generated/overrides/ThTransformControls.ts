@@ -20,7 +20,6 @@ import { ThScene } from '../ThScene';
             useExisting: forwardRef(() => ThTransformControls),
         },
     ],
-    standalone: false
 })
 export class ThTransformControls<
     T extends TransformControls = TransformControls,

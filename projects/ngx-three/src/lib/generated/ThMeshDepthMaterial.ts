@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { MeshDepthMaterial, MeshDepthMaterialParameters } from 'three';
 import { DepthPackingStrategies } from 'three/src/constants.js';
@@ -15,13 +15,12 @@ import { Texture } from 'three/src/textures/Texture.js';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-    selector: 'th-meshDepthMaterial',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThMaterial, useExisting: forwardRef(() => ThMeshDepthMaterial) },
-    ],
-    standalone: false
+  selector: 'th-meshDepthMaterial',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThMeshDepthMaterial) },
+  ],
 })
 export class ThMeshDepthMaterial<
   T extends MeshDepthMaterial = MeshDepthMaterial,
@@ -113,15 +112,5 @@ export class ThMeshDepthMaterial<
 
   public get wireframeLinewidth(): number | undefined {
     return this._objRef?.wireframeLinewidth;
-  }
-  @Input()
-  public set fog(value: boolean) {
-    if (this._objRef) {
-      this._objRef.fog = value;
-    }
-  }
-
-  public get fog(): boolean | undefined {
-    return this._objRef?.fog;
   }
 }

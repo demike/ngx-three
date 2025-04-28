@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { DepthTexture } from 'three';
 import {
@@ -23,13 +23,12 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-    selector: 'th-depthTexture',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThTextureBase, useExisting: forwardRef(() => ThDepthTexture) },
-    ],
-    standalone: false
+  selector: 'th-depthTexture',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThDepthTexture) },
+  ],
 })
 export class ThDepthTexture<
   T extends DepthTexture = DepthTexture,

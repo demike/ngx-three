@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial } from 'three';
 import { FilmPass } from 'three/examples/jsm/postprocessing/FilmPass.js';
@@ -17,13 +17,12 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-    selector: 'th-filmPass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThFilmPass) },
-    ],
-    standalone: false
+  selector: 'th-filmPass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThFilmPass) },
+  ],
 })
 export class ThFilmPass<
   T extends FilmPass = FilmPass,

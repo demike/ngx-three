@@ -1,4 +1,9 @@
 import { NgModule } from '@angular/core';
+import { ThCSS2DObject } from './overrides/ThCSS2DObject';
+import { ThCSS3DObject } from './overrides/ThCSS3DObject';
+import { ThEffectComposer } from './overrides/ThEffectComposer';
+import { ThRenderPass } from './overrides/ThRenderPass';
+import { ThTransformControls } from './overrides/ThTransformControls';
 import { ThAfterimagePass } from './ThAfterimagePass';
 import { ThAmbientLight } from './ThAmbientLight';
 import { ThArcballControls } from './ThArcballControls';
@@ -16,8 +21,6 @@ import { ThBoxGeometry } from './ThBoxGeometry';
 import { ThBoxHelper } from './ThBoxHelper';
 import { ThBoxLineGeometry } from './ThBoxLineGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
-import { ThCSS2DObjectGen } from './ThCSS2DObjectGen';
-import { ThCSS3DObjectGen } from './ThCSS3DObjectGen';
 import { ThCamera } from './ThCamera';
 import { ThCameraHelper } from './ThCameraHelper';
 import { ThCanvasTexture } from './ThCanvasTexture';
@@ -30,6 +33,8 @@ import { ThCompressedCubeTexture } from './ThCompressedCubeTexture';
 import { ThCompressedTexture } from './ThCompressedTexture';
 import { ThConeGeometry } from './ThConeGeometry';
 import { ThConvexGeometry } from './ThConvexGeometry';
+import { ThCSS2DObjectGen } from './ThCSS2DObjectGen';
+import { ThCSS3DObjectGen } from './ThCSS3DObjectGen';
 import { ThCubeCamera } from './ThCubeCamera';
 import { ThCubeTexture } from './ThCubeTexture';
 import { ThCubeTexturePass } from './ThCubeTexturePass';
@@ -38,6 +43,7 @@ import { ThData3DTexture } from './ThData3DTexture';
 import { ThDataArrayTexture } from './ThDataArrayTexture';
 import { ThDataTexture } from './ThDataTexture';
 import { ThDecalGeometry } from './ThDecalGeometry';
+import { ThDepthArrayTexture } from './ThDepthArrayTexture';
 import { ThDepthTexture } from './ThDepthTexture';
 import { ThDirectionalLight } from './ThDirectionalLight';
 import { ThDirectionalLightHelper } from './ThDirectionalLightHelper';
@@ -60,8 +66,6 @@ import { ThHemisphereLightHelper } from './ThHemisphereLightHelper';
 import { ThIcosahedronGeometry } from './ThIcosahedronGeometry';
 import { ThInstancedBufferGeometry } from './ThInstancedBufferGeometry';
 import { ThInstancedMesh } from './ThInstancedMesh';
-import { ThLOD } from './ThLOD';
-import { ThLUTPass } from './ThLUTPass';
 import { ThLatheGeometry } from './ThLatheGeometry';
 import { ThLightProbe } from './ThLightProbe';
 import { ThLine } from './ThLine';
@@ -69,6 +73,8 @@ import { ThLineBasicMaterial } from './ThLineBasicMaterial';
 import { ThLineDashedMaterial } from './ThLineDashedMaterial';
 import { ThLineLoop } from './ThLineLoop';
 import { ThLineSegments } from './ThLineSegments';
+import { ThLOD } from './ThLOD';
+import { ThLUTPass } from './ThLUTPass';
 import { ThMapControls } from './ThMapControls';
 import { ThMaskPass } from './ThMaskPass';
 import { ThMaterial } from './ThMaterial';
@@ -94,9 +100,9 @@ import { ThPass } from './ThPass';
 import { ThPerspectiveCamera } from './ThPerspectiveCamera';
 import { ThPlaneGeometry } from './ThPlaneGeometry';
 import { ThPlaneHelper } from './ThPlaneHelper';
+import { ThPointerLockControls } from './ThPointerLockControls';
 import { ThPointLight } from './ThPointLight';
 import { ThPointLightHelper } from './ThPointLightHelper';
-import { ThPointerLockControls } from './ThPointerLockControls';
 import { ThPoints } from './ThPoints';
 import { ThPointsMaterial } from './ThPointsMaterial';
 import { ThPolarGridHelper } from './ThPolarGridHelper';
@@ -108,10 +114,6 @@ import { ThRenderPassGen } from './ThRenderPassGen';
 import { ThRingGeometry } from './ThRingGeometry';
 import { ThRoundedBoxGeometry } from './ThRoundedBoxGeometry';
 import { ThSAOPass } from './ThSAOPass';
-import { ThSMAAPass } from './ThSMAAPass';
-import { ThSSAARenderPass } from './ThSSAARenderPass';
-import { ThSSAOPass } from './ThSSAOPass';
-import { ThSSRPass } from './ThSSRPass';
 import { ThSavePass } from './ThSavePass';
 import { ThScene } from './ThScene';
 import { ThShaderMaterial } from './ThShaderMaterial';
@@ -120,11 +122,15 @@ import { ThShadowMaterial } from './ThShadowMaterial';
 import { ThShapeGeometry } from './ThShapeGeometry';
 import { ThSkeletonHelper } from './ThSkeletonHelper';
 import { ThSkinnedMesh } from './ThSkinnedMesh';
+import { ThSMAAPass } from './ThSMAAPass';
 import { ThSphereGeometry } from './ThSphereGeometry';
 import { ThSpotLight } from './ThSpotLight';
 import { ThSpotLightHelper } from './ThSpotLightHelper';
 import { ThSprite } from './ThSprite';
 import { ThSpriteMaterial } from './ThSpriteMaterial';
+import { ThSSAARenderPass } from './ThSSAARenderPass';
+import { ThSSAOPass } from './ThSSAOPass';
+import { ThSSRPass } from './ThSSRPass';
 import { ThStereoCamera } from './ThStereoCamera';
 import { ThTAARenderPass } from './ThTAARenderPass';
 import { ThTeapotGeometry } from './ThTeapotGeometry';
@@ -138,16 +144,12 @@ import { ThTrackballControls } from './ThTrackballControls';
 import { ThTransformControlsGen } from './ThTransformControlsGen';
 import { ThTubeGeometry } from './ThTubeGeometry';
 import { ThUnrealBloomPass } from './ThUnrealBloomPass';
+import { ThVideoFrameTexture } from './ThVideoFrameTexture';
 import { ThVideoTexture } from './ThVideoTexture';
 import { ThWireframeGeometry } from './ThWireframeGeometry';
-import { ThCSS2DObject } from './overrides/ThCSS2DObject';
-import { ThCSS3DObject } from './overrides/ThCSS3DObject';
-import { ThEffectComposer } from './overrides/ThEffectComposer';
-import { ThRenderPass } from './overrides/ThRenderPass';
-import { ThTransformControls } from './overrides/ThTransformControls';
 
 @NgModule({
-  declarations: [
+  imports: [
     ThTransformControlsGen,
     ThTransformControls,
     ThArcballControls,
@@ -290,9 +292,11 @@ import { ThTransformControls } from './overrides/ThTransformControls';
     ThData3DTexture,
     ThDataArrayTexture,
     ThDataTexture,
+    ThDepthArrayTexture,
     ThDepthTexture,
     ThFramebufferTexture,
     ThTexture,
+    ThVideoFrameTexture,
     ThVideoTexture,
   ],
   exports: [
@@ -438,9 +442,11 @@ import { ThTransformControls } from './overrides/ThTransformControls';
     ThData3DTexture,
     ThDataArrayTexture,
     ThDataTexture,
+    ThDepthArrayTexture,
     ThDepthTexture,
     ThFramebufferTexture,
     ThTexture,
+    ThVideoFrameTexture,
     ThVideoTexture,
   ],
 })

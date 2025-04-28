@@ -26,11 +26,10 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-material',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [],
-    standalone: false
+  selector: 'th-material',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [],
 })
 export class ThMaterial<
   T extends Material = Material,
@@ -422,6 +421,16 @@ export class ThMaterial<
 
   public get forceSinglePass(): boolean | undefined {
     return this._objRef?.forceSinglePass;
+  }
+  @Input()
+  public set allowOverride(value: boolean) {
+    if (this._objRef) {
+      this._objRef.allowOverride = value;
+    }
+  }
+
+  public get allowOverride(): boolean | undefined {
+    return this._objRef?.allowOverride;
   }
   @Input()
   public set dithering(value: boolean) {

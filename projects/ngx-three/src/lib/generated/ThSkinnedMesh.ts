@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Box3, Matrix4, SkinnedMesh } from 'three';
 import { BindMode } from 'three/src/constants.js';
@@ -22,13 +22,12 @@ import { ThMesh } from './ThMesh';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-skinnedMesh',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThSkinnedMesh) },
-    ],
-    standalone: false
+  selector: 'th-skinnedMesh',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThSkinnedMesh) },
+  ],
 })
 export class ThSkinnedMesh<
   TGeometry extends BufferGeometry = BufferGeometry,

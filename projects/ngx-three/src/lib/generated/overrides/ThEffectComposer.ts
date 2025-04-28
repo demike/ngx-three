@@ -13,7 +13,6 @@ import { ThEffectComposerGen } from '../ThEffectComposerGen';
     template: '<ng-content/>',
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [],
-    standalone: false
 })
 export class ThEffectComposer<
   T extends EffectComposer = EffectComposer,

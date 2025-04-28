@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -22,16 +22,15 @@ import { ThMaterial } from './ThMaterial';
 import { ThMeshStandardMaterial } from './ThMeshStandardMaterial';
 
 @Component({
-    selector: 'th-meshPhysicalMaterial',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThMaterial,
-            useExisting: forwardRef(() => ThMeshPhysicalMaterial),
-        },
-    ],
-    standalone: false
+  selector: 'th-meshPhysicalMaterial',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: ThMaterial,
+      useExisting: forwardRef(() => ThMeshPhysicalMaterial),
+    },
+  ],
 })
 export class ThMeshPhysicalMaterial<
   T extends MeshPhysicalMaterial = MeshPhysicalMaterial,

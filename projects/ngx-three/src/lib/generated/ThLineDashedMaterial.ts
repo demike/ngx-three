@@ -5,25 +5,24 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { LineDashedMaterial, LineDashedMaterialParameters } from 'three';
 import { ThLineBasicMaterial } from './ThLineBasicMaterial';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-    selector: 'th-lineDashedMaterial',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThMaterial,
-            useExisting: forwardRef(() => ThLineDashedMaterial),
-        },
-    ],
-    standalone: false
+  selector: 'th-lineDashedMaterial',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: ThMaterial,
+      useExisting: forwardRef(() => ThLineDashedMaterial),
+    },
+  ],
 })
 export class ThLineDashedMaterial<
   T extends LineDashedMaterial = LineDashedMaterial,

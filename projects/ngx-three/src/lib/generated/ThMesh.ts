@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Mesh } from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
@@ -16,11 +16,10 @@ import { Material } from 'three/src/materials/Material.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-mesh',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThMesh) }],
-    standalone: false
+  selector: 'th-mesh',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThMesh) }],
 })
 export class ThMesh<
   TGeometry extends BufferGeometry = BufferGeometry,

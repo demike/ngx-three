@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { LineSegments } from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
@@ -16,13 +16,12 @@ import { ThLine } from './ThLine';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-lineSegments',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThLineSegments) },
-    ],
-    standalone: false
+  selector: 'th-lineSegments',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThLineSegments) },
+  ],
 })
 export class ThLineSegments<
   TGeometry extends BufferGeometry = BufferGeometry,

@@ -5,25 +5,24 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Camera } from 'three';
 import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls.js';
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
-    selector: 'th-firstPersonControls',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThControlBase,
-            useExisting: forwardRef(() => ThFirstPersonControls),
-        },
-    ],
-    standalone: false
+  selector: 'th-firstPersonControls',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: ThControlBase,
+      useExisting: forwardRef(() => ThFirstPersonControls),
+    },
+  ],
 })
 export class ThFirstPersonControls<
   T extends FirstPersonControls = FirstPersonControls,

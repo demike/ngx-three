@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Matrix4, Object3DEventMap, PointLightHelper } from 'three';
 import { PointLight } from 'three/src/lights/PointLight.js';
@@ -16,13 +16,12 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-pointLightHelper',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThPointLightHelper) },
-    ],
-    standalone: false
+  selector: 'th-pointLightHelper',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThPointLightHelper) },
+  ],
 })
 export class ThPointLightHelper<
   T extends PointLightHelper = PointLightHelper,

@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { FramebufferTexture } from 'three';
 import {
@@ -18,16 +18,15 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-    selector: 'th-framebufferTexture',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThTextureBase,
-            useExisting: forwardRef(() => ThFramebufferTexture),
-        },
-    ],
-    standalone: false
+  selector: 'th-framebufferTexture',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: ThTextureBase,
+      useExisting: forwardRef(() => ThFramebufferTexture),
+    },
+  ],
 })
 export class ThFramebufferTexture<
   T extends FramebufferTexture = FramebufferTexture,

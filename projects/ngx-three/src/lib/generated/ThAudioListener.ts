@@ -5,22 +5,21 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { AudioListener, Object3DEventMap } from 'three';
 import { AudioContext } from 'three/src/audio/AudioContext.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-audioListener',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThAudioListener) },
-    ],
-    standalone: false
+  selector: 'th-audioListener',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThAudioListener) },
+  ],
 })
 export class ThAudioListener<
   T extends AudioListener = AudioListener,

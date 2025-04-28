@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { RectAreaLight } from 'three';
 import { ColorRepresentation } from 'three/src/math/Color.js';
@@ -15,13 +15,12 @@ import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-rectAreaLight',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThRectAreaLight) },
-    ],
-    standalone: false
+  selector: 'th-rectAreaLight',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThRectAreaLight) },
+  ],
 })
 export class ThRectAreaLight<
   T extends RectAreaLight = RectAreaLight,

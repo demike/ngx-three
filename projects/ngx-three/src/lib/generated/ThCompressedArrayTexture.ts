@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { CompressedArrayTexture } from 'three';
 import {
@@ -20,16 +20,15 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThCompressedTexture } from './ThCompressedTexture';
 
 @Component({
-    selector: 'th-compressedArrayTexture',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThTextureBase,
-            useExisting: forwardRef(() => ThCompressedArrayTexture),
-        },
-    ],
-    standalone: false
+  selector: 'th-compressedArrayTexture',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: ThTextureBase,
+      useExisting: forwardRef(() => ThCompressedArrayTexture),
+    },
+  ],
 })
 export class ThCompressedArrayTexture<
   T extends CompressedArrayTexture = CompressedArrayTexture,
