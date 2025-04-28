@@ -14,7 +14,9 @@ import {
 import { CSS3DParameters, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { CSS2DParameters, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 
-import { Renderer, WebGLRenderer, WebGLRendererParameters } from 'three';
+import { WebGLRenderer, WebGLRendererParameters } from 'three';
+
+export type Renderer = WebGLRenderer | CSS3DRenderer | CSS2DRenderer;
 
 const RENDERER_DEFAULTS: WebGLRendererParameters = {
   alpha: true, // transparent background

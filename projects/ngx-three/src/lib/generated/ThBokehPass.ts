@@ -21,7 +21,7 @@ import {
 } from 'three';
 import {
   BokehPass,
-  BokehPassParamters,
+  BokehPassParameters,
 } from 'three/examples/jsm/postprocessing/BokehPass.js';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
@@ -39,7 +39,7 @@ import { ThPass } from './ThPass';
 })
 export class ThBokehPass<
   T extends BokehPass = BokehPass,
-  TARGS = [scene: Scene, camera: Camera, params: BokehPassParamters],
+  TARGS = [scene: Scene, camera: Camera, params: BokehPassParameters],
 > extends ThPass<T, TARGS> {
   public getType(): Type<BokehPass> {
     return BokehPass;

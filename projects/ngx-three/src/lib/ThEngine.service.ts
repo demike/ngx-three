@@ -4,7 +4,7 @@ import { Clock, Vector4, WebGLRenderer } from 'three';
 import { HOST_ELEMENT, ThView } from './ThView';
 import { isObserved } from './util';
 import { Observable, Subject, takeUntil } from 'rxjs';
-import { RENDERER_PROVIDERS } from './renderer/renderer-providers';
+import { Renderer, RENDERER_PROVIDERS } from './renderer/renderer-providers';
 
 export interface RenderState {
   engine: ThEngineService;
@@ -23,7 +23,7 @@ export class ThEngineService implements OnDestroy {
   /**
    * all injected renderers
    */
-  public readonly renderers: THREE.Renderer[];
+  public readonly renderers: Renderer[];
 
   private clock = new Clock();
   private destroyed$ = new Subject<void>();
@@ -72,13 +72,13 @@ export class ThEngineService implements OnDestroy {
   }
 
   private initRenderer() {
-    const renderers = inject<THREE.Renderer[]>(RENDERER_PROVIDERS);
+    const renderers = inject<Renderer[]>(RENDERER_PROVIDERS);
     let canvas: HTMLCanvasElement | undefined;
-    let mainRenderer: THREE.Renderer | undefined;
+    let mainRenderer: Renderer | undefined;
     for (const renderer of renderers) {
       if (renderer.domElement instanceof HTMLCanvasElement) {
         mainRenderer = renderer;
-        canvas = mainRenderer.domElement;
+        canvas = renderer.domElement;
       }
     }
 
@@ -136,7 +136,7 @@ export class ThEngineService implements OnDestroy {
         // effect composer needs a webgl renderer
         continue;
       }
-      this.applyRendererParametersFromView(view, renderer);
+      this.applyRendererParametersFromView(view, renderer as Partial<WebGLRenderer>);
       if (isObserved(view.onCurrentRendererPass)) {
         this.ngZone.run(() => view.onCurrentRendererPass.emit({ renderer, scene, camera, engine: this }));
       }
