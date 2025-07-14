@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { RaycasterEmitEvent, ThMesh, ThObject3D, ThOutlinePass } from 'ngx-three';
 import { Color, MeshPhongMaterial, Vector2 } from 'three';
 import GUI from 'lil-gui';
@@ -11,6 +11,8 @@ import GUI from 'lil-gui';
   standalone: false,
 })
 export class OutlinePassEventsExampleComponent implements OnInit {
+  private elem = inject(ElementRef);
+
   protected outlinePassResolution = new Vector2(window.innerWidth, window.innerHeight);
   protected readonly meshData: { x: number; y: number; z: number; scale: number; color: Color }[] = [];
 
@@ -26,7 +28,7 @@ export class OutlinePassEventsExampleComponent implements OnInit {
   @ViewChild('outlinePass', { static: true })
   outlinePass!: ThOutlinePass;
 
-  constructor(private elem: ElementRef) {
+  constructor() {
     this.initGUI();
     this.initMeshData();
   }

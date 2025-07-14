@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Type, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EditorService } from '../code/EditorService';
 
@@ -10,14 +10,14 @@ import { EditorService } from '../code/EditorService';
     standalone: false
 })
 export class ExamplePageComponent {
+  private editorService = inject(EditorService);
+  private route = inject(ActivatedRoute);
+
   public exampleComponent: Type<any> | null = null;
 
   public codeUrls: string[];
 
-  constructor(
-    private editorService: EditorService,
-    private route: ActivatedRoute,
-  ) {
+  constructor() {
     this.codeUrls = this.route.snapshot.data.codeUrls ?? [];
     this.editorService.declarations = this.route.snapshot.data.declarations;
     this.exampleComponent = this.route.snapshot.data.exampleComponent;

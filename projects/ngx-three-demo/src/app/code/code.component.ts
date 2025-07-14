@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, inject } from '@angular/core';
 import { EditorService } from './EditorService';
 
 @Component({
@@ -9,9 +9,9 @@ import { EditorService } from './EditorService';
     standalone: false
 })
 export class CodeComponent {
-  public fileNames: string[] = [];
+  readonly editorService = inject(EditorService);
 
-  constructor(public readonly editorService: EditorService) {}
+  public fileNames: string[] = [];
 
   @Input()
   public set codeUrls(urls: string[]) {

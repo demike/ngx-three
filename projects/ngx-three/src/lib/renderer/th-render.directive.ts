@@ -1,4 +1,4 @@
-import { Directive, Input, Output } from '@angular/core';
+import { Directive, Input, Output, inject } from '@angular/core';
 import { ThEngineService } from '../ThEngine.service';
 import { ThAnimationLoopService } from './th-animation-loop.service';
 
@@ -7,7 +7,9 @@ import { ThAnimationLoopService } from './th-animation-loop.service';
     standalone: false
 })
 export class ThRenderDirective {
-  constructor(private engineService: ThEngineService, private animationLoopService: ThAnimationLoopService) {}
+  private engineService = inject(ThEngineService);
+  private animationLoopService = inject(ThAnimationLoopService);
+
 
   @Output()
   public get beforeRender() {

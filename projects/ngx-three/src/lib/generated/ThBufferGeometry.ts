@@ -2,13 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  SkipSelf,
-  Type,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Type } from '@angular/core';
 import {
   Box3,
   BufferAttribute,
@@ -24,7 +18,6 @@ import { Vector3 } from 'three/src/math/Vector3.js';
 import IndirectStorageBufferAttribute from 'three/src/renderers/common/IndirectStorageBufferAttribute.js';
 import { ThGeometryBase } from '../ThGeometryBase';
 import { applyValue } from '../util';
-import { ThObject3D } from './ThObject3D';
 
 @Component({
   selector: 'th-bufferGeometry',
@@ -36,10 +29,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThBufferGeometry<
   Attributes extends NormalOrGLBufferAttributes = NormalBufferAttributes,
   TEventMap extends BufferGeometryEventMap = BufferGeometryEventMap,
-  T extends BufferGeometry<Attributes, TEventMap> = BufferGeometry<
-    Attributes,
-    TEventMap
-  >,
+  T extends BufferGeometry<Attributes, TEventMap> = BufferGeometry<Attributes, TEventMap>,
   TARGS = [],
 > extends ThGeometryBase<T, TARGS> {
   public getType(): Type<BufferGeometry<Attributes, TEventMap>> {
@@ -80,17 +70,9 @@ export class ThBufferGeometry<
     return this._objRef?.type;
   }
   @Input()
-  public set index(
-    value:
-      | BufferAttribute
-      | null
-      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
-  ) {
+  public set index(value: BufferAttribute | null | [value: ArrayLike<number> | ArrayBufferView, offset?: number]) {
     if (this._objRef) {
-      this._objRef.index = applyValue<BufferAttribute | null>(
-        this._objRef.index,
-        value,
-      );
+      this._objRef.index = applyValue<BufferAttribute | null>(this._objRef.index, value);
     }
   }
   public get index(): (BufferAttribute | null) | undefined {
@@ -98,16 +80,10 @@ export class ThBufferGeometry<
   }
   @Input()
   public set indirect(
-    value:
-      | IndirectStorageBufferAttribute
-      | null
-      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
+    value: IndirectStorageBufferAttribute | null | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
   ) {
     if (this._objRef) {
-      this._objRef.indirect = applyValue<IndirectStorageBufferAttribute | null>(
-        this._objRef.indirect,
-        value,
-      );
+      this._objRef.indirect = applyValue<IndirectStorageBufferAttribute | null>(this._objRef.indirect, value);
     }
   }
   public get indirect(): (IndirectStorageBufferAttribute | null) | undefined {
@@ -136,12 +112,8 @@ export class ThBufferGeometry<
 
   public get morphAttributes():
     | {
-        position?:
-          | Array<BufferAttribute | InterleavedBufferAttribute>
-          | undefined;
-        normal?:
-          | Array<BufferAttribute | InterleavedBufferAttribute>
-          | undefined;
+        position?: Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
+        normal?: Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
         color?: Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
       }
     | undefined {
@@ -170,24 +142,16 @@ export class ThBufferGeometry<
   @Input()
   public set boundingBox(value: Box3 | null | [min: Vector3, max: Vector3]) {
     if (this._objRef) {
-      this._objRef.boundingBox = applyValue<Box3 | null>(
-        this._objRef.boundingBox,
-        value,
-      );
+      this._objRef.boundingBox = applyValue<Box3 | null>(this._objRef.boundingBox, value);
     }
   }
   public get boundingBox(): (Box3 | null) | undefined {
     return this._objRef?.boundingBox;
   }
   @Input()
-  public set boundingSphere(
-    value: Sphere | null | [center: Vector3, radius: number],
-  ) {
+  public set boundingSphere(value: Sphere | null | [center: Vector3, radius: number]) {
     if (this._objRef) {
-      this._objRef.boundingSphere = applyValue<Sphere | null>(
-        this._objRef.boundingSphere,
-        value,
-      );
+      this._objRef.boundingSphere = applyValue<Sphere | null>(this._objRef.boundingSphere, value);
     }
   }
   public get boundingSphere(): (Sphere | null) | undefined {
@@ -215,9 +179,5 @@ export class ThBufferGeometry<
   }
   public get isBufferGeometry(): true | undefined {
     return this._objRef?.isBufferGeometry;
-  }
-
-  constructor(@SkipSelf() hostObject: ThObject3D) {
-    super(hostObject);
   }
 }

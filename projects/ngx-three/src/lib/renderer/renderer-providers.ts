@@ -1,16 +1,4 @@
-import {
-  Directive,
-  EmbeddedViewRef,
-  InjectionToken,
-  Injector,
-  Input,
-  OnChanges,
-  Provider,
-  SimpleChanges,
-  StaticProvider,
-  TemplateRef,
-  ViewContainerRef,
-} from '@angular/core';
+import { Directive, EmbeddedViewRef, InjectionToken, Injector, Input, OnChanges, Provider, SimpleChanges, StaticProvider, TemplateRef, ViewContainerRef, inject } from '@angular/core';
 import { CSS3DParameters, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { CSS2DParameters, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 
@@ -38,6 +26,10 @@ export const WEBGL_RENDERER = new InjectionToken<WebGLRenderer>('WebGLRenderer')
     standalone: false
 })
 export class RendererProviderDirective implements OnChanges {
+  private viewContainer = inject(ViewContainerRef);
+  private templateRef = inject<TemplateRef<unknown>>(TemplateRef);
+  private parentInjector = inject(Injector);
+
   @Input()
   rendererParameters?: ThRendererParameters;
 
@@ -49,12 +41,6 @@ export class RendererProviderDirective implements OnChanges {
 
   private view?: EmbeddedViewRef<unknown>;
   private injector?: Injector;
-
-  constructor(
-    private viewContainer: ViewContainerRef,
-    private templateRef: TemplateRef<unknown>,
-    private parentInjector: Injector,
-  ) {}
 
   public getInjectedRenderers() {
     return this.injector?.get(RENDERER_PROVIDERS);

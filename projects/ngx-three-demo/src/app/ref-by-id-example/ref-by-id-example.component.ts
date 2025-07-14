@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { DRACOLoaderService } from 'ngx-three';
 import * as THREE from 'three';
 import { Clock, Plane, Vector3 } from 'three';
@@ -30,7 +30,9 @@ export class RefByIdExampleComponent {
   public rotation: [number, number, number] = [0, 0, 0];
   public position: [number, number, number] = [0, 0, 0];
 
-  constructor(dracoLoader: DRACOLoaderService) {
+  constructor() {
+    const dracoLoader = inject(DRACOLoaderService);
+
     // specify the draco decoder path used by the gltf loader instances
     dracoLoader.setDecoderPath('https://raw.githubusercontent.com/mrdoob/three.js/dev/examples/jsm/libs/draco/gltf/');
     // in this case we need to disable cors (should not be necessary if you host the decoder yourself)

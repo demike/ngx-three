@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, SimpleChanges, inject } from '@angular/core';
 import { ASSET_PATH } from '../assets';
 @Component({
     selector: 'app-events-example',
@@ -8,12 +8,14 @@ import { ASSET_PATH } from '../assets';
     standalone: false
 })
 export class EventsExampleComponent {
+  private cdref = inject(ChangeDetectorRef);
+
   public readonly id = 'CID';
   public changes: string[] = [];
   public rotation: [x: number, y: number, z: number] = [0, 0, 0];
   public position: [x: number, y: number, z: number] = [0, 1, 0];
   public readonly assetPath = `${ASSET_PATH}DamagedHelmet.glb`;
-  constructor(private cdref: ChangeDetectorRef) {
+  constructor() {
     window.setInterval(() => {
       this.rotation = [0, this.rotation[1] + 0.05, 0];
       this.cdref.markForCheck();

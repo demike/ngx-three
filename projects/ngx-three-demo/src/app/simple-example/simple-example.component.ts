@@ -1,24 +1,20 @@
-import { ChangeDetectionStrategy, Component, OnInit, SkipSelf } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { createObj3DProviderArray } from 'ngx-three';
 import { ThMesh } from 'ngx-three';
-import { ThObject3D } from 'ngx-three';
 import { provideWebGLRenderer } from 'projects/ngx-three/src/lib/renderer/renderer-providers';
 import * as THREE from 'three';
 import { BoxGeometry, MeshStandardMaterial } from 'three';
 
 @Component({
-    template: '',
-    // eslint-disable-next-line @angular-eslint/component-selector
-    selector: 'th-box',
-    providers: createObj3DProviderArray(Box),
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  template: '',
+  // eslint-disable-next-line @angular-eslint/component-selector
+  selector: 'th-box',
+  providers: createObj3DProviderArray(Box),
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class Box extends ThMesh implements OnInit {
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
   public ngOnInit() {
     super.ngOnInit();
     if (this.objRef) {
@@ -32,11 +28,11 @@ export class Box extends ThMesh implements OnInit {
 }
 
 @Component({
-    selector: 'app-simple-example',
-    templateUrl: './simple-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideWebGLRenderer()],
-    standalone: false
+  selector: 'app-simple-example',
+  templateUrl: './simple-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [provideWebGLRenderer()],
+  standalone: false,
 })
 export class SimpleExampleComponent {
   constructor() {
