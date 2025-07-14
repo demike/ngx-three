@@ -23,6 +23,7 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-meshNormalMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThMaterial,
@@ -38,7 +39,7 @@ export class ThMeshNormalMaterial<
     return MeshNormalMaterial;
   }
 
-  public get isMeshNormalMaterial(): true | undefined {
+  public get isMeshNormalMaterial(): boolean | undefined {
     return this._objRef?.isMeshNormalMaterial;
   }
   @Input()

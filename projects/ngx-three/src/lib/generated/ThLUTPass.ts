@@ -22,6 +22,7 @@ import { ThShaderPass } from './ThShaderPass';
   selector: 'th-lUTPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     { provide: ThPassBase, useExisting: forwardRef(() => ThLUTPass) },
   ],

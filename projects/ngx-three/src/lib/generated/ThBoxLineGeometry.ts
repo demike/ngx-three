@@ -8,7 +8,7 @@ import {
   forwardRef,
   Type,
 } from '@angular/core';
-import { NormalBufferAttributes } from 'three';
+import { BufferGeometryEventMap, NormalBufferAttributes } from 'three';
 import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -16,6 +16,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-boxLineGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,
@@ -33,7 +34,12 @@ export class ThBoxLineGeometry<
     heightSegments?: number,
     depthSegments?: number,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<BoxLineGeometry> {
     return BoxLineGeometry;
   }

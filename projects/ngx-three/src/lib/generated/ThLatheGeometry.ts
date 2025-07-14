@@ -8,7 +8,11 @@ import {
   forwardRef,
   Type,
 } from '@angular/core';
-import { LatheGeometry, NormalBufferAttributes } from 'three';
+import {
+  BufferGeometryEventMap,
+  LatheGeometry,
+  NormalBufferAttributes,
+} from 'three';
 import { Vector2 } from 'three/src/math/Vector2.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -16,6 +20,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-latheGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,
@@ -31,7 +36,12 @@ export class ThLatheGeometry<
     phiStart?: number,
     phiLength?: number,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<LatheGeometry> {
     return LatheGeometry;
   }

@@ -27,6 +27,7 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-meshStandardMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThMaterial,
@@ -42,18 +43,8 @@ export class ThMeshStandardMaterial<
     return MeshStandardMaterial;
   }
 
-  public get isMeshStandardMaterial(): true | undefined {
+  public get isMeshStandardMaterial(): boolean | undefined {
     return this._objRef?.isMeshStandardMaterial;
-  }
-  @Input()
-  public set defines(value: { [key: string]: any }) {
-    if (this._objRef) {
-      this._objRef.defines = value;
-    }
-  }
-
-  public get defines(): { [key: string]: any } | undefined {
-    return this._objRef?.defines;
   }
   @Input()
   public set color(
@@ -346,23 +337,23 @@ export class ThMeshStandardMaterial<
     return this._objRef?.wireframeLinewidth;
   }
   @Input()
-  public set wireframeLinecap(value: string) {
+  public set wireframeLinecap(value: 'round' | 'bevel' | 'miter') {
     if (this._objRef) {
       this._objRef.wireframeLinecap = value;
     }
   }
 
-  public get wireframeLinecap(): string | undefined {
+  public get wireframeLinecap(): ('round' | 'bevel' | 'miter') | undefined {
     return this._objRef?.wireframeLinecap;
   }
   @Input()
-  public set wireframeLinejoin(value: string) {
+  public set wireframeLinejoin(value: 'round' | 'bevel' | 'miter') {
     if (this._objRef) {
       this._objRef.wireframeLinejoin = value;
     }
   }
 
-  public get wireframeLinejoin(): string | undefined {
+  public get wireframeLinejoin(): ('round' | 'bevel' | 'miter') | undefined {
     return this._objRef?.wireframeLinejoin;
   }
   @Input()

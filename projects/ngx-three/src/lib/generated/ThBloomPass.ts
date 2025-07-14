@@ -20,6 +20,7 @@ import { ThPass } from './ThPass';
   selector: 'th-bloomPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     { provide: ThPassBase, useExisting: forwardRef(() => ThBloomPass) },
   ],

@@ -19,6 +19,7 @@ import { ThSSAARenderPass } from './ThSSAARenderPass';
   selector: 'th-tAARenderPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     { provide: ThPassBase, useExisting: forwardRef(() => ThTAARenderPass) },
   ],

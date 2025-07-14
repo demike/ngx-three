@@ -16,6 +16,7 @@ import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
   selector: 'th-dodecahedronGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,

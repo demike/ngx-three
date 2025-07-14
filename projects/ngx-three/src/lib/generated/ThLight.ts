@@ -17,6 +17,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-light',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLight) }],
 })
 export abstract class ThLight<

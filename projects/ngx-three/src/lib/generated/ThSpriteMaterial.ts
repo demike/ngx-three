@@ -23,6 +23,7 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-spriteMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThSpriteMaterial) },
   ],
@@ -35,7 +36,7 @@ export class ThSpriteMaterial<
     return SpriteMaterial;
   }
 
-  public get isSpriteMaterial(): true | undefined {
+  public get isSpriteMaterial(): boolean | undefined {
     return this._objRef?.isSpriteMaterial;
   }
   @Input()
@@ -94,16 +95,6 @@ export class ThSpriteMaterial<
 
   public get sizeAttenuation(): boolean | undefined {
     return this._objRef?.sizeAttenuation;
-  }
-  @Input()
-  public set transparent(value: boolean) {
-    if (this._objRef) {
-      this._objRef.transparent = value;
-    }
-  }
-
-  public get transparent(): boolean | undefined {
-    return this._objRef?.transparent;
   }
   @Input()
   public set fog(value: boolean) {

@@ -11,15 +11,16 @@ import { ThCanvas } from '../../ThCanvas';
 import { ThScene } from '../ThScene';
 
 @Component({
-    selector: 'th-transformControls',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThControlBase,
-            useExisting: forwardRef(() => ThTransformControls),
-        },
-    ],
+  selector: 'th-transformControls',
+  template: '<ng-content/>',
+  standalone: false,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    {
+      provide: ThControlBase,
+      useExisting: forwardRef(() => ThTransformControls),
+    },
+  ],
 })
 export class ThTransformControls<
     T extends TransformControls = TransformControls,

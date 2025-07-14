@@ -8,7 +8,7 @@ import {
   forwardRef,
   Type,
 } from '@angular/core';
-import { NormalBufferAttributes } from 'three';
+import { BufferGeometryEventMap, NormalBufferAttributes } from 'three';
 import { TeapotGeometry } from 'three/examples/jsm/geometries/TeapotGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -16,6 +16,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-teapotGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,
@@ -34,7 +35,12 @@ export class ThTeapotGeometry<
     fitLid?: boolean,
     blinn?: boolean,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<TeapotGeometry> {
     return TeapotGeometry;
   }

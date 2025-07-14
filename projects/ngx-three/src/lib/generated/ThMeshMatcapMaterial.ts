@@ -25,6 +25,7 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-meshMatcapMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThMaterial,
@@ -40,18 +41,8 @@ export class ThMeshMatcapMaterial<
     return MeshMatcapMaterial;
   }
 
-  public get isMeshMatcapMaterial(): true | undefined {
+  public get isMeshMatcapMaterial(): boolean | undefined {
     return this._objRef?.isMeshMatcapMaterial;
-  }
-  @Input()
-  public set defines(value: { [key: string]: any }) {
-    if (this._objRef) {
-      this._objRef.defines = value;
-    }
-  }
-
-  public get defines(): { [key: string]: any } | undefined {
-    return this._objRef?.defines;
   }
   @Input()
   public set color(

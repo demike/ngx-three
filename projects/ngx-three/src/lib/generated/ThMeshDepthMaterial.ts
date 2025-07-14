@@ -18,6 +18,7 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-meshDepthMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThMeshDepthMaterial) },
   ],
@@ -30,8 +31,18 @@ export class ThMeshDepthMaterial<
     return MeshDepthMaterial;
   }
 
-  public get isMeshDepthMaterial(): true | undefined {
+  public get isMeshDepthMaterial(): boolean | undefined {
     return this._objRef?.isMeshDepthMaterial;
+  }
+  @Input()
+  public set depthPacking(value: DepthPackingStrategies) {
+    if (this._objRef) {
+      this._objRef.depthPacking = value;
+    }
+  }
+
+  public get depthPacking(): DepthPackingStrategies | undefined {
+    return this._objRef?.depthPacking;
   }
   @Input()
   public set map(value: Texture | null) {
@@ -52,16 +63,6 @@ export class ThMeshDepthMaterial<
 
   public get alphaMap(): (Texture | null) | undefined {
     return this._objRef?.alphaMap;
-  }
-  @Input()
-  public set depthPacking(value: DepthPackingStrategies) {
-    if (this._objRef) {
-      this._objRef.depthPacking = value;
-    }
-  }
-
-  public get depthPacking(): DepthPackingStrategies | undefined {
-    return this._objRef?.depthPacking;
   }
   @Input()
   public set displacementMap(value: Texture | null) {

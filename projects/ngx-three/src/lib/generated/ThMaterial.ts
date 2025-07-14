@@ -29,6 +29,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-material',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [],
 })
 export class ThMaterial<
@@ -39,18 +40,84 @@ export class ThMaterial<
     return Material;
   }
 
-  public get isMaterial(): true | undefined {
+  public get isMaterial(): boolean | undefined {
     return this._objRef?.isMaterial;
   }
+  public get uuid(): string | undefined {
+    return this._objRef?.uuid;
+  }
+  public get type(): string | undefined {
+    return this._objRef?.type;
+  }
+  public get version(): number | undefined {
+    return this._objRef?.version;
+  }
   @Input()
-  public set type(value: string) {
+  public set needsUpdate(value: boolean) {
     if (this._objRef) {
-      this._objRef.type = value;
+      this._objRef.needsUpdate = value;
     }
   }
 
-  public get type(): string | undefined {
-    return this._objRef?.type;
+  @Input()
+  public set name(value: string) {
+    if (this._objRef) {
+      this._objRef.name = value;
+    }
+  }
+
+  public get name(): string | undefined {
+    return this._objRef?.name;
+  }
+  @Input()
+  public set blending(value: Blending) {
+    if (this._objRef) {
+      this._objRef.blending = value;
+    }
+  }
+
+  public get blending(): Blending | undefined {
+    return this._objRef?.blending;
+  }
+  @Input()
+  public set side(value: Side) {
+    if (this._objRef) {
+      this._objRef.side = value;
+    }
+  }
+
+  public get side(): Side | undefined {
+    return this._objRef?.side;
+  }
+  @Input()
+  public set vertexColors(value: boolean) {
+    if (this._objRef) {
+      this._objRef.vertexColors = value;
+    }
+  }
+
+  public get vertexColors(): boolean | undefined {
+    return this._objRef?.vertexColors;
+  }
+  @Input()
+  public set opacity(value: number) {
+    if (this._objRef) {
+      this._objRef.opacity = value;
+    }
+  }
+
+  public get opacity(): number | undefined {
+    return this._objRef?.opacity;
+  }
+  @Input()
+  public set transparent(value: boolean) {
+    if (this._objRef) {
+      this._objRef.transparent = value;
+    }
+  }
+
+  public get transparent(): boolean | undefined {
+    return this._objRef?.transparent;
   }
   @Input()
   public set alphaHash(value: boolean) {
@@ -63,24 +130,64 @@ export class ThMaterial<
     return this._objRef?.alphaHash;
   }
   @Input()
-  public set alphaToCoverage(value: boolean) {
+  public set blendSrc(value: BlendingSrcFactor) {
     if (this._objRef) {
-      this._objRef.alphaToCoverage = value;
+      this._objRef.blendSrc = value;
     }
   }
 
-  public get alphaToCoverage(): boolean | undefined {
-    return this._objRef?.alphaToCoverage;
+  public get blendSrc(): BlendingSrcFactor | undefined {
+    return this._objRef?.blendSrc;
   }
   @Input()
-  public set blendAlpha(value: number) {
+  public set blendDst(value: BlendingDstFactor) {
     if (this._objRef) {
-      this._objRef.blendAlpha = value;
+      this._objRef.blendDst = value;
     }
   }
 
-  public get blendAlpha(): number | undefined {
-    return this._objRef?.blendAlpha;
+  public get blendDst(): BlendingDstFactor | undefined {
+    return this._objRef?.blendDst;
+  }
+  @Input()
+  public set blendEquation(value: BlendingEquation) {
+    if (this._objRef) {
+      this._objRef.blendEquation = value;
+    }
+  }
+
+  public get blendEquation(): BlendingEquation | undefined {
+    return this._objRef?.blendEquation;
+  }
+  @Input()
+  public set blendSrcAlpha(value: BlendingSrcFactor | null) {
+    if (this._objRef) {
+      this._objRef.blendSrcAlpha = value;
+    }
+  }
+
+  public get blendSrcAlpha(): (BlendingSrcFactor | null) | undefined {
+    return this._objRef?.blendSrcAlpha;
+  }
+  @Input()
+  public set blendDstAlpha(value: BlendingDstFactor | null) {
+    if (this._objRef) {
+      this._objRef.blendDstAlpha = value;
+    }
+  }
+
+  public get blendDstAlpha(): (BlendingDstFactor | null) | undefined {
+    return this._objRef?.blendDstAlpha;
+  }
+  @Input()
+  public set blendEquationAlpha(value: BlendingEquation | null) {
+    if (this._objRef) {
+      this._objRef.blendEquationAlpha = value;
+    }
+  }
+
+  public get blendEquationAlpha(): (BlendingEquation | null) | undefined {
+    return this._objRef?.blendEquationAlpha;
   }
   @Input()
   public set blendColor(
@@ -103,124 +210,14 @@ export class ThMaterial<
     return this._objRef?.blendColor;
   }
   @Input()
-  public set blendDst(value: BlendingDstFactor) {
+  public set blendAlpha(value: number) {
     if (this._objRef) {
-      this._objRef.blendDst = value;
+      this._objRef.blendAlpha = value;
     }
   }
 
-  public get blendDst(): BlendingDstFactor | undefined {
-    return this._objRef?.blendDst;
-  }
-  @Input()
-  public set blendDstAlpha(value: number | null) {
-    if (this._objRef) {
-      this._objRef.blendDstAlpha = value;
-    }
-  }
-
-  public get blendDstAlpha(): (number | null) | undefined {
-    return this._objRef?.blendDstAlpha;
-  }
-  @Input()
-  public set blendEquation(value: BlendingEquation) {
-    if (this._objRef) {
-      this._objRef.blendEquation = value;
-    }
-  }
-
-  public get blendEquation(): BlendingEquation | undefined {
-    return this._objRef?.blendEquation;
-  }
-  @Input()
-  public set blendEquationAlpha(value: number | null) {
-    if (this._objRef) {
-      this._objRef.blendEquationAlpha = value;
-    }
-  }
-
-  public get blendEquationAlpha(): (number | null) | undefined {
-    return this._objRef?.blendEquationAlpha;
-  }
-  @Input()
-  public set blending(value: Blending) {
-    if (this._objRef) {
-      this._objRef.blending = value;
-    }
-  }
-
-  public get blending(): Blending | undefined {
-    return this._objRef?.blending;
-  }
-  @Input()
-  public set blendSrc(value: BlendingSrcFactor | BlendingDstFactor) {
-    if (this._objRef) {
-      this._objRef.blendSrc = value;
-    }
-  }
-
-  public get blendSrc(): (BlendingSrcFactor | BlendingDstFactor) | undefined {
-    return this._objRef?.blendSrc;
-  }
-  @Input()
-  public set blendSrcAlpha(value: number | null) {
-    if (this._objRef) {
-      this._objRef.blendSrcAlpha = value;
-    }
-  }
-
-  public get blendSrcAlpha(): (number | null) | undefined {
-    return this._objRef?.blendSrcAlpha;
-  }
-  @Input()
-  public set clipIntersection(value: boolean) {
-    if (this._objRef) {
-      this._objRef.clipIntersection = value;
-    }
-  }
-
-  public get clipIntersection(): boolean | undefined {
-    return this._objRef?.clipIntersection;
-  }
-  @Input()
-  public set clippingPlanes(value: Plane[] | null) {
-    if (this._objRef) {
-      this._objRef.clippingPlanes = value;
-    }
-  }
-
-  public get clippingPlanes(): (Plane[] | null) | undefined {
-    return this._objRef?.clippingPlanes;
-  }
-  @Input()
-  public set clipShadows(value: boolean) {
-    if (this._objRef) {
-      this._objRef.clipShadows = value;
-    }
-  }
-
-  public get clipShadows(): boolean | undefined {
-    return this._objRef?.clipShadows;
-  }
-  @Input()
-  public set colorWrite(value: boolean) {
-    if (this._objRef) {
-      this._objRef.colorWrite = value;
-    }
-  }
-
-  public get colorWrite(): boolean | undefined {
-    return this._objRef?.colorWrite;
-  }
-  @Input()
-  public set defines(value: undefined | { [key: string]: any }) {
-    if (this._objRef) {
-      this._objRef.defines = value;
-    }
-  }
-
-  public get defines(): (undefined | { [key: string]: any }) | undefined {
-    return this._objRef?.defines;
+  public get blendAlpha(): number | undefined {
+    return this._objRef?.blendAlpha;
   }
   @Input()
   public set depthFunc(value: DepthModes) {
@@ -253,24 +250,14 @@ export class ThMaterial<
     return this._objRef?.depthWrite;
   }
   @Input()
-  public set id(value: number) {
+  public set stencilWriteMask(value: number) {
     if (this._objRef) {
-      this._objRef.id = value;
+      this._objRef.stencilWriteMask = value;
     }
   }
 
-  public get id(): number | undefined {
-    return this._objRef?.id;
-  }
-  @Input()
-  public set stencilWrite(value: boolean) {
-    if (this._objRef) {
-      this._objRef.stencilWrite = value;
-    }
-  }
-
-  public get stencilWrite(): boolean | undefined {
-    return this._objRef?.stencilWrite;
+  public get stencilWriteMask(): number | undefined {
+    return this._objRef?.stencilWriteMask;
   }
   @Input()
   public set stencilFunc(value: StencilFunc) {
@@ -291,16 +278,6 @@ export class ThMaterial<
 
   public get stencilRef(): number | undefined {
     return this._objRef?.stencilRef;
-  }
-  @Input()
-  public set stencilWriteMask(value: number) {
-    if (this._objRef) {
-      this._objRef.stencilWriteMask = value;
-    }
-  }
-
-  public get stencilWriteMask(): number | undefined {
-    return this._objRef?.stencilWriteMask;
   }
   @Input()
   public set stencilFuncMask(value: number) {
@@ -343,24 +320,74 @@ export class ThMaterial<
     return this._objRef?.stencilZPass;
   }
   @Input()
-  public set name(value: string) {
+  public set stencilWrite(value: boolean) {
     if (this._objRef) {
-      this._objRef.name = value;
+      this._objRef.stencilWrite = value;
     }
   }
 
-  public get name(): string | undefined {
-    return this._objRef?.name;
+  public get stencilWrite(): boolean | undefined {
+    return this._objRef?.stencilWrite;
   }
   @Input()
-  public set opacity(value: number) {
+  public set clippingPlanes(value: Array<Plane> | null) {
     if (this._objRef) {
-      this._objRef.opacity = value;
+      this._objRef.clippingPlanes = value;
     }
   }
 
-  public get opacity(): number | undefined {
-    return this._objRef?.opacity;
+  public get clippingPlanes(): (Array<Plane> | null) | undefined {
+    return this._objRef?.clippingPlanes;
+  }
+  @Input()
+  public set clipIntersection(value: boolean) {
+    if (this._objRef) {
+      this._objRef.clipIntersection = value;
+    }
+  }
+
+  public get clipIntersection(): boolean | undefined {
+    return this._objRef?.clipIntersection;
+  }
+  @Input()
+  public set clipShadows(value: boolean) {
+    if (this._objRef) {
+      this._objRef.clipShadows = value;
+    }
+  }
+
+  public get clipShadows(): boolean | undefined {
+    return this._objRef?.clipShadows;
+  }
+  @Input()
+  public set shadowSide(value: Side | null) {
+    if (this._objRef) {
+      this._objRef.shadowSide = value;
+    }
+  }
+
+  public get shadowSide(): (Side | null) | undefined {
+    return this._objRef?.shadowSide;
+  }
+  @Input()
+  public set colorWrite(value: boolean) {
+    if (this._objRef) {
+      this._objRef.colorWrite = value;
+    }
+  }
+
+  public get colorWrite(): boolean | undefined {
+    return this._objRef?.colorWrite;
+  }
+  @Input()
+  public set precision(value: ('highp' | 'mediump' | 'lowp') | null) {
+    if (this._objRef) {
+      this._objRef.precision = value;
+    }
+  }
+
+  public get precision(): (('highp' | 'mediump' | 'lowp') | null) | undefined {
+    return this._objRef?.precision;
   }
   @Input()
   public set polygonOffset(value: boolean) {
@@ -393,14 +420,24 @@ export class ThMaterial<
     return this._objRef?.polygonOffsetUnits;
   }
   @Input()
-  public set precision(value: 'highp' | 'mediump' | 'lowp' | null) {
+  public set dithering(value: boolean) {
     if (this._objRef) {
-      this._objRef.precision = value;
+      this._objRef.dithering = value;
     }
   }
 
-  public get precision(): ('highp' | 'mediump' | 'lowp' | null) | undefined {
-    return this._objRef?.precision;
+  public get dithering(): boolean | undefined {
+    return this._objRef?.dithering;
+  }
+  @Input()
+  public set alphaToCoverage(value: boolean) {
+    if (this._objRef) {
+      this._objRef.alphaToCoverage = value;
+    }
+  }
+
+  public get alphaToCoverage(): boolean | undefined {
+    return this._objRef?.alphaToCoverage;
   }
   @Input()
   public set premultipliedAlpha(value: boolean) {
@@ -433,34 +470,14 @@ export class ThMaterial<
     return this._objRef?.allowOverride;
   }
   @Input()
-  public set dithering(value: boolean) {
+  public set visible(value: boolean) {
     if (this._objRef) {
-      this._objRef.dithering = value;
+      this._objRef.visible = value;
     }
   }
 
-  public get dithering(): boolean | undefined {
-    return this._objRef?.dithering;
-  }
-  @Input()
-  public set side(value: Side) {
-    if (this._objRef) {
-      this._objRef.side = value;
-    }
-  }
-
-  public get side(): Side | undefined {
-    return this._objRef?.side;
-  }
-  @Input()
-  public set shadowSide(value: Side | null) {
-    if (this._objRef) {
-      this._objRef.shadowSide = value;
-    }
-  }
-
-  public get shadowSide(): (Side | null) | undefined {
-    return this._objRef?.shadowSide;
+  public get visible(): boolean | undefined {
+    return this._objRef?.visible;
   }
   @Input()
   public set toneMapped(value: boolean) {
@@ -473,46 +490,6 @@ export class ThMaterial<
     return this._objRef?.toneMapped;
   }
   @Input()
-  public set transparent(value: boolean) {
-    if (this._objRef) {
-      this._objRef.transparent = value;
-    }
-  }
-
-  public get transparent(): boolean | undefined {
-    return this._objRef?.transparent;
-  }
-  @Input()
-  public set uuid(value: string) {
-    if (this._objRef) {
-      this._objRef.uuid = value;
-    }
-  }
-
-  public get uuid(): string | undefined {
-    return this._objRef?.uuid;
-  }
-  @Input()
-  public set vertexColors(value: boolean) {
-    if (this._objRef) {
-      this._objRef.vertexColors = value;
-    }
-  }
-
-  public get vertexColors(): boolean | undefined {
-    return this._objRef?.vertexColors;
-  }
-  @Input()
-  public set visible(value: boolean) {
-    if (this._objRef) {
-      this._objRef.visible = value;
-    }
-  }
-
-  public get visible(): boolean | undefined {
-    return this._objRef?.visible;
-  }
-  @Input()
   public set userData(value: Record<string, any>) {
     if (this._objRef) {
       this._objRef.userData = value;
@@ -523,30 +500,14 @@ export class ThMaterial<
     return this._objRef?.userData;
   }
   @Input()
-  public set version(value: number) {
-    if (this._objRef) {
-      this._objRef.version = value;
-    }
-  }
-
-  public get version(): number | undefined {
-    return this._objRef?.version;
-  }
-  public get alphaTest(): number | undefined {
-    return this._objRef?.alphaTest;
-  }
-  @Input()
   public set alphaTest(value: number) {
     if (this._objRef) {
       this._objRef.alphaTest = value;
     }
   }
 
-  @Input()
-  public set needsUpdate(value: boolean) {
-    if (this._objRef) {
-      this._objRef.needsUpdate = value;
-    }
+  public get alphaTest(): number | undefined {
+    return this._objRef?.alphaTest;
   }
 
   constructor(@SkipSelf() hostObject: ThObject3D) {

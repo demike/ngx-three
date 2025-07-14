@@ -19,6 +19,7 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-shaderMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) },
   ],
@@ -31,7 +32,7 @@ export class ThShaderMaterial<
     return ShaderMaterial;
   }
 
-  public get isShaderMaterial(): true | undefined {
+  public get isShaderMaterial(): boolean | undefined {
     return this._objRef?.isShaderMaterial;
   }
   @Input()
@@ -55,13 +56,13 @@ export class ThShaderMaterial<
     return this._objRef?.uniforms;
   }
   @Input()
-  public set uniformsGroups(value: UniformsGroup[]) {
+  public set uniformsGroups(value: Array<UniformsGroup>) {
     if (this._objRef) {
       this._objRef.uniformsGroups = value;
     }
   }
 
-  public get uniformsGroups(): UniformsGroup[] | undefined {
+  public get uniformsGroups(): Array<UniformsGroup> | undefined {
     return this._objRef?.uniformsGroups;
   }
   @Input()
@@ -163,13 +164,23 @@ export class ThShaderMaterial<
     return this._objRef?.extensions;
   }
   @Input()
-  public set defaultAttributeValues(value: any) {
+  public set defaultAttributeValues(value: {
+    color: [number, number, number];
+    uv: [number, number];
+    uv1: [number, number];
+  }) {
     if (this._objRef) {
       this._objRef.defaultAttributeValues = value;
     }
   }
 
-  public get defaultAttributeValues(): any | undefined {
+  public get defaultAttributeValues():
+    | {
+        color: [number, number, number];
+        uv: [number, number];
+        uv1: [number, number];
+      }
+    | undefined {
     return this._objRef?.defaultAttributeValues;
   }
   @Input()

@@ -23,6 +23,7 @@ import { ThCompressedTexture } from './ThCompressedTexture';
   selector: 'th-compressedArrayTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThTextureBase,

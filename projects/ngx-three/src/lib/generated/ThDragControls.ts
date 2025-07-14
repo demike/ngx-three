@@ -24,6 +24,7 @@ import { applyValue } from '../util';
   selector: 'th-dragControls',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     { provide: ThControlBase, useExisting: forwardRef(() => ThDragControls) },
   ],

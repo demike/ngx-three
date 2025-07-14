@@ -27,6 +27,7 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-meshLambertMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThMaterial,
@@ -42,7 +43,7 @@ export class ThMeshLambertMaterial<
     return MeshLambertMaterial;
   }
 
-  public get isMeshLambertMaterial(): true | undefined {
+  public get isMeshLambertMaterial(): boolean | undefined {
     return this._objRef?.isMeshLambertMaterial;
   }
   @Input()
@@ -63,54 +64,54 @@ export class ThMeshLambertMaterial<
     return this._objRef?.color;
   }
   @Input()
-  public set bumpMap(value: Texture | null) {
+  public set map(value: Texture | null) {
     if (this._objRef) {
-      this._objRef.bumpMap = value;
+      this._objRef.map = value;
     }
   }
 
-  public get bumpMap(): (Texture | null) | undefined {
-    return this._objRef?.bumpMap;
+  public get map(): (Texture | null) | undefined {
+    return this._objRef?.map;
   }
   @Input()
-  public set bumpScale(value: number) {
+  public set lightMap(value: Texture | null) {
     if (this._objRef) {
-      this._objRef.bumpScale = value;
+      this._objRef.lightMap = value;
     }
   }
 
-  public get bumpScale(): number | undefined {
-    return this._objRef?.bumpScale;
+  public get lightMap(): (Texture | null) | undefined {
+    return this._objRef?.lightMap;
   }
   @Input()
-  public set displacementMap(value: Texture | null) {
+  public set lightMapIntensity(value: number) {
     if (this._objRef) {
-      this._objRef.displacementMap = value;
+      this._objRef.lightMapIntensity = value;
     }
   }
 
-  public get displacementMap(): (Texture | null) | undefined {
-    return this._objRef?.displacementMap;
+  public get lightMapIntensity(): number | undefined {
+    return this._objRef?.lightMapIntensity;
   }
   @Input()
-  public set displacementScale(value: number) {
+  public set aoMap(value: Texture | null) {
     if (this._objRef) {
-      this._objRef.displacementScale = value;
+      this._objRef.aoMap = value;
     }
   }
 
-  public get displacementScale(): number | undefined {
-    return this._objRef?.displacementScale;
+  public get aoMap(): (Texture | null) | undefined {
+    return this._objRef?.aoMap;
   }
   @Input()
-  public set displacementBias(value: number) {
+  public set aoMapIntensity(value: number) {
     if (this._objRef) {
-      this._objRef.displacementBias = value;
+      this._objRef.aoMapIntensity = value;
     }
   }
 
-  public get displacementBias(): number | undefined {
-    return this._objRef?.displacementBias;
+  public get aoMapIntensity(): number | undefined {
+    return this._objRef?.aoMapIntensity;
   }
   @Input()
   public set emissive(
@@ -150,44 +151,24 @@ export class ThMeshLambertMaterial<
     return this._objRef?.emissiveMap;
   }
   @Input()
-  public set flatShading(value: boolean) {
+  public set bumpMap(value: Texture | null) {
     if (this._objRef) {
-      this._objRef.flatShading = value;
+      this._objRef.bumpMap = value;
     }
   }
 
-  public get flatShading(): boolean | undefined {
-    return this._objRef?.flatShading;
+  public get bumpMap(): (Texture | null) | undefined {
+    return this._objRef?.bumpMap;
   }
   @Input()
-  public set map(value: Texture | null) {
+  public set bumpScale(value: number) {
     if (this._objRef) {
-      this._objRef.map = value;
+      this._objRef.bumpScale = value;
     }
   }
 
-  public get map(): (Texture | null) | undefined {
-    return this._objRef?.map;
-  }
-  @Input()
-  public set lightMap(value: Texture | null) {
-    if (this._objRef) {
-      this._objRef.lightMap = value;
-    }
-  }
-
-  public get lightMap(): (Texture | null) | undefined {
-    return this._objRef?.lightMap;
-  }
-  @Input()
-  public set lightMapIntensity(value: number) {
-    if (this._objRef) {
-      this._objRef.lightMapIntensity = value;
-    }
-  }
-
-  public get lightMapIntensity(): number | undefined {
-    return this._objRef?.lightMapIntensity;
+  public get bumpScale(): number | undefined {
+    return this._objRef?.bumpScale;
   }
   @Input()
   public set normalMap(value: Texture | null) {
@@ -222,24 +203,34 @@ export class ThMeshLambertMaterial<
     return this._objRef?.normalScale;
   }
   @Input()
-  public set aoMap(value: Texture | null) {
+  public set displacementMap(value: Texture | null) {
     if (this._objRef) {
-      this._objRef.aoMap = value;
+      this._objRef.displacementMap = value;
     }
   }
 
-  public get aoMap(): (Texture | null) | undefined {
-    return this._objRef?.aoMap;
+  public get displacementMap(): (Texture | null) | undefined {
+    return this._objRef?.displacementMap;
   }
   @Input()
-  public set aoMapIntensity(value: number) {
+  public set displacementScale(value: number) {
     if (this._objRef) {
-      this._objRef.aoMapIntensity = value;
+      this._objRef.displacementScale = value;
     }
   }
 
-  public get aoMapIntensity(): number | undefined {
-    return this._objRef?.aoMapIntensity;
+  public get displacementScale(): number | undefined {
+    return this._objRef?.displacementScale;
+  }
+  @Input()
+  public set displacementBias(value: number) {
+    if (this._objRef) {
+      this._objRef.displacementBias = value;
+    }
+  }
+
+  public get displacementBias(): number | undefined {
+    return this._objRef?.displacementBias;
   }
   @Input()
   public set specularMap(value: Texture | null) {
@@ -336,24 +327,34 @@ export class ThMeshLambertMaterial<
     return this._objRef?.wireframeLinewidth;
   }
   @Input()
-  public set wireframeLinecap(value: string) {
+  public set wireframeLinecap(value: 'round' | 'bevel' | 'miter') {
     if (this._objRef) {
       this._objRef.wireframeLinecap = value;
     }
   }
 
-  public get wireframeLinecap(): string | undefined {
+  public get wireframeLinecap(): ('round' | 'bevel' | 'miter') | undefined {
     return this._objRef?.wireframeLinecap;
   }
   @Input()
-  public set wireframeLinejoin(value: string) {
+  public set wireframeLinejoin(value: 'round' | 'bevel' | 'miter') {
     if (this._objRef) {
       this._objRef.wireframeLinejoin = value;
     }
   }
 
-  public get wireframeLinejoin(): string | undefined {
+  public get wireframeLinejoin(): ('round' | 'bevel' | 'miter') | undefined {
     return this._objRef?.wireframeLinejoin;
+  }
+  @Input()
+  public set flatShading(value: boolean) {
+    if (this._objRef) {
+      this._objRef.flatShading = value;
+    }
+  }
+
+  public get flatShading(): boolean | undefined {
+    return this._objRef?.flatShading;
   }
   @Input()
   public set fog(value: boolean) {

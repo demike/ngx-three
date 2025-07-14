@@ -8,7 +8,7 @@ import {
   forwardRef,
   Type,
 } from '@angular/core';
-import { NormalBufferAttributes, Vector3 } from 'three';
+import { BufferGeometryEventMap, NormalBufferAttributes, Vector3 } from 'three';
 import { ConvexGeometry } from 'three/examples/jsm/geometries/ConvexGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -16,6 +16,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-convexGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,
@@ -26,7 +27,12 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 export class ThConvexGeometry<
   T extends ConvexGeometry = ConvexGeometry,
   TARGS = /* points? */ Vector3[],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<ConvexGeometry> {
     return ConvexGeometry;
   }

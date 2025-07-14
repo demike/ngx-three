@@ -17,6 +17,7 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-meshDistanceMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThMaterial,
@@ -32,7 +33,7 @@ export class ThMeshDistanceMaterial<
     return MeshDistanceMaterial;
   }
 
-  public get isMeshDistanceMaterial(): true | undefined {
+  public get isMeshDistanceMaterial(): boolean | undefined {
     return this._objRef?.isMeshDistanceMaterial;
   }
   @Input()

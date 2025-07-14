@@ -25,6 +25,7 @@ import { ThTexture } from './ThTexture';
   selector: 'th-videoTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     { provide: ThTextureBase, useExisting: forwardRef(() => ThVideoTexture) },
   ],

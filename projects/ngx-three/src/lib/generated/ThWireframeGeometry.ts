@@ -8,7 +8,11 @@ import {
   forwardRef,
   Type,
 } from '@angular/core';
-import { NormalBufferAttributes, WireframeGeometry } from 'three';
+import {
+  BufferGeometryEventMap,
+  NormalBufferAttributes,
+  WireframeGeometry,
+} from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -16,6 +20,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-wireframeGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,
@@ -28,7 +33,12 @@ export class ThWireframeGeometry<
   T extends
     WireframeGeometry<TBufferGeometry> = WireframeGeometry<TBufferGeometry>,
   TARGS = /* geometry? */ TBufferGeometry,
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<WireframeGeometry<TBufferGeometry>> {
     return WireframeGeometry;
   }

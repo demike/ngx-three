@@ -8,13 +8,18 @@ import {
   forwardRef,
   Type,
 } from '@angular/core';
-import { CapsuleGeometry, NormalBufferAttributes } from 'three';
+import {
+  BufferGeometryEventMap,
+  CapsuleGeometry,
+  NormalBufferAttributes,
+} from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-capsuleGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,
@@ -31,7 +36,12 @@ export class ThCapsuleGeometry<
     radialSegments?: number,
     heightSegments?: number,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<CapsuleGeometry> {
     return CapsuleGeometry;
   }
@@ -45,6 +55,7 @@ export class ThCapsuleGeometry<
         readonly height: number;
         readonly capSegments: number;
         readonly radialSegments: number;
+        readonly heightSegments: number;
       }
     | undefined {
     return this._objRef?.parameters;

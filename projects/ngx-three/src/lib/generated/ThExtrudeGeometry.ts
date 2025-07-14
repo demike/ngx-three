@@ -9,6 +9,7 @@ import {
   Type,
 } from '@angular/core';
 import {
+  BufferGeometryEventMap,
   ExtrudeGeometry,
   ExtrudeGeometryOptions,
   NormalBufferAttributes,
@@ -20,6 +21,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-extrudeGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,
@@ -30,7 +32,12 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 export class ThExtrudeGeometry<
   T extends ExtrudeGeometry = ExtrudeGeometry,
   TARGS = [shapes?: Shape | Shape[], options?: ExtrudeGeometryOptions],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<ExtrudeGeometry> {
     return ExtrudeGeometry;
   }

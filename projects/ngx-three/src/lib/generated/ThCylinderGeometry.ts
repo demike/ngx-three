@@ -8,13 +8,18 @@ import {
   forwardRef,
   Type,
 } from '@angular/core';
-import { CylinderGeometry, NormalBufferAttributes } from 'three';
+import {
+  BufferGeometryEventMap,
+  CylinderGeometry,
+  NormalBufferAttributes,
+} from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-cylinderGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,
@@ -34,7 +39,12 @@ export class ThCylinderGeometry<
     thetaStart?: number,
     thetaLength?: number,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<CylinderGeometry> {
     return CylinderGeometry;
   }

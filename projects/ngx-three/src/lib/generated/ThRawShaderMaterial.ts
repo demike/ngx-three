@@ -2,14 +2,8 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  forwardRef,
-  Type,
-} from '@angular/core';
-import { RawShaderMaterial } from 'three';
-import { ShaderMaterialParameters } from 'three/src/materials/ShaderMaterial.js';
+import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
+import { RawShaderMaterial, ShaderMaterialParameters } from 'three';
 import { ThMaterial } from './ThMaterial';
 import { ThShaderMaterial } from './ThShaderMaterial';
 
@@ -17,9 +11,8 @@ import { ThShaderMaterial } from './ThShaderMaterial';
   selector: 'th-rawShaderMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThRawShaderMaterial) },
-  ],
+  standalone: false,
+  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThRawShaderMaterial) }],
 })
 export class ThRawShaderMaterial<
   T extends RawShaderMaterial = RawShaderMaterial,
@@ -29,7 +22,7 @@ export class ThRawShaderMaterial<
     return RawShaderMaterial;
   }
 
-  public get isRawShaderMaterial(): true | undefined {
+  public get isRawShaderMaterial(): boolean | undefined {
     return this._objRef?.isRawShaderMaterial;
   }
 }

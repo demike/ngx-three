@@ -13,6 +13,7 @@ import {
   Box3,
   BufferAttribute,
   BufferGeometry,
+  BufferGeometryEventMap,
   GeometryGroup,
   NormalBufferAttributes,
   NormalOrGLBufferAttributes,
@@ -29,14 +30,19 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-bufferGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [],
 })
 export class ThBufferGeometry<
   Attributes extends NormalOrGLBufferAttributes = NormalBufferAttributes,
-  T extends BufferGeometry<Attributes> = BufferGeometry<Attributes>,
+  TEventMap extends BufferGeometryEventMap = BufferGeometryEventMap,
+  T extends BufferGeometry<Attributes, TEventMap> = BufferGeometry<
+    Attributes,
+    TEventMap
+  >,
   TARGS = [],
 > extends ThGeometryBase<T, TARGS> {
-  public getType(): Type<BufferGeometry<Attributes>> {
+  public getType(): Type<BufferGeometry<Attributes, TEventMap>> {
     return BufferGeometry;
   }
 
@@ -118,22 +124,26 @@ export class ThBufferGeometry<
     return this._objRef?.attributes;
   }
   @Input()
-  public set morphAttributes(
-    value: Record<
-      'position' | 'normal' | 'color',
-      Array<BufferAttribute | InterleavedBufferAttribute>
-    >,
-  ) {
+  public set morphAttributes(value: {
+    position?: Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
+    normal?: Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
+    color?: Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
+  }) {
     if (this._objRef) {
       this._objRef.morphAttributes = value;
     }
   }
 
   public get morphAttributes():
-    | Record<
-        'position' | 'normal' | 'color',
-        Array<BufferAttribute | InterleavedBufferAttribute>
-      >
+    | {
+        position?:
+          | Array<BufferAttribute | InterleavedBufferAttribute>
+          | undefined;
+        normal?:
+          | Array<BufferAttribute | InterleavedBufferAttribute>
+          | undefined;
+        color?: Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
+      }
     | undefined {
     return this._objRef?.morphAttributes;
   }

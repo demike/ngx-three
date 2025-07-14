@@ -19,6 +19,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-mesh',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThMesh) }],
 })
 export class ThMesh<
@@ -85,5 +86,15 @@ export class ThMesh<
     | ({ [key: string]: number } | undefined)
     | undefined {
     return this._objRef?.morphTargetDictionary;
+  }
+  @Input()
+  public set count(value: number) {
+    if (this._objRef) {
+      this._objRef.count = value;
+    }
+  }
+
+  public get count(): number | undefined {
+    return this._objRef?.count;
   }
 }

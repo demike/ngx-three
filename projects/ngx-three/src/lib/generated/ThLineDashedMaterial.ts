@@ -17,6 +17,7 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-lineDashedMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThMaterial,
@@ -32,7 +33,7 @@ export class ThLineDashedMaterial<
     return LineDashedMaterial;
   }
 
-  public get isLineDashedMaterial(): true | undefined {
+  public get isLineDashedMaterial(): boolean | undefined {
     return this._objRef?.isLineDashedMaterial;
   }
   @Input()

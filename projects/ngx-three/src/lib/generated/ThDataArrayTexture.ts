@@ -22,6 +22,7 @@ import { ThTexture } from './ThTexture';
   selector: 'th-dataArrayTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThTextureBase,

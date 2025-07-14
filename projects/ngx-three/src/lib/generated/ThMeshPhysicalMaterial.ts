@@ -25,6 +25,7 @@ import { ThMeshStandardMaterial } from './ThMeshStandardMaterial';
   selector: 'th-meshPhysicalMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThMaterial,
@@ -40,18 +41,8 @@ export class ThMeshPhysicalMaterial<
     return MeshPhysicalMaterial;
   }
 
-  public get isMeshPhysicalMaterial(): true | undefined {
+  public get isMeshPhysicalMaterial(): boolean | undefined {
     return this._objRef?.isMeshPhysicalMaterial;
-  }
-  @Input()
-  public set defines(value: { [key: string]: any }) {
-    if (this._objRef) {
-      this._objRef.defines = value;
-    }
-  }
-
-  public get defines(): { [key: string]: any } | undefined {
-    return this._objRef?.defines;
   }
   @Input()
   public set anisotropyRotation(value: number) {
@@ -345,9 +336,6 @@ export class ThMeshPhysicalMaterial<
   public get specularColorMap(): (Texture | null) | undefined {
     return this._objRef?.specularColorMap;
   }
-  public get anisotropy(): number | undefined {
-    return this._objRef?.anisotropy;
-  }
   @Input()
   public set anisotropy(value: number) {
     if (this._objRef) {
@@ -355,8 +343,8 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  public get clearcoat(): number | undefined {
-    return this._objRef?.clearcoat;
+  public get anisotropy(): number | undefined {
+    return this._objRef?.anisotropy;
   }
   @Input()
   public set clearcoat(value: number) {
@@ -365,8 +353,8 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  public get iridescence(): number | undefined {
-    return this._objRef?.iridescence;
+  public get clearcoat(): number | undefined {
+    return this._objRef?.clearcoat;
   }
   @Input()
   public set iridescence(value: number) {
@@ -375,8 +363,8 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  public get dispersion(): number | undefined {
-    return this._objRef?.dispersion;
+  public get iridescence(): number | undefined {
+    return this._objRef?.iridescence;
   }
   @Input()
   public set dispersion(value: number) {
@@ -385,8 +373,8 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  public get sheen(): number | undefined {
-    return this._objRef?.sheen;
+  public get dispersion(): number | undefined {
+    return this._objRef?.dispersion;
   }
   @Input()
   public set sheen(value: number) {
@@ -395,13 +383,17 @@ export class ThMeshPhysicalMaterial<
     }
   }
 
-  public get transmission(): number | undefined {
-    return this._objRef?.transmission;
+  public get sheen(): number | undefined {
+    return this._objRef?.sheen;
   }
   @Input()
   public set transmission(value: number) {
     if (this._objRef) {
       this._objRef.transmission = value;
     }
+  }
+
+  public get transmission(): number | undefined {
+    return this._objRef?.transmission;
   }
 }

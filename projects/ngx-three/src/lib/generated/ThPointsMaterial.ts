@@ -23,6 +23,7 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-pointsMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThPointsMaterial) },
   ],
@@ -35,7 +36,7 @@ export class ThPointsMaterial<
     return PointsMaterial;
   }
 
-  public get isPointsMaterial(): true | undefined {
+  public get isPointsMaterial(): boolean | undefined {
     return this._objRef?.isPointsMaterial;
   }
   @Input()

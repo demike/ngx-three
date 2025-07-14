@@ -43,7 +43,6 @@ import { ThData3DTexture } from './ThData3DTexture';
 import { ThDataArrayTexture } from './ThDataArrayTexture';
 import { ThDataTexture } from './ThDataTexture';
 import { ThDecalGeometry } from './ThDecalGeometry';
-import { ThDepthArrayTexture } from './ThDepthArrayTexture';
 import { ThDepthTexture } from './ThDepthTexture';
 import { ThDirectionalLight } from './ThDirectionalLight';
 import { ThDirectionalLightHelper } from './ThDirectionalLightHelper';
@@ -149,7 +148,7 @@ import { ThVideoTexture } from './ThVideoTexture';
 import { ThWireframeGeometry } from './ThWireframeGeometry';
 
 @NgModule({
-  imports: [
+  declarations: [
     ThTransformControlsGen,
     ThTransformControls,
     ThArcballControls,
@@ -292,7 +291,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThData3DTexture,
     ThDataArrayTexture,
     ThDataTexture,
-    ThDepthArrayTexture,
     ThDepthTexture,
     ThFramebufferTexture,
     ThTexture,
@@ -442,7 +440,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThData3DTexture,
     ThDataArrayTexture,
     ThDataTexture,
-    ThDepthArrayTexture,
     ThDepthTexture,
     ThFramebufferTexture,
     ThTexture,

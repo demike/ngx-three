@@ -17,6 +17,7 @@ import { ThPassBase } from '../ThPassBase';
   selector: 'th-pass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThPass) }],
 })
 export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<

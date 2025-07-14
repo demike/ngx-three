@@ -8,7 +8,11 @@ import {
   forwardRef,
   Type,
 } from '@angular/core';
-import { NormalBufferAttributes, ShapeGeometry } from 'three';
+import {
+  BufferGeometryEventMap,
+  NormalBufferAttributes,
+  ShapeGeometry,
+} from 'three';
 import { Shape } from 'three/src/extras/core/Shape.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -16,6 +20,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-shapeGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,
@@ -26,7 +31,12 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 export class ThShapeGeometry<
   T extends ShapeGeometry = ShapeGeometry,
   TARGS = [shapes?: Shape | Shape[], curveSegments?: number],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<ShapeGeometry> {
     return ShapeGeometry;
   }

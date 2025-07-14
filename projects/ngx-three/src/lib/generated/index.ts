@@ -46,7 +46,6 @@ export * from './ThData3DTexture';
 export * from './ThDataArrayTexture';
 export * from './ThDataTexture';
 export * from './ThDecalGeometry';
-export * from './ThDepthArrayTexture';
 export * from './ThDepthTexture';
 export * from './ThDirectionalLight';
 export * from './ThDirectionalLightHelper';

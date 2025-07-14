@@ -9,7 +9,7 @@ import {
   Input,
   Type,
 } from '@angular/core';
-import { NormalBufferAttributes, Vector3 } from 'three';
+import { BufferGeometryEventMap, NormalBufferAttributes, Vector3 } from 'three';
 import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
@@ -17,6 +17,7 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-parametricGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,
@@ -31,7 +32,12 @@ export class ThParametricGeometry<
     slices?: number,
     stacks?: number,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<ParametricGeometry> {
     return ParametricGeometry;
   }

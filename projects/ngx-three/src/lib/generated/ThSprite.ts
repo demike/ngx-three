@@ -20,6 +20,7 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-sprite',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSprite) }],
 })
 export class ThSprite<
@@ -75,5 +76,15 @@ export class ThSprite<
   }
   public get center(): Vector2 | undefined {
     return this._objRef?.center;
+  }
+  @Input()
+  public set count(value: number) {
+    if (this._objRef) {
+      this._objRef.count = value;
+    }
+  }
+
+  public get count(): number | undefined {
+    return this._objRef?.count;
   }
 }

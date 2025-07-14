@@ -8,13 +8,18 @@ import {
   forwardRef,
   Type,
 } from '@angular/core';
-import { BoxGeometry, NormalBufferAttributes } from 'three';
+import {
+  BoxGeometry,
+  BufferGeometryEventMap,
+  NormalBufferAttributes,
+} from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
   selector: 'th-boxGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
   providers: [
     { provide: ThBufferGeometry, useExisting: forwardRef(() => ThBoxGeometry) },
   ],
@@ -29,7 +34,12 @@ export class ThBoxGeometry<
     heightSegments?: number,
     depthSegments?: number,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<BoxGeometry> {
     return BoxGeometry;
   }
