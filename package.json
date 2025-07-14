@@ -67,11 +67,11 @@
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "ng-packagr": "^20.1.0",
-    "prettier": "^3.0.2",
-    "prettier-eslint": "^15.0.1",
-    "prettier-eslint-cli": "^7.1.0",
-    "ts-node": "^10.9.1",
+    "prettier": "^3.6.2",
+    "prettier-eslint": "^16.4.2",
+    "prettier-eslint-cli": "^8.0.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
-    "utility-types": "^3.10.0"
+    "utility-types": "^3.11.0"
   }
 }
