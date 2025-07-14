@@ -4,22 +4,22 @@ import { Color, MeshPhongMaterial, Vector2 } from 'three';
 import GUI from 'lil-gui';
 
 @Component({
-    selector: 'app-outline-pass-events-example',
-    templateUrl: './outline-pass-events-example.component.html',
-    styleUrls: ['./outline-pass-events-example.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-outline-pass-events-example',
+  templateUrl: './outline-pass-events-example.component.html',
+  styleUrls: ['./outline-pass-events-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class OutlinePassEventsExampleComponent implements OnInit {
   protected outlinePassResolution = new Vector2(window.innerWidth, window.innerHeight);
   protected readonly meshData: { x: number; y: number; z: number; scale: number; color: Color }[] = [];
 
-  protected visibleEdgeColor = '#ffffff';
-  protected hiddenEdgeColor = '#190a05';
-  protected edgeStrength = 3;
-  protected edgeGlow = 0.5;
-  protected edgeThickness = 1.0;
-  protected pulsePeriod = 1;
+  public visibleEdgeColor = '#ffffff';
+  public hiddenEdgeColor = '#190a05';
+  public edgeStrength = 3;
+  public edgeGlow = 0.5;
+  public edgeThickness = 1.0;
+  public pulsePeriod = 1;
 
   selected?: ThObject3D;
 
