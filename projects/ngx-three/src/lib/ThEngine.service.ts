@@ -50,6 +50,10 @@ export class ThEngineService implements OnDestroy {
     if (this.resizeObserver && this.hostElement) {
       this.resizeObserver.unobserve(this.hostElement.nativeElement);
     }
+
+    this.renderers.forEach((renderer) => {
+      (renderer as unknown as Partial<WebGLRenderer>).dispose?.();
+    });
   }
 
   private initResizeObserver() {
