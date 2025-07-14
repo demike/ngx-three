@@ -24,6 +24,8 @@
         "prefer-arrow/prefer-arrow-functions": "off",
         "@typescript-eslint/member-ordering": "off",
         "@typescript-eslint/no-explicit-any": "off",
+        "@angular-eslint/prefer-standalone": "off",
+				
         "no-underscore-dangle": [
           "error",
           {
