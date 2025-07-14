@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Sprite, Vector2 } from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
@@ -17,11 +17,11 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-sprite',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSprite) }],
-    standalone: false
+  selector: 'th-sprite',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThSprite) }],
 })
 export class ThSprite<
   TEventMap extends Object3DEventMap = Object3DEventMap,
@@ -76,5 +76,15 @@ export class ThSprite<
   }
   public get center(): Vector2 | undefined {
     return this._objRef?.center;
+  }
+  @Input()
+  public set count(value: number) {
+    if (this._objRef) {
+      this._objRef.count = value;
+    }
+  }
+
+  public get count(): number | undefined {
+    return this._objRef?.count;
   }
 }

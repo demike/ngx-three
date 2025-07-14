@@ -5,25 +5,25 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
-import { NormalBufferAttributes, Vector3 } from 'three';
+import { BufferGeometryEventMap, NormalBufferAttributes, Vector3 } from 'three';
 import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-    selector: 'th-parametricGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThParametricGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-parametricGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThParametricGeometry),
+    },
+  ],
 })
 export class ThParametricGeometry<
   T extends ParametricGeometry = ParametricGeometry,
@@ -32,7 +32,12 @@ export class ThParametricGeometry<
     slices?: number,
     stacks?: number,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<ParametricGeometry> {
     return ParametricGeometry;
   }

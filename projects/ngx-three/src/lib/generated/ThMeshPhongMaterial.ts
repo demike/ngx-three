@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -24,13 +24,13 @@ import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-    selector: 'th-meshPhongMaterial',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThMaterial, useExisting: forwardRef(() => ThMeshPhongMaterial) },
-    ],
-    standalone: false
+  selector: 'th-meshPhongMaterial',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThMeshPhongMaterial) },
+  ],
 })
 export class ThMeshPhongMaterial<
   T extends MeshPhongMaterial = MeshPhongMaterial,
@@ -40,7 +40,7 @@ export class ThMeshPhongMaterial<
     return MeshPhongMaterial;
   }
 
-  public get isMeshPhongMaterial(): true | undefined {
+  public get isMeshPhongMaterial(): boolean | undefined {
     return this._objRef?.isMeshPhongMaterial;
   }
   @Input()
@@ -351,23 +351,23 @@ export class ThMeshPhongMaterial<
     return this._objRef?.wireframeLinewidth;
   }
   @Input()
-  public set wireframeLinecap(value: string) {
+  public set wireframeLinecap(value: 'round' | 'bevel' | 'miter') {
     if (this._objRef) {
       this._objRef.wireframeLinecap = value;
     }
   }
 
-  public get wireframeLinecap(): string | undefined {
+  public get wireframeLinecap(): ('round' | 'bevel' | 'miter') | undefined {
     return this._objRef?.wireframeLinecap;
   }
   @Input()
-  public set wireframeLinejoin(value: string) {
+  public set wireframeLinejoin(value: 'round' | 'bevel' | 'miter') {
     if (this._objRef) {
       this._objRef.wireframeLinejoin = value;
     }
   }
 
-  public get wireframeLinejoin(): string | undefined {
+  public get wireframeLinejoin(): ('round' | 'bevel' | 'miter') | undefined {
     return this._objRef?.wireframeLinejoin;
   }
   @Input()
@@ -379,16 +379,6 @@ export class ThMeshPhongMaterial<
 
   public get flatShading(): boolean | undefined {
     return this._objRef?.flatShading;
-  }
-  @Input()
-  public set metal(value: boolean) {
-    if (this._objRef) {
-      this._objRef.metal = value;
-    }
-  }
-
-  public get metal(): boolean | undefined {
-    return this._objRef?.metal;
   }
   @Input()
   public set fog(value: boolean) {

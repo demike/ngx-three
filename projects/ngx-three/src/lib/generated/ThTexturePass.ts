@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, Texture } from 'three';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
@@ -17,13 +17,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-    selector: 'th-texturePass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThTexturePass) },
-    ],
-    standalone: false
+  selector: 'th-texturePass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThTexturePass) },
+  ],
 })
 export class ThTexturePass<
   T extends TexturePass = TexturePass,

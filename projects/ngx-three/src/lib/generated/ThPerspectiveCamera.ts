@@ -5,23 +5,23 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { PerspectiveCamera } from 'three';
 import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-perspectiveCamera',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThPerspectiveCamera) },
-        { provide: ThCamera, useExisting: forwardRef(() => ThPerspectiveCamera) },
-    ],
-    standalone: false
+  selector: 'th-perspectiveCamera',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThPerspectiveCamera) },
+    { provide: ThCamera, useExisting: forwardRef(() => ThPerspectiveCamera) },
+  ],
 })
 export class ThPerspectiveCamera<
   T extends PerspectiveCamera = PerspectiveCamera,

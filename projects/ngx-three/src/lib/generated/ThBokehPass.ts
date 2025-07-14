@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -21,7 +21,7 @@ import {
 } from 'three';
 import {
   BokehPass,
-  BokehPassParamters,
+  BokehPassParameters,
 } from 'three/examples/jsm/postprocessing/BokehPass.js';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
@@ -29,17 +29,17 @@ import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
-    selector: 'th-bokehPass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThBokehPass) },
-    ],
-    standalone: false
+  selector: 'th-bokehPass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThBokehPass) },
+  ],
 })
 export class ThBokehPass<
   T extends BokehPass = BokehPass,
-  TARGS = [scene: Scene, camera: Camera, params: BokehPassParamters],
+  TARGS = [scene: Scene, camera: Camera, params: BokehPassParameters],
 > extends ThPass<T, TARGS> {
   public getType(): Type<BokehPass> {
     return BokehPass;

@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { LineLoop } from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
@@ -16,13 +16,13 @@ import { ThLine } from './ThLine';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-lineLoop',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThLineLoop) },
-    ],
-    standalone: false
+  selector: 'th-lineLoop',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThLineLoop) },
+  ],
 })
 export class ThLineLoop<
   TGeometry extends BufferGeometry = BufferGeometry,

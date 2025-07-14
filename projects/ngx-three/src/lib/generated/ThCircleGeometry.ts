@@ -5,23 +5,27 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
-import { CircleGeometry, NormalBufferAttributes } from 'three';
+import {
+  BufferGeometryEventMap,
+  CircleGeometry,
+  NormalBufferAttributes,
+} from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-    selector: 'th-circleGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThCircleGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-circleGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThCircleGeometry),
+    },
+  ],
 })
 export class ThCircleGeometry<
   T extends CircleGeometry = CircleGeometry,
@@ -31,7 +35,12 @@ export class ThCircleGeometry<
     thetaStart?: number,
     thetaLength?: number,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<CircleGeometry> {
     return CircleGeometry;
   }

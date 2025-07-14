@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { CompressedTexture, CompressedTextureMipmap } from 'three';
 import {
@@ -22,16 +22,16 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-    selector: 'th-compressedTexture',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThTextureBase,
-            useExisting: forwardRef(() => ThCompressedTexture),
-        },
-    ],
-    standalone: false
+  selector: 'th-compressedTexture',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThTextureBase,
+      useExisting: forwardRef(() => ThCompressedTexture),
+    },
+  ],
 })
 export class ThCompressedTexture<
   T extends CompressedTexture = CompressedTexture,

@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Camera, Scene } from 'three';
 import { MaskPass } from 'three/examples/jsm/postprocessing/MaskPass.js';
@@ -16,13 +16,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-    selector: 'th-maskPass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThMaskPass) },
-    ],
-    standalone: false
+  selector: 'th-maskPass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThMaskPass) },
+  ],
 })
 export class ThMaskPass<
   T extends MaskPass = MaskPass,

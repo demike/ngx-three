@@ -5,19 +5,19 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { Group } from 'three';
 import { Object3DEventMap } from 'three/src/core/Object3D.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-group',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThGroup) }],
-    standalone: false
+  selector: 'th-group',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThGroup) }],
 })
 export class ThGroup<
   TEventMap extends Object3DEventMap = Object3DEventMap,

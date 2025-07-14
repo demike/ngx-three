@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { StereoCamera } from 'three';
 import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js';
@@ -15,14 +15,14 @@ import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-stereoCamera',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThStereoCamera) },
-        { provide: ThCamera, useExisting: forwardRef(() => ThStereoCamera) },
-    ],
-    standalone: false
+  selector: 'th-stereoCamera',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThStereoCamera) },
+    { provide: ThCamera, useExisting: forwardRef(() => ThStereoCamera) },
+  ],
 })
 export class ThStereoCamera<
   T extends StereoCamera = StereoCamera,

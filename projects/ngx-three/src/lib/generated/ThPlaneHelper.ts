@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   BufferGeometry,
@@ -22,13 +22,13 @@ import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-planeHelper',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThPlaneHelper) },
-    ],
-    standalone: false
+  selector: 'th-planeHelper',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThPlaneHelper) },
+  ],
 })
 export class ThPlaneHelper<
   T extends PlaneHelper = PlaneHelper,

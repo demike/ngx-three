@@ -5,23 +5,27 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
-import { NormalBufferAttributes, SphereGeometry } from 'three';
+import {
+  BufferGeometryEventMap,
+  NormalBufferAttributes,
+  SphereGeometry,
+} from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-    selector: 'th-sphereGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThSphereGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-sphereGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThSphereGeometry),
+    },
+  ],
 })
 export class ThSphereGeometry<
   T extends SphereGeometry = SphereGeometry,
@@ -34,7 +38,12 @@ export class ThSphereGeometry<
     thetaStart?: number,
     thetaLength?: number,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<SphereGeometry> {
     return SphereGeometry;
   }

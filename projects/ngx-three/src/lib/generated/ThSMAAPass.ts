@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, Texture, WebGLRenderTarget } from 'three';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
@@ -17,17 +17,17 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-    selector: 'th-sMAAPass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThSMAAPass) },
-    ],
-    standalone: false
+  selector: 'th-sMAAPass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThSMAAPass) },
+  ],
 })
 export class ThSMAAPass<
   T extends SMAAPass = SMAAPass,
-  TARGS = [width: number, height: number],
+  TARGS = [],
 > extends ThPass<T, TARGS> {
   public getType(): Type<SMAAPass> {
     return SMAAPass;

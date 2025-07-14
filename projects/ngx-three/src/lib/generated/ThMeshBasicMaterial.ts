@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -23,13 +23,13 @@ import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-    selector: 'th-meshBasicMaterial',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThMaterial, useExisting: forwardRef(() => ThMeshBasicMaterial) },
-    ],
-    standalone: false
+  selector: 'th-meshBasicMaterial',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThMeshBasicMaterial) },
+  ],
 })
 export class ThMeshBasicMaterial<
   T extends MeshBasicMaterial = MeshBasicMaterial,
@@ -39,7 +39,7 @@ export class ThMeshBasicMaterial<
     return MeshBasicMaterial;
   }
 
-  public get isMeshBasicMaterial(): true | undefined {
+  public get isMeshBasicMaterial(): boolean | undefined {
     return this._objRef?.isMeshBasicMaterial;
   }
   @Input()
@@ -204,23 +204,23 @@ export class ThMeshBasicMaterial<
     return this._objRef?.wireframeLinewidth;
   }
   @Input()
-  public set wireframeLinecap(value: string) {
+  public set wireframeLinecap(value: 'round' | 'bevel' | 'miter') {
     if (this._objRef) {
       this._objRef.wireframeLinecap = value;
     }
   }
 
-  public get wireframeLinecap(): string | undefined {
+  public get wireframeLinecap(): ('round' | 'bevel' | 'miter') | undefined {
     return this._objRef?.wireframeLinecap;
   }
   @Input()
-  public set wireframeLinejoin(value: string) {
+  public set wireframeLinejoin(value: 'round' | 'bevel' | 'miter') {
     if (this._objRef) {
       this._objRef.wireframeLinejoin = value;
     }
   }
 
-  public get wireframeLinejoin(): string | undefined {
+  public get wireframeLinejoin(): ('round' | 'bevel' | 'miter') | undefined {
     return this._objRef?.wireframeLinejoin;
   }
   @Input()

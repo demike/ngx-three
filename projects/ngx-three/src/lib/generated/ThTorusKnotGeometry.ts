@@ -5,23 +5,27 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
-import { NormalBufferAttributes, TorusKnotGeometry } from 'three';
+import {
+  BufferGeometryEventMap,
+  NormalBufferAttributes,
+  TorusKnotGeometry,
+} from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-    selector: 'th-torusKnotGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThTorusKnotGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-torusKnotGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThTorusKnotGeometry),
+    },
+  ],
 })
 export class ThTorusKnotGeometry<
   T extends TorusKnotGeometry = TorusKnotGeometry,
@@ -33,7 +37,12 @@ export class ThTorusKnotGeometry<
     p?: number,
     q?: number,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<TorusKnotGeometry> {
     return TorusKnotGeometry;
   }

@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { CubeCamera, Object3DEventMap } from 'three';
 import { CoordinateSystem } from 'three/src/constants.js';
@@ -15,13 +15,13 @@ import { WebGLCubeRenderTarget } from 'three/src/renderers/WebGLCubeRenderTarget
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-cubeCamera',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThCubeCamera) },
-    ],
-    standalone: false
+  selector: 'th-cubeCamera',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThCubeCamera) },
+  ],
 })
 export class ThCubeCamera<
   T extends CubeCamera = CubeCamera,

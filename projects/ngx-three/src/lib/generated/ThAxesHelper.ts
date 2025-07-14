@@ -5,28 +5,30 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
-import { AxesHelper, BufferGeometry, Material, Object3DEventMap } from 'three';
+import { AxesHelper, Object3DEventMap } from 'three';
+import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
+import { LineBasicMaterial } from 'three/src/materials/LineBasicMaterial.js';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-axesHelper',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThAxesHelper) },
-    ],
-    standalone: false
+  selector: 'th-axesHelper',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThAxesHelper) },
+  ],
 })
 export class ThAxesHelper<
   T extends AxesHelper = AxesHelper,
   TARGS = /* size? */ number,
 > extends ThLineSegments<
   BufferGeometry,
-  Material | Material[],
+  LineBasicMaterial,
   Object3DEventMap,
   T,
   TARGS

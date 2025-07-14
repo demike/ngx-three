@@ -5,25 +5,25 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { MeshDistanceMaterial, MeshDistanceMaterialParameters } from 'three';
 import { Texture } from 'three/src/textures/Texture.js';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-    selector: 'th-meshDistanceMaterial',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThMaterial,
-            useExisting: forwardRef(() => ThMeshDistanceMaterial),
-        },
-    ],
-    standalone: false
+  selector: 'th-meshDistanceMaterial',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThMaterial,
+      useExisting: forwardRef(() => ThMeshDistanceMaterial),
+    },
+  ],
 })
 export class ThMeshDistanceMaterial<
   T extends MeshDistanceMaterial = MeshDistanceMaterial,
@@ -33,7 +33,7 @@ export class ThMeshDistanceMaterial<
     return MeshDistanceMaterial;
   }
 
-  public get isMeshDistanceMaterial(): true | undefined {
+  public get isMeshDistanceMaterial(): boolean | undefined {
     return this._objRef?.isMeshDistanceMaterial;
   }
   @Input()
@@ -85,15 +85,5 @@ export class ThMeshDistanceMaterial<
 
   public get displacementBias(): number | undefined {
     return this._objRef?.displacementBias;
-  }
-  @Input()
-  public set fog(value: boolean) {
-    if (this._objRef) {
-      this._objRef.fog = value;
-    }
-  }
-
-  public get fog(): boolean | undefined {
-    return this._objRef?.fog;
   }
 }

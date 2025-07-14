@@ -13,6 +13,7 @@ import {
   Box3,
   BufferAttribute,
   BufferGeometry,
+  BufferGeometryEventMap,
   GeometryGroup,
   NormalBufferAttributes,
   NormalOrGLBufferAttributes,
@@ -26,18 +27,22 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-bufferGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [],
-    standalone: false
+  selector: 'th-bufferGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [],
 })
 export class ThBufferGeometry<
   Attributes extends NormalOrGLBufferAttributes = NormalBufferAttributes,
-  T extends BufferGeometry<Attributes> = BufferGeometry<Attributes>,
+  TEventMap extends BufferGeometryEventMap = BufferGeometryEventMap,
+  T extends BufferGeometry<Attributes, TEventMap> = BufferGeometry<
+    Attributes,
+    TEventMap
+  >,
   TARGS = [],
 > extends ThGeometryBase<T, TARGS> {
-  public getType(): Type<BufferGeometry<Attributes>> {
+  public getType(): Type<BufferGeometry<Attributes, TEventMap>> {
     return BufferGeometry;
   }
 
@@ -120,7 +125,9 @@ export class ThBufferGeometry<
   }
   @Input()
   public set morphAttributes(value: {
-    [name: string]: Array<BufferAttribute | InterleavedBufferAttribute>; // TODO Replace for 'Record<>'
+    position?: Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
+    normal?: Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
+    color?: Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
   }) {
     if (this._objRef) {
       this._objRef.morphAttributes = value;
@@ -129,7 +136,13 @@ export class ThBufferGeometry<
 
   public get morphAttributes():
     | {
-        [name: string]: Array<BufferAttribute | InterleavedBufferAttribute>; // TODO Replace for 'Record<>'
+        position?:
+          | Array<BufferAttribute | InterleavedBufferAttribute>
+          | undefined;
+        normal?:
+          | Array<BufferAttribute | InterleavedBufferAttribute>
+          | undefined;
+        color?: Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
       }
     | undefined {
     return this._objRef?.morphAttributes;

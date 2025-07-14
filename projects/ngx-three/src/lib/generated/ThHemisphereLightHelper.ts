@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { HemisphereLightHelper, Matrix4, Object3DEventMap } from 'three';
 import { HemisphereLight } from 'three/src/lights/HemisphereLight.js';
@@ -17,16 +17,16 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-hemisphereLightHelper',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThObject3D,
-            useExisting: forwardRef(() => ThHemisphereLightHelper),
-        },
-    ],
-    standalone: false
+  selector: 'th-hemisphereLightHelper',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThObject3D,
+      useExisting: forwardRef(() => ThHemisphereLightHelper),
+    },
+  ],
 })
 export class ThHemisphereLightHelper<
   T extends HemisphereLightHelper = HemisphereLightHelper,

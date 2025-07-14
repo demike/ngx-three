@@ -5,23 +5,27 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
-import { NormalBufferAttributes, RingGeometry } from 'three';
+import {
+  BufferGeometryEventMap,
+  NormalBufferAttributes,
+  RingGeometry,
+} from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-    selector: 'th-ringGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThRingGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-ringGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThRingGeometry),
+    },
+  ],
 })
 export class ThRingGeometry<
   T extends RingGeometry = RingGeometry,
@@ -33,7 +37,12 @@ export class ThRingGeometry<
     thetaStart?: number,
     thetaLength?: number,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<RingGeometry> {
     return RingGeometry;
   }

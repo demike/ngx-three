@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { DirectionalLightHelper, Matrix4, Object3DEventMap } from 'three';
 import { DirectionalLight } from 'three/src/lights/DirectionalLight.js';
@@ -17,16 +17,16 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-directionalLightHelper',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThObject3D,
-            useExisting: forwardRef(() => ThDirectionalLightHelper),
-        },
-    ],
-    standalone: false
+  selector: 'th-directionalLightHelper',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThObject3D,
+      useExisting: forwardRef(() => ThDirectionalLightHelper),
+    },
+  ],
 })
 export class ThDirectionalLightHelper<
   T extends DirectionalLightHelper = DirectionalLightHelper,

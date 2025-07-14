@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Camera, Layers, Matrix4, Object3DEventMap, Vector4 } from 'three';
 import { CoordinateSystem } from 'three/src/constants.js';
@@ -15,11 +15,11 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-camera',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
-    standalone: false
+  selector: 'th-camera',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
 })
 export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
   Object3DEventMap,

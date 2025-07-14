@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Points } from 'three';
 import {
@@ -19,11 +19,11 @@ import { Material } from 'three/src/materials/Material.js';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-points',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPoints) }],
-    standalone: false
+  selector: 'th-points',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThPoints) }],
 })
 export class ThPoints<
   TGeometry extends BufferGeometry<NormalOrGLBufferAttributes> = BufferGeometry,

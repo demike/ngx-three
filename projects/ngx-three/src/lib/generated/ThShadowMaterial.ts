@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -19,13 +19,13 @@ import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-    selector: 'th-shadowMaterial',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThMaterial, useExisting: forwardRef(() => ThShadowMaterial) },
-    ],
-    standalone: false
+  selector: 'th-shadowMaterial',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThShadowMaterial) },
+  ],
 })
 export class ThShadowMaterial<
   T extends ShadowMaterial = ShadowMaterial,
@@ -35,7 +35,7 @@ export class ThShadowMaterial<
     return ShadowMaterial;
   }
 
-  public get isShadowMaterial(): true | undefined {
+  public get isShadowMaterial(): boolean | undefined {
     return this._objRef?.isShadowMaterial;
   }
   @Input()
@@ -54,16 +54,6 @@ export class ThShadowMaterial<
   }
   public get color(): Color | undefined {
     return this._objRef?.color;
-  }
-  @Input()
-  public set transparent(value: boolean) {
-    if (this._objRef) {
-      this._objRef.transparent = value;
-    }
-  }
-
-  public get transparent(): boolean | undefined {
-    return this._objRef?.transparent;
   }
   @Input()
   public set fog(value: boolean) {

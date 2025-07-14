@@ -5,10 +5,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import {
+  BufferGeometryEventMap,
   ExtrudeGeometry,
   ExtrudeGeometryOptions,
   NormalBufferAttributes,
@@ -17,21 +18,26 @@ import { Shape } from 'three/src/extras/core/Shape.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-    selector: 'th-extrudeGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThExtrudeGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-extrudeGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThExtrudeGeometry),
+    },
+  ],
 })
 export class ThExtrudeGeometry<
   T extends ExtrudeGeometry = ExtrudeGeometry,
   TARGS = [shapes?: Shape | Shape[], options?: ExtrudeGeometryOptions],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<ExtrudeGeometry> {
     return ExtrudeGeometry;
   }

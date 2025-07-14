@@ -5,29 +5,38 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
-import { InstancedBufferGeometry, NormalBufferAttributes } from 'three';
+import {
+  BufferGeometryEventMap,
+  InstancedBufferGeometry,
+  NormalBufferAttributes,
+} from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-    selector: 'th-instancedBufferGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThInstancedBufferGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-instancedBufferGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThInstancedBufferGeometry),
+    },
+  ],
 })
 export class ThInstancedBufferGeometry<
   T extends InstancedBufferGeometry = InstancedBufferGeometry,
   TARGS = [],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<InstancedBufferGeometry> {
     return InstancedBufferGeometry;
   }

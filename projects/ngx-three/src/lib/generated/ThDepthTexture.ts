@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { DepthTexture } from 'three';
 import {
@@ -23,13 +23,13 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-    selector: 'th-depthTexture',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThTextureBase, useExisting: forwardRef(() => ThDepthTexture) },
-    ],
-    standalone: false
+  selector: 'th-depthTexture',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThDepthTexture) },
+  ],
 })
 export class ThDepthTexture<
   T extends DepthTexture = DepthTexture,
@@ -44,6 +44,7 @@ export class ThDepthTexture<
     minFilter?: MinificationTextureFilter,
     anisotropy?: number,
     format?: DepthTexturePixelFormat,
+    depth?: number,
   ],
 > extends ThTexture<T, TARGS> {
   public getType(): Type<DepthTexture> {
@@ -53,11 +54,13 @@ export class ThDepthTexture<
   public get isDepthTexture(): true | undefined {
     return this._objRef?.isDepthTexture;
   }
-  public get image(): { width: number; height: number } | undefined {
+  public get image():
+    | { width: number; height: number; depth: number }
+    | undefined {
     return this._objRef?.image;
   }
   @Input()
-  public set image(value: { width: number; height: number }) {
+  public set image(value: { width: number; height: number; depth: number }) {
     if (this._objRef) {
       this._objRef.image = value;
     }

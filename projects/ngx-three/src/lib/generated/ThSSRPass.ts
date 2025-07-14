@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   Camera,
@@ -20,8 +20,8 @@ import {
   MeshNormalMaterial,
   Scene,
   ShaderMaterial,
-  WebGLRenderTarget,
   WebGLRenderer,
+  WebGLRenderTarget,
 } from 'three';
 import { ReflectorForSSRPass } from 'three/examples/jsm/objects/ReflectorForSSRPass.js';
 import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
@@ -34,13 +34,13 @@ import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
-    selector: 'th-sSRPass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThSSRPass) },
-    ],
-    standalone: false
+  selector: 'th-sSRPass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThSSRPass) },
+  ],
 })
 export class ThSSRPass<
   T extends SSRPass = SSRPass,

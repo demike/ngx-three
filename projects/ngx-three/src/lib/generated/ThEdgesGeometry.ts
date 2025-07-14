@@ -5,30 +5,39 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
-import { EdgesGeometry, NormalBufferAttributes } from 'three';
+import {
+  BufferGeometryEventMap,
+  EdgesGeometry,
+  NormalBufferAttributes,
+} from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-    selector: 'th-edgesGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThEdgesGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-edgesGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThEdgesGeometry),
+    },
+  ],
 })
 export class ThEdgesGeometry<
   TBufferGeometry extends BufferGeometry = BufferGeometry,
   T extends EdgesGeometry<TBufferGeometry> = EdgesGeometry<TBufferGeometry>,
   TARGS = [geometry?: TBufferGeometry | null, thresholdAngle?: number],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<EdgesGeometry<TBufferGeometry>> {
     return EdgesGeometry;
   }

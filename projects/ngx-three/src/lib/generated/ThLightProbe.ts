@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { LightProbe, LightShadow, SphericalHarmonics3 } from 'three';
 import { Vector3 } from 'three/src/math/Vector3.js';
@@ -16,13 +16,13 @@ import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-lightProbe',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThLightProbe) },
-    ],
-    standalone: false
+  selector: 'th-lightProbe',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThLightProbe) },
+  ],
 })
 export class ThLightProbe<
   T extends LightProbe = LightProbe,

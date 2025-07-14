@@ -5,24 +5,24 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { IcosahedronGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
 
 @Component({
-    selector: 'th-icosahedronGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThIcosahedronGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-icosahedronGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThIcosahedronGeometry),
+    },
+  ],
 })
 export class ThIcosahedronGeometry<
   T extends IcosahedronGeometry = IcosahedronGeometry,

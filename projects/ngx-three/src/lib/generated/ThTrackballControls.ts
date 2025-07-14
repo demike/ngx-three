@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { MOUSE, Vector3 } from 'three';
 import {
@@ -19,16 +19,16 @@ import { ThControlBase } from '../ThControlBase';
 import { applyValue } from '../util';
 
 @Component({
-    selector: 'th-trackballControls',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThControlBase,
-            useExisting: forwardRef(() => ThTrackballControls),
-        },
-    ],
-    standalone: false
+  selector: 'th-trackballControls',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThControlBase,
+      useExisting: forwardRef(() => ThTrackballControls),
+    },
+  ],
 })
 export class ThTrackballControls<
   T extends TrackballControls = TrackballControls,

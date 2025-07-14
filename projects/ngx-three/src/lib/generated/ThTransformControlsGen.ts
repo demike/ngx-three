@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Camera } from 'three';
 import {
@@ -18,16 +18,16 @@ import {
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
-    selector: 'th-transformControlsGen',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThControlBase,
-            useExisting: forwardRef(() => ThTransformControlsGen),
-        },
-    ],
-    standalone: false
+  selector: 'th-transformControlsGen',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThControlBase,
+      useExisting: forwardRef(() => ThTransformControlsGen),
+    },
+  ],
 })
 export class ThTransformControlsGen<
   T extends TransformControls = TransformControls,

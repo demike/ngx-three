@@ -7,18 +7,18 @@ import { ThCSS2DObjectGen } from '../ThCSS2DObjectGen';
 import { ThObject3D } from '../ThObject3D';
 
 @Component({
-    selector: 'th-cSS2DObject',
-    template: '<ng-content/>',
-    styles: [
-        `
+  selector: 'th-cSS2DObject',
+  template: '<ng-content/>',
+  standalone: false,
+  styles: [
+    `
       :host {
         display: inline-block;
       }
     `,
-    ],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCSS2DObject) }],
-    standalone: false
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCSS2DObject) }],
 })
 export class ThCSS2DObject<
   T extends CSS2DObject = CSS2DObject,

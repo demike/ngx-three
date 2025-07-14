@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Data3DTexture, DataTexture } from 'three';
 import {
@@ -19,17 +19,17 @@ import { ThPassBase } from '../ThPassBase';
 import { ThShaderPass } from './ThShaderPass';
 
 @Component({
-    selector: 'th-lUTPass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThLUTPass) },
-    ],
-    standalone: false
+  selector: 'th-lUTPass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThLUTPass) },
+  ],
 })
 export class ThLUTPass<
   T extends LUTPass = LUTPass,
-  TARGS = /* params */ LUTPassParameters,
+  TARGS = /* params? */ LUTPassParameters,
 > extends ThShaderPass<T, TARGS> {
   public getType(): Type<LUTPass> {
     return LUTPass;

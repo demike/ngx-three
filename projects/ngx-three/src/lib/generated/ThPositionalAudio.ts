@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { PositionalAudio } from 'three';
 import { AudioListener } from 'three/src/audio/AudioListener.js';
@@ -15,13 +15,13 @@ import { ThAudio } from './ThAudio';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-positionalAudio',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThPositionalAudio) },
-    ],
-    standalone: false
+  selector: 'th-positionalAudio',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThPositionalAudio) },
+  ],
 })
 export class ThPositionalAudio<
   T extends PositionalAudio = PositionalAudio,

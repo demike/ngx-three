@@ -5,26 +5,26 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { OrthographicCamera } from 'three';
 import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-orthographicCamera',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThObject3D,
-            useExisting: forwardRef(() => ThOrthographicCamera),
-        },
-        { provide: ThCamera, useExisting: forwardRef(() => ThOrthographicCamera) },
-    ],
-    standalone: false
+  selector: 'th-orthographicCamera',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThObject3D,
+      useExisting: forwardRef(() => ThOrthographicCamera),
+    },
+    { provide: ThCamera, useExisting: forwardRef(() => ThOrthographicCamera) },
+  ],
 })
 export class ThOrthographicCamera<
   T extends OrthographicCamera = OrthographicCamera,

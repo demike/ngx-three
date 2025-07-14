@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { CubeTexture } from 'three';
 import {
@@ -22,13 +22,13 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-    selector: 'th-cubeTexture',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThTextureBase, useExisting: forwardRef(() => ThCubeTexture) },
-    ],
-    standalone: false
+  selector: 'th-cubeTexture',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThCubeTexture) },
+  ],
 })
 export class ThCubeTexture<
   T extends CubeTexture = CubeTexture,

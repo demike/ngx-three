@@ -5,24 +5,28 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
-import { LatheGeometry, NormalBufferAttributes } from 'three';
+import {
+  BufferGeometryEventMap,
+  LatheGeometry,
+  NormalBufferAttributes,
+} from 'three';
 import { Vector2 } from 'three/src/math/Vector2.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-    selector: 'th-latheGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThLatheGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-latheGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThLatheGeometry),
+    },
+  ],
 })
 export class ThLatheGeometry<
   T extends LatheGeometry = LatheGeometry,
@@ -32,7 +36,12 @@ export class ThLatheGeometry<
     phiStart?: number,
     phiLength?: number,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<LatheGeometry> {
     return LatheGeometry;
   }

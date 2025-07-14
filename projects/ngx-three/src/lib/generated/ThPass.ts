@@ -6,19 +6,19 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Pass } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 
 @Component({
-    selector: 'th-pass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThPass) }],
-    standalone: false
+  selector: 'th-pass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThPass) }],
 })
 export class ThPass<T extends Pass = Pass, TARGS = []> extends ThPassBase<
   T,

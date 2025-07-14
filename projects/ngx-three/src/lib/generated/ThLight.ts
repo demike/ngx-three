@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
   forwardRef,
+  Input,
 } from '@angular/core';
 import { Color, ColorRepresentation, Light, Object3DEventMap } from 'three';
 import { LightShadow } from 'three/src/lights/LightShadow.js';
@@ -14,11 +14,11 @@ import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-light',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLight) }],
-    standalone: false
+  selector: 'th-light',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThLight) }],
 })
 export abstract class ThLight<
   TShadowSupport extends LightShadow | undefined = LightShadow | undefined,

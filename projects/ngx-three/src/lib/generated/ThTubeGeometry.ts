@@ -5,26 +5,30 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
-import { NormalBufferAttributes, TubeGeometry } from 'three';
+import {
+  BufferGeometryEventMap,
+  NormalBufferAttributes,
+  TubeGeometry,
+} from 'three';
 import { Curve } from 'three/src/extras/core/Curve.js';
 import { Vector3 } from 'three/src/math/Vector3.js';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-    selector: 'th-tubeGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThTubeGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-tubeGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThTubeGeometry),
+    },
+  ],
 })
 export class ThTubeGeometry<
   T extends TubeGeometry = TubeGeometry,
@@ -35,7 +39,12 @@ export class ThTubeGeometry<
     radialSegments?: number,
     closed?: boolean,
   ],
-> extends ThBufferGeometry<NormalBufferAttributes, T, TARGS> {
+> extends ThBufferGeometry<
+  NormalBufferAttributes,
+  BufferGeometryEventMap,
+  T,
+  TARGS
+> {
   public getType(): Type<TubeGeometry> {
     return TubeGeometry;
   }

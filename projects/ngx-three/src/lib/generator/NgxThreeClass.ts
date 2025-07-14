@@ -17,7 +17,7 @@ export abstract class NgxThreeClass {
   public content: string;
   public readonly className: string;
   public readonly directiveName: string;
-  protected classDecl: ts.ClassDeclaration;
+  protected classDecl: (ts.ClassDeclaration | ts.InterfaceDeclaration)[];
   public readonly wrappedClassName: string;
   public readonly isAbstract: boolean;
 
@@ -34,8 +34,11 @@ export abstract class NgxThreeClass {
   ) {
     this.classDecl = this.fetchClassDecleration();
     this.wrappedClassName = this.classSymbol.escapedName as string;
-    this.isAbstract = this.classDecl.modifiers?.find((m) => m.kind === SyntaxKind.AbstractKeyword) !== undefined;
+    this.isAbstract = this.isAbstractClass();
     this.className = 'Th' + this.wrappedClassName;
+    if (this.className === 'ThMeshPhongMaterial') {
+      console.log('Generating ThMeshPhongMaterial');
+    }
     this.directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);
     if (isOverriddenClass(this.wrappedClassName)) {
       this.className += 'Gen';
@@ -46,16 +49,28 @@ export abstract class NgxThreeClass {
     this.content = '';
   }
 
-  private fetchClassDecleration() {
-    const decl = this.classSymbol.declarations?.[0];
-    if (decl && ts.isExportSpecifier(decl)) {
-      // this is just an export specifier do not generate a wrapper for it
-      // get the right type
-      this.classSymbol = this.typeChecker.getTypeAtLocation(decl).symbol;
-      return this.classSymbol.declarations?.[0] as unknown as ts.ClassDeclaration;
-    } else {
-      return decl as ts.ClassDeclaration;
+  private isAbstractClass() {
+    for (const decl of this.classDecl) {
+      if (decl.modifiers?.find((m) => m.kind === SyntaxKind.AbstractKeyword) !== undefined) {
+        return true;
+      }
     }
+    return false;
+  }
+
+  private fetchClassDecleration() {
+    return (
+      this.classSymbol.declarations?.map((decl) => {
+        if (decl && ts.isExportSpecifier(decl)) {
+          // this is just an export specifier do not generate a wrapper for it
+          // get the right type
+          this.classSymbol = this.typeChecker.getTypeAtLocation(decl).symbol;
+          return this.classSymbol.declarations?.[0] as unknown as ts.ClassDeclaration;
+        } else {
+          return decl as ts.ClassDeclaration;
+        }
+      }) ?? []
+    );
   }
 
   generate() {
@@ -67,7 +82,9 @@ export abstract class NgxThreeClass {
       );
     }
 
-    this.inputs = this.generateMembers(this.classDecl);
+    for (const decl of this.classDecl) {
+      this.inputs += this.generateMembers(decl);
+    }
 
     this.providersArray = this.generateProvidersArray();
 
@@ -77,7 +94,9 @@ export abstract class NgxThreeClass {
     this.imports.add("import { SkipSelf, Self, Optional, forwardRef, Type } from '@angular/core';");
     const constr = this.generateConstructor();
     this.generateConstructorArgs();
-    this.addImportsFrom(this.classDecl);
+    for (const decl of this.classDecl) {
+      this.addImportsFrom(decl);
+    }
     const classHeader = this.generateClassHeader();
 
     this.imports.add(`import { ${this.wrappedClassName} } from '${this.getWrappedClassImportPath()}';`);
@@ -96,6 +115,7 @@ export abstract class NgxThreeClass {
           selector: "${this.directiveName}",
           template: "<ng-content/>",
           changeDetection: ChangeDetectionStrategy.OnPush,
+          standalone: false,
           providers: ${this.providersArray}
         })
         ${classHeader} {
@@ -131,14 +151,15 @@ export abstract class NgxThreeClass {
   }
 
   public getWrappedClassImportPath() {
-    return this.getImportPathForSourceFile(this.classDecl.getSourceFile());
+    return this.getImportPathForSourceFile(this.classDecl[0].getSourceFile());
   }
 
   protected generateClassHeader() {
     let header = `export ${this.isAbstract ? 'abstract' : ''} class ${this.className}<`;
-    if (this.classDecl.typeParameters) {
-      header = `${header}${this.classDecl.typeParameters.map((param) => param.getText()).join(',')},`;
-      this.wrappedClassGenericTypeNames = `<${this.classDecl.typeParameters
+    const classDecl = this.classDecl[0];
+    if (classDecl.typeParameters) {
+      header = `${header}${classDecl.typeParameters.map((param) => param.getText()).join(',')},`;
+      this.wrappedClassGenericTypeNames = `<${classDecl.typeParameters
         .map((param) => param.name.getText())
         .join(',')}>`;
     }
@@ -148,9 +169,9 @@ export abstract class NgxThreeClass {
 
     let baseClassName = 'EventDispatcher';
     const wrapperBaseClassName = this.getWrapperBaseClassName();
-    if (this.classDecl.heritageClauses) {
+    if (classDecl.heritageClauses) {
       // if we have a base class and we are not Object3D
-      const clause = this.classDecl.heritageClauses[0].getText();
+      const clause = classDecl.heritageClauses[0].getText();
 
       baseClassName = clause.replace('extends ', '').split('<')[0];
 
@@ -174,7 +195,7 @@ export abstract class NgxThreeClass {
       header = header.slice(0, -1);
       header += ',';
 
-      defaultParams = defaultParams.slice(this.classDecl.heritageClauses[0].types[0].typeArguments?.length ?? 0);
+      defaultParams = defaultParams.slice(classDecl.heritageClauses[0].types[0].typeArguments?.length ?? 0);
     } else {
       // find out the parent class default type parameters
 
@@ -187,27 +208,25 @@ export abstract class NgxThreeClass {
     return header;
   }
 
-  private generateMembers(classDeclaration: ts.ClassDeclaration): string {
+  private generateMembers(classOrInterface: ts.ClassDeclaration | ts.InterfaceDeclaration): string {
     let members = '';
-    if (!classDeclaration.members) {
-      return members;
-    }
 
-    for (const member of classDeclaration.members) {
+    for (const member of classOrInterface.members) {
       const memberName = (member.name as ts.Identifier | undefined)?.escapedText as string;
 
       if (
         !memberName ||
         INGORED_MEMBERS.find((m) => m === memberName) ||
-        (member as ts.PropertyDeclaration).modifiers?.find(
-          (m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword,
-        )
+        ((member as ts.PropertyDeclaration).modifiers &&
+          (member as ts.PropertyDeclaration).modifiers?.find(
+            (m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword,
+          ))
       ) {
         // it's private or protected, or in the ingore list --> do not expose
         continue;
       }
 
-      if (ts.isPropertyDeclaration(member) && member.type) {
+      if ((ts.isPropertyDeclaration(member) || ts.isPropertySignature(member)) && member.type) {
         // generate the setter
         members += this.generateSetterInput(memberName, member);
         // gerate the getter
@@ -220,12 +239,29 @@ export abstract class NgxThreeClass {
         members += this.generateGetter(memberName, member);
       }
     }
+
+    if (classOrInterface.heritageClauses) {
+      // also add properties of the implemented properties base interface i.e.: Material implements MaterialProperties
+      for (const clause of classOrInterface.heritageClauses) {
+        for (const t of clause.types) {
+          const type = this.typeChecker.getTypeAtLocation(t.expression);
+          const symbol = type.getSymbol();
+          if (!symbol || !symbol.declarations || symbol?.name !== `${this.wrappedClassName}Properties`) continue;
+          for (const decl of symbol.declarations) {
+            if (ts.isClassDeclaration(decl) || ts.isInterfaceDeclaration(decl)) {
+              members += this.generateMembers(decl);
+            }
+          }
+        }
+      }
+    }
+
     return members;
   }
 
   protected generateSetterInput(
     memberName: string,
-    member: ts.PropertyDeclaration | ts.SetAccessorDeclaration,
+    member: ts.PropertyDeclaration | ts.PropertySignature | ts.SetAccessorDeclaration,
     typeName?: string,
   ) {
     const isReadonly = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.ReadonlyKeyword);
@@ -281,7 +317,7 @@ export abstract class NgxThreeClass {
     return str;
   }
 
-  private getSettersOfMember(member: ts.PropertyDeclaration | ts.SetAccessorDeclaration) {
+  private getSettersOfMember(member: ts.PropertyDeclaration | ts.PropertySignature | ts.SetAccessorDeclaration) {
     const setters: ts.MethodDeclaration[] = [];
     if (!member.type) {
       return setters;
@@ -305,7 +341,10 @@ export abstract class NgxThreeClass {
     return setters;
   }
 
-  public generateGetter(memberName: string, member: ts.PropertyDeclaration | ts.GetAccessorDeclaration) {
+  public generateGetter(
+    memberName: string,
+    member: ts.PropertyDeclaration | ts.PropertySignature | ts.GetAccessorDeclaration,
+  ) {
     const isStatic = member.modifiers?.find((m) => m.kind === ts.SyntaxKind.StaticKeyword);
 
     if (isStatic) {
@@ -322,7 +361,7 @@ export abstract class NgxThreeClass {
   }
 
   private generateConstructorArgs() {
-    const symbol = (this.classDecl as unknown as ts.Type).symbol;
+    const symbol = (this.classDecl[0] as unknown as ts.Type).symbol;
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     const constructorType = this.typeChecker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration!);
     const constructSignatures = constructorType.getConstructSignatures();
@@ -412,7 +451,7 @@ export abstract class NgxThreeClass {
    * get the default values for the generic base class
    */
   generateDefaultTypParametersForParentClass(): string[] {
-    const node = this.classDecl;
+    const node = this.classDecl[0];
     const checker = this.typeChecker;
 
     if (!node.heritageClauses) {

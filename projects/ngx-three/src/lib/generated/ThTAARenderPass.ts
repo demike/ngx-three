@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Camera, ColorRepresentation, Scene } from 'three';
 import { TAARenderPass } from 'three/examples/jsm/postprocessing/TAARenderPass.js';
@@ -16,13 +16,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThSSAARenderPass } from './ThSSAARenderPass';
 
 @Component({
-    selector: 'th-tAARenderPass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThTAARenderPass) },
-    ],
-    standalone: false
+  selector: 'th-tAARenderPass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThTAARenderPass) },
+  ],
 })
 export class ThTAARenderPass<
   T extends TAARenderPass = TAARenderPass,

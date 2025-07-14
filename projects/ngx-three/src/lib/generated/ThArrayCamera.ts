@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { ArrayCamera } from 'three';
 import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js';
@@ -16,14 +16,14 @@ import { ThObject3D } from './ThObject3D';
 import { ThPerspectiveCamera } from './ThPerspectiveCamera';
 
 @Component({
-    selector: 'th-arrayCamera',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThArrayCamera) },
-        { provide: ThCamera, useExisting: forwardRef(() => ThArrayCamera) },
-    ],
-    standalone: false
+  selector: 'th-arrayCamera',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThArrayCamera) },
+    { provide: ThCamera, useExisting: forwardRef(() => ThArrayCamera) },
+  ],
 })
 export class ThArrayCamera<
   T extends ArrayCamera = ArrayCamera,
@@ -37,6 +37,16 @@ export class ThArrayCamera<
     return this._objRef?.isArrayCamera;
   }
   @Input()
+  public set isMultiViewCamera(value: boolean) {
+    if (this._objRef) {
+      this._objRef.isMultiViewCamera = value;
+    }
+  }
+
+  public get isMultiViewCamera(): boolean | undefined {
+    return this._objRef?.isMultiViewCamera;
+  }
+  @Input()
   public set cameras(value: PerspectiveCamera[]) {
     if (this._objRef) {
       this._objRef.cameras = value;
@@ -45,5 +55,15 @@ export class ThArrayCamera<
 
   public get cameras(): PerspectiveCamera[] | undefined {
     return this._objRef?.cameras;
+  }
+  @Input()
+  public set index(value: number) {
+    if (this._objRef) {
+      this._objRef.index = value;
+    }
+  }
+
+  public get index(): number | undefined {
+    return this._objRef?.index;
   }
 }

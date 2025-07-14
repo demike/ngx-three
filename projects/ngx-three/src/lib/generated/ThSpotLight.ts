@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { SpotLight, Vector3 } from 'three';
 import { Object3D } from 'three/src/core/Object3D.js';
@@ -19,13 +19,13 @@ import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-spotLight',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThSpotLight) },
-    ],
-    standalone: false
+  selector: 'th-spotLight',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThSpotLight) },
+  ],
 })
 export class ThSpotLight<
   T extends SpotLight = SpotLight,

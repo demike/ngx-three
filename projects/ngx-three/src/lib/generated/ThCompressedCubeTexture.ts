@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { CompressedCubeTexture } from 'three';
 import { CompressedPixelFormat, TextureDataType } from 'three/src/constants.js';
@@ -14,16 +14,16 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThCompressedTexture } from './ThCompressedTexture';
 
 @Component({
-    selector: 'th-compressedCubeTexture',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThTextureBase,
-            useExisting: forwardRef(() => ThCompressedCubeTexture),
-        },
-    ],
-    standalone: false
+  selector: 'th-compressedCubeTexture',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThTextureBase,
+      useExisting: forwardRef(() => ThCompressedCubeTexture),
+    },
+  ],
 })
 export class ThCompressedCubeTexture<
   T extends CompressedCubeTexture = CompressedCubeTexture,

@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -22,13 +22,13 @@ import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-    selector: 'th-meshToonMaterial',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThMaterial, useExisting: forwardRef(() => ThMeshToonMaterial) },
-    ],
-    standalone: false
+  selector: 'th-meshToonMaterial',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThMeshToonMaterial) },
+  ],
 })
 export class ThMeshToonMaterial<
   T extends MeshToonMaterial = MeshToonMaterial,
@@ -38,18 +38,8 @@ export class ThMeshToonMaterial<
     return MeshToonMaterial;
   }
 
-  public get isMeshToonMaterial(): true | undefined {
+  public get isMeshToonMaterial(): boolean | undefined {
     return this._objRef?.isMeshToonMaterial;
-  }
-  @Input()
-  public set defines(value: { [key: string]: any }) {
-    if (this._objRef) {
-      this._objRef.defines = value;
-    }
-  }
-
-  public get defines(): { [key: string]: any } | undefined {
-    return this._objRef?.defines;
   }
   @Input()
   public set color(
@@ -69,16 +59,6 @@ export class ThMeshToonMaterial<
     return this._objRef?.color;
   }
   @Input()
-  public set gradientMap(value: Texture | null) {
-    if (this._objRef) {
-      this._objRef.gradientMap = value;
-    }
-  }
-
-  public get gradientMap(): (Texture | null) | undefined {
-    return this._objRef?.gradientMap;
-  }
-  @Input()
   public set map(value: Texture | null) {
     if (this._objRef) {
       this._objRef.map = value;
@@ -87,6 +67,16 @@ export class ThMeshToonMaterial<
 
   public get map(): (Texture | null) | undefined {
     return this._objRef?.map;
+  }
+  @Input()
+  public set gradientMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.gradientMap = value;
+    }
+  }
+
+  public get gradientMap(): (Texture | null) | undefined {
+    return this._objRef?.gradientMap;
   }
   @Input()
   public set lightMap(value: Texture | null) {
@@ -278,23 +268,23 @@ export class ThMeshToonMaterial<
     return this._objRef?.wireframeLinewidth;
   }
   @Input()
-  public set wireframeLinecap(value: string) {
+  public set wireframeLinecap(value: 'round' | 'bevel' | 'miter') {
     if (this._objRef) {
       this._objRef.wireframeLinecap = value;
     }
   }
 
-  public get wireframeLinecap(): string | undefined {
+  public get wireframeLinecap(): ('round' | 'bevel' | 'miter') | undefined {
     return this._objRef?.wireframeLinecap;
   }
   @Input()
-  public set wireframeLinejoin(value: string) {
+  public set wireframeLinejoin(value: 'round' | 'bevel' | 'miter') {
     if (this._objRef) {
       this._objRef.wireframeLinejoin = value;
     }
   }
 
-  public get wireframeLinejoin(): string | undefined {
+  public get wireframeLinejoin(): ('round' | 'bevel' | 'miter') | undefined {
     return this._objRef?.wireframeLinejoin;
   }
   @Input()

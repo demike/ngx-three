@@ -5,24 +5,24 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { DodecahedronGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
 
 @Component({
-    selector: 'th-dodecahedronGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThDodecahedronGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-dodecahedronGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThDodecahedronGeometry),
+    },
+  ],
 })
 export class ThDodecahedronGeometry<
   T extends DodecahedronGeometry = DodecahedronGeometry,

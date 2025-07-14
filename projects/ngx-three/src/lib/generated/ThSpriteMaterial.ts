@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -20,13 +20,13 @@ import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-    selector: 'th-spriteMaterial',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThMaterial, useExisting: forwardRef(() => ThSpriteMaterial) },
-    ],
-    standalone: false
+  selector: 'th-spriteMaterial',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThSpriteMaterial) },
+  ],
 })
 export class ThSpriteMaterial<
   T extends SpriteMaterial = SpriteMaterial,
@@ -36,7 +36,7 @@ export class ThSpriteMaterial<
     return SpriteMaterial;
   }
 
-  public get isSpriteMaterial(): true | undefined {
+  public get isSpriteMaterial(): boolean | undefined {
     return this._objRef?.isSpriteMaterial;
   }
   @Input()
@@ -95,16 +95,6 @@ export class ThSpriteMaterial<
 
   public get sizeAttenuation(): boolean | undefined {
     return this._objRef?.sizeAttenuation;
-  }
-  @Input()
-  public set transparent(value: boolean) {
-    if (this._objRef) {
-      this._objRef.transparent = value;
-    }
-  }
-
-  public get transparent(): boolean | undefined {
-    return this._objRef?.transparent;
   }
   @Input()
   public set fog(value: boolean) {

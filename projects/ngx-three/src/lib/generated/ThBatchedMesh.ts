@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { BatchedMesh, Box3, Object3DEventMap } from 'three';
 import { Camera } from 'three/src/cameras/Camera.js';
@@ -20,13 +20,13 @@ import { ThMesh } from './ThMesh';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-batchedMesh',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThBatchedMesh) },
-    ],
-    standalone: false
+  selector: 'th-batchedMesh',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThBatchedMesh) },
+  ],
 })
 export class ThBatchedMesh<
   T extends BatchedMesh = BatchedMesh,

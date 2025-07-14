@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { DataArrayTexture } from 'three';
 import {
@@ -19,16 +19,16 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-    selector: 'th-dataArrayTexture',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThTextureBase,
-            useExisting: forwardRef(() => ThDataArrayTexture),
-        },
-    ],
-    standalone: false
+  selector: 'th-dataArrayTexture',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThTextureBase,
+      useExisting: forwardRef(() => ThDataArrayTexture),
+    },
+  ],
 })
 export class ThDataArrayTexture<
   T extends DataArrayTexture = DataArrayTexture,

@@ -5,24 +5,24 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { ConeGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThCylinderGeometry } from './ThCylinderGeometry';
 
 @Component({
-    selector: 'th-coneGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThConeGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-coneGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThConeGeometry),
+    },
+  ],
 })
 export class ThConeGeometry<
   T extends ConeGeometry = ConeGeometry,

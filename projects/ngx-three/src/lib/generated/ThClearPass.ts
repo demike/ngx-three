@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { ColorRepresentation } from 'three';
 import { ClearPass } from 'three/examples/jsm/postprocessing/ClearPass.js';
@@ -16,13 +16,13 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-    selector: 'th-clearPass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThClearPass) },
-    ],
-    standalone: false
+  selector: 'th-clearPass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThClearPass) },
+  ],
 })
 export class ThClearPass<
   T extends ClearPass = ClearPass,

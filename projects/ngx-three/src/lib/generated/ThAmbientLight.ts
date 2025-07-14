@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { AmbientLight } from 'three';
 import { ColorRepresentation } from 'three/src/math/Color.js';
@@ -14,13 +14,13 @@ import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
-    selector: 'th-ambientLight',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThObject3D, useExisting: forwardRef(() => ThAmbientLight) },
-    ],
-    standalone: false
+  selector: 'th-ambientLight',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThObject3D, useExisting: forwardRef(() => ThAmbientLight) },
+  ],
 })
 export class ThAmbientLight<
   T extends AmbientLight = AmbientLight,

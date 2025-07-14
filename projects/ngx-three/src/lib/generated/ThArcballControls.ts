@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Camera, Scene } from 'three';
 import {
@@ -17,16 +17,16 @@ import {
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
-    selector: 'th-arcballControls',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThControlBase,
-            useExisting: forwardRef(() => ThArcballControls),
-        },
-    ],
-    standalone: false
+  selector: 'th-arcballControls',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThControlBase,
+      useExisting: forwardRef(() => ThArcballControls),
+    },
+  ],
 })
 export class ThArcballControls<
   T extends ArcballControls = ArcballControls,

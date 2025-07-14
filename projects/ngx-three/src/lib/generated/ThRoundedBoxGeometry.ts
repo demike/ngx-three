@@ -5,24 +5,24 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { ThBoxGeometry } from './ThBoxGeometry';
 import { ThBufferGeometry } from './ThBufferGeometry';
 
 @Component({
-    selector: 'th-roundedBoxGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThRoundedBoxGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-roundedBoxGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThRoundedBoxGeometry),
+    },
+  ],
 })
 export class ThRoundedBoxGeometry<
   T extends RoundedBoxGeometry = RoundedBoxGeometry,

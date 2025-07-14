@@ -8,7 +8,7 @@ import {
   forwardRef,
   Type,
 } from '@angular/core';
-import { CanvasTexture } from 'three';
+import { VideoFrameTexture } from 'three';
 import {
   MagnificationTextureFilter,
   Mapping,
@@ -17,23 +17,24 @@ import {
   TextureDataType,
   Wrapping,
 } from 'three/src/constants.js';
-import { OffscreenCanvas } from 'three/src/textures/Texture.js';
 import { ThTextureBase } from '../ThTextureBase';
-import { ThTexture } from './ThTexture';
+import { ThVideoTexture } from './ThVideoTexture';
 
 @Component({
-  selector: 'th-canvasTexture',
+  selector: 'th-videoFrameTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: false,
   providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThCanvasTexture) },
+    {
+      provide: ThTextureBase,
+      useExisting: forwardRef(() => ThVideoFrameTexture),
+    },
   ],
 })
-export class ThCanvasTexture<
-  T extends CanvasTexture = CanvasTexture,
+export class ThVideoFrameTexture<
+  T extends VideoFrameTexture = VideoFrameTexture,
   TARGS = [
-    canvas?: TexImageSource | OffscreenCanvas,
     mapping?: Mapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
@@ -43,12 +44,8 @@ export class ThCanvasTexture<
     type?: TextureDataType,
     anisotropy?: number,
   ],
-> extends ThTexture<T, TARGS> {
-  public getType(): Type<CanvasTexture> {
-    return CanvasTexture;
-  }
-
-  public get isCanvasTexture(): true | undefined {
-    return this._objRef?.isCanvasTexture;
+> extends ThVideoTexture<T, TARGS> {
+  public getType(): Type<VideoFrameTexture> {
+    return VideoFrameTexture;
   }
 }

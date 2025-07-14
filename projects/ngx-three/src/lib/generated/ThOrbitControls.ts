@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { MOUSE, TOUCH, Vector3 } from 'three';
 import {
@@ -19,13 +19,13 @@ import { ThControlBase } from '../ThControlBase';
 import { applyValue } from '../util';
 
 @Component({
-    selector: 'th-orbitControls',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) },
-    ],
-    standalone: false
+  selector: 'th-orbitControls',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) },
+  ],
 })
 export class ThOrbitControls<
   T extends OrbitControls = OrbitControls,
@@ -212,6 +212,16 @@ export class ThOrbitControls<
 
   public get rotateSpeed(): number | undefined {
     return this._objRef?.rotateSpeed;
+  }
+  @Input()
+  public set keyRotateSpeed(value: number) {
+    if (this._objRef) {
+      this._objRef.keyRotateSpeed = value;
+    }
+  }
+
+  public get keyRotateSpeed(): number | undefined {
+    return this._objRef?.keyRotateSpeed;
   }
   @Input()
   public set enablePan(value: boolean) {

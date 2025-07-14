@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { Camera } from 'three';
 import { MapControls } from 'three/examples/jsm/controls/MapControls.js';
@@ -14,13 +14,13 @@ import { ThControlBase } from '../ThControlBase';
 import { ThOrbitControls } from './ThOrbitControls';
 
 @Component({
-    selector: 'th-mapControls',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThControlBase, useExisting: forwardRef(() => ThMapControls) },
-    ],
-    standalone: false
+  selector: 'th-mapControls',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThControlBase, useExisting: forwardRef(() => ThMapControls) },
+  ],
 })
 export class ThMapControls<
   T extends MapControls = MapControls,

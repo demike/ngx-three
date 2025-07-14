@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import {
   Color,
@@ -20,13 +20,13 @@ import { applyValue } from '../util';
 import { ThMaterial } from './ThMaterial';
 
 @Component({
-    selector: 'th-lineBasicMaterial',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThMaterial, useExisting: forwardRef(() => ThLineBasicMaterial) },
-    ],
-    standalone: false
+  selector: 'th-lineBasicMaterial',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThMaterial, useExisting: forwardRef(() => ThLineBasicMaterial) },
+  ],
 })
 export class ThLineBasicMaterial<
   T extends LineBasicMaterial = LineBasicMaterial,
@@ -36,7 +36,7 @@ export class ThLineBasicMaterial<
     return LineBasicMaterial;
   }
 
-  public get isLineBasicMaterial(): true | undefined {
+  public get isLineBasicMaterial(): boolean | undefined {
     return this._objRef?.isLineBasicMaterial;
   }
   @Input()
@@ -57,14 +57,14 @@ export class ThLineBasicMaterial<
     return this._objRef?.color;
   }
   @Input()
-  public set fog(value: boolean) {
+  public set map(value: Texture | null) {
     if (this._objRef) {
-      this._objRef.fog = value;
+      this._objRef.map = value;
     }
   }
 
-  public get fog(): boolean | undefined {
-    return this._objRef?.fog;
+  public get map(): (Texture | null) | undefined {
+    return this._objRef?.map;
   }
   @Input()
   public set linewidth(value: number) {
@@ -77,33 +77,33 @@ export class ThLineBasicMaterial<
     return this._objRef?.linewidth;
   }
   @Input()
-  public set linecap(value: string) {
+  public set linecap(value: 'butt' | 'round' | 'square') {
     if (this._objRef) {
       this._objRef.linecap = value;
     }
   }
 
-  public get linecap(): string | undefined {
+  public get linecap(): ('butt' | 'round' | 'square') | undefined {
     return this._objRef?.linecap;
   }
   @Input()
-  public set linejoin(value: string) {
+  public set linejoin(value: 'round' | 'bevel' | 'miter') {
     if (this._objRef) {
       this._objRef.linejoin = value;
     }
   }
 
-  public get linejoin(): string | undefined {
+  public get linejoin(): ('round' | 'bevel' | 'miter') | undefined {
     return this._objRef?.linejoin;
   }
   @Input()
-  public set map(value: Texture | null) {
+  public set fog(value: boolean) {
     if (this._objRef) {
-      this._objRef.map = value;
+      this._objRef.fog = value;
     }
   }
 
-  public get map(): (Texture | null) | undefined {
-    return this._objRef?.map;
+  public get fog(): boolean | undefined {
+    return this._objRef?.fog;
   }
 }

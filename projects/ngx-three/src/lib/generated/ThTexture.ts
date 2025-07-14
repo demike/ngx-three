@@ -5,14 +5,15 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Matrix3, OffscreenCanvas, Texture } from 'three';
 import {
   AnyMapping,
   AnyPixelFormat,
+  ColorSpace,
   MagnificationTextureFilter,
   Mapping,
   MinificationTextureFilter,
@@ -21,6 +22,7 @@ import {
   TextureDataType,
   Wrapping,
 } from 'three/src/constants.js';
+import { RenderTarget } from 'three/src/core/RenderTarget.js';
 import { Vector2 } from 'three/src/math/Vector2.js';
 import { CompressedTextureMipmap } from 'three/src/textures/CompressedTexture.js';
 import { CubeTexture } from 'three/src/textures/CubeTexture.js';
@@ -29,13 +31,13 @@ import { ThTextureBase } from '../ThTextureBase';
 import { applyValue } from '../util';
 
 @Component({
-    selector: 'th-texture',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThTextureBase, useExisting: forwardRef(() => ThTexture) },
-    ],
-    standalone: false
+  selector: 'th-texture',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThTexture) },
+  ],
 })
 export class ThTexture<
   T extends Texture = Texture,
@@ -50,7 +52,7 @@ export class ThTexture<
         format?: PixelFormat,
         type?: TextureDataType,
         anisotropy?: number,
-        colorSpace?: string,
+        colorSpace?: ColorSpace,
       ]
     | [
         image: TexImageSource | OffscreenCanvas,
@@ -103,6 +105,15 @@ export class ThTexture<
 
   public get source(): Source | undefined {
     return this._objRef?.source;
+  }
+  public get width(): number | undefined {
+    return this._objRef?.width;
+  }
+  public get height(): number | undefined {
+    return this._objRef?.height;
+  }
+  public get depth(): number | undefined {
+    return this._objRef?.depth;
   }
   public get image(): any | undefined {
     return this._objRef?.image;
@@ -368,6 +379,16 @@ export class ThTexture<
     return this._objRef?.isRenderTargetTexture;
   }
   @Input()
+  public set isArrayTexture(value: boolean) {
+    if (this._objRef) {
+      this._objRef.isArrayTexture = value;
+    }
+  }
+
+  public get isArrayTexture(): boolean | undefined {
+    return this._objRef?.isArrayTexture;
+  }
+  @Input()
   public set userData(value: Record<string, any>) {
     if (this._objRef) {
       this._objRef.userData = value;
@@ -376,6 +397,18 @@ export class ThTexture<
 
   public get userData(): Record<string, any> | undefined {
     return this._objRef?.userData;
+  }
+  @Input()
+  public set updateRanges(value: Array<{ start: number; count: number }>) {
+    if (this._objRef) {
+      this._objRef.updateRanges = value;
+    }
+  }
+
+  public get updateRanges():
+    | Array<{ start: number; count: number }>
+    | undefined {
+    return this._objRef?.updateRanges;
   }
   @Input()
   public set version(value: number) {
@@ -416,4 +449,15 @@ export class ThTexture<
   public static readonly DEFAULT_IMAGE = Texture.DEFAULT_IMAGE;
 
   public static readonly DEFAULT_MAPPING = Texture.DEFAULT_MAPPING;
+
+  @Input()
+  public set renderTarget(value: RenderTarget | null) {
+    if (this._objRef) {
+      this._objRef.renderTarget = value;
+    }
+  }
+
+  public get renderTarget(): (RenderTarget | null) | undefined {
+    return this._objRef?.renderTarget;
+  }
 }

@@ -5,24 +5,24 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Type,
   forwardRef,
+  Type,
 } from '@angular/core';
 import { TetrahedronGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';
 import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
 
 @Component({
-    selector: 'th-tetrahedronGeometry',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThBufferGeometry,
-            useExisting: forwardRef(() => ThTetrahedronGeometry),
-        },
-    ],
-    standalone: false
+  selector: 'th-tetrahedronGeometry',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThBufferGeometry,
+      useExisting: forwardRef(() => ThTetrahedronGeometry),
+    },
+  ],
 })
 export class ThTetrahedronGeometry<
   T extends TetrahedronGeometry = TetrahedronGeometry,

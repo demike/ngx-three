@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { Camera } from 'three';
 import {
@@ -17,16 +17,16 @@ import {
 import { ThControlBase } from '../ThControlBase';
 
 @Component({
-    selector: 'th-pointerLockControls',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        {
-            provide: ThControlBase,
-            useExisting: forwardRef(() => ThPointerLockControls),
-        },
-    ],
-    standalone: false
+  selector: 'th-pointerLockControls',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    {
+      provide: ThControlBase,
+      useExisting: forwardRef(() => ThPointerLockControls),
+    },
+  ],
 })
 export class ThPointerLockControls<
   T extends PointerLockControls = PointerLockControls,

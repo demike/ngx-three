@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  forwardRef,
   Input,
   Type,
-  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial } from 'three';
 import {
@@ -20,17 +20,17 @@ import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
 @Component({
-    selector: 'th-halftonePass',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: ThPassBase, useExisting: forwardRef(() => ThHalftonePass) },
-    ],
-    standalone: false
+  selector: 'th-halftonePass',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+  providers: [
+    { provide: ThPassBase, useExisting: forwardRef(() => ThHalftonePass) },
+  ],
 })
 export class ThHalftonePass<
   T extends HalftonePass = HalftonePass,
-  TARGS = [width: number, height: number, params: HalftonePassParameters],
+  TARGS = /* params */ HalftonePassParameters,
 > extends ThPass<T, TARGS> {
   public getType(): Type<HalftonePass> {
     return HalftonePass;
