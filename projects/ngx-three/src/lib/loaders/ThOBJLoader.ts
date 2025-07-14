@@ -1,4 +1,4 @@
-import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
+import { Directive, Injectable, Pipe, PipeTransform, inject } from '@angular/core';
 
 import { ThObject3D } from '../generated/ThObject3D';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
@@ -13,28 +13,21 @@ export class OBJLoaderService extends ThAsyncLoaderService<Group> {
 }
 
 @Pipe({
-    name: 'loadObj',
-    pure: true,
-    standalone: false
+  name: 'loadObj',
+  pure: true,
+  standalone: false,
 })
 export class ThObjLoaderPipe extends ThAsyncLoaderBasePipe<Group> implements PipeTransform {
-  constructor(protected service: OBJLoaderService) {
-    super();
-  }
+  protected service = inject(OBJLoaderService);
 }
 
 @Directive({
-    selector: '[loadObj]',
-    standalone: false
+  selector: '[loadObj]',
+  standalone: false,
 })
 export class ThObjLoaderDirective extends ThAsyncLoaderBaseDirective<Group> {
-  constructor(
-    @Host() protected host: ThObject3D,
-    protected zone: NgZone,
-    protected service: OBJLoaderService,
-  ) {
-    super(host, zone);
-  }
+  protected host = inject(ThObject3D, { host: true });
+  protected service = inject(OBJLoaderService);
 
   protected getRefFromResponse(response: Group) {
     return response;

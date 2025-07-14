@@ -1,4 +1,4 @@
-import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
+import { Directive, Injectable, Pipe, PipeTransform, inject } from '@angular/core';
 
 import { PLYLoader } from 'three/examples/jsm/loaders/PLYLoader.js';
 import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';
@@ -14,28 +14,21 @@ export class PLYLoaderService extends ThAsyncLoaderService<BufferGeometry> {
 }
 
 @Pipe({
-    name: 'loadPLY',
-    pure: true,
-    standalone: false
+  name: 'loadPLY',
+  pure: true,
+  standalone: false,
 })
 export class ThPLYLoaderPipe extends ThAsyncLoaderBasePipe<BufferGeometry> implements PipeTransform {
-  constructor(protected service: PLYLoaderService) {
-    super();
-  }
+  protected service = inject(PLYLoaderService);
 }
 
 @Directive({
-    selector: '[loadPLY]',
-    standalone: false
+  selector: '[loadPLY]',
+  standalone: false,
 })
 export class ThPLYLoaderDirective extends ThAsyncLoaderBaseDirective<BufferGeometry> {
-  constructor(
-    @Host() protected host: ThBufferGeometry,
-    protected zone: NgZone,
-    protected service: PLYLoaderService,
-  ) {
-    super(host, zone);
-  }
+  protected host = inject(ThBufferGeometry, { host: true });
+  protected service = inject(PLYLoaderService);
 
   protected getRefFromResponse(response: BufferGeometry) {
     response.computeVertexNormals();

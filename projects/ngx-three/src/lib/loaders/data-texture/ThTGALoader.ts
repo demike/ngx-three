@@ -1,4 +1,4 @@
-import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
+import { Directive, Injectable, Pipe, PipeTransform, inject } from '@angular/core';
 import { ThDataTexture } from '../../generated/ThDataTexture';
 import { TGALoader } from 'three/examples/jsm/loaders/TGALoader.js';
 import {
@@ -16,26 +16,19 @@ export class TGALoaderService extends ThCallbackLoaderService<DataTexture> {
 }
 
 @Pipe({
-    name: 'loadTGATexture',
-    pure: true,
-    standalone: false
+  name: 'loadTGATexture',
+  pure: true,
+  standalone: false,
 })
 export class ThTGALoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> implements PipeTransform {
-  constructor(protected service: TGALoaderService) {
-    super();
-  }
+  protected service = inject(TGALoaderService);
 }
 
 @Directive({
-    selector: '[loadTGATexture]',
-    standalone: false
+  selector: '[loadTGATexture]',
+  standalone: false,
 })
 export class ThTGALoaderDirective extends ThCallbackLoaderBaseDirective<DataTexture> {
-  constructor(
-    @Host() protected host: ThDataTexture,
-    protected zone: NgZone,
-    protected service: TGALoaderService,
-  ) {
-    super(host, zone);
-  }
+  protected host = inject(ThDataTexture, { host: true });
+  protected service = inject(TGALoaderService);
 }

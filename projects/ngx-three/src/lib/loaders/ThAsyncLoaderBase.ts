@@ -1,7 +1,6 @@
 import {
   Directive,
   EventEmitter,
-  Host,
   inject,
   Injectable,
   Input,
@@ -45,15 +44,24 @@ export abstract class ThAsyncLoaderBasePipe<TData = unknown, TUrl extends string
 }
 
 @Directive({
-    standalone: false
+  standalone: false,
 })
 export abstract class ThAsyncLoaderBaseDirective<TData = unknown, TUrl extends string | string[] = string>
   implements OnInit
 {
+  /**
+   * Derived directive shoult inject the host object.
+   */
+  protected abstract host: { objRef: any };
+
+  /**
+   * Derived directive should inject the (derived) service.
+   */
   protected abstract service: ThAsyncLoaderService<TData, TUrl>;
 
   protected abstract getRefFromResponse(response: Awaited<ReturnType<Loader<TData, TUrl>['loadAsync']>>): any;
 
+  protected zone = inject(NgZone);
   protected initialized = false;
   protected _url?: Parameters<Loader<TData, TUrl>['loadAsync']>[0];
 
@@ -87,12 +95,13 @@ export abstract class ThAsyncLoaderBaseDirective<TData = unknown, TUrl extends s
     return this.onProgress$;
   }
 
-  constructor(
-    @Host() protected host: { objRef: any },
-    protected zone: NgZone,
-  ) {
+  constructor() {
     this.proxy = createLazyObject3DProxy();
-    host.objRef = this.proxy;
+    this.applyProxyToHost();
+  }
+
+  applyProxyToHost() {
+    this.host.objRef = this.proxy;
   }
 
   ngOnInit(): void {

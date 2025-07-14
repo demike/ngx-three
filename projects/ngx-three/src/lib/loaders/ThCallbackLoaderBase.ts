@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, Host, Input, NgZone, OnInit, Output, PipeTransform } from '@angular/core';
+import { Directive, EventEmitter, Input, NgZone, OnInit, Output, PipeTransform, inject } from '@angular/core';
 import { Loader } from 'three';
 import { isObserved } from '../util';
 import { ThLoader } from './ThLoaderBase';
@@ -24,13 +24,22 @@ export abstract class ThCallbackLoaderBasePipe<TData = unknown, TUrl extends str
 }
 
 @Directive({
-    standalone: false
+  standalone: false,
 })
 export abstract class ThCallbackLoaderBaseDirective<TData = unknown, TUrl extends string | string[] = string>
   implements OnInit
 {
+  /**
+   * Derived directive should inject the host object.
+   */
+  protected abstract host: { objRef: any };
+
+  /**
+   * Derived directive should inject the (derived) service.
+   */
   protected abstract service: ThCallbackLoaderService<TData, TUrl>;
 
+  protected zone = inject(NgZone);
   private initialized = false;
   private _url?: TUrl;
 
@@ -60,11 +69,6 @@ export abstract class ThCallbackLoaderBaseDirective<TData = unknown, TUrl extend
     }
     return this.onProgress$;
   }
-
-  constructor(
-    @Host() protected host: { objRef: any },
-    protected zone: NgZone,
-  ) {}
 
   ngOnInit(): void {
     this.initialized = true;
