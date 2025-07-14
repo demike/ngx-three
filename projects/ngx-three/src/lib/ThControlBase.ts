@@ -6,10 +6,10 @@ import { ThAnimationLoopService } from './renderer/th-animation-loop.service';
 import { ThCanvas } from './ThCanvas';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
-    selector: 'th-abs-control',
-    template: '',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'th-abs-control',
+  template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThControlBase<
@@ -20,6 +20,9 @@ export class ThControlBase<
   extends ThWrapperBase<T, TARGS>
   implements OnDestroy
 {
+  protected _camera = inject<ThObject3D<any>>(ThObject3D);
+  protected canvas? = inject(ThCanvas);
+
   protected origDispatchEventMethod?: EventDispatcher['dispatchEvent'];
   protected beforeRenderSubscription?: Subscription;
   protected renderLoop = inject(ThAnimationLoopService);
@@ -54,13 +57,6 @@ export class ThControlBase<
 
   public get enabled(): boolean | undefined {
     return this._objRef?.enabled;
-  }
-
-  constructor(
-    protected _camera: ThObject3D<any>,
-    protected canvas?: ThCanvas,
-  ) {
-    super();
   }
 
   public createThreeInstance(args?: Iterable<any>) {

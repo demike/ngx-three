@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix,  */
-import { ChangeDetectionStrategy, Component, forwardRef, Input, OnDestroy, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, forwardRef, Input, OnDestroy, Type, inject } from '@angular/core';
 import { Camera, Object3D } from 'three';
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls.js';
 import { ThControlBase } from '../../ThControlBase';
 import { ThTransformControlsGen } from '../ThTransformControlsGen';
-import { ThObject3D } from '../ThObject3D';
-import { ThCanvas } from '../../ThCanvas';
 import { ThScene } from '../ThScene';
 
 @Component({
@@ -29,15 +27,9 @@ export class ThTransformControls<
   extends ThTransformControlsGen<T, TARGS>
   implements OnDestroy
 {
-  private targetObject: Object3D | undefined;
+  protected scene = inject(ThScene);
 
-  constructor(
-    _camera: ThObject3D<any>,
-    canvas: ThCanvas,
-    protected scene: ThScene,
-  ) {
-    super(_camera, canvas);
-  }
+  private targetObject: Object3D | undefined;
 
   public getType(): Type<TransformControls> {
     return TransformControls;

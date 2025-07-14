@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit, Optional } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { ThEffectComposer } from './generated/overrides/ThEffectComposer';
 import { Pass } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThWrapperBase } from './ThWrapperBase';
@@ -10,9 +10,8 @@ import { ThWrapperBase } from './ThWrapperBase';
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThPassBase<T extends Pass = Pass, ARGS = unknown> extends ThWrapperBase<T, ARGS> implements OnInit {
-  constructor(@Optional() protected effectComposer?: ThEffectComposer) {
-    super();
-  }
+  protected effectComposer? = inject(ThEffectComposer, { optional: true });
+
 
   public addToParent() {
     if (this._objRef && this.effectComposer && this.effectComposer.objRef) {

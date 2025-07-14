@@ -1,13 +1,12 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { AfterContentChecked, ChangeDetectionStrategy, Component, forwardRef } from '@angular/core';
+import { AfterContentChecked, ChangeDetectionStrategy, Component, forwardRef, inject } from '@angular/core';
 import { Camera, Color, Material, Scene } from 'three';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { ThPassBase } from '../../ThPassBase';
 import { ThView } from '../../ThView';
 import { ThRenderPassGen } from '../ThRenderPassGen';
-import { ThEffectComposer } from './ThEffectComposer';
 
 @Component({
   selector: 'th-renderPass',
@@ -29,12 +28,7 @@ export class ThRenderPass<
   extends ThRenderPassGen<T, TARGS>
   implements AfterContentChecked
 {
-  constructor(
-    protected effectComposer: ThEffectComposer,
-    private view: ThView,
-  ) {
-    super(effectComposer);
-  }
+  private view = inject(ThView);
 
   public createThreeInstance(args?: TARGS): RenderPass {
     if (!args) {

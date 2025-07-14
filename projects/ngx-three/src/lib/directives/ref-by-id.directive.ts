@@ -1,4 +1,4 @@
-import { Directive, Input, OnDestroy, Self, SkipSelf } from '@angular/core';
+import { Directive, Input, OnDestroy, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Object3D } from 'three';
 import { ThObject3D } from '../generated';
@@ -9,10 +9,13 @@ import { createLazyObject3DProxy, isLazyObject3dProxy } from '../loaders/LazyObj
     standalone: false
 })
 export class RefByIdDirective implements OnDestroy {
+  private host = inject(ThObject3D, { self: true });
+  private parent = inject(ThObject3D, { skipSelf: true });
+
   protected subscription?: Subscription;
   protected parentObj?: Object3D;
   protected id?: string;
-  constructor(@Self() private host: ThObject3D, @SkipSelf() private parent: ThObject3D) {
+  constructor() {
     this.host.autoAddToParent = false;
     this.host.autoDispose = false;
     this.host.objRef = createLazyObject3DProxy();
