@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { CompressedCubeTexture } from 'three';
 import { CompressedPixelFormat, TextureDataType } from 'three/src/constants.js';

@@ -585,13 +585,7 @@ The directive can be implemented as follows:
   selector: '[loadObj]',
 })
 export class ThObjLoaderDirective extends ThAsyncLoaderBaseDirective<OBJLoader> {
-  constructor(
-    @Host() protected host: ThObject3D,
-    protected zone: NgZone,
-    protected service: OBJLoaderService
-  ) {
-    super(host, zone);
-  }
+  service = inject(OBJLoaderService);
 
   protected getRefFromResponse(response: Group) {
     return response;

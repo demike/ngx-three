@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
@@ -13,14 +13,12 @@ import { EditorService } from '../code/EditorService';
     standalone: false
 })
 export class NavigationShellComponent {
+  private breakpointObserver = inject(BreakpointObserver);
+  readonly editorService = inject(EditorService);
+
   public routes = EXAMPLE_ROUTES;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map((result) => result.matches),
     shareReplay(),
   );
-
-  constructor(
-    private breakpointObserver: BreakpointObserver,
-    public readonly editorService: EditorService,
-  ) {}
 }

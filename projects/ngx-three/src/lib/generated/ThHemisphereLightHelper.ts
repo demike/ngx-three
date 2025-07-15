@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { HemisphereLightHelper, Matrix4, Object3DEventMap } from 'three';
 import { HemisphereLight } from 'three/src/lights/HemisphereLight.js';

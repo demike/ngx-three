@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { MOUSE, Raycaster, TOUCH } from 'three';
 import {

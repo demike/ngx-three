@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Color, ColorRepresentation, HemisphereLight, Vector3 } from 'three';
 import { applyValue } from '../util';

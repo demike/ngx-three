@@ -10,6 +10,7 @@ import {
   StaticProvider,
   TemplateRef,
   ViewContainerRef,
+  inject,
 } from '@angular/core';
 import { CSS3DParameters, CSS3DRenderer } from 'three/examples/jsm/renderers/CSS3DRenderer.js';
 import { CSS2DParameters, CSS2DRenderer } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
@@ -32,12 +33,16 @@ export const CSS2D_RENDERER = new InjectionToken<CSS2DRenderer>('CSS2DRenderer')
 export const WEBGL_RENDERER = new InjectionToken<WebGLRenderer>('WebGLRenderer');
 
 @Directive({
-    selector: 
+  selector:
     // eslint-disable-next-line max-len
     'ng-template[rendererParameters], ng-template[css2dRendererParameters], ng-template[css3dRendererParameters], ng-template[webgpuRendererParameters]',
-    standalone: false
+  standalone: false,
 })
 export class RendererProviderDirective implements OnChanges {
+  private viewContainer = inject(ViewContainerRef);
+  private templateRef = inject<TemplateRef<unknown>>(TemplateRef);
+  private parentInjector = inject(Injector);
+
   @Input()
   rendererParameters?: ThRendererParameters;
 
@@ -49,12 +54,6 @@ export class RendererProviderDirective implements OnChanges {
 
   private view?: EmbeddedViewRef<unknown>;
   private injector?: Injector;
-
-  constructor(
-    private viewContainer: ViewContainerRef,
-    private templateRef: TemplateRef<unknown>,
-    private parentInjector: Injector,
-  ) {}
 
   public getInjectedRenderers() {
     return this.injector?.get(RENDERER_PROVIDERS);
@@ -95,11 +94,14 @@ export class RendererProviderDirective implements OnChanges {
 }
 
 export function provideWebGLRenderer(parameters?: ThRendererParameters) {
-  const renderer = new WebGLRenderer({ ...RENDERER_DEFAULTS, ...parameters });
+  const factory = () => {
+    const renderer = new WebGLRenderer({ ...RENDERER_DEFAULTS, ...parameters });
+    Object.assign(renderer, { ...RENDERER_DEFAULTS, ...parameters });
+    return renderer;
+  };
 
-  Object.assign(renderer, { ...RENDERER_DEFAULTS, ...parameters });
   const provider: Provider[] = [
-    { provide: WEBGL_RENDERER, useValue: renderer },
+    { provide: WEBGL_RENDERER, useFactory: factory },
     {
       provide: RENDERER_PROVIDERS,
       multi: true,
@@ -153,7 +155,7 @@ export function provideCSS2dRenderer(parameters?: CSS2DParameters) {
 
 export function provideWebGPURenderer(parameters?: WebGLRendererParameters) {
   const provider: Provider[] = [
-    { provide: WEBGL_RENDERER, useValue: new WebGLRenderer(parameters) },
+    { provide: WEBGL_RENDERER, useFactory: () => new WebGLRenderer(parameters) },
     { provide: RENDERER_PROVIDERS, multi: true, useExisting: WEBGL_RENDERER },
   ];
   return provider;

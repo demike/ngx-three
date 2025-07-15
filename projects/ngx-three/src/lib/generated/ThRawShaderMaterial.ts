@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { ChangeDetectionStrategy, Component, forwardRef, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Type, forwardRef } from '@angular/core';
 import { RawShaderMaterial, ShaderMaterialParameters } from 'three';
 import { ThMaterial } from './ThMaterial';
 import { ThShaderMaterial } from './ThShaderMaterial';

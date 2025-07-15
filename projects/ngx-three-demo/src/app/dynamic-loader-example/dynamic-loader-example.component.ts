@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, inject } from '@angular/core';
 import { Object3D } from 'three';
 import { ASSET_PATH } from '../assets';
 
@@ -9,6 +9,8 @@ import { ASSET_PATH } from '../assets';
     standalone: false
 })
 export class DynamicLoaderExampleComponent implements OnDestroy {
+  private cdref = inject(ChangeDetectorRef);
+
   public modelUrl: string;
   public modelScale: [number, number, number] = [1, 1, 1];
   public rotation: [x: number, y: number, z: number] = [0, 0, 0];
@@ -18,7 +20,7 @@ export class DynamicLoaderExampleComponent implements OnDestroy {
 
   private intervalHandle: number;
 
-  constructor(private cdref: ChangeDetectorRef) {
+  constructor() {
     this.modelUrl = this.toggleModel();
     this.intervalHandle = window.setInterval(() => this.toggleModel(), 3000);
   }

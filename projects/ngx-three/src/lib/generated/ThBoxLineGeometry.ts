@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { BufferGeometryEventMap, NormalBufferAttributes } from 'three';
 import { BoxLineGeometry } from 'three/examples/jsm/geometries/BoxLineGeometry.js';

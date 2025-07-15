@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, provideZonelessChangeDetection } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -96,6 +96,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
   ],
   providers: [
+    provideZonelessChangeDetection(),
     provideHighlightOptions({
       fullLibraryLoader: () => import('highlight.js'),
     }),

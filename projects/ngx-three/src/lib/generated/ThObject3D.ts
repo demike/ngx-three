@@ -6,8 +6,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
-  SkipSelf,
   Type,
+  inject,
 } from '@angular/core';
 import { EulerOrder, Layers, Object3D, Object3DEventMap, Vector3 } from 'three';
 import { AnimationClip } from 'three/src/animation/AnimationClip.js';
@@ -31,6 +31,8 @@ export class ThObject3D<
   T extends Object3D<TEventMap> = Object3D<TEventMap>,
   TARGS = [],
 > extends ThObjectBase<T, TARGS> {
+  parent = inject<ThObject3D>(ThObject3D, { skipSelf: true });
+
   public getType(): Type<Object3D<TEventMap>> {
     return Object3D;
   }
@@ -376,8 +378,4 @@ export class ThObject3D<
 
   public static readonly DEFAULT_MATRIX_WORLD_AUTO_UPDATE =
     Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE;
-
-  constructor(@SkipSelf() parent: ThObject3D) {
-    super(parent);
-  }
 }

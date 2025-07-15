@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { LineDashedMaterial, LineDashedMaterialParameters } from 'three';
 import { ThLineBasicMaterial } from './ThLineBasicMaterial';

@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { LineLoop } from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Material, Mesh } from 'three';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThWrapperBase } from './ThWrapperBase';
@@ -10,9 +10,8 @@ import { ThWrapperBase } from './ThWrapperBase';
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThMaterialBase<T extends Material, ARGS> extends ThWrapperBase<T, ARGS> {
-  constructor(protected parent: ThObject3D<any>) {
-    super();
-  }
+  protected parent = inject<ThObject3D<any>>(ThObject3D);
+
 
   public addToParent() {
     if (!this.parent.objRef) {

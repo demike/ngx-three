@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { BatchedMesh, Box3, Object3DEventMap } from 'three';
 import { Camera } from 'three/src/cameras/Camera.js';

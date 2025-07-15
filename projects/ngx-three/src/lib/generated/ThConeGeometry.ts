@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ConeGeometry } from 'three';
 import { ThBufferGeometry } from './ThBufferGeometry';

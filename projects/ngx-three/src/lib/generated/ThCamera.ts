@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera, Layers, Matrix4, Object3DEventMap, Vector4 } from 'three';
 import { CoordinateSystem } from 'three/src/constants.js';

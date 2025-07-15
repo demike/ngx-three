@@ -5,9 +5,9 @@ import {
   Component,
   ContentChildren,
   ElementRef,
+  FactoryProvider,
   forwardRef,
   inject,
-  Inject,
   Input,
   isDevMode,
   OnInit,
@@ -31,7 +31,7 @@ function provideDefaultRenderer(): StaticProvider[] {
         if (renderers) {
           return renderers;
         }
-        return [(provideWebGLRenderer()[0] as any).useValue];
+        return [(provideWebGLRenderer()[0] as FactoryProvider).useFactory()];
       },
     },
     {
@@ -54,25 +54,30 @@ function provideDefaultRenderer(): StaticProvider[] {
 }
 
 @Component({
-    selector: 'th-canvas',
-    styleUrls: ['./ThCanvas.scss'],
-    template: '@if (isDevMode()) {<ng-content ></ng-content>}',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [
-        { provide: HOST_ELEMENT, useFactory: () => inject(ElementRef) },
-        { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
-        ThEngineService,
-        ThAnimationLoopService,
-        { provide: RAYCASTER, useValue: new Raycaster() },
-        forwardRef(() => RaycasterService),
-        { provide: ThView, useExisting: forwardRef(() => ThCanvas) },
-        // default provider for webgl renderer
-        provideDefaultRenderer(),
-    ],
-    standalone: false
+  selector: 'th-canvas',
+  styleUrls: ['./ThCanvas.scss'],
+  template: '@if (isDevMode()) {<ng-content ></ng-content>}',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    { provide: HOST_ELEMENT, useFactory: () => inject(ElementRef) },
+    { provide: ThObject3D, useExisting: forwardRef(() => ThCanvas) },
+    ThEngineService,
+    ThAnimationLoopService,
+    { provide: RAYCASTER, useValue: new Raycaster() },
+    forwardRef(() => RaycasterService),
+    { provide: ThView, useExisting: forwardRef(() => ThCanvas) },
+    // default provider for webgl renderer
+    provideDefaultRenderer(),
+  ],
+  standalone: false,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThCanvas extends ThView implements OnInit, AfterViewInit, AfterContentChecked {
+  protected engServ = inject(ThEngineService);
+  protected raycaster = inject(RaycasterService);
+  protected animationLoop = inject(ThAnimationLoopService);
+  readonly elementRef = inject<ElementRef<HTMLElement>>(ElementRef);
+
   public readonly isDevMode = isDevMode;
   private static instanceCnt = 0;
   public readonly nid = ThCanvas.instanceCnt++;
@@ -99,14 +104,8 @@ export class ThCanvas extends ThView implements OnInit, AfterViewInit, AfterCont
     return this.engServ.canvas;
   }
 
-  constructor(
-    protected engServ: ThEngineService,
-    protected animationLoop: ThAnimationLoopService,
-    @Inject(forwardRef(() => RaycasterService))
-    protected raycaster: RaycasterService,
-    public readonly elementRef: ElementRef<HTMLElement>
-  ) {
-    super(engServ, raycaster);
+  constructor() {
+    super();
     this.engServ.renderers.forEach((renderer) => this.elementRef.nativeElement.appendChild(renderer.domElement));
   }
   ngAfterContentChecked(): void {

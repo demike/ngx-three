@@ -1,23 +1,44 @@
+import { ChangeDetectionStrategy, Component, DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import { Subject } from 'rxjs';
 import { ThEngineService } from '../ThEngine.service';
 import { ThRenderDirective } from './th-render.directive';
 import { ThAnimationLoopService } from './th-animation-loop.service';
 
+@Component({
+  template: `<div (beforeRender)="test()"></div>`,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
+})
+class TestHostComponent {
+  public test() {}
+}
+
 describe('ThRenderDirective', () => {
+  let fixture: ComponentFixture<TestHostComponent>;
+  let directive: ThRenderDirective;
   let engineServiceMock: Partial<ThEngineService>;
   let animationLoopService: jasmine.SpyObj<ThAnimationLoopService>;
-  let directive: ThRenderDirective;
+
   beforeEach(() => {
     engineServiceMock = {
       beforeRender$: new Subject<any>(),
-      resize$: new Subject<any>()
+      resize$: new Subject<any>(),
     };
-
     animationLoopService = jasmine.createSpyObj<ThAnimationLoopService>('ThAnimationLoopService', ['start', 'stop']);
-    directive = new ThRenderDirective(
-      engineServiceMock as ThEngineService,
-      animationLoopService as ThAnimationLoopService
-    );
+
+    TestBed.configureTestingModule({
+      declarations: [ThRenderDirective, TestHostComponent],
+      providers: [
+        { provide: ThEngineService, useValue: engineServiceMock },
+        { provide: ThAnimationLoopService, useValue: animationLoopService },
+      ],
+    });
+    fixture = TestBed.createComponent(TestHostComponent);
+    fixture.detectChanges();
+    const debugEl: DebugElement = fixture.debugElement.query(By.directive(ThRenderDirective));
+    directive = debugEl.injector.get(ThRenderDirective);
   });
   it('should create an instance', () => {
     expect(directive).toBeTruthy();

@@ -6,8 +6,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
-  SkipSelf,
   Type,
+  inject,
 } from '@angular/core';
 import { Color, ColorRepresentation, Material } from 'three';
 import {
@@ -36,6 +36,8 @@ export class ThMaterial<
   T extends Material = Material,
   TARGS = [],
 > extends ThMaterialBase<T, TARGS> {
+  parent = inject<ThObject3D>(ThObject3D, { skipSelf: true });
+
   public getType(): Type<Material> {
     return Material;
   }
@@ -508,9 +510,5 @@ export class ThMaterial<
 
   public get alphaTest(): number | undefined {
     return this._objRef?.alphaTest;
-  }
-
-  constructor(@SkipSelf() hostObject: ThObject3D) {
-    super(hostObject);
   }
 }

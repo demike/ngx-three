@@ -11,7 +11,7 @@ export class NgxThreeControl extends NgxThreeClass {
     super.generate();
   }
 
-  protected generateConstructor() {
+  protected generateParentInjector() {
     return '';
   }
 

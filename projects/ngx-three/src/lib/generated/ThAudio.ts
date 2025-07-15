@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Audio, Object3DEventMap } from 'three';
 import { AudioContext } from 'three/src/audio/AudioContext.js';

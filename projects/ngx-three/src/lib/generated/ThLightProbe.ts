@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { LightProbe, LightShadow, SphericalHarmonics3 } from 'three';
 import { Vector3 } from 'three/src/math/Vector3.js';

@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ArrowHelper, Object3DEventMap } from 'three';
 import { ColorRepresentation } from 'three/src/math/Color.js';

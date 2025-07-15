@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ArrayCamera } from 'three';
 import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js';

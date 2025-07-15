@@ -6,8 +6,8 @@ import {
   ChangeDetectionStrategy,
   Component,
   Input,
-  SkipSelf,
   Type,
+  inject,
 } from '@angular/core';
 import {
   Box3,
@@ -42,6 +42,8 @@ export class ThBufferGeometry<
   >,
   TARGS = [],
 > extends ThGeometryBase<T, TARGS> {
+  parent = inject<ThObject3D>(ThObject3D, { skipSelf: true });
+
   public getType(): Type<BufferGeometry<Attributes, TEventMap>> {
     return BufferGeometry;
   }
@@ -215,9 +217,5 @@ export class ThBufferGeometry<
   }
   public get isBufferGeometry(): true | undefined {
     return this._objRef?.isBufferGeometry;
-  }
-
-  constructor(@SkipSelf() hostObject: ThObject3D) {
-    super(hostObject);
   }
 }

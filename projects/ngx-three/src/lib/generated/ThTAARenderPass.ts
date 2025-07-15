@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera, ColorRepresentation, Scene } from 'three';
 import { TAARenderPass } from 'three/examples/jsm/postprocessing/TAARenderPass.js';

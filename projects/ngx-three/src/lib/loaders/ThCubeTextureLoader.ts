@@ -1,4 +1,4 @@
-import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
+import { Directive, Injectable, Pipe, PipeTransform, inject } from '@angular/core';
 import { CubeTexture, CubeTextureLoader, Texture } from 'three';
 import { ThTexture } from '../generated/ThTexture';
 import {
@@ -15,26 +15,19 @@ export class CubeTextureLoaderService extends ThCallbackLoaderService<CubeTextur
 }
 
 @Pipe({
-    name: 'loadCubeTexture',
-    pure: true,
-    standalone: false
+  name: 'loadCubeTexture',
+  pure: true,
+  standalone: false,
 })
 export class ThCubeTextureLoaderPipe extends ThCallbackLoaderBasePipe<CubeTexture, string[]> implements PipeTransform {
-  constructor(protected service: CubeTextureLoaderService) {
-    super();
-  }
+  protected service = inject(CubeTextureLoaderService);
 }
 
 @Directive({
-    selector: '[loadCubeTexture]',
-    standalone: false
+  selector: '[loadCubeTexture]',
+  standalone: false,
 })
 export class ThCubeTextureLoaderDirective extends ThCallbackLoaderBaseDirective<CubeTexture, string[]> {
-  constructor(
-    @Host() protected host: ThTexture<Texture>,
-    protected zone: NgZone,
-    protected service: CubeTextureLoaderService,
-  ) {
-    super(host, zone);
-  }
+  protected host = inject<ThTexture<Texture>>(ThTexture, { host: true });
+  protected service = inject(CubeTextureLoaderService);
 }

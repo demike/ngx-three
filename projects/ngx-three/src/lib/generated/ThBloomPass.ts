@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, WebGLRenderTarget } from 'three';
 import { BloomPass } from 'three/examples/jsm/postprocessing/BloomPass.js';

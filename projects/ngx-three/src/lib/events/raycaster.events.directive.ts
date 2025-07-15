@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, EventEmitter, Host, OnDestroy, Output } from '@angular/core';
+import { AfterViewInit, Directive, EventEmitter, OnDestroy, Output, inject } from '@angular/core';
 import { Intersection, Object3DEventMap } from 'three';
 import { ThObject3D } from '../generated/ThObject3D';
 
@@ -14,6 +14,9 @@ export interface RaycasterEmitEvent extends Intersection {
     standalone: false
 })
 export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
+  readonly host = inject<ThObject3D<RaycasterEventMap & Object3DEventMap>>(ThObject3D, { host: true });
+  private raycasterService = inject(RaycasterService);
+
   @Output() get onMouseEnter(): EventEmitter<RaycasterEmitEvent> {
     if (!this.mouseEnter) {
       this.mouseEnter = new EventEmitter<RaycasterEmitEvent>();
@@ -63,10 +66,7 @@ export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
   }
   protected pointerUp?: EventEmitter<RaycasterEmitEvent>;
 
-  constructor(
-    @Host() public readonly host: ThObject3D<RaycasterEventMap & Object3DEventMap>,
-    private raycasterService: RaycasterService,
-  ) {
+  constructor() {
     this.emitOnMouseEnter = this.emitOnMouseEnter.bind(this);
     this.emitOnMouseExit = this.emitOnMouseExit.bind(this);
     this.emitOnClick = this.emitOnClick.bind(this);

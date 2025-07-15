@@ -1,6 +1,5 @@
-import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
+import { Directive, Injectable, Pipe, PipeTransform, inject } from '@angular/core';
 import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { ThObject3D } from '../generated/ThObject3D';
 import { DRACOLoaderService } from './compressed-texture/ThDRACOLoader';
 import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';
 
@@ -8,11 +7,9 @@ import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService
   providedIn: 'root',
 })
 export class GLTFLoaderService extends ThAsyncLoaderService<GLTF> {
-  public clazz = GLTFLoader;
+  protected dracoLoaderService = inject(DRACOLoaderService);
 
-  constructor(protected dracoLoaderService: DRACOLoaderService) {
-    super();
-  }
+  public clazz = GLTFLoader;
 
   public createLoaderInstance(): GLTFLoader {
     const loader = super.createLoaderInstance() as GLTFLoader;
@@ -22,28 +19,20 @@ export class GLTFLoaderService extends ThAsyncLoaderService<GLTF> {
 }
 
 @Pipe({
-    name: 'loadGLTF',
-    pure: true,
-    standalone: false
+  name: 'loadGLTF',
+  pure: true,
+  standalone: false,
 })
 export class ThGLTFLoaderPipe extends ThAsyncLoaderBasePipe<GLTF> implements PipeTransform {
-  constructor(protected service: GLTFLoaderService) {
-    super();
-  }
+  protected service = inject(GLTFLoaderService);
 }
 
 @Directive({
-    selector: '[loadGLTF]',
-    standalone: false
+  selector: '[loadGLTF]',
+  standalone: false,
 })
 export class ThGLTFLoaderDirective extends ThAsyncLoaderBaseDirective<GLTF> {
-  constructor(
-    @Host() protected host: ThObject3D,
-    protected zone: NgZone,
-    protected service: GLTFLoaderService,
-  ) {
-    super(host, zone);
-  }
+  protected service = inject(GLTFLoaderService);
 
   protected getRefFromResponse(response: GLTF) {
     return response.scene;

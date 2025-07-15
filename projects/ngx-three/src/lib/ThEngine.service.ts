@@ -13,6 +13,8 @@ export interface RenderState {
 
 @Injectable()
 export class ThEngineService implements OnDestroy {
+  private ngZone = inject(NgZone);
+
   public readonly beforeRender$: Observable<RenderState>;
   public readonly resize$: Observable<{ width: number; height: number }>;
 
@@ -33,7 +35,7 @@ export class ThEngineService implements OnDestroy {
 
   private resizeObserver?: ResizeObserver;
 
-  public constructor(private ngZone: NgZone) {
+  public constructor() {
     this.beforeRender$ = this.beforeRenderEmitter.pipe(takeUntil(this.destroyed$));
     this.resize$ = this.resizeEmitter.pipe(takeUntil(this.destroyed$));
 

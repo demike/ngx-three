@@ -18,18 +18,18 @@
   },
   "homepage": "https://github.com/demike/ngx-three#readme",
   "peerDependencies": {
-    "@angular/common": "^19.1.7",
-    "@angular/core": "^19.1.7",
+    "@angular/common": "^20.1.0",
+    "@angular/core": "^20.1.0",
     "three": "~0.178.0"
   },
   "dependencies": {
-    "tslib": "^2.6.2"
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
-    "typescript": "^5.1.6",
-    "ts-node": "^10.9.1",
-    "prettier": "^3.0.2",
-    "utility-types": "^3.10.0"
+    "typescript": "^5.8.3",
+    "ts-node": "^10.9.2",
+    "prettier": "^3.6.2",
+    "utility-types": "^3.11.0"
   },
   "scripts": {
     "typegen:components": "ts-node -P \"tsconfig.generate.json\" src/lib/generator/generateComponents.ts"

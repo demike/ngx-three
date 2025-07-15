@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { BufferGeometryEventMap, NormalBufferAttributes } from 'three';
 import { TeapotGeometry } from 'three/examples/jsm/geometries/TeapotGeometry.js';

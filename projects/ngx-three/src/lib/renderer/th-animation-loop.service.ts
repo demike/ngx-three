@@ -1,16 +1,19 @@
-import { Injectable, NgZone, OnDestroy } from '@angular/core';
+import { Injectable, NgZone, OnDestroy, inject } from '@angular/core';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { RenderState, ThEngineService } from '../ThEngine.service';
 
 @Injectable()
 export class ThAnimationLoopService implements OnDestroy {
+  private engineService = inject(ThEngineService);
+  private ngZone = inject(NgZone);
+
   private active = true;
   private frameId?: number;
 
   public readonly beforeRender$: Observable<RenderState>;
   private destroyed$ = new Subject<void>();
 
-  constructor(private engineService: ThEngineService, private ngZone: NgZone) {
+  constructor() {
     this.beforeRender$ = this.engineService.beforeRender$;
     this.engineService.resize$.pipe(takeUntil(this.destroyed$)).subscribe(() => this.requestAnimationFrame());
   }

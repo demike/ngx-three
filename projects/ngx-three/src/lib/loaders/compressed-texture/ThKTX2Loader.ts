@@ -1,4 +1,4 @@
-import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
+import { Directive, Injectable, Pipe, PipeTransform, inject } from '@angular/core';
 import { KTX2Loader } from 'three/examples/jsm/loaders/KTX2Loader.js';
 import { ThTexture } from '../../generated/ThTexture';
 import {
@@ -28,26 +28,19 @@ export class KTX2LoaderService extends ThCallbackLoaderService<CompressedTexture
 }
 
 @Pipe({
-    name: 'loadKTX2Texture',
-    pure: true,
-    standalone: false
+  name: 'loadKTX2Texture',
+  pure: true,
+  standalone: false,
 })
 export class ThKTX2LoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture> implements PipeTransform {
-  constructor(protected service: KTX2LoaderService) {
-    super();
-  }
+  protected service = inject(KTX2LoaderService);
 }
 
 @Directive({
-    selector: '[loadKTX2Texture]',
-    standalone: false
+  selector: '[loadKTX2Texture]',
+  standalone: false,
 })
 export class ThKTX2LoaderDirective extends ThCallbackLoaderBaseDirective<CompressedTexture> {
-  constructor(
-    @Host() protected host: ThTexture,
-    protected zone: NgZone,
-    protected service: KTX2LoaderService,
-  ) {
-    super(host, zone);
-  }
+  protected host = inject(ThTexture, { host: true });
+  protected service = inject(KTX2LoaderService);
 }

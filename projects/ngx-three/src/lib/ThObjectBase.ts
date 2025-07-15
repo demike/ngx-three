@@ -2,16 +2,14 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { Object3D, Vector3 } from 'three';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
-    selector: 'th-abs-object',
-    template: '<ng-content/>',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'th-abs-object',
+  template: '<ng-content/>',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThObjectBase<T extends Object3D, ARGS = unknown> extends ThWrapperBase<T, ARGS> implements OnInit {
-  constructor(public parent: ThObjectBase<any>) {
-    super();
-  }
+  public parent!: ThObjectBase<any>;
 
   public override addToParent() {
     if (

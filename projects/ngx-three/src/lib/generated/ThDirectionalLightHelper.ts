@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { DirectionalLightHelper, Matrix4, Object3DEventMap } from 'three';
 import { DirectionalLight } from 'three/src/lights/DirectionalLight.js';

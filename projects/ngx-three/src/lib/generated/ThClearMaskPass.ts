@@ -6,8 +6,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ClearMaskPass } from 'three/examples/jsm/postprocessing/MaskPass.js';
 import { ThPassBase } from '../ThPassBase';

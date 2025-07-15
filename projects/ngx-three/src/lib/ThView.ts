@@ -35,17 +35,15 @@ export const HOST_ELEMENT = new InjectionToken<ElementRef<HTMLElement>>('HOST_EL
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThView implements OnInit {
+  protected engServ = inject(ThEngineService);
+  protected raycaster = inject(RaycasterService);
+
   public readonly hostElement = inject(HOST_ELEMENT);
   // eslint-disable-next-line @typescript-eslint/naming-convention, no-underscore-dangle, id-blacklist, id-match
   protected _camera?: ThCamera;
   protected _viewPort?: Vector4 | { x: number; y: number; width: number; height: number };
 
   protected _effectComposer?: EffectComposer;
-
-  constructor(
-    protected engServ: ThEngineService,
-    protected raycaster: RaycasterService,
-  ) {}
 
   @Input()
   public scene?: ThScene;

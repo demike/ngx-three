@@ -12,7 +12,7 @@ export class NgxThreePass extends NgxThreeClass {
     this.content = `/* eslint-disable @typescript-eslint/ban-types */ ${this.content}`;
   }
 
-  protected generateConstructor() {
+  protected generateParentInjector() {
     return '';
   }
 

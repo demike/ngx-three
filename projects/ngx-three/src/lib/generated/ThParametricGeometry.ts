@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { BufferGeometryEventMap, NormalBufferAttributes, Vector3 } from 'three';
 import { ParametricGeometry } from 'three/examples/jsm/geometries/ParametricGeometry.js';

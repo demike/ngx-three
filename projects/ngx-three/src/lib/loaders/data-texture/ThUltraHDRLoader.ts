@@ -1,4 +1,4 @@
-import { Directive, Host, Injectable, NgZone, Pipe, PipeTransform } from '@angular/core';
+import { Directive, Injectable, Pipe, PipeTransform, inject } from '@angular/core';
 import { ThDataTexture } from '../../generated/ThDataTexture';
 import { UltraHDRLoader } from 'three/examples/jsm/loaders/UltraHDRLoader.js';
 import {
@@ -16,26 +16,19 @@ export class UltraHDRLoaderService extends ThCallbackLoaderService<DataTexture> 
 }
 
 @Pipe({
-    name: 'loadUltraHDRTexture',
-    pure: true,
-    standalone: false
+  name: 'loadUltraHDRTexture',
+  pure: true,
+  standalone: false,
 })
 export class ThUltraHDRLoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> implements PipeTransform {
-  constructor(protected service: UltraHDRLoaderService) {
-    super();
-  }
+  protected service = inject(UltraHDRLoaderService);
 }
 
 @Directive({
-    selector: '[loadUltraHDRTexture]',
-    standalone: false
+  selector: '[loadUltraHDRTexture]',
+  standalone: false,
 })
 export class ThUltraHDRLoaderDirective extends ThCallbackLoaderBaseDirective<DataTexture> {
-  constructor(
-    @Host() protected host: ThDataTexture,
-    protected zone: NgZone,
-    protected service: UltraHDRLoaderService,
-  ) {
-    super(host, zone);
-  }
+  protected host = inject(ThDataTexture, { host: true });
+  protected service = inject(UltraHDRLoaderService);
 }

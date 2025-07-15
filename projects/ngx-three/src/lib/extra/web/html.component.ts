@@ -15,7 +15,6 @@ import {
   OnDestroy,
   OnInit,
   Output,
-  SkipSelf,
   ViewChild,
 } from '@angular/core';
 import { Subscription } from 'rxjs';
@@ -137,12 +136,14 @@ type PointerEventsProperties =
  * Add Html content to any three.js object3d node
  */
 @Component({
-    selector: 'th-html',
-    templateUrl: './html.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'th-html',
+  templateUrl: './html.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: false,
 })
 export class HtmlComponent extends ThGroup implements OnInit, OnDestroy, OnChanges, AfterViewInit {
+  private view = inject(ThView);
+
   // eslint-disable-next-line @typescript-eslint/naming-convention
   protected readonly DoubleSide = DoubleSide;
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -196,13 +197,6 @@ export class HtmlComponent extends ThGroup implements OnInit, OnDestroy, OnChang
   private target?: HTMLElement | null;
   private frameSubscription?: Subscription;
   private raycaster = inject(RAYCASTER);
-
-  constructor(
-    private view: ThView,
-    @SkipSelf() parent: ThObject3D,
-  ) {
-    super(parent);
-  }
 
   public ngOnInit(): void {
     super.ngOnInit();
