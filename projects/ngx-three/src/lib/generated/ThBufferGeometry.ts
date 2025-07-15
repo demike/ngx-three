@@ -42,7 +42,7 @@ export class ThBufferGeometry<
   >,
   TARGS = [],
 > extends ThGeometryBase<T, TARGS> {
-  parent = inject(ThObject3D, { skipSelf: true });
+  parent = inject<ThObject3D>(ThObject3D, { skipSelf: true });
 
   public getType(): Type<BufferGeometry<Attributes, TEventMap>> {
     return BufferGeometry;

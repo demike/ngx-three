@@ -2,7 +2,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { ChangeDetectionStrategy, Component, Input, Type, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Type,
+  inject,
+} from '@angular/core';
 import { Color, ColorRepresentation, Material } from 'three';
 import {
   Blending,
@@ -26,7 +32,10 @@ import { ThObject3D } from './ThObject3D';
   standalone: false,
   providers: [],
 })
-export class ThMaterial<T extends Material = Material, TARGS = []> extends ThMaterialBase<T, TARGS> {
+export class ThMaterial<
+  T extends Material = Material,
+  TARGS = [],
+> extends ThMaterialBase<T, TARGS> {
   parent = inject<ThObject3D>(ThObject3D, { skipSelf: true });
 
   public getType(): Type<Material> {
@@ -183,9 +192,20 @@ export class ThMaterial<T extends Material = Material, TARGS = []> extends ThMat
     return this._objRef?.blendEquationAlpha;
   }
   @Input()
-  public set blendColor(value: Color | [...args: [color: ColorRepresentation] | [r: number, g: number, b: number]]) {
+  public set blendColor(
+    value:
+      | Color
+      | [
+          ...args:
+            | [color: ColorRepresentation]
+            | [r: number, g: number, b: number],
+        ],
+  ) {
     if (this._objRef) {
-      this._objRef.blendColor = applyValue<Color>(this._objRef.blendColor, value);
+      this._objRef.blendColor = applyValue<Color>(
+        this._objRef.blendColor,
+        value,
+      );
     }
   }
   public get blendColor(): Color | undefined {

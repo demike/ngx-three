@@ -60,7 +60,7 @@ export class ThTransformControls<
   };
 
   public addToParent(): void {
-    if (this._objRef && !this._objRef.object) {
+    if (this._objRef && this._objRef.object) {
       this.scene?.objRef?.add(this._objRef.object);
     }
   }

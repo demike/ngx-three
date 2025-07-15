@@ -31,7 +31,7 @@ export class ThObject3D<
   T extends Object3D<TEventMap> = Object3D<TEventMap>,
   TARGS = [],
 > extends ThObjectBase<T, TARGS> {
-  parent = inject(ThObject3D, { skipSelf: true });
+  parent = inject<ThObject3D>(ThObject3D, { skipSelf: true });
 
   public getType(): Type<Object3D<TEventMap>> {
     return Object3D;

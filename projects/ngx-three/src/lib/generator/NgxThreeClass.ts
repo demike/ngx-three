@@ -36,9 +36,6 @@ export abstract class NgxThreeClass {
     this.wrappedClassName = this.classSymbol.escapedName as string;
     this.isAbstract = this.isAbstractClass();
     this.className = 'Th' + this.wrappedClassName;
-    if (this.className === 'ThMeshPhongMaterial') {
-      console.log('Generating ThMeshPhongMaterial');
-    }
     this.directiveName = 'th-' + pascalToCamelCase(this.wrappedClassName);
     if (isOverriddenClass(this.wrappedClassName)) {
       this.className += 'Gen';
