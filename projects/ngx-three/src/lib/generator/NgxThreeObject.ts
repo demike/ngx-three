@@ -5,12 +5,10 @@ import { NgxThreeClass } from './NgxThreeClass';
  * An angular wrapper class generator for three.js Object3D based classes
  */
 export class NgxThreeObject extends NgxThreeClass {
-  protected generateConstructor() {
+  protected generateParentInjector() {
     if (this.className === 'ThObject3D') {
       return `
-      constructor(@SkipSelf() parent: ThObject3D) {
-        super(parent);
-      }
+      parent = inject<ThObject3D>(ThObject3D, { skipSelf: true });
       `;
     }
 

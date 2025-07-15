@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { AmbientLight } from 'three';
 import { ColorRepresentation } from 'three/src/math/Color.js';

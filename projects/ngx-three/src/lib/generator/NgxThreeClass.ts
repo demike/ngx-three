@@ -89,10 +89,10 @@ export abstract class NgxThreeClass {
     this.providersArray = this.generateProvidersArray();
 
     // we have at least one input (objRef) --> import it
-    this.imports.add("import { Input } from '@angular/core';");
+    this.imports.add("import { Input, inject } from '@angular/core';");
 
     this.imports.add("import { SkipSelf, Self, Optional, forwardRef, Type } from '@angular/core';");
-    const constr = this.generateConstructor();
+    const parentInjector = this.generateParentInjector();
     this.generateConstructorArgs();
     for (const decl of this.classDecl) {
       this.addImportsFrom(decl);
@@ -119,9 +119,9 @@ export abstract class NgxThreeClass {
           providers: ${this.providersArray}
         })
         ${classHeader} {
+          ${parentInjector}
           ${this.generateTypeGetter()}
           ${this.inputs}
-          ${constr}
         }
         `;
 
@@ -133,7 +133,7 @@ export abstract class NgxThreeClass {
   /**
    * implement this method for custom constructor
    */
-  protected abstract generateConstructor(): string;
+  protected abstract generateParentInjector(): string;
   protected abstract generateProvidersArray(): string;
 
   /**

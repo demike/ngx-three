@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial } from 'three';
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';

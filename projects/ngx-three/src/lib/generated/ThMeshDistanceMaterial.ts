@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { MeshDistanceMaterial, MeshDistanceMaterialParameters } from 'three';
 import { Texture } from 'three/src/textures/Texture.js';

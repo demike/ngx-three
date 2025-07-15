@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Line } from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';

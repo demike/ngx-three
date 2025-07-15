@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { MeshDepthMaterial, MeshDepthMaterialParameters } from 'three';
 import { DepthPackingStrategies } from 'three/src/constants.js';

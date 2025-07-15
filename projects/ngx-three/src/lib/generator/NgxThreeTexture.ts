@@ -11,7 +11,7 @@ export class NgxThreeTexture extends NgxThreeClass {
     super.generate();
   }
 
-  protected generateConstructor() {
+  protected generateParentInjector() {
     return '';
   }
 
@@ -32,7 +32,7 @@ export class NgxThreeTexture extends NgxThreeClass {
 
     return constructSignatures[0].parameters.map((param) =>
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      (param.declarations![0] as ParameterDeclaration).type!.getText()
+      (param.declarations![0] as ParameterDeclaration).type!.getText(),
     );
   }
 

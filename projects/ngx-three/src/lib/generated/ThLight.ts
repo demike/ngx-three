@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
+  forwardRef,
 } from '@angular/core';
 import { Color, ColorRepresentation, Light, Object3DEventMap } from 'three';
 import { LightShadow } from 'three/src/lights/LightShadow.js';

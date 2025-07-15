@@ -9,12 +9,10 @@ export class NgxThreeMaterial extends NgxThreeClass {
     super.generate();
   }
 
-  protected generateConstructor() {
+  protected generateParentInjector() {
     if (this.className === 'ThMaterial') {
       return `
-      constructor(@SkipSelf() hostObject: ThObject3D) {
-        super(hostObject);
-      }
+      parent = inject<ThObject3D>(ThObject3D, { skipSelf: true });
       `;
     }
 

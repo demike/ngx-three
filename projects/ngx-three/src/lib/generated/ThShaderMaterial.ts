@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, ShaderMaterialParameters } from 'three';
 import { GLSLVersion } from 'three/src/constants.js';

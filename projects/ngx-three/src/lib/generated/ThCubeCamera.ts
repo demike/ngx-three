@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { CubeCamera, Object3DEventMap } from 'three';
 import { CoordinateSystem } from 'three/src/constants.js';

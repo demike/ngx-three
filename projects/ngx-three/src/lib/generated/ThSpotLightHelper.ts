@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Matrix4, Object3DEventMap, SpotLightHelper } from 'three';
 import { Light } from 'three/src/lights/Light.js';

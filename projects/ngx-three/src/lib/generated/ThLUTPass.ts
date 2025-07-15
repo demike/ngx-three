@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Data3DTexture, DataTexture } from 'three';
 import {

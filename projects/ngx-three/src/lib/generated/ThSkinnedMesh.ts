@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Box3, Matrix4, SkinnedMesh } from 'three';
 import { BindMode } from 'three/src/constants.js';

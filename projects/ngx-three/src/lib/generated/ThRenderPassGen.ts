@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera, Color, ColorRepresentation, Material, Scene } from 'three';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';

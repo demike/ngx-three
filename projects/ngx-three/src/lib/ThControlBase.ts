@@ -22,10 +22,10 @@ export class ThControlBase<
 {
   protected _camera = inject<ThObject3D<any>>(ThObject3D);
   protected canvas? = inject(ThCanvas);
+  protected renderLoop = inject(ThAnimationLoopService);
 
   protected origDispatchEventMethod?: EventDispatcher['dispatchEvent'];
   protected beforeRenderSubscription?: Subscription;
-  protected renderLoop = inject(ThAnimationLoopService);
 
   @Input()
   public set domElement(value: HTMLElement) {

@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { PointLight } from 'three';
 import { PointLightShadow } from 'three/src/lights/PointLightShadow.js';

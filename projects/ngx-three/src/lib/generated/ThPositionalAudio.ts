@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { PositionalAudio } from 'three';
 import { AudioListener } from 'three/src/audio/AudioListener.js';

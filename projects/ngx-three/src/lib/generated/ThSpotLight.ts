@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { SpotLight, Vector3 } from 'three';
 import { Object3D } from 'three/src/core/Object3D.js';

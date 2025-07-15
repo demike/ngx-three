@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { CubeTexture, Mesh, PerspectiveCamera, Scene } from 'three';
 import { CubeTexturePass } from 'three/examples/jsm/postprocessing/CubeTexturePass.js';

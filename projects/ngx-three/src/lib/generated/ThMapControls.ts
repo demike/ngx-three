@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { Camera } from 'three';
 import { MapControls } from 'three/examples/jsm/controls/MapControls.js';

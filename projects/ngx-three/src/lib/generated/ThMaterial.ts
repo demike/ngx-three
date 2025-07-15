@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { ChangeDetectionStrategy, Component, Input, Type } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Type, inject } from '@angular/core';
 import { Color, ColorRepresentation, Material } from 'three';
 import {
   Blending,
@@ -17,6 +17,7 @@ import {
 import { Plane } from 'three/src/math/Plane.js';
 import { ThMaterialBase } from '../ThMaterialBase';
 import { applyValue } from '../util';
+import { ThObject3D } from './ThObject3D';
 
 @Component({
   selector: 'th-material',
@@ -26,6 +27,8 @@ import { applyValue } from '../util';
   providers: [],
 })
 export class ThMaterial<T extends Material = Material, TARGS = []> extends ThMaterialBase<T, TARGS> {
+  parent = inject<ThObject3D>(ThObject3D, { skipSelf: true });
+
   public getType(): Type<Material> {
     return Material;
   }

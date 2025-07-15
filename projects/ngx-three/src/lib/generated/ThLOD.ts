@@ -5,9 +5,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { LOD } from 'three';
 import { Object3D, Object3DEventMap } from 'three/src/core/Object3D.js';

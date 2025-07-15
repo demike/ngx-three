@@ -6,9 +6,9 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { ColorRepresentation } from 'three';
 import { ClearPass } from 'three/examples/jsm/postprocessing/ClearPass.js';

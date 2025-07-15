@@ -5,8 +5,8 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Type,
+  forwardRef,
 } from '@angular/core';
 import { AxesHelper, Object3DEventMap } from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';

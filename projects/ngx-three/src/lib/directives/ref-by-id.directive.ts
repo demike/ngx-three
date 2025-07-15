@@ -5,8 +5,8 @@ import { ThObject3D } from '../generated';
 import { createLazyObject3DProxy, isLazyObject3dProxy } from '../loaders/LazyObject3dProxy';
 
 @Directive({
-    selector: '[refById]',
-    standalone: false
+  selector: '[refById]',
+  standalone: false,
 })
 export class RefByIdDirective implements OnDestroy {
   private host = inject(ThObject3D, { self: true });
@@ -38,7 +38,7 @@ export class RefByIdDirective implements OnDestroy {
 
     const ref = this.findById(this.parentObj, this.id);
     if (ref) {
-      this.setRef(this.host, ref);
+      this.setRef(this.host as ThObject3D, ref);
     }
   }
 

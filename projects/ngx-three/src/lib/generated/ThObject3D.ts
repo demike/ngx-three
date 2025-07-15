@@ -2,7 +2,13 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import { ChangeDetectionStrategy, Component, Input, Type } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Type,
+  inject,
+} from '@angular/core';
 import { EulerOrder, Layers, Object3D, Object3DEventMap, Vector3 } from 'three';
 import { AnimationClip } from 'three/src/animation/AnimationClip.js';
 import { Material } from 'three/src/materials/Material.js';
@@ -25,6 +31,8 @@ export class ThObject3D<
   T extends Object3D<TEventMap> = Object3D<TEventMap>,
   TARGS = [],
 > extends ThObjectBase<T, TARGS> {
+  parent = inject(ThObject3D, { skipSelf: true });
+
   public getType(): Type<Object3D<TEventMap>> {
     return Object3D;
   }
@@ -87,7 +95,9 @@ export class ThObject3D<
     return this._objRef?.position;
   }
   @Input()
-  public set rotation(value: Euler | [x: number, y: number, z: number, order?: EulerOrder]) {
+  public set rotation(
+    value: Euler | [x: number, y: number, z: number, order?: EulerOrder],
+  ) {
     if (this._objRef) {
       applyValue<Euler>(this._objRef.rotation, value);
     }
@@ -96,7 +106,9 @@ export class ThObject3D<
     return this._objRef?.rotation;
   }
   @Input()
-  public set quaternion(value: Quaternion | [x: number, y: number, z: number, w: number]) {
+  public set quaternion(
+    value: Quaternion | [x: number, y: number, z: number, w: number],
+  ) {
     if (this._objRef) {
       applyValue<Quaternion>(this._objRef.quaternion, value);
     }
@@ -220,7 +232,10 @@ export class ThObject3D<
         ],
   ) {
     if (this._objRef) {
-      this._objRef.matrixWorld = applyValue<Matrix4>(this._objRef.matrixWorld, value);
+      this._objRef.matrixWorld = applyValue<Matrix4>(
+        this._objRef.matrixWorld,
+        value,
+      );
     }
   }
   public get matrixWorld(): Matrix4 | undefined {
@@ -358,7 +373,9 @@ export class ThObject3D<
 
   public static readonly DEFAULT_UP = Object3D.DEFAULT_UP;
 
-  public static readonly DEFAULT_MATRIX_AUTO_UPDATE = Object3D.DEFAULT_MATRIX_AUTO_UPDATE;
+  public static readonly DEFAULT_MATRIX_AUTO_UPDATE =
+    Object3D.DEFAULT_MATRIX_AUTO_UPDATE;
 
-  public static readonly DEFAULT_MATRIX_WORLD_AUTO_UPDATE = Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE;
+  public static readonly DEFAULT_MATRIX_WORLD_AUTO_UPDATE =
+    Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE;
 }
