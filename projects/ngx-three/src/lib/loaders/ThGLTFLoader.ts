@@ -1,6 +1,5 @@
 import { Directive, Injectable, Pipe, PipeTransform, inject } from '@angular/core';
 import { GLTF, GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { ThObject3D } from '../generated/ThObject3D';
 import { DRACOLoaderService } from './compressed-texture/ThDRACOLoader';
 import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';
 
@@ -33,7 +32,6 @@ export class ThGLTFLoaderPipe extends ThAsyncLoaderBasePipe<GLTF> implements Pip
   standalone: false,
 })
 export class ThGLTFLoaderDirective extends ThAsyncLoaderBaseDirective<GLTF> {
-  protected host = inject(ThObject3D, { host: true });
   protected service = inject(GLTFLoaderService);
 
   protected getRefFromResponse(response: GLTF) {

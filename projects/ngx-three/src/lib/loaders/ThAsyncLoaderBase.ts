@@ -14,6 +14,7 @@ import { ThAnimationLoopService } from '../renderer/th-animation-loop.service';
 import { isObserved } from '../util';
 import { createLazyObject3DProxy, LazyObject3DProxy } from './LazyObject3dProxy';
 import { ThLoader } from './ThLoaderBase';
+import { ThObject3D } from '../generated';
 
 type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
 
@@ -50,9 +51,14 @@ export abstract class ThAsyncLoaderBaseDirective<TData = unknown, TUrl extends s
   implements OnInit
 {
   /**
-   * Derived directive shoult inject the host object.
+   * injector function to get the host object reference.
+   *
+   * Override this method in dervied classes if you want to inject other host element types (e.g. ThBufferGeometry, etc.), default is ThOBject3D.
+   * always implement as a function not as a fat arrow function, else it will not be available in the constructor.
    */
-  protected abstract host: { objRef: any };
+  protected injectHost(): { objRef: any } {
+    return inject(ThObject3D, { host: true });
+  }
 
   /**
    * Derived directive should inject the (derived) service.
@@ -62,14 +68,15 @@ export abstract class ThAsyncLoaderBaseDirective<TData = unknown, TUrl extends s
   protected abstract getRefFromResponse(response: Awaited<ReturnType<Loader<TData, TUrl>['loadAsync']>>): any;
 
   protected zone = inject(NgZone);
+  protected animationLoop = inject(ThAnimationLoopService);
+  protected _host: { objRef: any };
+
   protected initialized = false;
   protected _url?: Parameters<Loader<TData, TUrl>['loadAsync']>[0];
 
   protected onLoaded$?: EventEmitter<Awaited<ReturnType<Loader<TData, TUrl>['loadAsync']>>>;
   protected onProgress$?: EventEmitter<ProgressEvent>;
   protected proxy: LazyObject3DProxy;
-
-  protected animationLoop = inject(ThAnimationLoopService);
 
   @Input()
   set url(url: Parameters<Loader<TData, TUrl>['loadAsync']>[0] | undefined) {
@@ -97,11 +104,8 @@ export abstract class ThAsyncLoaderBaseDirective<TData = unknown, TUrl extends s
 
   constructor() {
     this.proxy = createLazyObject3DProxy();
-    this.applyProxyToHost();
-  }
-
-  applyProxyToHost() {
-    this.host.objRef = this.proxy;
+    this._host = this.injectHost();
+    this._host.objRef = this.proxy;
   }
 
   ngOnInit(): void {
@@ -141,7 +145,7 @@ export abstract class ThAsyncLoaderBaseDirective<TData = unknown, TUrl extends s
     this.proxy.objRef = this.getRefFromResponse(result);
     // add the new object to the parent and
     // emit a loaded event directly on the three.js object and on objRef$
-    this.host.objRef = this.proxy;
+    this._host.objRef = this.proxy;
 
     if (this.onLoaded$ && result != null) {
       this.zone.run(() => this.onLoaded$?.next(result));

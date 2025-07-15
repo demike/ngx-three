@@ -1,6 +1,4 @@
 import { Directive, Injectable, Pipe, PipeTransform, inject } from '@angular/core';
-
-import { ThObject3D } from '../generated/ThObject3D';
 import { FBXLoader } from 'three/examples/jsm/loaders/FBXLoader.js';
 import { ThAsyncLoaderBaseDirective, ThAsyncLoaderBasePipe, ThAsyncLoaderService } from './ThAsyncLoaderBase';
 import { Group } from 'three';
@@ -26,7 +24,6 @@ export class ThFBXLoaderPipe extends ThAsyncLoaderBasePipe<Group> implements Pip
   standalone: false,
 })
 export class ThFBXLoaderDirective extends ThAsyncLoaderBaseDirective<Group> {
-  protected host = inject(ThObject3D, { host: true });
   protected service = inject(FBXLoaderService);
 
   protected getRefFromResponse(response: Group) {

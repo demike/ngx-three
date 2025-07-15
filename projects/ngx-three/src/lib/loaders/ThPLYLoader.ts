@@ -27,7 +27,10 @@ export class ThPLYLoaderPipe extends ThAsyncLoaderBasePipe<BufferGeometry> imple
   standalone: false,
 })
 export class ThPLYLoaderDirective extends ThAsyncLoaderBaseDirective<BufferGeometry> {
-  protected host = inject(ThBufferGeometry, { host: true });
+  protected injectHost() {
+    return inject(ThBufferGeometry, { host: true });
+  }
+
   protected service = inject(PLYLoaderService);
 
   protected getRefFromResponse(response: BufferGeometry) {
@@ -56,7 +59,7 @@ export class ThPLYLoaderDirective extends ThAsyncLoaderBaseDirective<BufferGeome
 
     // add the new object to the parent and
     // emit a loaded event directly on the three.js object and on objRef$
-    this.host.objRef = this.getRefFromResponse(result);
+    this._host.objRef = this.getRefFromResponse(result);
 
     if (this.onLoaded$ && result !== undefined) {
       this.onLoaded$?.next(result);
