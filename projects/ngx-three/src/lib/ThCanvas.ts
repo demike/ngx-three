@@ -5,6 +5,7 @@ import {
   Component,
   ContentChildren,
   ElementRef,
+  FactoryProvider,
   forwardRef,
   inject,
   Input,
@@ -30,7 +31,7 @@ function provideDefaultRenderer(): StaticProvider[] {
         if (renderers) {
           return renderers;
         }
-        return [(provideWebGLRenderer()[0] as any).useValue];
+        return [(provideWebGLRenderer()[0] as FactoryProvider).useFactory()];
       },
     },
     {
