@@ -33,6 +33,7 @@ import { CommonModule } from '@angular/common';
 import { RefByIdDirective } from './directives/ref-by-id.directive';
 import { PlanePipe } from './pipes/plane.pipe';
 import { RendererProviderDirective } from './renderer/renderer-providers';
+import { LODLevelDirective } from './directives/lod-level.directive';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { RendererProviderDirective } from './renderer/renderer-providers';
     // directives
     RefByIdDirective,
     RendererProviderDirective,
+    LODLevelDirective,
     //extras
     HtmlComponent,
   ],
