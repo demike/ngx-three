@@ -21,7 +21,6 @@ export class GLTFLoaderService extends ThAsyncLoaderService<GLTF> {
 @Pipe({
   name: 'loadGLTF',
   pure: true,
-  standalone: false,
 })
 export class ThGLTFLoaderPipe extends ThAsyncLoaderBasePipe<GLTF> implements PipeTransform {
   protected service = inject(GLTFLoaderService);
@@ -29,7 +28,6 @@ export class ThGLTFLoaderPipe extends ThAsyncLoaderBasePipe<GLTF> implements Pip
 
 @Directive({
   selector: '[loadGLTF]',
-  standalone: false,
 })
 export class ThGLTFLoaderDirective extends ThAsyncLoaderBaseDirective<GLTF> {
   protected service = inject(GLTFLoaderService);

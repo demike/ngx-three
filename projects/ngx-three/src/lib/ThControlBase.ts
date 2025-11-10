@@ -9,7 +9,6 @@ import { ThWrapperBase } from './ThWrapperBase';
   selector: 'th-abs-control',
   template: '',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThControlBase<

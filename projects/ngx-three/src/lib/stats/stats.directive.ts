@@ -5,8 +5,7 @@ import { Subscription } from 'rxjs';
 import { ThCanvas } from '../ThCanvas';
 
 @Directive({
-    selector: '[thStats]',
-    standalone: false
+  selector: '[thStats]',
 })
 export class StatsDirective implements OnInit, OnDestroy {
   private engineService = inject(ThEngineService);

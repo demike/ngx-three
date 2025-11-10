@@ -17,7 +17,6 @@ export class TextureLoaderService extends ThCallbackLoaderService<Texture> {
 @Pipe({
   name: 'loadTexture',
   pure: true,
-  standalone: false,
 })
 export class ThTextureLoaderPipe extends ThCallbackLoaderBasePipe<Texture> implements PipeTransform {
   protected service = inject(TextureLoaderService);
@@ -25,7 +24,6 @@ export class ThTextureLoaderPipe extends ThCallbackLoaderBasePipe<Texture> imple
 
 @Directive({
   selector: '[loadTexture]',
-  standalone: false,
 })
 export class ThTextureLoaderDirective extends ThCallbackLoaderBaseDirective<Texture> {
   protected host = inject<ThTexture<Texture>>(ThTexture, { host: true });

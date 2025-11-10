@@ -33,6 +33,7 @@ import { RAYCASTER } from '../../events/raycaster.service';
 import { ThGroup, ThObject3D } from '../../generated';
 import { NgChanges } from '../../util';
 import { ThView } from '../../ThView';
+import { NgTemplateOutlet } from '@angular/common';
 
 const v1 = new Vector3();
 const v2 = new Vector3();
@@ -139,7 +140,7 @@ type PointerEventsProperties =
   selector: 'th-html',
   templateUrl: './html.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  imports: [NgTemplateOutlet],
 })
 export class HtmlComponent extends ThGroup implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   private view = inject(ThView);

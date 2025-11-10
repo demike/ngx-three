@@ -44,9 +44,7 @@ export abstract class ThAsyncLoaderBasePipe<TData = unknown, TUrl extends string
   }
 }
 
-@Directive({
-  standalone: false,
-})
+@Directive({})
 export abstract class ThAsyncLoaderBaseDirective<TData = unknown, TUrl extends string | string[] = string>
   implements OnInit
 {

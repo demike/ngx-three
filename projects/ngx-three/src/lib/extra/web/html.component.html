@@ -1,14 +1,14 @@
 @if (transform) {
-  <div [ngStyle]="styles" #outerRef (onResize)="onResize()">
-    <div #innerRef [ngStyle]="transformInnerStyles" >
+  <div [style]="styles" #outerRef (onResize)="onResize()">
+    <div #innerRef [style]="transformInnerStyles">
       <div [style]="style" [className]="className">
-        <ng-container *ngTemplateOutlet="tempOutlet" ></ng-container>
+        <ng-container *ngTemplateOutlet="tempOutlet"></ng-container>
       </div>
     </div>
   </div>
 } @else {
-  <div [ngStyle]="styles" [className]="className" #outerRef>
-    <ng-container *ngTemplateOutlet="tempOutlet" ></ng-container>
+  <div [style]="styles" [className]="className" #outerRef>
+    <ng-container *ngTemplateOutlet="tempOutlet"></ng-container>
   </div>
 }
 

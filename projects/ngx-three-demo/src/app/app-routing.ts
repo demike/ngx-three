@@ -292,9 +292,3 @@ export const exampleDeclarations: any[] = [];
 EXAMPLE_ROUTES.forEach((route) => {
   exampleDeclarations.push(route.component);
 });
-
-@NgModule({
-  imports: [RouterModule.forRoot(EXAMPLE_ROUTES)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

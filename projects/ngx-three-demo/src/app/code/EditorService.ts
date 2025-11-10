@@ -1,6 +1,10 @@
+import { Injectable } from '@angular/core';
 import { toCodeSandbox } from './codesandbox';
 import { toStackblitz } from './stackblitz';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class EditorService {
   public urls: string[] = [];
   public fileNames: string[] = [];

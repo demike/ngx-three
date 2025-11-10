@@ -5,7 +5,6 @@ import { ThWrapperBase } from './ThWrapperBase';
   selector: 'th-abs-object',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThObjectBase<T extends Object3D, ARGS = unknown> extends ThWrapperBase<T, ARGS> implements OnInit {

@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, inject } from '@angular/core';
 import { Object3D } from 'three';
 import { ASSET_PATH } from '../assets';
+import { NgxThreeModule } from 'ngx-three';
 
 @Component({
-    selector: 'app-dynamic-loader-example',
-    templateUrl: './dynamic-loader-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-dynamic-loader-example',
+  templateUrl: './dynamic-loader-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgxThreeModule],
 })
 export class DynamicLoaderExampleComponent implements OnDestroy {
   private cdref = inject(ChangeDetectorRef);

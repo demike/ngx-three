@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ASSET_PATH } from '../assets';
+import { NgxThreeModule } from 'ngx-three';
 
 @Component({
-    selector: 'app-loader-example',
-    templateUrl: './loader-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-loader-example',
+  templateUrl: './loader-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgxThreeModule],
 })
 export class LoaderExampleComponent {
   public assetPath1 = `${ASSET_PATH}DamagedHelmet.glb`;

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
-import { RaycasterEmitEvent, ThMesh, ThObject3D, ThOutlinePass } from 'ngx-three';
+import { RaycasterEmitEvent, ThMesh, ThObject3D, ThOutlinePass, NgxThreeModule } from 'ngx-three';
 import { Color, MeshPhongMaterial, Vector2 } from 'three';
 import GUI from 'lil-gui';
 
@@ -8,7 +8,7 @@ import GUI from 'lil-gui';
   templateUrl: './outline-pass-events-example.component.html',
   styleUrls: ['./outline-pass-events-example.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  imports: [NgxThreeModule],
 })
 export class OutlinePassEventsExampleComponent implements OnInit {
   private elem = inject(ElementRef);

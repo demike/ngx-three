@@ -5,7 +5,7 @@
     x: 0,
     y: 0,
     width: 0.5 * canvasWidth,
-    height: canvasHeight
+    height: canvasHeight,
   }"
 >
   <th-scene #scene>
@@ -42,7 +42,7 @@
       x: view1.left * canvasWidth,
       y: view1.bottom * canvasHeight,
       width: view1.width * canvasWidth,
-      height: view1.height * canvasHeight
+      height: view1.height * canvasHeight,
     }"
     [scissor]="thview1.viewPort"
     [scissorTest]="true"
@@ -73,7 +73,7 @@
       x: view2.left * canvasWidth,
       y: view2.bottom * canvasHeight,
       width: view2.width * canvasWidth,
-      height: view2.height * canvasHeight
+      height: view2.height * canvasHeight,
     }"
     [scissor]="thview2.viewPort"
     [scissorTest]="true"
@@ -103,7 +103,7 @@
       x: view3.left * canvasWidth,
       y: view3.bottom * canvasHeight,
       width: view3.width * canvasWidth,
-      height: view3.height * canvasHeight
+      height: view3.height * canvasHeight,
     }"
     [scissor]="thview3.viewPort"
     [scissorTest]="true"

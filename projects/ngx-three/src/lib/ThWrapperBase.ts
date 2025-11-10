@@ -23,10 +23,9 @@ export interface ThWrapperEventMap<T = Object3D> extends Object3DEventMap {
 }
 
 @Component({
-    selector: 'th-abs-wrapper',
-    template: '',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'th-abs-wrapper',
+  template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThWrapperBase<T, ARGS = unknown> implements ThWrapperLifeCycle, OnChanges, OnInit, OnDestroy {
