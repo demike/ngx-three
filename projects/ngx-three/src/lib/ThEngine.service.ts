@@ -145,7 +145,6 @@ export class ThEngineService implements OnDestroy {
       if (view.effectComposer && renderer instanceof WebGLRenderer) {
         // effect composer needs a webgl renderer
         view.effectComposer.render();
-        // return;
       } else {
         renderer.render(scene.objRef, camera.objRef);
       }
