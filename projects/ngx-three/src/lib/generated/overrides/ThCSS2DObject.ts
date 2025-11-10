@@ -9,7 +9,6 @@ import { ThObject3D } from '../ThObject3D';
 @Component({
   selector: 'th-cSS2DObject',
   template: '<ng-content/>',
-  standalone: false,
   styles: [
     `
       :host {

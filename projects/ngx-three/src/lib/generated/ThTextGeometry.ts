@@ -20,7 +20,6 @@ import { ThExtrudeGeometry } from './ThExtrudeGeometry';
   selector: 'th-textGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,

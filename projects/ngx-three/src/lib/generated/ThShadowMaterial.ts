@@ -22,7 +22,6 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-shadowMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThShadowMaterial) },
   ],

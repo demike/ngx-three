@@ -16,7 +16,6 @@ import { ThCylinderGeometry } from './ThCylinderGeometry';
   selector: 'th-coneGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,

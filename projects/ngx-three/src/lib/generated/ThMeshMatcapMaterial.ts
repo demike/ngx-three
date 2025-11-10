@@ -25,7 +25,6 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-meshMatcapMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThMaterial,

@@ -11,7 +11,6 @@ import { ThScene } from '../ThScene';
 @Component({
   selector: 'th-transformControls',
   template: '<ng-content/>',
-  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     {

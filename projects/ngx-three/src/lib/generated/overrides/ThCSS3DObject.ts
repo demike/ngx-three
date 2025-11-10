@@ -9,7 +9,6 @@ import { ThCSS3DObjectGen } from '../ThCSS3DObjectGen';
 @Component({
   selector: 'th-cSS3DObject',
   template: '<ng-content/>',
-  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
   styles: [
     `
