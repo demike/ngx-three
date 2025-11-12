@@ -5,7 +5,7 @@
   height: 100%;
 }
 
-canvas {
+:host ::ng-deep canvas {
   flex: auto;
   outline: none;
   width: 100%;
