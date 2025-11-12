@@ -9,5 +9,6 @@ canvas {
   flex: auto;
   outline: none;
   width: 100%;
-  height: 100%
+  height: 100%;
+  position: relative; // necessary for onClick handling on non 100% width/height canvases
 }
