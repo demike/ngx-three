@@ -6,6 +6,7 @@ import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
 import { provideRouter } from '@angular/router';
 import { EXAMPLE_ROUTES } from './app/app-routing';
+import { provideHttpClient, withFetch, withInterceptorsFromDi } from '@angular/common/http';
 
 if (environment.production) {
   enableProdMode();
@@ -14,6 +15,7 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
   providers: [
     provideZonelessChangeDetection(),
+    provideHttpClient(withInterceptorsFromDi(), withFetch()),
     provideHighlightOptions({
       fullLibraryLoader: () => import('highlight.js'),
     }),

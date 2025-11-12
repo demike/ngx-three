@@ -1,6 +1,4 @@
 /* eslint-disable max-len */
-import { NgModule, Type } from '@angular/core';
-import { RouterModule, Route } from '@angular/router';
 import { AnimationExampleComponent } from './animation-example/animation-example.component';
 import { BasicExampleComponent } from './basic-example/basic-example.component';
 import { ControlsExampleComponent } from './controls-example/controls-example.component';
@@ -23,6 +21,8 @@ import { ViewsExampleComponent } from './views-example/views-example.component';
 import { MultiRendererExampleComponent } from './multi-renderer-example/multi-renderer-example.component';
 import { CSS3dRendererExampleComponent } from './css3d-renderer-example/css3d-renderer-example.component';
 import { HtmlWithCSS3dExampleComponent } from './html-with-css3d-example/html-with-css3d-example.component';
+import { Route } from '@angular/router';
+import { Type } from '@angular/core';
 
 export const EXAMPLE_ROUTES: (Route & {
   data: {
@@ -280,7 +280,6 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-with-css3d-example/html-with-css3d-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-with-css3d-example/html-with-css3d-example.component.ts',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-with-css3d-example/html-with-css3d-example.component.scss',
       ],
     },
   },

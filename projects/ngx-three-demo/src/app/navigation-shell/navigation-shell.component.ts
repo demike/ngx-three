@@ -6,10 +6,11 @@ import { EXAMPLE_ROUTES } from '../app-routing';
 import { EditorService } from '../code/EditorService';
 import { MatSidenavContainer, MatSidenav, MatSidenavContent } from '@angular/material/sidenav';
 import { MatToolbar } from '@angular/material/toolbar';
-import { MatNavList } from '@angular/material/list';
+import { MatListItem, MatNavList } from '@angular/material/list';
 import { MatIcon } from '@angular/material/icon';
 import { RouterModule } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-navigation-shell',
@@ -21,10 +22,12 @@ import { AsyncPipe } from '@angular/common';
     MatSidenav,
     MatToolbar,
     MatNavList,
+    MatListItem,
     MatSidenavContent,
     MatIcon,
     RouterModule,
     AsyncPipe,
+    MatButton,
   ],
 })
 export class NavigationShellComponent {
