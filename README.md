@@ -545,7 +545,7 @@ You can find an example [here](https://demike.github.io/ngx-three/ref-by-id-exam
 To load meshopt encoded gltf files you have to provide the meshopt decoder:
 
 ```ts 
-import type { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
 
 providers: [
   ...
