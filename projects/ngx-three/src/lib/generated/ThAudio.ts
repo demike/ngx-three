@@ -18,7 +18,6 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-audio',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThAudio) }],
 })
 export class ThAudio<

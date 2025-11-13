@@ -112,7 +112,6 @@ export abstract class NgxThreeClass {
           selector: "${this.directiveName}",
           template: "<ng-content/>",
           changeDetection: ChangeDetectionStrategy.OnPush,
-          standalone: false,
           providers: ${this.providersArray}
         })
         ${classHeader} {

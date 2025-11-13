@@ -148,7 +148,7 @@ import { ThVideoTexture } from './ThVideoTexture';
 import { ThWireframeGeometry } from './ThWireframeGeometry';
 
 @NgModule({
-  declarations: [
+  imports: [
     ThTransformControlsGen,
     ThTransformControls,
     ThArcballControls,

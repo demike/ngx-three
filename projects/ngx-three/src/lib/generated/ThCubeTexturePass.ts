@@ -19,7 +19,6 @@ import { ThPass } from './ThPass';
   selector: 'th-cubeTexturePass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     { provide: ThPassBase, useExisting: forwardRef(() => ThCubeTexturePass) },
   ],

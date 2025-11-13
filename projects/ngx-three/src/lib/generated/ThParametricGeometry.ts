@@ -17,7 +17,6 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-parametricGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,

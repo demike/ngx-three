@@ -18,7 +18,6 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-camera',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThCamera) }],
 })
 export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<

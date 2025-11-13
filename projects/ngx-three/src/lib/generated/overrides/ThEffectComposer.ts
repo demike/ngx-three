@@ -11,7 +11,6 @@ import { ThEffectComposerGen } from '../ThEffectComposerGen';
 @Component({
   selector: 'th-effectComposer',
   template: '<ng-content/>',
-  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [],
 })
@@ -21,7 +20,6 @@ export class ThEffectComposer<
 > extends ThEffectComposerGen<T, TARGS> {
   protected view = inject(ThView);
   protected engineService = inject(ThEngineService);
-
 
   public createThreeInstance(args?: TARGS): EffectComposer {
     if (!args) {

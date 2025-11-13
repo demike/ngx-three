@@ -1,14 +1,15 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { provideCSS3dRenderer } from 'projects/ngx-three/src/lib/renderer/renderer-providers';
 import { Object3D, Vector3 } from 'three';
+import { NgxThreeModule } from 'ngx-three';
 
 @Component({
-    selector: 'app-css3d-multi-renderer-example',
-    templateUrl: './css3d-renderer-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    styleUrls: ['./css3d-renderer-example.component.scss'],
-    providers: [provideCSS3dRenderer()],
-    standalone: false
+  selector: 'app-css3d-multi-renderer-example',
+  templateUrl: './css3d-renderer-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styleUrls: ['./css3d-renderer-example.component.scss'],
+  providers: [provideCSS3dRenderer()],
+  imports: [NgxThreeModule],
 })
 export class CSS3dRendererExampleComponent {
   // eslint-disable-next-line @typescript-eslint/naming-convention

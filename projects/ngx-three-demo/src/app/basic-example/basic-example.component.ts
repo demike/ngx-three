@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NgxThreeModule } from 'ngx-three';
 
 @Component({
-    selector: 'app-basic-example',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    template: `
+  selector: 'app-basic-example',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `
     <th-canvas>
       <th-scene>
         <th-mesh>
@@ -15,6 +16,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       </th-scene>
     </th-canvas>
   `,
-    standalone: false
+  imports: [NgxThreeModule],
 })
 export class BasicExampleComponent {}

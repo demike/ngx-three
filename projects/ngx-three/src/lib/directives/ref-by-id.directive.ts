@@ -6,7 +6,6 @@ import { createLazyObject3DProxy, isLazyObject3dProxy } from '../loaders/LazyObj
 
 @Directive({
   selector: '[refById]',
-  standalone: false,
 })
 export class RefByIdDirective implements OnDestroy {
   private host = inject(ThObject3D, { self: true });

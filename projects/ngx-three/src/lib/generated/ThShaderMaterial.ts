@@ -19,7 +19,6 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-shaderMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) },
   ],

@@ -27,7 +27,6 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-meshPhongMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     { provide: ThMaterial, useExisting: forwardRef(() => ThMeshPhongMaterial) },
   ],

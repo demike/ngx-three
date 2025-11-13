@@ -17,7 +17,6 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-lineDashedMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThMaterial,

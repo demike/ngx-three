@@ -1,12 +1,13 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ViewChild } from '@angular/core';
-import { ThGridHelper } from 'ngx-three';
+import { ThGridHelper, NgxThreeModule } from 'ngx-three';
 import { Material } from 'three';
+import { RobotComponent } from './robot.component';
 
 @Component({
-    selector: 'app-animation-example',
-    templateUrl: './animation-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-animation-example',
+  templateUrl: './animation-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgxThreeModule, RobotComponent],
 })
 export class AnimationExampleComponent implements AfterViewInit {
   // eslint-disable-next-line @typescript-eslint/naming-convention

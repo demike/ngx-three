@@ -22,7 +22,6 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-tubeGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,

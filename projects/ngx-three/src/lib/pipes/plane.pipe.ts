@@ -6,8 +6,7 @@ import { Plane, Vector3 } from 'three';
  * https://threejs.org/docs/#api/en/math/Plane
  */
 @Pipe({
-    name: 'plane',
-    standalone: false
+  name: 'plane',
 })
 export class PlanePipe implements PipeTransform {
   transform(normal: [number, number?, number?], constant?: number) {

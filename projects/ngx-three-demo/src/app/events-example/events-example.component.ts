@@ -1,11 +1,12 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, SimpleChanges, inject } from '@angular/core';
 import { ASSET_PATH } from '../assets';
+import { NgxThreeModule } from 'ngx-three';
 @Component({
-    selector: 'app-events-example',
-    templateUrl: './events-example.component.html',
-    styleUrls: ['./events-example.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-events-example',
+  templateUrl: './events-example.component.html',
+  styleUrls: ['./events-example.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgxThreeModule],
 })
 export class EventsExampleComponent {
   private cdref = inject(ChangeDetectorRef);

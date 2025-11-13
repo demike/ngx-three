@@ -18,7 +18,6 @@ export class DDSLoaderService extends ThCallbackLoaderService<CompressedTexture>
 @Pipe({
   name: 'loadDDSTexture',
   pure: true,
-  standalone: false,
 })
 export class ThDDSLoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture> implements PipeTransform {
   protected service = inject(DDSLoaderService);
@@ -26,7 +25,6 @@ export class ThDDSLoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture>
 
 @Directive({
   selector: '[loadDDSTexture]',
-  standalone: false,
 })
 export class ThDDSLoaderDirective extends ThCallbackLoaderBaseDirective<CompressedTexture> {
   protected host = inject(ThCompressedTexture, { host: true });

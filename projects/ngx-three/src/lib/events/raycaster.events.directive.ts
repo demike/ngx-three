@@ -10,8 +10,7 @@ export interface RaycasterEmitEvent extends Intersection {
 }
 
 @Directive({
-    selector: '[onClick], [onMouseEnter], [onMouseExit], [onPointerDown], [onPointerUp]',
-    standalone: false
+  selector: '[onClick], [onMouseEnter], [onMouseExit], [onPointerDown], [onPointerUp]',
 })
 export class RaycasterEventDirective implements AfterViewInit, OnDestroy {
   readonly host = inject<ThObject3D<RaycasterEventMap & Object3DEventMap>>(ThObject3D, { host: true });

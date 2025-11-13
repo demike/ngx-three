@@ -9,7 +9,7 @@ import { ThAnimationLoopService } from './th-animation-loop.service';
 @Component({
   template: `<div (beforeRender)="test()"></div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  ,
 })
 class TestHostComponent {
   public test() {}

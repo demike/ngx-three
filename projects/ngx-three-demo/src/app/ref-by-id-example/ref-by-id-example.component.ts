@@ -1,5 +1,23 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { DRACOLoaderService } from 'ngx-three';
+import {
+  DRACOLoaderService,
+  ThCanvas,
+  ThScene,
+  ThAmbientLight,
+  ThGroup,
+  ThObject3D,
+  ThMesh,
+  ThShaderMaterial,
+  ThPlaneGeometry,
+  ThMeshBasicMaterial,
+  ThPerspectiveCamera,
+  ThOrbitControls,
+  ThDirectionalLight,
+  ColorPipe,
+  ThGLTFLoaderDirective,
+  StatsDirective,
+  RefByIdDirective,
+} from 'ngx-three';
 import * as THREE from 'three';
 import { Clock, Plane, Vector3 } from 'three';
 import { ASSET_PATH } from '../assets';
@@ -13,10 +31,27 @@ import { ASSET_PATH } from '../assets';
  * By clicking on the notebook you can change the fragment shader.
  */
 @Component({
-    selector: 'app-ref-by-id-example',
-    templateUrl: './ref-by-id-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-ref-by-id-example',
+  templateUrl: './ref-by-id-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [
+    ThCanvas,
+    ThScene,
+    ThAmbientLight,
+    ThGroup,
+    ThObject3D,
+    ThMesh,
+    ThShaderMaterial,
+    ThPlaneGeometry,
+    ThMeshBasicMaterial,
+    ThPerspectiveCamera,
+    ThOrbitControls,
+    ThDirectionalLight,
+    ColorPipe,
+    ThGLTFLoaderDirective,
+    StatsDirective,
+    RefByIdDirective,
+  ],
 })
 export class RefByIdExampleComponent {
   // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -51,7 +86,7 @@ export class RefByIdExampleComponent {
     this.rotation = [
       THREE.MathUtils.lerp(this.rotation[0], Math.cos(t / 2) / 20 + 0.25, 0.1),
       THREE.MathUtils.lerp(this.rotation[1], Math.sin(t / 4) / 20, 0.1),
-      THREE.MathUtils.lerp(this.rotation[2], Math.sin(t / 8) / 20, 0.1)
+      THREE.MathUtils.lerp(this.rotation[2], Math.sin(t / 8) / 20, 0.1),
     ];
 
     this.position = [0, THREE.MathUtils.lerp(this.position[1], (-2 + Math.sin(t / 2)) / 2, 0.1), 0];

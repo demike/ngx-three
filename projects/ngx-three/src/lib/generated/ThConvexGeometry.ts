@@ -16,7 +16,6 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-convexGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,

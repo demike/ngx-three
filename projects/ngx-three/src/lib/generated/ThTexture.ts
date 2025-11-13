@@ -34,7 +34,6 @@ import { applyValue } from '../util';
   selector: 'th-texture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     { provide: ThTextureBase, useExisting: forwardRef(() => ThTexture) },
   ],

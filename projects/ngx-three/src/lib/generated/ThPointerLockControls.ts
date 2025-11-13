@@ -20,7 +20,6 @@ import { ThControlBase } from '../ThControlBase';
   selector: 'th-pointerLockControls',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThControlBase,

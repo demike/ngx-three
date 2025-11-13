@@ -17,7 +17,6 @@ import { ThCompressedTexture } from './ThCompressedTexture';
   selector: 'th-compressedCubeTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThTextureBase,

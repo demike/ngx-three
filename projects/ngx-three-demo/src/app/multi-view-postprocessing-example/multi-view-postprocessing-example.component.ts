@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit, ChangeDetectionStrategy, HostListener, ViewChild } from '@angular/core';
-import { ThCanvas } from 'ngx-three';
+import { ThCanvas, NgxThreeModule } from 'ngx-three';
 import { CanvasTexture, Color, PerspectiveCamera, Scene } from 'three';
 import { DotScreenShader } from 'three/examples/jsm/shaders/DotScreenShader.js';
 import { RGBShiftShader } from 'three/examples/jsm/shaders/RGBShiftShader.js';
 
 @Component({
-    selector: 'app-multi-view-postprocessing-example',
-    templateUrl: './multi-view-postprocessing-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-multi-view-postprocessing-example',
+  templateUrl: './multi-view-postprocessing-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgxThreeModule],
 })
 export class MultiViewPostprocessingExampleComponent implements OnInit {
   public Math = Math;

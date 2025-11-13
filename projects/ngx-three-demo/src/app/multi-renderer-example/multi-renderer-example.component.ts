@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ASSET_PATH } from '../assets';
 import { provideCSS2dRenderer, provideWebGLRenderer } from 'projects/ngx-three/src/lib/renderer/renderer-providers';
+import { NgxThreeModule } from 'ngx-three';
 
 @Component({
-    selector: 'app-multi-renderer-example',
-    templateUrl: './multi-renderer-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    styles: [
-        `
+  selector: 'app-multi-renderer-example',
+  templateUrl: './multi-renderer-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: [
+    `
       ::ng-deep .label {
         background-color: lightgrey;
         border-radius: 5px;
@@ -16,9 +17,9 @@ import { provideCSS2dRenderer, provideWebGLRenderer } from 'projects/ngx-three/s
         display: inline-block;
       }
     `,
-    ],
-    providers: [provideWebGLRenderer(), provideCSS2dRenderer()],
-    standalone: false
+  ],
+  providers: [provideWebGLRenderer(), provideCSS2dRenderer()],
+  imports: [NgxThreeModule],
 })
 export class MultiRendererExampleComponent {
   public assetPath1 = `${ASSET_PATH}DamagedHelmet.glb`;

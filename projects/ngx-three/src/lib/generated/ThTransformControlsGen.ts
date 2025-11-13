@@ -21,7 +21,6 @@ import { ThControlBase } from '../ThControlBase';
   selector: 'th-transformControlsGen',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThControlBase,

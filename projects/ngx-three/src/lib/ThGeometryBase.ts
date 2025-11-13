@@ -3,15 +3,13 @@ import { BufferGeometry, NormalOrGLBufferAttributes } from 'three';
 import { ThObject3D } from './generated/ThObject3D';
 import { ThWrapperBase } from './ThWrapperBase';
 @Component({
-    selector: 'th-abs-geometry',
-    template: '',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'th-abs-geometry',
+  template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThGeometryBase<T extends BufferGeometry<NormalOrGLBufferAttributes>, ARGS> extends ThWrapperBase<T, ARGS> {
   protected parent = inject(ThObject3D);
-
 
   public addToParent() {
     if (!this.parent.objRef) {

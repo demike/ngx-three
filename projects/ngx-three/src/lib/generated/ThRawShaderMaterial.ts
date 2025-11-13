@@ -11,7 +11,6 @@ import { ThShaderMaterial } from './ThShaderMaterial';
   selector: 'th-rawShaderMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThRawShaderMaterial) }],
 })
 export class ThRawShaderMaterial<

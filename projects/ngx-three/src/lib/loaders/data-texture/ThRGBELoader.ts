@@ -18,7 +18,6 @@ export class RGBELoaderService extends ThCallbackLoaderService<DataTexture> {
 @Pipe({
   name: 'loadRGBETexture',
   pure: true,
-  standalone: false,
 })
 export class ThRGBELoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> implements PipeTransform {
   protected service = inject(RGBELoaderService);
@@ -26,7 +25,6 @@ export class ThRGBELoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> impl
 
 @Directive({
   selector: '[loadRGBETexture]',
-  standalone: false,
 })
 export class ThRGBELoaderDirective extends ThCallbackLoaderBaseDirective<DataTexture> {
   protected host = inject(ThDataTexture, { host: true });

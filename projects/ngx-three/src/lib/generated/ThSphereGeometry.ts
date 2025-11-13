@@ -19,7 +19,6 @@ import { ThBufferGeometry } from './ThBufferGeometry';
   selector: 'th-sphereGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,

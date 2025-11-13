@@ -31,7 +31,6 @@ export const HOST_ELEMENT = new InjectionToken<ElementRef<HTMLElement>>('HOST_EL
     RaycasterService,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThView implements OnInit {

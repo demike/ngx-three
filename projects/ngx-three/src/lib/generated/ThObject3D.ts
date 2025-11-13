@@ -23,7 +23,6 @@ import { applyValue } from '../util';
   selector: 'th-object3D',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [],
 })
 export class ThObject3D<

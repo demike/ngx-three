@@ -16,7 +16,6 @@ import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
   selector: 'th-icosahedronGeometry',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThBufferGeometry,

@@ -25,7 +25,6 @@ import { ThTexture } from './ThTexture';
   selector: 'th-cubeTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     { provide: ThTextureBase, useExisting: forwardRef(() => ThCubeTexture) },
   ],

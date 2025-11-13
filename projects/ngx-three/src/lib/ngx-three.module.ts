@@ -36,7 +36,7 @@ import { RendererProviderDirective } from './renderer/renderer-providers';
 import { LODLevelDirective } from './directives/lod-level.directive';
 
 @NgModule({
-  declarations: [
+  imports: [
     ThCanvas,
     ThView,
     ThObjectBase,
@@ -92,8 +92,9 @@ import { LODLevelDirective } from './directives/lod-level.directive';
     LODLevelDirective,
     //extras
     HtmlComponent,
+    NgxThreeGeneratedModule,
+    CommonModule,
   ],
-  imports: [NgxThreeGeneratedModule, CommonModule],
   exports: [
     NgxThreeGeneratedModule,
     ThCanvas,
@@ -145,6 +146,7 @@ import { LODLevelDirective } from './directives/lod-level.directive';
     // directives
     RefByIdDirective,
     RendererProviderDirective,
+    LODLevelDirective,
     // extra
     HtmlComponent,
   ],

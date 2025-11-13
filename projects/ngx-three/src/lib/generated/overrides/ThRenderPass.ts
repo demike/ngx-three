@@ -12,7 +12,6 @@ import { ThRenderPassGen } from '../ThRenderPassGen';
   selector: 'th-renderPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [{ provide: ThPassBase, useExisting: forwardRef(() => ThRenderPass) }],
 })
 export class ThRenderPass<

@@ -18,7 +18,6 @@ export class UltraHDRLoaderService extends ThCallbackLoaderService<DataTexture> 
 @Pipe({
   name: 'loadUltraHDRTexture',
   pure: true,
-  standalone: false,
 })
 export class ThUltraHDRLoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> implements PipeTransform {
   protected service = inject(UltraHDRLoaderService);
@@ -26,7 +25,6 @@ export class ThUltraHDRLoaderPipe extends ThCallbackLoaderBasePipe<DataTexture> 
 
 @Directive({
   selector: '[loadUltraHDRTexture]',
-  standalone: false,
 })
 export class ThUltraHDRLoaderDirective extends ThCallbackLoaderBaseDirective<DataTexture> {
   protected host = inject(ThDataTexture, { host: true });

@@ -33,7 +33,6 @@ import { ThPass } from './ThPass';
   selector: 'th-sAOPass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     { provide: ThPassBase, useExisting: forwardRef(() => ThSAOPass) },
   ],

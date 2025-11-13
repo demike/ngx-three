@@ -2,13 +2,13 @@
 import { ChangeDetectionStrategy, Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Object3D } from 'three';
 import { createNoise3D } from 'simplex-noise';
-import { ThCanvas, ThInstancedMesh, ThPointLight } from 'ngx-three';
+import { ThCanvas, ThInstancedMesh, ThPointLight, NgxThreeModule } from 'ngx-three';
 
 @Component({
-    selector: 'app-instanced-mesh-example',
-    templateUrl: './instanced-mesh-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-instanced-mesh-example',
+  templateUrl: './instanced-mesh-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgxThreeModule],
 })
 export class InstancedMeshExampleComponent implements OnInit {
   readonly SIZE = 1.5;

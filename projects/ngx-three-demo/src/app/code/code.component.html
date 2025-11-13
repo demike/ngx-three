@@ -1,7 +1,7 @@
 <mat-card>
   <mat-card-content>
     <div class="code-wrapper hljs">
-      <mat-tab-group dynamicHeight color="primary" backgroundColor="primary">
+      <mat-tab-group [dynamicHeight]="true" color="primary" backgroundColor="primary">
         @for (codeUrl of codeUrls; track codeUrl; let i = $index) {
           <mat-tab [label]="fileNames[i]">
             <pre>
@@ -12,7 +12,7 @@
       </mat-tab-group>
     </div>
   </mat-card-content>
-  <mat-card-actions align="end">
+  <mat-card-actions [align]="'end'">
     <button mat-button class="gist-url" (click)="this.editorService.toCodeSandbox($event)" href="#">
       <mat-icon>crop_din</mat-icon>
       CodeSandbox
