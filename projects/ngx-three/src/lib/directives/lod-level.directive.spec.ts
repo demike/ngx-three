@@ -14,6 +14,7 @@ import { LOD, Scene } from 'three';
       <th-object3D [lodLevel]="{ distance: bar }" *ngIf="foo" />
     </th-lOD>
   `,
+  imports: [ThLOD, ThObject3D, LODLevelDirective, CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestHostComponent {
@@ -27,8 +28,7 @@ describe('lodLevel directive', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CommonModule],
-      declarations: [TestHostComponent, LODLevelDirective, ThObject3D, ThLOD],
+      imports: [TestHostComponent],
       providers: [{ provide: ThObject3D, useValue: { objRef: new Scene() } }],
     });
     fixture = TestBed.createComponent(TestHostComponent);

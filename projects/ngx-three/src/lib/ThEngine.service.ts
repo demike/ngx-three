@@ -138,17 +138,13 @@ export class ThEngineService implements OnDestroy {
     }
 
     for (const renderer of this.renderers) {
-      if (view.effectComposer && !(renderer instanceof WebGLRenderer)) {
-        // effect composer needs a webgl renderer
-        continue;
-      }
       this.applyRendererParametersFromView(view, renderer as Partial<WebGLRenderer>);
       if (isObserved(view.onCurrentRendererPass)) {
         this.ngZone.run(() => view.onCurrentRendererPass.emit({ renderer, scene, camera, engine: this }));
       }
-      if (view.effectComposer) {
+      if (view.effectComposer && renderer instanceof WebGLRenderer) {
+        // effect composer needs a webgl renderer
         view.effectComposer.render();
-        return;
       } else {
         renderer.render(scene.objRef, camera.objRef);
       }

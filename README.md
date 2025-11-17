@@ -541,6 +541,20 @@ dracoLoader.setReuseInstance(false); // (default: true)
 
 You can find an example [here](https://demike.github.io/ngx-three/ref-by-id-example)
 
+### Meshopt Decoder
+To load meshopt encoded gltf files you have to provide the meshopt decoder:
+
+```ts 
+import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+
+providers: [
+  ...
+  provideMeshoptDecoder(MeshoptDecoder),
+  ...
+],
+```
+
+
 ## Creating your own Loader
 
 In addition to the pre-defined loaders it is actually quite simple to add additional

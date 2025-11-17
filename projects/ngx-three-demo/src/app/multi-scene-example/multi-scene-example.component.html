@@ -1,5 +1,3 @@
-<div #slider class="slider" (pointerdown)="onSliderPointerDown($any($event))"></div>
-
 <th-canvas #thecanvas [disableDefaultView]="true">
   <th-perspectiveCamera #cam [args]="[35, 2, 0.1, 100]" [position]="[0, 0, 6]">
     <th-orbitControls />
@@ -44,3 +42,4 @@
     </th-scene>
   </th-view>
 </th-canvas>
+<div #slider class="slider" (pointerdown)="onSliderPointerDown($any($event))"></div>
