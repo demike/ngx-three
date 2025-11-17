@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LODExampleComponent } from './lod-example.component';
+import { AppModule } from '../app.module';
 
 
 describe('LODExampleComponent', () => {
@@ -8,7 +9,7 @@ describe('LODExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [LODExampleComponent]
+      imports: [AppModule],
     }).compileComponents();
   });
 
