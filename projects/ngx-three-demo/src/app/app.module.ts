@@ -43,6 +43,7 @@ import { MultiRendererExampleComponent } from './multi-renderer-example/multi-re
 import { CSS3dRendererExampleComponent } from './css3d-renderer-example/css3d-renderer-example.component';
 import { HtmlWithCSS3dExampleComponent } from './html-with-css3d-example/html-with-css3d-example.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LODExampleComponent } from './lod-example/lod-example.component';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { HttpClientModule } from '@angular/common/http';
     MultiRendererExampleComponent,
     CSS3dRendererExampleComponent,
     HtmlWithCSS3dExampleComponent,
+    LODExampleComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,46 @@
+<th-canvas [thStats]="true">
+  <th-scene>
+    <th-ambientLight [intensity]="3" />
+
+    <th-meshStandardMaterial #trunkMat [color]="'#893602' | color"/>
+    <th-meshStandardMaterial #leavesMat [color]="'#45bf45' | color"/>
+
+    <th-lOD>
+      <!-- Nearby: a tree drawn with a few spheres -->
+      <th-group [lodLevel]>
+        <th-mesh [position]="[0, 3, 0]" [material]="trunkMat.objRef">
+          <th-cylinderGeometry [args]="[0.1, 0.2, 6]"/>
+        </th-mesh>
+        <th-mesh [position]="[ 0.0, 3, 0.0]" [material]="leavesMat.objRef"><th-sphereGeometry [args]="[0.5]" /></th-mesh>
+        <th-mesh [position]="[ 0.4, 4, 0.4]" [material]="leavesMat.objRef"><th-sphereGeometry [args]="[1.0]" /></th-mesh>
+        <th-mesh [position]="[-0.2, 5, 0.0]" [material]="leavesMat.objRef"><th-sphereGeometry [args]="[0.8]" /></th-mesh>
+        <th-mesh [position]="[ 0.3, 6,-0.1]" [material]="leavesMat.objRef"><th-sphereGeometry [args]="[0.9]" /></th-mesh>
+        <th-mesh [position]="[ 0.0, 7, 0.0]" [material]="leavesMat.objRef"><th-sphereGeometry [args]="[0.5]" /></th-mesh>
+      </th-group>
+
+      <!-- Further away: a tree drawn with an ellipsoid -->
+      <th-group [lodLevel]="{distance: 30}">
+        <th-mesh [position]="[0, 3, 0]" [material]="trunkMat.objRef">
+          <th-cylinderGeometry [args]="[0.1, 0.2, 6]"/>
+        </th-mesh>
+        <th-mesh [position]="[0, 6, 0]" [scale]="[0.5, 1, 0.5]" [material]="leavesMat.objRef">
+          <th-sphereGeometry [args]="[3]" />
+        </th-mesh>
+      </th-group>
+
+      <!-- Far away: a tree drawn with a box -->
+      <th-group [lodLevel]="{distance: 60}">
+        <th-mesh [position]="[0, 5, 0]" [material]="leavesMat.objRef">
+          <th-boxGeometry [args]="[2, 6, 2]" />
+        </th-mesh>
+      </th-group>
+    </th-lOD>
+
+    <th-gridHelper [args]="[10, 10]" />
+    <th-pointLight [position]="[10, 10, 10]" [intensity]="3" [color]="[1, 1, 1]" [distance]="0" [decay]="0"/>
+
+    <th-perspectiveCamera [args]="[45, 2, 0.1, 100]" [position]="[10, 10, 10]">
+      <th-orbitControls [target]="[0, 4, 0]" />
+    </th-perspectiveCamera>
+  </th-scene>
+</th-canvas>

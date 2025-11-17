@@ -2,9 +2,9 @@ import { Component, ChangeDetectionStrategy, Input } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
-import { LODLevelDirective } from "./lod-level.directive";
 import { ThLOD, ThObject3D } from "../generated";
 import { LOD, Scene } from "three";
+import { NgxThreeModule } from "../ngx-three.module";
 
 @Component({
   template: `
@@ -28,8 +28,8 @@ describe('lodLevel directive', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [CommonModule],
-      declarations: [TestHostComponent, LODLevelDirective, ThObject3D, ThLOD],
+      imports: [CommonModule, NgxThreeModule],
+      declarations: [TestHostComponent],
       providers: [
         {provide: ThObject3D, useValue: {objRef: new Scene()}},
       ],
