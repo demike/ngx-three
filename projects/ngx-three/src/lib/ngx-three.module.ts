@@ -145,6 +145,7 @@ import { LODLevelDirective } from './directives/lod-level.directive';
     // directives
     RefByIdDirective,
     RendererProviderDirective,
+    LODLevelDirective,
     // extra
     HtmlComponent,
   ],

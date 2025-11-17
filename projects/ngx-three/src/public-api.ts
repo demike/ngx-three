@@ -58,6 +58,7 @@ export * from './lib/loaders/data-texture/ThUltraHDRLoader';
 export * from './lib/loaders/ThPLYLoader';
 
 export * from './lib/directives/ref-by-id.directive';
+export * from './lib/directives/lod-level.directive';
 
 // extras
 
