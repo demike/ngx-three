@@ -23,6 +23,7 @@ import { ViewsExampleComponent } from './views-example/views-example.component';
 import { MultiRendererExampleComponent } from './multi-renderer-example/multi-renderer-example.component';
 import { CSS3dRendererExampleComponent } from './css3d-renderer-example/css3d-renderer-example.component';
 import { HtmlWithCSS3dExampleComponent } from './html-with-css3d-example/html-with-css3d-example.component';
+import { LODExampleComponent } from './lod-example/lod-example.component';
 
 export const EXAMPLE_ROUTES: (Route & {
   data: {
@@ -281,6 +282,17 @@ export const EXAMPLE_ROUTES: (Route & {
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-with-css3d-example/html-with-css3d-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-with-css3d-example/html-with-css3d-example.component.ts',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-with-css3d-example/html-with-css3d-example.component.scss',
+      ],
+    },
+  },
+  {
+    path: 'lod-example',
+    data: {
+      title: 'LOD Example',
+      exampleComponent: LODExampleComponent,
+      codeUrls: [
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/lod-example/lod-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/lod-example/lod-example.component.ts',
       ],
     },
   },
