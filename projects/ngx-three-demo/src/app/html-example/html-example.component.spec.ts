@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AppModule } from '../app.module';
 
 import { HtmlExampleComponent } from './html-example.component';
 
@@ -9,7 +8,7 @@ describe('HtmlExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppModule]
+      imports: [HtmlExampleComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HtmlExampleComponent);
