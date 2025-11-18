@@ -61,6 +61,7 @@ export * from './lib/directives/ref-by-id.directive';
 export * from './lib/directives/lod-level.directive';
 
 // extras
+export * from './lib/directives/lod-level.directive';
 
 // web
 export * from './lib/extra/web/html.component';
