@@ -8,7 +8,7 @@ describe('OnDemandExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OnDemandExampleComponent]
+      imports: [OnDemandExampleComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(OnDemandExampleComponent);

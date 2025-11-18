@@ -8,7 +8,7 @@ describe('PostProcessingExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [PostProcessingExampleComponent]
+      imports: [PostProcessingExampleComponent],
     }).compileComponents();
   });
 

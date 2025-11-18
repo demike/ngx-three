@@ -3,18 +3,22 @@ import { CommonModule } from '@angular/common';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { LODLevelDirective } from './lod-level.directive';
-import { ThLOD, ThObject3D } from '../generated';
+import { ThLOD, ThObject3D, ThScene } from '../generated';
 import { LOD, Scene } from 'three';
+import { ThCanvas } from 'ngx-three';
 
 @Component({
   template: `
-    <th-lOD>
-      <th-object3D [lodLevel] />
-      <th-object3D [lodLevel]="{ distance: 5 }" />
-      <th-object3D [lodLevel]="{ distance: bar }" *ngIf="foo" />
-    </th-lOD>
+    <th-canvas
+      ><th-scene>
+        <th-lOD>
+          <th-object3D [lodLevel] />
+          <th-object3D [lodLevel]="{ distance: 5 }" />
+          <th-object3D [lodLevel]="{ distance: bar }" *ngIf="foo" />
+        </th-lOD> </th-scene
+    ></th-canvas>
   `,
-  imports: [ThLOD, ThObject3D, LODLevelDirective, CommonModule],
+  imports: [ThLOD, ThObject3D, LODLevelDirective, CommonModule, ThCanvas, ThScene],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestHostComponent {
@@ -22,7 +26,7 @@ class TestHostComponent {
   @Input() bar = 10;
 }
 
-describe('lodLevel directive', () => {
+fdescribe('lodLevel directive', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let lod: LOD;
 

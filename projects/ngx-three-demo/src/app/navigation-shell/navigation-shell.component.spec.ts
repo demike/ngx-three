@@ -1,5 +1,5 @@
 import { LayoutModule } from '@angular/cdk/layout';
-import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,26 +9,28 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { NavigationShellComponent } from './navigation-shell.component';
 import { EditorService } from '../code/EditorService';
+import { RouterModule } from '@angular/router';
 
 describe('NavigationShellComponent', () => {
   let component: NavigationShellComponent;
   let fixture: ComponentFixture<NavigationShellComponent>;
 
-  beforeEach(waitForAsync(() => {
-    TestBed.configureTestingModule({
-      declarations: [NavigationShellComponent],
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       imports: [
+        RouterModule.forRoot([]),
         NoopAnimationsModule,
         LayoutModule,
         MatButtonModule,
         MatIconModule,
         MatListModule,
         MatSidenavModule,
-        MatToolbarModule
+        MatToolbarModule,
+        NavigationShellComponent,
       ],
-      providers: [EditorService]
+      providers: [EditorService],
     }).compileComponents();
-  }));
+  });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(NavigationShellComponent);
