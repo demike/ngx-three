@@ -7,7 +7,6 @@ import { ThCanvas } from 'ngx-three';
 @Component({
   template: `<th-canvas [thStats]></th-canvas>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  ,
 })
 class TestHostComponent {}
 
