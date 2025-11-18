@@ -31,7 +31,7 @@ describe('ThWrapperBase', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ThWrapperBase],
+      imports: [ThWrapperBase],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ThWrapperImplComponent);
