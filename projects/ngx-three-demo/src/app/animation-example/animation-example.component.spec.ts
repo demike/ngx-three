@@ -9,7 +9,7 @@ describe('AnimationExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AnimationExampleComponent, FogPipe]
+      imports: [AnimationExampleComponent, FogPipe],
     }).compileComponents();
   });
 

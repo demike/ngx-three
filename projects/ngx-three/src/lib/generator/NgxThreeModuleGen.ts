@@ -15,7 +15,7 @@ export class NgxThreeModuleGen {
       if (c.overrideStub) {
         strClasses += c.overrideStub.className + ',';
         imports.push(
-          `import { ${c.overrideStub.className} } from './${NgxThreeOverrideStub.OVERRIDE_SUB_PATH}${c.overrideStub.className}';`
+          `import { ${c.overrideStub.className} } from './${NgxThreeOverrideStub.OVERRIDE_SUB_PATH}${c.overrideStub.className}';`,
         );
       }
     });
@@ -25,7 +25,7 @@ export class NgxThreeModuleGen {
         import { NgModule } from '@angular/core';
 
         @NgModule({
-        declarations: [${strClasses}],
+        imports: [${strClasses}],
         exports: [${strClasses}],
         })
         export class NgxThreeGeneratedModule {}

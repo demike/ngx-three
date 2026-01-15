@@ -8,7 +8,7 @@ describe('MultiSceneExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MultiSceneExampleComponent]
+      imports: [MultiSceneExampleComponent],
     }).compileComponents();
   });
 

@@ -10,7 +10,7 @@
       [position]="this.position"
       (onUpdate)="logUpdates($event)"
       (onLoaded)="onLoaded()"
-      />
+    />
 
     <th-gridHelper [args]="[10, 10]" />
     <th-pointLight [position]="[10, 10, 10]" [intensity]="3" />
@@ -24,9 +24,9 @@
       <th-orbitControls
         [threeEvents]="{
           change: onOrbitControlChange | bind: this,
-          end: onOrbitControlEnd
+          end: onOrbitControlEnd,
         }"
-        />
+      />
     </th-perspectiveCamera>
   </th-scene>
 </th-canvas>

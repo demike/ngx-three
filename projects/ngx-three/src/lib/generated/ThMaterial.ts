@@ -29,7 +29,6 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-material',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [],
 })
 export class ThMaterial<

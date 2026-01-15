@@ -22,7 +22,6 @@ import { applyValue } from '../util';
   selector: 'th-orbitControls',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     { provide: ThControlBase, useExisting: forwardRef(() => ThOrbitControls) },
   ],

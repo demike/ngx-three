@@ -1,5 +1,15 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { createObj3DProviderArray } from 'ngx-three';
+import {
+  createObj3DProviderArray,
+  ThBox3Helper,
+  ThGridHelper,
+  ThPointLight,
+  ThAmbientLight,
+  ThScene,
+  ThCanvas,
+  ThPerspectiveCamera,
+  RaycasterEventDirective,
+} from 'ngx-three';
 import { ThMesh } from 'ngx-three';
 import { provideWebGLRenderer } from 'projects/ngx-three/src/lib/renderer/renderer-providers';
 import * as THREE from 'three';
@@ -11,7 +21,6 @@ import { BoxGeometry, MeshStandardMaterial } from 'three';
   selector: 'th-box',
   providers: createObj3DProviderArray(Box),
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class Box extends ThMesh implements OnInit {
@@ -32,7 +41,17 @@ export class Box extends ThMesh implements OnInit {
   templateUrl: './simple-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [provideWebGLRenderer()],
-  standalone: false,
+  imports: [
+    ThBox3Helper,
+    ThGridHelper,
+    ThPointLight,
+    Box,
+    ThAmbientLight,
+    ThScene,
+    ThCanvas,
+    ThPerspectiveCamera,
+    RaycasterEventDirective,
+  ],
 })
 export class SimpleExampleComponent {
   constructor() {

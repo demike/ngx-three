@@ -69,7 +69,6 @@ function provideDefaultRenderer(): StaticProvider[] {
     // default provider for webgl renderer
     provideDefaultRenderer(),
   ],
-  standalone: false,
 })
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThCanvas extends ThView implements OnInit, AfterViewInit, AfterContentChecked {

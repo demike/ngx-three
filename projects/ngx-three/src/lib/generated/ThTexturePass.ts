@@ -20,7 +20,6 @@ import { ThPass } from './ThPass';
   selector: 'th-texturePass',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     { provide: ThPassBase, useExisting: forwardRef(() => ThTexturePass) },
   ],

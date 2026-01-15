@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AppModule } from '../app.module';
 
 import { HtmlWithCSS3dExampleComponent } from './html-with-css3d-example.component';
+import { HtmlExampleComponent } from '../html-example/html-example.component';
 
 describe('HtmlExampleComponent', () => {
   let component: HtmlWithCSS3dExampleComponent;
@@ -9,7 +9,7 @@ describe('HtmlExampleComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppModule],
+      imports: [HtmlExampleComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HtmlWithCSS3dExampleComponent);

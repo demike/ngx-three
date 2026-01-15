@@ -14,7 +14,6 @@ import { ThWrapperBase } from '../ThWrapperBase';
   selector: 'th-effectComposerGen',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [],
 })
 export class ThEffectComposerGen<

@@ -8,7 +8,7 @@ describe('MultiViewPostprocessingComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MultiRendererExampleComponent],
+      imports: [MultiRendererExampleComponent],
     }).compileComponents();
   });
 

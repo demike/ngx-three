@@ -21,7 +21,6 @@ import { ThTexture } from './ThTexture';
   selector: 'th-framebufferTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThTextureBase,

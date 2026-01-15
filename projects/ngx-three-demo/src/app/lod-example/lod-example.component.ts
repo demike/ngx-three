@@ -1,10 +1,11 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { NgxThreeModule } from 'ngx-three';
 
 @Component({
   selector: 'app-lod-example',
   templateUrl: './lod-example.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  imports: [NgxThreeModule],
 })
 export class LODExampleComponent {
   trees: [x: number, y: number, z: number][] = [

@@ -1,16 +1,20 @@
 /* eslint-disable max-len */
-import { NgModule, Type } from '@angular/core';
-import { RouterModule, Route } from '@angular/router';
+import { Type } from '@angular/core';
+import { Route } from '@angular/router';
 import { AnimationExampleComponent } from './animation-example/animation-example.component';
 import { BasicExampleComponent } from './basic-example/basic-example.component';
 import { ControlsExampleComponent } from './controls-example/controls-example.component';
+import { CSS3dRendererExampleComponent } from './css3d-renderer-example/css3d-renderer-example.component';
 import { DynamicLoaderExampleComponent } from './dynamic-loader-example/dynamic-loader-example.component';
 import { EventsExampleComponent } from './events-example/events-example.component';
 import { ExamplePageComponent } from './example-page/example-page.component';
 import { HtmlExampleComponent } from './html-example/html-example.component';
+import { HtmlWithCSS3dExampleComponent } from './html-with-css3d-example/html-with-css3d-example.component';
 import { InstancedMeshExampleComponent } from './instanced-mesh-example/instanced-mesh-example.component';
 import { IntroductoryExampleComponent } from './introductory-example/introductory-example.component';
 import { LoaderExampleComponent } from './loader-example/loader-example.component';
+import { LODExampleComponent } from './lod-example/lod-example.component';
+import { MultiRendererExampleComponent } from './multi-renderer-example/multi-renderer-example.component';
 import { MultiSceneExampleComponent } from './multi-scene-example/multi-scene-example.component';
 import { MultiViewPostprocessingExampleComponent } from './multi-view-postprocessing-example/multi-view-postprocessing-example.component';
 import { OnDemandExampleComponent } from './on-demand-example/on-demand-example.component';
@@ -20,10 +24,7 @@ import { PostProcessingExampleComponent } from './post-processing-example/post-p
 import { RefByIdExampleComponent } from './ref-by-id-example/ref-by-id-example.component';
 import { SimpleExampleComponent } from './simple-example/simple-example.component';
 import { ViewsExampleComponent } from './views-example/views-example.component';
-import { MultiRendererExampleComponent } from './multi-renderer-example/multi-renderer-example.component';
-import { CSS3dRendererExampleComponent } from './css3d-renderer-example/css3d-renderer-example.component';
-import { HtmlWithCSS3dExampleComponent } from './html-with-css3d-example/html-with-css3d-example.component';
-import { LODExampleComponent } from './lod-example/lod-example.component';
+import { InstancedGLBExampleComponent } from './instanced-glb-example/instanced-glb-example.component';
 
 export const EXAMPLE_ROUTES: (Route & {
   data: {
@@ -281,7 +282,6 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-with-css3d-example/html-with-css3d-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-with-css3d-example/html-with-css3d-example.component.ts',
-        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/html-with-css3d-example/html-with-css3d-example.component.scss',
       ],
     },
   },
@@ -296,6 +296,17 @@ export const EXAMPLE_ROUTES: (Route & {
       ],
     },
   },
+  {
+    path: 'instanced-glb-example',
+    data: {
+      title: 'Instanced GLB Example',
+      exampleComponent: InstancedGLBExampleComponent,
+      codeUrls: [
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/instanced-glb-example/instanced-glb-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/instanced-glb-example/instanced-glb-example.component.ts',
+      ],
+    },
+  },
 ];
 
 EXAMPLE_ROUTES.forEach((route) => (route.component = ExamplePageComponent));
@@ -304,9 +315,3 @@ export const exampleDeclarations: any[] = [];
 EXAMPLE_ROUTES.forEach((route) => {
   exampleDeclarations.push(route.component);
 });
-
-@NgModule({
-  imports: [RouterModule.forRoot(EXAMPLE_ROUTES)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}

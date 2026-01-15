@@ -5,9 +5,9 @@
     x: 0,
     y: 0,
     width: 0.5 * canvasWidth,
-    height: canvasHeight
+    height: canvasHeight,
   }"
-  >
+>
   <th-scene #scene>
     <th-directionalLight [position]="[0, 0, 1]" [args]="['#ffffff']" [intensity]="3" />
     <th-mesh [position]="[0, 0, 0]" [rotation]="[-Math.PI / 2, 0, 0]">
@@ -18,37 +18,37 @@
         [shininess]="30"
         [specular]="['#fac400']"
         [color]="['#f83f0d']"
-        />
+      />
     </th-mesh>
     <th-mesh
       [position]="[-400, 0, 0]"
       [rotation]="[-Math.PI / 2, 0, 0]"
       [geometry]="geo.objRef"
       [material]="mat.objRef"
-      />
+    />
     <th-mesh
       [position]="[400, 0, 0]"
       [rotation]="[-Math.PI / 2, 0, 0]"
       [geometry]="geo.objRef"
       [material]="mat.objRef"
-      />
+    />
   </th-scene>
 
   @for (view of views; track view; let i = $index) {
     <th-view
       #thview
       [scene]="scene"
-    [viewPort]="{
-      x: view.left * canvasWidth,
-      y: view.bottom * canvasHeight,
-      width: view.width * canvasWidth,
-      height: view.height * canvasHeight
-    }"
+      [viewPort]="{
+        x: view.left * canvasWidth,
+        y: view.bottom * canvasHeight,
+        width: view.width * canvasWidth,
+        height: view.height * canvasHeight,
+      }"
       [scissor]="thview.viewPort"
       [scissorTest]="true"
       [clearColor]="view.background"
       (onRender)="view.updateCamera(camera.objRef, scene.objRef)"
-      >
+    >
       <th-perspectiveCamera
         #camera
         [position]="$any(view.eye)"
@@ -57,7 +57,7 @@
         [aspect]="(view.width * canvasWidth) / (view.height * canvasHeight)"
         [near]="1"
         [far]="10000"
-        />
+      />
     </th-view>
   }
 </th-canvas>

@@ -9,7 +9,7 @@ import { ThAnimationLoopService } from './th-animation-loop.service';
 @Component({
   template: `<div (beforeRender)="test()"></div>`,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
+  imports: [ThRenderDirective],
 })
 class TestHostComponent {
   public test() {}
@@ -29,7 +29,7 @@ describe('ThRenderDirective', () => {
     animationLoopService = jasmine.createSpyObj<ThAnimationLoopService>('ThAnimationLoopService', ['start', 'stop']);
 
     TestBed.configureTestingModule({
-      declarations: [ThRenderDirective, TestHostComponent],
+      imports: [TestHostComponent],
       providers: [
         { provide: ThEngineService, useValue: engineServiceMock },
         { provide: ThAnimationLoopService, useValue: animationLoopService },

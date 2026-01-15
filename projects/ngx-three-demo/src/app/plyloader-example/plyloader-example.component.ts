@@ -1,13 +1,13 @@
 import { Component, ChangeDetectionStrategy, ViewChild } from '@angular/core';
-import { ThPerspectiveCamera } from 'ngx-three';
+import { ThPerspectiveCamera, NgxThreeModule } from 'ngx-three';
 import { Vector3 } from 'three';
 import { ASSET_PATH } from '../assets';
 
 @Component({
-    selector: 'app-plyloader-example',
-    templateUrl: './plyloader-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'app-plyloader-example',
+  templateUrl: './plyloader-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [NgxThreeModule],
 })
 export class PLYLoaderExampleComponent {
   // eslint-disable-next-line @typescript-eslint/naming-convention

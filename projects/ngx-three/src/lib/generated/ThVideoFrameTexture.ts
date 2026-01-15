@@ -24,7 +24,6 @@ import { ThVideoTexture } from './ThVideoTexture';
   selector: 'th-videoFrameTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThTextureBase,

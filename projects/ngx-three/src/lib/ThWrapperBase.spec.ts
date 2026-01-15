@@ -15,10 +15,9 @@ class ExampleObj extends EventDispatcher<Object3DEventMap & ExampleEventMap> {
 }
 
 @Component({
-    selector: 'th-wrapper-impl',
-    template: '',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  selector: 'th-wrapper-impl',
+  template: '',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class ThWrapperImplComponent extends ThWrapperBase<ExampleObj, any> {
   getType() {
@@ -32,7 +31,7 @@ describe('ThWrapperBase', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ThWrapperBase],
+      imports: [ThWrapperBase],
     }).compileComponents();
 
     fixture = TestBed.createComponent(ThWrapperImplComponent);

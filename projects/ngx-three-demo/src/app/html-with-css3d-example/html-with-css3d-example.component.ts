@@ -1,5 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { DRACOLoaderService, WEBGL_RENDERER, provideCSS3dRenderer, provideWebGLRenderer } from 'ngx-three';
+import {
+  DRACOLoaderService,
+  WEBGL_RENDERER,
+  provideCSS3dRenderer,
+  provideWebGLRenderer,
+  NgxThreeModule,
+} from 'ngx-three';
 import * as THREE from 'three';
 import { Clock } from 'three';
 import { ASSET_PATH } from '../assets';
@@ -12,11 +18,11 @@ import { ASSET_PATH } from '../assets';
  * It selects the screen of the notebook by id and adds the html content node as a child.
  */
 @Component({
-    selector: 'app-html-with-css3d-example',
-    templateUrl: './html-with-css3d-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    providers: [provideWebGLRenderer(), provideCSS3dRenderer()],
-    standalone: false
+  selector: 'app-html-with-css3d-example',
+  templateUrl: './html-with-css3d-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [provideWebGLRenderer(), provideCSS3dRenderer()],
+  imports: [NgxThreeModule],
 })
 export class HtmlWithCSS3dExampleComponent {
   // eslint-disable-next-line @typescript-eslint/naming-convention

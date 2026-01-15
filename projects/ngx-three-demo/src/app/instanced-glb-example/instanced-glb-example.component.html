@@ -1,0 +1,26 @@
+<label for="shift">Instances {{ instanceCnt() }}</label>
+<input
+  id="shift"
+  type="range"
+  [value]="instanceCnt()"
+  (change)="instanceCnt.set($any($event.target).value)"
+  [min]="9"
+  [max]="1000"
+/>
+
+<th-canvas (onRender)="this.onBeforeRender()">
+  <th-scene [thStats]="true">
+    <th-ambientLight [intensity]="3" />
+    @let _helmets = helmets();
+    @if (_helmets) {
+      <th-object3D [objRef]="_helmets" />
+    }
+
+    <th-gridHelper [args]="[10, 10]" />
+    <th-pointLight [position]="[10, 10, 10]" [decay]="0" />
+
+    <th-perspectiveCamera [args]="[45, 2, 0.1, 100]" [position]="[10, 10, 10]" [lookAt]="[0, 0, 0]">
+      <th-orbitControls></th-orbitControls>
+    </th-perspectiveCamera>
+  </th-scene>
+</th-canvas>

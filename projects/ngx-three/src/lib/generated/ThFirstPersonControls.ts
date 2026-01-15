@@ -17,7 +17,6 @@ import { ThControlBase } from '../ThControlBase';
   selector: 'th-firstPersonControls',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     {
       provide: ThControlBase,

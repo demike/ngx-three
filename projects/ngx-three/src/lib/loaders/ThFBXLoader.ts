@@ -13,7 +13,6 @@ export class FBXLoaderService extends ThAsyncLoaderService<Group> {
 @Pipe({
   name: 'loadFBX',
   pure: true,
-  standalone: false,
 })
 export class ThFBXLoaderPipe extends ThAsyncLoaderBasePipe<Group> implements PipeTransform {
   protected service = inject(FBXLoaderService);
@@ -21,7 +20,6 @@ export class ThFBXLoaderPipe extends ThAsyncLoaderBasePipe<Group> implements Pip
 
 @Directive({
   selector: '[loadFBX]',
-  standalone: false,
 })
 export class ThFBXLoaderDirective extends ThAsyncLoaderBaseDirective<Group> {
   protected service = inject(FBXLoaderService);

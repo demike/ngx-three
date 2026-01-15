@@ -18,7 +18,6 @@ export class PVRLoaderService extends ThCallbackLoaderService<CompressedTexture>
 @Pipe({
   name: 'loadPVRTexture',
   pure: true,
-  standalone: false,
 })
 export class ThPVRLoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture> implements PipeTransform {
   protected service = inject(PVRLoaderService);
@@ -26,7 +25,6 @@ export class ThPVRLoaderPipe extends ThCallbackLoaderBasePipe<CompressedTexture>
 
 @Directive({
   selector: '[loadPVRTexture]',
-  standalone: false,
 })
 export class ThPVRLoaderDirective extends ThCallbackLoaderBaseDirective<CompressedTexture> {
   protected host = inject(ThCompressedTexture, { host: true });

@@ -1,9 +1,10 @@
 /* eslint-disable @angular-eslint/component-class-suffix */
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { NgxThreeModule, ThMesh, ThBoxGeometry, ThMeshBasicMaterial } from 'ngx-three';
 
 @Component({
-    selector: 'app-box',
-    template: `
+  selector: 'app-box',
+  template: `
     <th-mesh
       [rotation]="rotation"
       [position]="position"
@@ -14,8 +15,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
       <th-meshBasicMaterial [args]="{ color: 'purple' }" />
     </th-mesh>
   `,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [ThMesh, ThBoxGeometry, ThMeshBasicMaterial],
 })
 export class Box {
   public selected = false;
@@ -27,8 +28,8 @@ export class Box {
 }
 
 @Component({
-    selector: 'app-introductory-example',
-    template: ` <th-canvas (onRender)="this.onBeforeRender()">
+  selector: 'app-introductory-example',
+  template: ` <th-canvas (onRender)="this.onBeforeRender()">
     <th-scene>
       <app-box [position]="[-2, 0, 0]" [rotation]="rotation" />
       <app-box [position]="[2, 0, 0]" [rotation]="rotation" />
@@ -36,8 +37,8 @@ export class Box {
       <th-perspectiveCamera [args]="[75, 2, 0.1, 1000]" [position]="[1, 1, 5]" />
     </th-scene>
   </th-canvas>`,
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [Box, NgxThreeModule],
 })
 export class IntroductoryExampleComponent {
   public rotation: [x: number, y: number, z: number] = [0, 0, 0];

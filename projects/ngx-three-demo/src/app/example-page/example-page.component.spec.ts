@@ -10,9 +10,8 @@ describe('ExamplePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, ExamplePageComponent],
       providers: [EditorService],
-      declarations: [ExamplePageComponent]
     }).compileComponents();
 
     fixture = TestBed.createComponent(ExamplePageComponent);

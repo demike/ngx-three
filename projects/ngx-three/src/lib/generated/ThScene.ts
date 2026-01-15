@@ -29,7 +29,6 @@ import { ThObject3D } from './ThObject3D';
   selector: 'th-scene',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }],
 })
 export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<

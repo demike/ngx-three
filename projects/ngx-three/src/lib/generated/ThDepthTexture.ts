@@ -26,7 +26,6 @@ import { ThTexture } from './ThTexture';
   selector: 'th-depthTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: false,
   providers: [
     { provide: ThTextureBase, useExisting: forwardRef(() => ThDepthTexture) },
   ],
