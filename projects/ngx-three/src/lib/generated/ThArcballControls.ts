@@ -31,7 +31,7 @@ export class ThArcballControls<
   T extends ArcballControls = ArcballControls,
   TARGS = [
     camera: Camera,
-    domElement?: HTMLElement | null,
+    domElement?: HTMLElement | SVGElement | null,
     scene?: Scene | null,
   ],
 > extends ThControlBase<ArcballControlsEventMap, T, TARGS> {

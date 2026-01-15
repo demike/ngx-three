@@ -10,9 +10,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { ShaderMaterial } from 'three';
+import { RawShaderMaterial } from 'three';
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
@@ -32,6 +31,9 @@ export class ThOutputPass<
     return OutputPass;
   }
 
+  public get isOutputPass(): true | undefined {
+    return this._objRef?.isOutputPass;
+  }
   @Input()
   public set uniforms(map: { [name: string]: { value: any } }) {
     if (this._objRef) {
@@ -45,23 +47,13 @@ export class ThOutputPass<
       | undefined;
   }
   @Input()
-  public set material(value: ShaderMaterial) {
+  public set material(value: RawShaderMaterial) {
     if (this._objRef) {
       this._objRef.material = value;
     }
   }
 
-  public get material(): ShaderMaterial | undefined {
+  public get material(): RawShaderMaterial | undefined {
     return this._objRef?.material;
-  }
-  @Input()
-  public set fsQuad(value: FullScreenQuad) {
-    if (this._objRef) {
-      this._objRef.fsQuad = value;
-    }
-  }
-
-  public get fsQuad(): FullScreenQuad | undefined {
-    return this._objRef?.fsQuad;
   }
 }

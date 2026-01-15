@@ -31,7 +31,7 @@ import { applyValue } from '../util';
 })
 export class ThTrackballControls<
   T extends TrackballControls = TrackballControls,
-  TARGS = [camera: Camera, domElement?: HTMLElement | null],
+  TARGS = [camera: Camera, domElement?: HTMLElement | SVGElement | null],
 > extends ThControlBase<TrackballControlsEventMap, T, TARGS> {
   public getType(): Type<TrackballControls> {
     return TrackballControls;

@@ -54,6 +54,7 @@ export * from './ThDotScreenPass';
 export * from './ThDragControls';
 export * from './ThEdgesGeometry';
 export * from './ThEffectComposerGen';
+export * from './ThExternalTexture';
 export * from './ThExtrudeGeometry';
 export * from './ThFilmPass';
 export * from './ThFirstPersonControls';

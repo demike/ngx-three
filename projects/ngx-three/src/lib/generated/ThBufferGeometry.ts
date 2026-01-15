@@ -115,6 +115,16 @@ export class ThBufferGeometry<
     return this._objRef?.indirect;
   }
   @Input()
+  public set indirectOffset(value: number | number[]) {
+    if (this._objRef) {
+      this._objRef.indirectOffset = value;
+    }
+  }
+
+  public get indirectOffset(): (number | number[]) | undefined {
+    return this._objRef?.indirectOffset;
+  }
+  @Input()
   public set attributes(value: Attributes) {
     if (this._objRef) {
       this._objRef.attributes = value;

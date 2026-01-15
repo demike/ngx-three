@@ -9,7 +9,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { CompressedArrayTexture } from 'three';
+import { CompressedArrayTexture, CompressedArrayTextureImageData } from 'three';
 import {
   CompressedPixelFormat,
   TextureDataType,
@@ -40,7 +40,7 @@ export class ThCompressedArrayTexture<
     format: CompressedPixelFormat,
     type?: TextureDataType,
   ],
-> extends ThCompressedTexture<T, TARGS> {
+> extends ThCompressedTexture<CompressedArrayTextureImageData, T, TARGS> {
   public getType(): Type<CompressedArrayTexture> {
     return CompressedArrayTexture;
   }
@@ -48,18 +48,6 @@ export class ThCompressedArrayTexture<
   public get isCompressedArrayTexture(): true | undefined {
     return this._objRef?.isCompressedArrayTexture;
   }
-  public get image():
-    | { width: number; height: number; depth: number }
-    | undefined {
-    return this._objRef?.image;
-  }
-  @Input()
-  public set image(value: { width: number; height: number; depth: number }) {
-    if (this._objRef) {
-      this._objRef.image = value;
-    }
-  }
-
   @Input()
   public set wrapR(value: Wrapping) {
     if (this._objRef) {

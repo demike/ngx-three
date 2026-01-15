@@ -7,7 +7,6 @@ import { ThKTXLoaderDirective, ThKTXLoaderPipe } from './loaders/compressed-text
 import { ThPVRLoaderDirective, ThPVRLoaderPipe } from './loaders/compressed-texture/ThPVRLoader';
 import { ThEXRLoaderDirective, ThEXRLoaderPipe } from './loaders/data-texture/ThEXRLoader';
 import { ThRGBELoaderDirective, ThRGBELoaderPipe } from './loaders/data-texture/ThRGBELoader';
-import { ThRGBMLoaderDirective, ThRGBMLoaderPipe } from './loaders/data-texture/ThRGBMLoader';
 import { ThTGALoaderDirective, ThTGALoaderPipe } from './loaders/data-texture/ThTGALoader';
 import { ThCubeTextureLoaderDirective, ThCubeTextureLoaderPipe } from './loaders/ThCubeTextureLoader';
 import { ThGLTFLoaderDirective, ThGLTFLoaderPipe } from './loaders/ThGLTFLoader';
@@ -80,8 +79,6 @@ import { LODLevelDirective } from './directives/lod-level.directive';
     ThEXRLoaderPipe,
     ThRGBELoaderDirective,
     ThRGBELoaderPipe,
-    ThRGBMLoaderDirective,
-    ThRGBMLoaderPipe,
     ThTGALoaderDirective,
     ThTGALoaderPipe,
     ThUltraHDRLoaderDirective,
@@ -137,8 +134,6 @@ import { LODLevelDirective } from './directives/lod-level.directive';
     ThEXRLoaderPipe,
     ThRGBELoaderDirective,
     ThRGBELoaderPipe,
-    ThRGBMLoaderDirective,
-    ThRGBMLoaderPipe,
     ThTGALoaderDirective,
     ThTGALoaderPipe,
     ThUltraHDRLoaderDirective,

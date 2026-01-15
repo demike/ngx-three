@@ -2,13 +2,7 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Input,
-  Type,
-  forwardRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, Type, forwardRef } from '@angular/core';
 import { ShaderMaterial, ShaderMaterialParameters } from 'three';
 import { GLSLVersion } from 'three/src/constants.js';
 import { UniformsGroup } from 'three/src/core/UniformsGroup.js';
@@ -19,9 +13,7 @@ import { ThMaterial } from './ThMaterial';
   selector: 'th-shaderMaterial',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  providers: [
-    { provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) },
-  ],
+  providers: [{ provide: ThMaterial, useExisting: forwardRef(() => ThShaderMaterial) }],
 })
 export class ThShaderMaterial<
   T extends ShaderMaterial = ShaderMaterial,
@@ -35,15 +27,16 @@ export class ThShaderMaterial<
     return this._objRef?.isShaderMaterial;
   }
   @Input()
-  public set defines(value: { [key: string]: any }) {
+  public set defines(value: Record<string, unknown>) {
     if (this._objRef) {
       this._objRef.defines = value;
     }
   }
 
-  public get defines(): { [key: string]: any } | undefined {
+  public get defines(): Record<string, unknown> | undefined {
     return this._objRef?.defines;
   }
+
   @Input()
   public set uniforms(value: { [uniform: string]: IUniform }) {
     if (this._objRef) {
@@ -145,10 +138,7 @@ export class ThShaderMaterial<
     return this._objRef?.clipping;
   }
   @Input()
-  public set extensions(value: {
-    clipCullDistance: boolean;
-    multiDraw: boolean;
-  }) {
+  public set extensions(value: { clipCullDistance: boolean; multiDraw: boolean }) {
     if (this._objRef) {
       this._objRef.extensions = value;
     }

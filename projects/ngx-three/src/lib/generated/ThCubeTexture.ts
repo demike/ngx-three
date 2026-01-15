@@ -30,9 +30,10 @@ import { ThTexture } from './ThTexture';
   ],
 })
 export class ThCubeTexture<
-  T extends CubeTexture = CubeTexture,
+  TImage = unknown,
+  T extends CubeTexture<TImage> = CubeTexture<TImage>,
   TARGS = [
-    images?: any[],
+    images?: TImage[],
     mapping?: CubeTextureMapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
@@ -43,29 +44,19 @@ export class ThCubeTexture<
     anisotropy?: number,
     colorSpace?: string,
   ],
-> extends ThTexture<T, TARGS> {
-  public getType(): Type<CubeTexture> {
+> extends ThTexture<TImage[], T, TARGS> {
+  public getType(): Type<CubeTexture<TImage>> {
     return CubeTexture;
   }
 
   public get isCubeTexture(): true | undefined {
     return this._objRef?.isCubeTexture;
   }
-  public get image(): any | undefined {
-    return this._objRef?.image;
-  }
-  @Input()
-  public set image(value: any) {
-    if (this._objRef) {
-      this._objRef.image = value;
-    }
-  }
-
-  public get images(): any | undefined {
+  public get images(): TImage[] | undefined {
     return this._objRef?.images;
   }
   @Input()
-  public set images(value: any) {
+  public set images(value: TImage[]) {
     if (this._objRef) {
       this._objRef.images = value;
     }

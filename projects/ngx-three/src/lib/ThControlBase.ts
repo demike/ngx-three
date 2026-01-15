@@ -33,7 +33,7 @@ export class ThControlBase<
     }
   }
 
-  public get domElement(): HTMLElement | null | undefined {
+  public get domElement(): HTMLElement | SVGElement | null | undefined {
     return this._objRef?.domElement;
   }
 

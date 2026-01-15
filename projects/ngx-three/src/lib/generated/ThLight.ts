@@ -8,7 +8,7 @@ import {
   Input,
   forwardRef,
 } from '@angular/core';
-import { Color, ColorRepresentation, Light, Object3DEventMap } from 'three';
+import { Color, ColorRepresentation, Light, LightEventMap } from 'three';
 import { LightShadow } from 'three/src/lights/LightShadow.js';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -23,7 +23,7 @@ export abstract class ThLight<
   TShadowSupport extends LightShadow | undefined = LightShadow | undefined,
   T extends Light<TShadowSupport> = Light<TShadowSupport>,
   TARGS = [color?: ColorRepresentation, intensity?: number],
-> extends ThObject3D<Object3DEventMap, T, TARGS> {
+> extends ThObject3D<LightEventMap, T, TARGS> {
   public get isLight(): true | undefined {
     return this._objRef?.isLight;
   }

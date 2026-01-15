@@ -167,4 +167,7 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
   public get viewport(): Vector4 | undefined {
     return this._objRef?.viewport;
   }
+  public get reversedDepth(): boolean | undefined {
+    return this._objRef?.reversedDepth;
+  }
 }

@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { CompressedCubeTexture } from 'three';
 import { CompressedPixelFormat, TextureDataType } from 'three/src/constants.js';
+import { CompressedTextureImageData } from 'three/src/textures/CompressedTexture.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThCompressedTexture } from './ThCompressedTexture';
 
@@ -27,11 +28,11 @@ import { ThCompressedTexture } from './ThCompressedTexture';
 export class ThCompressedCubeTexture<
   T extends CompressedCubeTexture = CompressedCubeTexture,
   TARGS = [
-    images: Array<{ width: number; height: number }>,
+    images: CompressedTextureImageData[],
     format?: CompressedPixelFormat,
     type?: TextureDataType,
   ],
-> extends ThCompressedTexture<T, TARGS> {
+> extends ThCompressedTexture<CompressedTextureImageData[], T, TARGS> {
   public getType(): Type<CompressedCubeTexture> {
     return CompressedCubeTexture;
   }

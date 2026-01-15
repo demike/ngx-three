@@ -14,7 +14,6 @@ import {
   Camera,
   Color,
   ColorRepresentation,
-  Material,
   Mesh,
   MeshBasicMaterial,
   MeshNormalMaterial,
@@ -429,92 +428,13 @@ export class ThSSRPass<
 
   public static readonly OUTPUT = SSRPass.OUTPUT;
 
-  @Input()
-  public set dispose(value: () => void) {
-    if (this._objRef) {
-      this._objRef.dispose = value;
-    }
-  }
-
-  public get dispose(): (() => void) | undefined {
-    return this._objRef?.dispose;
+  public get resolutionScale(): number | undefined {
+    return this._objRef?.resolutionScale;
   }
   @Input()
-  public set renderPass(
-    value: (
-      renderer: WebGLRenderer,
-      passMaterial: Material,
-      renderTarget: WebGLRenderTarget,
-      clearColor: ColorRepresentation,
-      clearAlpha: ColorRepresentation,
-    ) => void,
-  ) {
+  public set resolutionScale(value: number) {
     if (this._objRef) {
-      this._objRef.renderPass = value;
+      this._objRef.resolutionScale = value;
     }
-  }
-
-  public get renderPass():
-    | ((
-        renderer: WebGLRenderer,
-        passMaterial: Material,
-        renderTarget: WebGLRenderTarget,
-        clearColor: ColorRepresentation,
-        clearAlpha: ColorRepresentation,
-      ) => void)
-    | undefined {
-    return this._objRef?.renderPass;
-  }
-  @Input()
-  public set renderOverride(
-    value: (
-      renderer: WebGLRenderer,
-      passMaterial: Material,
-      renderTarget: WebGLRenderTarget,
-      clearColor: ColorRepresentation,
-      clearAlpha: ColorRepresentation,
-    ) => void,
-  ) {
-    if (this._objRef) {
-      this._objRef.renderOverride = value;
-    }
-  }
-
-  public get renderOverride():
-    | ((
-        renderer: WebGLRenderer,
-        passMaterial: Material,
-        renderTarget: WebGLRenderTarget,
-        clearColor: ColorRepresentation,
-        clearAlpha: ColorRepresentation,
-      ) => void)
-    | undefined {
-    return this._objRef?.renderOverride;
-  }
-  @Input()
-  public set renderMetalness(
-    value: (
-      renderer: WebGLRenderer,
-      passMaterial: Material,
-      renderTarget: WebGLRenderTarget,
-      clearColor: ColorRepresentation,
-      clearAlpha: ColorRepresentation,
-    ) => void,
-  ) {
-    if (this._objRef) {
-      this._objRef.renderMetalness = value;
-    }
-  }
-
-  public get renderMetalness():
-    | ((
-        renderer: WebGLRenderer,
-        passMaterial: Material,
-        renderTarget: WebGLRenderTarget,
-        clearColor: ColorRepresentation,
-        clearAlpha: ColorRepresentation,
-      ) => void)
-    | undefined {
-    return this._objRef?.renderMetalness;
   }
 }

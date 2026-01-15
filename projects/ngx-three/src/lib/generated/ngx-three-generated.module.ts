@@ -51,6 +51,7 @@ import { ThDotScreenPass } from './ThDotScreenPass';
 import { ThDragControls } from './ThDragControls';
 import { ThEdgesGeometry } from './ThEdgesGeometry';
 import { ThEffectComposerGen } from './ThEffectComposerGen';
+import { ThExternalTexture } from './ThExternalTexture';
 import { ThExtrudeGeometry } from './ThExtrudeGeometry';
 import { ThFilmPass } from './ThFilmPass';
 import { ThFirstPersonControls } from './ThFirstPersonControls';
@@ -292,6 +293,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThDataArrayTexture,
     ThDataTexture,
     ThDepthTexture,
+    ThExternalTexture,
     ThFramebufferTexture,
     ThTexture,
     ThVideoFrameTexture,
@@ -441,6 +443,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThDataArrayTexture,
     ThDataTexture,
     ThDepthTexture,
+    ThExternalTexture,
     ThFramebufferTexture,
     ThTexture,
     ThVideoFrameTexture,

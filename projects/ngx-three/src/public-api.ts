@@ -52,7 +52,6 @@ export * from './lib/loaders/compressed-texture/ThPVRLoader';
 export * from './lib/loaders/compressed-texture/ThDRACOLoader';
 export * from './lib/loaders/data-texture/ThEXRLoader';
 export * from './lib/loaders/data-texture/ThRGBELoader';
-export * from './lib/loaders/data-texture/ThRGBMLoader';
 export * from './lib/loaders/data-texture/ThTGALoader';
 export * from './lib/loaders/data-texture/ThUltraHDRLoader';
 export * from './lib/loaders/ThPLYLoader';

@@ -9,7 +9,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Matrix3, OffscreenCanvas, Texture } from 'three';
+import { Matrix3, Texture } from 'three';
 import {
   AnyMapping,
   AnyPixelFormat,
@@ -39,10 +39,11 @@ import { applyValue } from '../util';
   ],
 })
 export class ThTexture<
-  T extends Texture = Texture,
+  TImage = unknown,
+  T extends Texture<TImage> = Texture<TImage>,
   TARGS =
     | [
-        image?: TexImageSource | OffscreenCanvas,
+        image?: TImage,
         mapping?: Mapping,
         wrapS?: Wrapping,
         wrapT?: Wrapping,
@@ -54,7 +55,7 @@ export class ThTexture<
         colorSpace?: ColorSpace,
       ]
     | [
-        image: TexImageSource | OffscreenCanvas,
+        image: TImage,
         mapping: Mapping,
         wrapS: Wrapping,
         wrapT: Wrapping,
@@ -65,7 +66,7 @@ export class ThTexture<
         anisotropy: number,
       ],
 > extends ThTextureBase<T, TARGS> {
-  public getType(): Type<Texture> {
+  public getType(): Type<Texture<TImage>> {
     return Texture;
   }
 
@@ -96,13 +97,13 @@ export class ThTexture<
     return this._objRef?.name;
   }
   @Input()
-  public set source(value: Source) {
+  public set source(value: Source<TImage>) {
     if (this._objRef) {
       this._objRef.source = value;
     }
   }
 
-  public get source(): Source | undefined {
+  public get source(): Source<TImage> | undefined {
     return this._objRef?.source;
   }
   public get width(): number | undefined {
@@ -114,11 +115,11 @@ export class ThTexture<
   public get depth(): number | undefined {
     return this._objRef?.depth;
   }
-  public get image(): any | undefined {
+  public get image(): TImage | undefined {
     return this._objRef?.image;
   }
   @Input()
-  public set image(value: any) {
+  public set image(value: TImage) {
     if (this._objRef) {
       this._objRef.image = value;
     }
@@ -126,11 +127,7 @@ export class ThTexture<
 
   @Input()
   public set mipmaps(
-    value:
-      | CompressedTextureMipmap[]
-      | CubeTexture[]
-      | HTMLCanvasElement[]
-      | undefined,
+    value: CompressedTextureMipmap[] | CubeTexture[] | HTMLCanvasElement[],
   ) {
     if (this._objRef) {
       this._objRef.mipmaps = value;
@@ -138,12 +135,7 @@ export class ThTexture<
   }
 
   public get mipmaps():
-    | (
-        | CompressedTextureMipmap[]
-        | CubeTexture[]
-        | HTMLCanvasElement[]
-        | undefined
-      )
+    | (CompressedTextureMipmap[] | CubeTexture[] | HTMLCanvasElement[])
     | undefined {
     return this._objRef?.mipmaps;
   }

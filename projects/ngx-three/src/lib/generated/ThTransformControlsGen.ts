@@ -30,7 +30,7 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThTransformControlsGen<
   T extends TransformControls = TransformControls,
-  TARGS = [camera: Camera, domElement?: HTMLElement],
+  TARGS = [camera: Camera, domElement?: HTMLElement | SVGElement | null],
 > extends ThControlBase<TransformControlsEventMap, T, TARGS> {
   public getType(): Type<TransformControls> {
     return TransformControls;

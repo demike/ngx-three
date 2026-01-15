@@ -100,6 +100,16 @@ export class ThRenderPassGen<
     return this._objRef?.clearAlpha;
   }
   @Input()
+  public set clear(value: boolean) {
+    if (this._objRef) {
+      this._objRef.clear = value;
+    }
+  }
+
+  public get clear(): boolean | undefined {
+    return this._objRef?.clear;
+  }
+  @Input()
   public set clearDepth(value: boolean) {
     if (this._objRef) {
       this._objRef.clearDepth = value;
@@ -108,5 +118,18 @@ export class ThRenderPassGen<
 
   public get clearDepth(): boolean | undefined {
     return this._objRef?.clearDepth;
+  }
+  @Input()
+  public set needsSwap(value: boolean) {
+    if (this._objRef) {
+      this._objRef.needsSwap = value;
+    }
+  }
+
+  public get needsSwap(): boolean | undefined {
+    return this._objRef?.needsSwap;
+  }
+  public get isRenderPass(): true | undefined {
+    return this._objRef?.isRenderPass;
   }
 }

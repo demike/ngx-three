@@ -9,12 +9,12 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { DataArrayTexture } from 'three';
+import { DataArrayTexture, DataArrayTextureImageData } from 'three';
 import {
   MagnificationTextureFilter,
   MinificationTextureFilter,
 } from 'three/src/constants.js';
-import { Texture3DImageData } from 'three/src/textures/Data3DTexture.js';
+import { TypedArray } from 'three/src/core/BufferAttribute.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
@@ -32,12 +32,12 @@ import { ThTexture } from './ThTexture';
 export class ThDataArrayTexture<
   T extends DataArrayTexture = DataArrayTexture,
   TARGS = [
-    data?: BufferSource | null,
+    data?: TypedArray | null,
     width?: number,
     height?: number,
     depth?: number,
   ],
-> extends ThTexture<T, TARGS> {
+> extends ThTexture<DataArrayTextureImageData, T, TARGS> {
   public getType(): Type<DataArrayTexture> {
     return DataArrayTexture;
   }
@@ -45,16 +45,6 @@ export class ThDataArrayTexture<
   public get isDataArrayTexture(): true | undefined {
     return this._objRef?.isDataArrayTexture;
   }
-  public get image(): Texture3DImageData | undefined {
-    return this._objRef?.image;
-  }
-  @Input()
-  public set image(value: Texture3DImageData) {
-    if (this._objRef) {
-      this._objRef.image = value;
-    }
-  }
-
   @Input()
   public set magFilter(value: MagnificationTextureFilter) {
     if (this._objRef) {

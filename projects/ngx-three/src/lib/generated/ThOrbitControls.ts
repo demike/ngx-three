@@ -28,7 +28,7 @@ import { applyValue } from '../util';
 })
 export class ThOrbitControls<
   T extends OrbitControls = OrbitControls,
-  TARGS = [object: Camera, domElement?: HTMLElement | null],
+  TARGS = [object: Camera, domElement?: HTMLElement | SVGElement | null],
 > extends ThControlBase<OrbitControlsEventMap, T, TARGS> {
   public getType(): Type<OrbitControls> {
     return OrbitControls;

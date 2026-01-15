@@ -43,7 +43,7 @@ export class ThVideoFrameTexture<
     type?: TextureDataType,
     anisotropy?: number,
   ],
-> extends ThVideoTexture<T, TARGS> {
+> extends ThVideoTexture<VideoFrame | {}, T, TARGS> {
   public getType(): Type<VideoFrameTexture> {
     return VideoFrameTexture;
   }

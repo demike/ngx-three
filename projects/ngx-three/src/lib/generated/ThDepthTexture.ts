@@ -9,7 +9,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { DepthTexture } from 'three';
+import { DepthTexture, DepthTextureImageData } from 'three';
 import {
   DepthTexturePixelFormat,
   MagnificationTextureFilter,
@@ -45,7 +45,7 @@ export class ThDepthTexture<
     format?: DepthTexturePixelFormat,
     depth?: number,
   ],
-> extends ThTexture<T, TARGS> {
+> extends ThTexture<DepthTextureImageData, T, TARGS> {
   public getType(): Type<DepthTexture> {
     return DepthTexture;
   }
@@ -53,18 +53,6 @@ export class ThDepthTexture<
   public get isDepthTexture(): true | undefined {
     return this._objRef?.isDepthTexture;
   }
-  public get image():
-    | { width: number; height: number; depth: number }
-    | undefined {
-    return this._objRef?.image;
-  }
-  @Input()
-  public set image(value: { width: number; height: number; depth: number }) {
-    if (this._objRef) {
-      this._objRef.image = value;
-    }
-  }
-
   @Input()
   public set flipY(value: boolean) {
     if (this._objRef) {

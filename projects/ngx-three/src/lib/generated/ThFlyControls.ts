@@ -26,7 +26,7 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThFlyControls<
   T extends FlyControls = FlyControls,
-  TARGS = [object: Camera, domElement?: HTMLElement | null],
+  TARGS = [object: Camera, domElement?: HTMLElement | SVGElement | null],
 > extends ThControlBase<FlyControlsEventMap, T, TARGS> {
   public getType(): Type<FlyControls> {
     return FlyControls;

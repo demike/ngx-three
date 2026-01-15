@@ -33,7 +33,7 @@ export class ThDragControls<
   TARGS = [
     objects: Object3D[],
     camera: Camera,
-    domElement?: HTMLElement | null,
+    domElement?: HTMLElement | SVGElement | null,
   ],
 > extends ThControlBase<DragControlsEventMap, T, TARGS> {
   public getType(): Type<DragControls> {

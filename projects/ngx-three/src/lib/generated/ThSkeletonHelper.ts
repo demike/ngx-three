@@ -12,14 +12,12 @@ import {
 import {
   BufferGeometry,
   Material,
-  Matrix4,
   Object3DEventMap,
   SkeletonHelper,
 } from 'three';
 import { Object3D } from 'three/src/core/Object3D.js';
 import { Bone } from 'three/src/objects/Bone.js';
 import { SkinnedMesh } from 'three/src/objects/SkinnedMesh.js';
-import { applyValue } from '../util';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
@@ -49,16 +47,6 @@ export class ThSkeletonHelper<
     return this._objRef?.type;
   }
   @Input()
-  public set bones(value: Bone[]) {
-    if (this._objRef) {
-      this._objRef.bones = value;
-    }
-  }
-
-  public get bones(): Bone[] | undefined {
-    return this._objRef?.bones;
-  }
-  @Input()
   public set root(value: SkinnedMesh | Object3D) {
     if (this._objRef) {
       this._objRef.root = value;
@@ -69,34 +57,14 @@ export class ThSkeletonHelper<
     return this._objRef?.root;
   }
   @Input()
-  public set matrix(
-    value:
-      | Matrix4
-      | [
-          n11: number,
-          n12: number,
-          n13: number,
-          n14: number,
-          n21: number,
-          n22: number,
-          n23: number,
-          n24: number,
-          n31: number,
-          n32: number,
-          n33: number,
-          n34: number,
-          n41: number,
-          n42: number,
-          n43: number,
-          n44: number,
-        ],
-  ) {
+  public set bones(value: Bone[]) {
     if (this._objRef) {
-      this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
+      this._objRef.bones = value;
     }
   }
-  public get matrix(): Matrix4 | undefined {
-    return this._objRef?.matrix;
+
+  public get bones(): Bone[] | undefined {
+    return this._objRef?.bones;
   }
   @Input()
   public set matrixAutoUpdate(value: boolean) {

@@ -173,6 +173,26 @@ export class ThMeshMatcapMaterial<
     return this._objRef?.alphaMap;
   }
   @Input()
+  public set wireframe(value: boolean) {
+    if (this._objRef) {
+      this._objRef.wireframe = value;
+    }
+  }
+
+  public get wireframe(): boolean | undefined {
+    return this._objRef?.wireframe;
+  }
+  @Input()
+  public set wireframeLinewidth(value: number) {
+    if (this._objRef) {
+      this._objRef.wireframeLinewidth = value;
+    }
+  }
+
+  public get wireframeLinewidth(): number | undefined {
+    return this._objRef?.wireframeLinewidth;
+  }
+  @Input()
   public set flatShading(value: boolean) {
     if (this._objRef) {
       this._objRef.flatShading = value;

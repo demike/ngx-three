@@ -9,14 +9,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  Color,
-  ColorRepresentation,
-  Euler,
-  EulerOrder,
-  Object3DEventMap,
-  Scene,
-} from 'three';
+import { Color, ColorRepresentation, Euler, EulerOrder, Scene } from 'three';
+import { Object3DEventMap } from 'three/src/core/Object3D.js';
 import { Material } from 'three/src/materials/Material.js';
 import { Fog } from 'three/src/scenes/Fog.js';
 import { FogExp2 } from 'three/src/scenes/FogExp2.js';
@@ -31,12 +25,12 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: ThObject3D, useExisting: forwardRef(() => ThScene) }],
 })
-export class ThScene<T extends Scene = Scene, TARGS = []> extends ThObject3D<
-  Object3DEventMap,
-  T,
-  TARGS
-> {
-  public getType(): Type<Scene> {
+export class ThScene<
+  TEventMap extends Object3DEventMap = Object3DEventMap,
+  T extends Scene<TEventMap> = Scene<TEventMap>,
+  TARGS = [],
+> extends ThObject3D<TEventMap, T, TARGS> {
+  public getType(): Type<Scene<TEventMap>> {
     return Scene;
   }
 

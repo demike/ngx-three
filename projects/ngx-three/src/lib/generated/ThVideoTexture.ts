@@ -30,9 +30,10 @@ import { ThTexture } from './ThTexture';
   ],
 })
 export class ThVideoTexture<
-  T extends VideoTexture = VideoTexture,
+  TVideo = HTMLVideoElement,
+  T extends VideoTexture<TVideo> = VideoTexture<TVideo>,
   TARGS = [
-    video: HTMLVideoElement,
+    video: TVideo,
     mapping?: Mapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
@@ -42,8 +43,8 @@ export class ThVideoTexture<
     type?: TextureDataType,
     anisotropy?: number,
   ],
-> extends ThTexture<T, TARGS> {
-  public getType(): Type<VideoTexture> {
+> extends ThTexture<TVideo, T, TARGS> {
+  public getType(): Type<VideoTexture<TVideo>> {
     return VideoTexture;
   }
 

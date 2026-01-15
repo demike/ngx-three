@@ -29,7 +29,7 @@ import { ThControlBase } from '../ThControlBase';
 })
 export class ThPointerLockControls<
   T extends PointerLockControls = PointerLockControls,
-  TARGS = [camera: Camera, domElement?: HTMLElement | null],
+  TARGS = [camera: Camera, domElement?: HTMLElement | SVGElement | null],
 > extends ThControlBase<PointerLockControlsEventMap, T, TARGS> {
   public getType(): Type<PointerLockControls> {
     return PointerLockControls;

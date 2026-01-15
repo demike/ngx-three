@@ -9,7 +9,11 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { CompressedTexture, CompressedTextureMipmap } from 'three';
+import {
+  CompressedTexture,
+  CompressedTextureImageData,
+  CompressedTextureMipmap,
+} from 'three';
 import {
   CompressedPixelFormat,
   MagnificationTextureFilter,
@@ -33,11 +37,12 @@ import { ThTexture } from './ThTexture';
   ],
 })
 export class ThCompressedTexture<
-  T extends CompressedTexture = CompressedTexture,
+  TImageData = CompressedTextureImageData,
+  T extends CompressedTexture<TImageData> = CompressedTexture<TImageData>,
   TARGS = [
-    mipmaps?: CompressedTextureMipmap[],
-    width?: number,
-    height?: number,
+    mipmaps: CompressedTextureMipmap[],
+    width: number,
+    height: number,
     format?: CompressedPixelFormat,
     type?: TextureDataType,
     mapping?: Mapping,
@@ -48,32 +53,22 @@ export class ThCompressedTexture<
     anisotropy?: number,
     colorSpace?: string,
   ],
-> extends ThTexture<T, TARGS> {
-  public getType(): Type<CompressedTexture> {
+> extends ThTexture<TImageData, T, TARGS> {
+  public getType(): Type<CompressedTexture<TImageData>> {
     return CompressedTexture;
   }
 
   public get isCompressedTexture(): true | undefined {
     return this._objRef?.isCompressedTexture;
   }
-  public get image(): { width: number; height: number } | undefined {
-    return this._objRef?.image;
-  }
   @Input()
-  public set image(value: { width: number; height: number }) {
-    if (this._objRef) {
-      this._objRef.image = value;
-    }
-  }
-
-  @Input()
-  public set mipmaps(value: CompressedTextureMipmap[] | undefined) {
+  public set mipmaps(value: CompressedTextureMipmap[]) {
     if (this._objRef) {
       this._objRef.mipmaps = value;
     }
   }
 
-  public get mipmaps(): (CompressedTextureMipmap[] | undefined) | undefined {
+  public get mipmaps(): CompressedTextureMipmap[] | undefined {
     return this._objRef?.mipmaps;
   }
   @Input()

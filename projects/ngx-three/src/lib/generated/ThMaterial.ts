@@ -47,11 +47,28 @@ export class ThMaterial<
   public get uuid(): string | undefined {
     return this._objRef?.uuid;
   }
+  @Input()
+  public set type(value: string) {
+    if (this._objRef) {
+      this._objRef.type = value;
+    }
+  }
+
   public get type(): string | undefined {
     return this._objRef?.type;
   }
   public get version(): number | undefined {
     return this._objRef?.version;
+  }
+  @Input()
+  public set defines(value: Record<string, unknown> | undefined) {
+    if (this._objRef) {
+      this._objRef.defines = value;
+    }
+  }
+
+  public get defines(): (Record<string, unknown> | undefined) | undefined {
+    return this._objRef?.defines;
   }
   @Input()
   public set needsUpdate(value: boolean) {

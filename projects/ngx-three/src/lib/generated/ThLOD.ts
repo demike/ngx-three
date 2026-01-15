@@ -34,22 +34,6 @@ export class ThLOD<
   public get type(): (string | 'LOD') | undefined {
     return this._objRef?.type;
   }
-  @Input()
-  public set levels(
-    value: Array<{
-      /** The Object3D to display at this level. */
-      object: Object3D;
-      /** The distance at which to display this level of detail. Expects a `Float`. */
-      distance: number;
-      /** Threshold used to avoid flickering at LOD boundaries, as a fraction of distance. Expects a `Float`. */
-      hysteresis: number;
-    }>,
-  ) {
-    if (this._objRef) {
-      this._objRef.levels = value;
-    }
-  }
-
   public get levels():
     | Array<{
         /** The Object3D to display at this level. */

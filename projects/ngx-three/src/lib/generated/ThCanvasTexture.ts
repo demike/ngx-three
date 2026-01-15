@@ -17,7 +17,6 @@ import {
   TextureDataType,
   Wrapping,
 } from 'three/src/constants.js';
-import { OffscreenCanvas } from 'three/src/textures/Texture.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
@@ -30,9 +29,10 @@ import { ThTexture } from './ThTexture';
   ],
 })
 export class ThCanvasTexture<
-  T extends CanvasTexture = CanvasTexture,
+  TCanvas = HTMLCanvasElement,
+  T extends CanvasTexture<TCanvas> = CanvasTexture<TCanvas>,
   TARGS = [
-    canvas?: TexImageSource | OffscreenCanvas,
+    canvas?: TCanvas,
     mapping?: Mapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
@@ -42,8 +42,8 @@ export class ThCanvasTexture<
     type?: TextureDataType,
     anisotropy?: number,
   ],
-> extends ThTexture<T, TARGS> {
-  public getType(): Type<CanvasTexture> {
+> extends ThTexture<TCanvas, T, TARGS> {
+  public getType(): Type<CanvasTexture<TCanvas>> {
     return CanvasTexture;
   }
 
