@@ -65,3 +65,6 @@ export * from './lib/directives/lod-level.directive';
 
 // web
 export * from './lib/extra/web/html.component';
+
+//utils
+export * from './lib/utils/instanced-scene-utils';

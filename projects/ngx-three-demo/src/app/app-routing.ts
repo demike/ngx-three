@@ -24,6 +24,7 @@ import { PostProcessingExampleComponent } from './post-processing-example/post-p
 import { RefByIdExampleComponent } from './ref-by-id-example/ref-by-id-example.component';
 import { SimpleExampleComponent } from './simple-example/simple-example.component';
 import { ViewsExampleComponent } from './views-example/views-example.component';
+import { InstancedGLBExampleComponent } from './instanced-glb-example/instanced-glb-example.component';
 
 export const EXAMPLE_ROUTES: (Route & {
   data: {
@@ -292,6 +293,17 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/lod-example/lod-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/lod-example/lod-example.component.ts',
+      ],
+    },
+  },
+  {
+    path: 'instanced-glb-example',
+    data: {
+      title: 'Instanced GLB Example',
+      exampleComponent: InstancedGLBExampleComponent,
+      codeUrls: [
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/instanced-glb-example/instanced-glb-example.component.html',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/instanced-glb-example/instanced-glb-example.component.ts',
       ],
     },
   },
