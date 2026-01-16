@@ -15,7 +15,8 @@ on:
         # and https://docs.npmjs.com/about-semantic-versioning
 
 permissions:
-  contents: read
+  # Needed for pushing the generated site to the `gh-pages` branch
+  contents: write
   id-token: write   # Required for OIDC publishing to npm
   pages: write      # Required for GitHub Pages deployment
 jobs:
