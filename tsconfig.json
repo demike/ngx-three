@@ -16,17 +16,9 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "es2020",
-    "lib": [
-      "es2020",
-      "dom"
-    ],
     "paths": {
-      "ngx-three": [
-        "projects/ngx-three/src/public-api.ts"
-      ],
-      "three/webgpu": [
-        "./node_modules/@types/three/build/three.webgpu.d.ts"
-      ]
+      "ngx-three": ["projects/ngx-three/src/public-api.ts"],
+      "three/webgpu": ["./node_modules/@types/three/build/three.webgpu.d.ts"]
     },
     "useDefineForClassFields": false
   },

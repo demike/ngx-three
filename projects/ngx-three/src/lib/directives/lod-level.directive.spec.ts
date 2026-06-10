@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { LODLevelDirective } from './lod-level.directive';
@@ -14,11 +14,13 @@ import { ThCanvas } from 'ngx-three';
         <th-lOD>
           <th-object3D [lodLevel] />
           <th-object3D [lodLevel]="{ distance: 5 }" />
-          <th-object3D [lodLevel]="{ distance: bar }" *ngIf="foo" />
+          @if (foo) {
+            <th-object3D [lodLevel]="{ distance: bar }" />
+          }
         </th-lOD> </th-scene
     ></th-canvas>
   `,
-  imports: [ThLOD, ThObject3D, LODLevelDirective, CommonModule, ThCanvas, ThScene],
+  imports: [ThLOD, ThObject3D, LODLevelDirective, ThCanvas, ThScene],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestHostComponent {
