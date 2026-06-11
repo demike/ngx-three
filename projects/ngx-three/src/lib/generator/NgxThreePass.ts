@@ -9,7 +9,6 @@ export class NgxThreePass extends NgxThreeClass {
     this.imports.add("import { ThPassBase } from '../ThPassBase';");
     this.imports.add("import { ThWrapperBase } from '../ThWrapperBase';");
     super.generate();
-    this.content = `/* eslint-disable @typescript-eslint/ban-types */ ${this.content}`;
   }
 
   protected generateParentInjector() {

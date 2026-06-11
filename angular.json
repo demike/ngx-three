@@ -34,6 +34,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
+            "eslintConfig": "projects/ngx-three/eslint.config.js",
             "lintFilePatterns": [
               "projects/ngx-three/**/*.ts",
               "projects/ngx-three/**/*.html"
@@ -150,6 +151,7 @@
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
+            "eslintConfig": "projects/ngx-three-demo/eslint.config.js",
             "lintFilePatterns": [
               "projects/ngx-three-demo/**/*.ts",
               "projects/ngx-three-demo/**/*.html"

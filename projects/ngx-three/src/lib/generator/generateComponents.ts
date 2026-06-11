@@ -107,7 +107,7 @@ class NgxThreeClassGenerator {
   }
 
   public async fixLint() {
-    const eslint = new ESLint({ fix: true, useEslintrc: true });
+    const eslint = new ESLint({ fix: true });
     const results = await eslint.lintFiles(this.baseOutPath);
 
     // Apply automatic fixes and output fixed code

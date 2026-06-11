@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -27,7 +26,7 @@ import { ThControlBase } from '../ThControlBase';
 export class ThFirstPersonControls<
   T extends FirstPersonControls = FirstPersonControls,
   TARGS = [object: Camera, domElement?: HTMLElement | SVGElement],
-> extends ThControlBase<{}, T, TARGS> {
+> extends ThControlBase<object, T, TARGS> {
   public getType(): Type<FirstPersonControls> {
     return FirstPersonControls;
   }

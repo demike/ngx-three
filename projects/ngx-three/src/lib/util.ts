@@ -87,8 +87,7 @@ export function applyMixins(derivedCtor: any, constructors: any[]) {
 // typed changes for ngOnChanges
 
 type MarkFunctionProperties<Component> = {
-  // eslint-disable-next-line @typescript-eslint/ban-types
-  [Key in keyof Component]: Component[Key] extends Function ? never : Key;
+  [Key in keyof Component]: Component[Key] extends (...args: any[]) => unknown ? never : Key;
 };
 
 type ExcludeFunctionPropertyNames<T> = MarkFunctionProperties<T>[keyof T];

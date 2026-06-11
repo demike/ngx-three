@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -11,7 +10,6 @@ import {
 } from '@angular/core';
 import { ArrayCamera } from 'three';
 import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js';
-import { ThCamera } from './ThCamera';
 import { ThObject3D } from './ThObject3D';
 import { ThPerspectiveCamera } from './ThPerspectiveCamera';
 
@@ -21,7 +19,6 @@ import { ThPerspectiveCamera } from './ThPerspectiveCamera';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThArrayCamera) },
-    { provide: ThCamera, useExisting: forwardRef(() => ThArrayCamera) },
   ],
 })
 export class ThArrayCamera<
