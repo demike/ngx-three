@@ -1,6 +1,11 @@
 {
-  "name": "ngx-three",
+  "name": "ngx-three-workspace",
   "version": "0.43.3",
+  "workspaces": [
+    "projects/ngx-three",
+    "projects/ngx-three-demo"
+  ],
+  "packageManager": "npm@11.12.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -18,12 +23,12 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^22.0.0",
-    "@angular/cdk": "^21.2.14",
+    "@angular/cdk": "^22.0.0",
     "@angular/common": "^22.0.0",
     "@angular/compiler": "^22.0.0",
     "@angular/core": "^22.0.0",
     "@angular/forms": "^22.0.0",
-    "@angular/material": "^21.2.14",
+    "@angular/material": "^22.0.0",
     "@angular/platform-browser": "^22.0.0",
     "@angular/platform-browser-dynamic": "^22.0.0",
     "@angular/router": "^22.0.0",
@@ -40,21 +45,20 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^22.0.0",
-    "@angular-eslint/builder": "20.1.1",
-    "@angular-eslint/eslint-plugin": "20.1.1",
-    "@angular-eslint/eslint-plugin-template": "20.1.1",
-    "@angular-eslint/schematics": "20.1.1",
-    "@angular-eslint/template-parser": "20.1.1",
+    "@angular-eslint/builder": "22.0.0",
+    "@angular-eslint/eslint-plugin": "22.0.0",
+    "@angular-eslint/eslint-plugin-template": "22.0.0",
+    "@angular-eslint/schematics": "22.0.0",
+    "@angular-eslint/template-parser": "22.0.0",
     "@angular/cli": "^22.0.0",
     "@angular/compiler-cli": "^22.0.0",
     "@types/jasmine": "^4.3.5",
     "@types/node": "^24.0.13",
     "@types/three": "^0.182.0",
-    "@typescript-eslint/eslint-plugin": "7.11.0",
-    "@typescript-eslint/parser": "7.11.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.2",
+    "@typescript-eslint/parser": "^8.46.2",
     "acorn": ">=8",
-    "angular-eslint": "^20.1.1",
-    "eslint": "8.57.1",
+    "eslint": "^9.30.1",
     "eslint-plugin-import": "^2.28.1",
     "eslint-plugin-jsdoc": "^46.5.0",
     "eslint-plugin-prefer-arrow": "^1.2.3",
@@ -73,5 +77,15 @@
     "ts-node": "^10.9.2",
     "typescript": "^6.0.3",
     "utility-types": "^3.11.0"
+  },
+  "overrides": {
+    "@angular/common": "$@angular/common",
+    "@angular/core": "$@angular/core",
+    "three": "$three",
+    "tslib": "$tslib",
+    "typescript": "$typescript",
+    "ts-node": "$ts-node",
+    "prettier": "$prettier",
+    "utility-types": "$utility-types"
   }
 }

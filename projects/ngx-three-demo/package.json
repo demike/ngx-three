@@ -1,0 +1,8 @@
+{
+  "name": "ngx-three-demo",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "ngx-three": "0.43.3"
+  }
+}
