@@ -2,7 +2,6 @@
   "compileOnSave": false,
   "compilerOptions": {
     "skipLibCheck": true,
-    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -17,7 +16,8 @@
     "target": "ES2022",
     "module": "es2020",
     "paths": {
-      "ngx-three": ["projects/ngx-three/src/public-api.ts"],
+      "ngx-three": ["./projects/ngx-three/src/public-api.ts"],
+      "projects/*": ["./projects/*"],
       "three/webgpu": ["./node_modules/@types/three/build/three.webgpu.d.ts"]
     },
     "useDefineForClassFields": false
