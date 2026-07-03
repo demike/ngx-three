@@ -7,7 +7,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { RawShaderMaterial } from 'three';
+import { RawShaderMaterial, ShaderMaterialParameters } from 'three';
 import { ThMaterial } from './ThMaterial';
 import { ThShaderMaterial } from './ThShaderMaterial';
 

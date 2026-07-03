@@ -44,16 +44,6 @@ export class ThShaderMaterial<
     return this._objRef?.defines;
   }
   @Input()
-  public set defines(value: Record<string, unknown>) {
-    if (this._objRef) {
-      this._objRef.defines = value;
-    }
-  }
-
-  public get defines(): Record<string, unknown> | undefined {
-    return this._objRef?.defines;
-  }
-  @Input()
   public set uniforms(value: { [uniform: string]: IUniform }) {
     if (this._objRef) {
       this._objRef.uniforms = value;
