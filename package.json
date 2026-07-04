@@ -63,6 +63,7 @@
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
     "@vitest/browser": "^4.1.9",
+    "@vitest/browser-playwright": "^4.1.9",
     "@vitest/ui": "^4.1.9",
     "acorn": ">=8",
     "angular-eslint": "^22.0.0",
