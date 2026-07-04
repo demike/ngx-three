@@ -1,4 +1,14 @@
-import { expect } from 'vitest';
+import { expect, beforeAll } from 'vitest';
+import { getTestBed } from '@angular/core/testing';
+import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
+
+// Initialize Angular testing environment
+beforeAll(() => {
+  getTestBed().initTestEnvironment(
+    BrowserDynamicTestingModule,
+    platformBrowserDynamicTesting()
+  );
+});
 
 // Add Jasmine-style matchers
 expect.extend({
