@@ -71,21 +71,25 @@ describe('LazyObj3DProxy', () => {
     expect(obj.children.length).toBe(1);
   });
 
-  it('should apply event listeners to the real object3D when it is applied', (done) => {
+  it('should apply event listeners to the real object3D when it is applied', async () => {
     const obj = new Object3D<{ click: { customAttr: string } } & Object3DEventMap>();
     expect(obj.children.length).toBe(0);
 
-    const listener = () => {
-      done();
-    };
-    proxy.addEventListener('click', listener);
+    const promise = new Promise<void>((resolve) => {
+      const listener = () => {
+        resolve();
+      };
+      proxy.addEventListener('click', listener);
 
-    // apply the object to the proxy
-    proxy.objRef = obj;
+      // apply the object to the proxy
+      proxy.objRef = obj;
 
-    expect(obj.hasEventListener('click', listener)).toBeTrue();
+      expect(obj.hasEventListener('click', listener)).toBeTrue();
 
-    obj.dispatchEvent({ customAttr: 'event name', type: 'click' });
+      obj.dispatchEvent({ customAttr: 'event name', type: 'click' });
+    });
+
+    return promise;
   });
 
   it('should remove event listeners of the real object3D when it is applied', () => {

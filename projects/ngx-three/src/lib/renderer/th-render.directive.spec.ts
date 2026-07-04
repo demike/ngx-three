@@ -44,20 +44,28 @@ describe('ThRenderDirective', () => {
     expect(directive).toBeTruthy();
   });
 
-  it('should emit on beforeRender', (done) => {
-    directive.beforeRender.subscribe(() => {
-      done();
+  it('should emit on beforeRender', async () => {
+    const promise = new Promise<void>((resolve) => {
+      directive.beforeRender.subscribe(() => {
+        resolve();
+      });
     });
 
     (engineServiceMock.beforeRender$ as Subject<any>).next(engineServiceMock);
+    
+    return promise;
   });
 
-  it('should emit on resize', (done) => {
-    directive.onResize.subscribe(() => {
-      done();
+  it('should emit on resize', async () => {
+    const promise = new Promise<void>((resolve) => {
+      directive.onResize.subscribe(() => {
+        resolve();
+      });
     });
 
     (engineServiceMock.resize$ as Subject<any>).next({ width: 800, height: 600 });
+    
+    return promise;
   });
 
   it('should enable/disable ondemand rendering', () => {
