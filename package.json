@@ -21,7 +21,9 @@
     "e2e": "ng e2e",
     "copy:docs": "(cp README.md dist/ngx-three/ || copy README.md dist\\ngx-three)",
     "package": "ng build --configuration production ngx-three && npm run copy:docs",
-    "format": "prettier-eslint --write \"{,!(node_modules|dist)/**/}*.{ts,tsx}\""
+    "format": "prettier-eslint --write \"{,!(node_modules|dist)/**/}*.{ts,tsx}\"",
+    "test:browser": "vitest --browser.enabled",
+    "test:browser:ui": "vitest --browser.enabled --ui"
   },
   "private": true,
   "dependencies": {
@@ -60,6 +62,7 @@
     "@types/three": "^0.182.0",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
     "@typescript-eslint/parser": "^8.46.2",
+    "@vitest/browser": "^4.1.9",
     "@vitest/ui": "^4.1.9",
     "acorn": ">=8",
     "angular-eslint": "^22.0.0",
@@ -78,6 +81,7 @@
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "ng-packagr": "^22.0.0",
+    "playwright": "^1.61.1",
     "prettier": "^3.6.2",
     "prettier-eslint": "^16.4.2",
     "prettier-eslint-cli": "^8.0.1",

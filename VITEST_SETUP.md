@@ -1,6 +1,6 @@
 # Vitest Setup for ngx-three
 
-This project has been configured to use **Vitest** as the testing framework instead of Karma + Jasmine.
+This project has been configured to use **Vitest** as the testing framework instead of Karma + Jasmine, with full support for WebGL tests via headless Chromium.
 
 ## Installation
 
@@ -12,34 +12,42 @@ npm install
 
 ## Running Tests
 
-### Watch Mode (Development)
+### Unit Tests (jsdom - Default)
 ```bash
-npm run test
+npm run test           # Watch mode
+npm run test:run       # Single run
+npm run test:ui        # UI mode
+npm run test:coverage  # With coverage
 ```
 
-### Run Once (CI/CD)
+### WebGL Tests (Headless Chromium)
+For testing Three.js rendering and WebGL-dependent code:
+
 ```bash
-npm run test:run
+npm run test:browser       # Watch mode with Chromium
+npm run test:browser:ui    # UI mode with Chromium
 ```
 
-### UI Mode
-```bash
-npm run test:ui
-```
+**Note:** Browser tests run in a real headless browser with full WebGL support, so they're slower but comprehensive.
 
-Opens an interactive test UI in the browser.
+## Test Strategy
 
-### Coverage Reports
-```bash
-npm run test:coverage
-```
+### Use jsdom (Default) For:
+- Pure utility functions
+- Pipes and services
+- Component logic (non-rendering)
+- Fast unit tests
 
-Generates coverage reports in HTML, JSON, and text formats.
+### Use Chromium Browser For:
+- Three.js rendering tests
+- WebGL canvas tests
+- Canvas context dependent code
+- Component visual tests
 
 ## File Structure
 
-- `vitest.config.ts` - Main vitest configuration
-- `vitest.setup.ts` - Global setup file with Jasmine matchers
+- `vitest.config.ts` - Main vitest configuration with browser support
+- `vitest.setup.ts` - Global setup file with Jasmine matchers and TestBed initialization
 - `**/*.spec.ts` - Test files (automatically discovered)
 
 ## Writing Tests
@@ -56,18 +64,35 @@ describe('MyFunction', () => {
 });
 ```
 
+### Testing Three.js/WebGL Code
+
+Add `.webgl.spec.ts` suffix for browser-only tests (optional naming convention):
+
+```typescript
+// my-component.webgl.spec.ts
+import { describe, it, expect } from 'vitest';
+
+describe('ThreeJsComponent', () => {
+  it('should render with WebGL', () => {
+    const canvas = document.createElement('canvas');
+    const context = canvas.getContext('webgl');
+    expect(context).toBeTruthy();
+  });
+});
+```
+
+Run with:
+```bash
+npm run test:browser -- my-component.webgl.spec.ts
+```
+
 ### Supported Jasmine Matchers
 
-The following Jasmine matchers have been added to Vitest:
 - `toBeTrue()` - Check if value is `true`
 - `toBeFalse()` - Check if value is `false`
+- Standard vitest matchers: `toBe()`, `toEqual()`, `toMatch()`, etc.
 
-Standard Vitest matchers are also available:
-- `toBe()`, `toEqual()`, `toMatch()`, etc.
-
-### Angular Testing (Components & Directives)
-
-For Angular component and directive testing, additional setup is required. Convert Karma tests using:
+### Angular Testing
 
 ```typescript
 import { TestBed } from '@angular/core/testing';
@@ -95,9 +120,19 @@ describe('MyComponent', () => {
 
 ## Configuration Details
 
-### Environment
-- Uses `happy-dom` instead of jsdom for lighter testing
-- Global variables enabled for `describe`, `it`, `expect`
+### Environments
+
+#### jsdom (Default)
+- Good DOM compliance
+- No WebGL support
+- Suitable for most unit tests
+- Moderate performance
+
+#### Chromium (Browser)
+- Full WebGL support
+- Real browser rendering
+- Slower but comprehensive
+- Configured via Playwright
 
 ### Coverage
 - Provider: v8
@@ -110,23 +145,51 @@ describe('MyComponent', () => {
 
 ## Migration Notes
 
-- All `ng test` commands have been replaced with `vitest` commands
-- Jasmine matchers like `toBeTrue()` and `toBeFalse()` are supported via setup file
-- Component tests using TestBed should work as-is
-- For full Angular support, consider adding `@testing-library/angular`
+- All `ng test` commands replaced with `vitest` commands
+- Jasmine matchers supported via setup file
+- Component tests using TestBed work as-is
+- WebGL tests require `--browser.enabled` flag
 
 ## Troubleshooting
 
 ### Tests not running
 - Ensure files end with `.spec.ts`
-- Check that import paths are correct
-- Run with `npm run test:run --reporter=verbose` for detailed output
+- Check import paths are correct
+- Run with verbose: `npm run test:run -- --reporter=verbose`
 
 ### Module resolution issues
-- Make sure `tsconfig.json` has proper path mappings
-- Check that barrel exports (`index.ts`) are properly configured
+- Check `tsconfig.json` path mappings
+- Verify barrel exports in `index.ts`
 
-### Angular component tests failing
-- Components may need `TestBed` setup
-- Ensure required modules are declared in `TestBed.configureTestingModule()`
-- Use `fixture.detectChanges()` after component creation
+### WebGL tests failing
+- Run with browser: `npm run test:browser`
+- Check canvas context is available: `canvas.getContext('webgl')`
+- Verify Three.js is properly initialized
+
+### Performance
+- jsdom tests are fast (~500ms)
+- Browser tests are slower (20-30s startup + test time)
+- Use jsdom for unit tests, browser only for rendering tests
+
+## Examples
+
+### Testing a Three.js component
+```typescript
+// th-cube.component.webgl.spec.ts
+describe('ThCubeComponent', () => {
+  it('should create a Three.js cube', async () => {
+    const canvas = document.createElement('canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas });
+    
+    const geometry = new THREE.BoxGeometry();
+    const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+    const mesh = new THREE.Mesh(geometry, material);
+    
+    expect(mesh).toBeTruthy();
+    expect(mesh.geometry).toBeInstanceOf(THREE.BoxGeometry);
+  });
+});
+```
+
+Run: `npm run test:browser -- th-cube.component.webgl.spec.ts`
+

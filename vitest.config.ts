@@ -15,5 +15,14 @@ export default defineConfig({
         'dist/',
       ],
     },
+    browser: {
+      provider: 'playwright',
+      enabled: false, // Set to true to run tests in browser
+      instances: [
+        {
+          browser: 'chromium',
+        },
+      ],
+    },
   },
 });
