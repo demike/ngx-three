@@ -29,7 +29,7 @@ export async function toStackblitz(fileUrls: string[], declarations?: string[]) 
       'src/index.html': createIndexHtml(tagName),
       'src/main.ts': createMainTs(fileName, declarations),
       'src/polyfills.ts': polyfillTs,
-      'src/assets.ts': `export const ASSET_PATH = \'${GITHUB_ASSET_PATH}\';`,
+      'src/assets.ts': `export const ASSET_PATH = '${GITHUB_ASSET_PATH}';`,
     },
 
     dependencies: {
