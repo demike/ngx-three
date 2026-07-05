@@ -16,7 +16,7 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
-    "test-headless": "vitest run --browsers=chromium",
+    "test-headless": "vitest run --browser.enabled",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "copy:docs": "(cp README.md dist/ngx-three/ || copy README.md dist\\ngx-three)",
