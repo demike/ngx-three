@@ -33,6 +33,8 @@ jobs:
           npm ci
           npm run build:prod
       - run: npm run lint
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
       - run: npm run test-headless
 
       - name: build demo
