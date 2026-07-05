@@ -22,8 +22,8 @@ export default defineConfig({
       ],
     },
     browser: {
-      provider: playwright,
-      enabled: false, // Set to true to run tests in browser
+      provider: playwright(),
+      enabled: false, // Set to true to run tests in browser; overridden by --browser.enabled CLI flag
       instances: [
         {
           browser: 'chromium',
