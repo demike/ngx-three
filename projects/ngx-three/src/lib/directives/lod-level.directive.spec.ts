@@ -48,19 +48,19 @@ describe('lodLevel directive', () => {
   });
 
   it('should have 3 levels', () => {
-    expect(lod.levels).toHaveSize(3);
+    expect(lod.levels.length).toBe(3);
   });
 
   it('should remove level', () => {
     fixture.componentRef.setInput('foo', false);
     fixture.detectChanges();
-    expect(lod.levels).toHaveSize(2);
+    expect(lod.levels.length).toBe(2);
   });
 
   it('should change level', () => {
     fixture.componentRef.setInput('bar', 15);
     fixture.detectChanges();
-    expect(lod.levels).toHaveSize(3);
+    expect(lod.levels.length).toBe(3);
     const level = lod.levels.find((l) => l.distance === 15);
     expect(level).toBeTruthy();
   });

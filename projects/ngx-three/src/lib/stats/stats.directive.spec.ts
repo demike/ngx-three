@@ -1,9 +1,19 @@
-import { ChangeDetectionStrategy, Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, NO_ERRORS_SCHEMA } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { StatsDirective } from './stats.directive';
 import { ThEngineService } from '../ThEngine.service';
+import { ThCanvas } from '../ThCanvas';
 import { Subject } from 'rxjs';
+
+vi.mock('three/examples/jsm/libs/stats.module.js', () => {
+  function StatsMock(this: any) {
+    this.dom = document.createElement('div');
+    this.showPanel = vi.fn();
+    this.update = vi.fn();
+  }
+  return { default: StatsMock };
+});
 
 @Component({
   template: `<th-canvas [thStats]></th-canvas>`,
@@ -21,10 +31,16 @@ describe('StatsDirective', () => {
       resize$: new Subject<any>(),
     };
 
+    const nativeElement = document.createElement('div');
+    const canvasMock = { elementRef: new ElementRef(nativeElement) };
+
     TestBed.configureTestingModule({
       imports: [TestHostComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [{ provide: ThEngineService, useValue: engineServiceMock }],
+      providers: [
+        { provide: ThEngineService, useValue: engineServiceMock },
+        { provide: ThCanvas, useValue: canvasMock },
+      ],
     });
     fixture = TestBed.createComponent(TestHostComponent);
     fixture.detectChanges();
