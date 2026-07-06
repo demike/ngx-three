@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera } from 'three';
+import { Camera, Object3D } from 'three';
 import {
   PointerLockControls,
   PointerLockControlsEventMap,
@@ -29,7 +29,7 @@ import { ThControlBase } from '../ThControlBase';
 export class ThPointerLockControls<
   T extends PointerLockControls = PointerLockControls,
   TARGS = [camera: Camera, domElement?: HTMLElement | SVGElement | null],
-> extends ThControlBase<PointerLockControlsEventMap, T, TARGS> {
+> extends ThControlBase<PointerLockControlsEventMap, Object3D, T, TARGS> {
   public getType(): Type<PointerLockControls> {
     return PointerLockControls;
   }

@@ -28,21 +28,8 @@ export class ThPerspectiveCamera<
     return PerspectiveCamera;
   }
 
-  public get isPerspectiveCamera(): true | undefined {
+  public get isPerspectiveCamera(): boolean | undefined {
     return this._objRef?.isPerspectiveCamera;
-  }
-  public get type(): (string | 'PerspectiveCamera') | undefined {
-    return this._objRef?.type;
-  }
-  @Input()
-  public set zoom(value: number) {
-    if (this._objRef) {
-      this._objRef.zoom = value;
-    }
-  }
-
-  public get zoom(): number | undefined {
-    return this._objRef?.zoom;
   }
   @Input()
   public set fov(value: number) {
@@ -55,14 +42,14 @@ export class ThPerspectiveCamera<
     return this._objRef?.fov;
   }
   @Input()
-  public set aspect(value: number) {
+  public set zoom(value: number) {
     if (this._objRef) {
-      this._objRef.aspect = value;
+      this._objRef.zoom = value;
     }
   }
 
-  public get aspect(): number | undefined {
-    return this._objRef?.aspect;
+  public get zoom(): number | undefined {
+    return this._objRef?.zoom;
   }
   @Input()
   public set near(value: number) {
@@ -95,8 +82,18 @@ export class ThPerspectiveCamera<
     return this._objRef?.focus;
   }
   @Input()
+  public set aspect(value: number) {
+    if (this._objRef) {
+      this._objRef.aspect = value;
+    }
+  }
+
+  public get aspect(): number | undefined {
+    return this._objRef?.aspect;
+  }
+  @Input()
   public set view(
-    value: null | {
+    value: {
       enabled: boolean;
       fullWidth: number;
       fullHeight: number;
@@ -104,7 +101,7 @@ export class ThPerspectiveCamera<
       offsetY: number;
       width: number;
       height: number;
-    },
+    } | null,
   ) {
     if (this._objRef) {
       this._objRef.view = value;
@@ -112,7 +109,7 @@ export class ThPerspectiveCamera<
   }
 
   public get view():
-    | (null | {
+    | ({
         enabled: boolean;
         fullWidth: number;
         fullHeight: number;
@@ -120,7 +117,7 @@ export class ThPerspectiveCamera<
         offsetY: number;
         width: number;
         height: number;
-      })
+      } | null)
     | undefined {
     return this._objRef?.view;
   }

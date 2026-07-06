@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { VideoTexture } from 'three';
+import { TextureEventMap, VideoTexture } from 'three';
 import {
   MagnificationTextureFilter,
   Mapping,
@@ -42,7 +42,7 @@ export class ThVideoTexture<
     type?: TextureDataType,
     anisotropy?: number,
   ],
-> extends ThTexture<TVideo, T, TARGS> {
+> extends ThTexture<TVideo, TextureEventMap, T, TARGS> {
   public getType(): Type<VideoTexture<TVideo>> {
     return VideoTexture;
   }

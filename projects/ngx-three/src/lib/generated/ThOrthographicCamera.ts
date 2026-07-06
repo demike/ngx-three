@@ -38,11 +38,8 @@ export class ThOrthographicCamera<
     return OrthographicCamera;
   }
 
-  public get isOrthographicCamera(): true | undefined {
+  public get isOrthographicCamera(): boolean | undefined {
     return this._objRef?.isOrthographicCamera;
-  }
-  public get type(): (string | 'OrthographicCamera') | undefined {
-    return this._objRef?.type;
   }
   @Input()
   public set zoom(value: number) {
@@ -56,7 +53,7 @@ export class ThOrthographicCamera<
   }
   @Input()
   public set view(
-    value: null | {
+    value: {
       enabled: boolean;
       fullWidth: number;
       fullHeight: number;
@@ -64,7 +61,7 @@ export class ThOrthographicCamera<
       offsetY: number;
       width: number;
       height: number;
-    },
+    } | null,
   ) {
     if (this._objRef) {
       this._objRef.view = value;
@@ -72,7 +69,7 @@ export class ThOrthographicCamera<
   }
 
   public get view():
-    | (null | {
+    | ({
         enabled: boolean;
         fullWidth: number;
         fullHeight: number;
@@ -80,7 +77,7 @@ export class ThOrthographicCamera<
         offsetY: number;
         width: number;
         height: number;
-      })
+      } | null)
     | undefined {
     return this._objRef?.view;
   }

@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { ExternalTexture } from 'three';
+import { ExternalTexture, TextureEventMap } from 'three';
 import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
@@ -25,20 +25,20 @@ import { ThTexture } from './ThTexture';
 })
 export class ThExternalTexture<
   T extends ExternalTexture = ExternalTexture,
-  TARGS = /* sourceTexture? */ WebGLTexture | GPUTexture | null,
-> extends ThTexture<null, T, TARGS> {
+  TARGS = /* sourceTexture? */ WebGLTexture | object | null,
+> extends ThTexture<null, TextureEventMap, T, TARGS> {
   public getType(): Type<ExternalTexture> {
     return ExternalTexture;
   }
 
   @Input()
-  public set sourceTexture(value: WebGLTexture | GPUTexture | null) {
+  public set sourceTexture(value: WebGLTexture | object | null) {
     if (this._objRef) {
-      this._objRef.sourceTexture = value;
+      this._objRef.sourceTexture = value as any;
     }
   }
 
-  public get sourceTexture(): (WebGLTexture | GPUTexture | null) | undefined {
+  public get sourceTexture(): (WebGLTexture | object | null) | undefined {
     return this._objRef?.sourceTexture;
   }
   public get isExternalTexture(): true | undefined {

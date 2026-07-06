@@ -8,7 +8,11 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { MeshDepthMaterial, MeshDepthMaterialParameters } from 'three';
+import {
+  MaterialEventMap,
+  MeshDepthMaterial,
+  MeshDepthMaterialParameters,
+} from 'three';
 import { DepthPackingStrategies } from 'three/src/constants.js';
 import { Texture } from 'three/src/textures/Texture.js';
 import { ThMaterial } from './ThMaterial';
@@ -24,7 +28,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThMeshDepthMaterial<
   T extends MeshDepthMaterial = MeshDepthMaterial,
   TARGS = /* parameters? */ MeshDepthMaterialParameters,
-> extends ThMaterial<T, TARGS> {
+> extends ThMaterial<MaterialEventMap, T, TARGS> {
   public getType(): Type<MeshDepthMaterial> {
     return MeshDepthMaterial;
   }

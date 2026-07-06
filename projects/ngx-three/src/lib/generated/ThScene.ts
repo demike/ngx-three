@@ -8,12 +8,14 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Color, ColorRepresentation, Euler, EulerOrder, Scene } from 'three';
+import { Euler, EulerOrder } from 'three';
 import { Object3DEventMap } from 'three/src/core/Object3D.js';
 import { Material } from 'three/src/materials/Material.js';
+import { Color } from 'three/src/math/Color.js';
+import Node from 'three/src/nodes/core/Node.js';
 import { Fog } from 'three/src/scenes/Fog.js';
 import { FogExp2 } from 'three/src/scenes/FogExp2.js';
-import { CubeTexture } from 'three/src/textures/CubeTexture.js';
+import { Scene } from 'three/src/scenes/Scene.js';
 import { Texture } from 'three/src/textures/Texture.js';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -33,27 +35,37 @@ export class ThScene<
     return Scene;
   }
 
-  public get isScene(): true | undefined {
+  public get isScene(): boolean | undefined {
     return this._objRef?.isScene;
   }
   @Input()
-  public set type(value: 'Scene') {
+  public set background(value: (Color | Texture) | null) {
     if (this._objRef) {
-      this._objRef.type = value;
+      this._objRef.background = value;
     }
   }
 
-  public get type(): 'Scene' | undefined {
-    return this._objRef?.type;
+  public get background(): ((Color | Texture) | null) | undefined {
+    return this._objRef?.background;
   }
   @Input()
-  public set fog(value: Fog | FogExp2 | null) {
+  public set environment(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.environment = value;
+    }
+  }
+
+  public get environment(): (Texture | null) | undefined {
+    return this._objRef?.environment;
+  }
+  @Input()
+  public set fog(value: (Fog | FogExp2) | null) {
     if (this._objRef) {
       this._objRef.fog = value;
     }
   }
 
-  public get fog(): (Fog | FogExp2 | null) | undefined {
+  public get fog(): ((Fog | FogExp2) | null) | undefined {
     return this._objRef?.fog;
   }
   @Input()
@@ -77,38 +89,6 @@ export class ThScene<
     return this._objRef?.backgroundIntensity;
   }
   @Input()
-  public set overrideMaterial(value: Material | null) {
-    if (this._objRef) {
-      this._objRef.overrideMaterial = value;
-    }
-  }
-
-  public get overrideMaterial(): (Material | null) | undefined {
-    return this._objRef?.overrideMaterial;
-  }
-  @Input()
-  public set background(
-    value:
-      | Color
-      | Texture
-      | CubeTexture
-      | null
-      | [
-          ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
-        ],
-  ) {
-    if (this._objRef) {
-      this._objRef.background = applyValue<
-        Color | Texture | CubeTexture | null
-      >(this._objRef.background, value);
-    }
-  }
-  public get background(): (Color | Texture | CubeTexture | null) | undefined {
-    return this._objRef?.background;
-  }
-  @Input()
   public set backgroundRotation(
     value: Euler | [x: number, y: number, z: number, order?: EulerOrder],
   ) {
@@ -121,16 +101,6 @@ export class ThScene<
   }
   public get backgroundRotation(): Euler | undefined {
     return this._objRef?.backgroundRotation;
-  }
-  @Input()
-  public set environment(value: Texture | null) {
-    if (this._objRef) {
-      this._objRef.environment = value;
-    }
-  }
-
-  public get environment(): (Texture | null) | undefined {
-    return this._objRef?.environment;
   }
   @Input()
   public set environmentIntensity(value: number) {
@@ -155,5 +125,45 @@ export class ThScene<
   }
   public get environmentRotation(): Euler | undefined {
     return this._objRef?.environmentRotation;
+  }
+  @Input()
+  public set overrideMaterial(value: Material | null) {
+    if (this._objRef) {
+      this._objRef.overrideMaterial = value;
+    }
+  }
+
+  public get overrideMaterial(): (Material | null) | undefined {
+    return this._objRef?.overrideMaterial;
+  }
+  @Input()
+  public set environmentNode(value: Node<'vec3'> | null | undefined) {
+    if (this._objRef) {
+      this._objRef.environmentNode = value;
+    }
+  }
+
+  public get environmentNode(): (Node<'vec3'> | null | undefined) | undefined {
+    return this._objRef?.environmentNode;
+  }
+  @Input()
+  public set backgroundNode(value: Node | null | undefined) {
+    if (this._objRef) {
+      this._objRef.backgroundNode = value;
+    }
+  }
+
+  public get backgroundNode(): (Node | null | undefined) | undefined {
+    return this._objRef?.backgroundNode;
+  }
+  @Input()
+  public set fogNode(value: Node | null | undefined) {
+    if (this._objRef) {
+      this._objRef.fogNode = value;
+    }
+  }
+
+  public get fogNode(): (Node | null | undefined) | undefined {
+    return this._objRef?.fogNode;
   }
 }

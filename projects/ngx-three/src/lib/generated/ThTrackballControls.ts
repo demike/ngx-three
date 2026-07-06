@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { MOUSE, Vector3 } from 'three';
+import { MOUSE, Object3D, Vector3 } from 'three';
 import {
   TrackballControls,
   TrackballControlsEventMap,
@@ -31,7 +31,7 @@ import { applyValue } from '../util';
 export class ThTrackballControls<
   T extends TrackballControls = TrackballControls,
   TARGS = [camera: Camera, domElement?: HTMLElement | SVGElement | null],
-> extends ThControlBase<TrackballControlsEventMap, T, TARGS> {
+> extends ThControlBase<TrackballControlsEventMap, Object3D, T, TARGS> {
   public getType(): Type<TrackballControls> {
     return TrackballControls;
   }
@@ -204,7 +204,7 @@ export class ThTrackballControls<
     return this._objRef?.mouseButtons;
   }
   @Input()
-  public set target(value: Vector3 | [x: number, y: number, z: number]) {
+  public set target(value: Vector3 | [x: number, y: number, z?: number]) {
     if (this._objRef) {
       this._objRef.target = applyValue<Vector3>(this._objRef.target, value);
     }

@@ -8,13 +8,14 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera } from 'three';
+import { Camera, Object3D, Vector4 } from 'three';
 import {
   TransformControls,
   TransformControlsEventMap,
   TransformControlsMode,
 } from 'three/examples/jsm/controls/TransformControls.js';
 import { ThControlBase } from '../ThControlBase';
+import { applyValue } from '../util';
 
 @Component({
   selector: 'th-transformControlsGen',
@@ -30,7 +31,7 @@ import { ThControlBase } from '../ThControlBase';
 export class ThTransformControlsGen<
   T extends TransformControls = TransformControls,
   TARGS = [camera: Camera, domElement?: HTMLElement | SVGElement | null],
-> extends ThControlBase<TransformControlsEventMap, T, TARGS> {
+> extends ThControlBase<TransformControlsEventMap, Object3D, T, TARGS> {
   public getType(): Type<TransformControls> {
     return TransformControls;
   }
@@ -120,6 +121,20 @@ export class ThTransformControlsGen<
     return this._objRef?.size;
   }
   @Input()
+  public set viewport(
+    value: Vector4 | null | [x: number, y: number, z: number, w: number],
+  ) {
+    if (this._objRef) {
+      this._objRef.viewport = applyValue<Vector4 | null>(
+        this._objRef.viewport,
+        value,
+      );
+    }
+  }
+  public get viewport(): (Vector4 | null) | undefined {
+    return this._objRef?.viewport;
+  }
+  @Input()
   public set dragging(value: boolean) {
     if (this._objRef) {
       this._objRef.dragging = value;
@@ -158,6 +173,56 @@ export class ThTransformControlsGen<
 
   public get showZ(): boolean | undefined {
     return this._objRef?.showZ;
+  }
+  @Input()
+  public set showXY(value: boolean) {
+    if (this._objRef) {
+      this._objRef.showXY = value;
+    }
+  }
+
+  public get showXY(): boolean | undefined {
+    return this._objRef?.showXY;
+  }
+  @Input()
+  public set showYZ(value: boolean) {
+    if (this._objRef) {
+      this._objRef.showYZ = value;
+    }
+  }
+
+  public get showYZ(): boolean | undefined {
+    return this._objRef?.showYZ;
+  }
+  @Input()
+  public set showXZ(value: boolean) {
+    if (this._objRef) {
+      this._objRef.showXZ = value;
+    }
+  }
+
+  public get showXZ(): boolean | undefined {
+    return this._objRef?.showXZ;
+  }
+  @Input()
+  public set showXYZE(value: boolean) {
+    if (this._objRef) {
+      this._objRef.showXYZE = value;
+    }
+  }
+
+  public get showXYZE(): boolean | undefined {
+    return this._objRef?.showXYZE;
+  }
+  @Input()
+  public set showE(value: boolean) {
+    if (this._objRef) {
+      this._objRef.showE = value;
+    }
+  }
+
+  public get showE(): boolean | undefined {
+    return this._objRef?.showE;
   }
   @Input()
   public set minx(value: number) {

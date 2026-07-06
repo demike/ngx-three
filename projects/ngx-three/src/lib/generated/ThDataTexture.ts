@@ -8,8 +8,9 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { DataTexture, DataTextureImageData } from 'three';
+import { DataTexture, DataTextureImageData, TextureEventMap } from 'three';
 import {
+  ColorSpace,
   MagnificationTextureFilter,
   Mapping,
   MinificationTextureFilter,
@@ -43,9 +44,9 @@ export class ThDataTexture<
     magFilter?: MagnificationTextureFilter,
     minFilter?: MinificationTextureFilter,
     anisotropy?: number,
-    colorSpace?: string,
+    colorSpace?: ColorSpace,
   ],
-> extends ThTexture<DataTextureImageData, T, TARGS> {
+> extends ThTexture<DataTextureImageData, TextureEventMap, T, TARGS> {
   public getType(): Type<DataTexture> {
     return DataTexture;
   }

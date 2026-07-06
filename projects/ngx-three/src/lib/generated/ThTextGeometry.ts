@@ -34,9 +34,6 @@ export class ThTextGeometry<
     return TextGeometry;
   }
 
-  public get type(): (string | 'TextGeometry') | undefined {
-    return this._objRef?.type;
-  }
   public get parameters():
     | {
         readonly shapes: Shape | Shape[];

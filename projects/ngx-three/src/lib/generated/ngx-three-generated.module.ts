@@ -36,6 +36,7 @@ import { ThConvexGeometry } from './ThConvexGeometry';
 import { ThCSS2DObjectGen } from './ThCSS2DObjectGen';
 import { ThCSS3DObjectGen } from './ThCSS3DObjectGen';
 import { ThCubeCamera } from './ThCubeCamera';
+import { ThCubeDepthTexture } from './ThCubeDepthTexture';
 import { ThCubeTexture } from './ThCubeTexture';
 import { ThCubeTexturePass } from './ThCubeTexturePass';
 import { ThCylinderGeometry } from './ThCylinderGeometry';
@@ -63,6 +64,7 @@ import { ThGroup } from './ThGroup';
 import { ThHalftonePass } from './ThHalftonePass';
 import { ThHemisphereLight } from './ThHemisphereLight';
 import { ThHemisphereLightHelper } from './ThHemisphereLightHelper';
+import { ThHTMLTexture } from './ThHTMLTexture';
 import { ThIcosahedronGeometry } from './ThIcosahedronGeometry';
 import { ThInstancedBufferGeometry } from './ThInstancedBufferGeometry';
 import { ThInstancedMesh } from './ThInstancedMesh';
@@ -131,7 +133,6 @@ import { ThSpriteMaterial } from './ThSpriteMaterial';
 import { ThSSAARenderPass } from './ThSSAARenderPass';
 import { ThSSAOPass } from './ThSSAOPass';
 import { ThSSRPass } from './ThSSRPass';
-import { ThStereoCamera } from './ThStereoCamera';
 import { ThTAARenderPass } from './ThTAARenderPass';
 import { ThTeapotGeometry } from './ThTeapotGeometry';
 import { ThTetrahedronGeometry } from './ThTetrahedronGeometry';
@@ -168,7 +169,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThCubeCamera,
     ThOrthographicCamera,
     ThPerspectiveCamera,
-    ThStereoCamera,
     ThObject3D,
     ThArrowHelper,
     ThAxesHelper,
@@ -288,6 +288,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThCompressedArrayTexture,
     ThCompressedCubeTexture,
     ThCompressedTexture,
+    ThCubeDepthTexture,
     ThCubeTexture,
     ThData3DTexture,
     ThDataArrayTexture,
@@ -295,6 +296,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThDepthTexture,
     ThExternalTexture,
     ThFramebufferTexture,
+    ThHTMLTexture,
     ThTexture,
     ThVideoFrameTexture,
     ThVideoTexture,
@@ -318,7 +320,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThCubeCamera,
     ThOrthographicCamera,
     ThPerspectiveCamera,
-    ThStereoCamera,
     ThObject3D,
     ThArrowHelper,
     ThAxesHelper,
@@ -438,6 +439,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThCompressedArrayTexture,
     ThCompressedCubeTexture,
     ThCompressedTexture,
+    ThCubeDepthTexture,
     ThCubeTexture,
     ThData3DTexture,
     ThDataArrayTexture,
@@ -445,6 +447,7 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThDepthTexture,
     ThExternalTexture,
     ThFramebufferTexture,
+    ThHTMLTexture,
     ThTexture,
     ThVideoFrameTexture,
     ThVideoTexture,

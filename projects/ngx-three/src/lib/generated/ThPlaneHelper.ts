@@ -15,9 +15,10 @@ import {
   Plane,
   PlaneHelper,
 } from 'three';
+import { ColorRepresentation } from 'three/src/math/Color.js';
 import { Vector3 } from 'three/src/math/Vector3.js';
 import { applyValue } from '../util';
-import { ThLineSegments } from './ThLineSegments';
+import { ThLine } from './ThLine';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -30,8 +31,8 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThPlaneHelper<
   T extends PlaneHelper = PlaneHelper,
-  TARGS = [plane: Plane, size?: number, hex?: number],
-> extends ThLineSegments<
+  TARGS = [plane: Plane, size?: number, hex?: ColorRepresentation],
+> extends ThLine<
   BufferGeometry,
   Material | Material[],
   Object3DEventMap,
@@ -42,9 +43,6 @@ export class ThPlaneHelper<
     return PlaneHelper;
   }
 
-  public get type(): (string | 'PlaneHelper') | undefined {
-    return this._objRef?.type;
-  }
   @Input()
   public set plane(value: Plane | [normal: Vector3, constant: number]) {
     if (this._objRef) {

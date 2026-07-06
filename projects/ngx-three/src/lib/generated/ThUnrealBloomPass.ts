@@ -11,12 +11,10 @@ import {
 import {
   Color,
   ColorRepresentation,
-  MeshBasicMaterial,
   ShaderMaterial,
   Vector2,
   WebGLRenderTarget,
 } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { Vector3 } from 'three/src/math/Vector3.js';
 import { ThPassBase } from '../ThPassBase';
@@ -44,18 +42,6 @@ export class ThUnrealBloomPass<
     return UnrealBloomPass;
   }
 
-  @Input()
-  public set resolution(value: Vector2 | [x: number, y: number]) {
-    if (this._objRef) {
-      this._objRef.resolution = applyValue<Vector2>(
-        this._objRef.resolution,
-        value,
-      );
-    }
-  }
-  public get resolution(): Vector2 | undefined {
-    return this._objRef?.resolution;
-  }
   @Input()
   public set strength(value: number) {
     if (this._objRef) {
@@ -87,6 +73,18 @@ export class ThUnrealBloomPass<
     return this._objRef?.threshold;
   }
   @Input()
+  public set resolution(value: Vector2 | [x: number, y: number]) {
+    if (this._objRef) {
+      this._objRef.resolution = applyValue<Vector2>(
+        this._objRef.resolution,
+        value,
+      );
+    }
+  }
+  public get resolution(): Vector2 | undefined {
+    return this._objRef?.resolution;
+  }
+  @Input()
   public set clearColor(
     value:
       | Color
@@ -105,6 +103,16 @@ export class ThUnrealBloomPass<
   }
   public get clearColor(): Color | undefined {
     return this._objRef?.clearColor;
+  }
+  @Input()
+  public set needsUpdate(value: boolean) {
+    if (this._objRef) {
+      this._objRef.needsUpdate = value;
+    }
+  }
+
+  public get needsUpdate(): boolean | undefined {
+    return this._objRef?.needsUpdate;
   }
   @Input()
   public set renderTargetsHorizontal(value: WebGLRenderTarget[]) {
@@ -215,55 +223,5 @@ export class ThUnrealBloomPass<
 
   public get blendMaterial(): ShaderMaterial | undefined {
     return this._objRef?.blendMaterial;
-  }
-  @Input()
-  public set oldClearColor(
-    value:
-      | Color
-      | [
-          ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
-        ],
-  ) {
-    if (this._objRef) {
-      this._objRef.oldClearColor = applyValue<Color>(
-        this._objRef.oldClearColor,
-        value,
-      );
-    }
-  }
-  public get oldClearColor(): Color | undefined {
-    return this._objRef?.oldClearColor;
-  }
-  @Input()
-  public set oldClearAlpha(value: number) {
-    if (this._objRef) {
-      this._objRef.oldClearAlpha = value;
-    }
-  }
-
-  public get oldClearAlpha(): number | undefined {
-    return this._objRef?.oldClearAlpha;
-  }
-  @Input()
-  public set basic(value: MeshBasicMaterial) {
-    if (this._objRef) {
-      this._objRef.basic = value;
-    }
-  }
-
-  public get basic(): MeshBasicMaterial | undefined {
-    return this._objRef?.basic;
-  }
-  @Input()
-  public set fsQuad(value: FullScreenQuad) {
-    if (this._objRef) {
-      this._objRef.fsQuad = value;
-    }
-  }
-
-  public get fsQuad(): FullScreenQuad | undefined {
-    return this._objRef?.fsQuad;
   }
 }

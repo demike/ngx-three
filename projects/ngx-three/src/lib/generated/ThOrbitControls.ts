@@ -26,15 +26,16 @@ import { applyValue } from '../util';
   ],
 })
 export class ThOrbitControls<
-  T extends OrbitControls = OrbitControls,
-  TARGS = [object: Camera, domElement?: HTMLElement | SVGElement | null],
-> extends ThControlBase<OrbitControlsEventMap, T, TARGS> {
-  public getType(): Type<OrbitControls> {
+  TCamera extends Camera = Camera,
+  T extends OrbitControls<TCamera> = OrbitControls<TCamera>,
+  TARGS = [object: TCamera, domElement?: HTMLElement | SVGElement | null],
+> extends ThControlBase<OrbitControlsEventMap, TCamera, T, TARGS> {
+  public getType(): Type<OrbitControls<TCamera>> {
     return OrbitControls;
   }
 
   @Input()
-  public set target(value: Vector3 | [x: number, y: number, z: number]) {
+  public set target(value: Vector3 | [x: number, y: number, z?: number]) {
     if (this._objRef) {
       this._objRef.target = applyValue<Vector3>(this._objRef.target, value);
     }
@@ -43,7 +44,7 @@ export class ThOrbitControls<
     return this._objRef?.target;
   }
   @Input()
-  public set cursor(value: Vector3 | [x: number, y: number, z: number]) {
+  public set cursor(value: Vector3 | [x: number, y: number, z?: number]) {
     if (this._objRef) {
       this._objRef.cursor = applyValue<Vector3>(this._objRef.cursor, value);
     }
@@ -344,7 +345,7 @@ export class ThOrbitControls<
     return this._objRef?.touches;
   }
   @Input()
-  public set target0(value: Vector3 | [x: number, y: number, z: number]) {
+  public set target0(value: Vector3 | [x: number, y: number, z?: number]) {
     if (this._objRef) {
       this._objRef.target0 = applyValue<Vector3>(this._objRef.target0, value);
     }
@@ -353,7 +354,7 @@ export class ThOrbitControls<
     return this._objRef?.target0;
   }
   @Input()
-  public set position0(value: Vector3 | [x: number, y: number, z: number]) {
+  public set position0(value: Vector3 | [x: number, y: number, z?: number]) {
     if (this._objRef) {
       this._objRef.position0 = applyValue<Vector3>(
         this._objRef.position0,
@@ -373,5 +374,15 @@ export class ThOrbitControls<
 
   public get zoom0(): number | undefined {
     return this._objRef?.zoom0;
+  }
+  @Input()
+  public set cursorStyle(value: 'auto' | 'grab') {
+    if (this._objRef) {
+      this._objRef.cursorStyle = value;
+    }
+  }
+
+  public get cursorStyle(): ('auto' | 'grab') | undefined {
+    return this._objRef?.cursorStyle;
   }
 }

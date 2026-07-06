@@ -8,7 +8,7 @@
     <th-shaderPass [args]="[RGBShiftShader]" [uniforms]="{ amount: { value: shiftAmount } }" />
   </th-effectComposer>
 
-  <th-scene [background]="['#ffffff']">
+  <th-scene [background]="'#ffffff' | color">
     <th-perspectiveCamera [position]="[0, 0, zDist]" [fov]="70" [near]="1" [far]="1000" />
 
     <th-ambientLight [color]="['#333333']" [intensity]="6" />

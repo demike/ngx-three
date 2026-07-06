@@ -8,7 +8,11 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { MeshDistanceMaterial, MeshDistanceMaterialParameters } from 'three';
+import {
+  MaterialEventMap,
+  MeshDistanceMaterial,
+  MeshDistanceMaterialParameters,
+} from 'three';
 import { Texture } from 'three/src/textures/Texture.js';
 import { ThMaterial } from './ThMaterial';
 
@@ -26,7 +30,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThMeshDistanceMaterial<
   T extends MeshDistanceMaterial = MeshDistanceMaterial,
   TARGS = /* parameters? */ MeshDistanceMaterialParameters,
-> extends ThMaterial<T, TARGS> {
+> extends ThMaterial<MaterialEventMap, T, TARGS> {
   public getType(): Type<MeshDistanceMaterial> {
     return MeshDistanceMaterial;
   }

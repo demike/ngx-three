@@ -8,11 +8,10 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { DirectionalLightHelper, Matrix4, Object3DEventMap } from 'three';
+import { DirectionalLightHelper, Object3DEventMap } from 'three';
 import { DirectionalLight } from 'three/src/lights/DirectionalLight.js';
 import { ColorRepresentation } from 'three/src/math/Color.js';
 import { Line } from 'three/src/objects/Line.js';
-import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
 
 @Component({
@@ -34,19 +33,6 @@ export class ThDirectionalLightHelper<
     return DirectionalLightHelper;
   }
 
-  public get type(): (string | 'DirectionalLightHelper') | undefined {
-    return this._objRef?.type;
-  }
-  @Input()
-  public set lightPlane(value: Line) {
-    if (this._objRef) {
-      this._objRef.lightPlane = value;
-    }
-  }
-
-  public get lightPlane(): Line | undefined {
-    return this._objRef?.lightPlane;
-  }
   @Input()
   public set light(value: DirectionalLight) {
     if (this._objRef) {
@@ -58,46 +44,6 @@ export class ThDirectionalLightHelper<
     return this._objRef?.light;
   }
   @Input()
-  public set matrix(
-    value:
-      | Matrix4
-      | [
-          n11: number,
-          n12: number,
-          n13: number,
-          n14: number,
-          n21: number,
-          n22: number,
-          n23: number,
-          n24: number,
-          n31: number,
-          n32: number,
-          n33: number,
-          n34: number,
-          n41: number,
-          n42: number,
-          n43: number,
-          n44: number,
-        ],
-  ) {
-    if (this._objRef) {
-      this._objRef.matrix = applyValue<Matrix4>(this._objRef.matrix, value);
-    }
-  }
-  public get matrix(): Matrix4 | undefined {
-    return this._objRef?.matrix;
-  }
-  @Input()
-  public set matrixAutoUpdate(value: boolean) {
-    if (this._objRef) {
-      this._objRef.matrixAutoUpdate = value;
-    }
-  }
-
-  public get matrixAutoUpdate(): boolean | undefined {
-    return this._objRef?.matrixAutoUpdate;
-  }
-  @Input()
   public set color(value: ColorRepresentation | undefined) {
     if (this._objRef) {
       this._objRef.color = value;
@@ -106,6 +52,16 @@ export class ThDirectionalLightHelper<
 
   public get color(): (ColorRepresentation | undefined) | undefined {
     return this._objRef?.color;
+  }
+  @Input()
+  public set lightPlane(value: Line) {
+    if (this._objRef) {
+      this._objRef.lightPlane = value;
+    }
+  }
+
+  public get lightPlane(): Line | undefined {
+    return this._objRef?.lightPlane;
   }
   @Input()
   public set targetLine(value: Line) {

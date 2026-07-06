@@ -38,9 +38,6 @@ export class ThArrowHelper<
     return ArrowHelper;
   }
 
-  public get type(): (string | 'ArrowHelper') | undefined {
-    return this._objRef?.type;
-  }
   @Input()
   public set line(value: Line) {
     if (this._objRef) {

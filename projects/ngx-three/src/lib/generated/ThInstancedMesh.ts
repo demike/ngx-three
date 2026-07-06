@@ -50,6 +50,59 @@ export class ThInstancedMesh<
     return this._objRef?.isInstancedMesh;
   }
   @Input()
+  public set instanceMatrix(
+    value:
+      | InstancedBufferAttribute
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
+  ) {
+    if (this._objRef) {
+      this._objRef.instanceMatrix = applyValue<InstancedBufferAttribute>(
+        this._objRef.instanceMatrix,
+        value,
+      );
+    }
+  }
+  public get instanceMatrix(): InstancedBufferAttribute | undefined {
+    return this._objRef?.instanceMatrix;
+  }
+  @Input()
+  public set instanceColor(
+    value:
+      | InstancedBufferAttribute
+      | null
+      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
+  ) {
+    if (this._objRef) {
+      this._objRef.instanceColor = applyValue<InstancedBufferAttribute | null>(
+        this._objRef.instanceColor,
+        value,
+      );
+    }
+  }
+  public get instanceColor(): (InstancedBufferAttribute | null) | undefined {
+    return this._objRef?.instanceColor;
+  }
+  @Input()
+  public set morphTexture(value: DataTexture | null) {
+    if (this._objRef) {
+      this._objRef.morphTexture = value;
+    }
+  }
+
+  public get morphTexture(): (DataTexture | null) | undefined {
+    return this._objRef?.morphTexture;
+  }
+  @Input()
+  public set count(value: number) {
+    if (this._objRef) {
+      this._objRef.count = value;
+    }
+  }
+
+  public get count(): number | undefined {
+    return this._objRef?.count;
+  }
+  @Input()
   public set boundingBox(value: Box3 | null | [min: Vector3, max: Vector3]) {
     if (this._objRef) {
       this._objRef.boundingBox = applyValue<Box3 | null>(
@@ -74,58 +127,5 @@ export class ThInstancedMesh<
   }
   public get boundingSphere(): (Sphere | null) | undefined {
     return this._objRef?.boundingSphere;
-  }
-  @Input()
-  public set count(value: number) {
-    if (this._objRef) {
-      this._objRef.count = value;
-    }
-  }
-
-  public get count(): number | undefined {
-    return this._objRef?.count;
-  }
-  @Input()
-  public set instanceColor(
-    value:
-      | InstancedBufferAttribute
-      | null
-      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
-  ) {
-    if (this._objRef) {
-      this._objRef.instanceColor = applyValue<InstancedBufferAttribute | null>(
-        this._objRef.instanceColor,
-        value,
-      );
-    }
-  }
-  public get instanceColor(): (InstancedBufferAttribute | null) | undefined {
-    return this._objRef?.instanceColor;
-  }
-  @Input()
-  public set instanceMatrix(
-    value:
-      | InstancedBufferAttribute
-      | [value: ArrayLike<number> | ArrayBufferView, offset?: number],
-  ) {
-    if (this._objRef) {
-      this._objRef.instanceMatrix = applyValue<InstancedBufferAttribute>(
-        this._objRef.instanceMatrix,
-        value,
-      );
-    }
-  }
-  public get instanceMatrix(): InstancedBufferAttribute | undefined {
-    return this._objRef?.instanceMatrix;
-  }
-  @Input()
-  public set morphTexture(value: DataTexture | null) {
-    if (this._objRef) {
-      this._objRef.morphTexture = value;
-    }
-  }
-
-  public get morphTexture(): (DataTexture | null) | undefined {
-    return this._objRef?.morphTexture;
   }
 }

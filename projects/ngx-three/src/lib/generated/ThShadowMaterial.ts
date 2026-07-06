@@ -11,6 +11,7 @@ import {
 import {
   Color,
   ColorRepresentation,
+  MaterialEventMap,
   ShadowMaterial,
   ShadowMaterialParameters,
 } from 'three';
@@ -28,7 +29,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThShadowMaterial<
   T extends ShadowMaterial = ShadowMaterial,
   TARGS = /* parameters? */ ShadowMaterialParameters,
-> extends ThMaterial<T, TARGS> {
+> extends ThMaterial<MaterialEventMap, T, TARGS> {
   public getType(): Type<ShadowMaterial> {
     return ShadowMaterial;
   }

@@ -13,6 +13,7 @@ import {
   ColorRepresentation,
   Euler,
   EulerOrder,
+  MaterialEventMap,
   MeshBasicMaterial,
   MeshBasicMaterialParameters,
 } from 'three';
@@ -32,7 +33,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThMeshBasicMaterial<
   T extends MeshBasicMaterial = MeshBasicMaterial,
   TARGS = /* parameters? */ MeshBasicMaterialParameters,
-> extends ThMaterial<T, TARGS> {
+> extends ThMaterial<MaterialEventMap, T, TARGS> {
   public getType(): Type<MeshBasicMaterial> {
     return MeshBasicMaterial;
   }

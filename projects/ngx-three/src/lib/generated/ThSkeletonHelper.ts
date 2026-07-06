@@ -16,7 +16,6 @@ import {
 } from 'three';
 import { Object3D } from 'three/src/core/Object3D.js';
 import { Bone } from 'three/src/objects/Bone.js';
-import { SkinnedMesh } from 'three/src/objects/SkinnedMesh.js';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
@@ -30,7 +29,7 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThSkeletonHelper<
   T extends SkeletonHelper = SkeletonHelper,
-  TARGS = /* object */ SkinnedMesh | Object3D,
+  TARGS = /* object */ Object3D,
 > extends ThLineSegments<
   BufferGeometry,
   Material | Material[],
@@ -42,17 +41,17 @@ export class ThSkeletonHelper<
     return SkeletonHelper;
   }
 
-  public get type(): (string | 'SkeletonHelper') | undefined {
-    return this._objRef?.type;
+  public get isSkeletonHelper(): boolean | undefined {
+    return this._objRef?.isSkeletonHelper;
   }
   @Input()
-  public set root(value: SkinnedMesh | Object3D) {
+  public set root(value: Object3D) {
     if (this._objRef) {
       this._objRef.root = value;
     }
   }
 
-  public get root(): (SkinnedMesh | Object3D) | undefined {
+  public get root(): Object3D | undefined {
     return this._objRef?.root;
   }
   @Input()
@@ -64,15 +63,5 @@ export class ThSkeletonHelper<
 
   public get bones(): Bone[] | undefined {
     return this._objRef?.bones;
-  }
-  @Input()
-  public set matrixAutoUpdate(value: boolean) {
-    if (this._objRef) {
-      this._objRef.matrixAutoUpdate = value;
-    }
-  }
-
-  public get matrixAutoUpdate(): boolean | undefined {
-    return this._objRef?.matrixAutoUpdate;
   }
 }

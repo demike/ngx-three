@@ -40,8 +40,4 @@ export class ThGridHelper<
   public getType(): Type<GridHelper> {
     return GridHelper;
   }
-
-  public get type(): (string | 'GridHelper') | undefined {
-    return this._objRef?.type;
-  }
 }

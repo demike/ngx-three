@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera } from 'three';
+import { Camera, Object3D } from 'three';
 import { FirstPersonControls } from 'three/examples/jsm/controls/FirstPersonControls.js';
 import { ThControlBase } from '../ThControlBase';
 
@@ -26,7 +26,7 @@ import { ThControlBase } from '../ThControlBase';
 export class ThFirstPersonControls<
   T extends FirstPersonControls = FirstPersonControls,
   TARGS = [object: Camera, domElement?: HTMLElement | SVGElement],
-> extends ThControlBase<object, T, TARGS> {
+> extends ThControlBase<{}, Object3D, T, TARGS> {
   public getType(): Type<FirstPersonControls> {
     return FirstPersonControls;
   }
@@ -52,6 +52,16 @@ export class ThFirstPersonControls<
     return this._objRef?.lookSpeed;
   }
   @Input()
+  public set dampingFactor(value: number) {
+    if (this._objRef) {
+      this._objRef.dampingFactor = value;
+    }
+  }
+
+  public get dampingFactor(): number | undefined {
+    return this._objRef?.dampingFactor;
+  }
+  @Input()
   public set lookVertical(value: boolean) {
     if (this._objRef) {
       this._objRef.lookVertical = value;
@@ -70,16 +80,6 @@ export class ThFirstPersonControls<
 
   public get autoForward(): boolean | undefined {
     return this._objRef?.autoForward;
-  }
-  @Input()
-  public set activeLook(value: boolean) {
-    if (this._objRef) {
-      this._objRef.activeLook = value;
-    }
-  }
-
-  public get activeLook(): boolean | undefined {
-    return this._objRef?.activeLook;
   }
   @Input()
   public set heightSpeed(value: boolean) {

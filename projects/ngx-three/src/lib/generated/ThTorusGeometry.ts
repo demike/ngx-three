@@ -33,6 +33,8 @@ export class ThTorusGeometry<
     radialSegments?: number,
     tubularSegments?: number,
     arc?: number,
+    thetaStart?: number,
+    thetaLength?: number,
   ],
 > extends ThBufferGeometry<
   NormalBufferAttributes,
@@ -54,6 +56,8 @@ export class ThTorusGeometry<
         readonly radialSegments: number;
         readonly tubularSegments: number;
         readonly arc: number;
+        readonly thetaStart: number;
+        readonly thetaLength: number;
       }
     | undefined {
     return this._objRef?.parameters;

@@ -9,6 +9,7 @@ import {
   forwardRef,
 } from '@angular/core';
 import {
+  MaterialEventMap,
   MeshNormalMaterial,
   MeshNormalMaterialParameters,
   Vector2,
@@ -32,7 +33,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThMeshNormalMaterial<
   T extends MeshNormalMaterial = MeshNormalMaterial,
   TARGS = /* parameters? */ MeshNormalMaterialParameters,
-> extends ThMaterial<T, TARGS> {
+> extends ThMaterial<MaterialEventMap, T, TARGS> {
   public getType(): Type<MeshNormalMaterial> {
     return MeshNormalMaterial;
   }

@@ -75,7 +75,7 @@ export class ThObject3D<
     return this._objRef?.children;
   }
   @Input()
-  public set up(value: Vector3 | [x: number, y: number, z: number]) {
+  public set up(value: Vector3 | [x: number, y: number, z?: number]) {
     if (this._objRef) {
       this._objRef.up = applyValue<Vector3>(this._objRef.up, value);
     }
@@ -84,7 +84,7 @@ export class ThObject3D<
     return this._objRef?.up;
   }
   @Input()
-  public set position(value: Vector3 | [x: number, y: number, z: number]) {
+  public set position(value: Vector3 | [x: number, y: number, z?: number]) {
     if (this._objRef) {
       applyValue<Vector3>(this._objRef.position, value);
     }
@@ -115,7 +115,7 @@ export class ThObject3D<
     return this._objRef?.quaternion;
   }
   @Input()
-  public set scale(value: Vector3 | [x: number, y: number, z: number]) {
+  public set scale(value: Vector3 | [x: number, y: number, z?: number]) {
     if (this._objRef) {
       applyValue<Vector3>(this._objRef.scale, value);
     }
@@ -339,16 +339,6 @@ export class ThObject3D<
     return this._objRef?.animations;
   }
   @Input()
-  public set userData(value: Record<string, any>) {
-    if (this._objRef) {
-      this._objRef.userData = value;
-    }
-  }
-
-  public get userData(): Record<string, any> | undefined {
-    return this._objRef?.userData;
-  }
-  @Input()
   public set customDepthMaterial(value: Material | undefined) {
     if (this._objRef) {
       this._objRef.customDepthMaterial = value;
@@ -368,6 +358,38 @@ export class ThObject3D<
   public get customDistanceMaterial(): (Material | undefined) | undefined {
     return this._objRef?.customDistanceMaterial;
   }
+  @Input()
+  public set static(value: boolean) {
+    if (this._objRef) {
+      this._objRef.static = value;
+    }
+  }
+
+  public get static(): boolean | undefined {
+    return this._objRef?.static;
+  }
+  @Input()
+  public set userData(value: Record<string, any>) {
+    if (this._objRef) {
+      this._objRef.userData = value;
+    }
+  }
+
+  public get userData(): Record<string, any> | undefined {
+    return this._objRef?.userData;
+  }
+  @Input()
+  public set pivot(value: Vector3 | null | [x: number, y: number, z?: number]) {
+    if (this._objRef) {
+      this._objRef.pivot = applyValue<Vector3 | null>(
+        this._objRef.pivot,
+        value,
+      );
+    }
+  }
+  public get pivot(): (Vector3 | null) | undefined {
+    return this._objRef?.pivot;
+  }
 
   public static readonly DEFAULT_UP = Object3D.DEFAULT_UP;
 
@@ -376,4 +398,25 @@ export class ThObject3D<
 
   public static readonly DEFAULT_MATRIX_WORLD_AUTO_UPDATE =
     Object3D.DEFAULT_MATRIX_WORLD_AUTO_UPDATE;
+
+  @Input()
+  public set count(value: number | undefined) {
+    if (this._objRef) {
+      this._objRef.count = value;
+    }
+  }
+
+  public get count(): (number | undefined) | undefined {
+    return this._objRef?.count;
+  }
+  @Input()
+  public set occlusionTest(value: boolean | undefined) {
+    if (this._objRef) {
+      this._objRef.occlusionTest = value;
+    }
+  }
+
+  public get occlusionTest(): (boolean | undefined) | undefined {
+    return this._objRef?.occlusionTest;
+  }
 }

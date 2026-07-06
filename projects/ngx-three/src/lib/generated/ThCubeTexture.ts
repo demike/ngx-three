@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { CubeTexture } from 'three';
+import { CubeTexture, TextureEventMap } from 'three';
 import {
   CubeTextureMapping,
   MagnificationTextureFilter,
@@ -43,7 +43,7 @@ export class ThCubeTexture<
     anisotropy?: number,
     colorSpace?: string,
   ],
-> extends ThTexture<TImage[], T, TARGS> {
+> extends ThTexture<TImage[], TextureEventMap, T, TARGS> {
   public getType(): Type<CubeTexture<TImage>> {
     return CubeTexture;
   }

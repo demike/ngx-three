@@ -43,9 +43,6 @@ export class ThBox3Helper<
     return Box3Helper;
   }
 
-  public get type(): (string | 'Box3Helper') | undefined {
-    return this._objRef?.type;
-  }
   @Input()
   public set box(value: Box3 | [min: Vector3, max: Vector3]) {
     if (this._objRef) {

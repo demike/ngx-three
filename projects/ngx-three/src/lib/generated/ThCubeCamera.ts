@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 import { CubeCamera, Object3DEventMap } from 'three';
 import { CoordinateSystem } from 'three/src/constants.js';
+import CubeRenderTarget from 'three/src/renderers/common/CubeRenderTarget.js';
 import { WebGLCubeRenderTarget } from 'three/src/renderers/WebGLCubeRenderTarget.js';
 import { ThObject3D } from './ThObject3D';
 
@@ -23,15 +24,16 @@ import { ThObject3D } from './ThObject3D';
 })
 export class ThCubeCamera<
   T extends CubeCamera = CubeCamera,
-  TARGS = [near: number, far: number, renderTarget: WebGLCubeRenderTarget],
+  TARGS = [
+    near: number,
+    far: number,
+    renderTarget: WebGLCubeRenderTarget | CubeRenderTarget,
+  ],
 > extends ThObject3D<Object3DEventMap, T, TARGS> {
   public getType(): Type<CubeCamera> {
     return CubeCamera;
   }
 
-  public get type(): (string | 'CubeCamera') | undefined {
-    return this._objRef?.type;
-  }
   @Input()
   public set renderTarget(value: WebGLCubeRenderTarget) {
     if (this._objRef) {
@@ -43,13 +45,13 @@ export class ThCubeCamera<
     return this._objRef?.renderTarget;
   }
   @Input()
-  public set coordinateSystem(value: CoordinateSystem) {
+  public set coordinateSystem(value: CoordinateSystem | null) {
     if (this._objRef) {
       this._objRef.coordinateSystem = value;
     }
   }
 
-  public get coordinateSystem(): CoordinateSystem | undefined {
+  public get coordinateSystem(): (CoordinateSystem | null) | undefined {
     return this._objRef?.coordinateSystem;
   }
   @Input()

@@ -13,6 +13,7 @@ import {
   ColorRepresentation,
   Euler,
   EulerOrder,
+  MaterialEventMap,
   MeshPhongMaterial,
   MeshPhongMaterialParameters,
   Vector2,
@@ -33,7 +34,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThMeshPhongMaterial<
   T extends MeshPhongMaterial = MeshPhongMaterial,
   TARGS = /* parameters? */ MeshPhongMaterialParameters,
-> extends ThMaterial<T, TARGS> {
+> extends ThMaterial<MaterialEventMap, T, TARGS> {
   public getType(): Type<MeshPhongMaterial> {
     return MeshPhongMaterial;
   }
@@ -317,6 +318,16 @@ export class ThMeshPhongMaterial<
 
   public get reflectivity(): number | undefined {
     return this._objRef?.reflectivity;
+  }
+  @Input()
+  public set envMapIntensity(value: number) {
+    if (this._objRef) {
+      this._objRef.envMapIntensity = value;
+    }
+  }
+
+  public get envMapIntensity(): number | undefined {
+    return this._objRef?.envMapIntensity;
   }
   @Input()
   public set refractionRatio(value: number) {

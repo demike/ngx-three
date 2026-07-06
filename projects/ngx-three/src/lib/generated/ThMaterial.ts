@@ -8,7 +8,7 @@ import {
   Type,
   inject,
 } from '@angular/core';
-import { Color, ColorRepresentation, Material } from 'three';
+import { Color, ColorRepresentation, Material, MaterialEventMap } from 'three';
 import {
   Blending,
   BlendingDstFactor,
@@ -31,12 +31,13 @@ import { ThObject3D } from './ThObject3D';
   providers: [],
 })
 export class ThMaterial<
-  T extends Material = Material,
+  TEventMap extends MaterialEventMap = MaterialEventMap,
+  T extends Material<TEventMap> = Material<TEventMap>,
   TARGS = [],
 > extends ThMaterialBase<T, TARGS> {
   parent = inject<ThObject3D>(ThObject3D, { skipSelf: true });
 
-  public getType(): Type<Material> {
+  public getType(): Type<Material<TEventMap>> {
     return Material;
   }
 

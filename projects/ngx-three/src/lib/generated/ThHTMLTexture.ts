@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -7,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { CanvasTexture, TextureEventMap } from 'three';
+import { HTMLTexture, TextureEventMap } from 'three';
 import {
   MagnificationTextureFilter,
   Mapping,
@@ -20,18 +21,17 @@ import { ThTextureBase } from '../ThTextureBase';
 import { ThTexture } from './ThTexture';
 
 @Component({
-  selector: 'th-canvasTexture',
+  selector: 'th-hTMLTexture',
   template: '<ng-content/>',
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
-    { provide: ThTextureBase, useExisting: forwardRef(() => ThCanvasTexture) },
+    { provide: ThTextureBase, useExisting: forwardRef(() => ThHTMLTexture) },
   ],
 })
-export class ThCanvasTexture<
-  TCanvas = HTMLCanvasElement,
-  T extends CanvasTexture<TCanvas> = CanvasTexture<TCanvas>,
+export class ThHTMLTexture<
+  T extends HTMLTexture = HTMLTexture,
   TARGS = [
-    canvas?: TCanvas,
+    image?: HTMLElement,
     mapping?: Mapping,
     wrapS?: Wrapping,
     wrapT?: Wrapping,
@@ -41,12 +41,12 @@ export class ThCanvasTexture<
     type?: TextureDataType,
     anisotropy?: number,
   ],
-> extends ThTexture<TCanvas, TextureEventMap, T, TARGS> {
-  public getType(): Type<CanvasTexture<TCanvas>> {
-    return CanvasTexture;
+> extends ThTexture<HTMLElement, TextureEventMap, T, TARGS> {
+  public getType(): Type<HTMLTexture> {
+    return HTMLTexture;
   }
 
-  public get isCanvasTexture(): true | undefined {
-    return this._objRef?.isCanvasTexture;
+  public get isHTMLTexture(): boolean | undefined {
+    return this._objRef?.isHTMLTexture;
   }
 }

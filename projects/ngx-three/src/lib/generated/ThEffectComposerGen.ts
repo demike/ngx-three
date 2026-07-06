@@ -2,7 +2,7 @@
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
 import { ChangeDetectionStrategy, Component, Input, Type } from '@angular/core';
-import { Clock, WebGLRenderer, WebGLRenderTarget } from 'three';
+import { Timer, WebGLRenderer, WebGLRenderTarget } from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { Pass } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
@@ -73,6 +73,16 @@ export class ThEffectComposerGen<
     return this._objRef?.readBuffer;
   }
   @Input()
+  public set renderToScreen(value: boolean) {
+    if (this._objRef) {
+      this._objRef.renderToScreen = value;
+    }
+  }
+
+  public get renderToScreen(): boolean | undefined {
+    return this._objRef?.renderToScreen;
+  }
+  @Input()
   public set passes(value: Pass[]) {
     if (this._objRef) {
       this._objRef.passes = value;
@@ -93,23 +103,13 @@ export class ThEffectComposerGen<
     return this._objRef?.copyPass;
   }
   @Input()
-  public set clock(value: Clock) {
+  public set timer(value: Timer) {
     if (this._objRef) {
-      this._objRef.clock = value;
+      this._objRef.timer = value;
     }
   }
 
-  public get clock(): Clock | undefined {
-    return this._objRef?.clock;
-  }
-  @Input()
-  public set renderToScreen(value: boolean) {
-    if (this._objRef) {
-      this._objRef.renderToScreen = value;
-    }
-  }
-
-  public get renderToScreen(): boolean | undefined {
-    return this._objRef?.renderToScreen;
+  public get timer(): Timer | undefined {
+    return this._objRef?.timer;
   }
 }

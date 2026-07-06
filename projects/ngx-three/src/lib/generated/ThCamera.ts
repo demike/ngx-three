@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera, Layers, Matrix4, Object3DEventMap, Vector4 } from 'three';
+import { Camera, Matrix4, Object3DEventMap, Vector4 } from 'three';
 import { CoordinateSystem } from 'three/src/constants.js';
 import { applyValue } from '../util';
 import { ThObject3D } from './ThObject3D';
@@ -28,20 +28,8 @@ export class ThCamera<T extends Camera = Camera, TARGS = []> extends ThObject3D<
     return Camera;
   }
 
-  public get isCamera(): true | undefined {
+  public get isCamera(): boolean | undefined {
     return this._objRef?.isCamera;
-  }
-  public get type(): (string | 'Camera') | undefined {
-    return this._objRef?.type;
-  }
-  @Input()
-  public set layers(value: Layers | [layer: number]) {
-    if (this._objRef) {
-      this._objRef.layers = applyValue<Layers>(this._objRef.layers, value);
-    }
-  }
-  public get layers(): Layers | undefined {
-    return this._objRef?.layers;
   }
   @Input()
   public set matrixWorldInverse(

@@ -8,7 +8,11 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { ShaderMaterial, ShaderMaterialParameters } from 'three';
+import {
+  MaterialEventMap,
+  ShaderMaterial,
+  ShaderMaterialParameters,
+} from 'three';
 import { GLSLVersion } from 'three/src/constants.js';
 import { UniformsGroup } from 'three/src/core/UniformsGroup.js';
 import { IUniform } from 'three/src/renderers/shaders/UniformsLib.js';
@@ -25,7 +29,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThShaderMaterial<
   T extends ShaderMaterial = ShaderMaterial,
   TARGS = /* parameters? */ ShaderMaterialParameters,
-> extends ThMaterial<T, TARGS> {
+> extends ThMaterial<MaterialEventMap, T, TARGS> {
   public getType(): Type<ShaderMaterial> {
     return ShaderMaterial;
   }

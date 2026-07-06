@@ -79,8 +79,9 @@ export abstract class NgxThreeClass {
       );
     }
 
+    const generatedNames = new Set<string>();
     for (const decl of this.classDecl) {
-      this.inputs += this.generateMembers(decl);
+      this.inputs += this.generateMembers(decl, generatedNames);
     }
 
     this.providersArray = this.generateProvidersArray();
@@ -205,7 +206,10 @@ export abstract class NgxThreeClass {
     return header;
   }
 
-  private generateMembers(classOrInterface: ts.ClassDeclaration | ts.InterfaceDeclaration): string {
+  private generateMembers(
+    classOrInterface: ts.ClassDeclaration | ts.InterfaceDeclaration,
+    generatedNames: Set<string> = new Set(),
+  ): string {
     let members = '';
 
     for (const member of classOrInterface.members) {
@@ -214,12 +218,13 @@ export abstract class NgxThreeClass {
       if (
         !memberName ||
         INGORED_MEMBERS.find((m) => m === memberName) ||
+        generatedNames.has(memberName) ||
         ((member as ts.PropertyDeclaration).modifiers &&
           (member as ts.PropertyDeclaration).modifiers?.find(
             (m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword,
           ))
       ) {
-        // it's private or protected, or in the ingore list --> do not expose
+        // it's private or protected, in the ignore list, or already generated --> do not expose
         continue;
       }
 
@@ -228,10 +233,13 @@ export abstract class NgxThreeClass {
         members += this.generateSetterInput(memberName, member);
         // gerate the getter
         members += this.generateGetter(memberName, member);
+        generatedNames.add(memberName);
       } else if (ts.isSetAccessor(member) && member.parameters[0]?.type) {
         members += this.generateSetterInput(memberName, member, member.parameters[0]?.type.getText());
+        generatedNames.add(memberName);
       } else if (ts.isGetAccessor(member) && member.type) {
         members += this.generateGetter(memberName, member);
+        generatedNames.add(memberName);
       }
     }
 
@@ -244,7 +252,7 @@ export abstract class NgxThreeClass {
           if (!symbol || !symbol.declarations || symbol?.name !== `${this.wrappedClassName}Properties`) continue;
           for (const decl of symbol.declarations) {
             if (ts.isClassDeclaration(decl) || ts.isInterfaceDeclaration(decl)) {
-              members += this.generateMembers(decl);
+              members += this.generateMembers(decl, generatedNames);
             }
           }
         }
@@ -398,7 +406,7 @@ export abstract class NgxThreeClass {
       const exportsFrom = this.getImportPathForSourceFile(srcFile);
 
       exports
-        .filter((exp) => exp.escapedName !== this.wrappedClassName)
+        .filter((exp) => exp.escapedName !== this.wrappedClassName && exp.escapedName !== 'default')
         .forEach((exp) => {
           this.imports.add(`import { ${exp.escapedName} } from '${exportsFrom}';`);
         });

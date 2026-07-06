@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Color, ColorRepresentation, HemisphereLight, Vector3 } from 'three';
+import { Color, ColorRepresentation, HemisphereLight } from 'three';
 import { applyValue } from '../util';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
@@ -28,42 +28,13 @@ export class ThHemisphereLight<
     groundColor?: ColorRepresentation,
     intensity?: number,
   ],
-> extends ThLight<undefined, T, TARGS> {
+> extends ThLight<T, TARGS> {
   public getType(): Type<HemisphereLight> {
     return HemisphereLight;
   }
 
-  public get isHemisphereLight(): true | undefined {
+  public get isHemisphereLight(): boolean | undefined {
     return this._objRef?.isHemisphereLight;
-  }
-  public get type(): (string | 'HemisphereLight') | undefined {
-    return this._objRef?.type;
-  }
-  @Input()
-  public set position(value: Vector3 | [x: number, y: number, z: number]) {
-    if (this._objRef) {
-      applyValue<Vector3>(this._objRef.position, value);
-    }
-  }
-  public get position(): Vector3 | undefined {
-    return this._objRef?.position;
-  }
-  @Input()
-  public set color(
-    value:
-      | Color
-      | [
-          ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
-        ],
-  ) {
-    if (this._objRef) {
-      this._objRef.color = applyValue<Color>(this._objRef.color, value);
-    }
-  }
-  public get color(): Color | undefined {
-    return this._objRef?.color;
   }
   @Input()
   public set groundColor(

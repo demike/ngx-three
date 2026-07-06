@@ -1,5 +1,5 @@
 <th-canvas #thecanvas [shadow]="true" [thStats]="true">
-  <th-scene [background]="['#ffffff']" #scene>
+  <th-scene [background]="'#ffffff' | color" #scene>
     <th-perspectiveCamera #camera [position]="[0, 0, 8]" [fov]="45" [near]="0.1" [far]="100">
       <th-orbitControls />
     </th-perspectiveCamera>

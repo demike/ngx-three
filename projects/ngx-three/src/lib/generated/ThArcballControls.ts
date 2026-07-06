@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Camera, Scene } from 'three';
+import { Camera, Object3D, Scene } from 'three';
 import {
   ArcballControls,
   ArcballControlsEventMap,
@@ -33,7 +33,7 @@ export class ThArcballControls<
     domElement?: HTMLElement | SVGElement | null,
     scene?: Scene | null,
   ],
-> extends ThControlBase<ArcballControlsEventMap, T, TARGS> {
+> extends ThControlBase<ArcballControlsEventMap, Object3D, T, TARGS> {
   public getType(): Type<ArcballControls> {
     return ArcballControls;
   }

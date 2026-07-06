@@ -8,7 +8,11 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { DataArrayTexture, DataArrayTextureImageData } from 'three';
+import {
+  DataArrayTexture,
+  DataArrayTextureImageData,
+  TextureEventMap,
+} from 'three';
 import {
   MagnificationTextureFilter,
   MinificationTextureFilter,
@@ -36,7 +40,7 @@ export class ThDataArrayTexture<
     height?: number,
     depth?: number,
   ],
-> extends ThTexture<DataArrayTextureImageData, T, TARGS> {
+> extends ThTexture<DataArrayTextureImageData, TextureEventMap, T, TARGS> {
   public getType(): Type<DataArrayTexture> {
     return DataArrayTexture;
   }

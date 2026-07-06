@@ -11,6 +11,7 @@ import {
 import {
   Color,
   ColorRepresentation,
+  MaterialEventMap,
   MeshMatcapMaterial,
   MeshMatcapMaterialParameters,
   Vector2,
@@ -34,7 +35,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThMeshMatcapMaterial<
   T extends MeshMatcapMaterial = MeshMatcapMaterial,
   TARGS = /* parameters? */ MeshMatcapMaterialParameters,
-> extends ThMaterial<T, TARGS> {
+> extends ThMaterial<MaterialEventMap, T, TARGS> {
   public getType(): Type<MeshMatcapMaterial> {
     return MeshMatcapMaterial;
   }

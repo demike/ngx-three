@@ -30,33 +30,13 @@ export class ThPointLight<
     distance?: number,
     decay?: number,
   ],
-> extends ThLight<PointLightShadow, T, TARGS> {
+> extends ThLight<T, TARGS> {
   public getType(): Type<PointLight> {
     return PointLight;
   }
 
-  public get isPointLight(): true | undefined {
+  public get isPointLight(): boolean | undefined {
     return this._objRef?.isPointLight;
-  }
-  @Input()
-  public set type(value: string) {
-    if (this._objRef) {
-      this._objRef.type = value;
-    }
-  }
-
-  public get type(): string | undefined {
-    return this._objRef?.type;
-  }
-  @Input()
-  public set intensity(value: number) {
-    if (this._objRef) {
-      this._objRef.intensity = value;
-    }
-  }
-
-  public get intensity(): number | undefined {
-    return this._objRef?.intensity;
   }
   @Input()
   public set distance(value: number) {
@@ -67,16 +47,6 @@ export class ThPointLight<
 
   public get distance(): number | undefined {
     return this._objRef?.distance;
-  }
-  @Input()
-  public set castShadow(value: boolean) {
-    if (this._objRef) {
-      this._objRef.castShadow = value;
-    }
-  }
-
-  public get castShadow(): boolean | undefined {
-    return this._objRef?.castShadow;
   }
   @Input()
   public set decay(value: number) {

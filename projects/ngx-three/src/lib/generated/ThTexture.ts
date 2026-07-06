@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Matrix3, Texture } from 'three';
+import { Matrix3, Texture, TextureEventMap } from 'three';
 import {
   AnyMapping,
   AnyPixelFormat,
@@ -39,7 +39,8 @@ import { applyValue } from '../util';
 })
 export class ThTexture<
   TImage = unknown,
-  T extends Texture<TImage> = Texture<TImage>,
+  TEventMap extends TextureEventMap = TextureEventMap,
+  T extends Texture<TImage, TEventMap> = Texture<TImage, TEventMap>,
   TARGS =
     | [
         image?: TImage,
@@ -65,7 +66,7 @@ export class ThTexture<
         anisotropy: number,
       ],
 > extends ThTextureBase<T, TARGS> {
-  public getType(): Type<Texture<TImage>> {
+  public getType(): Type<Texture<TImage, TEventMap>> {
     return Texture;
   }
 
@@ -419,6 +420,16 @@ export class ThTexture<
 
   public get pmremVersion(): number | undefined {
     return this._objRef?.pmremVersion;
+  }
+  @Input()
+  public set normalized(value: boolean) {
+    if (this._objRef) {
+      this._objRef.normalized = value;
+    }
+  }
+
+  public get normalized(): boolean | undefined {
+    return this._objRef?.normalized;
   }
   @Input()
   public set needsUpdate(value: boolean) {

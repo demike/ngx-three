@@ -12,6 +12,7 @@ import {
   CompressedTexture,
   CompressedTextureImageData,
   CompressedTextureMipmap,
+  TextureEventMap,
 } from 'three';
 import {
   CompressedPixelFormat,
@@ -52,7 +53,7 @@ export class ThCompressedTexture<
     anisotropy?: number,
     colorSpace?: string,
   ],
-> extends ThTexture<TImageData, T, TARGS> {
+> extends ThTexture<TImageData, TextureEventMap, T, TARGS> {
   public getType(): Type<CompressedTexture<TImageData>> {
     return CompressedTexture;
   }

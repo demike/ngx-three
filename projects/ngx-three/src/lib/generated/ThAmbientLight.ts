@@ -23,15 +23,12 @@ import { ThObject3D } from './ThObject3D';
 export class ThAmbientLight<
   T extends AmbientLight = AmbientLight,
   TARGS = [color?: ColorRepresentation, intensity?: number],
-> extends ThLight<undefined, T, TARGS> {
+> extends ThLight<T, TARGS> {
   public getType(): Type<AmbientLight> {
     return AmbientLight;
   }
 
-  public get isAmbientLight(): true | undefined {
+  public get isAmbientLight(): boolean | undefined {
     return this._objRef?.isAmbientLight;
-  }
-  public get type(): (string | 'AmbientLight') | undefined {
-    return this._objRef?.type;
   }
 }

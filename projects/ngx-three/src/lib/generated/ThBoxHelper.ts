@@ -4,6 +4,7 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Input,
   Type,
   forwardRef,
 } from '@angular/core';
@@ -37,7 +38,14 @@ export class ThBoxHelper<
     return BoxHelper;
   }
 
-  public get type(): (string | 'BoxHelper') | undefined {
-    return this._objRef?.type;
+  @Input()
+  public set object(value: Object3D) {
+    if (this._objRef) {
+      this._objRef.object = value;
+    }
+  }
+
+  public get object(): Object3D | undefined {
+    return this._objRef?.object;
   }
 }

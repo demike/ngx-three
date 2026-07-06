@@ -23,22 +23,15 @@ import { ThPerspectiveCamera } from './ThPerspectiveCamera';
 })
 export class ThArrayCamera<
   T extends ArrayCamera = ArrayCamera,
-  TARGS = /* cameras? */ PerspectiveCamera[],
+  TARGS = /* array? */ PerspectiveCamera[],
 > extends ThPerspectiveCamera<T, TARGS> {
   public getType(): Type<ArrayCamera> {
     return ArrayCamera;
   }
 
-  public get isArrayCamera(): true | undefined {
+  public get isArrayCamera(): boolean | undefined {
     return this._objRef?.isArrayCamera;
   }
-  @Input()
-  public set isMultiViewCamera(value: boolean) {
-    if (this._objRef) {
-      this._objRef.isMultiViewCamera = value;
-    }
-  }
-
   public get isMultiViewCamera(): boolean | undefined {
     return this._objRef?.isMultiViewCamera;
   }
@@ -51,15 +44,5 @@ export class ThArrayCamera<
 
   public get cameras(): PerspectiveCamera[] | undefined {
     return this._objRef?.cameras;
-  }
-  @Input()
-  public set index(value: number) {
-    if (this._objRef) {
-      this._objRef.index = value;
-    }
-  }
-
-  public get index(): number | undefined {
-    return this._objRef?.index;
   }
 }

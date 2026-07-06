@@ -8,7 +8,11 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { FramebufferTexture, FramebufferTextureImageData } from 'three';
+import {
+  FramebufferTexture,
+  FramebufferTextureImageData,
+  TextureEventMap,
+} from 'three';
 import {
   MagnificationTextureFilter,
   MinificationTextureFilter,
@@ -30,7 +34,7 @@ import { ThTexture } from './ThTexture';
 export class ThFramebufferTexture<
   T extends FramebufferTexture = FramebufferTexture,
   TARGS = [width: number, height: number],
-> extends ThTexture<FramebufferTextureImageData, T, TARGS> {
+> extends ThTexture<FramebufferTextureImageData, TextureEventMap, T, TARGS> {
   public getType(): Type<FramebufferTexture> {
     return FramebufferTexture;
   }

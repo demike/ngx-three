@@ -13,6 +13,7 @@ import {
   ColorRepresentation,
   LineBasicMaterial,
   LineBasicMaterialParameters,
+  MaterialEventMap,
 } from 'three';
 import { Texture } from 'three/src/textures/Texture.js';
 import { applyValue } from '../util';
@@ -29,7 +30,7 @@ import { ThMaterial } from './ThMaterial';
 export class ThLineBasicMaterial<
   T extends LineBasicMaterial = LineBasicMaterial,
   TARGS = /* parameters? */ LineBasicMaterialParameters,
-> extends ThMaterial<T, TARGS> {
+> extends ThMaterial<MaterialEventMap, T, TARGS> {
   public getType(): Type<LineBasicMaterial> {
     return LineBasicMaterial;
   }

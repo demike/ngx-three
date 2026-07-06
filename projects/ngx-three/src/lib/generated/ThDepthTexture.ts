@@ -8,7 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { DepthTexture, DepthTextureImageData } from 'three';
+import { DepthTexture, DepthTextureImageData, TextureEventMap } from 'three';
 import {
   DepthTexturePixelFormat,
   MagnificationTextureFilter,
@@ -30,10 +30,11 @@ import { ThTexture } from './ThTexture';
   ],
 })
 export class ThDepthTexture<
-  T extends DepthTexture = DepthTexture,
+  TImage = DepthTextureImageData,
+  T extends DepthTexture<TImage> = DepthTexture<TImage>,
   TARGS = [
-    width: number,
-    height: number,
+    width?: number,
+    height?: number,
     type?: TextureDataType,
     mapping?: Mapping,
     wrapS?: Wrapping,
@@ -44,8 +45,8 @@ export class ThDepthTexture<
     format?: DepthTexturePixelFormat,
     depth?: number,
   ],
-> extends ThTexture<DepthTextureImageData, T, TARGS> {
-  public getType(): Type<DepthTexture> {
+> extends ThTexture<TImage, TextureEventMap, T, TARGS> {
+  public getType(): Type<DepthTexture<TImage>> {
     return DepthTexture;
   }
 

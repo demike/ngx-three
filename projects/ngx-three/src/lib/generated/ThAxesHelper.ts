@@ -7,9 +7,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { AxesHelper, Object3DEventMap } from 'three';
-import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
-import { LineBasicMaterial } from 'three/src/materials/LineBasicMaterial.js';
+import { AxesHelper, BufferGeometry, Material, Object3DEventMap } from 'three';
 import { ThLineSegments } from './ThLineSegments';
 import { ThObject3D } from './ThObject3D';
 
@@ -26,16 +24,12 @@ export class ThAxesHelper<
   TARGS = /* size? */ number,
 > extends ThLineSegments<
   BufferGeometry,
-  LineBasicMaterial,
+  Material | Material[],
   Object3DEventMap,
   T,
   TARGS
 > {
   public getType(): Type<AxesHelper> {
     return AxesHelper;
-  }
-
-  public get type(): (string | 'AxesHelper') | undefined {
-    return this._objRef?.type;
   }
 }

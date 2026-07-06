@@ -13,6 +13,8 @@ import { ThWrapperBase } from './ThWrapperBase';
 // eslint-disable-next-line @angular-eslint/component-class-suffix
 export class ThControlBase<
     TEventMap extends object = object,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    _TObject extends Object3D = Object3D,
     T extends Controls<TEventMap> = Controls<TEventMap>,
     TARGS = [],
   >

@@ -29,8 +29,8 @@ export class ThPolarGridHelper<
   T extends PolarGridHelper = PolarGridHelper,
   TARGS = [
     radius?: number,
-    radials?: number,
-    circles?: number,
+    sectors?: number,
+    rings?: number,
     divisions?: number,
     color1?: ColorRepresentation,
     color2?: ColorRepresentation,
@@ -44,9 +44,5 @@ export class ThPolarGridHelper<
 > {
   public getType(): Type<PolarGridHelper> {
     return PolarGridHelper;
-  }
-
-  public get type(): (string | 'PolarGridHelper') | undefined {
-    return this._objRef?.type;
   }
 }

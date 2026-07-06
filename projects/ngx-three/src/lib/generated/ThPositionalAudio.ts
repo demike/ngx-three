@@ -4,12 +4,10 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
   Type,
   forwardRef,
 } from '@angular/core';
 import { PositionalAudio } from 'three';
-import { AudioListener } from 'three/src/audio/AudioListener.js';
 import { ThAudio } from './ThAudio';
 import { ThObject3D } from './ThObject3D';
 
@@ -27,13 +25,6 @@ export class ThPositionalAudio<
 > extends ThAudio<PannerNode, T, TARGS> {
   public getType(): Type<PositionalAudio> {
     return PositionalAudio;
-  }
-
-  @Input()
-  public set panner(value: PannerNode) {
-    if (this._objRef) {
-      this._objRef.panner = value;
-    }
   }
 
   public get panner(): PannerNode | undefined {

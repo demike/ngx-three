@@ -8,12 +8,11 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { SpotLight, Vector3 } from 'three';
+import { SpotLight } from 'three';
 import { Object3D } from 'three/src/core/Object3D.js';
 import { SpotLightShadow } from 'three/src/lights/SpotLightShadow.js';
 import { ColorRepresentation } from 'three/src/math/Color.js';
 import { Texture } from 'three/src/textures/Texture.js';
-import { applyValue } from '../util';
 import { ThLight } from './ThLight';
 import { ThObject3D } from './ThObject3D';
 
@@ -35,25 +34,13 @@ export class ThSpotLight<
     penumbra?: number,
     decay?: number,
   ],
-> extends ThLight<SpotLightShadow, T, TARGS> {
+> extends ThLight<T, TARGS> {
   public getType(): Type<SpotLight> {
     return SpotLight;
   }
 
-  public get isSpotLight(): true | undefined {
+  public get isSpotLight(): boolean | undefined {
     return this._objRef?.isSpotLight;
-  }
-  public get type(): (string | 'SpotLight') | undefined {
-    return this._objRef?.type;
-  }
-  @Input()
-  public set position(value: Vector3 | [x: number, y: number, z: number]) {
-    if (this._objRef) {
-      applyValue<Vector3>(this._objRef.position, value);
-    }
-  }
-  public get position(): Vector3 | undefined {
-    return this._objRef?.position;
   }
   @Input()
   public set target(value: Object3D) {
@@ -64,26 +51,6 @@ export class ThSpotLight<
 
   public get target(): Object3D | undefined {
     return this._objRef?.target;
-  }
-  @Input()
-  public set castShadow(value: boolean) {
-    if (this._objRef) {
-      this._objRef.castShadow = value;
-    }
-  }
-
-  public get castShadow(): boolean | undefined {
-    return this._objRef?.castShadow;
-  }
-  @Input()
-  public set intensity(value: number) {
-    if (this._objRef) {
-      this._objRef.intensity = value;
-    }
-  }
-
-  public get intensity(): number | undefined {
-    return this._objRef?.intensity;
   }
   @Input()
   public set distance(value: number) {
@@ -106,6 +73,16 @@ export class ThSpotLight<
     return this._objRef?.angle;
   }
   @Input()
+  public set penumbra(value: number) {
+    if (this._objRef) {
+      this._objRef.penumbra = value;
+    }
+  }
+
+  public get penumbra(): number | undefined {
+    return this._objRef?.penumbra;
+  }
+  @Input()
   public set decay(value: number) {
     if (this._objRef) {
       this._objRef.decay = value;
@@ -114,6 +91,16 @@ export class ThSpotLight<
 
   public get decay(): number | undefined {
     return this._objRef?.decay;
+  }
+  @Input()
+  public set map(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.map = value;
+    }
+  }
+
+  public get map(): (Texture | null) | undefined {
+    return this._objRef?.map;
   }
   @Input()
   public set shadow(value: SpotLightShadow) {
@@ -134,25 +121,5 @@ export class ThSpotLight<
 
   public get power(): number | undefined {
     return this._objRef?.power;
-  }
-  @Input()
-  public set penumbra(value: number) {
-    if (this._objRef) {
-      this._objRef.penumbra = value;
-    }
-  }
-
-  public get penumbra(): number | undefined {
-    return this._objRef?.penumbra;
-  }
-  @Input()
-  public set map(value: Texture | null) {
-    if (this._objRef) {
-      this._objRef.map = value;
-    }
-  }
-
-  public get map(): (Texture | null) | undefined {
-    return this._objRef?.map;
   }
 }
