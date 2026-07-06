@@ -37,8 +37,7 @@ type __ngxThreeExtraObjects = {
     : never;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface NgxThreeObjects extends OmitByValue<__ngxThreeObjects & __ngxThreeExtraObjects, never> {}
+export type NgxThreeObjects = OmitByValue<__ngxThreeObjects & __ngxThreeExtraObjects, never>;
 
 // ------ materials ------
 
@@ -50,8 +49,7 @@ type __ngxThreeMaterials = {
     : never;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface NgxThreeMaterials extends OmitByValue<__ngxThreeMaterials, never> {}
+export type NgxThreeMaterials = OmitByValue<__ngxThreeMaterials, never>;
 
 // ------ geometries ------
 
@@ -72,9 +70,10 @@ type __ngxThreeExtraGeometries = {
     : never;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface NgxThreeBufferGeometries
-  extends OmitByValue<__ngxThreeBufferGeometries & __ngxThreeExtraGeometries, never> {}
+export type NgxThreeBufferGeometries = OmitByValue<
+  __ngxThreeBufferGeometries & __ngxThreeExtraGeometries,
+  never
+>;
 
 // ------ textures -----
 
@@ -86,8 +85,7 @@ type __ngxThreeTextures = {
     : never;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface NgxThreeTextures extends OmitByValue<__ngxThreeTextures, never> {}
+export type NgxThreeTextures = OmitByValue<__ngxThreeTextures, never>;
 
 // ------ controls ------
 
@@ -96,8 +94,7 @@ type __ngxControls = {
   [P in keyof Controls]: InstanceType<Controls[P]>;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface NgxThreeControls extends OmitByValue<__ngxControls, never> {}
+export type NgxThreeControls = OmitByValue<__ngxControls, never>;
 
 // ------ post processing passes ------
 
@@ -107,5 +104,4 @@ type __ngxPasses = {
   [P in keyof Passes]: Passes[P] extends abstract new (...args: any) => any ? InstanceType<Passes[P]> : never;
 };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface NgxThreePasses extends OmitByValue<__ngxPasses, never> {}
+export type NgxThreePasses = OmitByValue<__ngxPasses, never>;

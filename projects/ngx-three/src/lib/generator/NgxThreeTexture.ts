@@ -47,4 +47,8 @@ export class NgxThreeTexture extends NgxThreeClass {
   public getWrapperBaseClassName(): string {
     return 'ThTextureBase';
   }
+
+  protected generateClassHeader() {
+    return super.generateClassHeader().replace('VideoFrame | {}', 'VideoFrame | object');
+  }
 }

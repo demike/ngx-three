@@ -1,11 +1,10 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy, Input, NO_ERRORS_SCHEMA } from '@angular/core';
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { LODLevelDirective } from './lod-level.directive';
 import { ThLOD, ThObject3D, ThScene } from '../generated';
 import { LOD, Scene } from 'three';
-import { ThCanvas } from 'ngx-three';
 
 @Component({
   template: `
@@ -14,11 +13,13 @@ import { ThCanvas } from 'ngx-three';
         <th-lOD>
           <th-object3D [lodLevel] />
           <th-object3D [lodLevel]="{ distance: 5 }" />
-          <th-object3D [lodLevel]="{ distance: bar }" *ngIf="foo" />
+          @if (foo) {
+            <th-object3D [lodLevel]="{ distance: bar }" />
+          }
         </th-lOD> </th-scene
     ></th-canvas>
   `,
-  imports: [ThLOD, ThObject3D, LODLevelDirective, CommonModule, ThCanvas, ThScene],
+  imports: [ThLOD, ThObject3D, LODLevelDirective, ThScene],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 class TestHostComponent {
@@ -26,7 +27,7 @@ class TestHostComponent {
   @Input() bar = 10;
 }
 
-fdescribe('lodLevel directive', () => {
+describe('lodLevel directive', () => {
   let fixture: ComponentFixture<TestHostComponent>;
   let lod: LOD;
 
@@ -34,6 +35,7 @@ fdescribe('lodLevel directive', () => {
     TestBed.configureTestingModule({
       imports: [TestHostComponent],
       providers: [{ provide: ThObject3D, useValue: { objRef: new Scene() } }],
+      schemas: [NO_ERRORS_SCHEMA],
     });
     fixture = TestBed.createComponent(TestHostComponent);
     fixture.detectChanges();
@@ -46,19 +48,19 @@ fdescribe('lodLevel directive', () => {
   });
 
   it('should have 3 levels', () => {
-    expect(lod.levels).toHaveSize(3);
+    expect(lod.levels.length).toBe(3);
   });
 
   it('should remove level', () => {
     fixture.componentRef.setInput('foo', false);
     fixture.detectChanges();
-    expect(lod.levels).toHaveSize(2);
+    expect(lod.levels.length).toBe(2);
   });
 
   it('should change level', () => {
     fixture.componentRef.setInput('bar', 15);
     fixture.detectChanges();
-    expect(lod.levels).toHaveSize(3);
+    expect(lod.levels.length).toBe(3);
     const level = lod.levels.find((l) => l.distance === 15);
     expect(level).toBeTruthy();
   });

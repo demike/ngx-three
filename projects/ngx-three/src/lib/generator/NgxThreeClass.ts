@@ -102,7 +102,6 @@ export abstract class NgxThreeClass {
     this.imports.add("import { applyValue } from '../util';");
 
     const ngxClassDeclarationString = `
-    /* eslint-disable @typescript-eslint/ban-types */
     /* eslint-disable @typescript-eslint/naming-convention */
     /* eslint-disable no-underscore-dangle */
     /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -121,7 +120,9 @@ export abstract class NgxThreeClass {
         }
         `;
 
-    this.content = ngxClassDeclarationString;
+    this.content = ngxClassDeclarationString
+      .replace(/ThControlBase<\{\},/g, 'ThControlBase<object,')
+      .replace(/ \| \{\},/g, ' | object,');
 
     this.overrideStub?.generate();
   }
@@ -228,8 +229,6 @@ export abstract class NgxThreeClass {
         // gerate the getter
         members += this.generateGetter(memberName, member);
       } else if (ts.isSetAccessor(member) && member.parameters[0]?.type) {
-        member.parameters[0].type;
-        // member.parameters
         members += this.generateSetterInput(memberName, member, member.parameters[0]?.type.getText());
       } else if (ts.isGetAccessor(member) && member.type) {
         members += this.generateGetter(memberName, member);

@@ -22,7 +22,7 @@ export async function toCodeSandbox(fileUrls: string[], declarations?: string[])
     'src/polyfills.ts': {
       content: polyfillTs,
     },
-    'src/assets.ts': { content: `export const ASSET_PATH = \'${GITHUB_ASSET_PATH}\';` },
+    'src/assets.ts': { content: `export const ASSET_PATH = '${GITHUB_ASSET_PATH}';` },
   };
 
   await applySources(fileUrls, files);
@@ -68,7 +68,7 @@ function createPackageJson() {
 }
 
 export function getFileNameFromFullPath(fullPath: string) {
-  return fullPath.replace(/^.*[\\\/]/, ''); // works for both / and \
+  return fullPath.replace(/^.*[/\\]/, ''); // works for both / and \
 }
 
 export function createMainTs(tsFileName: string, declarations?: string[]) {

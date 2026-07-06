@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -22,7 +21,6 @@ import { ThObject3D } from './ThObject3D';
       provide: ThObject3D,
       useExisting: forwardRef(() => ThOrthographicCamera),
     },
-    { provide: ThCamera, useExisting: forwardRef(() => ThOrthographicCamera) },
   ],
 })
 export class ThOrthographicCamera<

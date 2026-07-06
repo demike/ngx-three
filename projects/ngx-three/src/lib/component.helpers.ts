@@ -5,10 +5,10 @@ import { ThObject3D } from './generated/ThObject3D';
 
 export function createThProviderArray(cls: InstanceType<any>, baseCls: InstanceType<any>) {
   const providers: Provider[] = [];
-  if (ThObject3D.isPrototypeOf(baseCls) || Object3D === baseCls) {
+  if (Object.prototype.isPrototypeOf.call(ThObject3D, baseCls) || Object3D === baseCls) {
     providers.push({ provide: ThObject3D, useExisting: forwardRef(() => cls) });
 
-    if (ThCamera.isPrototypeOf(baseCls) || ThCamera === baseCls) {
+    if (Object.prototype.isPrototypeOf.call(ThCamera, baseCls) || ThCamera === baseCls) {
       providers.push({ provide: ThCamera, useExisting: forwardRef(() => cls) });
     }
   }

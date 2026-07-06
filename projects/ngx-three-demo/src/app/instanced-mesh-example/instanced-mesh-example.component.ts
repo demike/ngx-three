@@ -89,7 +89,7 @@ export class InstancedMeshExampleComponent implements OnInit {
   }
 
   @HostListener('document:mousemove', ['$event'])
-  onMouseMove(event: PointerEvent) {
+  onMouseMove(event: MouseEvent) {
     if (!this.canvas || !this.canvas.hostElement.nativeElement) {
       return;
     }

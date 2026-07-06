@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -29,8 +28,8 @@ import { ThBufferGeometry } from './ThBufferGeometry';
 })
 export class ThWireframeGeometry<
   TBufferGeometry extends BufferGeometry = BufferGeometry,
-  T extends
-    WireframeGeometry<TBufferGeometry> = WireframeGeometry<TBufferGeometry>,
+  T extends WireframeGeometry<TBufferGeometry> =
+    WireframeGeometry<TBufferGeometry>,
   TARGS = /* geometry? */ TBufferGeometry,
 > extends ThBufferGeometry<
   NormalBufferAttributes,

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable @angular-eslint/component-selector, @angular-eslint/component-class-suffix */
@@ -43,7 +42,7 @@ export class ThVideoFrameTexture<
     type?: TextureDataType,
     anisotropy?: number,
   ],
-> extends ThVideoTexture<VideoFrame | {}, T, TARGS> {
+> extends ThVideoTexture<VideoFrame | object, T, TARGS> {
   public getType(): Type<VideoFrameTexture> {
     return VideoFrameTexture;
   }
