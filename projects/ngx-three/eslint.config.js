@@ -5,6 +5,9 @@ const rootConfig = require('../../eslint.config.js');
 module.exports = defineConfig([
   ...rootConfig,
   {
+    ignores: ['src/lib/generated/**'],
+  },
+  {
     files: ['**/*.ts'],
     languageOptions: {
       parserOptions: {
