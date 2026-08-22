@@ -25,6 +25,7 @@ import { RefByIdExampleComponent } from './ref-by-id-example/ref-by-id-example.c
 import { SimpleExampleComponent } from './simple-example/simple-example.component';
 import { ViewsExampleComponent } from './views-example/views-example.component';
 import { InstancedGLBExampleComponent } from './instanced-glb-example/instanced-glb-example.component';
+import { FogExampleComponent } from './webgpu/fog-example.component';
 
 export const EXAMPLE_ROUTES: (Route & {
   data: {
@@ -304,6 +305,16 @@ export const EXAMPLE_ROUTES: (Route & {
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/instanced-glb-example/instanced-glb-example.component.html',
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/instanced-glb-example/instanced-glb-example.component.ts',
+      ],
+    },
+  },
+  {
+    path: 'webgpu-fog-example',
+    data: {
+      title: 'WebGPU Fog Example',
+      exampleComponent: FogExampleComponent,
+      codeUrls: [
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/webgpu/fog-example.component.ts',
       ],
     },
   },
