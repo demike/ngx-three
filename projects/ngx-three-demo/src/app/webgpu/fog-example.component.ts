@@ -33,7 +33,7 @@ import { float, positionView, positionWorld, triNoise3D, uniform, color, fog, no
 
       <th-mesh [scale]="[3, 3, 3]" [castShadow]="true" [receiveShadow]="true" [rotation]="[-Math.PI / 2, 0, 0]">
         <th-planeGeometry [args]="[200, 200]" />
-        <th-meshPhongMaterial [color]="['0x999999']" />
+        <th-meshPhongMaterial [color]="['#999999']" />
       </th-mesh>
     </th-scene>
   </th-canvas>`,
@@ -96,7 +96,7 @@ export class FogExampleComponent implements AfterViewInit {
 
       buildMesh.setMatrixAt(i, dummy.matrix);
     }
-    // buildMesh.instanceMatrix.needsUpdate = true;
+    buildMesh.instanceMatrix.needsUpdate = true;
   }
 
   private initFogNode() {
