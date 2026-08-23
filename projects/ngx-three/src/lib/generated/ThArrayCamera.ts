@@ -12,6 +12,7 @@ import { ArrayCamera } from 'three';
 import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js';
 import { ThObject3D } from './ThObject3D';
 import { ThPerspectiveCamera } from './ThPerspectiveCamera';
+import { ThCamera } from './ThCamera';
 
 @Component({
   selector: 'th-arrayCamera',
@@ -19,6 +20,7 @@ import { ThPerspectiveCamera } from './ThPerspectiveCamera';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThArrayCamera) },
+    { provide: ThCamera, useExisting: forwardRef(() => ThArrayCamera) },
   ],
 })
 export class ThArrayCamera<

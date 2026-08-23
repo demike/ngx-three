@@ -18,6 +18,7 @@ import { ThObject3D } from './ThObject3D';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThPerspectiveCamera) },
+    { provide: ThCamera, useExisting: forwardRef(() => ThPerspectiveCamera) },
   ],
 })
 export class ThPerspectiveCamera<
