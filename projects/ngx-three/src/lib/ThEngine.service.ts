@@ -36,6 +36,8 @@ export class ThEngineService implements OnDestroy {
 
   private resizeObserver?: ResizeObserver;
 
+  private destroyed = false;
+
   public constructor() {
     this.beforeRender$ = this.beforeRenderEmitter.pipe(takeUntil(this.destroyed$));
     this.resize$ = this.resizeEmitter.pipe(takeUntil(this.destroyed$));
@@ -50,11 +52,26 @@ export class ThEngineService implements OnDestroy {
   }
 
   public ngOnDestroy(): void {
+    this.destroyed = true;
+
     if (this.resizeObserver && this.hostElement) {
       this.resizeObserver.unobserve(this.hostElement.nativeElement);
     }
 
     this.renderers.forEach((renderer) => {
+      if (
+        renderer instanceof WebGPURenderer &&
+        this.webGPUInitStarted.has(renderer) &&
+        !renderer.initialized
+      ) {
+        // The (async) WebGPU initialization is still in flight. Disposing now would be a
+        // no-op because WebGPURenderer.dispose() only frees resources once initialized.
+        // Defer disposal until init settles so the GPU device / animation loop don't leak
+        // and crash on a subsequent visit.
+        const pending = this.webGPUInitPromises.get(renderer) ?? Promise.resolve();
+        pending.finally(() => renderer.dispose());
+        return;
+      }
       (renderer as unknown as Partial<WebGLRenderer>).dispose?.();
     });
   }
@@ -165,21 +182,32 @@ export class ThEngineService implements OnDestroy {
   }
 
   private readonly webGPUInitStarted = new WeakSet<WebGPURenderer>();
+  private readonly webGPUInitPromises = new WeakMap<WebGPURenderer, Promise<void>>();
 
   /**
    * Asynchronously initializes a {@link WebGPURenderer} exactly once.
    * Once the backend is ready the canvas is resized so the freshly initialized
-   * renderer picks up the correct dimensions.
+   * renderer picks up the correct dimensions. If the engine was destroyed while
+   * initialization was in flight the renderer is disposed instead, so the GPU
+   * device and internal animation loop don't leak.
    */
   private initWebGPURenderer(renderer: WebGPURenderer): void {
     if (this.webGPUInitStarted.has(renderer)) {
       return;
     }
     this.webGPUInitStarted.add(renderer);
-    renderer
+    const initPromise = renderer
       .init()
-      .then(() => this.resize())
+      .then(() => {
+        // Skip the resize if the engine was torn down while initializing; ngOnDestroy
+        // owns disposal of the (now fully initialized) renderer.
+        if (this.destroyed) {
+          return;
+        }
+        this.resize();
+      })
       .catch((error) => console.error('WebGPURenderer initialization failed', error));
+    this.webGPUInitPromises.set(renderer, initPromise);
   }
 
   protected applyRendererParametersFromView(view: ThView, renderer: Partial<WebGLRenderer>) {
