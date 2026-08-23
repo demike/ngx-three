@@ -5,6 +5,7 @@ import { HOST_ELEMENT, ThView } from './ThView';
 import { isObserved } from './util';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { Renderer, RENDERER_PROVIDERS } from './renderer/renderer-providers';
+import { WebGPURenderer } from 'three/webgpu';
 
 export interface RenderState {
   engine: ThEngineService;
@@ -138,6 +139,18 @@ export class ThEngineService implements OnDestroy {
     }
 
     for (const renderer of this.renderers) {
+      if (renderer instanceof WebGPURenderer && !renderer.initialized) {
+        // the WebGPURenderer needs to be initialized asynchronously before it can render.
+        // Kick off the (async) initialization once and skip rendering until it is ready.
+        // NOTE: this is the remaining "top level async" limitation - the render loop stays
+        // synchronous and simply skips frames until the backend is available.
+        this.initWebGPURenderer(renderer);
+        continue;
+      }
+      if (view.effectComposer && !(renderer instanceof WebGLRenderer || renderer instanceof WebGPURenderer)) {
+        // effect composer needs a webgl or webgpu renderer
+        continue;
+      }
       this.applyRendererParametersFromView(view, renderer as Partial<WebGLRenderer>);
       if (isObserved(view.onCurrentRendererPass)) {
         this.ngZone.run(() => view.onCurrentRendererPass.emit({ renderer, scene, camera, engine: this }));
@@ -149,6 +162,24 @@ export class ThEngineService implements OnDestroy {
         renderer.render(scene.objRef, camera.objRef);
       }
     }
+  }
+
+  private readonly webGPUInitStarted = new WeakSet<WebGPURenderer>();
+
+  /**
+   * Asynchronously initializes a {@link WebGPURenderer} exactly once.
+   * Once the backend is ready the canvas is resized so the freshly initialized
+   * renderer picks up the correct dimensions.
+   */
+  private initWebGPURenderer(renderer: WebGPURenderer): void {
+    if (this.webGPUInitStarted.has(renderer)) {
+      return;
+    }
+    this.webGPUInitStarted.add(renderer);
+    renderer
+      .init()
+      .then(() => this.resize())
+      .catch((error) => console.error('WebGPURenderer initialization failed', error));
   }
 
   protected applyRendererParametersFromView(view: ThView, renderer: Partial<WebGLRenderer>) {

@@ -57,14 +57,19 @@ export abstract class NgxThreeClass {
 
   private fetchClassDecleration() {
     return (
-      this.classSymbol.declarations?.map((decl) => {
+      this.classSymbol.declarations?.flatMap((decl) => {
         if (decl && ts.isExportSpecifier(decl)) {
           // this is just an export specifier do not generate a wrapper for it
           // get the right type
           this.classSymbol = this.typeChecker.getTypeAtLocation(decl).symbol;
-          return this.classSymbol.declarations?.[0] as unknown as ts.ClassDeclaration;
+          // return all declarations (i.e.: a class and its declaration merged properties interface),
+          // otherwise merged interface members (like the node material property nodes) would be lost
+          return (this.classSymbol.declarations ?? []) as unknown as (
+            | ts.ClassDeclaration
+            | ts.InterfaceDeclaration
+          )[];
         } else {
-          return decl as ts.ClassDeclaration;
+          return [decl as ts.ClassDeclaration];
         }
       }) ?? []
     );
@@ -245,11 +250,13 @@ export abstract class NgxThreeClass {
 
     if (classOrInterface.heritageClauses) {
       // also add properties of the implemented properties base interface i.e.: Material implements MaterialProperties
+      // node materials expose their properties via a `<ClassName>NodeProperties` interface (i.e.: NodeMaterial -> NodeMaterialNodeProperties)
+      const propertyInterfaceNames = [`${this.wrappedClassName}Properties`, `${this.wrappedClassName}NodeProperties`];
       for (const clause of classOrInterface.heritageClauses) {
         for (const t of clause.types) {
           const type = this.typeChecker.getTypeAtLocation(t.expression);
           const symbol = type.getSymbol();
-          if (!symbol || !symbol.declarations || symbol?.name !== `${this.wrappedClassName}Properties`) continue;
+          if (!symbol || !symbol.declarations || !propertyInterfaceNames.includes(symbol.name)) continue;
           for (const decl of symbol.declarations) {
             if (ts.isClassDeclaration(decl) || ts.isInterfaceDeclaration(decl)) {
               members += this.generateMembers(decl, generatedNames);
