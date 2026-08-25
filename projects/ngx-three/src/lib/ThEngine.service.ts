@@ -5,7 +5,20 @@ import { HOST_ELEMENT, ThView } from './ThView';
 import { isObserved } from './util';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { Renderer, RENDERER_PROVIDERS } from './renderer/renderer-providers';
-import { WebGPURenderer } from 'three/webgpu';
+import type { WebGPURenderer } from 'three/webgpu';
+
+/**
+ * Duck-typed guard for a {@link WebGPURenderer}.
+ *
+ * Deliberately avoids `instanceof WebGPURenderer` so the core engine never holds a
+ * static *value* reference to `three/webgpu`. Referencing the class here would pin the
+ * entire WebGPU renderer + node system into every consumer bundle (even pure WebGL apps),
+ * because this guard runs in the always-included render loop. `isWebGPURenderer` is a
+ * `readonly true` flag set by three on every WebGPURenderer instance.
+ */
+function isWebGPURenderer(renderer: unknown): renderer is WebGPURenderer {
+  return (renderer as Partial<WebGPURenderer> | undefined)?.isWebGPURenderer === true;
+}
 
 export interface RenderState {
   engine: ThEngineService;
@@ -60,7 +73,7 @@ export class ThEngineService implements OnDestroy {
 
     this.renderers.forEach((renderer) => {
       if (
-        renderer instanceof WebGPURenderer &&
+        isWebGPURenderer(renderer) &&
         this.webGPUInitStarted.has(renderer) &&
         !renderer.initialized
       ) {
@@ -156,7 +169,7 @@ export class ThEngineService implements OnDestroy {
     }
 
     for (const renderer of this.renderers) {
-      if (renderer instanceof WebGPURenderer && !renderer.initialized) {
+      if (isWebGPURenderer(renderer) && !renderer.initialized) {
         // the WebGPURenderer needs to be initialized asynchronously before it can render.
         // Kick off the (async) initialization once and skip rendering until it is ready.
         // NOTE: this is the remaining "top level async" limitation - the render loop stays
@@ -164,7 +177,7 @@ export class ThEngineService implements OnDestroy {
         this.initWebGPURenderer(renderer);
         continue;
       }
-      if (view.effectComposer && !(renderer instanceof WebGLRenderer || renderer instanceof WebGPURenderer)) {
+      if (view.effectComposer && !(renderer instanceof WebGLRenderer || isWebGPURenderer(renderer))) {
         // effect composer needs a webgl or webgpu renderer
         continue;
       }
