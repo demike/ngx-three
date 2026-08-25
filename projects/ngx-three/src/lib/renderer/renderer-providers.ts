@@ -160,9 +160,9 @@ export function provideCSS2dRenderer(parameters?: CSS2DParameters) {
 }
 
 export function provideWebGPURenderer(parameters?: WebGPURendererParameters) {
-  const renderer = new WebGPURenderer({ ...WEBGPU_RENDERER_DEFAULTS, ...parameters });
+  const factory = () => new WebGPURenderer({ ...WEBGPU_RENDERER_DEFAULTS, ...parameters });
   const provider: Provider[] = [
-    { provide: WEBGPU_RENDERER, useValue: renderer },
+    { provide: WEBGPU_RENDERER, useFactory: factory },
     { provide: RENDERER_PROVIDERS, multi: true, useExisting: WEBGPU_RENDERER },
   ];
   return provider;

@@ -1,6 +1,6 @@
 {
   "name": "ngx-three-workspace",
-  "version": "0.43.3",
+  "version": "0.44.1",
   "workspaces": [
     "projects/ngx-three",
     "projects/ngx-three-demo"

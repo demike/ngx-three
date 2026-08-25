@@ -45,6 +45,8 @@ jobs:
           npm run build:prod
       - name: lint
         run: npm run lint
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
       - name: unit tests
         run: npm run test-headless
 

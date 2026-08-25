@@ -26,6 +26,7 @@ import { SimpleExampleComponent } from './simple-example/simple-example.componen
 import { ViewsExampleComponent } from './views-example/views-example.component';
 import { InstancedGLBExampleComponent } from './instanced-glb-example/instanced-glb-example.component';
 import { FogExampleComponent } from './webgpu/fog-example.component';
+import { WebgpuBenchmarkComponent } from './webgpu/webgpu-benchmark.component';
 
 export const EXAMPLE_ROUTES: (Route & {
   data: {
@@ -315,6 +316,18 @@ export const EXAMPLE_ROUTES: (Route & {
       exampleComponent: FogExampleComponent,
       codeUrls: [
         'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/webgpu/fog-example.component.ts',
+      ],
+    },
+  },
+  {
+    path: 'webgpu-benchmark-example',
+    data: {
+      title: 'WebGPU vs WebGL Benchmark',
+      exampleComponent: WebgpuBenchmarkComponent,
+      codeUrls: [
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/webgpu/webgpu-benchmark.component.ts',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/webgpu/benchmark-scene.component.ts',
+        'https://raw.githubusercontent.com/demike/ngx-three/main/projects/ngx-three-demo/src/app/webgpu/benchmark-webgpu.component.ts',
       ],
     },
   },

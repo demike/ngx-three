@@ -3,6 +3,6 @@
   "version": "0.0.0",
   "private": true,
   "dependencies": {
-    "ngx-three": "0.43.3"
+    "ngx-three": "0.44.1"
   }
 }
