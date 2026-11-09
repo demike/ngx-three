@@ -11,6 +11,7 @@ export * from './lib/ThView';
 export * from './lib/renderer/renderer-providers';
 export * from './lib/renderer/th-animation-loop.service';
 export * from './lib/renderer/th-render.directive';
+export * from './lib/renderer/inject-before-render';
 
 // loaders
 export * from './lib/loaders/LazyObject3dProxy';

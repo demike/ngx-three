@@ -31,13 +31,15 @@ import {
 } from 'three';
 import { RAYCASTER } from '../../events/raycaster.service';
 import { ThGroup, ThObject3D } from '../../generated';
-import { NgChanges } from '../../util';
+import { isObserved, NgChanges } from '../../util';
 import { ThView } from '../../ThView';
+import { ThEngineService } from '../../ThEngine.service';
 import { NgTemplateOutlet } from '@angular/common';
 
 const v1 = new Vector3();
 const v2 = new Vector3();
 const v3 = new Vector3();
+const v4 = new Vector3();
 
 function defaultCalculatePosition(el: Object3D, camera: Camera, size: { width: number; height: number }) {
   const objectPos = v1.setFromMatrixPosition(el.matrixWorld);
@@ -59,7 +61,7 @@ function isObjectBehindCamera(el: Object3D, camera: Camera) {
 
 function isObjectVisible(el: Object3D, camera: Camera, raycaster: Raycaster, occlude: Object3D[]) {
   const elPos = v1.setFromMatrixPosition(el.matrixWorld);
-  const screenPos = elPos.clone();
+  const screenPos = v4.copy(elPos);
   screenPos.project(camera);
   raycaster.setFromCamera(screenPos as unknown as Vector2, camera);
   const intersects = raycaster.intersectObjects(occlude, true);
@@ -144,6 +146,7 @@ type PointerEventsProperties =
 })
 export class HtmlComponent extends ThGroup implements OnInit, OnDestroy, OnChanges, AfterViewInit {
   private view = inject(ThView);
+  private engine = inject(ThEngineService);
 
   // eslint-disable-next-line @typescript-eslint/naming-convention
   protected readonly DoubleSide = DoubleSide;
@@ -197,7 +200,10 @@ export class HtmlComponent extends ThGroup implements OnInit, OnDestroy, OnChang
   private el?: HTMLElement;
   private target?: HTMLElement | null;
   private frameSubscription?: Subscription;
+  private resizeSubscription?: Subscription;
   private raycaster = inject(RAYCASTER);
+  /** host element size, cached to avoid a getBoundingClientRect (possible forced layout) per frame */
+  private hostSize?: { width: number; height: number };
 
   public ngOnInit(): void {
     super.ngOnInit();
@@ -206,7 +212,10 @@ export class HtmlComponent extends ThGroup implements OnInit, OnDestroy, OnChang
 
   public ngAfterViewInit() {
     this.el = document.createElement(this.as);
-    this.frameSubscription = this.view.onRender.subscribe(() => this.onFrame());
+    // use the imperative hook instead of the onRender output:
+    // subscribing to onRender would cause a change detection cycle per frame in zone based apps
+    this.frameSubscription = this.view.beforeViewRender$.subscribe(() => this.onFrame());
+    this.resizeSubscription = this.engine.resize$.subscribe(() => (this.hostSize = undefined));
     if (this.transformOuterRef) {
       this.el.appendChild(this.transformOuterRef.nativeElement);
     }
@@ -296,7 +305,7 @@ export class HtmlComponent extends ThGroup implements OnInit, OnDestroy, OnChang
       }
 
       if (previouslyVisible !== this.notOccluded) {
-        if (this.onOcclude.length > 0) {
+        if (isObserved(this.onOcclude)) {
           this.onOcclude.next(!this.notOccluded);
         } else {
           this.el.style.display = this.notOccluded ? 'block' : 'none';
@@ -338,9 +347,12 @@ export class HtmlComponent extends ThGroup implements OnInit, OnDestroy, OnChang
     }
   }
 
-  ngOnDestroy(): void {
+  override ngOnDestroy(): void {
+    // also remove the group from the scene graph (was skipped before)
+    super.ngOnDestroy();
     this.el?.remove();
     this.frameSubscription?.unsubscribe();
+    this.resizeSubscription?.unsubscribe();
   }
 
   private computeStyles() {
@@ -375,7 +387,14 @@ export class HtmlComponent extends ThGroup implements OnInit, OnDestroy, OnChang
   }
 
   private getSize() {
-    return this.view.viewPort ?? this.view.hostElement.nativeElement.getBoundingClientRect() ?? { width: 0, height: 0 };
+    if (this.view.viewPort) {
+      return this.view.viewPort;
+    }
+    if (!this.hostSize) {
+      const { width, height } = this.view.hostElement.nativeElement.getBoundingClientRect();
+      this.hostSize = { width, height };
+    }
+    return this.hostSize;
   }
 }
 

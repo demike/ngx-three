@@ -79,7 +79,7 @@ class Object3DProxyHandler implements ProxyHandler<Object3D> {
     for (const obj of object) {
       const index = this.children.indexOf(obj);
       if (index >= 0) {
-        this.children = this.children.splice(index, 1);
+        this.children.splice(index, 1);
       }
     }
 

@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RenderState, NgxThreeModule } from 'ngx-three';
+import { NgxThreeModule, injectBeforeRender } from 'ngx-three';
 import { AnimationAction, AnimationMixer, LoopOnce, Mesh } from 'three';
 
 import { ASSET_PATH } from '../assets';
@@ -23,7 +23,10 @@ export class RobotComponent {
   activeAction?: AnimationAction;
   previousAction?: AnimationAction;
 
-  constructor() {}
+  constructor() {
+    // advance the animation every frame without triggering change detection
+    injectBeforeRender(({ delta }) => this.animationMixer?.update(delta));
+  }
 
   onInit(gltf: GLTF) {
     this.animationMixer = new AnimationMixer(gltf.scene);
@@ -47,12 +50,6 @@ export class RobotComponent {
 
     this.activeAction = this.actions.Walking;
     this.activeAction.play();
-  }
-
-  beforeRender(state: RenderState) {
-    if (this.animationMixer) {
-      this.animationMixer.update(state.delta);
-    }
   }
 
   fadeToAction(state: string, duration: number) {

@@ -11,6 +11,7 @@ import {
   OnInit,
   Output,
 } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Color, Object3D, Raycaster, Vector4 } from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RAYCASTER, RaycasterService } from './events/raycaster.service';
@@ -125,11 +126,19 @@ export class ThView implements OnInit {
   @Input()
   public scissorTest?: boolean;
 
+  private _clearColor?: Color;
   /**
    * Sets the clear color
    */
   @Input()
-  clearColor?: Color | string | number;
+  set clearColor(color: Color | string | number | undefined) {
+    // convert once here instead of letting the renderer parse strings every frame
+    this._clearColor = color === undefined || color instanceof Color ? color : new Color(color);
+  }
+
+  get clearColor(): Color | undefined {
+    return this._clearColor;
+  }
 
   /**
    * a float with the current clear alpha. Ranges from 0 to 1.
@@ -145,6 +154,14 @@ export class ThView implements OnInit {
     scene: ThScene;
     camera: ThCamera;
   }>();
+
+  /**
+   * Emits right before this view is rendered (after `onRender`), for every frame.
+   *
+   * Unlike the `onRender` output it never triggers change detection, so use it for imperative
+   * per-frame work that only touches three.js objects or the DOM directly.
+   */
+  public readonly beforeViewRender$ = new Subject<ThView>();
 
   ngOnInit(): void {
     this.initRaycaster();

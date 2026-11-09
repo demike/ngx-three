@@ -1,4 +1,4 @@
-import { inject, Injectable, InjectionToken, OnDestroy } from '@angular/core';
+import { inject, Injectable, InjectionToken, NgZone, OnDestroy } from '@angular/core';
 import * as THREE from 'three';
 import { Intersection, Raycaster } from 'three';
 import { ThCamera } from '../generated/ThCamera';
@@ -30,10 +30,13 @@ interface NearestIntersection extends Intersection {
   target?: RaycasterEventDirective | null;
 }
 
+const pointerVector = new THREE.Vector2();
+
 @Injectable()
 export class RaycasterService implements OnDestroy {
   private canvas?: HTMLElement;
   private raycaster = inject(RAYCASTER);
+  private ngZone = inject(NgZone);
   private selected: RaycasterEventDirective | null = null;
   private enabled = true;
   private camera?: ThCamera;
@@ -51,6 +54,12 @@ export class RaycasterService implements OnDestroy {
 
   public readonly nid = RaycasterService.instanceCnt++;
 
+  /**
+   * latest pointer move position, processed at most once per animation frame
+   */
+  private pendingMove?: { x: number; y: number };
+  private moveFrameId?: number;
+
   constructor() {
     this.onPointerMove = this.onPointerMove.bind(this);
     this.onPointerDown = this.onPointerDown.bind(this);
@@ -59,16 +68,23 @@ export class RaycasterService implements OnDestroy {
 
   public ngOnDestroy(): void {
     this.disable();
-    this.unsubscribe();
+    this.cancelPendingMove();
+    if (this.canvas) {
+      this.unsubscribe();
+    }
   }
 
   private subscribe() {
-    if (!this.canvas) {
+    const canvas = this.canvas;
+    if (!canvas) {
       throw new Error('missing canvas');
     }
-    this.canvas.addEventListener('pointermove', this.onPointerMove);
-    this.canvas.addEventListener('pointerdown', this.onPointerDown);
-    this.canvas.addEventListener('pointerup', this.onPointerUp);
+    // register outside of angular: in zone based apps every pointermove would trigger change detection otherwise
+    this.ngZone.runOutsideAngular(() => {
+      canvas.addEventListener('pointermove', this.onPointerMove);
+      canvas.addEventListener('pointerdown', this.onPointerDown);
+      canvas.addEventListener('pointerup', this.onPointerUp);
+    });
   }
 
   private unsubscribe() {
@@ -102,6 +118,9 @@ export class RaycasterService implements OnDestroy {
 
   public init(camera: ThCamera, canvas: HTMLElement) {
     // console.log('Add camera to raycaster', camera);
+    if (this.canvas && this.canvas !== canvas) {
+      this.unsubscribe();
+    }
     this.camera = camera;
     this.canvas = canvas;
     this.subscribe();
@@ -123,27 +142,58 @@ export class RaycasterService implements OnDestroy {
     if (!this.isReady()) {
       return;
     }
-    const i = this.getFirstIntersectedGroup(event.layerX, event.layerY, RaycasterEvent.mouseEnter);
-    if (!this.selected || this.selected !== i?.target) {
-      if (this.selected) {
-        this.selected.host.objRef?.dispatchEvent({
+    // pointermove can fire much more often than the display refreshes:
+    // only remember the latest position and raycast once per animation frame
+    this.pendingMove = { x: event.layerX, y: event.layerY };
+    if (this.moveFrameId === undefined) {
+      this.moveFrameId = requestAnimationFrame(() => {
+        this.moveFrameId = undefined;
+        const move = this.pendingMove;
+        this.pendingMove = undefined;
+        if (move && this.isReady()) {
+          this.processPointerMove(move.x, move.y);
+        }
+      });
+    }
+  }
+
+  private cancelPendingMove() {
+    if (this.moveFrameId !== undefined) {
+      cancelAnimationFrame(this.moveFrameId);
+      this.moveFrameId = undefined;
+    }
+    this.pendingMove = undefined;
+  }
+
+  private processPointerMove(x: number, y: number) {
+    const i = this.getFirstIntersectedGroup(x, y, [RaycasterEvent.mouseEnter])[RaycasterEvent.mouseEnter];
+    if (this.selected && this.selected === i?.target) {
+      return;
+    }
+    const previous = this.selected;
+    this.selected = i?.target ?? null;
+    if (!previous && !this.selected) {
+      return;
+    }
+    this.ngZone.run(() => {
+      if (previous) {
+        previous.host.objRef?.dispatchEvent({
           type: RaycasterEvent.mouseExit,
-          component: this.selected.host,
+          component: previous.host,
         });
-        this.selected.emitOnMouseExit();
-        this.selected = null;
+        previous.emitOnMouseExit();
       }
-      if (i && i.target) {
-        this.selected = i.target;
+      const target = i?.target;
+      if (i && target) {
         const evt = {
           type: RaycasterEvent.mouseEnter,
-          component: i.target.host,
+          component: target.host,
           ...i,
         };
-        this.selected.host.objRef?.dispatchEvent(evt);
-        this.selected.emitOnMouseEnter(evt);
+        target.host.objRef?.dispatchEvent(evt);
+        target.emitOnMouseEnter(evt);
       }
-    }
+    });
   }
 
   private onPointerDown(event: PointerEvent) {
@@ -154,11 +204,16 @@ export class RaycasterService implements OnDestroy {
       return;
     }
 
-    const i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.pointerDown);
-    if (i && i.target && i.target.host.objRef) {
-      const evt = { type: RaycasterEvent.pointerDown, component: i.target.host, ...i };
-      i.target.host.objRef.dispatchEvent(evt);
-      i.target.emitOnPointerDown(evt);
+    const i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, [
+      RaycasterEvent.pointerDown,
+    ])[RaycasterEvent.pointerDown];
+    const target = i?.target;
+    if (i && target && target.host.objRef) {
+      const evt = { type: RaycasterEvent.pointerDown, component: target.host, ...i };
+      this.ngZone.run(() => {
+        target.host.objRef?.dispatchEvent(evt);
+        target.emitOnPointerDown(evt);
+      });
     }
   }
 
@@ -170,24 +225,35 @@ export class RaycasterService implements OnDestroy {
       return;
     }
 
-    // pointer up
-    let i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.pointerUp);
-    if (i && i.target && i.target.host.objRef) {
-      const evt = { type: RaycasterEvent.pointerUp, component: i.target.host, ...i };
-      i.target.host.objRef.dispatchEvent(evt);
-      i.target.emitOnPointerUp(evt);
-    }
-
-    // click
-    if (this.calcPointerDownUpDinstance(event, downEvent) > this.maxClickDistance) {
+    const isClick = this.calcPointerDownUpDinstance(event, downEvent) <= this.maxClickDistance;
+    // pointer up and click share a single raycast
+    const events: (keyof RaycasterEventMap)[] = isClick
+      ? [RaycasterEvent.pointerUp, RaycasterEvent.click]
+      : [RaycasterEvent.pointerUp];
+    const hits = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, events);
+    const up = hits[RaycasterEvent.pointerUp];
+    const click = hits[RaycasterEvent.click];
+    if (!up?.target?.host.objRef && !click?.target?.host.objRef) {
       return;
     }
-    i = this.getFirstIntersectedGroup((event as any).layerX, (event as any).layerY, RaycasterEvent.click);
-    if (i && i.target && i.target.host.objRef) {
-      const evt = { type: RaycasterEvent.click, component: i.target.host, ...i };
-      i.target.host.objRef.dispatchEvent(evt);
-      i.target.emitOnClick(evt);
-    }
+
+    this.ngZone.run(() => {
+      // pointer up
+      const upTarget = up?.target;
+      if (up && upTarget && upTarget.host.objRef) {
+        const evt = { type: RaycasterEvent.pointerUp, component: upTarget.host, ...up };
+        upTarget.host.objRef.dispatchEvent(evt);
+        upTarget.emitOnPointerUp(evt);
+      }
+
+      // click
+      const clickTarget = click?.target;
+      if (click && clickTarget && clickTarget.host.objRef) {
+        const evt = { type: RaycasterEvent.click, component: clickTarget.host, ...click };
+        clickTarget.host.objRef.dispatchEvent(evt);
+        clickTarget.emitOnClick(evt);
+      }
+    });
   }
 
   private isReady(ignorePaused?: boolean): boolean {
@@ -210,45 +276,49 @@ export class RaycasterService implements OnDestroy {
     return Math.sqrt(xDist * xDist + yDist * yDist);
   }
 
+  /**
+   * Raycasts once and returns, for every requested event, the nearest group listening to that event.
+   * Every group is intersected at most once, even if it listens to several of the requested events.
+   */
   private getFirstIntersectedGroup(
     x: number,
     y: number,
-    event: keyof RaycasterEventMap,
-  ): NearestIntersection | undefined {
+    events: (keyof RaycasterEventMap)[],
+  ): Partial<Record<keyof RaycasterEventMap, NearestIntersection>> {
+    const result: Partial<Record<keyof RaycasterEventMap, NearestIntersection>> = {};
     if (!this.camera || !this.canvas || !this.camera.objRef) {
-      return;
+      return result;
     }
-    x = (x / this.canvas.clientWidth) * 2 - 1;
-    y = -(y / this.canvas.clientHeight) * 2 + 1;
-    const mouseVector = new THREE.Vector2(x, y);
-    this.raycaster.setFromCamera(mouseVector, this.camera.objRef);
+    pointerVector.set((x / this.canvas.clientWidth) * 2 - 1, -(y / this.canvas.clientHeight) * 2 + 1);
+    this.raycaster.setFromCamera(pointerVector, this.camera.objRef);
 
-    // loop across all groups. Try to find the group with nearest distance.
-    let nearestIntersection: THREE.Intersection | undefined;
-    let nearestGroup: RaycasterEventDirective | undefined;
+    // loop across all groups. Try to find the group with nearest distance (per event).
+    const nearest: Partial<
+      Record<keyof RaycasterEventMap, { hit: THREE.Intersection; group: RaycasterEventDirective }>
+    > = {};
     for (const group of this.groups) {
-      const i = group.host.objRef;
-      if (!group[event] || !i) {
+      const obj = group.host.objRef;
+      if (!obj || !events.some((e) => group[e])) {
         continue;
       }
-      const intersection = this.raycaster.intersectObject(i, true);
-      if (
-        intersection.length > 0 &&
-        (!nearestIntersection || nearestIntersection.distance > intersection[0].distance)
-      ) {
-        nearestIntersection = intersection[0];
-        nearestGroup = group;
+      const hit = this.raycaster.intersectObject(obj, true)[0];
+      if (!hit) {
+        continue;
+      }
+      for (const e of events) {
+        const current = nearest[e];
+        if (group[e] && (!current || current.hit.distance > hit.distance)) {
+          nearest[e] = { hit, group };
+        }
       }
     }
 
-    // return the group with nearest distance
-    if (nearestGroup && nearestIntersection) {
-      return {
-        target: nearestGroup,
-        ...nearestIntersection,
-      };
-    } else {
-      return undefined;
+    for (const e of events) {
+      const n = nearest[e];
+      if (n) {
+        result[e] = { target: n.group, ...n.hit };
+      }
     }
+    return result;
   }
 }
