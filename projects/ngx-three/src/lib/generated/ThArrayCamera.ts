@@ -12,7 +12,6 @@ import { ArrayCamera } from 'three';
 import { PerspectiveCamera } from 'three/src/cameras/PerspectiveCamera.js';
 import { ThObject3D } from './ThObject3D';
 import { ThPerspectiveCamera } from './ThPerspectiveCamera';
-import { ThCamera } from './ThCamera';
 
 @Component({
   selector: 'th-arrayCamera',
@@ -20,7 +19,6 @@ import { ThCamera } from './ThCamera';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     { provide: ThObject3D, useExisting: forwardRef(() => ThArrayCamera) },
-    { provide: ThCamera, useExisting: forwardRef(() => ThArrayCamera) },
   ],
 })
 export class ThArrayCamera<
@@ -46,5 +44,15 @@ export class ThArrayCamera<
 
   public get cameras(): PerspectiveCamera[] | undefined {
     return this._objRef?.cameras;
+  }
+  @Input()
+  public set perCameraFrustumCulled(value: boolean) {
+    if (this._objRef) {
+      this._objRef.perCameraFrustumCulled = value;
+    }
+  }
+
+  public get perCameraFrustumCulled(): boolean | undefined {
+    return this._objRef?.perCameraFrustumCulled;
   }
 }

@@ -42,8 +42,7 @@ export class ThHemisphereLight<
       | Color
       | [
           ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
+            [color: ColorRepresentation] | [r: number, g: number, b: number],
         ],
   ) {
     if (this._objRef) {

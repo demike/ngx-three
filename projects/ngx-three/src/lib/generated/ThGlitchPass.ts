@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import { ShaderMaterial } from 'three';
 import { GlitchPass } from 'three/examples/jsm/postprocessing/GlitchPass.js';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
@@ -39,8 +38,7 @@ export class ThGlitchPass<
 
   public get uniforms(): { [name: string]: { value: any } } | undefined {
     return this._objRef?.uniforms as
-      | { [name: string]: { value: any } }
-      | undefined;
+      { [name: string]: { value: any } } | undefined;
   }
   @Input()
   public set material(value: ShaderMaterial) {
@@ -53,16 +51,6 @@ export class ThGlitchPass<
     return this._objRef?.material;
   }
   @Input()
-  public set fsQuad(value: FullScreenQuad) {
-    if (this._objRef) {
-      this._objRef.fsQuad = value;
-    }
-  }
-
-  public get fsQuad(): FullScreenQuad | undefined {
-    return this._objRef?.fsQuad;
-  }
-  @Input()
   public set goWild(value: boolean) {
     if (this._objRef) {
       this._objRef.goWild = value;
@@ -71,25 +59,5 @@ export class ThGlitchPass<
 
   public get goWild(): boolean | undefined {
     return this._objRef?.goWild;
-  }
-  @Input()
-  public set curF(value: number) {
-    if (this._objRef) {
-      this._objRef.curF = value;
-    }
-  }
-
-  public get curF(): number | undefined {
-    return this._objRef?.curF;
-  }
-  @Input()
-  public set randX(value: number) {
-    if (this._objRef) {
-      this._objRef.randX = value;
-    }
-  }
-
-  public get randX(): number | undefined {
-    return this._objRef?.randX;
   }
 }

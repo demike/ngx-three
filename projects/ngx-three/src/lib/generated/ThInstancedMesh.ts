@@ -8,9 +8,10 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { Box3, InstancedMesh, InstancedMeshEventMap } from 'three';
+import { Box3, InstancedMesh } from 'three';
 import { BufferGeometry } from 'three/src/core/BufferGeometry.js';
 import { InstancedBufferAttribute } from 'three/src/core/InstancedBufferAttribute.js';
+import { Object3DEventMap } from 'three/src/core/Object3D.js';
 import { Material } from 'three/src/materials/Material.js';
 import { Sphere } from 'three/src/math/Sphere.js';
 import { Vector3 } from 'three/src/math/Vector3.js';
@@ -30,7 +31,7 @@ import { ThObject3D } from './ThObject3D';
 export class ThInstancedMesh<
   TGeometry extends BufferGeometry = BufferGeometry,
   TMaterial extends Material | Material[] = Material | Material[],
-  TEventMap extends InstancedMeshEventMap = InstancedMeshEventMap,
+  TEventMap extends Object3DEventMap = Object3DEventMap,
   T extends InstancedMesh<TGeometry, TMaterial, TEventMap> = InstancedMesh<
     TGeometry,
     TMaterial,

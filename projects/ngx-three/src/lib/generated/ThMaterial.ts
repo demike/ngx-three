@@ -44,6 +44,9 @@ export class ThMaterial<
   public get isMaterial(): boolean | undefined {
     return this._objRef?.isMaterial;
   }
+  public get id(): number | undefined {
+    return this._objRef?.id;
+  }
   public get uuid(): string | undefined {
     return this._objRef?.uuid;
   }
@@ -213,8 +216,7 @@ export class ThMaterial<
       | Color
       | [
           ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
+            [color: ColorRepresentation] | [r: number, g: number, b: number],
         ],
   ) {
     if (this._objRef) {

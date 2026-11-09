@@ -8,14 +8,7 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  Camera,
-  ColorRepresentation,
-  Scene,
-  ShaderMaterial,
-  WebGLRenderTarget,
-} from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
+import { Camera, ColorRepresentation, Scene } from 'three';
 import { SSAARenderPass } from 'three/examples/jsm/postprocessing/SSAARenderPass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
@@ -110,45 +103,5 @@ export class ThSSAARenderPass<
 
   public get clearAlpha(): number | undefined {
     return this._objRef?.clearAlpha;
-  }
-  @Input()
-  public set copyUniforms(value: object) {
-    if (this._objRef) {
-      this._objRef.copyUniforms = value;
-    }
-  }
-
-  public get copyUniforms(): object | undefined {
-    return this._objRef?.copyUniforms;
-  }
-  @Input()
-  public set copyMaterial(value: ShaderMaterial) {
-    if (this._objRef) {
-      this._objRef.copyMaterial = value;
-    }
-  }
-
-  public get copyMaterial(): ShaderMaterial | undefined {
-    return this._objRef?.copyMaterial;
-  }
-  @Input()
-  public set fsQuad(value: FullScreenQuad) {
-    if (this._objRef) {
-      this._objRef.fsQuad = value;
-    }
-  }
-
-  public get fsQuad(): FullScreenQuad | undefined {
-    return this._objRef?.fsQuad;
-  }
-  @Input()
-  public set sampleRenderTarget(value: WebGLRenderTarget | undefined) {
-    if (this._objRef) {
-      this._objRef.sampleRenderTarget = value;
-    }
-  }
-
-  public get sampleRenderTarget(): (WebGLRenderTarget | undefined) | undefined {
-    return this._objRef?.sampleRenderTarget;
   }
 }

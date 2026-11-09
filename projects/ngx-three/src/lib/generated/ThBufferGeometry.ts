@@ -147,11 +147,9 @@ export class ThBufferGeometry<
   public get morphAttributes():
     | {
         position?:
-          | Array<BufferAttribute | InterleavedBufferAttribute>
-          | undefined;
+          Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
         normal?:
-          | Array<BufferAttribute | InterleavedBufferAttribute>
-          | undefined;
+          Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
         color?: Array<BufferAttribute | InterleavedBufferAttribute> | undefined;
       }
     | undefined {

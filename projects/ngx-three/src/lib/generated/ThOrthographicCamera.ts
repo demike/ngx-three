@@ -21,7 +21,6 @@ import { ThObject3D } from './ThObject3D';
       provide: ThObject3D,
       useExisting: forwardRef(() => ThOrthographicCamera),
     },
-    { provide: ThCamera, useExisting: forwardRef(() => ThOrthographicCamera) },
   ],
 })
 export class ThOrthographicCamera<

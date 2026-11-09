@@ -8,9 +8,8 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import { ShaderMaterial, WebGLRenderTarget } from 'three';
+import { ShaderMaterial } from 'three';
 import { BloomPass } from 'three/examples/jsm/postprocessing/BloomPass.js';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
@@ -31,46 +30,6 @@ export class ThBloomPass<
   }
 
   @Input()
-  public set renderTargetX(value: WebGLRenderTarget) {
-    if (this._objRef) {
-      this._objRef.renderTargetX = value;
-    }
-  }
-
-  public get renderTargetX(): WebGLRenderTarget | undefined {
-    return this._objRef?.renderTargetX;
-  }
-  @Input()
-  public set renderTargetY(value: WebGLRenderTarget) {
-    if (this._objRef) {
-      this._objRef.renderTargetY = value;
-    }
-  }
-
-  public get renderTargetY(): WebGLRenderTarget | undefined {
-    return this._objRef?.renderTargetY;
-  }
-  @Input()
-  public set copyUniforms(value: object) {
-    if (this._objRef) {
-      this._objRef.copyUniforms = value;
-    }
-  }
-
-  public get copyUniforms(): object | undefined {
-    return this._objRef?.copyUniforms;
-  }
-  @Input()
-  public set materialCopy(value: ShaderMaterial) {
-    if (this._objRef) {
-      this._objRef.materialCopy = value;
-    }
-  }
-
-  public get materialCopy(): ShaderMaterial | undefined {
-    return this._objRef?.materialCopy;
-  }
-  @Input()
   public set convolutionUniforms(value: object) {
     if (this._objRef) {
       this._objRef.convolutionUniforms = value;
@@ -89,15 +48,5 @@ export class ThBloomPass<
 
   public get materialConvolution(): ShaderMaterial | undefined {
     return this._objRef?.materialConvolution;
-  }
-  @Input()
-  public set fsQuad(value: FullScreenQuad) {
-    if (this._objRef) {
-      this._objRef.fsQuad = value;
-    }
-  }
-
-  public get fsQuad(): FullScreenQuad | undefined {
-    return this._objRef?.fsQuad;
   }
 }

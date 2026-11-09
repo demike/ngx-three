@@ -41,6 +41,9 @@ export class ThMeshPhysicalNodeMaterial<
   public get useClearcoat(): boolean | undefined {
     return this._objRef?.useClearcoat;
   }
+  public get useDiffuseRoughness(): boolean | undefined {
+    return this._objRef?.useDiffuseRoughness;
+  }
   public get useIridescence(): boolean | undefined {
     return this._objRef?.useIridescence;
   }
@@ -55,6 +58,9 @@ export class ThMeshPhysicalNodeMaterial<
   }
   public get useDispersion(): boolean | undefined {
     return this._objRef?.useDispersion;
+  }
+  public get useRetroreflection(): boolean | undefined {
+    return this._objRef?.useRetroreflection;
   }
   @Input()
   public set clearcoatNode(value: Node | null) {
@@ -75,6 +81,16 @@ export class ThMeshPhysicalNodeMaterial<
 
   public get clearcoatRoughnessNode(): (Node | null) | undefined {
     return this._objRef?.clearcoatRoughnessNode;
+  }
+  @Input()
+  public set diffuseRoughnessNode(value: Node | null) {
+    if (this._objRef) {
+      this._objRef.diffuseRoughnessNode = value;
+    }
+  }
+
+  public get diffuseRoughnessNode(): (Node | null) | undefined {
+    return this._objRef?.diffuseRoughnessNode;
   }
   @Input()
   public set clearcoatNormalNode(value: Node | null) {
@@ -215,6 +231,16 @@ export class ThMeshPhysicalNodeMaterial<
 
   public get dispersionNode(): (Node | null) | undefined {
     return this._objRef?.dispersionNode;
+  }
+  @Input()
+  public set retroreflectivityNode(value: Node | null) {
+    if (this._objRef) {
+      this._objRef.retroreflectivityNode = value;
+    }
+  }
+
+  public get retroreflectivityNode(): (Node | null) | undefined {
+    return this._objRef?.retroreflectivityNode;
   }
   @Input()
   public set anisotropyNode(value: Node | null) {

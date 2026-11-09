@@ -115,6 +115,16 @@ export class ThMeshPhysicalMaterial<
     return this._objRef?.clearcoatNormalMap;
   }
   @Input()
+  public set diffuseRoughnessMap(value: Texture | null) {
+    if (this._objRef) {
+      this._objRef.diffuseRoughnessMap = value;
+    }
+  }
+
+  public get diffuseRoughnessMap(): (Texture | null) | undefined {
+    return this._objRef?.diffuseRoughnessMap;
+  }
+  @Input()
   public set ior(value: number) {
     if (this._objRef) {
       this._objRef.ior = value;
@@ -155,14 +165,24 @@ export class ThMeshPhysicalMaterial<
     return this._objRef?.iridescenceIOR;
   }
   @Input()
-  public set iridescenceThicknessRange(value: [number, number]) {
+  public set iridescenceThicknessMinimum(value: number) {
     if (this._objRef) {
-      this._objRef.iridescenceThicknessRange = value;
+      this._objRef.iridescenceThicknessMinimum = value;
     }
   }
 
-  public get iridescenceThicknessRange(): [number, number] | undefined {
-    return this._objRef?.iridescenceThicknessRange;
+  public get iridescenceThicknessMinimum(): number | undefined {
+    return this._objRef?.iridescenceThicknessMinimum;
+  }
+  @Input()
+  public set iridescenceThicknessMaximum(value: number) {
+    if (this._objRef) {
+      this._objRef.iridescenceThicknessMaximum = value;
+    }
+  }
+
+  public get iridescenceThicknessMaximum(): number | undefined {
+    return this._objRef?.iridescenceThicknessMaximum;
   }
   @Input()
   public set iridescenceThicknessMap(value: Texture | null) {
@@ -180,8 +200,7 @@ export class ThMeshPhysicalMaterial<
       | Color
       | [
           ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
+            [color: ColorRepresentation] | [r: number, g: number, b: number],
         ],
   ) {
     if (this._objRef) {
@@ -270,8 +289,7 @@ export class ThMeshPhysicalMaterial<
       | Color
       | [
           ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
+            [color: ColorRepresentation] | [r: number, g: number, b: number],
         ],
   ) {
     if (this._objRef) {
@@ -310,8 +328,7 @@ export class ThMeshPhysicalMaterial<
       | Color
       | [
           ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
+            [color: ColorRepresentation] | [r: number, g: number, b: number],
         ],
   ) {
     if (this._objRef) {
@@ -355,6 +372,16 @@ export class ThMeshPhysicalMaterial<
     return this._objRef?.clearcoat;
   }
   @Input()
+  public set diffuseRoughness(value: number) {
+    if (this._objRef) {
+      this._objRef.diffuseRoughness = value;
+    }
+  }
+
+  public get diffuseRoughness(): number | undefined {
+    return this._objRef?.diffuseRoughness;
+  }
+  @Input()
   public set iridescence(value: number) {
     if (this._objRef) {
       this._objRef.iridescence = value;
@@ -375,6 +402,16 @@ export class ThMeshPhysicalMaterial<
     return this._objRef?.dispersion;
   }
   @Input()
+  public set retroreflectivity(value: number) {
+    if (this._objRef) {
+      this._objRef.retroreflectivity = value;
+    }
+  }
+
+  public get retroreflectivity(): number | undefined {
+    return this._objRef?.retroreflectivity;
+  }
+  @Input()
   public set sheen(value: number) {
     if (this._objRef) {
       this._objRef.sheen = value;
@@ -393,5 +430,15 @@ export class ThMeshPhysicalMaterial<
 
   public get transmission(): number | undefined {
     return this._objRef?.transmission;
+  }
+  @Input()
+  public set iridescenceThicknessRange(value: [number, number]) {
+    if (this._objRef) {
+      this._objRef.iridescenceThicknessRange = value;
+    }
+  }
+
+  public get iridescenceThicknessRange(): [number, number] | undefined {
+    return this._objRef?.iridescenceThicknessRange;
   }
 }

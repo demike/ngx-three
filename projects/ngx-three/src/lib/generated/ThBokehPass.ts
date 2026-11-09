@@ -8,22 +8,12 @@ import {
   Type,
   forwardRef,
 } from '@angular/core';
-import {
-  Camera,
-  Color,
-  ColorRepresentation,
-  MeshDepthMaterial,
-  Scene,
-  ShaderMaterial,
-  WebGLRenderTarget,
-} from 'three';
+import { Camera, Scene, ShaderMaterial } from 'three';
 import {
   BokehPass,
   BokehPassParameters,
 } from 'three/examples/jsm/postprocessing/BokehPass.js';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
-import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
@@ -63,36 +53,6 @@ export class ThBokehPass<
     return this._objRef?.camera;
   }
   @Input()
-  public set renderTargetColor(value: WebGLRenderTarget) {
-    if (this._objRef) {
-      this._objRef.renderTargetColor = value;
-    }
-  }
-
-  public get renderTargetColor(): WebGLRenderTarget | undefined {
-    return this._objRef?.renderTargetColor;
-  }
-  @Input()
-  public set renderTargetDepth(value: WebGLRenderTarget) {
-    if (this._objRef) {
-      this._objRef.renderTargetDepth = value;
-    }
-  }
-
-  public get renderTargetDepth(): WebGLRenderTarget | undefined {
-    return this._objRef?.renderTargetDepth;
-  }
-  @Input()
-  public set materialDepth(value: MeshDepthMaterial) {
-    if (this._objRef) {
-      this._objRef.materialDepth = value;
-    }
-  }
-
-  public get materialDepth(): MeshDepthMaterial | undefined {
-    return this._objRef?.materialDepth;
-  }
-  @Input()
   public set materialBokeh(value: ShaderMaterial) {
     if (this._objRef) {
       this._objRef.materialBokeh = value;
@@ -111,37 +71,6 @@ export class ThBokehPass<
 
   public get uniforms(): { [name: string]: { value: any } } | undefined {
     return this._objRef?.uniforms as
-      | { [name: string]: { value: any } }
-      | undefined;
-  }
-  @Input()
-  public set fsQuad(value: FullScreenQuad) {
-    if (this._objRef) {
-      this._objRef.fsQuad = value;
-    }
-  }
-
-  public get fsQuad(): FullScreenQuad | undefined {
-    return this._objRef?.fsQuad;
-  }
-  @Input()
-  public set oldClearColor(
-    value:
-      | Color
-      | [
-          ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
-        ],
-  ) {
-    if (this._objRef) {
-      this._objRef.oldClearColor = applyValue<Color>(
-        this._objRef.oldClearColor,
-        value,
-      );
-    }
-  }
-  public get oldClearColor(): Color | undefined {
-    return this._objRef?.oldClearColor;
+      { [name: string]: { value: any } } | undefined;
   }
 }

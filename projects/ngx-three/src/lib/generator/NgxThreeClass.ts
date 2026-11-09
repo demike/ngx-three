@@ -223,7 +223,7 @@ export abstract class NgxThreeClass {
       if (
         !memberName ||
         INGORED_MEMBERS.find((m) => m === memberName) ||
-        generatedNames.has(memberName) ||
+        generatedNames.has(`${memberName}:${ts.isSetAccessor(member) ? 'set' : ts.isGetAccessor(member) ? 'get' : 'prop'}`) ||
         ((member as ts.PropertyDeclaration).modifiers &&
           (member as ts.PropertyDeclaration).modifiers?.find(
             (m) => m.kind === ts.SyntaxKind.PrivateKeyword || m.kind === ts.SyntaxKind.ProtectedKeyword,
@@ -238,13 +238,14 @@ export abstract class NgxThreeClass {
         members += this.generateSetterInput(memberName, member);
         // gerate the getter
         members += this.generateGetter(memberName, member);
-        generatedNames.add(memberName);
+        // a property covers the getter and the setter
+        generatedNames.add(`${memberName}:prop`).add(`${memberName}:get`).add(`${memberName}:set`);
       } else if (ts.isSetAccessor(member) && member.parameters[0]?.type) {
         members += this.generateSetterInput(memberName, member, member.parameters[0]?.type.getText());
-        generatedNames.add(memberName);
+        generatedNames.add(`${memberName}:set`).add(`${memberName}:prop`);
       } else if (ts.isGetAccessor(member) && member.type) {
         members += this.generateGetter(memberName, member);
-        generatedNames.add(memberName);
+        generatedNames.add(`${memberName}:get`).add(`${memberName}:prop`);
       }
     }
 

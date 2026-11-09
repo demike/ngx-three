@@ -4,28 +4,24 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  forwardRef,
   Input,
   Type,
+  forwardRef,
 } from '@angular/core';
 import {
   Camera,
-  Color,
-  ColorRepresentation,
   DataTexture,
   MeshNormalMaterial,
   Scene,
   ShaderMaterial,
+  Vector3,
   WebGLRenderTarget,
 } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import {
   SSAOPass,
   SSAOPassOUTPUT,
 } from 'three/examples/jsm/postprocessing/SSAOPass.js';
-import { Vector3 } from 'three/src/math/Vector3.js';
 import { ThPassBase } from '../ThPassBase';
-import { applyValue } from '../util';
 import { ThPass } from './ThPass';
 
 @Component({
@@ -239,36 +235,6 @@ export class ThSSAOPass<
 
   public get copyMaterial(): ShaderMaterial | undefined {
     return this._objRef?.copyMaterial;
-  }
-  @Input()
-  public set fsQuad(value: FullScreenQuad) {
-    if (this._objRef) {
-      this._objRef.fsQuad = value;
-    }
-  }
-
-  public get fsQuad(): FullScreenQuad | undefined {
-    return this._objRef?.fsQuad;
-  }
-  @Input()
-  public set originalClearColor(
-    value:
-      | Color
-      | [
-          ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
-        ],
-  ) {
-    if (this._objRef) {
-      this._objRef.originalClearColor = applyValue<Color>(
-        this._objRef.originalClearColor,
-        value,
-      );
-    }
-  }
-  public get originalClearColor(): Color | undefined {
-    return this._objRef?.originalClearColor;
   }
 
   public static readonly OUTPUT = SSAOPass.OUTPUT;

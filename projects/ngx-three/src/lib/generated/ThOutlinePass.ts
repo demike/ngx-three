@@ -13,7 +13,6 @@ import {
   Color,
   ColorRepresentation,
   Matrix4,
-  MeshBasicMaterial,
   MeshDepthMaterial,
   Object3D,
   Scene,
@@ -23,7 +22,6 @@ import {
   WebGLRenderTarget,
 } from 'three';
 import { OutlinePass } from 'three/examples/jsm/postprocessing/OutlinePass.js';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { applyValue } from '../util';
 import { ThPass } from './ThPass';
@@ -85,8 +83,7 @@ export class ThOutlinePass<
       | Color
       | [
           ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
+            [color: ColorRepresentation] | [r: number, g: number, b: number],
         ],
   ) {
     if (this._objRef) {
@@ -105,8 +102,7 @@ export class ThOutlinePass<
       | Color
       | [
           ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
+            [color: ColorRepresentation] | [r: number, g: number, b: number],
         ],
   ) {
     if (this._objRef) {
@@ -200,16 +196,6 @@ export class ThOutlinePass<
 
   public get patternTexture(): Texture | undefined {
     return this._objRef?.patternTexture;
-  }
-  @Input()
-  public set maskBufferMaterial(value: MeshBasicMaterial) {
-    if (this._objRef) {
-      this._objRef.maskBufferMaterial = value;
-    }
-  }
-
-  public get maskBufferMaterial(): MeshBasicMaterial | undefined {
-    return this._objRef?.maskBufferMaterial;
   }
   @Input()
   public set renderTargetMaskBuffer(value: WebGLRenderTarget) {
@@ -362,26 +348,6 @@ export class ThOutlinePass<
     return this._objRef?.materialCopy;
   }
   @Input()
-  public set oldClearColor(
-    value:
-      | Color
-      | [
-          ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
-        ],
-  ) {
-    if (this._objRef) {
-      this._objRef.oldClearColor = applyValue<Color>(
-        this._objRef.oldClearColor,
-        value,
-      );
-    }
-  }
-  public get oldClearColor(): Color | undefined {
-    return this._objRef?.oldClearColor;
-  }
-  @Input()
   public set oldClearAlpha(value: number) {
     if (this._objRef) {
       this._objRef.oldClearAlpha = value;
@@ -392,23 +358,12 @@ export class ThOutlinePass<
     return this._objRef?.oldClearAlpha;
   }
   @Input()
-  public set fsQuad(value: FullScreenQuad) {
-    if (this._objRef) {
-      this._objRef.fsQuad = value;
-    }
-  }
-
-  public get fsQuad(): FullScreenQuad | undefined {
-    return this._objRef?.fsQuad;
-  }
-  @Input()
   public set tempPulseColor1(
     value:
       | Color
       | [
           ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
+            [color: ColorRepresentation] | [r: number, g: number, b: number],
         ],
   ) {
     if (this._objRef) {
@@ -427,8 +382,7 @@ export class ThOutlinePass<
       | Color
       | [
           ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
+            [color: ColorRepresentation] | [r: number, g: number, b: number],
         ],
   ) {
     if (this._objRef) {

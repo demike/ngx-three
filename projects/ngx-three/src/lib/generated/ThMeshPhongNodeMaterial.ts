@@ -39,6 +39,16 @@ export class ThMeshPhongNodeMaterial<
     return this._objRef?.isMeshPhongNodeMaterial;
   }
   @Input()
+  public set emissiveNode(value: Node | null) {
+    if (this._objRef) {
+      this._objRef.emissiveNode = value;
+    }
+  }
+
+  public get emissiveNode(): (Node | null) | undefined {
+    return this._objRef?.emissiveNode;
+  }
+  @Input()
   public set shininessNode(value: Node | null) {
     if (this._objRef) {
       this._objRef.shininessNode = value;

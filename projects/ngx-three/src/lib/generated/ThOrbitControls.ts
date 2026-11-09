@@ -305,8 +305,7 @@ export class ThOrbitControls<
   }
 
   public get keys():
-    | { LEFT: string; UP: string; RIGHT: string; BOTTOM: string }
-    | undefined {
+    { LEFT: string; UP: string; RIGHT: string; BOTTOM: string } | undefined {
     return this._objRef?.keys;
   }
   @Input()

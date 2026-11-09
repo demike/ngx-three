@@ -40,7 +40,7 @@ export class ThCompressedTexture<
   TImageData = CompressedTextureImageData,
   T extends CompressedTexture<TImageData> = CompressedTexture<TImageData>,
   TARGS = [
-    mipmaps: CompressedTextureMipmap[],
+    mipmaps: CompressedTextureMipmap[] | undefined,
     width: number,
     height: number,
     format?: CompressedPixelFormat,

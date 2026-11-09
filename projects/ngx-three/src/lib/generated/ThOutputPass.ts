@@ -41,8 +41,7 @@ export class ThOutputPass<
 
   public get uniforms(): { [name: string]: { value: any } } | undefined {
     return this._objRef?.uniforms as
-      | { [name: string]: { value: any } }
-      | undefined;
+      { [name: string]: { value: any } } | undefined;
   }
   @Input()
   public set material(value: RawShaderMaterial) {

@@ -9,7 +9,6 @@ import {
   forwardRef,
 } from '@angular/core';
 import { ShaderMaterial, WebGLRenderTarget } from 'three';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { SavePass } from 'three/examples/jsm/postprocessing/SavePass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
@@ -59,8 +58,7 @@ export class ThSavePass<
 
   public get uniforms(): { [name: string]: { value: any } } | undefined {
     return this._objRef?.uniforms as
-      | { [name: string]: { value: any } }
-      | undefined;
+      { [name: string]: { value: any } } | undefined;
   }
   @Input()
   public set material(value: ShaderMaterial) {
@@ -71,15 +69,5 @@ export class ThSavePass<
 
   public get material(): ShaderMaterial | undefined {
     return this._objRef?.material;
-  }
-  @Input()
-  public set fsQuad(value: FullScreenQuad) {
-    if (this._objRef) {
-      this._objRef.fsQuad = value;
-    }
-  }
-
-  public get fsQuad(): FullScreenQuad | undefined {
-    return this._objRef?.fsQuad;
   }
 }

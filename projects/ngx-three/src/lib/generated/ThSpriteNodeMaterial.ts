@@ -64,4 +64,8 @@ export class ThSpriteNodeMaterial<
       this._objRef.sizeAttenuation = value;
     }
   }
+
+  public get sizeAttenuation(): boolean | undefined {
+    return this._objRef?.sizeAttenuation;
+  }
 }
