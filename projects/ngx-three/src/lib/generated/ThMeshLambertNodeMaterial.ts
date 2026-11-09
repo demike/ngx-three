@@ -4,9 +4,11 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  Input,
   Type,
   forwardRef,
 } from '@angular/core';
+import Node from 'three/src/nodes/core/Node.js';
 import {
   MeshLambertNodeMaterial,
   MeshLambertNodeMaterialParameters,
@@ -35,5 +37,15 @@ export class ThMeshLambertNodeMaterial<
 
   public get isMeshLambertNodeMaterial(): boolean | undefined {
     return this._objRef?.isMeshLambertNodeMaterial;
+  }
+  @Input()
+  public set emissiveNode(value: Node | null) {
+    if (this._objRef) {
+      this._objRef.emissiveNode = value;
+    }
+  }
+
+  public get emissiveNode(): (Node | null) | undefined {
+    return this._objRef?.emissiveNode;
   }
 }

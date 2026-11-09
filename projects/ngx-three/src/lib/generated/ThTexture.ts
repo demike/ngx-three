@@ -25,7 +25,7 @@ import { RenderTarget } from 'three/src/core/RenderTarget.js';
 import { Vector2 } from 'three/src/math/Vector2.js';
 import { CompressedTextureMipmap } from 'three/src/textures/CompressedTexture.js';
 import { CubeTexture } from 'three/src/textures/CubeTexture.js';
-import { Source } from 'three/src/textures/Source.js';
+import { TextureSource } from 'three/src/textures/TextureSource.js';
 import { ThTextureBase } from '../ThTextureBase';
 import { applyValue } from '../util';
 
@@ -97,13 +97,13 @@ export class ThTexture<
     return this._objRef?.name;
   }
   @Input()
-  public set source(value: Source<TImage>) {
+  public set source(value: TextureSource<TImage>) {
     if (this._objRef) {
       this._objRef.source = value;
     }
   }
 
-  public get source(): Source<TImage> | undefined {
+  public get source(): TextureSource<TImage> | undefined {
     return this._objRef?.source;
   }
   public get width(): number | undefined {
@@ -320,6 +320,16 @@ export class ThTexture<
     return this._objRef?.generateMipmaps;
   }
   @Input()
+  public set mipmapsAutoUpdate(value: boolean) {
+    if (this._objRef) {
+      this._objRef.mipmapsAutoUpdate = value;
+    }
+  }
+
+  public get mipmapsAutoUpdate(): boolean | undefined {
+    return this._objRef?.mipmapsAutoUpdate;
+  }
+  @Input()
   public set premultiplyAlpha(value: boolean) {
     if (this._objRef) {
       this._objRef.premultiplyAlpha = value;
@@ -397,8 +407,7 @@ export class ThTexture<
   }
 
   public get updateRanges():
-    | Array<{ start: number; count: number }>
-    | undefined {
+    Array<{ start: number; count: number }> | undefined {
     return this._objRef?.updateRanges;
   }
   @Input()
@@ -420,6 +429,16 @@ export class ThTexture<
 
   public get pmremVersion(): number | undefined {
     return this._objRef?.pmremVersion;
+  }
+  @Input()
+  public set isPMREMTexture(value: boolean) {
+    if (this._objRef) {
+      this._objRef.isPMREMTexture = value;
+    }
+  }
+
+  public get isPMREMTexture(): boolean | undefined {
+    return this._objRef?.isPMREMTexture;
   }
   @Input()
   public set normalized(value: boolean) {

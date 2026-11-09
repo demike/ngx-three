@@ -26,7 +26,7 @@ import { ThControlBase } from '../ThControlBase';
 export class ThFirstPersonControls<
   T extends FirstPersonControls = FirstPersonControls,
   TARGS = [object: Camera, domElement?: HTMLElement | SVGElement],
-> extends ThControlBase<{}, Object3D, T, TARGS> {
+> extends ThControlBase<object, Object3D, T, TARGS> {
   public getType(): Type<FirstPersonControls> {
     return FirstPersonControls;
   }

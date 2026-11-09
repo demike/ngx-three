@@ -1,3 +1,7 @@
+/*
+          Generated, modifications will get overwritten
+        */
+
 export * from './overrides/ThCSS2DObject';
 export * from './overrides/ThCSS3DObject';
 export * from './overrides/ThEffectComposer';
@@ -104,6 +108,7 @@ export * from './ThMeshStandardNodeMaterial';
 export * from './ThMeshToonMaterial';
 export * from './ThMeshToonNodeMaterial';
 export * from './ThNodeMaterial';
+export * from './ThNodeMaterialInstance';
 export * from './ThObject3D';
 export * from './ThOctahedronGeometry';
 export * from './ThOrbitControls';

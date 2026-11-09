@@ -65,8 +65,7 @@ export class ThVolumeNodeMaterial<
   }
 
   public get scatteringNode():
-    | ((params: { positionRay: Node<'vec3'> }) => Node | null)
-    | undefined {
+    ((params: { positionRay: Node<'vec3'> }) => Node | null) | undefined {
     return this._objRef?.scatteringNode;
   }
 }

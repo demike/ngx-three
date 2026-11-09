@@ -181,8 +181,8 @@ class NgxThreeClassGenerator {
     };
 
     return visit(sourceFile, (node) => {
-      if (node.kind === ts.SyntaxKind.InterfaceDeclaration) {
-        const declaration = node as ts.InterfaceDeclaration;
+      if (ts.isInterfaceDeclaration(node) || ts.isTypeAliasDeclaration(node)) {
+        const declaration = node;
 
         if (declaration.name.escapedText === interfaceName) {
           console.log(

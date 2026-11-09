@@ -51,8 +51,7 @@ export class ThMeshLambertMaterial<
       | Color
       | [
           ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
+            [color: ColorRepresentation] | [r: number, g: number, b: number],
         ],
   ) {
     if (this._objRef) {
@@ -118,8 +117,7 @@ export class ThMeshLambertMaterial<
       | Color
       | [
           ...args:
-            | [color: ColorRepresentation]
-            | [r: number, g: number, b: number],
+            [color: ColorRepresentation] | [r: number, g: number, b: number],
         ],
   ) {
     if (this._objRef) {

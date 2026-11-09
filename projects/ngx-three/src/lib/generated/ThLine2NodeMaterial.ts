@@ -89,6 +89,9 @@ export class ThLine2NodeMaterial<
     }
   }
 
+  public get lineColorNode(): (Node | null) | undefined {
+    return this._objRef?.lineColorNode;
+  }
   @Input()
   public set worldUnits(value: boolean) {
     if (this._objRef) {
@@ -96,10 +99,17 @@ export class ThLine2NodeMaterial<
     }
   }
 
+  public get worldUnits(): boolean | undefined {
+    return this._objRef?.worldUnits;
+  }
   @Input()
   public set dashed(value: boolean) {
     if (this._objRef) {
       this._objRef.dashed = value;
     }
+  }
+
+  public get dashed(): boolean | undefined {
+    return this._objRef?.dashed;
   }
 }

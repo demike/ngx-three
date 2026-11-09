@@ -81,8 +81,7 @@ export class ThLine<
   }
 
   public get morphTargetDictionary():
-    | ({ [key: string]: number } | undefined)
-    | undefined {
+    ({ [key: string]: number } | undefined) | undefined {
     return this._objRef?.morphTargetDictionary;
   }
 }

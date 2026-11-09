@@ -82,11 +82,11 @@ declare global {
   };
   function spyOn<T extends object>(object: T, method: keyof T): jasmine.Spy;
   namespace jasmine {
-    interface SpyObj<T> extends T {
+    type SpyObj<T> = {
       [k in keyof T]: T[k] extends (...args: any[]) => infer R
         ? jasmine.Spy & ((...args: Parameters<T[k]>) => R)
         : T[k];
-    }
+    };
     interface Spy {
       (...args: any[]): any;
       calls: jasmine.Calls;

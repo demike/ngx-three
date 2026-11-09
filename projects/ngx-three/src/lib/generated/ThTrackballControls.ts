@@ -49,8 +49,7 @@ export class ThTrackballControls<
   }
 
   public get screen():
-    | { left: number; top: number; width: number; height: number }
-    | undefined {
+    { left: number; top: number; width: number; height: number } | undefined {
     return this._objRef?.screen;
   }
   @Input()
@@ -84,6 +83,16 @@ export class ThTrackballControls<
     return this._objRef?.panSpeed;
   }
   @Input()
+  public set rollSpeed(value: number) {
+    if (this._objRef) {
+      this._objRef.rollSpeed = value;
+    }
+  }
+
+  public get rollSpeed(): number | undefined {
+    return this._objRef?.rollSpeed;
+  }
+  @Input()
   public set noRotate(value: boolean) {
     if (this._objRef) {
       this._objRef.noRotate = value;
@@ -112,6 +121,16 @@ export class ThTrackballControls<
 
   public get noPan(): boolean | undefined {
     return this._objRef?.noPan;
+  }
+  @Input()
+  public set multiTouchRoll(value: boolean) {
+    if (this._objRef) {
+      this._objRef.multiTouchRoll = value;
+    }
+  }
+
+  public get multiTouchRoll(): boolean | undefined {
+    return this._objRef?.multiTouchRoll;
   }
   @Input()
   public set staticMoving(value: boolean) {

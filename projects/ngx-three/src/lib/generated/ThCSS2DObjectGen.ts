@@ -49,6 +49,16 @@ export class ThCSS2DObjectGen<
     return this._objRef?.center;
   }
   @Input()
+  public set rotation2D(value: number) {
+    if (this._objRef) {
+      this._objRef.rotation2D = value;
+    }
+  }
+
+  public get rotation2D(): number | undefined {
+    return this._objRef?.rotation2D;
+  }
+  @Input()
   public set onBeforeRender(
     value: (renderer: unknown, scene: Scene, camera: Camera) => void,
   ) {
@@ -58,8 +68,7 @@ export class ThCSS2DObjectGen<
   }
 
   public get onBeforeRender():
-    | ((renderer: unknown, scene: Scene, camera: Camera) => void)
-    | undefined {
+    ((renderer: unknown, scene: Scene, camera: Camera) => void) | undefined {
     return this._objRef?.onBeforeRender;
   }
   @Input()
@@ -72,8 +81,7 @@ export class ThCSS2DObjectGen<
   }
 
   public get onAfterRender():
-    | ((renderer: unknown, scene: Scene, camera: Camera) => void)
-    | undefined {
+    ((renderer: unknown, scene: Scene, camera: Camera) => void) | undefined {
     return this._objRef?.onAfterRender;
   }
 }

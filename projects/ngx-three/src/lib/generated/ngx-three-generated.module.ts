@@ -1,4 +1,9 @@
 import { NgModule } from '@angular/core';
+import { ThCSS2DObject } from './overrides/ThCSS2DObject';
+import { ThCSS3DObject } from './overrides/ThCSS3DObject';
+import { ThEffectComposer } from './overrides/ThEffectComposer';
+import { ThRenderPass } from './overrides/ThRenderPass';
+import { ThTransformControls } from './overrides/ThTransformControls';
 import { ThAfterimagePass } from './ThAfterimagePass';
 import { ThAmbientLight } from './ThAmbientLight';
 import { ThArcballControls } from './ThArcballControls';
@@ -28,9 +33,7 @@ import { ThCompressedCubeTexture } from './ThCompressedCubeTexture';
 import { ThCompressedTexture } from './ThCompressedTexture';
 import { ThConeGeometry } from './ThConeGeometry';
 import { ThConvexGeometry } from './ThConvexGeometry';
-import { ThCSS2DObject } from './overrides/ThCSS2DObject';
 import { ThCSS2DObjectGen } from './ThCSS2DObjectGen';
-import { ThCSS3DObject } from './overrides/ThCSS3DObject';
 import { ThCSS3DObjectGen } from './ThCSS3DObjectGen';
 import { ThCubeCamera } from './ThCubeCamera';
 import { ThCubeDepthTexture } from './ThCubeDepthTexture';
@@ -48,7 +51,6 @@ import { ThDodecahedronGeometry } from './ThDodecahedronGeometry';
 import { ThDotScreenPass } from './ThDotScreenPass';
 import { ThDragControls } from './ThDragControls';
 import { ThEdgesGeometry } from './ThEdgesGeometry';
-import { ThEffectComposer } from './overrides/ThEffectComposer';
 import { ThEffectComposerGen } from './ThEffectComposerGen';
 import { ThExternalTexture } from './ThExternalTexture';
 import { ThExtrudeGeometry } from './ThExtrudeGeometry';
@@ -102,6 +104,7 @@ import { ThMeshStandardNodeMaterial } from './ThMeshStandardNodeMaterial';
 import { ThMeshToonMaterial } from './ThMeshToonMaterial';
 import { ThMeshToonNodeMaterial } from './ThMeshToonNodeMaterial';
 import { ThNodeMaterial } from './ThNodeMaterial';
+import { ThNodeMaterialInstance } from './ThNodeMaterialInstance';
 import { ThObject3D } from './ThObject3D';
 import { ThOctahedronGeometry } from './ThOctahedronGeometry';
 import { ThOrbitControls } from './ThOrbitControls';
@@ -124,7 +127,6 @@ import { ThPolyhedronGeometry } from './ThPolyhedronGeometry';
 import { ThPositionalAudio } from './ThPositionalAudio';
 import { ThRawShaderMaterial } from './ThRawShaderMaterial';
 import { ThRectAreaLight } from './ThRectAreaLight';
-import { ThRenderPass } from './overrides/ThRenderPass';
 import { ThRenderPassGen } from './ThRenderPassGen';
 import { ThRingGeometry } from './ThRingGeometry';
 import { ThRoundedBoxGeometry } from './ThRoundedBoxGeometry';
@@ -157,7 +159,6 @@ import { ThTexturePass } from './ThTexturePass';
 import { ThTorusGeometry } from './ThTorusGeometry';
 import { ThTorusKnotGeometry } from './ThTorusKnotGeometry';
 import { ThTrackballControls } from './ThTrackballControls';
-import { ThTransformControls } from './overrides/ThTransformControls';
 import { ThTransformControlsGen } from './ThTransformControlsGen';
 import { ThTubeGeometry } from './ThTubeGeometry';
 import { ThUnrealBloomPass } from './ThUnrealBloomPass';
@@ -168,23 +169,6 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
 
 @NgModule({
   imports: [
-    ThLine2NodeMaterial,
-    ThLineBasicNodeMaterial,
-    ThLineDashedNodeMaterial,
-    ThMeshBasicNodeMaterial,
-    ThMeshLambertNodeMaterial,
-    ThMeshMatcapNodeMaterial,
-    ThMeshNormalNodeMaterial,
-    ThMeshPhongNodeMaterial,
-    ThMeshPhysicalNodeMaterial,
-    ThMeshSSSNodeMaterial,
-    ThMeshStandardNodeMaterial,
-    ThMeshToonNodeMaterial,
-    ThNodeMaterial,
-    ThPointsNodeMaterial,
-    ThShadowNodeMaterial,
-    ThSpriteNodeMaterial,
-    ThVolumeNodeMaterial,
     ThTransformControlsGen,
     ThTransformControls,
     ThArcballControls,
@@ -334,25 +318,26 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThTexture,
     ThVideoFrameTexture,
     ThVideoTexture,
+    ThLine2NodeMaterial,
+    ThLineBasicNodeMaterial,
+    ThLineDashedNodeMaterial,
+    ThMeshBasicNodeMaterial,
+    ThMeshLambertNodeMaterial,
+    ThMeshMatcapNodeMaterial,
+    ThMeshNormalNodeMaterial,
+    ThMeshPhongNodeMaterial,
+    ThMeshPhysicalNodeMaterial,
+    ThMeshSSSNodeMaterial,
+    ThMeshStandardNodeMaterial,
+    ThMeshToonNodeMaterial,
+    ThNodeMaterial,
+    ThNodeMaterialInstance,
+    ThPointsNodeMaterial,
+    ThShadowNodeMaterial,
+    ThSpriteNodeMaterial,
+    ThVolumeNodeMaterial,
   ],
   exports: [
-    ThLine2NodeMaterial,
-    ThLineBasicNodeMaterial,
-    ThLineDashedNodeMaterial,
-    ThMeshBasicNodeMaterial,
-    ThMeshLambertNodeMaterial,
-    ThMeshMatcapNodeMaterial,
-    ThMeshNormalNodeMaterial,
-    ThMeshPhongNodeMaterial,
-    ThMeshPhysicalNodeMaterial,
-    ThMeshSSSNodeMaterial,
-    ThMeshStandardNodeMaterial,
-    ThMeshToonNodeMaterial,
-    ThNodeMaterial,
-    ThPointsNodeMaterial,
-    ThShadowNodeMaterial,
-    ThSpriteNodeMaterial,
-    ThVolumeNodeMaterial,
     ThTransformControlsGen,
     ThTransformControls,
     ThArcballControls,
@@ -502,6 +487,24 @@ import { ThWireframeGeometry } from './ThWireframeGeometry';
     ThTexture,
     ThVideoFrameTexture,
     ThVideoTexture,
+    ThLine2NodeMaterial,
+    ThLineBasicNodeMaterial,
+    ThLineDashedNodeMaterial,
+    ThMeshBasicNodeMaterial,
+    ThMeshLambertNodeMaterial,
+    ThMeshMatcapNodeMaterial,
+    ThMeshNormalNodeMaterial,
+    ThMeshPhongNodeMaterial,
+    ThMeshPhysicalNodeMaterial,
+    ThMeshSSSNodeMaterial,
+    ThMeshStandardNodeMaterial,
+    ThMeshToonNodeMaterial,
+    ThNodeMaterial,
+    ThNodeMaterialInstance,
+    ThPointsNodeMaterial,
+    ThShadowNodeMaterial,
+    ThSpriteNodeMaterial,
+    ThVolumeNodeMaterial,
   ],
 })
 export class NgxThreeGeneratedModule {}

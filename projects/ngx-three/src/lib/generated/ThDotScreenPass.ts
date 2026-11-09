@@ -10,7 +10,6 @@ import {
 } from '@angular/core';
 import { ShaderMaterial, Vector2 } from 'three';
 import { DotScreenPass } from 'three/examples/jsm/postprocessing/DotScreenPass.js';
-import { FullScreenQuad } from 'three/examples/jsm/postprocessing/Pass.js';
 import { ThPassBase } from '../ThPassBase';
 import { ThPass } from './ThPass';
 
@@ -39,8 +38,7 @@ export class ThDotScreenPass<
 
   public get uniforms(): { [name: string]: { value: any } } | undefined {
     return this._objRef?.uniforms as
-      | { [name: string]: { value: any } }
-      | undefined;
+      { [name: string]: { value: any } } | undefined;
   }
   @Input()
   public set material(value: ShaderMaterial) {
@@ -51,15 +49,5 @@ export class ThDotScreenPass<
 
   public get material(): ShaderMaterial | undefined {
     return this._objRef?.material;
-  }
-  @Input()
-  public set fsQuad(value: FullScreenQuad) {
-    if (this._objRef) {
-      this._objRef.fsQuad = value;
-    }
-  }
-
-  public get fsQuad(): FullScreenQuad | undefined {
-    return this._objRef?.fsQuad;
   }
 }

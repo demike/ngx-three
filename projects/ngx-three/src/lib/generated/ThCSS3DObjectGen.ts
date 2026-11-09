@@ -48,8 +48,7 @@ export class ThCSS3DObjectGen<
   }
 
   public get onBeforeRender():
-    | ((renderer: unknown, scene: Scene, camera: Camera) => void)
-    | undefined {
+    ((renderer: unknown, scene: Scene, camera: Camera) => void) | undefined {
     return this._objRef?.onBeforeRender;
   }
   @Input()
@@ -62,8 +61,7 @@ export class ThCSS3DObjectGen<
   }
 
   public get onAfterRender():
-    | ((renderer: unknown, scene: Scene, camera: Camera) => void)
-    | undefined {
+    ((renderer: unknown, scene: Scene, camera: Camera) => void) | undefined {
     return this._objRef?.onAfterRender;
   }
 }
