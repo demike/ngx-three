@@ -145,9 +145,40 @@ export class ThEngineService implements OnDestroy {
 
   public render(): void {
     this.beforeRenderEmitter.emit({ engine: this, delta: this.clock.getDelta() });
+    this.emitOnRender();
     for (const view of this.views) {
       this.renderView(view);
     }
+  }
+
+  /**
+   * Emits `onRender` for all views that have a subscriber.
+   * All emissions share a single `ngZone.run`, so a zone based app runs at most one
+   * change detection cycle per frame (instead of one per view), and none at all if nobody listens.
+   * The emissions happen before any view is rendered, so binding updates triggered by them
+   * are visible in the same frame.
+   */
+  private emitOnRender() {
+    let observed = false;
+    for (const view of this.views) {
+      if (isObserved(view.onRender)) {
+        observed = true;
+        break;
+      }
+    }
+    if (!observed) {
+      return;
+    }
+
+    this.ngZone.run(() => {
+      for (const view of this.views) {
+        const camera = view.camera;
+        const scene = view.scene;
+        if (camera?.objRef && scene?.objRef && isObserved(view.onRender)) {
+          view.onRender.emit({ renderer: this.renderers, scene, camera });
+        }
+      }
+    });
   }
 
   protected renderView(view: ThView) {
@@ -158,15 +189,8 @@ export class ThEngineService implements OnDestroy {
       return;
     }
 
-    if (isObserved(view.onRender)) {
-      this.ngZone.run(() =>
-        view.onRender.emit({
-          renderer: this.renderers,
-          scene,
-          camera,
-        }),
-      );
-    }
+    // imperative per-view hook (no change detection), i.e. used by <th-html>
+    view.beforeViewRender$.next(view);
 
     for (const renderer of this.renderers) {
       if (isWebGPURenderer(renderer) && !renderer.initialized) {
@@ -244,7 +268,7 @@ export class ThEngineService implements OnDestroy {
       renderer.setScissorTest(view.scissorTest);
     }
 
-    if (view.clearColor && renderer.setClearColor) {
+    if (view.clearColor !== undefined && renderer.setClearColor) {
       renderer.setClearColor(view.clearColor);
     }
 
@@ -253,7 +277,7 @@ export class ThEngineService implements OnDestroy {
     }
 
     if (view.shadow !== undefined && renderer.shadowMap) {
-      renderer.shadowMap.enabled = true;
+      renderer.shadowMap.enabled = view.shadow;
     }
   }
 

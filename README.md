@@ -316,6 +316,8 @@ You can configure them in two different ways
   or `*css2dRendererParameters]="{...}"`, `*css3dRendererParameters]="{...}"`
 
 If you do not provide any renderer the WebGLRenderer is used as the default renderer with its default configuration.
+`preserveDrawingBuffer` is off by default (better performance); enable it with
+`*rendererParameters="{ preserveDrawingBuffer: true }"` if you need to read back the canvas, i.e. with `toDataURL()`.
 
 Examples:
 - [CSS3DRenderer Example](https://demike.github.io/ngx-three/css3d-renderer-example)
@@ -346,6 +348,20 @@ outputs of the `ThView` (`ThCanvas` is derived from it) instances.
 ```html
 <th-canvas (onRender)="doSomething()"></th-canvas>
 ```
+
+> **Performance:** binding `(beforeRender)` or `(onRender)` in a template runs change detection
+> every frame. That is what you want if the handler updates state that is bound in the template
+> (i.e. `[rotation]="rotation"`). For imperative per-frame work that only touches three.js objects
+> use `injectBeforeRender` instead, which does not trigger change detection:
+>
+> ```ts
+> constructor() {
+>   injectBeforeRender(({ delta }) => this.mixer?.update(delta));
+> }
+> ```
+>
+> Each `ThView` also exposes a `beforeViewRender$` observable that emits right before the view is rendered,
+> without triggering change detection.
 
 ### Resize-Handling & Device Pixel Ratio
 

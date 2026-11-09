@@ -23,7 +23,9 @@ export type Renderer = WebGLRenderer | WebGPURenderer | CSS3DRenderer | CSS2DRen
 const RENDERER_DEFAULTS: WebGLRendererParameters = {
   alpha: true, // transparent background
   antialias: true, // smooth edges
-  preserveDrawingBuffer: true,
+  // keeping the drawing buffer forces a copy instead of a buffer swap every frame.
+  // Enable it via `*rendererParameters="{ preserveDrawingBuffer: true }"` if you need to read back the canvas (i.e. toDataURL)
+  preserveDrawingBuffer: false,
 };
 
 const WEBGPU_RENDERER_DEFAULTS: WebGPURendererParameters = {
